@@ -1,0 +1,362 @@
+\section{vqec\_\-upcall\_\-event.c File Reference}
+\label{vqec__upcall__event_8c}\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+{\tt \#include \char`\"{}vqec\_\-upcall\_\-event.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-private.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-debug.h\char`\"{}}\par
+{\tt \#include $<$sys/un.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-lock\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-recv\_\-socket.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-upcall\_\-sock\_\-desc}
+\item 
+struct \bf{vqec\_\-upcall\_\-chan\_\-dev\_\-attrib\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-UPCALL\_\-SOCKET\_\-BASEDIR}~\char`\"{}/tmp/\char`\"{}
+\item 
+\#define \bf{VQEC\_\-UPCALL\_\-SOCKET\_\-IRQEVENTS}~\char`\"{}.vqec\_\-irqsk\char`\"{}
+\item 
+\#define \bf{VQEC\_\-UPCALL\_\-SOCKET\_\-RX\_\-PAKEJECT}~\char`\"{}.vqec\_\-paksk\char`\"{}
+\item 
+\#define \bf{VQEC\_\-DP\_\-UPCALL\_\-RTP\_\-SRC\_\-EVENTS}
+\item 
+\#define \bf{VQEC\_\-DP\_\-UPCALL\_\-EV\_\-MAX\_\-SIZE}~(sizeof(vqec\_\-dp\_\-api\_\-version\_\-t) + sizeof(vqec\_\-dp\_\-upcall\_\-irq\_\-event\_\-t))
+\item 
+\#define \bf{PID\_\-ASC\_\-LEN}~16
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef \bf{vqec\_\-upcall\_\-chan\_\-dev\_\-attrib\_\-} \bf{vqec\_\-upcall\_\-chan\_\-dev\_\-attrib\_\-t}
+\item 
+typedef void($\ast$) \bf{upcall\_\-evt\_\-handler} (const vqec\_\-event\_\-t $\ast$const, int32\_\-t, int16\_\-t, void $\ast$)
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+static boolean \bf{vqec\_\-upcall\_\-chan\_\-generation\_\-id\_\-verify} (\bf{vqec\_\-chan\_\-t} $\ast$chan, uint32\_\-t dp\_\-generation)
+\item 
+static uint32\_\-t \bf{vqec\_\-upcall\_\-chan\_\-get\_\-generation\_\-id} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+static boolean \bf{vqec\_\-upcall\_\-generation\_\-num\_\-le} (uint32\_\-t cur, uint32\_\-t last)
+\item 
+static boolean \bf{vqec\_\-upcall\_\-chan\_\-update\_\-msg\_\-generation\_\-num} (\bf{vqec\_\-chan\_\-t} $\ast$chan, uint32\_\-t cur\_\-generation\_\-num)
+\item 
+static void \bf{vqec\_\-upcall\_\-chan\_\-event} (\bf{vqec\_\-chan\_\-t} $\ast$chan, \bf{vqec\_\-upcall\_\-chan\_\-dev\_\-attrib\_\-t} $\ast$attrib, vqec\_\-dp\_\-irq\_\-ack\_\-resp\_\-t $\ast$irq\_\-resp)
+\item 
+static void \bf{vqec\_\-upcall\_\-chan\_\-event\_\-batch} (\bf{vqec\_\-chan\_\-t} $\ast$chan, vqec\_\-dp\_\-irq\_\-poll\_\-t $\ast$irq\_\-poll)
+\item 
+static boolean \bf{vqec\_\-upcall\_\-chan\_\-ack\_\-irq} (vqec\_\-dp\_\-chanid\_\-t chid, vqec\_\-dp\_\-upcall\_\-device\_\-t device, vqec\_\-dp\_\-streamid\_\-t device\_\-id, vqec\_\-dp\_\-irq\_\-ack\_\-resp\_\-t $\ast$resp)
+\item 
+static boolean \bf{vqec\_\-upcall\_\-chan\_\-poll\_\-irq} (vqec\_\-dp\_\-chanid\_\-t chid, vqec\_\-dp\_\-irq\_\-poll\_\-t $\ast$poll)
+\item 
+static void \bf{vqec\_\-upcall\_\-process\_\-irq\_\-event} (char $\ast$p\_\-buf, uint16\_\-t len)
+\item 
+void \bf{vqec\_\-upcall\_\-process\_\-nat\_\-pak} (char $\ast$nat\_\-pak, uint16\_\-t len)
+\item 
+static void \bf{vqec\_\-upcall\_\-event\_\-irq} (const vqec\_\-event\_\-t $\ast$const ev, int32\_\-t fd, int16\_\-t event, void $\ast$unused\_\-dptr)
+\item 
+static void \bf{vqec\_\-upcall\_\-event\_\-pak\_\-eject} (const vqec\_\-event\_\-t $\ast$const ev, int32\_\-t fd, int16\_\-t event, void $\ast$unused\_\-dptr)
+\item 
+static vqec\_\-error\_\-t \bf{vqec\_\-setup\_\-upc\_\-socket} (char $\ast$un\_\-sock\_\-path, struct \bf{vqec\_\-upcall\_\-sock\_\-desc} $\ast$desc, \bf{upcall\_\-evt\_\-handler} handler)
+\item 
+static vqec\_\-error\_\-t \bf{vqec\_\-upcall\_\-setup\_\-irqsock} (void)
+\item 
+static vqec\_\-error\_\-t \bf{vqec\_\-upcall\_\-setup\_\-pak\_\-ejectsock} (uint32\_\-t max\_\-paksize)
+\item 
+void \bf{vqec\_\-upcall\_\-close\_\-unsocks} (void)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-upcall\_\-setup\_\-unsocks} (uint32\_\-t max\_\-paksize)
+\item 
+static void \bf{vqec\_\-upcall\_\-display\_\-desc\_\-state} (struct \bf{vqec\_\-upcall\_\-sock\_\-desc} $\ast$desc)
+\item 
+void \bf{vqec\_\-upcall\_\-display\_\-state} (void)
+\item 
+void \bf{vqec\_\-upcall\_\-get\_\-irq\_\-stats} (\bf{vqec\_\-upcall\_\-ev\_\-stats\_\-t} $\ast$stats)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+static struct \bf{vqec\_\-upcall\_\-sock\_\-desc} s\_\-upcall\_\-irqsock \bf{s\_\-upcall\_\-pak\_\-ejectsock}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!PID_ASC_LEN@{PID\_\-ASC\_\-LEN}}
+\index{PID_ASC_LEN@{PID\_\-ASC\_\-LEN}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define PID\_\-ASC\_\-LEN~16}\label{vqec__upcall__event_8c_2df8c32b858caca63248a310b2f2a00c}
+
+
+--------------------------------------------------------------------------- Setup IRQ socket.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]Returns VQEC\_\-ERR\_\-OK on success. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!VQEC_DP_UPCALL_EV_MAX_SIZE@{VQEC\_\-DP\_\-UPCALL\_\-EV\_\-MAX\_\-SIZE}}
+\index{VQEC_DP_UPCALL_EV_MAX_SIZE@{VQEC\_\-DP\_\-UPCALL\_\-EV\_\-MAX\_\-SIZE}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-DP\_\-UPCALL\_\-EV\_\-MAX\_\-SIZE~(sizeof(vqec\_\-dp\_\-api\_\-version\_\-t) + sizeof(vqec\_\-dp\_\-upcall\_\-irq\_\-event\_\-t))}\label{vqec__upcall__event_8c_f51825943abc8664c0d90b4bd5bc03b8}
+
+
+--------------------------------------------------------------------------- Event handler for upcall IRQ events generated by the dataplane. Each channel has its own set of IRQs (messages), one for events on the primary session, one for the repair session, and one for events internal to the dp channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em ev}]Pointer to the libevent event. \item[\mbox{$\leftarrow$} {\em fd}]File descriptor of the socket. \item[\mbox{$\leftarrow$} {\em event}]Socket event. \item[\mbox{$\leftarrow$} {\em unused\_\-dptr}]Unused. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!VQEC_DP_UPCALL_RTP_SRC_EVENTS@{VQEC\_\-DP\_\-UPCALL\_\-RTP\_\-SRC\_\-EVENTS}}
+\index{VQEC_DP_UPCALL_RTP_SRC_EVENTS@{VQEC\_\-DP\_\-UPCALL\_\-RTP\_\-SRC\_\-EVENTS}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-DP\_\-UPCALL\_\-RTP\_\-SRC\_\-EVENTS}\label{vqec__upcall__event_8c_b07a1700c2b234fe001f4ce99d810cdd}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}(VQEC_DP_UPCALL_MAKE_REASON(                        \
+         VQEC_DP_UPCALL_REASON_RTP_SRC_ISACTIVE) |      \
+     VQEC_DP_UPCALL_MAKE_REASON(                        \
+         VQEC_DP_UPCALL_REASON_RTP_SRC_ISINACTIVE) |    \
+     VQEC_DP_UPCALL_MAKE_REASON(                        \
+         VQEC_DP_UPCALL_REASON_RTP_SRC_NEW) |           \
+     VQEC_DP_UPCALL_MAKE_REASON(                        \
+         VQEC_DP_UPCALL_REASON_RTP_SRC_CSRC_UPDATE))
+\end{verbatim}\end{Code}
+--------------------------------------------------------------------------- Process the data for a single upcall event for a channel. The data has been retrieved via IPC. The data is delivered to it's target entity in the channel based on the \char`\"{}device type\char`\"{} specified by the event.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel instance. \item[\mbox{$\leftarrow$} {\em attrib}]Attributes for the device that generated the event. \item[\mbox{$\leftarrow$} {\em irq\_\-resp}]The event response data retrieved from the dataplane. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!VQEC_UPCALL_SOCKET_BASEDIR@{VQEC\_\-UPCALL\_\-SOCKET\_\-BASEDIR}}
+\index{VQEC_UPCALL_SOCKET_BASEDIR@{VQEC\_\-UPCALL\_\-SOCKET\_\-BASEDIR}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UPCALL\_\-SOCKET\_\-BASEDIR~\char`\"{}/tmp/\char`\"{}}\label{vqec__upcall__event_8c_4b3dfa791d981f5ffd65d52efa74adb8}
+
+
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!VQEC_UPCALL_SOCKET_IRQEVENTS@{VQEC\_\-UPCALL\_\-SOCKET\_\-IRQEVENTS}}
+\index{VQEC_UPCALL_SOCKET_IRQEVENTS@{VQEC\_\-UPCALL\_\-SOCKET\_\-IRQEVENTS}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UPCALL\_\-SOCKET\_\-IRQEVENTS~\char`\"{}.vqec\_\-irqsk\char`\"{}}\label{vqec__upcall__event_8c_1bfc983f631f30f8ed47bfefc7d0d95f}
+
+
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!VQEC_UPCALL_SOCKET_RX_PAKEJECT@{VQEC\_\-UPCALL\_\-SOCKET\_\-RX\_\-PAKEJECT}}
+\index{VQEC_UPCALL_SOCKET_RX_PAKEJECT@{VQEC\_\-UPCALL\_\-SOCKET\_\-RX\_\-PAKEJECT}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UPCALL\_\-SOCKET\_\-RX\_\-PAKEJECT~\char`\"{}.vqec\_\-paksk\char`\"{}}\label{vqec__upcall__event_8c_82fe384ab03ee41ca42838d4062c90e2}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!upcall_evt_handler@{upcall\_\-evt\_\-handler}}
+\index{upcall_evt_handler@{upcall\_\-evt\_\-handler}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$) \bf{upcall\_\-evt\_\-handler}(const vqec\_\-event\_\-t $\ast$const, int32\_\-t, int16\_\-t, void $\ast$)}\label{vqec__upcall__event_8c_983e701125b42492941c93c97d238da7}
+
+
+--------------------------------------------------------------------------- Setup a socket which receives unsolicited messages from the dataplane, and register the socket with libevent.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em un\_\-sock\_\-path}]Pathname for the named socket. \item[\mbox{$\leftarrow$} {\em desc}]Upcall socket data descriptor. \item[\mbox{$\leftarrow$} {\em handler}]Socket event handler. \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]Returns VQEC\_\-OK on success. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_chan_dev_attrib_t@{vqec\_\-upcall\_\-chan\_\-dev\_\-attrib\_\-t}}
+\index{vqec_upcall_chan_dev_attrib_t@{vqec\_\-upcall\_\-chan\_\-dev\_\-attrib\_\-t}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-upcall\_\-chan\_\-dev\_\-attrib\_\-}  \bf{vqec\_\-upcall\_\-chan\_\-dev\_\-attrib\_\-t}}\label{vqec__upcall__event_8c_2e5d4040d68a79492c0b8580714645e5}
+
+
+Upcall interrupting device attributes: for internal use within the control-plane channel module. 
+
+\subsection{Function Documentation}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_setup_upc_socket@{vqec\_\-setup\_\-upc\_\-socket}}
+\index{vqec_setup_upc_socket@{vqec\_\-setup\_\-upc\_\-socket}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static vqec\_\-error\_\-t vqec\_\-setup\_\-upc\_\-socket (char $\ast$ {\em un\_\-sock\_\-path}, struct \bf{vqec\_\-upcall\_\-sock\_\-desc} $\ast$ {\em desc}, \bf{upcall\_\-evt\_\-handler} {\em handler})\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_e127266eb30c7584fa785be20ccb6fe5}
+
+
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_chan_ack_irq@{vqec\_\-upcall\_\-chan\_\-ack\_\-irq}}
+\index{vqec_upcall_chan_ack_irq@{vqec\_\-upcall\_\-chan\_\-ack\_\-irq}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-upcall\_\-chan\_\-ack\_\-irq (vqec\_\-dp\_\-chanid\_\-t {\em chid}, vqec\_\-dp\_\-upcall\_\-device\_\-t {\em device}, vqec\_\-dp\_\-streamid\_\-t {\em device\_\-id}, vqec\_\-dp\_\-irq\_\-ack\_\-resp\_\-t $\ast$ {\em resp})\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_3c5b1ce6d0200d407732d407606fdfb7}
+
+
+--------------------------------------------------------------------------- Acknowledge an IRQ, and retrieve the event data associated with it.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chid}]Identifier of the channel for which the IRQ is acknowledged. \item[\mbox{$\leftarrow$} {\em device}]Type of the device for which the IRQ is being acknowledged. \item[\mbox{$\leftarrow$} {\em device\_\-id}]Dataplane identifier of the device for which the IRQ is acknowledged. \item[\mbox{$\rightarrow$} {\em resp}]Response data for the IRQ event. \item[\mbox{$\rightarrow$} {\em booelan}]Returns true if the ACK succeeds. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_chan_event@{vqec\_\-upcall\_\-chan\_\-event}}
+\index{vqec_upcall_chan_event@{vqec\_\-upcall\_\-chan\_\-event}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-upcall\_\-chan\_\-event (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, \bf{vqec\_\-upcall\_\-chan\_\-dev\_\-attrib\_\-t} $\ast$ {\em attrib}, vqec\_\-dp\_\-irq\_\-ack\_\-resp\_\-t $\ast$ {\em irq\_\-resp})\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_5cbd1ced1597e18287d1e0983d889231}
+
+
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_chan_event_batch@{vqec\_\-upcall\_\-chan\_\-event\_\-batch}}
+\index{vqec_upcall_chan_event_batch@{vqec\_\-upcall\_\-chan\_\-event\_\-batch}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-upcall\_\-chan\_\-event\_\-batch (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, vqec\_\-dp\_\-irq\_\-poll\_\-t $\ast$ {\em irq\_\-poll})\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_72bbd4ccbd8ec91774a8d650978cd5f4}
+
+
+--------------------------------------------------------------------------- Process the event data for all of a dataplane channel's device which is retrieved via a poll IPC.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel instance. \item[\mbox{$\leftarrow$} {\em irq\_\-poll}]The batch event response data retrieved from the dataplane. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_chan_generation_id_verify@{vqec\_\-upcall\_\-chan\_\-generation\_\-id\_\-verify}}
+\index{vqec_upcall_chan_generation_id_verify@{vqec\_\-upcall\_\-chan\_\-generation\_\-id\_\-verify}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-upcall\_\-chan\_\-generation\_\-id\_\-verify (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, uint32\_\-t {\em dp\_\-generation})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__upcall__event_8c_23ab93d8fe83ac6e5fcfbdcd827afd5f}
+
+
+--------------------------------------------------------------------------- Dataplane channel generation identifiers. These are assigned when the dpchan is created and remain constant throughout it's lifetime. --------------------------------------------------------------------------- \index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_chan_get_generation_id@{vqec\_\-upcall\_\-chan\_\-get\_\-generation\_\-id}}
+\index{vqec_upcall_chan_get_generation_id@{vqec\_\-upcall\_\-chan\_\-get\_\-generation\_\-id}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static uint32\_\-t vqec\_\-upcall\_\-chan\_\-get\_\-generation\_\-id (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__upcall__event_8c_bc742cbb3e686707780af369beb9ce02}
+
+
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_chan_poll_irq@{vqec\_\-upcall\_\-chan\_\-poll\_\-irq}}
+\index{vqec_upcall_chan_poll_irq@{vqec\_\-upcall\_\-chan\_\-poll\_\-irq}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-upcall\_\-chan\_\-poll\_\-irq (vqec\_\-dp\_\-chanid\_\-t {\em chid}, vqec\_\-dp\_\-irq\_\-poll\_\-t $\ast$ {\em poll})\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_6b0f0c8a42125f47a809aa63ed3ce298}
+
+
+--------------------------------------------------------------------------- Poll / clear all pending IRQs in the dataplane , and retrieve the event data associated with them.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chid}]Dataplane identifier of the channel being polled. \item[\mbox{$\rightarrow$} {\em poll}]Poll API data structure. \item[\mbox{$\rightarrow$} {\em boolean}]Returns TRUE if the poll action succeeds. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_chan_update_msg_generation_num@{vqec\_\-upcall\_\-chan\_\-update\_\-msg\_\-generation\_\-num}}
+\index{vqec_upcall_chan_update_msg_generation_num@{vqec\_\-upcall\_\-chan\_\-update\_\-msg\_\-generation\_\-num}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-upcall\_\-chan\_\-update\_\-msg\_\-generation\_\-num (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, uint32\_\-t {\em cur\_\-generation\_\-num})\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_0309081af62e2ac77acef166e7edcd7f}
+
+
+--------------------------------------------------------------------------- Update the upcall message sequence generation (sequence number).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel object. \item[\mbox{$\leftarrow$} {\em cur\_\-generation\_\-num}]The current message generation number read from an incoming upcall event. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the current message generation number is equal to the last message generation number plus one. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_close_unsocks@{vqec\_\-upcall\_\-close\_\-unsocks}}
+\index{vqec_upcall_close_unsocks@{vqec\_\-upcall\_\-close\_\-unsocks}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-upcall\_\-close\_\-unsocks (void)}\label{vqec__upcall__event_8c_020466839798c4aa443c388dfe065188}
+
+
+--------------------------------------------------------------------------- Close existing unix sockets. The inodes created in the \char`\"{}/tmp\char`\"{} directory are destroyed via the \char`\"{}unlink\char`\"{} system call. --------------------------------------------------------------------------- \index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_display_desc_state@{vqec\_\-upcall\_\-display\_\-desc\_\-state}}
+\index{vqec_upcall_display_desc_state@{vqec\_\-upcall\_\-display\_\-desc\_\-state}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-upcall\_\-display\_\-desc\_\-state (struct \bf{vqec\_\-upcall\_\-sock\_\-desc} $\ast$ {\em desc})\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_89aa449aa46af41691afbac0cec9e4fa}
+
+
+--------------------------------------------------------------------------- Implementation of the global upcall display per socket descriptor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em desc}]Upcall socket descriptor state. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_display_state@{vqec\_\-upcall\_\-display\_\-state}}
+\index{vqec_upcall_display_state@{vqec\_\-upcall\_\-display\_\-state}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-upcall\_\-display\_\-state (void)}\label{vqec__upcall__event_8c_d5111e800a4f6f9011aacefd7e9166d7}
+
+
+--------------------------------------------------------------------------- Display global upcall state. --------------------------------------------------------------------------- \index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_event_irq@{vqec\_\-upcall\_\-event\_\-irq}}
+\index{vqec_upcall_event_irq@{vqec\_\-upcall\_\-event\_\-irq}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-upcall\_\-event\_\-irq (const vqec\_\-event\_\-t $\ast$const  {\em ev}, int32\_\-t {\em fd}, int16\_\-t {\em event}, void $\ast$ {\em unused\_\-dptr})\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_207938bf1386db00331677bfd9d03266}
+
+
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_event_pak_eject@{vqec\_\-upcall\_\-event\_\-pak\_\-eject}}
+\index{vqec_upcall_event_pak_eject@{vqec\_\-upcall\_\-event\_\-pak\_\-eject}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-upcall\_\-event\_\-pak\_\-eject (const vqec\_\-event\_\-t $\ast$const  {\em ev}, int32\_\-t {\em fd}, int16\_\-t {\em event}, void $\ast$ {\em unused\_\-dptr})\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_5c919a4bc80e0344385edb9a63653850}
+
+
+--------------------------------------------------------------------------- Event handler for \char`\"{}punted\char`\"{} or \char`\"{}ejected\char`\"{} packets from the dataplane. In the current implementation only NAT packets are supported.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em ev}]Pointer to the libevent event. \item[\mbox{$\leftarrow$} {\em fd}]File descriptor of the socket. \item[\mbox{$\leftarrow$} {\em event}]Socket event. \item[\mbox{$\leftarrow$} {\em unused\_\-dptr}]Unused. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_generation_num_le@{vqec\_\-upcall\_\-generation\_\-num\_\-le}}
+\index{vqec_upcall_generation_num_le@{vqec\_\-upcall\_\-generation\_\-num\_\-le}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-upcall\_\-generation\_\-num\_\-le (uint32\_\-t {\em cur}, uint32\_\-t {\em last})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__upcall__event_8c_8dcef1adeb6f7c926620a5d0317eef82}
+
+
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_get_irq_stats@{vqec\_\-upcall\_\-get\_\-irq\_\-stats}}
+\index{vqec_upcall_get_irq_stats@{vqec\_\-upcall\_\-get\_\-irq\_\-stats}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-upcall\_\-get\_\-irq\_\-stats (\bf{vqec\_\-upcall\_\-ev\_\-stats\_\-t} $\ast$ {\em stats})}\label{vqec__upcall__event_8c_2f4a8fcca9020fae5255a967c2f54f14}
+
+
+--------------------------------------------------------------------------- Get IRQ event statistics - used for unit-tests.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em stats}]Pointer to the stats structure. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_process_irq_event@{vqec\_\-upcall\_\-process\_\-irq\_\-event}}
+\index{vqec_upcall_process_irq_event@{vqec\_\-upcall\_\-process\_\-irq\_\-event}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-upcall\_\-process\_\-irq\_\-event (char $\ast$ {\em p\_\-buf}, uint16\_\-t {\em len})\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_ae140b5d1eb4c411a3c933d07117d858}
+
+
+--------------------------------------------------------------------------- Process an upcall IRQ event from the dataplane.
+
+------------- $|$ API version (fixed length) ------------- $|$ IRQ event structure (fixed length) -------------
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-buf}]Pointer to the input data buffer. \item[\mbox{$\leftarrow$} {\em len}]Length of the input. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_process_nat_pak@{vqec\_\-upcall\_\-process\_\-nat\_\-pak}}
+\index{vqec_upcall_process_nat_pak@{vqec\_\-upcall\_\-process\_\-nat\_\-pak}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-upcall\_\-process\_\-nat\_\-pak (char $\ast$ {\em nat\_\-pak}, uint16\_\-t {\em len})}\label{vqec__upcall__event_8c_2c765af9da16410e1b6cdfa7a574f93b}
+
+
+--------------------------------------------------------------------------- Process a NAT packet from the dataplane. The packet is sanity checked and then delivered to the channel for further processing. NOTE: The frequency of NAT packets should be very low, hence per packet debugs are seen as ok.
+
+------------- $|$ API version (fixed length) ------------- $|$ Packet header (fixed length) ------------- $|$ Packet contents (variable length) -------------
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em nat\_\-pak}]Pointer to the NAT packet. \item[\mbox{$\leftarrow$} {\em len}]Length of the NAT packet. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_setup_irqsock@{vqec\_\-upcall\_\-setup\_\-irqsock}}
+\index{vqec_upcall_setup_irqsock@{vqec\_\-upcall\_\-setup\_\-irqsock}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static vqec\_\-error\_\-t vqec\_\-upcall\_\-setup\_\-irqsock (void)\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_cfbbc0c42c4490669d7ca9020d3737bc}
+
+
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_setup_pak_ejectsock@{vqec\_\-upcall\_\-setup\_\-pak\_\-ejectsock}}
+\index{vqec_upcall_setup_pak_ejectsock@{vqec\_\-upcall\_\-setup\_\-pak\_\-ejectsock}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static vqec\_\-error\_\-t vqec\_\-upcall\_\-setup\_\-pak\_\-ejectsock (uint32\_\-t {\em max\_\-paksize})\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_1a0532545466e26383cdfa71fb2876ea}
+
+
+--------------------------------------------------------------------------- Setup the packet \char`\"{}punt\char`\"{} or \char`\"{}eject\char`\"{} socket, which receives NAT packets (in this implementation) that were received on RTP session(s) in the dataplane.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em max\_\-paksize}]Maximum packet size bound for \char`\"{}punted\char`\"{} or \char`\"{}ejected\char`\"{} packets received from the dataplane. \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]Returns VQEC\_\-OK if the socket is setup successfully, error code otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!vqec_upcall_setup_unsocks@{vqec\_\-upcall\_\-setup\_\-unsocks}}
+\index{vqec_upcall_setup_unsocks@{vqec\_\-upcall\_\-setup\_\-unsocks}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-upcall\_\-setup\_\-unsocks (uint32\_\-t {\em max\_\-paksize})}\label{vqec__upcall__event_8c_d59208eecf5b3dafa404cf8438b25f66}
+
+
+--------------------------------------------------------------------------- Upcall socket setup.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em max\_\-paksize}]Maximum packet size bound for \char`\"{}punted\char`\"{} or \char`\"{}ejected\char`\"{} packets received from the dataplane. \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]Returns VQEC\_\-OK if the sockets are setup successfully, error code otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+
+
+\subsection{Variable Documentation}
+\index{vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}!s_upcall_pak_ejectsock@{s\_\-upcall\_\-pak\_\-ejectsock}}
+\index{s_upcall_pak_ejectsock@{s\_\-upcall\_\-pak\_\-ejectsock}!vqec_upcall_event.c@{vqec\_\-upcall\_\-event.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \bf{vqec\_\-upcall\_\-sock\_\-desc} s\_\-upcall\_\-irqsock \bf{s\_\-upcall\_\-pak\_\-ejectsock}\hspace{0.3cm}{\tt  [static]}}\label{vqec__upcall__event_8c_763200cb9a31789752f48aa07ca10c71}
+
+

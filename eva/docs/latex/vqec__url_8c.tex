@@ -1,0 +1,61 @@
+\section{vqec\_\-url.c File Reference}
+\label{vqec__url_8c}\index{vqec_url.c@{vqec\_\-url.c}}
+{\tt \#include \char`\"{}vqec\_\-url.h\char`\"{}}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-assert\_\-macros.h\char`\"{}}\par
+{\tt \#include $<$utils/strl.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{UT\_\-STATIC}~static
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+UT\_\-STATIC \bf{vqec\_\-protocol\_\-t} \bf{vqec\_\-url\_\-protocol\_\-parse} (char $\ast$protocol)
+\item 
+char $\ast$ \bf{vqec\_\-url\_\-protocol\_\-to\_\-string} (\bf{vqec\_\-protocol\_\-t} protocol)
+\item 
+boolean \bf{vqec\_\-url\_\-ip\_\-parse} (char $\ast$ip\_\-string, in\_\-addr\_\-t $\ast$ip)
+\item 
+int \bf{vqec\_\-url\_\-build} (\bf{vqec\_\-protocol\_\-t} protocol, in\_\-addr\_\-t ip, uint16\_\-t port, \bf{vqec\_\-url\_\-t} url, int url\_\-len)
+\item 
+boolean \bf{vqec\_\-url\_\-parse} (\bf{vqec\_\-url\_\-t} url, \bf{vqec\_\-protocol\_\-t} $\ast$protocol, in\_\-addr\_\-t $\ast$ip, uint16\_\-t $\ast$port)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_url.c@{vqec\_\-url.c}!UT_STATIC@{UT\_\-STATIC}}
+\index{UT_STATIC@{UT\_\-STATIC}!vqec_url.c@{vqec\_\-url.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UT\_\-STATIC~static}\label{vqec__url_8c_840be0a802b42af3ce4430a7173caa40}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_url.c@{vqec\_\-url.c}!vqec_url_build@{vqec\_\-url\_\-build}}
+\index{vqec_url_build@{vqec\_\-url\_\-build}!vqec_url.c@{vqec\_\-url.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-url\_\-build (\bf{vqec\_\-protocol\_\-t} {\em protocol}, in\_\-addr\_\-t {\em ip}, uint16\_\-t {\em port}, \bf{vqec\_\-url\_\-t} {\em url}, int {\em url\_\-len})}\label{vqec__url_8c_fbc4979a39b2c3e891d63eb56fcc563f}
+
+
+\index{vqec_url.c@{vqec\_\-url.c}!vqec_url_ip_parse@{vqec\_\-url\_\-ip\_\-parse}}
+\index{vqec_url_ip_parse@{vqec\_\-url\_\-ip\_\-parse}!vqec_url.c@{vqec\_\-url.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-url\_\-ip\_\-parse (char $\ast$ {\em ip\_\-string}, in\_\-addr\_\-t $\ast$ {\em ip})}\label{vqec__url_8c_6259c78b30ea6c7f19ab7440917eb987}
+
+
+\index{vqec_url.c@{vqec\_\-url.c}!vqec_url_parse@{vqec\_\-url\_\-parse}}
+\index{vqec_url_parse@{vqec\_\-url\_\-parse}!vqec_url.c@{vqec\_\-url.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-url\_\-parse (\bf{vqec\_\-url\_\-t} {\em url}, \bf{vqec\_\-protocol\_\-t} $\ast$ {\em protocol}, in\_\-addr\_\-t $\ast$ {\em ip}, uint16\_\-t $\ast$ {\em port})}\label{vqec__url_8c_cf53ed40820e857f89840e73ea1f566d}
+
+
+\index{vqec_url.c@{vqec\_\-url.c}!vqec_url_protocol_parse@{vqec\_\-url\_\-protocol\_\-parse}}
+\index{vqec_url_protocol_parse@{vqec\_\-url\_\-protocol\_\-parse}!vqec_url.c@{vqec\_\-url.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC \bf{vqec\_\-protocol\_\-t} vqec\_\-url\_\-protocol\_\-parse (char $\ast$ {\em protocol})}\label{vqec__url_8c_4785c4fd8c06d26dd048771a404915d2}
+
+
+\index{vqec_url.c@{vqec\_\-url.c}!vqec_url_protocol_to_string@{vqec\_\-url\_\-protocol\_\-to\_\-string}}
+\index{vqec_url_protocol_to_string@{vqec\_\-url\_\-protocol\_\-to\_\-string}!vqec_url.c@{vqec\_\-url.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ vqec\_\-url\_\-protocol\_\-to\_\-string (\bf{vqec\_\-protocol\_\-t} {\em protocol})}\label{vqec__url_8c_2fd9a314936d912da2425e0ec86c0efd}
+
+

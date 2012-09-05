@@ -1,0 +1,810 @@
+\section{vqec\_\-channel.c File Reference}
+\label{vqec__channel_8c}\index{vqec_channel.c@{vqec\_\-channel.c}}
+{\tt \#include \char`\"{}id\_\-manager.h\char`\"{}}\par
+{\tt \#include \char`\"{}utils/queue\_\-plus.h\char`\"{}}\par
+{\tt \#include \char`\"{}utils/vam\_\-types.h\char`\"{}}\par
+{\tt \#include \char`\"{}utils/vqe\_\-token\_\-bucket.h\char`\"{}}\par
+{\tt \#include \char`\"{}utils/mp\_\-mpeg.h\char`\"{}}\par
+{\tt \#include \char`\"{}vam\_\-util.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqe\_\-hash.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-assert\_\-macros.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-gap\_\-reporter.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-syscfg.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-dp\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-private.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-drop.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-debug.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-private.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-url.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-chan\_\-rtp\_\-attrib\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{FEC\_\-DEFAULT\_\-BLOCK\_\-SIZE}~100;
+\item 
+\#define \bf{FEC\_\-MAX\_\-BLOCK\_\-SIZE}~256
+\item 
+\#define \bf{VQEC\_\-CHAN\_\-DEBUG}(arg...)~VQEC\_\-DEBUG(VQEC\_\-DEBUG\_\-CPCHAN, arg)
+\item 
+\#define \bf{VQEC\_\-CHANNEL\_\-POLL\_\-INTERVAL}~MSECS(20)
+\item 
+\#define \bf{VQEC\_\-CHAN\_\-MIN\_\-CHANNELS}~2
+\item 
+\#define \bf{VQEC\_\-CHAN\_\-FLOOR}~4
+\item 
+\#define \bf{VQEC\_\-CHAN\_\-MPEG\_\-TS\_\-PAKSIZE\_\-BITS}~(MP\_\-MPEG\_\-TSPKT\_\-LEN$\ast$7$\ast$8)
+\item 
+\#define \bf{VQEC\_\-CHAN\_\-MPEG\_\-PAKSIZE\_\-BITS}~(VQEC\_\-CHAN\_\-MPEG\_\-TS\_\-PAKSIZE\_\-BITS + (12 + 8 + 20)$\ast$8)
+\item 
+\#define \bf{VQEC\_\-CHAN\_\-AVG\_\-PKT\_\-TIME}(bitrate)
+\item 
+\#define \bf{MIN\_\-PT}~96
+\item 
+\#define \bf{MAX\_\-PT}~127
+\item 
+\#define \bf{STATIC\_\-PT}~33
+\item 
+\#define \bf{MIN\_\-REPAIR\_\-TRIGGER\_\-TIME}~VQEC\_\-CHANNEL\_\-POLL\_\-INTERVAL
+\item 
+\#define \bf{MIN\_\-REPAIR\_\-TRIGGER\_\-BIAS\_\-FACTOR}~20
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef \bf{vqec\_\-chan\_\-rtp\_\-attrib\_\-} \bf{vqec\_\-chan\_\-rtp\_\-attrib\_\-t}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+uint16\_\-t \bf{vqec\_\-chan\_\-get\_\-max\_\-fec\_\-block\_\-size\_\-observed} (void)
+\item 
+\bf{vqec\_\-chan\_\-t} $\ast$ \bf{vqec\_\-chanid\_\-to\_\-chan} (const \bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+\bf{vqec\_\-chan\_\-t} $\ast$ \bf{vqec\_\-chan\_\-find} (in\_\-addr\_\-t ip, in\_\-port\_\-t port)
+\item 
+const char $\ast$ \bf{vqec\_\-chan\_\-err2str} (\bf{vqec\_\-chan\_\-err\_\-t} err)
+\item 
+static void \bf{vqec\_\-chan\_\-update\_\-fec\_\-bw} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+static void \bf{vqec\_\-chan\_\-cache\_\-fec\_\-info} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+static void \bf{vqec\_\-chan\_\-deinit\_\-multibye} (\bf{vqec\_\-chan\_\-t} $\ast$chan, boolean multibye)
+\item 
+static void \bf{vqec\_\-chan\_\-deinit\_\-final} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+static void \bf{vqec\_\-chan\_\-bye\_\-event\_\-handler} (const vqec\_\-event\_\-t $\ast$const unused\_\-evptr, int unused\_\-fd, short unused\_\-event, void $\ast$arg)
+\item 
+static void \bf{vqec\_\-chan\_\-destroy} (\bf{vqec\_\-chan\_\-t} $\ast$chan, boolean deinit\_\-final)
+\item 
+static void \bf{vqec\_\-chan\_\-poll\_\-gap\_\-report} (\bf{vqec\_\-chan\_\-t} $\ast$chan, abs\_\-time\_\-t cur\_\-time)
+\item 
+void \bf{vqec\_\-chan\_\-poll\_\-ev\_\-handler} (const vqec\_\-event\_\-t $\ast$const unused\_\-evptr, int32\_\-t unused\_\-fd, int16\_\-t unused\_\-event, void $\ast$unused\_\-arg)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-module\_\-init} (void)
+\item 
+void \bf{vqec\_\-chan\_\-module\_\-deinit} (void)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-find\_\-chanid} (\bf{vqec\_\-chanid\_\-t} $\ast$chanid, in\_\-addr\_\-t ip, in\_\-port\_\-t port)
+\item 
+void \bf{vqec\_\-chan\_\-convert\_\-sdp\_\-to\_\-cfg} (channel\_\-cfg\_\-t $\ast$sdp, \bf{vqec\_\-chan\_\-type\_\-t} chan\_\-type, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg)
+\item 
+static boolean \bf{vqec\_\-chan\_\-validate\_\-pt} (uint8\_\-t pt, boolean allow\_\-static)
+\item 
+static boolean \bf{vqec\_\-chan\_\-validate\_\-cfg} (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-chanid} (\bf{vqec\_\-chanid\_\-t} $\ast$chanid, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-put\_\-chanid} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+void \bf{vqec\_\-chan\_\-assign\_\-source\_\-filter} (vqec\_\-dp\_\-input\_\-filter\_\-t $\ast$filter, in\_\-addr\_\-t addr, uint16\_\-t port, boolean addr\_\-condition, boolean port\_\-condition)
+\item 
+boolean \bf{vqec\_\-chan\_\-load\_\-dp\_\-chan\_\-desc} (\bf{vqec\_\-chan\_\-t} $\ast$chan, vqec\_\-dp\_\-chan\_\-desc\_\-t $\ast$chan\_\-desc)
+\item 
+static void \bf{vqec\_\-chan\_\-copy\_\-rtp\_\-attrib} (\bf{vqec\_\-chan\_\-t} $\ast$chan, \bf{vqec\_\-chan\_\-rtp\_\-attrib\_\-t} $\ast$attrib)
+\item 
+static boolean \bf{vqec\_\-chan\_\-add\_\-era\_\-session} (\bf{vqec\_\-chan\_\-t} $\ast$chan, vqec\_\-dp\_\-streamid\_\-t id, \bf{vqec\_\-chan\_\-rtp\_\-attrib\_\-t} $\ast$attrib)
+\item 
+static boolean \bf{vqec\_\-chan\_\-update\_\-era\_\-session} (\bf{vqec\_\-chan\_\-t} $\ast$chan, in\_\-addr\_\-t fbt\_\-addr, uint16\_\-t primary\_\-source\_\-rtcp\_\-port)
+\item 
+static boolean \bf{vqec\_\-chan\_\-add\_\-repair\_\-session} (\bf{vqec\_\-chan\_\-t} $\ast$chan, vqec\_\-dp\_\-streamid\_\-t id, \bf{vqec\_\-chan\_\-rtp\_\-attrib\_\-t} $\ast$attrib)
+\item 
+static boolean \bf{vqec\_\-chan\_\-update\_\-repair\_\-session} (\bf{vqec\_\-chan\_\-t} $\ast$chan, in\_\-addr\_\-t rtx\_\-source\_\-addr, uint16\_\-t rtx\_\-source\_\-rtcp\_\-port)
+\item 
+static vqec\_\-nat\_\-bindid\_\-t \bf{vqec\_\-chan\_\-nat\_\-open} (char $\ast$name, \bf{vqec\_\-chanid\_\-t} id, in\_\-addr\_\-t internal\_\-addr, in\_\-port\_\-t internal\_\-port, in\_\-addr\_\-t remote\_\-addr, in\_\-port\_\-t remote\_\-port, boolean allow\_\-update)
+\item 
+static boolean \bf{vqec\_\-chan\_\-open\_\-nat\_\-bindings} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+static boolean \bf{vqec\_\-chan\_\-init\_\-er\_\-poll} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+static void \bf{vqec\_\-chan\_\-enable\_\-er\_\-poll} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+void \bf{vqec\_\-chan\_\-upd\_\-backfill} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-bind} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-tunerid\_\-t tid, const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, const \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t} $\ast$chan\_\-event\_\-cb)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-unbind} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-tunerid\_\-t tid)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-update\_\-source} (\bf{vqec\_\-chanid\_\-t} chanid, const \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-update\_\-nat\_\-binding} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-counters} (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$stats, boolean cumulative)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-counters\_\-channel} (\bf{vqec\_\-chanid\_\-t} chanid, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$stats, boolean cumulative)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-set\_\-tr135\_\-params} (\bf{vqec\_\-chanid\_\-t} chanid, \bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t} $\ast$params)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-counters\_\-channel\_\-tr135\_\-sample} (\bf{vqec\_\-chanid\_\-t} chanid, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-tr135\_\-sample\_\-t} $\ast$stats)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-clear\_\-counters} (void)
+\item 
+vqec\_\-dp\_\-chanid\_\-t \bf{vqec\_\-chan\_\-id\_\-to\_\-dpchanid} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+static boolean \bf{vqec\_\-chan\_\-send\_\-to\_\-rtp\_\-socket} (\bf{vqec\_\-chan\_\-t} $\ast$chan, in\_\-addr\_\-t remote\_\-addr, in\_\-port\_\-t remote\_\-port, char $\ast$buf, uint16\_\-t len)
+\item 
+static boolean \bf{vqec\_\-chan\_\-send\_\-to\_\-primary\_\-rtp\_\-socket} (\bf{vqec\_\-chan\_\-t} $\ast$chan, in\_\-addr\_\-t remote\_\-addr, in\_\-port\_\-t remote\_\-port, char $\ast$buf, uint16\_\-t len)
+\item 
+boolean \bf{vqec\_\-chan\_\-nat\_\-inject\_\-pak} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-nat\_\-bindid\_\-t bindid, vqec\_\-nat\_\-bind\_\-desc\_\-t $\ast$desc, char $\ast$buf, uint16\_\-t len)
+\item 
+void \bf{vqec\_\-chan\_\-nat\_\-bind\_\-update} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-nat\_\-bindid\_\-t bindid, vqec\_\-nat\_\-bind\_\-data\_\-t $\ast$data)
+\item 
+void \bf{vqec\_\-chan\_\-show\_\-nat\_\-bindings} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+boolean \bf{vqec\_\-chan\_\-get\_\-rtx\_\-nat\_\-ports} (\bf{vqec\_\-chan\_\-t} $\ast$chan, in\_\-port\_\-t $\ast$rtp\_\-port, in\_\-port\_\-t $\ast$rtcp\_\-port)
+\item 
+boolean \bf{vqec\_\-chan\_\-eject\_\-rtcp\_\-nat\_\-pak} (\bf{vqec\_\-chanid\_\-t} chanid, char $\ast$buf, uint16\_\-t len, \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-t} sess\_\-t, in\_\-addr\_\-t source\_\-ip, in\_\-port\_\-t source\_\-port)
+\item 
+boolean \bf{vqec\_\-chan\_\-eject\_\-rtp\_\-nat\_\-pak} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-chanid\_\-t dp\_\-chanid, char $\ast$buf, uint16\_\-t len, vqec\_\-dp\_\-streamid\_\-t is\_\-id, in\_\-addr\_\-t source\_\-ip, in\_\-port\_\-t source\_\-port)
+\item 
+void \bf{vqec\_\-chan\_\-update\_\-dcr\_\-stats} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+void \bf{vqec\_\-chan\_\-dcr\_\-stats\_\-event\_\-handler} (const vqec\_\-event\_\-t $\ast$const unused\_\-evptr, int unused\_\-fd, short unused\_\-event, void $\ast$arg)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-tuner\_\-q\_\-drops} (\bf{vqec\_\-chanid\_\-t} chanid, uint64\_\-t $\ast$tuner\_\-queue\_\-drops, boolean cumulative)
+\item 
+void \bf{vqec\_\-chan\_\-collect\_\-xr\_\-dc\_\-stats} (\bf{vqec\_\-chan\_\-t} $\ast$chan, rtcp\_\-xr\_\-dc\_\-stats\_\-t $\ast$xr\_\-dc\_\-stats)
+\item 
+void \bf{vqec\_\-chan\_\-collect\_\-xr\_\-ma\_\-stats} (\bf{vqec\_\-chan\_\-t} $\ast$chan, boolean force, rtcp\_\-xr\_\-ma\_\-stats\_\-t $\ast$xr\_\-ma\_\-stats)
+\item 
+void \bf{vqec\_\-chan\_\-rcc\_\-abort\_\-notify} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+void \bf{vqec\_\-chan\_\-upcall\_\-ncsi\_\-event} (\bf{vqec\_\-chan\_\-t} $\ast$chan, vqec\_\-dp\_\-upc\_\-ncsi\_\-data\_\-t $\ast$ncsi\_\-data)
+\item 
+void \bf{vqec\_\-chan\_\-upcall\_\-abort\_\-event} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+void \bf{vqec\_\-chan\_\-upcall\_\-fast\_\-fill\_\-event} (\bf{vqec\_\-chan\_\-t} $\ast$chan, vqec\_\-dp\_\-upc\_\-fast\_\-fill\_\-data\_\-t $\ast$fast\_\-fill\_\-data)
+\item 
+void \bf{vqec\_\-chan\_\-upcall\_\-burst\_\-done\_\-event} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+void \bf{vqec\_\-chan\_\-upcall\_\-prim\_\-inactive\_\-event} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+void \bf{vqec\_\-chan\_\-upcall\_\-fec\_\-update\_\-event} (\bf{vqec\_\-chan\_\-t} $\ast$chan, vqec\_\-dp\_\-upc\_\-fec\_\-update\_\-data\_\-t $\ast$fec\_\-data)
+\item 
+char $\ast$ \bf{vqec\_\-chan\_\-print\_\-name} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ \bf{vqec\_\-chan\_\-get\_\-repair\_\-session} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+\bf{rtp\_\-era\_\-recv\_\-t} $\ast$ \bf{vqec\_\-chan\_\-get\_\-primary\_\-session} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-inputshim\_\-streams} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-streamid\_\-t $\ast$prim\_\-rtp\_\-id, vqec\_\-dp\_\-streamid\_\-t $\ast$repair\_\-rtp\_\-id, vqec\_\-dp\_\-streamid\_\-t $\ast$fec0\_\-rtp\_\-id, vqec\_\-dp\_\-streamid\_\-t $\ast$fec1\_\-rtp\_\-id)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-outputshim\_\-stream} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-streamid\_\-t $\ast$postrepair\_\-id)
+\item 
+uint8\_\-t \bf{vqec\_\-chan\_\-is\_\-fastfill\_\-enabled} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+uint8\_\-t \bf{vqec\_\-chan\_\-is\_\-rcc\_\-enabled} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+uint32\_\-t \bf{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-rcc} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+uint32\_\-t \bf{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-er} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\bf{vqec\_\-channel\_\-module\_\-t} $\ast$ \bf{g\_\-channel\_\-module} = NULL
+\item 
+uint16\_\-t \bf{max\_\-fec\_\-block\_\-size\_\-observed} = FEC\_\-DEFAULT\_\-BLOCK\_\-SIZE
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_channel.c@{vqec\_\-channel.c}!FEC_DEFAULT_BLOCK_SIZE@{FEC\_\-DEFAULT\_\-BLOCK\_\-SIZE}}
+\index{FEC_DEFAULT_BLOCK_SIZE@{FEC\_\-DEFAULT\_\-BLOCK\_\-SIZE}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define FEC\_\-DEFAULT\_\-BLOCK\_\-SIZE~100;}\label{vqec__channel_8c_197ed64b17ba905fd29b090b125db392}
+
+
+For PCM to allocate FEC buffer If there are no fec information in the channel DB when box bootup, we will use this parameter to allocate FEC buffer, given FEC is enabled in channel. 100 is default max size for MPEG COP\#3 \index{vqec_channel.c@{vqec\_\-channel.c}!FEC_MAX_BLOCK_SIZE@{FEC\_\-MAX\_\-BLOCK\_\-SIZE}}
+\index{FEC_MAX_BLOCK_SIZE@{FEC\_\-MAX\_\-BLOCK\_\-SIZE}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define FEC\_\-MAX\_\-BLOCK\_\-SIZE~256}\label{vqec__channel_8c_79d51b8a07aeb1bca7d2b46975f27712}
+
+
+Define max fec block size, this means that VQE-C will only support FEC block size no larger than this value. The reason we define this value here is to avoid very large burst request at RCC. \index{vqec_channel.c@{vqec\_\-channel.c}!MAX_PT@{MAX\_\-PT}}
+\index{MAX_PT@{MAX\_\-PT}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-PT~127}\label{vqec__channel_8c_f49b62af501ade0ded5fe3cb013eeb44}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!MIN_PT@{MIN\_\-PT}}
+\index{MIN_PT@{MIN\_\-PT}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MIN\_\-PT~96}\label{vqec__channel_8c_d274877eb9d0e8629254eb4b7015f1c5}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!MIN_REPAIR_TRIGGER_BIAS_FACTOR@{MIN\_\-REPAIR\_\-TRIGGER\_\-BIAS\_\-FACTOR}}
+\index{MIN_REPAIR_TRIGGER_BIAS_FACTOR@{MIN\_\-REPAIR\_\-TRIGGER\_\-BIAS\_\-FACTOR}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MIN\_\-REPAIR\_\-TRIGGER\_\-BIAS\_\-FACTOR~20}\label{vqec__channel_8c_80b79bc6d9617e43d36f4a45aa9ffe62}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!MIN_REPAIR_TRIGGER_TIME@{MIN\_\-REPAIR\_\-TRIGGER\_\-TIME}}
+\index{MIN_REPAIR_TRIGGER_TIME@{MIN\_\-REPAIR\_\-TRIGGER\_\-TIME}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MIN\_\-REPAIR\_\-TRIGGER\_\-TIME~VQEC\_\-CHANNEL\_\-POLL\_\-INTERVAL}\label{vqec__channel_8c_c596090f83b9b9a645cb3767a5af4bdf}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!STATIC_PT@{STATIC\_\-PT}}
+\index{STATIC_PT@{STATIC\_\-PT}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define STATIC\_\-PT~33}\label{vqec__channel_8c_96547b0968137694fa8166c6e954de4d}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!VQEC_CHAN_AVG_PKT_TIME@{VQEC\_\-CHAN\_\-AVG\_\-PKT\_\-TIME}}
+\index{VQEC_CHAN_AVG_PKT_TIME@{VQEC\_\-CHAN\_\-AVG\_\-PKT\_\-TIME}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CHAN\_\-AVG\_\-PKT\_\-TIME(bitrate)}\label{vqec__channel_8c_4829a01557f793bc8339bd65113161f7}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}bitrate ? TIME_MK_R(usec, (VQEC_CHAN_MPEG_PAKSIZE_BITS * 1000) /    \
+                        (bitrate/1000))                                 \
+        : REL_TIME_0
+\end{verbatim}\end{Code}
+\index{vqec_channel.c@{vqec\_\-channel.c}!VQEC_CHAN_DEBUG@{VQEC\_\-CHAN\_\-DEBUG}}
+\index{VQEC_CHAN_DEBUG@{VQEC\_\-CHAN\_\-DEBUG}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CHAN\_\-DEBUG(arg...)~VQEC\_\-DEBUG(VQEC\_\-DEBUG\_\-CPCHAN, arg)}\label{vqec__channel_8c_514cfc01ecab31b45c49df80767b77fc}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!VQEC_CHAN_FLOOR@{VQEC\_\-CHAN\_\-FLOOR}}
+\index{VQEC_CHAN_FLOOR@{VQEC\_\-CHAN\_\-FLOOR}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CHAN\_\-FLOOR~4}\label{vqec__channel_8c_f360c9c57241ee0e543e15f4ff1a9d6c}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!VQEC_CHAN_MIN_CHANNELS@{VQEC\_\-CHAN\_\-MIN\_\-CHANNELS}}
+\index{VQEC_CHAN_MIN_CHANNELS@{VQEC\_\-CHAN\_\-MIN\_\-CHANNELS}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CHAN\_\-MIN\_\-CHANNELS~2}\label{vqec__channel_8c_b9824610da310aaf473a025c2602c3f4}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!VQEC_CHAN_MPEG_PAKSIZE_BITS@{VQEC\_\-CHAN\_\-MPEG\_\-PAKSIZE\_\-BITS}}
+\index{VQEC_CHAN_MPEG_PAKSIZE_BITS@{VQEC\_\-CHAN\_\-MPEG\_\-PAKSIZE\_\-BITS}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CHAN\_\-MPEG\_\-PAKSIZE\_\-BITS~(VQEC\_\-CHAN\_\-MPEG\_\-TS\_\-PAKSIZE\_\-BITS + (12 + 8 + 20)$\ast$8)}\label{vqec__channel_8c_bcbd30f08fb6fb5db35939c2060fdedd}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!VQEC_CHAN_MPEG_TS_PAKSIZE_BITS@{VQEC\_\-CHAN\_\-MPEG\_\-TS\_\-PAKSIZE\_\-BITS}}
+\index{VQEC_CHAN_MPEG_TS_PAKSIZE_BITS@{VQEC\_\-CHAN\_\-MPEG\_\-TS\_\-PAKSIZE\_\-BITS}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CHAN\_\-MPEG\_\-TS\_\-PAKSIZE\_\-BITS~(MP\_\-MPEG\_\-TSPKT\_\-LEN$\ast$7$\ast$8)}\label{vqec__channel_8c_c829cce2dc6a0688db9d9f9fc5f4232d}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!VQEC_CHANNEL_POLL_INTERVAL@{VQEC\_\-CHANNEL\_\-POLL\_\-INTERVAL}}
+\index{VQEC_CHANNEL_POLL_INTERVAL@{VQEC\_\-CHANNEL\_\-POLL\_\-INTERVAL}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CHANNEL\_\-POLL\_\-INTERVAL~MSECS(20)}\label{vqec__channel_8c_20dcbfc046d054d41a0ee34d230d4298}
+
+
+--------------------------------------------------------------------------- Invoke the gap reporter if the channel's repair trigger time has arrived. The method \char`\"{}rounds down\char`\"{} the poll time, i.e., if repair trigger time is 30 msecs, and the poll internal is 20 msecs, the channel will be polled for gaps every 20 msecs. The computation of next\_\-er\_\-sched\_\-time reflects this by subtracting 1 poll interval.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\leftarrow$} {\em cur\_\-time}]Current system time. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+
+
+\subsection{Typedef Documentation}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_rtp_attrib_t@{vqec\_\-chan\_\-rtp\_\-attrib\_\-t}}
+\index{vqec_chan_rtp_attrib_t@{vqec\_\-chan\_\-rtp\_\-attrib\_\-t}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-chan\_\-rtp\_\-attrib\_\-}  \bf{vqec\_\-chan\_\-rtp\_\-attrib\_\-t}}\label{vqec__channel_8c_fe6bff0e625096cd5256273f0126abc0}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_add_era_session@{vqec\_\-chan\_\-add\_\-era\_\-session}}
+\index{vqec_chan_add_era_session@{vqec\_\-chan\_\-add\_\-era\_\-session}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-chan\_\-add\_\-era\_\-session (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, vqec\_\-dp\_\-streamid\_\-t {\em id}, \bf{vqec\_\-chan\_\-rtp\_\-attrib\_\-t} $\ast$ {\em attrib})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_21b69faf24790127ad1a31ee0106c5bc}
+
+
+--------------------------------------------------------------------------- Add a ERA primary session to the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel to which the session is added. \item[\mbox{$\leftarrow$} {\em id}]Identifier of the dataplane IS for the primary session. \item[\mbox{$\leftarrow$} {\em attrib}]Pointer to the system configuration attributes used during creation of the session. \item[\mbox{$\rightarrow$} {\em }]Returns true if creation succeeds, false otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_add_repair_session@{vqec\_\-chan\_\-add\_\-repair\_\-session}}
+\index{vqec_chan_add_repair_session@{vqec\_\-chan\_\-add\_\-repair\_\-session}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-chan\_\-add\_\-repair\_\-session (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, vqec\_\-dp\_\-streamid\_\-t {\em id}, \bf{vqec\_\-chan\_\-rtp\_\-attrib\_\-t} $\ast$ {\em attrib})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_a238c5982063ce6b35a4abbe2d9cb5e8}
+
+
+--------------------------------------------------------------------------- Add a repair session to the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel to which the session is added. \item[\mbox{$\leftarrow$} {\em id}]Identifier of the dataplane IS for the reapir session. \item[\mbox{$\leftarrow$} {\em attrib}]Pointer to the system configuration attributes used during creation of the session. \item[\mbox{$\rightarrow$} {\em }]Returns true if creation succeeds, false otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_assign_source_filter@{vqec\_\-chan\_\-assign\_\-source\_\-filter}}
+\index{vqec_chan_assign_source_filter@{vqec\_\-chan\_\-assign\_\-source\_\-filter}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-assign\_\-source\_\-filter (vqec\_\-dp\_\-input\_\-filter\_\-t $\ast$ {\em filter}, in\_\-addr\_\-t {\em addr}, uint16\_\-t {\em port}, boolean {\em addr\_\-condition}, boolean {\em port\_\-condition})}\label{vqec__channel_8c_a6cd8f183c27460715fbd545192166af}
+
+
+Populates a source filter data structure based on filter values and conditions supplied by the caller.
+
+A returned source filter takes one of the following forms, listed in order of least granular to most granular: none - no filtering on source address or source port (addr) - filtering on source address only (addr, port) - filtering on source address and source port
+
+Callers invoke this function with \char`\"{}addr\_\-condition\char`\"{} and \char`\"{}port\_\-condition\char`\"{} settings to indicate their preference for the maximum granularity of the filter they want built:\begin{itemize}
+\item \char`\"{}addr\_\-condition\char`\"{} of TRUE results in this function trying to build a filter of the form (addr) or (addr, port)\item \char`\"{}port\_\-condition\char`\"{} is relevant only when \char`\"{}addr\_\-condition\char`\"{} is TRUE. An \char`\"{}addr\_\-condition\char`\"{} of TRUE and \char`\"{}port\_\-condition\char`\"{} of TRUE results in this function trying to build a filter of the form (addr, port).\end{itemize}
+
+
+The granularity of the returned filter may also be limited by the values supplied for \char`\"{}addr\char`\"{} and \char`\"{}port\char`\"{}: If \char`\"{}addr\char`\"{} is zero, then the returned filter will be of the form \char`\"{}none\char`\"{}. If \char`\"{}port\char`\"{} is zero, then the returned filter will be of the form \char`\"{}none\char`\"{} or (addr).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em filter}]- generated source filter. Only the following fields are modified; the remainder are left untouched: u.ipv4.src\_\-ip\_\-filter u.ipv4.src\_\-ip u.ipv4.src\_\-port\_\-filter u.ipv4.src\_\-port \item[\mbox{$\leftarrow$} {\em addr}]- filter address (network byte order) \item[\mbox{$\leftarrow$} {\em port}]- filter port (network byte order) \item[\mbox{$\leftarrow$} {\em addr\_\-condition}]- must be TRUE in order for a filter to include \char`\"{}addr\char`\"{} \item[\mbox{$\leftarrow$} {\em port\_\-condition}]- must be TRUE in order for a filter to include \char`\"{}port\char`\"{} \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_bye_event_handler@{vqec\_\-chan\_\-bye\_\-event\_\-handler}}
+\index{vqec_chan_bye_event_handler@{vqec\_\-chan\_\-bye\_\-event\_\-handler}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-chan\_\-bye\_\-event\_\-handler (const vqec\_\-event\_\-t $\ast$const  {\em unused\_\-evptr}, int {\em unused\_\-fd}, short {\em unused\_\-event}, void $\ast$ {\em arg})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_24acee297c85d042a8aedef56c7540a7}
+
+
+--------------------------------------------------------------------------- 2nd Bye event handler.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em arg}]Pointer to the chan. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_cache_fec_info@{vqec\_\-chan\_\-cache\_\-fec\_\-info}}
+\index{vqec_chan_cache_fec_info@{vqec\_\-chan\_\-cache\_\-fec\_\-info}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-chan\_\-cache\_\-fec\_\-info (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_b0b65ffd9925dda99227e767fc3ee092}
+
+
+need to cache FEC information in channel DB if needed
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]channel to be updated. \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_collect_xr_dc_stats@{vqec\_\-chan\_\-collect\_\-xr\_\-dc\_\-stats}}
+\index{vqec_chan_collect_xr_dc_stats@{vqec\_\-chan\_\-collect\_\-xr\_\-dc\_\-stats}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-collect\_\-xr\_\-dc\_\-stats (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, rtcp\_\-xr\_\-dc\_\-stats\_\-t $\ast$ {\em xr\_\-dc\_\-stats})}\label{vqec__channel_8c_774ba508bd20a052c52d551ef2f4dd35}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_collect_xr_ma_stats@{vqec\_\-chan\_\-collect\_\-xr\_\-ma\_\-stats}}
+\index{vqec_chan_collect_xr_ma_stats@{vqec\_\-chan\_\-collect\_\-xr\_\-ma\_\-stats}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-collect\_\-xr\_\-ma\_\-stats (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, boolean {\em force}, rtcp\_\-xr\_\-ma\_\-stats\_\-t $\ast$ {\em xr\_\-ma\_\-stats})}\label{vqec__channel_8c_5901659d83ba9165dd5f57d92f13d655}
+
+
+----------------------------------------------------------------------- Collect XR MA stats and populate structure. Some of the fields must be retrieved from the DP and should be filled in before this is called
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifier of the channel \item[\mbox{$\leftarrow$} {\em force}]Force sending an MA message. This does not wait for all data to be present, and sends whatever is available. \item[\mbox{$\rightarrow$} {\em xr\_\-ma\_\-stats}]Output pointer to location of stats ------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_copy_rtp_attrib@{vqec\_\-chan\_\-copy\_\-rtp\_\-attrib}}
+\index{vqec_chan_copy_rtp_attrib@{vqec\_\-chan\_\-copy\_\-rtp\_\-attrib}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-chan\_\-copy\_\-rtp\_\-attrib (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, \bf{vqec\_\-chan\_\-rtp\_\-attrib\_\-t} $\ast$ {\em attrib})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_4823d9175da4fb8956663f3d1a076797}
+
+
+--------------------------------------------------------------------------- Helper to setup system configuration attributes used for RTP sessions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\leftarrow$} {\em attrib}]Pointer to an attrib structure to be initialized. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_dcr_stats_event_handler@{vqec\_\-chan\_\-dcr\_\-stats\_\-event\_\-handler}}
+\index{vqec_chan_dcr_stats_event_handler@{vqec\_\-chan\_\-dcr\_\-stats\_\-event\_\-handler}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-dcr\_\-stats\_\-event\_\-handler (const vqec\_\-event\_\-t $\ast$const  {\em unused\_\-evptr}, int {\em unused\_\-fd}, short {\em unused\_\-event}, void $\ast$ {\em arg})}\label{vqec__channel_8c_fa77ebd049ad6bed1f3d0362ca1cae9c}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_deinit_final@{vqec\_\-chan\_\-deinit\_\-final}}
+\index{vqec_chan_deinit_final@{vqec\_\-chan\_\-deinit\_\-final}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-chan\_\-deinit\_\-final (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_08ce03c88476b7c2119fac8dcebc2c19}
+
+
+--------------------------------------------------------------------------- Final de-initialization and destruction of the channel: o Destroy the primary session (causing a BYE to be sent) o Destroy the bye event o Remove the channel from the database o Free the channel object
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the chan. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_deinit_multibye@{vqec\_\-chan\_\-deinit\_\-multibye}}
+\index{vqec_chan_deinit_multibye@{vqec\_\-chan\_\-deinit\_\-multibye}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-chan\_\-deinit\_\-multibye (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, boolean {\em multibye})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_c60745980ebe4cdddb666548f4a5202b}
+
+
+--------------------------------------------------------------------------- Deinit all the fields of a channel that are not used in 2nd bye. For multiple-bye-support, the channel's id is removed from the id-manager table, the dp graph is destroyed, the repair session is destroyed.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\leftarrow$} {\em multibye}]If a shutdown operation should be done on the primary session in order to attempt sending multiple-byes. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+
+
+Update channel DB to cache the FEC information, if needed \index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_destroy@{vqec\_\-chan\_\-destroy}}
+\index{vqec_chan_destroy@{vqec\_\-chan\_\-destroy}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-chan\_\-destroy (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, boolean {\em deinit\_\-final})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_3e9865565eb39ad113c314fc5b675db4}
+
+
+--------------------------------------------------------------------------- Destroy an existing channel.
+
+If \char`\"{}deinit\_\-final\char`\"{} is FALSE, then the channel is kept within the channel database, but put in a shutdown state, rather than destroyed. This means that any channel resources and state not needed for transmission of BYEs are de-initialized, and its external ID is destroyed. A recurring event is created for sending BYE messages while the channel is in this shutdown state. Once all BYE messages have been sent, the event callback will destroy the event, remove the shutdown channel from the database, and free it.
+
+If an attempt is made to bind a channel that is in the shutdown state, then it will be detected during channel lookup via \doxyref{vqec\_\-chan\_\-get\_\-chanid()}{p.}{group__vqechan_g6ba686f1c9a755488eba791a8078e2ab}. In this case, the channel is immediately destroyed (without sending any remaining BYEs) and removed from the database. A new channel structure is then allocated, initialized, and inserted into the database.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]channel to be destroyed. \item[\mbox{$\leftarrow$} {\em deinit\_\-final}]Force immediate finial deinit - do not do multi-bye(s) on session(s). --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_enable_er_poll@{vqec\_\-chan\_\-enable\_\-er\_\-poll}}
+\index{vqec_chan_enable_er_poll@{vqec\_\-chan\_\-enable\_\-er\_\-poll}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-chan\_\-enable\_\-er\_\-poll (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_c68f0fbb2e4cf372228c0a6ada544c46}
+
+
+--------------------------------------------------------------------------- Enable polling for error-repair.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_find@{vqec\_\-chan\_\-find}}
+\index{vqec_chan_find@{vqec\_\-chan\_\-find}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-t}$\ast$ vqec\_\-chan\_\-find (in\_\-addr\_\-t {\em ip}, in\_\-port\_\-t {\em port})}\label{vqec__channel_8c_71da582e07e23cd2a2690074cd450a6d}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_find_chanid@{vqec\_\-chan\_\-find\_\-chanid}}
+\index{vqec_chan_find_chanid@{vqec\_\-chan\_\-find\_\-chanid}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-find\_\-chanid (\bf{vqec\_\-chanid\_\-t} $\ast$ {\em chanid}, in\_\-addr\_\-t {\em ip}, in\_\-port\_\-t {\em port})}\label{vqec__channel_8c_854816693152d50cb37397d9fa65995c}
+
+
+Retrieves a channel manager ID for the supplied active channel, as specified by its destination (ip addr, port) pair. If no active channel exists with the given (ip addr, port) pair, then VQEC\_\-ERR\_\-CHANNOTACTIVE will be returned.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em chanid}]Retrieved channel's ID upon success, or VQEC\_\-CHANID\_\-INVALID upon failure. \item[\mbox{$\leftarrow$} {\em ip}]requested channel's destination IP address \item[\mbox{$\leftarrow$} {\em port}]requested channel's destination port \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]Returns VQEC\_\-CHAN\_\-ERR\_\-OK upon success, or a failure code indicating why a channel ID could not be retrieved. \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_get_max_recv_bw_er@{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-er}}
+\index{vqec_chan_get_max_recv_bw_er@{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-er}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-er (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel_8c_e11bfcadea4df3f9351885d9db79a162}
+
+
+Get the maximum receive bandwidth value (for primary stream and VQE services) to send up to the VQE-S for the ER case. This number will already have the FEC bandwidth subtracted out from it, if necessary.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer of the channel. \item[\mbox{$\rightarrow$} {\em uint32\_\-t}]Returns the bandwidth value to be sent to the server. \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_get_max_recv_bw_rcc@{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-rcc}}
+\index{vqec_chan_get_max_recv_bw_rcc@{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-rcc}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-rcc (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel_8c_edabfea9482ae374c47654479fbad4b2}
+
+
+Get the maximum receive bandwidth value (for primary stream and VQE services) to send up to the VQE-S for the RCC case. This number will already have the FEC bandwidth subtracted out from it, if necessary.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer of the channel. \item[\mbox{$\rightarrow$} {\em uint32\_\-t}]Returns the bandwidth value to be sent to the server. \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_get_primary_session@{vqec\_\-chan\_\-get\_\-primary\_\-session}}
+\index{vqec_chan_get_primary_session@{vqec\_\-chan\_\-get\_\-primary\_\-session}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{rtp\_\-era\_\-recv\_\-t}$\ast$ vqec\_\-chan\_\-get\_\-primary\_\-session (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel_8c_0e839faf967bcd4892c8a1a953823b09}
+
+
+--------------------------------------------------------------------------- From channel to it's primary session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\rightarrow$} {\em rtp\_\-era\_\-recv\_\-t$\ast$}]Pointer to the primary session. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_get_repair_session@{vqec\_\-chan\_\-get\_\-repair\_\-session}}
+\index{vqec_chan_get_repair_session@{vqec\_\-chan\_\-get\_\-repair\_\-session}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{rtp\_\-repair\_\-recv\_\-t}$\ast$ vqec\_\-chan\_\-get\_\-repair\_\-session (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel_8c_78d97640bf3144d8d57576cba2b43a63}
+
+
+--------------------------------------------------------------------------- From channel to it's repair session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\rightarrow$} {\em rtp\_\-repair\_\-recv\_\-t$\ast$}]Pointer to the repair session. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_get_rtx_nat_ports@{vqec\_\-chan\_\-get\_\-rtx\_\-nat\_\-ports}}
+\index{vqec_chan_get_rtx_nat_ports@{vqec\_\-chan\_\-get\_\-rtx\_\-nat\_\-ports}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-chan\_\-get\_\-rtx\_\-nat\_\-ports (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, in\_\-port\_\-t $\ast$ {\em rtp\_\-port}, in\_\-port\_\-t $\ast$ {\em rtcp\_\-port})}\label{vqec__channel_8c_b6e3acf67687e9d1f20d6b4c1e3242e2}
+
+
+--------------------------------------------------------------------------- Retrieve the latest udp-nat port mappings for the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel instance. \item[\mbox{$\rightarrow$} {\em rtp\_\-port}]RTP external mapped udp port. \item[\mbox{$\rightarrow$} {\em rtcp\_\-Port}]RTCP external mapped udp port. \item[\mbox{$\rightarrow$} {\em boolean}]The method returns true if a valid mapping is returned for the rtp and rtcp ports, otherwise returns false. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_init_er_poll@{vqec\_\-chan\_\-init\_\-er\_\-poll}}
+\index{vqec_chan_init_er_poll@{vqec\_\-chan\_\-init\_\-er\_\-poll}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-chan\_\-init\_\-er\_\-poll (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_f271c904983865592a987ee7759f1685}
+
+
+--------------------------------------------------------------------------- Initialize error-repair gap report trigger for a channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\rightarrow$} {\em Returns}]true on success, false on failure. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_load_dp_chan_desc@{vqec\_\-chan\_\-load\_\-dp\_\-chan\_\-desc}}
+\index{vqec_chan_load_dp_chan_desc@{vqec\_\-chan\_\-load\_\-dp\_\-chan\_\-desc}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-chan\_\-load\_\-dp\_\-chan\_\-desc (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, vqec\_\-dp\_\-chan\_\-desc\_\-t $\ast$ {\em chan\_\-desc})}\label{vqec__channel_8c_71afd610735dd0837795138d9d5a9a8d}
+
+
+Initializes a dataplane channel object (vqec\_\-dp\_\-chan\_\-desc\_\-t) from merged global and per-channel (vqec\_\-chan\_\-cfg\_\-t) configuration in the control plane.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Control plane channel object \item[\mbox{$\rightarrow$} {\em chan\_\-desc}]Dataplane channel description \item[\mbox{$\rightarrow$} {\em boolean}]TRUE if success, FALSE upon error \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_nat_open@{vqec\_\-chan\_\-nat\_\-open}}
+\index{vqec_chan_nat_open@{vqec\_\-chan\_\-nat\_\-open}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static vqec\_\-nat\_\-bindid\_\-t vqec\_\-chan\_\-nat\_\-open (char $\ast$ {\em name}, \bf{vqec\_\-chanid\_\-t} {\em id}, in\_\-addr\_\-t {\em internal\_\-addr}, in\_\-port\_\-t {\em internal\_\-port}, in\_\-addr\_\-t {\em remote\_\-addr}, in\_\-port\_\-t {\em remote\_\-port}, boolean {\em allow\_\-update})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__channel_8c_4b626502dc8f55bd348d8531bedec59d}
+
+
+--------------------------------------------------------------------------- Open NAT bindings for a channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em name}]String name of the binding. May be up to 16 characters. \item[\mbox{$\leftarrow$} {\em id}]Identifies the channel. \item[\mbox{$\leftarrow$} {\em internal\_\-addr}]Local addr on which pkts will be received \item[\mbox{$\leftarrow$} {\em internal\_\-port}]Local port on which pkts will be received \item[\mbox{$\leftarrow$} {\em remote\_\-addr}]Remote addr \item[\mbox{$\leftarrow$} {\em remote\_\-port}]Remote port \item[\mbox{$\leftarrow$} {\em allow\_\-update}]always do update no matter behind nat or not used to support vod ICE session. \item[\mbox{$\rightarrow$} {\em Returns}]true on success, false on failure. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_open_nat_bindings@{vqec\_\-chan\_\-open\_\-nat\_\-bindings}}
+\index{vqec_chan_open_nat_bindings@{vqec\_\-chan\_\-open\_\-nat\_\-bindings}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-chan\_\-open\_\-nat\_\-bindings (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_7ac24e0f6cbcd582b4d8fd71d8038ced}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_poll_ev_handler@{vqec\_\-chan\_\-poll\_\-ev\_\-handler}}
+\index{vqec_chan_poll_ev_handler@{vqec\_\-chan\_\-poll\_\-ev\_\-handler}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-poll\_\-ev\_\-handler (const vqec\_\-event\_\-t $\ast$const  {\em unused\_\-evptr}, int32\_\-t {\em unused\_\-fd}, int16\_\-t {\em unused\_\-event}, void $\ast$ {\em unused\_\-arg})}\label{vqec__channel_8c_54ce13f7baf5ea06e3101e197c3921d5}
+
+
+--------------------------------------------------------------------------- Channel poll handler. This handler is invoked periodically to check if any operations need to be performed on active channels. If there are no active channels, the poll event is stopped. All input arguments are unused. --------------------------------------------------------------------------- \index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_poll_gap_report@{vqec\_\-chan\_\-poll\_\-gap\_\-report}}
+\index{vqec_chan_poll_gap_report@{vqec\_\-chan\_\-poll\_\-gap\_\-report}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-chan\_\-poll\_\-gap\_\-report (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, abs\_\-time\_\-t {\em cur\_\-time})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_b0b6d6d337285f8dc39c075216be0e3c}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_print_name@{vqec\_\-chan\_\-print\_\-name}}
+\index{vqec_chan_print_name@{vqec\_\-chan\_\-print\_\-name}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ vqec\_\-chan\_\-print\_\-name (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel_8c_0d02e7062b9aad5d310b4d093bd1bb23}
+
+
+--------------------------------------------------------------------------- Print the name of the channel in a static buffer: to-be-used only for debug purposes: do-not-cache.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\rightarrow$} {\em char$\ast$}]Pointer to a formatted string for the channel name. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_rcc_abort_notify@{vqec\_\-chan\_\-rcc\_\-abort\_\-notify}}
+\index{vqec_chan_rcc_abort_notify@{vqec\_\-chan\_\-rcc\_\-abort\_\-notify}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-rcc\_\-abort\_\-notify (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel_8c_3ea0688bed6dcbdd0d5c19cec7c1735f}
+
+
+--------------------------------------------------------------------------- This notification is generated by the CP FSM when an event causes it to transition to the abort state. The channel takes appropriate actions in resposne to the abort.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_send_to_primary_rtp_socket@{vqec\_\-chan\_\-send\_\-to\_\-primary\_\-rtp\_\-socket}}
+\index{vqec_chan_send_to_primary_rtp_socket@{vqec\_\-chan\_\-send\_\-to\_\-primary\_\-rtp\_\-socket}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-chan\_\-send\_\-to\_\-primary\_\-rtp\_\-socket (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, in\_\-addr\_\-t {\em remote\_\-addr}, in\_\-port\_\-t {\em remote\_\-port}, char $\ast$ {\em buf}, uint16\_\-t {\em len})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_d947decb5b154f1aeb1e7b8c88d4ab57}
+
+
+--------------------------------------------------------------------------- Inject a NAT packet into the repair RTP socket. The RTP socket is owned by the dataplane, hence the packet is sent to the dataplane via IPC, and will be queued to the socket in the dataplane.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\leftarrow$} {\em remote\_\-addr}]Specifies NAT packet's destination \item[\mbox{$\leftarrow$} {\em remote\_\-port}]Specifies NAT packet's destination \item[\mbox{$\leftarrow$} {\em buf}]Pointer to the packet contents. \item[\mbox{$\leftarrow$} {\em len}]Length of the contents. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the packet was successfully en\-Qd in the socket. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_send_to_rtp_socket@{vqec\_\-chan\_\-send\_\-to\_\-rtp\_\-socket}}
+\index{vqec_chan_send_to_rtp_socket@{vqec\_\-chan\_\-send\_\-to\_\-rtp\_\-socket}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-chan\_\-send\_\-to\_\-rtp\_\-socket (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, in\_\-addr\_\-t {\em remote\_\-addr}, in\_\-port\_\-t {\em remote\_\-port}, char $\ast$ {\em buf}, uint16\_\-t {\em len})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_c6c720b0af92f7807d3c842ca49d82f1}
+
+
+--------------------------------------------------------------------------- Inject a NAT packet into the repair RTP socket. The RTP socket is owned by the dataplane, hence the packet is sent to the dataplane via IPC, and will be queued to the socket in the dataplane.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\leftarrow$} {\em remote\_\-addr}]Specifies NAT packet's destination \item[\mbox{$\leftarrow$} {\em remote\_\-port}]Specifies NAT packet's destination \item[\mbox{$\leftarrow$} {\em buf}]Pointer to the packet contents. \item[\mbox{$\leftarrow$} {\em len}]Length of the contents. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the packet was successfully en\-Qd in the socket. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_upcall_abort_event@{vqec\_\-chan\_\-upcall\_\-abort\_\-event}}
+\index{vqec_chan_upcall_abort_event@{vqec\_\-chan\_\-upcall\_\-abort\_\-event}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-upcall\_\-abort\_\-event (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel_8c_65fd65cb55b30df78d1d2f551b15d6e3}
+
+
+--------------------------------------------------------------------------- Process a RCC abort upcall event received for the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_upcall_burst_done_event@{vqec\_\-chan\_\-upcall\_\-burst\_\-done\_\-event}}
+\index{vqec_chan_upcall_burst_done_event@{vqec\_\-chan\_\-upcall\_\-burst\_\-done\_\-event}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-upcall\_\-burst\_\-done\_\-event (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel_8c_2b3dd18d4074f9e7fce22325831f75a6}
+
+
+--------------------------------------------------------------------------- Process a RCC burst done upcall event received for the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_upcall_fast_fill_event@{vqec\_\-chan\_\-upcall\_\-fast\_\-fill\_\-event}}
+\index{vqec_chan_upcall_fast_fill_event@{vqec\_\-chan\_\-upcall\_\-fast\_\-fill\_\-event}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-upcall\_\-fast\_\-fill\_\-event (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, vqec\_\-dp\_\-upc\_\-fast\_\-fill\_\-data\_\-t $\ast$ {\em fast\_\-fill\_\-data})}\label{vqec__channel_8c_309c6389efb0a2601281fb9292d902c5}
+
+
+--------------------------------------------------------------------------- Process a Fast fill finish upcall event received for the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_upcall_fec_update_event@{vqec\_\-chan\_\-upcall\_\-fec\_\-update\_\-event}}
+\index{vqec_chan_upcall_fec_update_event@{vqec\_\-chan\_\-upcall\_\-fec\_\-update\_\-event}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-upcall\_\-fec\_\-update\_\-event (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, vqec\_\-dp\_\-upc\_\-fec\_\-update\_\-data\_\-t $\ast$ {\em fec\_\-data})}\label{vqec__channel_8c_80dec6af8eb10990e343299d1feb34b3}
+
+
+--------------------------------------------------------------------------- Process a FEC update upcall event received for the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_upcall_ncsi_event@{vqec\_\-chan\_\-upcall\_\-ncsi\_\-event}}
+\index{vqec_chan_upcall_ncsi_event@{vqec\_\-chan\_\-upcall\_\-ncsi\_\-event}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-upcall\_\-ncsi\_\-event (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, vqec\_\-dp\_\-upc\_\-ncsi\_\-data\_\-t $\ast$ {\em ncsi\_\-data})}\label{vqec__channel_8c_debdcfcbb52d59f521b7f3f8fcf15f9f}
+
+
+--------------------------------------------------------------------------- Process an NCSI upcall event received for the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\leftarrow$} {\em ncsi\_\-data}]Pointer to the NCSI data: consists of the join latency, the first primary sequence, and the absolute time at which CP should enable ER. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_upcall_prim_inactive_event@{vqec\_\-chan\_\-upcall\_\-prim\_\-inactive\_\-event}}
+\index{vqec_chan_upcall_prim_inactive_event@{vqec\_\-chan\_\-upcall\_\-prim\_\-inactive\_\-event}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-upcall\_\-prim\_\-inactive\_\-event (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel_8c_64063120fbb7b1d87033aa8348aa6c0d}
+
+
+--------------------------------------------------------------------------- Process a primary inactive upcall event received for the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_upd_backfill@{vqec\_\-chan\_\-upd\_\-backfill}}
+\index{vqec_chan_upd_backfill@{vqec\_\-chan\_\-upd\_\-backfill}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-upd\_\-backfill (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel_8c_172db30cdcfa532d36f07310afd0fb8a}
+
+
+--------------------------------------------------------------------------- Compute and cache backfill parameters.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_update_dcr_stats@{vqec\_\-chan\_\-update\_\-dcr\_\-stats}}
+\index{vqec_chan_update_dcr_stats@{vqec\_\-chan\_\-update\_\-dcr\_\-stats}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-update\_\-dcr\_\-stats (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel_8c_433bc9ab3ed1e72c0acc26ab3847e387}
+
+
+--------------------------------------------------------------------------- Poll the STB to get channel change information.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\leftarrow$} {\em cur\_\-time}]Current system time. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_update_era_session@{vqec\_\-chan\_\-update\_\-era\_\-session}}
+\index{vqec_chan_update_era_session@{vqec\_\-chan\_\-update\_\-era\_\-session}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-chan\_\-update\_\-era\_\-session (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, in\_\-addr\_\-t {\em fbt\_\-addr}, uint16\_\-t {\em primary\_\-source\_\-rtcp\_\-port})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_65c7055acce7a33b3ec8325932d479cd}
+
+
+--------------------------------------------------------------------------- Update an ERA primary session on a channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel to which the session should be updated. \item[\mbox{$\leftarrow$} {\em fbt\_\-addr}]ip address of feedback target \item[\mbox{$\leftarrow$} {\em primary\_\-source\_\-rtcp\_\-port}]Server port to which RTCP packets are sent. May be zero to disable RTCP transmission. \item[\mbox{$\rightarrow$} {\em }]Returns true if the update succeeds, false otherwise. -------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_update_fec_bw@{vqec\_\-chan\_\-update\_\-fec\_\-bw}}
+\index{vqec_chan_update_fec_bw@{vqec\_\-chan\_\-update\_\-fec\_\-bw}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-chan\_\-update\_\-fec\_\-bw (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_688553320bf9097bb165fc0582bfde89}
+
+
+Update the FEC receive bandwidth value for the channel, based on the cached FEC L and D values. \index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_update_repair_session@{vqec\_\-chan\_\-update\_\-repair\_\-session}}
+\index{vqec_chan_update_repair_session@{vqec\_\-chan\_\-update\_\-repair\_\-session}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-chan\_\-update\_\-repair\_\-session (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, in\_\-addr\_\-t {\em rtx\_\-source\_\-addr}, uint16\_\-t {\em rtx\_\-source\_\-rtcp\_\-port})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_569f36b017f66cd057ab334f21b93c43}
+
+
+--------------------------------------------------------------------------- Update repair session on a channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel to which the session should be updated. \item[\mbox{$\leftarrow$} {\em rtx\_\-source\_\-addr}]ip address of feedback target \item[\mbox{$\leftarrow$} {\em rtx\_\-source\_\-rtcp\_\-port}]Server port to which RTCP packets are sent. May be zero to disable RTCP transmission. \item[\mbox{$\rightarrow$} {\em }]Returns true if the update succeeds, false otherwise. -------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_validate_cfg@{vqec\_\-chan\_\-validate\_\-cfg}}
+\index{vqec_chan_validate_cfg@{vqec\_\-chan\_\-validate\_\-cfg}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-chan\_\-validate\_\-cfg (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em cfg})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel_8c_0150f919efada99129423fb380111102}
+
+
+Validates a set of channel configuration parameters.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em cfg}]channel cfg to validate \item[\mbox{$\rightarrow$} {\em boolean}]TRUE if validation succeeds, FALSE otherwise \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chan_validate_pt@{vqec\_\-chan\_\-validate\_\-pt}}
+\index{vqec_chan_validate_pt@{vqec\_\-chan\_\-validate\_\-pt}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-chan\_\-validate\_\-pt (uint8\_\-t {\em pt}, boolean {\em allow\_\-static})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__channel_8c_df6b367875458ad3a5c649f3507cdbea}
+
+
+Validate a payload type number. Payload types must either be within the dynamic range or equal to the static payload type number for MP2T. Payload type values are defined by RFC3551.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pt}]payload type number \item[\mbox{$\leftarrow$} {\em allow\_\-static}]allow static payload type \item[\mbox{$\rightarrow$} {\em boolean}]TRUE if pt is valid \end{description}
+\end{Desc}
+\index{vqec_channel.c@{vqec\_\-channel.c}!vqec_chanid_to_chan@{vqec\_\-chanid\_\-to\_\-chan}}
+\index{vqec_chanid_to_chan@{vqec\_\-chanid\_\-to\_\-chan}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-t}$\ast$ vqec\_\-chanid\_\-to\_\-chan (const \bf{vqec\_\-chanid\_\-t} {\em chanid})}\label{vqec__channel_8c_280869744e24992f36392215ccc3bb98}
+
+
+--------------------------------------------------------------------------- Init / deinit / bind / unbind / counters. --------------------------------------------------------------------------- 
+
+\subsection{Variable Documentation}
+\index{vqec_channel.c@{vqec\_\-channel.c}!g_channel_module@{g\_\-channel\_\-module}}
+\index{g_channel_module@{g\_\-channel\_\-module}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-channel\_\-module\_\-t}$\ast$ \bf{g\_\-channel\_\-module} = NULL}\label{vqec__channel_8c_43d3ddc7ce2d1cc28d49126bab428aec}
+
+
+\index{vqec_channel.c@{vqec\_\-channel.c}!max_fec_block_size_observed@{max\_\-fec\_\-block\_\-size\_\-observed}}
+\index{max_fec_block_size_observed@{max\_\-fec\_\-block\_\-size\_\-observed}!vqec_channel.c@{vqec\_\-channel.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{max\_\-fec\_\-block\_\-size\_\-observed} = FEC\_\-DEFAULT\_\-BLOCK\_\-SIZE}\label{vqec__channel_8c_4aa1066fa506b677ae443759e83cafe0}
+
+
+Store the max fec\_\-block\_\-size value while systems is on. Whenever a larger block size is found from a certain channel this value is updated. 

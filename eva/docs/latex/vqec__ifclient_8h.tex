@@ -1,0 +1,1013 @@
+\section{vqec\_\-ifclient.h File Reference}
+\label{vqec__ifclient_8h}\index{vqec_ifclient.h@{vqec\_\-ifclient.h}}
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-error.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-read.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-PUBLIC}~extern
+\item 
+\#define \bf{VQEC\_\-SYNCHRONIZED}
+\item 
+\#define \bf{VQEC\_\-IFCLIENT\_\-TUNER\_\-RCCABORT\_\-STR\_\-MAX}~40
+\item 
+\#define \bf{FOR\_\-ALL\_\-TUNERS\_\-IN\_\-LIST}(iter, id)
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+const char $\ast$ \bf{vqec\_\-err2str} (vqec\_\-error\_\-t err)
+\item 
+const char $\ast$ \bf{vqec\_\-ifclient\_\-tuner\_\-rccabort2str} (char $\ast$str, uint32\_\-t len, \bf{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t} abort\_\-code)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-tuner\_\-create} (vqec\_\-tunerid\_\-t $\ast$id, const char $\ast$namestr)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-tuner\_\-destroy} (const vqec\_\-tunerid\_\-t id)
+\item 
+VQEC\_\-PUBLIC \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-create} (void)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-destroy} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-context\_\-id} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, int32\_\-t context\_\-id)
+\item 
+VQEC\_\-PUBLIC int32\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-context\_\-id} (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-enable\_\-rcc} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-disable\_\-rcc} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-is\_\-rcc\_\-enabled} (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-enable\_\-fastfill} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-disable\_\-fastfill} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-is\_\-fastfill\_\-enabled} (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-dcr\_\-info\_\-ops} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t} $\ast$dcr\_\-info\_\-ops)
+\item 
+VQEC\_\-PUBLIC \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t} $\ast$ \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-dcr\_\-info\_\-ops} (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-fastfill\_\-ops} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t} $\ast$\bf{fastfill\_\-ops})
+\item 
+VQEC\_\-PUBLIC \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t} $\ast$ \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-fastfill\_\-ops} (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-fastfill} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, const uint32\_\-t max\_\-fastfill)
+\item 
+uint32\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-fastfill} (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-recv\_\-bw\_\-rcc} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, const uint32\_\-t max\_\-recv\_\-bw\_\-rcc)
+\item 
+uint32\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-recv\_\-bw\_\-rcc} (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-recv\_\-bw\_\-er} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, const uint32\_\-t max\_\-recv\_\-bw\_\-er)
+\item 
+uint32\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-recv\_\-bw\_\-er} (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-mrb\_\-transition\_\-cb} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, void $\ast$transition\_\-cb)
+\item 
+void $\ast$ \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-mrb\_\-transition\_\-cb} (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-ir\_\-time} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, uint64\_\-t ir\_\-time)
+\item 
+uint64\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-ir\_\-time} (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, uint8\_\-t $\ast$ir\_\-time\_\-valid)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-tuner\_\-bind\_\-chan} (const vqec\_\-tunerid\_\-t id, const \bf{vqec\_\-sdp\_\-handle\_\-t} sdp\_\-handle, const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-tuner\_\-bind\_\-chan\_\-cfg} (const vqec\_\-tunerid\_\-t id, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg, const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-chan\_\-update} (const \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg, const \bf{vqec\_\-update\_\-params\_\-t} $\ast$up)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-nat\_\-binding\_\-update} (in\_\-addr\_\-t prim\_\-dest\_\-ip, in\_\-port\_\-t prim\_\-dest\_\-port)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-tuner\_\-unbind\_\-chan} (const vqec\_\-tunerid\_\-t id)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED \bf{vqec\_\-sdp\_\-handle\_\-t} \bf{vqec\_\-ifclient\_\-alloc\_\-sdp\_\-handle\_\-from\_\-url} (char $\ast$url)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED void \bf{vqec\_\-ifclient\_\-free\_\-sdp\_\-handle} (\bf{vqec\_\-sdp\_\-handle\_\-t} sdp\_\-handle)
+\begin{CompactList}\small\item\em Free an sdp\_\-handle. \item\end{CompactList}\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED uint8\_\-t \bf{vqec\_\-ifclient\_\-chan\_\-cfg\_\-parse\_\-sdp} (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg, char $\ast$buffer, \bf{vqec\_\-chan\_\-type\_\-t} chan\_\-type)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-tunerid\_\-t \bf{vqec\_\-ifclient\_\-tuner\_\-iter\_\-init\_\-first} (\bf{vqec\_\-tuner\_\-iter\_\-t} $\ast$iter)
+\item 
+VQEC\_\-PUBLIC vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-rtp\_\-hdr\_\-parse} (char $\ast$buf, uint16\_\-t len, \bf{vqec\_\-rtphdr\_\-t} $\ast$rtp\_\-hdr)
+\item 
+VQEC\_\-PUBLIC void \bf{vqec\_\-ifclient\_\-trigger\_\-update} (void)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-init} (const char $\ast$\bf{filename})
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED void \bf{vqec\_\-ifclient\_\-deinit} (void)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-start} (void)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED void \bf{vqec\_\-ifclient\_\-stop} (void)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED void \bf{vqec\_\-ifclient\_\-clear\_\-stats} (void)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-tuner\_\-dump\_\-state} (const vqec\_\-tunerid\_\-t id, unsigned int options\_\-flag)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-get\_\-stats} (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$s)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-get\_\-stats\_\-cumulative} (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$s)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-get\_\-stats\_\-channel} (const char $\ast$url, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$stats)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-get\_\-stats\_\-channel\_\-cumulative} (const char $\ast$url, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$stats)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-histogram\_\-display} (const \bf{vqec\_\-hist\_\-t} hist)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-histogram\_\-clear} (const \bf{vqec\_\-hist\_\-t} hist)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-updater\_\-get\_\-stats} (\bf{vqec\_\-ifclient\_\-updater\_\-stats\_\-t} $\ast$s)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-cfg\_\-channel\_\-lineup\_\-set} (\bf{sdp\_\-block\_\-t} $\ast$sdp\_\-block)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-config\_\-register} (const \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t} $\ast$params)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-config\_\-update} (\bf{vqec\_\-ifclient\_\-config\_\-update\_\-params\_\-t} $\ast$params)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-config\_\-status} (\bf{vqec\_\-ifclient\_\-config\_\-status\_\-params\_\-t} $\ast$params)
+\item 
+uint8\_\-t \bf{vqec\_\-ifclient\_\-is\_\-vqec\_\-enabled} (void)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-config\_\-override\_\-update} (\bf{vqec\_\-ifclient\_\-config\_\-override\_\-params\_\-t} $\ast$params)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED uint8\_\-t \bf{vqec\_\-ifclient\_\-check\_\-tuner\_\-validity\_\-by\_\-name} (const char $\ast$namestr)
+\item 
+VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED uint8\_\-t \bf{vqec\_\-ifclient\_\-register\_\-cname} (char $\ast$cname)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-tuner\_\-is\_\-fastfill\_\-enabled} (vqec\_\-tunerid\_\-t id)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-tuner\_\-is\_\-rcc\_\-enabled} (vqec\_\-tunerid\_\-t id)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-tr135\_\-params} (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, \bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t} $\ast$params)
+\item 
+VQEC\_\-PUBLIC \bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t} $\ast$ \bf{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-tr135\_\-params} (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp)
+\item 
+VQEC\_\-PUBLIC vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-set\_\-tr135\_\-params\_\-channel} (const char $\ast$url, \bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t} $\ast$params)
+\item 
+VQEC\_\-PUBLIC vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-get\_\-stats\_\-channel\_\-tr135\_\-sample} (const char $\ast$url, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-tr135\_\-sample\_\-t} $\ast$stats)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-socket\_\-open} (\bf{vqec\_\-in\_\-addr\_\-t} $\ast$addr, \bf{vqec\_\-in\_\-port\_\-t} $\ast$rtp\_\-port, \bf{vqec\_\-in\_\-port\_\-t} $\ast$rtcp\_\-port)
+\item 
+VQEC\_\-PUBLIC void \bf{vqec\_\-ifclient\_\-socket\_\-close} (\bf{vqec\_\-in\_\-addr\_\-t} addr, \bf{vqec\_\-in\_\-port\_\-t} rtp\_\-port, \bf{vqec\_\-in\_\-port\_\-t} rtcp\_\-port)
+\item 
+VQEC\_\-PUBLIC uint8\_\-t \bf{vqec\_\-ifclient\_\-add\_\-new\_\-tmp\_\-chan} (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$chan, \bf{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-t} $\ast$chan\_\-params)
+\item 
+VQEC\_\-PUBLIC void \bf{vqec\_\-ifclient\_\-remove\_\-tmp\_\-chan} (\bf{vqec\_\-in\_\-addr\_\-t} dest\_\-ip, \bf{vqec\_\-in\_\-port\_\-t} port)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!FOR_ALL_TUNERS_IN_LIST@{FOR\_\-ALL\_\-TUNERS\_\-IN\_\-LIST}}
+\index{FOR_ALL_TUNERS_IN_LIST@{FOR\_\-ALL\_\-TUNERS\_\-IN\_\-LIST}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define FOR\_\-ALL\_\-TUNERS\_\-IN\_\-LIST(iter, id)}\label{vqec__ifclient_8h_9a7ef77543ed729d3c4fba5076496581}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}for ((id) = vqec_ifclient_tuner_iter_init_first(&(iter));           \
+         (iter).i_cur != VQEC_TUNERID_INVALID;                          \
+         (id) = (iter).getnext(&(iter)))
+\end{verbatim}\end{Code}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!VQEC_IFCLIENT_TUNER_RCCABORT_STR_MAX@{VQEC\_\-IFCLIENT\_\-TUNER\_\-RCCABORT\_\-STR\_\-MAX}}
+\index{VQEC_IFCLIENT_TUNER_RCCABORT_STR_MAX@{VQEC\_\-IFCLIENT\_\-TUNER\_\-RCCABORT\_\-STR\_\-MAX}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-IFCLIENT\_\-TUNER\_\-RCCABORT\_\-STR\_\-MAX~40}\label{vqec__ifclient_8h_c2e54eeba436416a035f59d8fe50a370}
+
+
+Maximum string length of an RCC abort string representation \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!VQEC_PUBLIC@{VQEC\_\-PUBLIC}}
+\index{VQEC_PUBLIC@{VQEC\_\-PUBLIC}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PUBLIC~extern}\label{vqec__ifclient_8h_4ad24c1d43eb51367a104f80deec6841}
+
+
+----------------------------------------------------------------- Vqec. Client Interface API.
+
+Copyright (c) 2007-2010 by cisco Systems, Inc. All rights reserved. ------------------------------------------------------------------ \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!VQEC_SYNCHRONIZED@{VQEC\_\-SYNCHRONIZED}}
+\index{VQEC_SYNCHRONIZED@{VQEC\_\-SYNCHRONIZED}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYNCHRONIZED}\label{vqec__ifclient_8h_bfd03d98344323ac71789b974dff121f}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_err2str@{vqec\_\-err2str}}
+\index{vqec_err2str@{vqec\_\-err2str}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-err2str (vqec\_\-error\_\-t {\em err})}\label{vqec__ifclient_8h_4bb19cc05fd8f4efa88c6b6159d05359}
+
+
+--------------------------------------------------------------------------- Get the string representation corresponding to a VQEC error code. ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_add_new_tmp_chan@{vqec\_\-ifclient\_\-add\_\-new\_\-tmp\_\-chan}}
+\index{vqec_ifclient_add_new_tmp_chan@{vqec\_\-ifclient\_\-add\_\-new\_\-tmp\_\-chan}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-add\_\-new\_\-tmp\_\-chan (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em chan}, \bf{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-t} $\ast$ {\em chan\_\-params})}\label{vqec__ifclient_8h_077d83252f950f383faef1c2ad01359b}
+
+
+API for adding a channel to the temp channel database
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em $\ast$chan,:}]the channel cfg that need to be added to temp chan db. \item[\mbox{$\leftarrow$} {\em chan\_\-event\_\-cb,:}]chan event cb function \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]TRUE if success, FALSE otherwise \end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_alloc_sdp_handle_from_url@{vqec\_\-ifclient\_\-alloc\_\-sdp\_\-handle\_\-from\_\-url}}
+\index{vqec_ifclient_alloc_sdp_handle_from_url@{vqec\_\-ifclient\_\-alloc\_\-sdp\_\-handle\_\-from\_\-url}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED \bf{vqec\_\-sdp\_\-handle\_\-t} vqec\_\-ifclient\_\-alloc\_\-sdp\_\-handle\_\-from\_\-url (char $\ast$ {\em url})}\label{vqec__ifclient_8h_b68205d047ed1baf118bf033bf69c8b6}
+
+
+--------------------------------------------------------------------------- Obtain an sdp\_\-handle based on the url. The address and port contained in the URL must describe the original stream address and port. The protocols RTP and UDP must be valid identifiers in all implementations of this method, with the following BNF grammar:
+
+url: rtpurl $|$ udpurl \par
+ rtpurl: rtp://Ip\-Address:Port \par
+ udpurl: udp://Ip\-Address:Port \par
+ Ip\-Address: digits.digits.digits.digits \par
+ Port: digits \par
+ digits: digit [digits] \par
+ digit: 0 1 2 3 4 5 6 7 8 9\par
+
+
+Only RTP and UDP url types are allowed. However, the implementation currently ignores the RTP/UDP designation. The channel handle will be identified even if the protocol field does not properly match the protocol of the original stream source.
+
+Returns a valid sdp\_\-handle or NULL. Note the caller is responsible for freeing sdp handles. ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_create@{vqec\_\-ifclient\_\-bind\_\-params\_\-create}}
+\index{vqec_ifclient_bind_params_create@{vqec\_\-ifclient\_\-bind\_\-params\_\-create}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC \bf{vqec\_\-bind\_\-params\_\-t}$\ast$ vqec\_\-ifclient\_\-bind\_\-params\_\-create (void)}\label{vqec__ifclient_8h_285503ab4b73fa82940428ae341ea535}
+
+
+--------------------------------------------------------------------------- Create a bind parameters handle. This struct handle is necessary for calls to bind a tuner and channel. The actual parameters may be set through the vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-... functions.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em vqec\_\-bind\_\-params\_\-t$\ast$}]the created bind paramters handle ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_destroy@{vqec\_\-ifclient\_\-bind\_\-params\_\-destroy}}
+\index{vqec_ifclient_bind_params_destroy@{vqec\_\-ifclient\_\-bind\_\-params\_\-destroy}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-destroy (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_5749d4b86b0a42447f1276fda35e7afb}
+
+
+--------------------------------------------------------------------------- Destroy a bind parameters handle. Should only be called once a bind has completed.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters handle to be destroyed \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE for success, FALSE for failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_disable_fastfill@{vqec\_\-ifclient\_\-bind\_\-params\_\-disable\_\-fastfill}}
+\index{vqec_ifclient_bind_params_disable_fastfill@{vqec\_\-ifclient\_\-bind\_\-params\_\-disable\_\-fastfill}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-disable\_\-fastfill (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_d67d5d4e5d2c7ce649f1097d14140e16}
+
+
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_disable_rcc@{vqec\_\-ifclient\_\-bind\_\-params\_\-disable\_\-rcc}}
+\index{vqec_ifclient_bind_params_disable_rcc@{vqec\_\-ifclient\_\-bind\_\-params\_\-disable\_\-rcc}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-disable\_\-rcc (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_edcee01a155a40acceb3a6fb37c200bc}
+
+
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_enable_fastfill@{vqec\_\-ifclient\_\-bind\_\-params\_\-enable\_\-fastfill}}
+\index{vqec_ifclient_bind_params_enable_fastfill@{vqec\_\-ifclient\_\-bind\_\-params\_\-enable\_\-fastfill}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-enable\_\-fastfill (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_1aef0441d0090744cc33d5ae4c63692b}
+
+
+--------------------------------------------------------------------------- Enable or disable fastfill in a bind parameters structure used when binding a tuner to a channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle from create function. \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE for success, FALSE for failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_enable_rcc@{vqec\_\-ifclient\_\-bind\_\-params\_\-enable\_\-rcc}}
+\index{vqec_ifclient_bind_params_enable_rcc@{vqec\_\-ifclient\_\-bind\_\-params\_\-enable\_\-rcc}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-enable\_\-rcc (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_e52bc1bfe413a8baade05bde79e3635b}
+
+
+--------------------------------------------------------------------------- Enable or Disable Rapid Channel Change in bind parameters used when binding a tuner to a channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle from create function. \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE for success, FALSE for failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_get_context_id@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-context\_\-id}}
+\index{vqec_ifclient_bind_params_get_context_id@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-context\_\-id}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC int32\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-context\_\-id (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_a8cc76a3c40f3fe774d9d8c7f3e69d49}
+
+
+--------------------------------------------------------------------------- Get the context/tuner id in the bind parameters.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters handle \item[\mbox{$\rightarrow$} {\em int}]the context id associated with the bind ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_get_dcr_info_ops@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-dcr\_\-info\_\-ops}}
+\index{vqec_ifclient_bind_params_get_dcr_info_ops@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-dcr\_\-info\_\-ops}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t}$\ast$ vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-dcr\_\-info\_\-ops (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_7de3dcdc5b4311222ca95e8db2d4586d}
+
+
+--------------------------------------------------------------------------- Get the function pointer set for retrieving decoder info.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\rightarrow$} {\em vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t$\ast$}]the function pointer ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_get_fastfill_ops@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-fastfill\_\-ops}}
+\index{vqec_ifclient_bind_params_get_fastfill_ops@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-fastfill\_\-ops}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t}$\ast$ vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-fastfill\_\-ops (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_416bbbf0836da277066f2745b57a4d4b}
+
+
+--------------------------------------------------------------------------- Fastfill operation function vector accessor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\rightarrow$} {\em vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t$\ast$}]the vector pointer ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_get_ir_time@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-ir\_\-time}}
+\index{vqec_ifclient_bind_params_get_ir_time@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-ir\_\-time}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-ir\_\-time (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, uint8\_\-t $\ast$ {\em ir\_\-time\_\-valid})}\label{vqec__ifclient_8h_f81bc0baa96a9e53bd011332a43fda1c}
+
+
+--------------------------------------------------------------------------- STB IR keypress time accessor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\rightarrow$} {\em uint64\_\-t}]timestamp the IR keypress was registered \item[\mbox{$\rightarrow$} {\em boolean}]TRUE if the user set the ir\_\-time ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_get_max_fastfill@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-fastfill}}
+\index{vqec_ifclient_bind_params_get_max_fastfill@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-fastfill}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-fastfill (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_4b78a1f04235495d69b16655c1737aef}
+
+
+--------------------------------------------------------------------------- Maximum fast fill accessor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\rightarrow$} {\em uint32\_\-t}]the value of max\_\-fastfill ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_get_max_recv_bw_er@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-recv\_\-bw\_\-er}}
+\index{vqec_ifclient_bind_params_get_max_recv_bw_er@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-recv\_\-bw\_\-er}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-recv\_\-bw\_\-er (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_4e39a960244478a8c2c22c87cd53d41b}
+
+
+--------------------------------------------------------------------------- Maximum receive bandwidth (ER) accessor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\rightarrow$} {\em uint32\_\-t}]the value of max\_\-recv\_\-bw\_\-er ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_get_max_recv_bw_rcc@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-recv\_\-bw\_\-rcc}}
+\index{vqec_ifclient_bind_params_get_max_recv_bw_rcc@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-recv\_\-bw\_\-rcc}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-max\_\-recv\_\-bw\_\-rcc (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_3a3296f4b8a28d340f45a63274bfdae4}
+
+
+--------------------------------------------------------------------------- Maximum receive bandwidth (RCC) accessor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\rightarrow$} {\em uint32\_\-t}]the value of max\_\-recv\_\-bw\_\-rcc ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_get_mrb_transition_cb@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-mrb\_\-transition\_\-cb}}
+\index{vqec_ifclient_bind_params_get_mrb_transition_cb@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-mrb\_\-transition\_\-cb}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-mrb\_\-transition\_\-cb (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_3c2e9cadbf06f13742111cf128d92038}
+
+
+--------------------------------------------------------------------------- Maximum receive bandwidth transition callback accessor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\rightarrow$} {\em void}]function pointer to callback function ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_get_tr135_params@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-tr135\_\-params}}
+\index{vqec_ifclient_bind_params_get_tr135_params@{vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-tr135\_\-params}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC \bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t}$\ast$ vqec\_\-ifclient\_\-bind\_\-params\_\-get\_\-tr135\_\-params (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_6c186b7a88119b4f66b6187c2ea24b69}
+
+
+--------------------------------------------------------------------------- Used to retrieve the tr-135 control bind parameters.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]Pointer to bind parameters data structure \item[\mbox{$\rightarrow$} {\em vqec\_\-ifclient\_\-tr135\_\-params\_\-t}]$\ast$ Pointer to TR-135 parameters ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_is_fastfill_enabled@{vqec\_\-ifclient\_\-bind\_\-params\_\-is\_\-fastfill\_\-enabled}}
+\index{vqec_ifclient_bind_params_is_fastfill_enabled@{vqec\_\-ifclient\_\-bind\_\-params\_\-is\_\-fastfill\_\-enabled}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-is\_\-fastfill\_\-enabled (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_4096ff6eafa84f0523150ca8c41e3b7d}
+
+
+--------------------------------------------------------------------------- Retrieve value of fastfill enable from a bind parameters handle.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE for fast fill enabled, FALSE otherwise ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_is_rcc_enabled@{vqec\_\-ifclient\_\-bind\_\-params\_\-is\_\-rcc\_\-enabled}}
+\index{vqec_ifclient_bind_params_is_rcc_enabled@{vqec\_\-ifclient\_\-bind\_\-params\_\-is\_\-rcc\_\-enabled}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-is\_\-rcc\_\-enabled (const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_7b022924c59200d5f1efbeb1bb0f7d81}
+
+
+--------------------------------------------------------------------------- Retrieve value of RCC enable from bind parameters handle.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE for RCC enabled, FALSE otherwise ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_set_context_id@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-context\_\-id}}
+\index{vqec_ifclient_bind_params_set_context_id@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-context\_\-id}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-context\_\-id (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, int32\_\-t {\em context\_\-id})}\label{vqec__ifclient_8h_524f8533d682631b9f4e778cb76b3bd5}
+
+
+--------------------------------------------------------------------------- Set the context/tuner id in the bind parameters.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters handle \item[\mbox{$\leftarrow$} {\em context\_\-id}]the id to associated with this bind \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE for success, FALSE for failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_set_dcr_info_ops@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-dcr\_\-info\_\-ops}}
+\index{vqec_ifclient_bind_params_set_dcr_info_ops@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-dcr\_\-info\_\-ops}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-dcr\_\-info\_\-ops (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t} $\ast$ {\em dcr\_\-info\_\-ops})}\label{vqec__ifclient_8h_7c7df3ac331ed15b990caab53c8035b0}
+
+
+--------------------------------------------------------------------------- Set the function pointer which vqec will use to retrieve stats information from the decoder.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\leftarrow$} {\em dcr\_\-info\_\-ops}]function pointer for retrieving stats \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE if success, FALSE if failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_set_fastfill_ops@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-fastfill\_\-ops}}
+\index{vqec_ifclient_bind_params_set_fastfill_ops@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-fastfill\_\-ops}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-fastfill\_\-ops (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t} $\ast$ {\em fastfill\_\-ops})}\label{vqec__ifclient_8h_f8076c3272ce676506b715fb9d27a61f}
+
+
+--------------------------------------------------------------------------- Fastfill operation function vector modifier.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\leftarrow$} {\em fastfill\_\-ops}]Fastfill function vector. \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE if success, FALSE if failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_set_ir_time@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-ir\_\-time}}
+\index{vqec_ifclient_bind_params_set_ir_time@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-ir\_\-time}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-ir\_\-time (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, uint64\_\-t {\em ir\_\-time})}\label{vqec__ifclient_8h_3b40fa6ca057419bdd7ff54b0b6ec162}
+
+
+--------------------------------------------------------------------------- STB IR keypress time setter.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\leftarrow$} {\em ir\_\-time}]timestamp the IR keypress was registered \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE if success, FALSE if failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_set_max_fastfill@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-fastfill}}
+\index{vqec_ifclient_bind_params_set_max_fastfill@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-fastfill}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-fastfill (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, const uint32\_\-t {\em max\_\-fastfill})}\label{vqec__ifclient_8h_ad72e647c240370a763c2a849e10c6ab}
+
+
+--------------------------------------------------------------------------- Maximum fast fill setter.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\leftarrow$} {\em max\_\-fastfill}]new value to set \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE if success, FALSE if failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_set_max_recv_bw_er@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-recv\_\-bw\_\-er}}
+\index{vqec_ifclient_bind_params_set_max_recv_bw_er@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-recv\_\-bw\_\-er}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-recv\_\-bw\_\-er (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, const uint32\_\-t {\em max\_\-recv\_\-bw\_\-er})}\label{vqec__ifclient_8h_c74b0006bef8e8a588a677abfc3d7bdd}
+
+
+--------------------------------------------------------------------------- Maximum receive bandwidth (ER) setter.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\leftarrow$} {\em max\_\-recv\_\-bw\_\-er}]new value to set \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE if success, FALSE if failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_set_max_recv_bw_rcc@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-recv\_\-bw\_\-rcc}}
+\index{vqec_ifclient_bind_params_set_max_recv_bw_rcc@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-recv\_\-bw\_\-rcc}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-max\_\-recv\_\-bw\_\-rcc (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, const uint32\_\-t {\em max\_\-recv\_\-bw\_\-rcc})}\label{vqec__ifclient_8h_565dd0608c2ecc04639dc5710f6a7200}
+
+
+--------------------------------------------------------------------------- Maximum receive bandwidth (RCC) setter.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\leftarrow$} {\em max\_\-recv\_\-bw\_\-rcc}]new value to set \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE if success, FALSE if failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_set_mrb_transition_cb@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-mrb\_\-transition\_\-cb}}
+\index{vqec_ifclient_bind_params_set_mrb_transition_cb@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-mrb\_\-transition\_\-cb}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-mrb\_\-transition\_\-cb (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, void $\ast$ {\em transition\_\-cb})}\label{vqec__ifclient_8h_03bd3cc039ef68f3d3d3dc40c4979dd9}
+
+
+--------------------------------------------------------------------------- Maximum receive bandwidth transition callback setter.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]bind parameters structure handle \item[\mbox{$\leftarrow$} {\em transition\_\-cb}]function pointer to callback function \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE if success, FALSE if failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_bind_params_set_tr135_params@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-tr135\_\-params}}
+\index{vqec_ifclient_bind_params_set_tr135_params@{vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-tr135\_\-params}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-bind\_\-params\_\-set\_\-tr135\_\-params (\bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, \bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t} $\ast$ {\em params})}\label{vqec__ifclient_8h_a394333f96352b41ce7768ab7fb90655}
+
+
+--------------------------------------------------------------------------- Used to set the tr-135 control parameters gmin and severe\_\-loss\_\-min\_\-distance bind parameters.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em bp}]Pointer to bind parameters data structure \item[\mbox{$\leftarrow$} {\em params}]TR-135 writable parameters \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE for success, FALSE otherwise ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_cfg_channel_lineup_set@{vqec\_\-ifclient\_\-cfg\_\-channel\_\-lineup\_\-set}}
+\index{vqec_ifclient_cfg_channel_lineup_set@{vqec\_\-ifclient\_\-cfg\_\-channel\_\-lineup\_\-set}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-cfg\_\-channel\_\-lineup\_\-set (\bf{sdp\_\-block\_\-t} $\ast$ {\em sdp\_\-block})}\label{vqec__ifclient_8h_bcc0b433a2001140d95ba081d6fd6903}
+
+
+--------------------------------------------------------------------------- Update the channel VQE-C channel lineup. The channel lineup is a block of SDP descriptions of VQE accelerated channels. Note this API is used to update the entire VQE-C IPTV channel lineup. It does not merge any channel descriptions, but rather replaces the channel descriptions with those pointed to by the sdp\_\-block. Note this API should not be used when using VQE-C's CDI (channel delivery infrastructure). This API is intended for integrations where the VQE-C channel lineup (SDP description) delivery is performed by the STB middleware.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em sdp}]block of sdp descriptions of channels. Must represent valid sdp channels. following error codes are returned: {\em VQEC\_\-ERR\_\-INVALIDARGS\/}\par
+ {\em VQEC\_\-ERR\_\-INVCLIENTSTATE\/}\par
+ {\em VQEC\_\-ERR\_\-SETCHANCFG\/}\par
+ {\em VQEC\_\-ERR\_\-NOCHANNELLINEUP\/}\par
+ -------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_chan_cfg_parse_sdp@{vqec\_\-ifclient\_\-chan\_\-cfg\_\-parse\_\-sdp}}
+\index{vqec_ifclient_chan_cfg_parse_sdp@{vqec\_\-ifclient\_\-chan\_\-cfg\_\-parse\_\-sdp}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED uint8\_\-t vqec\_\-ifclient\_\-chan\_\-cfg\_\-parse\_\-sdp (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em cfg}, char $\ast$ {\em buffer}, \bf{vqec\_\-chan\_\-type\_\-t} {\em chan\_\-type})}\label{vqec__ifclient_8h_bd1d7d3d54937dc9b9c710770292ddbc}
+
+
+--------------------------------------------------------------------------- Parses an SDP from the buffer argument into individual parameters and fills the provided vqec\_\-chan\_\-cfg\_\-t structure accordingly. The parser validation type is determined by the vqec\_\-chan\_\-type\_\-t chan\_\-type argument. Calling with VQEC\_\-CHAN\_\-TYPE\_\-LINEAR as the chan\_\-type will cause the SDP to be validated as a linear channel (with up to five section expected: original, re-sourced, retransmission, fec1, fec2). Calling with VQEC\_\-CHAN\_\-TYPE\_\-VOD as the chan\_\-type will cause the SDP to be validated as a Vo\-D channel (with up to two sections expected: primary, retransmission).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em cfg}]channel cfg structure to be filled \item[\mbox{$\leftarrow$} {\em buffer}]character buffer containing SDP \item[\mbox{$\leftarrow$} {\em chan\_\-type}]VQEC\_\-CHAN\_\-TYPE\_\-LINEAR or VQEC\_\-CHAN\_\-TYPE\_\-VOD \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE (non-zero) if success, FALSE otherwise ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_chan_update@{vqec\_\-ifclient\_\-chan\_\-update}}
+\index{vqec_ifclient_chan_update@{vqec\_\-ifclient\_\-chan\_\-update}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-chan\_\-update (const \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em cfg}, const \bf{vqec\_\-update\_\-params\_\-t} $\ast$ {\em up})}\label{vqec__ifclient_8h_c3deca7fd8926ba054322e7320287790}
+
+
+--------------------------------------------------------------------------- Updates the source-related configuration of an active channel. The update persists as long as the channel remains active. All tuners bound to this active channel will use the updated configuration.
+
+The channel to update is identified by the (primary\_\-dest\_\-addr, primary\_\-dest\_\-port) fields within \char`\"{}cfg\char`\"{}. Its primary\_\-dest\_\-addr MUST be unicast.
+
+Only the source-related fields of the \char`\"{}cfg\char`\"{} structure are relevant, and the rest are ignored (not updated). Fields related to the repair stream are only updated if error repair is enabled on the channel.
+
+Relevant fields are listed below:\begin{itemize}
+\item primary\_\-dest\_\-addr\item primary\_\-dest\_\-port\item primary\_\-source\_\-addr\item primary\_\-source\_\-port\item fbt\_\-addr\item primary\_\-source\_\-rtcp\_\-port\item rtx\_\-source\_\-addr\item rtx\_\-source\_\-port\item rtx\_\-source\_\-rtcp\_\-port\end{itemize}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em cfg}]- identifies active channel to update via (primary\_\-dest\_\-addr, primary\_\-dest\_\-port) fields, and supplies updated channel values (see above) \item[\mbox{$\leftarrow$} {\em up}]- update parameters (not used, NULL should be passed) \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]- result of update operation: VQEC\_\-ERR\_\-CHANNOTACTIVE supplied channel not currently active VQEC\_\-ERR\_\-INVALIDARGS invalid channel parameters VQEC\_\-ERR\_\-INTERNAL internal error, see logs VQEC\_\-OK update succeeded ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_check_tuner_validity_by_name@{vqec\_\-ifclient\_\-check\_\-tuner\_\-validity\_\-by\_\-name}}
+\index{vqec_ifclient_check_tuner_validity_by_name@{vqec\_\-ifclient\_\-check\_\-tuner\_\-validity\_\-by\_\-name}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED uint8\_\-t vqec\_\-ifclient\_\-check\_\-tuner\_\-validity\_\-by\_\-name (const char $\ast$ {\em namestr})}\label{vqec__ifclient_8h_d944a445b7d72497d93947e7879d0f79}
+
+
+---------------------------------------------------------------------------- Check if the tuner specified by the name, exists.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em namestr}]Unique name of the tuner. $\ast$namestr cannot be an empty string. \item[\mbox{$\rightarrow$} {\em Boolean}]value specifying the existence of the tuner -------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_clear_stats@{vqec\_\-ifclient\_\-clear\_\-stats}}
+\index{vqec_ifclient_clear_stats@{vqec\_\-ifclient\_\-clear\_\-stats}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED void vqec\_\-ifclient\_\-clear\_\-stats (void)}\label{vqec__ifclient_8h_e25d284b791bad3923ef6b91041c0725}
+
+
+--------------------------------------------------------------------------- Clear global/historical (non cumulative) statistics. ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_config_override_update@{vqec\_\-ifclient\_\-config\_\-override\_\-update}}
+\index{vqec_ifclient_config_override_update@{vqec\_\-ifclient\_\-config\_\-override\_\-update}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-ifclient\_\-config\_\-override\_\-update (\bf{vqec\_\-ifclient\_\-config\_\-override\_\-params\_\-t} $\ast$ {\em params})}\label{vqec__ifclient_8h_505faa515d07c2fb00ea15a68adabad2}
+
+
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_config_register@{vqec\_\-ifclient\_\-config\_\-register}}
+\index{vqec_ifclient_config_register@{vqec\_\-ifclient\_\-config\_\-register}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-ifclient\_\-config\_\-register (const \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t} $\ast$ {\em params})}\label{vqec__ifclient_8h_01ed4996f5b9a8283fd59d1e89fde2cc}
+
+
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_config_status@{vqec\_\-ifclient\_\-config\_\-status}}
+\index{vqec_ifclient_config_status@{vqec\_\-ifclient\_\-config\_\-status}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-ifclient\_\-config\_\-status (\bf{vqec\_\-ifclient\_\-config\_\-status\_\-params\_\-t} $\ast$ {\em params})}\label{vqec__ifclient_8h_48b2259f03ad09d0fbb61c6e5c86bcfd}
+
+
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_config_update@{vqec\_\-ifclient\_\-config\_\-update}}
+\index{vqec_ifclient_config_update@{vqec\_\-ifclient\_\-config\_\-update}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-ifclient\_\-config\_\-update (\bf{vqec\_\-ifclient\_\-config\_\-update\_\-params\_\-t} $\ast$ {\em params})}\label{vqec__ifclient_8h_c7249fb3562a1e10d5eb751c3531e32b}
+
+
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_deinit@{vqec\_\-ifclient\_\-deinit}}
+\index{vqec_ifclient_deinit@{vqec\_\-ifclient\_\-deinit}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED void vqec\_\-ifclient\_\-deinit (void)}\label{vqec__ifclient_8h_9dce776eb51b7c74720d0051c90f5c93}
+
+
+--------------------------------------------------------------------------- De-initialize the client interface. All previously resources allocated within VQEC are freed. Any other control/data thread activity should preferably be stopped prior to calling de-init. ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_free_sdp_handle@{vqec\_\-ifclient\_\-free\_\-sdp\_\-handle}}
+\index{vqec_ifclient_free_sdp_handle@{vqec\_\-ifclient\_\-free\_\-sdp\_\-handle}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED void vqec\_\-ifclient\_\-free\_\-sdp\_\-handle (\bf{vqec\_\-sdp\_\-handle\_\-t} {\em sdp\_\-handle})}\label{vqec__ifclient_8h_a68fe49b5ccdc6c893cd195e5c5daaad}
+
+
+Free an sdp\_\-handle. 
+
+--------------------------------------------------------------------------- Free an sdp\_\-handle ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_get_stats@{vqec\_\-ifclient\_\-get\_\-stats}}
+\index{vqec_ifclient_get_stats@{vqec\_\-ifclient\_\-get\_\-stats}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-get\_\-stats (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$ {\em s})}\label{vqec__ifclient_8h_407ec76ffb5835e09df4b7b1f9c2afe9}
+
+
+--------------------------------------------------------------------------- Retrieves the global/historical tuner statistics.
+
+These statistics track events which occur across all tuners, since VQE-C initialization or the last time at which they were cleared, i.e. the statistics are relative to the last time \char`\"{}clear counters\char`\"{} was issued from the CLI.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em ptr}]to vqec\_\-ifclient\_\-stats\_\-t structure that will be populated \item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-OK on success. On failure, the following error codes are returned: {\em VQEC\_\-ERR\_\-INVALIDARGS\/}\par
+ ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_get_stats_channel@{vqec\_\-ifclient\_\-get\_\-stats\_\-channel}}
+\index{vqec_ifclient_get_stats_channel@{vqec\_\-ifclient\_\-get\_\-stats\_\-channel}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-get\_\-stats\_\-channel (const char $\ast$ {\em url}, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$ {\em stats})}\label{vqec__ifclient_8h_a410687ee330de00cf7c48214b874efa}
+
+
+--------------------------------------------------------------------------- Retrieves stats for an active channel (a channel to which one or more tuners are currently bound).
+
+These statistics accumulate with the binding of the first tuner to the channel, and are cleared whenever the channel becomes inactive (no longer bound to any tuner).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em url}]- URL specifying the channel of interest. This URL should match the one specified in the call to \doxyref{vqec\_\-ifclient\_\-alloc\_\-sdp\_\-handle\_\-from\_\-url()}{p.}{vqec__ifclient_8c_5c1d733582739ee1345be64bfd04bf9b} prior to the \doxyref{vqec\_\-ifclient\_\-tuner\_\-bind\_\-chan()}{p.}{vqec__ifclient_8c_fb384d13280bf9b1917de560fcac6747} call. (See the header for \doxyref{vqec\_\-ifclient\_\-alloc\_\-sdp\_\-handle\_\-from\_\-url()}{p.}{vqec__ifclient_8c_5c1d733582739ee1345be64bfd04bf9b} for details.) \item[\mbox{$\rightarrow$} {\em stats}]- Stats which have occurred for the active channel \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]- Returns VQEC\_\-OK on success. On failure, the following error codes may be returned: {\em VQEC\_\-ERR\_\-INVALIDARGS\/}\par
+ {\em VQEC\_\-ERR\_\-CHANNELPARSE\/}\par
+ {\em VQEC\_\-ERR\_\-CHANNOTACTIVE\/}\par
+ ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_get_stats_channel_cumulative@{vqec\_\-ifclient\_\-get\_\-stats\_\-channel\_\-cumulative}}
+\index{vqec_ifclient_get_stats_channel_cumulative@{vqec\_\-ifclient\_\-get\_\-stats\_\-channel\_\-cumulative}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-get\_\-stats\_\-channel\_\-cumulative (const char $\ast$ {\em url}, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$ {\em stats})}\label{vqec__ifclient_8h_4ea823c35a7132fa45fe5db4f6b37158}
+
+
+--------------------------------------------------------------------------- This is a cumulative version of the vqec\_\-ifclient\_\-get\_\-stats\_\-channel API and retrieves cumulative stats for an active channel. For more details refer to vqec\_\-ifclient\_\-get\_\-stats\_\-channel API.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em url}]- URL specifying the channel of interest. This URL should match the one specified in the call to \doxyref{vqec\_\-ifclient\_\-alloc\_\-sdp\_\-handle\_\-from\_\-url()}{p.}{vqec__ifclient_8c_5c1d733582739ee1345be64bfd04bf9b} prior to the \doxyref{vqec\_\-ifclient\_\-tuner\_\-bind\_\-chan()}{p.}{vqec__ifclient_8c_fb384d13280bf9b1917de560fcac6747} call. (See the header for \doxyref{vqec\_\-ifclient\_\-alloc\_\-sdp\_\-handle\_\-from\_\-url()}{p.}{vqec__ifclient_8c_5c1d733582739ee1345be64bfd04bf9b} for details.) \item[\mbox{$\rightarrow$} {\em stats}]- Stats which have occurred for the active channel \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]- Returns VQEC\_\-OK on success. On failure, the following error codes may be returned: {\em VQEC\_\-ERR\_\-INVALIDARGS\/}\par
+ {\em VQEC\_\-ERR\_\-CHANNELPARSE\/}\par
+ {\em VQEC\_\-ERR\_\-CHANNOTACTIVE\/}\par
+ ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_get_stats_channel_tr135_sample@{vqec\_\-ifclient\_\-get\_\-stats\_\-channel\_\-tr135\_\-sample}}
+\index{vqec_ifclient_get_stats_channel_tr135_sample@{vqec\_\-ifclient\_\-get\_\-stats\_\-channel\_\-tr135\_\-sample}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC vqec\_\-error\_\-t vqec\_\-ifclient\_\-get\_\-stats\_\-channel\_\-tr135\_\-sample (const char $\ast$ {\em url}, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-tr135\_\-sample\_\-t} $\ast$ {\em stats})}\label{vqec__ifclient_8h_83d11e7e171a0ae9fa0676fa20a75adf}
+
+
+--------------------------------------------------------------------------- The API is useful to gather TR-135 sample statistics between TR-135 application-defined 'sample intervals'. Upon calling this API, VQE-C first populates the external tr135 sample-stats data structure and then, TR-135 stats internal to VQE-C, are reset. Thus, the TR-135 Application can use this function to gather TR-135 sample statistics between two consecutive invocations of this function.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em url}]URL specifying the channel of interest \item[\mbox{$\rightarrow$} {\em stats}]TR-135 sample parameters \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]- Returns VQEC\_\-OK on success. On failure, the following error codes may be returned: {\em VQEC\_\-ERR\_\-INVALIDARGS\/}\par
+ {\em VQEC\_\-ERR\_\-CHANNELPARSE\/}\par
+ {\em VQEC\_\-ERR\_\-CHANNOTACTIVE\/}\par
+ ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_get_stats_cumulative@{vqec\_\-ifclient\_\-get\_\-stats\_\-cumulative}}
+\index{vqec_ifclient_get_stats_cumulative@{vqec\_\-ifclient\_\-get\_\-stats\_\-cumulative}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-get\_\-stats\_\-cumulative (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$ {\em s})}\label{vqec__ifclient_8h_b1a1ff1338d1d9900f056f50fa6a1949}
+
+
+--------------------------------------------------------------------------- Retrieves the cumulative global/historical tuner statistics.
+
+These statistics track events which occur across all tuners, since VQE-C initialization.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em ptr}]to vqec\_\-ifclient\_\-stats\_\-t structure that will be populated \item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-OK on success. On failure, the following error codes are returned: {\em VQEC\_\-ERR\_\-INVALIDARGS\/}\par
+ ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_histogram_clear@{vqec\_\-ifclient\_\-histogram\_\-clear}}
+\index{vqec_ifclient_histogram_clear@{vqec\_\-ifclient\_\-histogram\_\-clear}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-histogram\_\-clear (const \bf{vqec\_\-hist\_\-t} {\em hist})}\label{vqec__ifclient_8h_a5967b63ab85ee46d6fa6b5eae484581}
+
+
+--------------------------------------------------------------------------- Clears a histogram maintained internally by VQE-C (primarily used for monitoring or troubleshooting).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-OK on success. On failure, the following error codes are returned: {\em VQEC\_\-ERR\_\-INVALIDARGS\/}\par
+ ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_histogram_display@{vqec\_\-ifclient\_\-histogram\_\-display}}
+\index{vqec_ifclient_histogram_display@{vqec\_\-ifclient\_\-histogram\_\-display}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-histogram\_\-display (const \bf{vqec\_\-hist\_\-t} {\em hist})}\label{vqec__ifclient_8h_9d054fd24016e387159b7ddb6340b884}
+
+
+--------------------------------------------------------------------------- Display a histogram maintained internally by VQE-C (primarily used for monitoring or troubleshooting). The display is either to the CLI session, if one is active or to stderr if there is no CLI session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em hist}]Histogram to be displayed \item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-OK on success. On failure, the following error codes are returned: {\em VQEC\_\-ERR\_\-INVALIDARGS\/}\par
+ {\em VQEC\_\-ERR\_\-MALLOC\/}\par
+ {\em VQEC\_\-ERR\_\-NOTINITIALIZED\/}\par
+ ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_init@{vqec\_\-ifclient\_\-init}}
+\index{vqec_ifclient_init@{vqec\_\-ifclient\_\-init}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-init (const char $\ast$ {\em filename})}\label{vqec__ifclient_8h_d061f13d086aa7affb9fe2c4cddd0bde}
+
+
+--------------------------------------------------------------------------- Initialize the client interface. Initialization may block while updates to network and channel configuration are requested over the network. VQE-C initialization requires that network services already be initialized (such that VQE-C may retrieve MAC addresses associated with its interfaces and communicate over network sockets).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em filename}]VQEC's configuration file. This file may be NULL, in which case default configuration parameters shall be used. \item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-OK on success. On failure, the following error codes are returned:\end{description}
+\end{Desc}
+When VQEC services are no longer needed, the \doxyref{vqec\_\-ifclient\_\-deinit()}{p.}{vqec__ifclient_8c_e51cc2d0290b92065262a9bb44fbae55} API may be invoked in order to free allocated resources.
+
+NOTE: If VQE-C services have been initialized with this function and the caller wishes to re-initialize VQE-C with a new configuration file (or if the configuration file's contents have changed), then \doxyref{vqec\_\-ifclient\_\-deinit()}{p.}{vqec__ifclient_8c_e51cc2d0290b92065262a9bb44fbae55} MUST be called prior to calling \doxyref{vqec\_\-ifclient\_\-init()}{p.}{vqec__ifclient_8c_d7f977502da84bda5a7abfd92b833ca1} again.
+
+{\em VQEC\_\-ERR\_\-MALLOC\/}\par
+ {\em VQEC\_\-ERR\_\-SYSCALL\/}\par
+ {\em VQEC\_\-ERR\_\-CONFIG\_\-NOT\_\-FOUND\/}\par
+ {\em VQEC\_\-ERR\_\-PARAMRANGEINVALID\/}\par
+ ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_is_vqec_enabled@{vqec\_\-ifclient\_\-is\_\-vqec\_\-enabled}}
+\index{vqec_ifclient_is_vqec_enabled@{vqec\_\-ifclient\_\-is\_\-vqec\_\-enabled}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t vqec\_\-ifclient\_\-is\_\-vqec\_\-enabled (void)}\label{vqec__ifclient_8h_3e586dc8892ba1ba06fcbdb3556e0f6d}
+
+
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_nat_binding_update@{vqec\_\-ifclient\_\-nat\_\-binding\_\-update}}
+\index{vqec_ifclient_nat_binding_update@{vqec\_\-ifclient\_\-nat\_\-binding\_\-update}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-nat\_\-binding\_\-update (in\_\-addr\_\-t {\em prim\_\-dest\_\-ip}, in\_\-port\_\-t {\em prim\_\-dest\_\-port})}\label{vqec__ifclient_8h_d7f27a2e95f5b71ac5dbc42023af6e78}
+
+
+---------------------------------------------------------------------------
+
+Update the nat binding of a channel. This function close the previous nat binding of the channel and restart a new nat binding process. It is mainly used for VOD failover support.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifies channel to update. \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]- result of update operation: VQEC\_\-ERR\_\-CHANNOTACTIVE supplied channel not currently active VQEC\_\-ERR\_\-INVALIDARGS invalid channel parameters VQEC\_\-ERR\_\-INTERNAL internal error, see logs VQEC\_\-OK update succeeded ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_register_cname@{vqec\_\-ifclient\_\-register\_\-cname}}
+\index{vqec_ifclient_register_cname@{vqec\_\-ifclient\_\-register\_\-cname}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED uint8\_\-t vqec\_\-ifclient\_\-register\_\-cname (char $\ast$ {\em cname})}\label{vqec__ifclient_8h_cb854f43278b694ede26a6de38ac5eeb}
+
+
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_remove_tmp_chan@{vqec\_\-ifclient\_\-remove\_\-tmp\_\-chan}}
+\index{vqec_ifclient_remove_tmp_chan@{vqec\_\-ifclient\_\-remove\_\-tmp\_\-chan}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC void vqec\_\-ifclient\_\-remove\_\-tmp\_\-chan (\bf{vqec\_\-in\_\-addr\_\-t} {\em dest\_\-ip}, \bf{vqec\_\-in\_\-port\_\-t} {\em port})}\label{vqec__ifclient_8h_32b69b6a81a642aac8c385def9066352}
+
+
+API for removing a channel from temp channel database based on the destination IP address
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em dest\_\-ip,:}]dest ip address (network byte order) \item[\mbox{$\leftarrow$} {\em port,:}]dest port (network byte order) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]: TRUE if success, FALSE otherwise \end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_rtp_hdr_parse@{vqec\_\-ifclient\_\-rtp\_\-hdr\_\-parse}}
+\index{vqec_ifclient_rtp_hdr_parse@{vqec\_\-ifclient\_\-rtp\_\-hdr\_\-parse}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC vqec\_\-error\_\-t vqec\_\-ifclient\_\-rtp\_\-hdr\_\-parse (char $\ast$ {\em buf}, uint16\_\-t {\em len}, \bf{vqec\_\-rtphdr\_\-t} $\ast$ {\em rtp\_\-hdr})}\label{vqec__ifclient_8h_3e0274ca82630437be6cf42520a31514}
+
+
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_set_tr135_params_channel@{vqec\_\-ifclient\_\-set\_\-tr135\_\-params\_\-channel}}
+\index{vqec_ifclient_set_tr135_params_channel@{vqec\_\-ifclient\_\-set\_\-tr135\_\-params\_\-channel}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC vqec\_\-error\_\-t vqec\_\-ifclient\_\-set\_\-tr135\_\-params\_\-channel (const char $\ast$ {\em url}, \bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t} $\ast$ {\em params})}\label{vqec__ifclient_8h_f1812cca5d1c9e1526db6d7a27243f29}
+
+
+--------------------------------------------------------------------------- Used to set the tr-135 control parameters gmin and severe\_\-loss\_\-min\_\-distance for an active channel (a channel to whom one or more tuners is currently bound). These changes to channel's TR135 take effect immediately upon successful return from this API.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em url}]URL specifying the channel of interest \item[\mbox{$\leftarrow$} {\em params}]TR-135 writable parameters \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]- Returns VQEC\_\-OK on success. On failure, the following error codes may be returned: {\em VQEC\_\-ERR\_\-INVALIDARGS\/}\par
+ {\em VQEC\_\-ERR\_\-CHANNELPARSE\/}\par
+ {\em VQEC\_\-ERR\_\-CHANNOTACTIVE\/}\par
+ ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_socket_close@{vqec\_\-ifclient\_\-socket\_\-close}}
+\index{vqec_ifclient_socket_close@{vqec\_\-ifclient\_\-socket\_\-close}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC void vqec\_\-ifclient\_\-socket\_\-close (\bf{vqec\_\-in\_\-addr\_\-t} {\em addr}, \bf{vqec\_\-in\_\-port\_\-t} {\em rtp\_\-port}, \bf{vqec\_\-in\_\-port\_\-t} {\em rtcp\_\-port})}\label{vqec__ifclient_8h_ae27b20e346bcf19d788f44d41144e82}
+
+
+--------------------------------------------------------------------------- Close a port opened by the vqec\_\-ifclient\_\-socket\_\-open function.
+
+NOTE: addr and ports MUST be supplied in network byte order,
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em addr}]IP address of open socket (network byte order) \item[\mbox{$\leftarrow$} {\em rtp\_\-port}]rtp port number of open socket (network byte order) \item[\mbox{$\leftarrow$} {\em rtcp\_\-port}]rtcp port number of open socket (network byte order) -------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_socket_open@{vqec\_\-ifclient\_\-socket\_\-open}}
+\index{vqec_ifclient_socket_open@{vqec\_\-ifclient\_\-socket\_\-open}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-socket\_\-open (\bf{vqec\_\-in\_\-addr\_\-t} $\ast$ {\em addr}, \bf{vqec\_\-in\_\-port\_\-t} $\ast$ {\em rtp\_\-port}, \bf{vqec\_\-in\_\-port\_\-t} $\ast$ {\em rtcp\_\-port})}\label{vqec__ifclient_8h_46d07f9ce22d9578a18c2f36661bc192}
+
+
+--------------------------------------------------------------------------- Reserve two ports for a subsequent vqec\_\-ifclient\_\-tuner\_\-bind\_\-chan\_\-cfg call. The reserved port may be used as the destination for the primary or retransmission stream when populating a vqec\_\-chan\_\-cfg\_\-t structure. vqec\_\-ifclient\_\-socket\_\-close must be used to free allocated ports. All arguments may also be used as an input args for specifying the exact interface and ports to be opened. An address or port with a null or zero value allows VQE-C to choose the appropriate interface or the next available port number.
+
+NOTE: addr and ports MUST be supplied in network byte order, and are returned in network byte order.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em in/out\mbox{]}}]addr IP address of open socket (network byte order) \item[{\em in/out\mbox{]}}]rtp\_\-port rtp port number of open socket (network byte order) \item[{\em in/out\mbox{]}}]rtcp\_\-port rtcp port number of open socket(network byte order) \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE if successful, FALSE otherwise -------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_start@{vqec\_\-ifclient\_\-start}}
+\index{vqec_ifclient_start@{vqec\_\-ifclient\_\-start}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-start (void)}\label{vqec__ifclient_8h_0c9077932c408f5161bb6aab3a119923}
+
+
+--------------------------------------------------------------------------- Start the client interface.
+
+\doxyref{vqec\_\-ifclient\_\-init()}{p.}{vqec__ifclient_8c_d7f977502da84bda5a7abfd92b833ca1} must have been invoked prior to this call. This function runs the libevent event-polling thread, and will $\ast$not$\ast$ return, until \doxyref{vqec\_\-ifclient\_\-stop()}{p.}{vqec__ifclient_8c_1524f5e97b51de4095e9010afdd27992} is executed asynchronously from another thread. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-OK on success. On failure, the following error codes are returned: {\em VQEC\_\-ERR\_\-INVCLIENTSTATE\/}\par
+ {\em VQEC\_\-ERR\_\-MALLOC\/}\par
+ ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_stop@{vqec\_\-ifclient\_\-stop}}
+\index{vqec_ifclient_stop@{vqec\_\-ifclient\_\-stop}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED void vqec\_\-ifclient\_\-stop (void)}\label{vqec__ifclient_8h_8276cdd3d13fe211287e4bfb35b53007}
+
+
+--------------------------------------------------------------------------- Stop the client interface.
+
+The client interface is stopped, i.e., the thread that invoked \doxyref{vqec\_\-ifclient\_\-init()}{p.}{vqec__ifclient_8c_d7f977502da84bda5a7abfd92b833ca1} will suspend event polling and return, given that it has been previously started. ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_trigger_update@{vqec\_\-ifclient\_\-trigger\_\-update}}
+\index{vqec_ifclient_trigger_update@{vqec\_\-ifclient\_\-trigger\_\-update}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC void vqec\_\-ifclient\_\-trigger\_\-update (void)}\label{vqec__ifclient_8h_5dd5fbc65ac7ad6d671fa2aa478d3438}
+
+
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_tuner_bind_chan@{vqec\_\-ifclient\_\-tuner\_\-bind\_\-chan}}
+\index{vqec_ifclient_tuner_bind_chan@{vqec\_\-ifclient\_\-tuner\_\-bind\_\-chan}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-tuner\_\-bind\_\-chan (const vqec\_\-tunerid\_\-t {\em id}, const \bf{vqec\_\-sdp\_\-handle\_\-t} {\em sdp\_\-handle}, const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_bfa63c8acd459af62ae1a8235abc6ef2}
+
+
+--------------------------------------------------------------------------- Open or \char`\"{}bind\char`\"{} a channel to an existing tuner.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Existing tuner object's identifier. \item[\mbox{$\leftarrow$} {\em sdp\_\-handle}]handle to an sdp description of a channel. Note the sdp\_\-handle is really the \char`\"{}o = \char`\"{} line of a config. \item[\mbox{$\leftarrow$} {\em bp}]Bind parameters to apply when binding the channel. \item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-OK on success. Otherwise, the following failures may occur:\end{description}
+\end{Desc}
+{\em VQEC\_\-ERR\_\-NOSUCHTUNER\/}\par
+ {\em VQEC\_\-ERR\_\-CHANNELLOOKUP\/}\par
+ {\em VQEC\_\-ERR\_\-SESSIONCREATE\/}\par
+ {\em VQEC\_\-ERR\_\-MALLOC\/}\par
+ ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_tuner_bind_chan_cfg@{vqec\_\-ifclient\_\-tuner\_\-bind\_\-chan\_\-cfg}}
+\index{vqec_ifclient_tuner_bind_chan_cfg@{vqec\_\-ifclient\_\-tuner\_\-bind\_\-chan\_\-cfg}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-tuner\_\-bind\_\-chan\_\-cfg (const vqec\_\-tunerid\_\-t {\em id}, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em cfg}, const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp})}\label{vqec__ifclient_8h_ba745bf31d909aec6606ac37fa1ae7ce}
+
+
+--------------------------------------------------------------------------- Open or \char`\"{}bind\char`\"{} a channel (specified by chan cfg) to an existing tuner.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Existing tuner object's identifier. \item[\mbox{$\leftarrow$} {\em cfg}]Pointer to a vqec\_\-chan\_\-cfg\_\-t struct which describes the channel to be tuned. \item[\mbox{$\leftarrow$} {\em bp}]Parameters for this particular bind \item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-OK on success. Otherwise, the following failures may occur:\end{description}
+\end{Desc}
+{\em VQEC\_\-ERR\_\-NOSUCHTUNER\/}\par
+ {\em VQEC\_\-ERR\_\-SESSIONCREATE\/}\par
+ {\em VQEC\_\-ERR\_\-MALLOC\/}\par
+ ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_tuner_create@{vqec\_\-ifclient\_\-tuner\_\-create}}
+\index{vqec_ifclient_tuner_create@{vqec\_\-ifclient\_\-tuner\_\-create}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-tuner\_\-create (vqec\_\-tunerid\_\-t $\ast$ {\em id}, const char $\ast$ {\em namestr})}\label{vqec__ifclient_8h_ab5a8fc2d0208b04e46fe0fed9664990}
+
+
+--------------------------------------------------------------------------- Create a tuner object. A tuner object can then \char`\"{}tune\char`\"{} or \char`\"{}listen\char`\"{} to a particular video input stream, referred to as a \char`\"{}channel\char`\"{}. The maximum number of tuner objects that can exist in a system is a global configuration parameter. Tuner id's are opaque values.
+
+A string identifier which is unique across all existing tuner objects will serve as the name of the tuner.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em id}]The opaque integral identifier for the tuner object created by invoking the method is placed at $\ast$id. If errors are encountered the identifier is set to VQEC\_\-TUNERID\_\-INVALID. \item[\mbox{$\leftarrow$} {\em namestr}]String representing the tuner's name. The length of namestr will be truncated to VQEC\_\-MAX\_\-TUNER\_\-NAMESTR\_\-LEN. If namestr is an empty string, or another tuner with the given name exists, the call will fail. If namestr is NULL, the lowest unused tuner index \char`\"{}i\char`\"{} will be used to create a new tuner - the name of the tuner is then the index \char`\"{}i\char`\"{}. If the maximum configured tuner limit is reached the call will fail. \item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]If tuner creation is successful, returns VQEC\_\-OK. The following failures may occur:\end{description}
+\end{Desc}
+{\em VQEC\_\-ERR\_\-EXISTTUNER\/}\par
+ {\em VQEC\_\-ERR\_\-MAXLIMITTUNER\/}\par
+ {\em VQEC\_\-ERR\_\-CREATETUNER\/} \par
+ {\em VQEC\_\-ERR\_\-INVALIDARGS\/}\par
+ ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_tuner_destroy@{vqec\_\-ifclient\_\-tuner\_\-destroy}}
+\index{vqec_ifclient_tuner_destroy@{vqec\_\-ifclient\_\-tuner\_\-destroy}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-tuner\_\-destroy (const vqec\_\-tunerid\_\-t {\em id})}\label{vqec__ifclient_8h_269fbcf674eaad4b9f6fefbcde0c8b9c}
+
+
+--------------------------------------------------------------------------- Delete an existing tuner object. Any channel currently open on the tuner is closed.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Existing tuner object's identifier. \item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-OK on success. Otherwise, the following failures may occur:\end{description}
+\end{Desc}
+{\em VQEC\_\-ERR\_\-NOSUCHTUNER\/}\par
+ ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_tuner_dump_state@{vqec\_\-ifclient\_\-tuner\_\-dump\_\-state}}
+\index{vqec_ifclient_tuner_dump_state@{vqec\_\-ifclient\_\-tuner\_\-dump\_\-state}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-tuner\_\-dump\_\-state (const vqec\_\-tunerid\_\-t {\em id}, unsigned int {\em options\_\-flag})}\label{vqec__ifclient_8h_24c5285379f05ea826a2e0b70426c59d}
+
+
+--------------------------------------------------------------------------- Display all state variables for a tuner including statistics (primarily used for debugging). The display is either to the CLI session, if one is active or to stderr if there is no CLI session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-OK on success. On failure, the following error codes are returned: {\em VQEC\_\-ERR\_\-NOSUCHTUNER\/}\par
+ ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_tuner_is_fastfill_enabled@{vqec\_\-ifclient\_\-tuner\_\-is\_\-fastfill\_\-enabled}}
+\index{vqec_ifclient_tuner_is_fastfill_enabled@{vqec\_\-ifclient\_\-tuner\_\-is\_\-fastfill\_\-enabled}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-tuner\_\-is\_\-fastfill\_\-enabled (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__ifclient_8h_639447141c796f9b390c3dc6cf830c5b}
+
+
+--------------------------------------------------------------------------- Is a fastfill operation enabled for the tuner? Fastfill will be inactive if the application requested no fastfill at bind time, or if the client or server had fastfill disabled via configuration. If called when the tuner is not bound the method will return false.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Tuner identifier. \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE for fastfill enabled, FALSE otherwise. ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_tuner_is_rcc_enabled@{vqec\_\-ifclient\_\-tuner\_\-is\_\-rcc\_\-enabled}}
+\index{vqec_ifclient_tuner_is_rcc_enabled@{vqec\_\-ifclient\_\-tuner\_\-is\_\-rcc\_\-enabled}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC uint8\_\-t vqec\_\-ifclient\_\-tuner\_\-is\_\-rcc\_\-enabled (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__ifclient_8h_611e7b0535912471389e565620e7cf5d}
+
+
+--------------------------------------------------------------------------- Is a RCC operation enabled for the tuner? RCC will be inactive if the application requested no RCC at bind time, or if the client or server had RCC disabled via configuration. If called when the tuner is not bound the method will return false.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Tuner identifier. \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE for RCC enabled, FALSE otherwise. ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_tuner_iter_init_first@{vqec\_\-ifclient\_\-tuner\_\-iter\_\-init\_\-first}}
+\index{vqec_ifclient_tuner_iter_init_first@{vqec\_\-ifclient\_\-tuner\_\-iter\_\-init\_\-first}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-tunerid\_\-t vqec\_\-ifclient\_\-tuner\_\-iter\_\-init\_\-first (\bf{vqec\_\-tuner\_\-iter\_\-t} $\ast$ {\em iter})}\label{vqec__ifclient_8h_aca6fcf3ac30bd076d6647780e82e7ef}
+
+
+--------------------------------------------------------------------------- [Thread-safe] Initialize an iterator which can iterate over all tuners. The current implementation of this iterator is quite modest. It is assumed that a linear-map of tuners is maintained such that the position of tuners in that map does not change, once they are allocated. The initializer sets two indices in the structure: a beginning position, which corresponds to some \char`\"{}first\char`\"{} tuner, and an end position which corresponds to some \char`\"{}last\char`\"{} tuner. The meaning of these positions is opaque to a user, and it suggested that users do not use them directly. Instead they should use the FOR\_\-ALL macro to iterate over all of the tuners.
+
+If additional tuners are added while the walk is in progress, they will be returned in the walk if the addition completed before the walk reaches the tuner's position in the linear map. The FOR\_\-ALL macro initializes the iterator before use.
+
+Example: \par
+ vqec\_\-tuner\_\-iter\_\-t m\_\-iter; \par
+ vqec\_\-tuner\_\-id\_\-t m\_\-id; \par
+ \doxyref{FOR\_\-ALL\_\-TUNERS\_\-IN\_\-LIST(m\_\-iter, m\_\-id)}{p.}{vqec__ifclient_8h_9a7ef77543ed729d3c4fba5076496581} \{ \par
+ ... printf(\char`\"{}\%s\char`\"{}, vqec\_\-ifclient\_\-tuner\_\-get\_\-name\_\-by\_\-id(m\_\-id, ..)); \par
+ \} \par
+\begin{itemize}
+\item Do not acquire the global lock when using the loop! $\ast$$\ast$\end{itemize}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em iter}]Iterator structure which will be initialized. ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_tuner_rccabort2str@{vqec\_\-ifclient\_\-tuner\_\-rccabort2str}}
+\index{vqec_ifclient_tuner_rccabort2str@{vqec\_\-ifclient\_\-tuner\_\-rccabort2str}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-ifclient\_\-tuner\_\-rccabort2str (char $\ast$ {\em str}, uint32\_\-t {\em len}, \bf{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t} {\em abort\_\-code})}\label{vqec__ifclient_8h_192e69214edac0665bd638e5f70fd323}
+
+
+--------------------------------------------------------------------------- Get the string representation corresponding to a VQEC RCC abort code.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em str}]string into which RCC abort status is written \item[\mbox{$\leftarrow$} {\em len}]length of \char`\"{}str\char`\"{} \item[\mbox{$\leftarrow$} {\em abort\_\-code}]RCC abort code \item[\mbox{$\rightarrow$} {\em char}]$\ast$ \char`\"{}str\char`\"{} upon success, or NULL if failure ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_tuner_unbind_chan@{vqec\_\-ifclient\_\-tuner\_\-unbind\_\-chan}}
+\index{vqec_ifclient_tuner_unbind_chan@{vqec\_\-ifclient\_\-tuner\_\-unbind\_\-chan}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-tuner\_\-unbind\_\-chan (const vqec\_\-tunerid\_\-t {\em id})}\label{vqec__ifclient_8h_60416a50e38b92f87edc53469f3f5d6e}
+
+
+--------------------------------------------------------------------------- Close or unbind any channel that is currently bound to a tuner. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Existing tuner object's identifier. \item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-OK on success. Otherwise, the following errors may occur:\end{description}
+\end{Desc}
+{\em VQEC\_\-ERR\_\-NOSUCHTUNER\/}\par
+ ---------------------------------------------------------------------------- \index{vqec_ifclient.h@{vqec\_\-ifclient.h}!vqec_ifclient_updater_get_stats@{vqec\_\-ifclient\_\-updater\_\-get\_\-stats}}
+\index{vqec_ifclient_updater_get_stats@{vqec\_\-ifclient\_\-updater\_\-get\_\-stats}!vqec_ifclient.h@{vqec\_\-ifclient.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC\_\-PUBLIC VQEC\_\-SYNCHRONIZED vqec\_\-error\_\-t vqec\_\-ifclient\_\-updater\_\-get\_\-stats (\bf{vqec\_\-ifclient\_\-updater\_\-stats\_\-t} $\ast$ {\em s})}\label{vqec__ifclient_8h_2ba133af2a3fa2f0b650a675cb5b3f31}
+
+

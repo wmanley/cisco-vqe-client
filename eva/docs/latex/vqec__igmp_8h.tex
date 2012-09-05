@@ -1,0 +1,79 @@
+\section{vqec\_\-igmp.h File Reference}
+\label{vqec__igmp_8h}\index{vqec_igmp.h@{vqec\_\-igmp.h}}
+{\tt \#include \char`\"{}vqec\_\-event.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-error.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-recv\_\-socket.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-igmp\_\-t}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{MAX\_\-ETHERNET\_\-INTERFACE\_\-NAME\_\-LEN}~(32)
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+boolean \bf{vqec\_\-igmp\_\-create} (vqec\_\-tunerid\_\-t tuner\_\-id, char $\ast$if\_\-name, in\_\-addr\_\-t output\_\-if)
+\item 
+void \bf{vqec\_\-igmp\_\-destroy} (vqec\_\-tunerid\_\-t tuner\_\-id)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-proxy\_\-igmp\_\-join} (const char $\ast$name, char $\ast$if\_\-name, in\_\-addr\_\-t stb\_\-addr, void($\ast$channel\_\-join\_\-call\_\-back\_\-func), void $\ast$channel\_\-join\_\-call\_\-back\_\-data, void($\ast$channel\_\-leave\_\-call\_\-back\_\-func), void $\ast$channel\_\-leave\_\-call\_\-back\_\-data)
+\item 
+void \bf{vqec\_\-cmd\_\-show\_\-proxy\_\-igmp\_\-stats} (vqec\_\-tunerid\_\-t id)
+\item 
+boolean \bf{vqec\_\-igmp\_\-module\_\-init} (void)
+\item 
+void \bf{vqec\_\-igmp\_\-module\_\-deinit} (void)
+\item 
+void \bf{vqec\_\-igmp\_\-proxy\_\-init} (char $\ast$\bf{filename})
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_igmp.h@{vqec\_\-igmp.h}!MAX_ETHERNET_INTERFACE_NAME_LEN@{MAX\_\-ETHERNET\_\-INTERFACE\_\-NAME\_\-LEN}}
+\index{MAX_ETHERNET_INTERFACE_NAME_LEN@{MAX\_\-ETHERNET\_\-INTERFACE\_\-NAME\_\-LEN}!vqec_igmp.h@{vqec\_\-igmp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-ETHERNET\_\-INTERFACE\_\-NAME\_\-LEN~(32)}\label{vqec__igmp_8h_7b71361963cee59106d6e7e4789f20e0}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_igmp.h@{vqec\_\-igmp.h}!vqec_cmd_show_proxy_igmp_stats@{vqec\_\-cmd\_\-show\_\-proxy\_\-igmp\_\-stats}}
+\index{vqec_cmd_show_proxy_igmp_stats@{vqec\_\-cmd\_\-show\_\-proxy\_\-igmp\_\-stats}!vqec_igmp.h@{vqec\_\-igmp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cmd\_\-show\_\-proxy\_\-igmp\_\-stats (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__igmp_8h_6e2a49fa65a62111093f5a4adaf4e212}
+
+
+\index{vqec_igmp.h@{vqec\_\-igmp.h}!vqec_igmp_create@{vqec\_\-igmp\_\-create}}
+\index{vqec_igmp_create@{vqec\_\-igmp\_\-create}!vqec_igmp.h@{vqec\_\-igmp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-igmp\_\-create (vqec\_\-tunerid\_\-t {\em tuner\_\-id}, char $\ast$ {\em if\_\-name}, in\_\-addr\_\-t {\em output\_\-if})}\label{vqec__igmp_8h_350126a48298494233cc957f20b7d1fd}
+
+
+\index{vqec_igmp.h@{vqec\_\-igmp.h}!vqec_igmp_destroy@{vqec\_\-igmp\_\-destroy}}
+\index{vqec_igmp_destroy@{vqec\_\-igmp\_\-destroy}!vqec_igmp.h@{vqec\_\-igmp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-igmp\_\-destroy (vqec\_\-tunerid\_\-t {\em tuner\_\-id})}\label{vqec__igmp_8h_f1ad06f18c385d3f341c300f000c2ad6}
+
+
+\index{vqec_igmp.h@{vqec\_\-igmp.h}!vqec_igmp_module_deinit@{vqec\_\-igmp\_\-module\_\-deinit}}
+\index{vqec_igmp_module_deinit@{vqec\_\-igmp\_\-module\_\-deinit}!vqec_igmp.h@{vqec\_\-igmp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-igmp\_\-module\_\-deinit (void)}\label{vqec__igmp_8h_2f205e8ed740201453bbb1a72e267774}
+
+
+\index{vqec_igmp.h@{vqec\_\-igmp.h}!vqec_igmp_module_init@{vqec\_\-igmp\_\-module\_\-init}}
+\index{vqec_igmp_module_init@{vqec\_\-igmp\_\-module\_\-init}!vqec_igmp.h@{vqec\_\-igmp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-igmp\_\-module\_\-init (void)}\label{vqec__igmp_8h_561d8284f54157b65d11db6bdfe064ac}
+
+
+\index{vqec_igmp.h@{vqec\_\-igmp.h}!vqec_igmp_proxy_init@{vqec\_\-igmp\_\-proxy\_\-init}}
+\index{vqec_igmp_proxy_init@{vqec\_\-igmp\_\-proxy\_\-init}!vqec_igmp.h@{vqec\_\-igmp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-igmp\_\-proxy\_\-init (char $\ast$ {\em filename})}\label{vqec__igmp_8h_69ae7b54e63d564330ae3951b90d5ad5}
+
+
+\index{vqec_igmp.h@{vqec\_\-igmp.h}!vqec_proxy_igmp_join@{vqec\_\-proxy\_\-igmp\_\-join}}
+\index{vqec_proxy_igmp_join@{vqec\_\-proxy\_\-igmp\_\-join}!vqec_igmp.h@{vqec\_\-igmp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-proxy\_\-igmp\_\-join (const char $\ast$ {\em name}, char $\ast$ {\em if\_\-name}, in\_\-addr\_\-t {\em stb\_\-addr}, void $\ast$ {\em channel\_\-join\_\-call\_\-back\_\-func}, void $\ast$ {\em channel\_\-join\_\-call\_\-back\_\-data}, void $\ast$ {\em channel\_\-leave\_\-call\_\-back\_\-func}, void $\ast$ {\em channel\_\-leave\_\-call\_\-back\_\-data})}\label{vqec__igmp_8h_4fe27944c8062d69d2d34cd036b617b0}
+
+

@@ -1,0 +1,97 @@
+\section{vqec\_\-bind\_\-params\_\- Struct Reference}
+\label{structvqec__bind__params__}\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+int32\_\-t \bf{context\_\-id}
+\item 
+uint8\_\-t \bf{do\_\-rcc}
+\item 
+uint8\_\-t \bf{do\_\-fastfill}
+\item 
+uint32\_\-t \bf{max\_\-fastfill}
+\item 
+uint32\_\-t \bf{max\_\-recv\_\-bw\_\-rcc}
+\item 
+uint32\_\-t \bf{max\_\-recv\_\-bw\_\-er}
+\item 
+\bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t} $\ast$ \bf{dcr\_\-info\_\-ops}
+\item 
+\bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t} $\ast$ \bf{fastfill\_\-ops}
+\item 
+void($\ast$ \bf{mrb\_\-transition\_\-notify} )(int32\_\-t \bf{context\_\-id})
+\item 
+boolean \bf{ir\_\-time\_\-valid}
+\item 
+uint64\_\-t \bf{ir\_\-time}
+\item 
+\bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t} \bf{tr135\_\-params}
+\end{CompactItemize}
+
+
+\subsection{Field Documentation}
+\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!context_id@{context\_\-id}}
+\index{context_id@{context\_\-id}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t \bf{vqec\_\-bind\_\-params\_\-::context\_\-id}}\label{structvqec__bind__params___0f3dd2dd7d5cc31564c93fc7ba6bbe42}
+
+
+\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!dcr_info_ops@{dcr\_\-info\_\-ops}}
+\index{dcr_info_ops@{dcr\_\-info\_\-ops}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t}$\ast$ \bf{vqec\_\-bind\_\-params\_\-::dcr\_\-info\_\-ops}}\label{structvqec__bind__params___f19247e028fc36d195f44728d524e2e2}
+
+
+\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!do_fastfill@{do\_\-fastfill}}
+\index{do_fastfill@{do\_\-fastfill}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-bind\_\-params\_\-::do\_\-fastfill}}\label{structvqec__bind__params___b0c91d49cb055a1d6759cbd862f848d0}
+
+
+\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!do_rcc@{do\_\-rcc}}
+\index{do_rcc@{do\_\-rcc}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-bind\_\-params\_\-::do\_\-rcc}}\label{structvqec__bind__params___87cb0919632051ff81c949ca80fad669}
+
+
+\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!fastfill_ops@{fastfill\_\-ops}}
+\index{fastfill_ops@{fastfill\_\-ops}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t}$\ast$ \bf{vqec\_\-bind\_\-params\_\-::fastfill\_\-ops}}\label{structvqec__bind__params___93332d6dab06b443334af7f1175cc74f}
+
+
+This optional function pointer is passed to vqec from STB at channel change. vqec will use this pointer to get some stats information from decoder. \index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!ir_time@{ir\_\-time}}
+\index{ir_time@{ir\_\-time}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-bind\_\-params\_\-::ir\_\-time}}\label{structvqec__bind__params___83a25600f329ad5e3a72750ad552f55f}
+
+
+\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!ir_time_valid@{ir\_\-time\_\-valid}}
+\index{ir_time_valid@{ir\_\-time\_\-valid}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-bind\_\-params\_\-::ir\_\-time\_\-valid}}\label{structvqec__bind__params___c777bfdb24f5c20925dac4c295a8673a}
+
+
+\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!max_fastfill@{max\_\-fastfill}}
+\index{max_fastfill@{max\_\-fastfill}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-bind\_\-params\_\-::max\_\-fastfill}}\label{structvqec__bind__params___6706abf43791683f71b3f2081b376a05}
+
+
+\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!max_recv_bw_er@{max\_\-recv\_\-bw\_\-er}}
+\index{max_recv_bw_er@{max\_\-recv\_\-bw\_\-er}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-bind\_\-params\_\-::max\_\-recv\_\-bw\_\-er}}\label{structvqec__bind__params___ddca96fe8bc31da7bca2a865202109de}
+
+
+\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!max_recv_bw_rcc@{max\_\-recv\_\-bw\_\-rcc}}
+\index{max_recv_bw_rcc@{max\_\-recv\_\-bw\_\-rcc}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-bind\_\-params\_\-::max\_\-recv\_\-bw\_\-rcc}}\label{structvqec__bind__params___a0bff6efbcf1cba3caa905773d53c973}
+
+
+\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!mrb_transition_notify@{mrb\_\-transition\_\-notify}}
+\index{mrb_transition_notify@{mrb\_\-transition\_\-notify}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ \bf{vqec\_\-bind\_\-params\_\-::mrb\_\-transition\_\-notify})(int32\_\-t \bf{context\_\-id})}\label{structvqec__bind__params___f92d29ca34c5460505f1e51aa9ebc6ac}
+
+
+\index{vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}!tr135_params@{tr135\_\-params}}
+\index{tr135_params@{tr135\_\-params}!vqec_bind_params_@{vqec\_\-bind\_\-params\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t} \bf{vqec\_\-bind\_\-params\_\-::tr135\_\-params}}\label{structvqec__bind__params___b4b94db35b05ce940f841c7ece0aa8b9}
+
+
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-ifclient.c}\end{CompactItemize}

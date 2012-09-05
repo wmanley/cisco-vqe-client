@@ -1,0 +1,11 @@
+/*
+ * Copyright (c) 2009 by Cisco Systems, Inc.
+ * All rights reserved.
+ */
+fec_enable true
+jitter_buff_size 797
+
+/* invalid lines below */
+log_level 4
+jitter_buff_size
+

@@ -1,0 +1,196 @@
+\section{vqec\_\-rpc\_\-client.c File Reference}
+\label{vqec__rpc__client_8c}\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$sys/stat.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$sys/mman.h$>$}\par
+{\tt \#include $<$sys/ioctl.h$>$}\par
+{\tt \#include $<$vqec\_\-assert\_\-macros.h$>$}\par
+{\tt \#include $<$vqec\_\-dp\_\-api.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-rpc\_\-common.h\_\-rpcgen\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-debug.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-lock\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-rpc\_\-client.c\_\-rpcgen\char`\"{}}\par
+{\tt \#include \char`\"{}vqec-dp/vqec\_\-dp\_\-io\_\-stream.c\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-KERNEL\_\-DEVNODE\_\-PATH}~\char`\"{}/dev/\char`\"{}
+\item 
+\#define \bf{VQEC\_\-RPCLIENT\_\-LOGBUF\_\-LEN}~80
+\item 
+\#define \bf{RPC\_\-SND\_\-RCV}(req, req\_\-size, rsp, rsp\_\-size, rd\_\-wr)
+\item 
+\#define \bf{RPC\_\-BAD\_\-RSP}(result, rsp\_\-len, exp\_\-rsp\_\-len, rsp\_\-fcn, req\_\-fcn, rsp\_\-ver)
+\item 
+\#define \bf{RPC\_\-TIMEOUT}~syslog\_\-print(VQEC\_\-IPC\_\-TIMEOUT\_\-ERROR);
+\item 
+\#define \bf{VQEC\_\-RPC\_\-CLIENT\_\-SHM\_\-REQBUF\_\-PTR}~(volatile void $\ast$)\bf{s\_\-vqec\_\-shm\_\-reqbuf\_\-ptr}
+\item 
+\#define \bf{VQEC\_\-RPC\_\-CLIENT\_\-SHM\_\-RSPBUF\_\-PTR}~(volatile void $\ast$)\bf{s\_\-vqec\_\-shm\_\-rspbuf\_\-ptr}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+static void \bf{vqec\_\-rpc\_\-client\_\-close\_\-dev} (void)
+\item 
+static vqec\_\-error\_\-t \bf{vqec\_\-rpc\_\-client\_\-open\_\-dev} (void)
+\item 
+vqec\_\-dp\_\-error\_\-t \bf{vqec\_\-dp\_\-open\_\-module} (void)
+\item 
+vqec\_\-dp\_\-error\_\-t \bf{vqec\_\-dp\_\-close\_\-module} (void)
+\item 
+vqec\_\-dp\_\-error\_\-t \bf{vqec\_\-dp\_\-output\_\-shim\_\-tuner\_\-read} (vqec\_\-dp\_\-tunerid\_\-t id, vqec\_\-iobuf\_\-t $\ast$iobuf, uint32\_\-t iobuf\_\-num, uint32\_\-t $\ast$len, int32\_\-t timeout\_\-msec)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+static void $\ast$ \bf{s\_\-vqec\_\-shm\_\-reqbuf\_\-ptr} = (void $\ast$)-1
+\item 
+static void $\ast$ \bf{s\_\-vqec\_\-shm\_\-rspbuf\_\-ptr} = (void $\ast$)-1
+\item 
+static int \bf{s\_\-vqec\_\-dp\_\-kmod\_\-devid} = -1
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!RPC_BAD_RSP@{RPC\_\-BAD\_\-RSP}}
+\index{RPC_BAD_RSP@{RPC\_\-BAD\_\-RSP}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define RPC\_\-BAD\_\-RSP(result, rsp\_\-len, exp\_\-rsp\_\-len, rsp\_\-fcn, req\_\-fcn, rsp\_\-ver)}\label{vqec__rpc__client_8c_581600ec75643f87e28d3ea8e320c444}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}syslog_print(VQEC_IPC_ERROR, result, rsp_len,                       \
+                 exp_rsp_len, rsp_fcn, req_fcn, rsp_ver);
+\end{verbatim}\end{Code}
+--------------------------------------------------------------------------- Announcement for a malformed response.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em result}][int] Ioctl return value. \item[\mbox{$\leftarrow$} {\em rsp\_\-len}][int] Actual length of the response in bytes. \item[\mbox{$\leftarrow$} {\em exp\_\-rsp\_\-len}][int] Expected length of the response in bytes. \item[\mbox{$\leftarrow$} {\em rsp\_\-fcn}]IPC function number received in response. \item[\mbox{$\leftarrow$} {\em req\_\-fcn}]IPC function number sent in request. \item[\mbox{$\leftarrow$} {\em rsp\_\-ver}]API version in the response. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!RPC_SND_RCV@{RPC\_\-SND\_\-RCV}}
+\index{RPC_SND_RCV@{RPC\_\-SND\_\-RCV}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define RPC\_\-SND\_\-RCV(req, req\_\-size, rsp, rsp\_\-size, rd\_\-wr)}\label{vqec__rpc__client_8c_15e9f49f017b88b20165bd8b4cb4bd1d}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}({                                                                  \
+        int32_t retval = 0, dir = 0;                                    \
+        if (rd_wr & VQEC_DEV_IPC_IOCTL_WRITE) {                         \
+            dir |= _IOC_WRITE;                                          \
+        }                                                               \
+        if (rd_wr & VQEC_DEV_IPC_IOCTL_READ) {                          \
+            dir |= _IOC_READ;                                           \
+        }                                                               \
+        retval =                                                        \
+            ioctl(s_vqec_dp_kmod_devid,                                 \
+                  _IOC(dir, VQEC_DEV_IPC_IOCTL_TYPE,                    \
+                       req->__rpc_fcn_num, req_size), NULL);            \
+        retval;                                                         \
+    })
+\end{verbatim}\end{Code}
+--------------------------------------------------------------------------- Invoke a IPC system call [most parameters are unused for now].
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em req}][char$\ast$] Pointer to the request object (in shared memory). \item[\mbox{$\leftarrow$} {\em req\_\-size}][int] Request object size in bytes. \item[\mbox{$\rightarrow$} {\em rsp}][char $\ast$] Pointer to the response object (in shared memory). \item[\mbox{$\rightarrow$} {\em rsp\_\-size}][int $\ast$] Response object size (pointer) in bytes. \item[\mbox{$\leftarrow$} {\em rd\_\-wr}][int] Bitmask specifying if the request is read-only, write-only or both read-write. The macro returns the return-value of the ioctl system call. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!RPC_TIMEOUT@{RPC\_\-TIMEOUT}}
+\index{RPC_TIMEOUT@{RPC\_\-TIMEOUT}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define RPC\_\-TIMEOUT~syslog\_\-print(VQEC\_\-IPC\_\-TIMEOUT\_\-ERROR);}\label{vqec__rpc__client_8c_59909d416fa0ec06667860117d608089}
+
+
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!VQEC_KERNEL_DEVNODE_PATH@{VQEC\_\-KERNEL\_\-DEVNODE\_\-PATH}}
+\index{VQEC_KERNEL_DEVNODE_PATH@{VQEC\_\-KERNEL\_\-DEVNODE\_\-PATH}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-KERNEL\_\-DEVNODE\_\-PATH~\char`\"{}/dev/\char`\"{}}\label{vqec__rpc__client_8c_79cea6e7d582391ece3524486583d61b}
+
+
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!VQEC_RPC_CLIENT_SHM_REQBUF_PTR@{VQEC\_\-RPC\_\-CLIENT\_\-SHM\_\-REQBUF\_\-PTR}}
+\index{VQEC_RPC_CLIENT_SHM_REQBUF_PTR@{VQEC\_\-RPC\_\-CLIENT\_\-SHM\_\-REQBUF\_\-PTR}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RPC\_\-CLIENT\_\-SHM\_\-REQBUF\_\-PTR~(volatile void $\ast$)\bf{s\_\-vqec\_\-shm\_\-reqbuf\_\-ptr}}\label{vqec__rpc__client_8c_3203715924cc1968be729a47baee1c11}
+
+
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!VQEC_RPC_CLIENT_SHM_RSPBUF_PTR@{VQEC\_\-RPC\_\-CLIENT\_\-SHM\_\-RSPBUF\_\-PTR}}
+\index{VQEC_RPC_CLIENT_SHM_RSPBUF_PTR@{VQEC\_\-RPC\_\-CLIENT\_\-SHM\_\-RSPBUF\_\-PTR}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RPC\_\-CLIENT\_\-SHM\_\-RSPBUF\_\-PTR~(volatile void $\ast$)\bf{s\_\-vqec\_\-shm\_\-rspbuf\_\-ptr}}\label{vqec__rpc__client_8c_744a76f812629d51e682b41cd518439f}
+
+
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!VQEC_RPCLIENT_LOGBUF_LEN@{VQEC\_\-RPCLIENT\_\-LOGBUF\_\-LEN}}
+\index{VQEC_RPCLIENT_LOGBUF_LEN@{VQEC\_\-RPCLIENT\_\-LOGBUF\_\-LEN}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RPCLIENT\_\-LOGBUF\_\-LEN~80}\label{vqec__rpc__client_8c_7b29b76978ebc7919892fc8bda0a7c85}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!vqec_dp_close_module@{vqec\_\-dp\_\-close\_\-module}}
+\index{vqec_dp_close_module@{vqec\_\-dp\_\-close\_\-module}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-error\_\-t vqec\_\-dp\_\-close\_\-module (void)}\label{vqec__rpc__client_8c_5286d8363463b852274d1b053133b311}
+
+
+--------------------------------------------------------------------------- External interface to close the kernel module device.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em vqec\_\-dp\_\-error\_\-t}]Returns VQEC\_\-DP\_\-ERR\_\-OK. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!vqec_dp_open_module@{vqec\_\-dp\_\-open\_\-module}}
+\index{vqec_dp_open_module@{vqec\_\-dp\_\-open\_\-module}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-error\_\-t vqec\_\-dp\_\-open\_\-module (void)}\label{vqec__rpc__client_8c_1366f902c45e78511fcc02654dfbde43}
+
+
+--------------------------------------------------------------------------- External interface to open the kernel module device.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em vqec\_\-dp\_\-error\_\-t}]Returns VQEC\_\-DP\_\-ERR\_\-OK on success, VQEC\_\-DP\_\-ERR\_\-INTERNAL on failure. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!vqec_dp_output_shim_tuner_read@{vqec\_\-dp\_\-output\_\-shim\_\-tuner\_\-read}}
+\index{vqec_dp_output_shim_tuner_read@{vqec\_\-dp\_\-output\_\-shim\_\-tuner\_\-read}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-error\_\-t vqec\_\-dp\_\-output\_\-shim\_\-tuner\_\-read (vqec\_\-dp\_\-tunerid\_\-t {\em id}, vqec\_\-iobuf\_\-t $\ast$ {\em iobuf}, uint32\_\-t {\em iobuf\_\-num}, uint32\_\-t $\ast$ {\em len}, int32\_\-t {\em timeout\_\-msec})}\label{vqec__rpc__client_8c_e6f0e6402e9fbea8406123e9b7bff613}
+
+
+--------------------------------------------------------------------------- Read packets from dataplane. --------------------------------------------------------------------------- \index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!vqec_rpc_client_close_dev@{vqec\_\-rpc\_\-client\_\-close\_\-dev}}
+\index{vqec_rpc_client_close_dev@{vqec\_\-rpc\_\-client\_\-close\_\-dev}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-rpc\_\-client\_\-close\_\-dev (void)\hspace{0.3cm}{\tt  [static]}}\label{vqec__rpc__client_8c_362a1e04aa592c186a3bfee24c93d687}
+
+
+--------------------------------------------------------------------------- Close the kernel module device and unmap the shared memory pages for requests and responses. --------------------------------------------------------------------------- \index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!vqec_rpc_client_open_dev@{vqec\_\-rpc\_\-client\_\-open\_\-dev}}
+\index{vqec_rpc_client_open_dev@{vqec\_\-rpc\_\-client\_\-open\_\-dev}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static vqec\_\-error\_\-t vqec\_\-rpc\_\-client\_\-open\_\-dev (void)\hspace{0.3cm}{\tt  [static]}}\label{vqec__rpc__client_8c_f24d2a8ab8e546935ab8c771964372e9}
+
+
+--------------------------------------------------------------------------- Open the kernel module device and map the shared memory pages for requests and responses.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]Returns VQEC\_\-OK on success, VQEC\_\-ERR\_\-INTERANL on failure. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+
+
+\subsection{Variable Documentation}
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!s_vqec_dp_kmod_devid@{s\_\-vqec\_\-dp\_\-kmod\_\-devid}}
+\index{s_vqec_dp_kmod_devid@{s\_\-vqec\_\-dp\_\-kmod\_\-devid}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int \bf{s\_\-vqec\_\-dp\_\-kmod\_\-devid} = -1\hspace{0.3cm}{\tt  [static]}}\label{vqec__rpc__client_8c_bdeb1bab72cce1904b3b617af114b943}
+
+
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!s_vqec_shm_reqbuf_ptr@{s\_\-vqec\_\-shm\_\-reqbuf\_\-ptr}}
+\index{s_vqec_shm_reqbuf_ptr@{s\_\-vqec\_\-shm\_\-reqbuf\_\-ptr}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \bf{s\_\-vqec\_\-shm\_\-reqbuf\_\-ptr} = (void $\ast$)-1\hspace{0.3cm}{\tt  [static]}}\label{vqec__rpc__client_8c_387a9291b13c3e35e7e33d662a157e20}
+
+
+\index{vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}!s_vqec_shm_rspbuf_ptr@{s\_\-vqec\_\-shm\_\-rspbuf\_\-ptr}}
+\index{s_vqec_shm_rspbuf_ptr@{s\_\-vqec\_\-shm\_\-rspbuf\_\-ptr}!vqec_rpc_client.c@{vqec\_\-rpc\_\-client.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ \bf{s\_\-vqec\_\-shm\_\-rspbuf\_\-ptr} = (void $\ast$)-1\hspace{0.3cm}{\tt  [static]}}\label{vqec__rpc__client_8c_ca54d38fccf8f917845927c1942a9f60}
+
+

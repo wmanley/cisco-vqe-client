@@ -1,0 +1,18 @@
+/*------------------------------------------------------------------
+ * README 
+ *
+ * September 2004,  Judy Gulla
+ *
+ * Copyright (c) 2004 by cisco Systems, Inc.
+ * All rights reserved.
+ *------------------------------------------------------------------
+ */
+
+This directory contains files specific to g++ compilation.
+G++ compilation is needed to verify the sdp library 
+portability to platforms such as CCM.
+
+To compile the sdp library using g++, simply type 'make'
+in this directory.
+IOS specific sdp files are not included in the make.
+

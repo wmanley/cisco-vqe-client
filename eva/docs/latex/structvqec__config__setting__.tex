@@ -1,0 +1,81 @@
+\section{vqec\_\-config\_\-setting\_\- Struct Reference}
+\label{structvqec__config__setting__}\index{vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}}
+{\tt \#include $<$vqec\_\-config\_\-parser.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\bf{VQE\_\-TAILQ\_\-ENTRY} (\bf{vqec\_\-config\_\-setting\_\-}) list\_\-qobj
+\item 
+\bf{VQE\_\-TAILQ\_\-HEAD} (setting\_\-sublist\_\-head, \bf{vqec\_\-config\_\-setting\_\-}) subsetting\_\-head
+\end{CompactItemize}
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+\bf{vqec\_\-config\_\-setting\_\-type\_\-t} \bf{type}
+\item 
+char $\ast$ \bf{name}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>char $\ast$ \bf{value\_string}\\
+\>boolean \bf{value\_boolean}\\
+\>int \bf{value\_int}\\
+\}; \\
+
+\end{tabbing}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Structure which contains all of a particular setting's data. 
+
+
+
+\subsection{Member Function Documentation}
+\index{vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}!VQE_TAILQ_ENTRY@{VQE\_\-TAILQ\_\-ENTRY}}
+\index{VQE_TAILQ_ENTRY@{VQE\_\-TAILQ\_\-ENTRY}!vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-config\_\-setting\_\-::VQE\_\-TAILQ\_\-ENTRY (\bf{vqec\_\-config\_\-setting\_\-})}\label{structvqec__config__setting___73377747ac4c30107004d3dd9e3ff46d}
+
+
+Queue object for setting list. \index{vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}!VQE_TAILQ_HEAD@{VQE\_\-TAILQ\_\-HEAD}}
+\index{VQE_TAILQ_HEAD@{VQE\_\-TAILQ\_\-HEAD}!vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-config\_\-setting\_\-::VQE\_\-TAILQ\_\-HEAD (setting\_\-sublist\_\-head, \bf{vqec\_\-config\_\-setting\_\-})}\label{structvqec__config__setting___07a2bb2dadf4609b166a6ac69b8365b0}
+
+
+Head for setting sublist. 
+
+\subsection{Field Documentation}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}union \{ ... \} }\label{structvqec__config__setting___de389a27f62092da46e3a4855a5eaf6d}
+
+
+The following value fields are stored as a union to conserve memory. \index{vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}!name@{name}}
+\index{name@{name}!vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \bf{vqec\_\-config\_\-setting\_\-::name}}\label{structvqec__config__setting___7ad3391ba76e66f867852ba319fda637}
+
+
+The name of this particular setting. \index{vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}!type@{type}}
+\index{type@{type}!vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-config\_\-setting\_\-type\_\-t} \bf{vqec\_\-config\_\-setting\_\-::type}}\label{structvqec__config__setting___e2d7dcd1f9b6a61f6d4cecefc7e1d8c5}
+
+
+The type of setting which this is. \index{vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}!value_boolean@{value\_\-boolean}}
+\index{value_boolean@{value\_\-boolean}!vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-config\_\-setting\_\-::value\_\-boolean}}\label{structvqec__config__setting___93ad9c050b8708ee725c2e2be96d696e}
+
+
+The boolean value of this setting. \index{vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}!value_int@{value\_\-int}}
+\index{value_int@{value\_\-int}!vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int \bf{vqec\_\-config\_\-setting\_\-::value\_\-int}}\label{structvqec__config__setting___9fc2ce97866bd2b48d20365eace271f6}
+
+
+The integer (signed) value of this setting. \index{vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}!value_string@{value\_\-string}}
+\index{value_string@{value\_\-string}!vqec_config_setting_@{vqec\_\-config\_\-setting\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \bf{vqec\_\-config\_\-setting\_\-::value\_\-string}}\label{structvqec__config__setting___7b69facf97b03c8f8baeb2b8eed36076}
+
+
+The string value of this setting. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-config\_\-parser.h}\end{CompactItemize}

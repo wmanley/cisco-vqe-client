@@ -1,0 +1,47 @@
+###############################################################################
+# environ.mk.in
+#
+# Copyright (c) 2006-2009 by Cisco Systems, Inc.
+# All rights reserved. 
+###############################################################################
+#
+# Environment variables for VQE builds 
+# [environ.mk is auto-generated from environ.mk.in]
+#
+HAVE_ELOG	= @HAVE_ELOG@
+HAVE_SYSLOG	= @HAVE_SYSLOG@
+HAVE_OPENSSL	= @HAVE_OPENSSL@
+HAVE_FCC	= @HAVE_FCC@
+HAVE_HAG_MODE	= @HAVE_HAG_MODE@
+HAVE_STUN	= @HAVE_STUN@
+HAVE_IPLM	= @HAVE_IPLM@
+USE_SMALL_VQEC_STACK = @USE_SMALL_VQEC_STACK@
+HAVE_UPNP = @HAVE_UPNP@
+HAVE_CISCO_RTSP_LIBRARY = @HAVE_CISCO_RTSP_LIBRARY@
+HAVE_SCHED_JITTER_HISTOGRAM = @HAVE_SCHED_JITTER_HISTOGRAM@
+
+HAVE_STRLFUNCS  = @HAVE_STRLFUNCS@
+
+CC		= @CC@
+CPP		= @CPP@
+CXX		= @CXX@
+AR		= @AR@
+LD		= @LD@
+STRIP		= @STRIP@
+
+OBJECT_X86	= @OBJECT_X86@
+OBJECT_4K	= @OBJECT_4K@
+OBJECT_SH4	= @OBJECT_SH4@
+ARCH            = @ARCH@
+KERNELSOURCE    = @KERNELSOURCE@
+CROSS_COMPILE   = @CROSS_COMPILE@
+
+CFLAGS		+= @DOBJ_TARGET@ @DHAVE_ELOG@ @DHAVE_SYSLOG@ @DHAVE_OPENSSL@ @DHAVE_FCC@ @DHAVE_STRLFUNCS@ @DHAVE_HAG_MODE@ @DHAVE_STUN@ @DHAVE_IPLM@ @DUSE_SMALL_VQEC_STACK@ @DHAVE_UPNP@ @DHAVE_CISCO_RTSP_LIBRARY@ @DHAVE_SCHED_JITTER_HISTOGRAM@ @DVQEC_TMP_FILE_PATH@ @DVQEC_KERNEL_DEVNODE_PATH@
+
+prefix		= @prefix@
+exec_prefix	= @exec_prefix@
+INSTALL_LIBDIR	= @libdir@
+INSTALL_INCDIR	= @includedir@
+
+
+

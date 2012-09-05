@@ -1,0 +1,295 @@
+\section{vqec\_\-updater.c File Reference}
+\label{vqec__updater_8c}\index{vqec_updater.c@{vqec\_\-updater.c}}
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include $<$pthread.h$>$}\par
+{\tt \#include $<$utils/strl.h$>$}\par
+{\tt \#include $<$utils/vam\_\-util.h$>$}\par
+{\tt \#include \char`\"{}vqe\_\-token\_\-bucket.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-gap\_\-reporter.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-debug.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-assert\_\-macros.h\char`\"{}}\par
+{\tt \#include $<$rtp/rtcp\_\-stats\_\-api.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-private.h\char`\"{}}\par
+{\tt \#include $<$resolv.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-updater.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-lock\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-error.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-syscfg.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-pthread.h\char`\"{}}\par
+{\tt \#include \char`\"{}rtsp\_\-client.h\char`\"{}}\par
+{\tt \#include \char`\"{}srv\_\-lookup.h\char`\"{}}\par
+{\tt \#include \char`\"{}cfgapi.h\char`\"{}}\par
+{\tt \#include \char`\"{}cfg\_\-channel.h\char`\"{}}\par
+{\tt \#include \char`\"{}utils/vmd5.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-updater\_\-private.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-private.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{UT\_\-STATIC}~static
+\item 
+\#define \bf{vqec\_\-updater\_\-polling\_\-enabled}()~(vqec\_\-syscfg\_\-get\_\-ptr() $\rightarrow$ update\_\-interval\_\-max)
+\item 
+\#define \bf{vqec\_\-updater\_\-get\_\-in\_\-progress}()
+\item 
+\#define \bf{TIME\_\-STRLEN}~80
+\item 
+\#define \bf{PROTOCOL}~\char`\"{}tcp\char`\"{}
+\item 
+\#define \bf{PROTOCOL\_\-CODE}~TCP
+\item 
+\#define \bf{VQEC\_\-UPDATER\_\-POLL\_\-INTERVAL}~1
+\item 
+\#define \bf{FIELD\_\-STRLEN}~12
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+boolean \bf{vqec\_\-updater\_\-get\_\-cdi\_\-enable} (void)
+\item 
+const char $\ast$ \bf{vqec\_\-updater\_\-status2str} (\bf{vqec\_\-updater\_\-status\_\-t} status)
+\item 
+const char $\ast$ \bf{vqec\_\-updater\_\-result2str} (\bf{vqec\_\-updater\_\-result\_\-err\_\-t} result)
+\item 
+char $\ast$ \bf{vqec\_\-updater\_\-timeval2str} (struct timeval last\_\-update\_\-tv)
+\item 
+void \bf{vqec\_\-updater\_\-update} (boolean force\_\-update)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-updater\_\-get\_\-status} (\bf{vqec\_\-updater\_\-status\_\-t} $\ast$status, boolean $\ast$in\_\-progress, int32\_\-t $\ast$seconds\_\-until\_\-next\_\-update, struct timeval $\ast$attrcfg\_\-last\_\-commit\_\-time, char $\ast$$\ast$attrcfg\_\-version, struct timeval $\ast$chancfg\_\-last\_\-commit\_\-time, char $\ast$$\ast$chancfg\_\-version)
+\item 
+void \bf{vqec\_\-updater\_\-clear\_\-counters} (void)
+\item 
+boolean \bf{vqec\_\-updater\_\-result\_\-is\_\-failure} (\bf{vqec\_\-updater\_\-result\_\-err\_\-t} result)
+\item 
+boolean \bf{vqec\_\-updater\_\-write\_\-to\_\-file} (const char $\ast$\bf{filename}, const char $\ast$buffer)
+\item 
+const char $\ast$ \bf{vqec\_\-updater\_\-build\_\-rtsp\_\-obj\_\-str} (const char $\ast$resource\_\-name, boolean use\_\-cname)
+\item 
+UT\_\-STATIC boolean \bf{fetch\_\-index\_\-cb} (boolean arg)
+\item 
+UT\_\-STATIC boolean \bf{vqec\_\-updater\_\-update\_\-attrcfg} (boolean erase)
+\item 
+UT\_\-STATIC boolean \bf{vqec\_\-updater\_\-update\_\-chancfg} (boolean erase)
+\item 
+\bf{vqec\_\-updater\_\-result\_\-err\_\-t} \bf{vqec\_\-updater\_\-fetch\_\-resource} (const char $\ast$resource\_\-name, boolean use\_\-cname, const char $\ast$accept\_\-media\_\-type, abs\_\-time\_\-t update\_\-abort\_\-time, rel\_\-time\_\-t $\ast$response\_\-time, boolean($\ast$fetch\_\-resource\_\-cb)(boolean arg))
+\item 
+void \bf{vqec\_\-updater\_\-request\_\-update} (boolean update\_\-index, boolean update\_\-attr, boolean update\_\-chan, abs\_\-time\_\-t update\_\-abort\_\-time)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-updater\_\-get\_\-random\_\-time} (int window)
+\item 
+void \bf{vqec\_\-updater\_\-schedule\_\-request} (boolean use\_\-update\_\-interval\_\-max)
+\item 
+UT\_\-STATIC void $\ast$ \bf{vqec\_\-updater\_\-update\_\-thread} (void $\ast$arg)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-updater\_\-start} (void)
+\item 
+void \bf{vqec\_\-updater\_\-stop} (void)
+\item 
+static void \bf{vqec\_\-updater\_\-event\_\-cb} (\bf{vqec\_\-ifclient\_\-config\_\-event\_\-params\_\-t} $\ast$params)
+\item 
+void \bf{vqec\_\-updater\_\-show} ()
+\item 
+void \bf{vqec\_\-updater\_\-deinit} (void)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-updater\_\-init} (\bf{vqec\_\-syscfg\_\-t} $\ast$syscfg)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+UT\_\-STATIC \bf{vqec\_\-updater\_\-mgr\_\-t} \bf{vqec\_\-updater}
+\item 
+static boolean \bf{vqec\_\-updater\_\-update\_\-request\_\-issued} = \bf{FALSE}
+\item 
+static pthread\_\-t \bf{vqec\_\-updater\_\-thread\_\-id}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_updater.c@{vqec\_\-updater.c}!FIELD_STRLEN@{FIELD\_\-STRLEN}}
+\index{FIELD_STRLEN@{FIELD\_\-STRLEN}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define FIELD\_\-STRLEN~12}\label{vqec__updater_8c_588516d45f01cc0e51d80bc811b4fd7a}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!PROTOCOL@{PROTOCOL}}
+\index{PROTOCOL@{PROTOCOL}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define PROTOCOL~\char`\"{}tcp\char`\"{}}\label{vqec__updater_8c_7b8f05414ee526a321e9445cdf60ced7}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!PROTOCOL_CODE@{PROTOCOL\_\-CODE}}
+\index{PROTOCOL_CODE@{PROTOCOL\_\-CODE}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define PROTOCOL\_\-CODE~TCP}\label{vqec__updater_8c_8aec13eeb6a4c7bf5365858b340bfe12}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!TIME_STRLEN@{TIME\_\-STRLEN}}
+\index{TIME_STRLEN@{TIME\_\-STRLEN}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define TIME\_\-STRLEN~80}\label{vqec__updater_8c_893ce4d92bd667578855550aef43d182}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!UT_STATIC@{UT\_\-STATIC}}
+\index{UT_STATIC@{UT\_\-STATIC}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UT\_\-STATIC~static}\label{vqec__updater_8c_840be0a802b42af3ce4430a7173caa40}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_get_in_progress@{vqec\_\-updater\_\-get\_\-in\_\-progress}}
+\index{vqec_updater_get_in_progress@{vqec\_\-updater\_\-get\_\-in\_\-progress}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define vqec\_\-updater\_\-get\_\-in\_\-progress()}\label{vqec__updater_8c_875973f54dbd6a5da2c6650baedad3e3}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}((vqec_updater.next_index_request.seconds_until_update != -1) &&   \
+     (vqec_updater.next_index_request.seconds_until_update <           \
+      vqec_updater.next_index_request.update_window))
+\end{verbatim}\end{Code}
+\index{vqec_updater.c@{vqec\_\-updater.c}!VQEC_UPDATER_POLL_INTERVAL@{VQEC\_\-UPDATER\_\-POLL\_\-INTERVAL}}
+\index{VQEC_UPDATER_POLL_INTERVAL@{VQEC\_\-UPDATER\_\-POLL\_\-INTERVAL}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UPDATER\_\-POLL\_\-INTERVAL~1}\label{vqec__updater_8c_187729d024950ae807ad0c2539250ec7}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_polling_enabled@{vqec\_\-updater\_\-polling\_\-enabled}}
+\index{vqec_updater_polling_enabled@{vqec\_\-updater\_\-polling\_\-enabled}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define vqec\_\-updater\_\-polling\_\-enabled()~(vqec\_\-syscfg\_\-get\_\-ptr() $\rightarrow$ update\_\-interval\_\-max)}\label{vqec__updater_8c_db93b92043ac9c4aea2ea643341a9241}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_updater.c@{vqec\_\-updater.c}!fetch_index_cb@{fetch\_\-index\_\-cb}}
+\index{fetch_index_cb@{fetch\_\-index\_\-cb}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC boolean fetch\_\-index\_\-cb (boolean {\em arg})}\label{vqec__updater_8c_0da1cb8818cf87a54335835b05a59024}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_build_rtsp_obj_str@{vqec\_\-updater\_\-build\_\-rtsp\_\-obj\_\-str}}
+\index{vqec_updater_build_rtsp_obj_str@{vqec\_\-updater\_\-build\_\-rtsp\_\-obj\_\-str}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-updater\_\-build\_\-rtsp\_\-obj\_\-str (const char $\ast$ {\em resource\_\-name}, boolean {\em use\_\-cname})}\label{vqec__updater_8c_c44506bdd9cd5c24e7b6ce7e25517f20}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_clear_counters@{vqec\_\-updater\_\-clear\_\-counters}}
+\index{vqec_updater_clear_counters@{vqec\_\-updater\_\-clear\_\-counters}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-updater\_\-clear\_\-counters (void)}\label{vqec__updater_8c_142a77f9d341d4ad1a79fb5a89e4f3e9}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_deinit@{vqec\_\-updater\_\-deinit}}
+\index{vqec_updater_deinit@{vqec\_\-updater\_\-deinit}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-updater\_\-deinit (void)}\label{vqec__updater_8c_cd7e643335f414e22978d1b3ed1f497c}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_event_cb@{vqec\_\-updater\_\-event\_\-cb}}
+\index{vqec_updater_event_cb@{vqec\_\-updater\_\-event\_\-cb}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-updater\_\-event\_\-cb (\bf{vqec\_\-ifclient\_\-config\_\-event\_\-params\_\-t} $\ast$ {\em params})\hspace{0.3cm}{\tt  [static]}}\label{vqec__updater_8c_75ae0dbf1212b86cc03936277aa4c1e3}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_fetch_resource@{vqec\_\-updater\_\-fetch\_\-resource}}
+\index{vqec_updater_fetch_resource@{vqec\_\-updater\_\-fetch\_\-resource}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-updater\_\-result\_\-err\_\-t} vqec\_\-updater\_\-fetch\_\-resource (const char $\ast$ {\em resource\_\-name}, boolean {\em use\_\-cname}, const char $\ast$ {\em accept\_\-media\_\-type}, abs\_\-time\_\-t {\em update\_\-abort\_\-time}, rel\_\-time\_\-t $\ast$ {\em response\_\-time}, boolean($\ast$)(boolean arg) {\em fetch\_\-resource\_\-cb})}\label{vqec__updater_8c_5d9eae3a978fd7df977816cb050a4f28}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_get_cdi_enable@{vqec\_\-updater\_\-get\_\-cdi\_\-enable}}
+\index{vqec_updater_get_cdi_enable@{vqec\_\-updater\_\-get\_\-cdi\_\-enable}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-updater\_\-get\_\-cdi\_\-enable (void)}\label{vqec__updater_8c_3f843a6522f8150e5ccb6a37e0a1fcc7}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_get_random_time@{vqec\_\-updater\_\-get\_\-random\_\-time}}
+\index{vqec_updater_get_random_time@{vqec\_\-updater\_\-get\_\-random\_\-time}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-updater\_\-get\_\-random\_\-time (int {\em window})}\label{vqec__updater_8c_dceaaf24324d33b9c30e6874263d300c}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_get_status@{vqec\_\-updater\_\-get\_\-status}}
+\index{vqec_updater_get_status@{vqec\_\-updater\_\-get\_\-status}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-updater\_\-get\_\-status (\bf{vqec\_\-updater\_\-status\_\-t} $\ast$ {\em status}, boolean $\ast$ {\em in\_\-progress}, int32\_\-t $\ast$ {\em seconds\_\-until\_\-next\_\-update}, struct timeval $\ast$ {\em attrcfg\_\-last\_\-commit\_\-time}, char $\ast$$\ast$ {\em attrcfg\_\-version}, struct timeval $\ast$ {\em chancfg\_\-last\_\-commit\_\-time}, char $\ast$$\ast$ {\em chancfg\_\-version})}\label{vqec__updater_8c_45982d0601d8140ce7365e025dbdbdea}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_init@{vqec\_\-updater\_\-init}}
+\index{vqec_updater_init@{vqec\_\-updater\_\-init}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-updater\_\-init (\bf{vqec\_\-syscfg\_\-t} $\ast$ {\em syscfg})}\label{vqec__updater_8c_625be52da096010a0ddc3ade6e65f655}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_request_update@{vqec\_\-updater\_\-request\_\-update}}
+\index{vqec_updater_request_update@{vqec\_\-updater\_\-request\_\-update}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-updater\_\-request\_\-update (boolean {\em update\_\-index}, boolean {\em update\_\-attr}, boolean {\em update\_\-chan}, abs\_\-time\_\-t {\em update\_\-abort\_\-time})}\label{vqec__updater_8c_933682e733162b0b70e56005fbb6d809}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_result2str@{vqec\_\-updater\_\-result2str}}
+\index{vqec_updater_result2str@{vqec\_\-updater\_\-result2str}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-updater\_\-result2str (\bf{vqec\_\-updater\_\-result\_\-err\_\-t} {\em result})}\label{vqec__updater_8c_1b213fc5eb7d5cda2d88600f1baba215}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_result_is_failure@{vqec\_\-updater\_\-result\_\-is\_\-failure}}
+\index{vqec_updater_result_is_failure@{vqec\_\-updater\_\-result\_\-is\_\-failure}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-updater\_\-result\_\-is\_\-failure (\bf{vqec\_\-updater\_\-result\_\-err\_\-t} {\em result})}\label{vqec__updater_8c_bf31693fb774c1cc58cd95dfbcc011a4}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_schedule_request@{vqec\_\-updater\_\-schedule\_\-request}}
+\index{vqec_updater_schedule_request@{vqec\_\-updater\_\-schedule\_\-request}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-updater\_\-schedule\_\-request (boolean {\em use\_\-update\_\-interval\_\-max})}\label{vqec__updater_8c_478bd0df851ff5ab10761227a1b00f37}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_show@{vqec\_\-updater\_\-show}}
+\index{vqec_updater_show@{vqec\_\-updater\_\-show}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-updater\_\-show (void)}\label{vqec__updater_8c_c17d80900a48d8f2b8ec15ac788d2539}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_start@{vqec\_\-updater\_\-start}}
+\index{vqec_updater_start@{vqec\_\-updater\_\-start}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-updater\_\-start (void)}\label{vqec__updater_8c_7e1215edb54648ed811a41e63301da5f}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_status2str@{vqec\_\-updater\_\-status2str}}
+\index{vqec_updater_status2str@{vqec\_\-updater\_\-status2str}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-updater\_\-status2str (\bf{vqec\_\-updater\_\-status\_\-t} {\em status})}\label{vqec__updater_8c_ed16ba790e9a75e68ed37dda62bcf55d}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_stop@{vqec\_\-updater\_\-stop}}
+\index{vqec_updater_stop@{vqec\_\-updater\_\-stop}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-updater\_\-stop (void)}\label{vqec__updater_8c_18e73e4f4120b78589e5ae6e26b4abe6}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_timeval2str@{vqec\_\-updater\_\-timeval2str}}
+\index{vqec_updater_timeval2str@{vqec\_\-updater\_\-timeval2str}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ vqec\_\-updater\_\-timeval2str (struct timeval {\em last\_\-update\_\-tv})}\label{vqec__updater_8c_1dda0ba1d95e7df26b0c07ccedcf2046}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_update@{vqec\_\-updater\_\-update}}
+\index{vqec_updater_update@{vqec\_\-updater\_\-update}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-updater\_\-update (boolean {\em force\_\-update})}\label{vqec__updater_8c_e1f127fd6e8ef6e556174bf64443a37d}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_update_attrcfg@{vqec\_\-updater\_\-update\_\-attrcfg}}
+\index{vqec_updater_update_attrcfg@{vqec\_\-updater\_\-update\_\-attrcfg}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC boolean vqec\_\-updater\_\-update\_\-attrcfg (boolean {\em erase})}\label{vqec__updater_8c_795cf4e30ebda57593feb818f81c3a34}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_update_chancfg@{vqec\_\-updater\_\-update\_\-chancfg}}
+\index{vqec_updater_update_chancfg@{vqec\_\-updater\_\-update\_\-chancfg}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC boolean vqec\_\-updater\_\-update\_\-chancfg (boolean {\em erase})}\label{vqec__updater_8c_fbeef7ad8efbe819d915e3af5ee58ded}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_update_thread@{vqec\_\-updater\_\-update\_\-thread}}
+\index{vqec_updater_update_thread@{vqec\_\-updater\_\-update\_\-thread}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC void$\ast$ vqec\_\-updater\_\-update\_\-thread (void $\ast$ {\em arg})}\label{vqec__updater_8c_3128cb28351b0fd9a2c4a2a836ca328e}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_write_to_file@{vqec\_\-updater\_\-write\_\-to\_\-file}}
+\index{vqec_updater_write_to_file@{vqec\_\-updater\_\-write\_\-to\_\-file}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-updater\_\-write\_\-to\_\-file (const char $\ast$ {\em filename}, const char $\ast$ {\em buffer})}\label{vqec__updater_8c_80d00ca39bcf18b6aa4cad8440b8b3c2}
+
+
+
+
+\subsection{Variable Documentation}
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater@{vqec\_\-updater}}
+\index{vqec_updater@{vqec\_\-updater}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC \bf{vqec\_\-updater\_\-mgr\_\-t} \bf{vqec\_\-updater}}\label{vqec__updater_8c_9f8c8d1630baf528fe41f6fd02bc79b7}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_thread_id@{vqec\_\-updater\_\-thread\_\-id}}
+\index{vqec_updater_thread_id@{vqec\_\-updater\_\-thread\_\-id}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}pthread\_\-t \bf{vqec\_\-updater\_\-thread\_\-id}\hspace{0.3cm}{\tt  [static]}}\label{vqec__updater_8c_97889572760a8e41f48581ee5c8f3aba}
+
+
+\index{vqec_updater.c@{vqec\_\-updater.c}!vqec_updater_update_request_issued@{vqec\_\-updater\_\-update\_\-request\_\-issued}}
+\index{vqec_updater_update_request_issued@{vqec\_\-updater\_\-update\_\-request\_\-issued}!vqec_updater.c@{vqec\_\-updater.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-updater\_\-update\_\-request\_\-issued} = \bf{FALSE}\hspace{0.3cm}{\tt  [static]}}\label{vqec__updater_8c_734d531240c179708a7b26cdb1130b6d}
+
+

@@ -1,0 +1,224 @@
+\section{vqec\_\-config\_\-parser.h File Reference}
+\label{vqec__config__parser_8h}\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+{\tt \#include \char`\"{}queue\_\-plus.h\char`\"{}}\par
+{\tt \#include \char`\"{}vam\_\-types.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-config\_\-setting\_\-}
+\item 
+struct \bf{vqec\_\-config\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-CONFIG\_\-MAX\_\-NAME\_\-LEN}~100
+\item 
+\#define \bf{VQEC\_\-CONFIG\_\-ERROR\_\-STRLEN}~80
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{vqec\_\-config\_\-setting\_\-type\_\-} \bf{vqec\_\-config\_\-setting\_\-type\_\-t}
+\item 
+typedef \bf{vqec\_\-config\_\-setting\_\-} \bf{vqec\_\-config\_\-setting\_\-t}
+\item 
+typedef \bf{vqec\_\-config\_\-} \bf{vqec\_\-config\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-config\_\-setting\_\-type\_\-} \{ \par
+\bf{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-INVALID} =  0, 
+\bf{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-STRING}, 
+\bf{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-BOOLEAN}, 
+\bf{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-INT}, 
+\par
+\bf{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-LIST}, 
+\bf{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-GROUP}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+boolean \bf{vqec\_\-config\_\-init} (\bf{vqec\_\-config\_\-t} $\ast$cfg)
+\item 
+boolean \bf{vqec\_\-config\_\-read\_\-file} (\bf{vqec\_\-config\_\-t} $\ast$cfg, const char $\ast$filepath)
+\item 
+boolean \bf{vqec\_\-config\_\-read\_\-buffer} (\bf{vqec\_\-config\_\-t} $\ast$cfg, const char $\ast$buffer)
+\item 
+\bf{vqec\_\-config\_\-setting\_\-t} $\ast$ \bf{vqec\_\-config\_\-lookup} (\bf{vqec\_\-config\_\-t} $\ast$cfg, char $\ast$name)
+\item 
+\bf{vqec\_\-config\_\-setting\_\-type\_\-t} \bf{vqec\_\-config\_\-setting\_\-type} (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$setting)
+\item 
+int \bf{vqec\_\-config\_\-setting\_\-length} (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$setting)
+\item 
+\bf{vqec\_\-config\_\-setting\_\-t} $\ast$ \bf{vqec\_\-config\_\-setting\_\-get\_\-elem} (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$setting, int index)
+\item 
+\bf{vqec\_\-config\_\-setting\_\-t} $\ast$ \bf{vqec\_\-config\_\-setting\_\-get\_\-member} (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$setting, char $\ast$name)
+\item 
+char $\ast$ \bf{vqec\_\-config\_\-setting\_\-get\_\-string} (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$setting)
+\item 
+boolean \bf{vqec\_\-config\_\-setting\_\-get\_\-bool} (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$setting)
+\item 
+int \bf{vqec\_\-config\_\-setting\_\-get\_\-int} (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$setting)
+\item 
+boolean \bf{vqec\_\-config\_\-destroy} (\bf{vqec\_\-config\_\-t} $\ast$cfg)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!VQEC_CONFIG_ERROR_STRLEN@{VQEC\_\-CONFIG\_\-ERROR\_\-STRLEN}}
+\index{VQEC_CONFIG_ERROR_STRLEN@{VQEC\_\-CONFIG\_\-ERROR\_\-STRLEN}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CONFIG\_\-ERROR\_\-STRLEN~80}\label{vqec__config__parser_8h_523592377ff0264a6dce322e2648af2d}
+
+
+\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!VQEC_CONFIG_MAX_NAME_LEN@{VQEC\_\-CONFIG\_\-MAX\_\-NAME\_\-LEN}}
+\index{VQEC_CONFIG_MAX_NAME_LEN@{VQEC\_\-CONFIG\_\-MAX\_\-NAME\_\-LEN}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CONFIG\_\-MAX\_\-NAME\_\-LEN~100}\label{vqec__config__parser_8h_7c62dfd5c5c3082c149e9fedec8a9b6d}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_setting_t@{vqec\_\-config\_\-setting\_\-t}}
+\index{vqec_config_setting_t@{vqec\_\-config\_\-setting\_\-t}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-config\_\-setting\_\-}  \bf{vqec\_\-config\_\-setting\_\-t}}\label{vqec__config__parser_8h_9f863675d340d5bcb7c51d6a80849c99}
+
+
+Structure which contains all of a particular setting's data. \index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_setting_type_t@{vqec\_\-config\_\-setting\_\-type\_\-t}}
+\index{vqec_config_setting_type_t@{vqec\_\-config\_\-setting\_\-type\_\-t}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-config\_\-setting\_\-type\_\-}  \bf{vqec\_\-config\_\-setting\_\-type\_\-t}}\label{vqec__config__parser_8h_d24a0dc78f6956106ff35af3ae72ff92}
+
+
+Enumeration of setting types. \index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_t@{vqec\_\-config\_\-t}}
+\index{vqec_config_t@{vqec\_\-config\_\-t}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-config\_\-}  \bf{vqec\_\-config\_\-t}}\label{vqec__config__parser_8h_84110130cf16d1671648c2585419c6d0}
+
+
+Structure which contains all data within a particular configuration. 
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_setting_type_@{vqec\_\-config\_\-setting\_\-type\_\-}}
+\index{vqec_config_setting_type_@{vqec\_\-config\_\-setting\_\-type\_\-}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-config\_\-setting\_\-type\_\-}}\label{vqec__config__parser_8h_31e73bf50471874fe12e91f9e117217a}
+
+
+Enumeration of setting types. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_CONFIG_SETTING_TYPE_INVALID@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-INVALID}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!VQEC_CONFIG_SETTING_TYPE_INVALID@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-INVALID}}\item[{\em 
+VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-INVALID\label{vqec__config__parser_8h_31e73bf50471874fe12e91f9e117217a131765b70e0700eca5f09aefff3f4548}
+}]\index{VQEC_CONFIG_SETTING_TYPE_STRING@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-STRING}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!VQEC_CONFIG_SETTING_TYPE_STRING@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-STRING}}\item[{\em 
+VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-STRING\label{vqec__config__parser_8h_31e73bf50471874fe12e91f9e117217adda55f2e25956a5e097a08617e93d9c0}
+}]\index{VQEC_CONFIG_SETTING_TYPE_BOOLEAN@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-BOOLEAN}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!VQEC_CONFIG_SETTING_TYPE_BOOLEAN@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-BOOLEAN}}\item[{\em 
+VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-BOOLEAN\label{vqec__config__parser_8h_31e73bf50471874fe12e91f9e117217a073346c4dba7570a7367b601251f4e6c}
+}]\index{VQEC_CONFIG_SETTING_TYPE_INT@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-INT}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!VQEC_CONFIG_SETTING_TYPE_INT@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-INT}}\item[{\em 
+VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-INT\label{vqec__config__parser_8h_31e73bf50471874fe12e91f9e117217af61b4e8c7cb1f88e71db845d2b3145e4}
+}]\index{VQEC_CONFIG_SETTING_TYPE_LIST@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-LIST}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!VQEC_CONFIG_SETTING_TYPE_LIST@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-LIST}}\item[{\em 
+VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-LIST\label{vqec__config__parser_8h_31e73bf50471874fe12e91f9e117217a27614040ab8eb571ca874226dab796e0}
+}]\index{VQEC_CONFIG_SETTING_TYPE_GROUP@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-GROUP}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!VQEC_CONFIG_SETTING_TYPE_GROUP@{VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-GROUP}}\item[{\em 
+VQEC\_\-CONFIG\_\-SETTING\_\-TYPE\_\-GROUP\label{vqec__config__parser_8h_31e73bf50471874fe12e91f9e117217a564c874b14b31127ef229a11ab4518cd}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_destroy@{vqec\_\-config\_\-destroy}}
+\index{vqec_config_destroy@{vqec\_\-config\_\-destroy}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-config\_\-destroy (\bf{vqec\_\-config\_\-t} $\ast$ {\em cfg})}\label{vqec__config__parser_8h_868fff1775cba2f5be5a20d6805b7f7e}
+
+
+Destroy all information stored in a configuration parser instance.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em cfg}]Instance of configuration parser. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Returns TRUE if the parser was destroyed successfully; FALSE otherwise. \end{Desc}
+\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_init@{vqec\_\-config\_\-init}}
+\index{vqec_config_init@{vqec\_\-config\_\-init}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-config\_\-init (\bf{vqec\_\-config\_\-t} $\ast$ {\em cfg})}\label{vqec__config__parser_8h_ead34c321a08f14454b9c0b3faa1d94f}
+
+
+Initialize the configuration parser. \index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_lookup@{vqec\_\-config\_\-lookup}}
+\index{vqec_config_lookup@{vqec\_\-config\_\-lookup}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-config\_\-setting\_\-t}$\ast$ vqec\_\-config\_\-lookup (\bf{vqec\_\-config\_\-t} $\ast$ {\em cfg}, char $\ast$ {\em name})}\label{vqec__config__parser_8h_c5fb9837424d9e9dd06cc152476a80de}
+
+
+Look up a configuration setting by its parameter name. \index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_read_buffer@{vqec\_\-config\_\-read\_\-buffer}}
+\index{vqec_config_read_buffer@{vqec\_\-config\_\-read\_\-buffer}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-config\_\-read\_\-buffer (\bf{vqec\_\-config\_\-t} $\ast$ {\em cfg}, const char $\ast$ {\em buffer})}\label{vqec__config__parser_8h_82c73039ce3c5830f6f87ff3acb63d06}
+
+
+Read a buffer containing configuration information and parse its parameters and values. \index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_read_file@{vqec\_\-config\_\-read\_\-file}}
+\index{vqec_config_read_file@{vqec\_\-config\_\-read\_\-file}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-config\_\-read\_\-file (\bf{vqec\_\-config\_\-t} $\ast$ {\em cfg}, const char $\ast$ {\em filepath})}\label{vqec__config__parser_8h_5250d19c8cd6d637ccb1646604b8b43b}
+
+
+Read a configuration file and parse its parameters and values. \index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_setting_get_bool@{vqec\_\-config\_\-setting\_\-get\_\-bool}}
+\index{vqec_config_setting_get_bool@{vqec\_\-config\_\-setting\_\-get\_\-bool}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-config\_\-setting\_\-get\_\-bool (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$ {\em setting})}\label{vqec__config__parser_8h_2124526ced2aa28db34fb626c93773aa}
+
+
+Retrieve the value of a boolean setting.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em setting}]Setting to have its value retrieved. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Returns TRUE or FALSE in accordance with the value of the setting. \end{Desc}
+\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_setting_get_elem@{vqec\_\-config\_\-setting\_\-get\_\-elem}}
+\index{vqec_config_setting_get_elem@{vqec\_\-config\_\-setting\_\-get\_\-elem}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-config\_\-setting\_\-t}$\ast$ vqec\_\-config\_\-setting\_\-get\_\-elem (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$ {\em setting}, int {\em index})}\label{vqec__config__parser_8h_4fcdc34e151d833e48c551d02d0ca51c}
+
+
+Retrieve an element of a list by its index. \index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_setting_get_int@{vqec\_\-config\_\-setting\_\-get\_\-int}}
+\index{vqec_config_setting_get_int@{vqec\_\-config\_\-setting\_\-get\_\-int}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-config\_\-setting\_\-get\_\-int (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$ {\em setting})}\label{vqec__config__parser_8h_e5f8a085569a7a8e75efcef0e4bc98ac}
+
+
+Retrieve the value of a signed integer setting.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em setting}]Setting to have its value retrieved. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Returns the signed integer value of the setting. \end{Desc}
+\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_setting_get_member@{vqec\_\-config\_\-setting\_\-get\_\-member}}
+\index{vqec_config_setting_get_member@{vqec\_\-config\_\-setting\_\-get\_\-member}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-config\_\-setting\_\-t}$\ast$ vqec\_\-config\_\-setting\_\-get\_\-member (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$ {\em setting}, char $\ast$ {\em name})}\label{vqec__config__parser_8h_27730b04cc0a10473d7d134a0472cca4}
+
+
+Retrieve a member of a group by its name. \index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_setting_get_string@{vqec\_\-config\_\-setting\_\-get\_\-string}}
+\index{vqec_config_setting_get_string@{vqec\_\-config\_\-setting\_\-get\_\-string}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ vqec\_\-config\_\-setting\_\-get\_\-string (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$ {\em setting})}\label{vqec__config__parser_8h_3b1a12dff91d6b592b26b497ee6bcefe}
+
+
+Retrieve the value of a string setting.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em setting}]Setting to have its value retrieved. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Returns a pointer to the string value of the setting. \end{Desc}
+\index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_setting_length@{vqec\_\-config\_\-setting\_\-length}}
+\index{vqec_config_setting_length@{vqec\_\-config\_\-setting\_\-length}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-config\_\-setting\_\-length (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$ {\em setting})}\label{vqec__config__parser_8h_05aa9a1e8cbfa61f7b11ce785695e742}
+
+
+Determine the length (number of elements) of a particular group or list format configuration setting. \index{vqec_config_parser.h@{vqec\_\-config\_\-parser.h}!vqec_config_setting_type@{vqec\_\-config\_\-setting\_\-type}}
+\index{vqec_config_setting_type@{vqec\_\-config\_\-setting\_\-type}!vqec_config_parser.h@{vqec\_\-config\_\-parser.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-config\_\-setting\_\-type\_\-t} vqec\_\-config\_\-setting\_\-type (\bf{vqec\_\-config\_\-setting\_\-t} $\ast$ {\em setting})}\label{vqec__config__parser_8h_289e2c5093c37152d8c5c02c98f1ddd8}
+
+
+Determine the type of a particular setting. 

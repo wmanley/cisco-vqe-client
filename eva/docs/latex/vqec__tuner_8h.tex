@@ -1,0 +1,295 @@
+\section{vqec\_\-tuner.h File Reference}
+\label{vqec__tuner_8h}\index{vqec_tuner.h@{vqec\_\-tuner.h}}
+{\tt \#include $<$utils/vam\_\-types.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-api.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-tuner\_\-create} (vqec\_\-tunerid\_\-t $\ast$id, const char $\ast$name)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-tuner\_\-destroy} (vqec\_\-tunerid\_\-t id)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-tuner\_\-bind\_\-chan} (vqec\_\-tunerid\_\-t id, \bf{vqec\_\-chanid\_\-t} chanid, const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, const \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t} $\ast$chan\_\-event\_\-cb)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-tuner\_\-unbind\_\-chan} (vqec\_\-tunerid\_\-t id)
+\item 
+vqec\_\-tunerid\_\-t \bf{vqec\_\-tuner\_\-get\_\-id\_\-by\_\-name} (const char $\ast$name)
+\item 
+int \bf{vqec\_\-tuner\_\-get\_\-output\_\-sock\_\-fd} (vqec\_\-tunerid\_\-t id)
+\item 
+const char $\ast$ \bf{vqec\_\-tuner\_\-get\_\-name} (vqec\_\-tunerid\_\-t id)
+\item 
+vqec\_\-dp\_\-tunerid\_\-t \bf{vqec\_\-tuner\_\-get\_\-dptuner} (vqec\_\-tunerid\_\-t id)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-tuner\_\-get\_\-chan} (vqec\_\-tunerid\_\-t id, \bf{vqec\_\-chanid\_\-t} $\ast$chanid)
+\item 
+vqec\_\-tunerid\_\-t \bf{vqec\_\-tuner\_\-get\_\-first\_\-tuner\_\-id} (void)
+\item 
+vqec\_\-tunerid\_\-t \bf{vqec\_\-tuner\_\-get\_\-next\_\-tuner\_\-id} (vqec\_\-tunerid\_\-t cur)
+\item 
+void \bf{vqec\_\-tuner\_\-add\_\-stats} (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$total, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$stats)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-tuner\_\-get\_\-stats\_\-global} (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$stats, boolean cumulative)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-tuner\_\-get\_\-stats\_\-legacy} (vqec\_\-tunerid\_\-t id, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$stats)
+\item 
+void \bf{vqec\_\-tuner\_\-clear\_\-stats} (void)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-tuner\_\-dump} (vqec\_\-tunerid\_\-t id, unsigned int options\_\-flag)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-tuner\_\-get\_\-pat} (vqec\_\-tunerid\_\-t id, uint8\_\-t $\ast$buf, uint32\_\-t $\ast$pat\_\-len, uint32\_\-t buf\_\-len)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-tuner\_\-get\_\-pmt} (vqec\_\-tunerid\_\-t id, uint16\_\-t $\ast$pid, uint8\_\-t $\ast$buf, uint32\_\-t $\ast$pmt\_\-len, uint32\_\-t buf\_\-len)
+\item 
+vqec\_\-error\_\-t \bf{init\_\-vqec\_\-tuner\_\-module} (uint32\_\-t max\_\-tuners)
+\item 
+void \bf{vqec\_\-tuner\_\-module\_\-deinit} (void)
+\item 
+uint8\_\-t \bf{vqec\_\-tuner\_\-is\_\-fastfill\_\-enabled} (vqec\_\-tunerid\_\-t id)
+\item 
+uint8\_\-t \bf{vqec\_\-tuner\_\-is\_\-rcc\_\-enabled} (vqec\_\-tunerid\_\-t id)
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!init_vqec_tuner_module@{init\_\-vqec\_\-tuner\_\-module}}
+\index{init_vqec_tuner_module@{init\_\-vqec\_\-tuner\_\-module}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t init\_\-vqec\_\-tuner\_\-module (uint32\_\-t {\em max\_\-tuners})}\label{vqec__tuner_8h_5fa468ebc64ffaa41e00bf12914944ac}
+
+
+Initialize the tuner module:\begin{itemize}
+\item records the supplied maximum number of tuners that may be allocated (This value is assumed to be valid.)\item initializes tuner list\end{itemize}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em max\_\-tuners}]Maximum number of tuners to support. \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]VQEC\_\-OK upon success, or else reason for failure. \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_add_stats@{vqec\_\-tuner\_\-add\_\-stats}}
+\index{vqec_tuner_add_stats@{vqec\_\-tuner\_\-add\_\-stats}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-tuner\_\-add\_\-stats (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$ {\em total}, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$ {\em stats})}\label{vqec__tuner_8h_6407d8c67de2968b7cc131cb580e5559}
+
+
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_bind_chan@{vqec\_\-tuner\_\-bind\_\-chan}}
+\index{vqec_tuner_bind_chan@{vqec\_\-tuner\_\-bind\_\-chan}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-tuner\_\-bind\_\-chan (vqec\_\-tunerid\_\-t {\em id}, \bf{vqec\_\-chanid\_\-t} {\em chanid}, const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, const \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t} $\ast$ {\em chan\_\-event\_\-cb})}\label{vqec__tuner_8h_29cf5cce3c4bd39bfeef63c48e7a2e10}
+
+
+Bind a channel to a tuner \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]ID of the tuner whose channel is to change \item[\mbox{$\leftarrow$} {\em chanid}]- ID of the channel to bind to the tuner \item[\mbox{$\leftarrow$} {\em bp}]- bind params \item[\mbox{$\leftarrow$} {\em chan\_\-event\_\-cb,:}]chan event cb function \item[\mbox{$\rightarrow$} {\em success}]or error code. \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_clear_stats@{vqec\_\-tuner\_\-clear\_\-stats}}
+\index{vqec_tuner_clear_stats@{vqec\_\-tuner\_\-clear\_\-stats}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-tuner\_\-clear\_\-stats (void)}\label{vqec__tuner_8h_2ee0b2887cba3dcc233f2d859590ee1d}
+
+
+Clear stats for all tuners \index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_create@{vqec\_\-tuner\_\-create}}
+\index{vqec_tuner_create@{vqec\_\-tuner\_\-create}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-tuner\_\-create (vqec\_\-tunerid\_\-t $\ast$ {\em id}, const char $\ast$ {\em name})}\label{vqec__tuner_8h_e826b805a1696cdecdc3b6be833b360a}
+
+
+Create a new tuner and store it within the tuner manager.
+
+If no name is specified, the tuner will be allocated a name corresponding to its array position, e.g., \char`\"{}10\char`\"{}. If name is specified, it must not be an empty string, and should consist of alphanumeric characters only, excluding spaces; length is truncated to VQEC\_\-MAX\_\-TUNER\_\-NAMESTR\_\-LEN chars (including the trailing ).
+
+[Invariant] Tuner module must have been initialized prior to this call. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em id}]ID of the newly created tuner, or VQEC\_\-TUNERID\_\-INVALID if no tuner was created. \item[\mbox{$\leftarrow$} {\em name}]Name of the created tuner. Note: only up to the first VQEC\_\-MAX\_\-TUNER\_\-NAMESTR\_\-LEN characters of this string are considered. \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]VQEC\_\-OK on success, failure code otherwise. \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_destroy@{vqec\_\-tuner\_\-destroy}}
+\index{vqec_tuner_destroy@{vqec\_\-tuner\_\-destroy}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-tuner\_\-destroy (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__tuner_8h_ad632acb656a21299365a822605b40e2}
+
+
+Delete a tuner given its tuner id, and remove it from the tuner manager.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Tuner id to delete. \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]Returns VQEC\_\-OK if the tuner is found, otherwise returns failure code. \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_dump@{vqec\_\-tuner\_\-dump}}
+\index{vqec_tuner_dump@{vqec\_\-tuner\_\-dump}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-tuner\_\-dump (vqec\_\-tunerid\_\-t {\em id}, unsigned int {\em options\_\-flag})}\label{vqec__tuner_8h_00204a54177684b6cc97b76589710260}
+
+
+Dump the tuner information for debugging. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]identifies tuner to dump. \item[\mbox{$\leftarrow$} {\em 32-bit}]flag specifying cli display options \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]Returns VQE\_\-OK or error code upon failure. \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_get_chan@{vqec\_\-tuner\_\-get\_\-chan}}
+\index{vqec_tuner_get_chan@{vqec\_\-tuner\_\-get\_\-chan}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-tuner\_\-get\_\-chan (vqec\_\-tunerid\_\-t {\em id}, \bf{vqec\_\-chanid\_\-t} $\ast$ {\em chanid})}\label{vqec__tuner_8h_cb607c46e7fc451bd9ae7507f78c06e4}
+
+
+Returns the current active channel associated with a given tuner ID.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]ifclient ID of the tuner \item[\mbox{$\rightarrow$} {\em chanid}]currently tuned channel, or VQEC\_\-CHANID\_\-INVALID if none \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]VQEC\_\-OK upon success or failure code otherwise. \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_get_dptuner@{vqec\_\-tuner\_\-get\_\-dptuner}}
+\index{vqec_tuner_get_dptuner@{vqec\_\-tuner\_\-get\_\-dptuner}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-tunerid\_\-t vqec\_\-tuner\_\-get\_\-dptuner (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__tuner_8h_daf05e0d27cbc7ceaf5485cb9dc404b0}
+
+
+Returns the dataplane tuner ID associated with a given tuner ID.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]ifclient ID of the tuner \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]dataplane ID of the tuner identified by id. \end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_get_first_tuner_id@{vqec\_\-tuner\_\-get\_\-first\_\-tuner\_\-id}}
+\index{vqec_tuner_get_first_tuner_id@{vqec\_\-tuner\_\-get\_\-first\_\-tuner\_\-id}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-tunerid\_\-t vqec\_\-tuner\_\-get\_\-first\_\-tuner\_\-id (void)}\label{vqec__tuner_8h_8c9f59de01104b59e53b7271798bc422}
+
+
+Get the first tuner in the tuner list. \begin{Desc}
+\item[Returns:]Id of the first tuner - this is used for iteration, thereofore we don't want to return pointers, since the iteration inherently is not a thread safe operation. \end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_get_id_by_name@{vqec\_\-tuner\_\-get\_\-id\_\-by\_\-name}}
+\index{vqec_tuner_get_id_by_name@{vqec\_\-tuner\_\-get\_\-id\_\-by\_\-name}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-tunerid\_\-t vqec\_\-tuner\_\-get\_\-id\_\-by\_\-name (const char $\ast$ {\em name})}\label{vqec__tuner_8h_8337a18b433b903ddd278633d1b03ff0}
+
+
+Retrieve a tuner from a tuner manager by tuner name. NOTE: Only up to the first VQEC\_\-MAX\_\-TUNER\_\-NAMESTR\_\-LEN characters of the string are considered.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em name}]name of the tuner, NOT necessarily valid (e.g. may be NULL, have invalid chars, or may not be NULL-terminated) \item[\mbox{$\rightarrow$} {\em vqec\_\-tunerid\_\-t}]ID of the found tuner, or VQEC\_\-TUNERID\_\-INVALID if not found. \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_get_name@{vqec\_\-tuner\_\-get\_\-name}}
+\index{vqec_tuner_get_name@{vqec\_\-tuner\_\-get\_\-name}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-tuner\_\-get\_\-name (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__tuner_8h_6e512982a649b387bdff78952f07f5ce}
+
+
+Returns the tuner name associated with the given tuner ID, or NULL if the supplied tuner ID does not exist.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]ifclient ID of the tuner \item[\mbox{$\rightarrow$} {\em char}]$\ast$ Name of associated tuner \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_get_next_tuner_id@{vqec\_\-tuner\_\-get\_\-next\_\-tuner\_\-id}}
+\index{vqec_tuner_get_next_tuner_id@{vqec\_\-tuner\_\-get\_\-next\_\-tuner\_\-id}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-tunerid\_\-t vqec\_\-tuner\_\-get\_\-next\_\-tuner\_\-id (const vqec\_\-tunerid\_\-t {\em cur})}\label{vqec__tuner_8h_c34377a31d44efe0b16a3599a6190213}
+
+
+Get the next tuner \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em tuner}]id for the \char`\"{}current\char`\"{} tuner. To prevent accidental circular recursion, \char`\"{}cur\char`\"{} must be a tuner id in the valid range. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Id of the next tuner. \end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_get_output_sock_fd@{vqec\_\-tuner\_\-get\_\-output\_\-sock\_\-fd}}
+\index{vqec_tuner_get_output_sock_fd@{vqec\_\-tuner\_\-get\_\-output\_\-sock\_\-fd}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-tuner\_\-get\_\-output\_\-sock\_\-fd (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__tuner_8h_3cb320aedfac98ff1b82a22066a228bc}
+
+
+Get the output socket fd associated with the tuner.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]ID of the tuner. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]fd associated with the tuner. \end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_get_pat@{vqec\_\-tuner\_\-get\_\-pat}}
+\index{vqec_tuner_get_pat@{vqec\_\-tuner\_\-get\_\-pat}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-tuner\_\-get\_\-pat (vqec\_\-tunerid\_\-t {\em id}, uint8\_\-t $\ast$ {\em buf}, uint32\_\-t $\ast$ {\em pat\_\-len}, uint32\_\-t {\em buf\_\-len})}\label{vqec__tuner_8h_dfff781bdd37cab5ca561ee04cd89998}
+
+
+Get the PAT after a rapid channel change has completed\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]identifies tuner. \item[\mbox{$\leftarrow$} {\em buf}]Pointer to the buffer in which PAT is copied. \item[\mbox{$\rightarrow$} {\em pat\_\-len}]Actual length of the PAT copied. \item[\mbox{$\leftarrow$} {\em buf\_\-len}]Length of the input content buffer. \item[\mbox{$\rightarrow$} {\em success}]or error code. \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_get_pmt@{vqec\_\-tuner\_\-get\_\-pmt}}
+\index{vqec_tuner_get_pmt@{vqec\_\-tuner\_\-get\_\-pmt}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-tuner\_\-get\_\-pmt (vqec\_\-tunerid\_\-t {\em id}, uint16\_\-t $\ast$ {\em pid}, uint8\_\-t $\ast$ {\em buf}, uint32\_\-t $\ast$ {\em pmt\_\-len}, uint32\_\-t {\em buf\_\-len})}\label{vqec__tuner_8h_de8175e809be82b1c14fa03b171e8ae9}
+
+
+Get the PMT after a rapid channel change has completed\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]identifies tuner. \item[\mbox{$\rightarrow$} {\em pid}]PID for the PMT section. \item[\mbox{$\leftarrow$} {\em buf}]Pointer to the buffer in which PMT is copied. \item[\mbox{$\rightarrow$} {\em pmt\_\-len}]Actual length of the PMT copied. \item[\mbox{$\leftarrow$} {\em buf\_\-len}]Length of the input content buffer. \item[\mbox{$\rightarrow$} {\em success}]or error code. \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_get_stats_global@{vqec\_\-tuner\_\-get\_\-stats\_\-global}}
+\index{vqec_tuner_get_stats_global@{vqec\_\-tuner\_\-get\_\-stats\_\-global}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-tuner\_\-get\_\-stats\_\-global (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$ {\em stats}, boolean {\em cumulative})}\label{vqec__tuner_8h_8c7bede0f83da6759d2cf511c4d389fd}
+
+
+Get the global/historical tuner stats
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em stats}]Structure in which tuner stats are loaded \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]success or error code. \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_get_stats_legacy@{vqec\_\-tuner\_\-get\_\-stats\_\-legacy}}
+\index{vqec_tuner_get_stats_legacy@{vqec\_\-tuner\_\-get\_\-stats\_\-legacy}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-tuner\_\-get\_\-stats\_\-legacy (vqec\_\-tunerid\_\-t {\em id}, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$ {\em stats})}\label{vqec__tuner_8h_8fe484fd125c9568d295a962356e6d08}
+
+
+Retrieve the stats shown for the \char`\"{}show counters $<$tuner$>$\char`\"{} command. These stats are a combination of: tuner's channel session: (channel stats since the tuner's channel became active) tuner session (tuner stats since the tuner was last bound to its channel)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]ID of tuner whose stats are requested \item[\mbox{$\rightarrow$} {\em stats}]contains stats for tuner \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]VQEC\_\-OK upon success, or error code upon failure \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_is_fastfill_enabled@{vqec\_\-tuner\_\-is\_\-fastfill\_\-enabled}}
+\index{vqec_tuner_is_fastfill_enabled@{vqec\_\-tuner\_\-is\_\-fastfill\_\-enabled}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t vqec\_\-tuner\_\-is\_\-fastfill\_\-enabled (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__tuner_8h_ea34bc8b1f251e13dd145336b94a5d28}
+
+
+--------------------------------------------------------------------------- Is a fastfill operation enabled for the tuner? Fastfill will be inactive if the application requested no fastfill at bind time, or if the client or server had fastfill disabled via configuration. If called when the tuner is not bound the method will return false.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Tuner identifier. \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE for fastfill enabled, FALSE otherwise. ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_is_rcc_enabled@{vqec\_\-tuner\_\-is\_\-rcc\_\-enabled}}
+\index{vqec_tuner_is_rcc_enabled@{vqec\_\-tuner\_\-is\_\-rcc\_\-enabled}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t vqec\_\-tuner\_\-is\_\-rcc\_\-enabled (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__tuner_8h_5fb2cc65331f006b110100d86b278821}
+
+
+--------------------------------------------------------------------------- Is a RCC operation enabled for the tuner? RCC will be inactive if the application requested no RCC at bind time, or if the client or server had RCC disabled via configuration. If called when the tuner is not bound the method will return FALSE.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Tuner identifier. \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]TRUE for RCC enabled, FALSE otherwise. ---------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_module_deinit@{vqec\_\-tuner\_\-module\_\-deinit}}
+\index{vqec_tuner_module_deinit@{vqec\_\-tuner\_\-module\_\-deinit}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-tuner\_\-module\_\-deinit (void)}\label{vqec__tuner_8h_f557c20fa23f544bc59b651472fafbb0}
+
+
+De-initialize the tuner module:\begin{itemize}
+\item resets the amount of tuners that can be supported to 0\item destroys any existing tuners and removes them from the tuner database. \end{itemize}
+\index{vqec_tuner.h@{vqec\_\-tuner.h}!vqec_tuner_unbind_chan@{vqec\_\-tuner\_\-unbind\_\-chan}}
+\index{vqec_tuner_unbind_chan@{vqec\_\-tuner\_\-unbind\_\-chan}!vqec_tuner.h@{vqec\_\-tuner.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-tuner\_\-unbind\_\-chan (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__tuner_8h_9d115c328b5683c645bcdd30f3224085}
+
+
+Unbind a tuner from its currently-bound channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]ID of tuner \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]Returns VQEC\_\-OK or error code upon failure. \end{description}
+\end{Desc}

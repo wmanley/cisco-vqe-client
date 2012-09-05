@@ -1,0 +1,76 @@
+\section{vqec\_\-cli\_\-register.h File Reference}
+\label{vqec__cli__register_8h}\index{vqec_cli_register.h@{vqec\_\-cli\_\-register.h}}
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-cli\_\-debug\_\-type\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-DEBUG\_\-FLAG\_\-INVALID}~(-1)
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef \bf{vqec\_\-cli\_\-debug\_\-type\_\-} \bf{vqec\_\-cli\_\-debug\_\-type\_\-t}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void $\ast$ \bf{vqec\_\-cli\_\-startup} (void)
+\item 
+int \bf{vqec\_\-cli\_\-loop\_\-wrapper} (uint16\_\-t cli\_\-port, in\_\-addr\_\-t cli\_\-if\_\-addr)
+\item 
+int \bf{vqec\_\-get\_\-cli\_\-fd} (void $\ast$cli\_\-handle)
+\item 
+void \bf{vqec\_\-destroy\_\-cli} (void)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_cli_register.h@{vqec\_\-cli\_\-register.h}!VQEC_DEBUG_FLAG_INVALID@{VQEC\_\-DEBUG\_\-FLAG\_\-INVALID}}
+\index{VQEC_DEBUG_FLAG_INVALID@{VQEC\_\-DEBUG\_\-FLAG\_\-INVALID}!vqec_cli_register.h@{vqec\_\-cli\_\-register.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-DEBUG\_\-FLAG\_\-INVALID~(-1)}\label{vqec__cli__register_8h_522bc1ccb82472e1417d74ac09196d44}
+
+
+Invalid debug flag. 
+
+\subsection{Typedef Documentation}
+\index{vqec_cli_register.h@{vqec\_\-cli\_\-register.h}!vqec_cli_debug_type_t@{vqec\_\-cli\_\-debug\_\-type\_\-t}}
+\index{vqec_cli_debug_type_t@{vqec\_\-cli\_\-debug\_\-type\_\-t}!vqec_cli_register.h@{vqec\_\-cli\_\-register.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-cli\_\-debug\_\-type\_\-}  \bf{vqec\_\-cli\_\-debug\_\-type\_\-t}}\label{vqec__cli__register_8h_7ea15cd750fa0e91ff562e8226834680}
+
+
+Structure to work with debug flags as they relate to both the CP and DP. 
+
+\subsection{Function Documentation}
+\index{vqec_cli_register.h@{vqec\_\-cli\_\-register.h}!vqec_cli_loop_wrapper@{vqec\_\-cli\_\-loop\_\-wrapper}}
+\index{vqec_cli_loop_wrapper@{vqec\_\-cli\_\-loop\_\-wrapper}!vqec_cli_register.h@{vqec\_\-cli\_\-register.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-cli\_\-loop\_\-wrapper (uint16\_\-t {\em cli\_\-port}, in\_\-addr\_\-t {\em cli\_\-if\_\-addr})}\label{vqec__cli__register_8h_c633b1929d242adb624a6b087aca273b}
+
+
+Creates a telnet socket listening to the $<$cli\_\-port$>$ and then loops waiting to receive cli commands on that port. Only VQEC\_\-CLI\_\-CLIENT\_\-MAX clients are accepted. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em cli\_\-port}]- specifies telnet port for the cli. note specifying a cli\_\-port of zero does not start a telnet server. \item[\mbox{$\leftarrow$} {\em cli\_\-if\_\-addr}]- specifies the interface address to bind the telnet server to. note specifying a cli\_\-if\_\-addr of zero binds the server to listen on all interfaces. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 if the loop exits normally, 1 if the loop exited because the telnet server failed to start.\end{Desc}
+CLI telnet session. See vqec\_\-cli\_\-loop. \index{vqec_cli_register.h@{vqec\_\-cli\_\-register.h}!vqec_cli_startup@{vqec\_\-cli\_\-startup}}
+\index{vqec_cli_startup@{vqec\_\-cli\_\-startup}!vqec_cli_register.h@{vqec\_\-cli\_\-register.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ vqec\_\-cli\_\-startup (void)}\label{vqec__cli__register_8h_5314b6d20c5f74e68629aad10f432b6b}
+
+
+Initialize VQEC's CLI. \begin{Desc}
+\item[Returns:]A cli\_\-handle, for use in starting an optional CLI telnet session. See vqec\_\-cli\_\-loop. \end{Desc}
+\index{vqec_cli_register.h@{vqec\_\-cli\_\-register.h}!vqec_destroy_cli@{vqec\_\-destroy\_\-cli}}
+\index{vqec_destroy_cli@{vqec\_\-destroy\_\-cli}!vqec_cli_register.h@{vqec\_\-cli\_\-register.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-destroy\_\-cli (void)}\label{vqec__cli__register_8h_06fe000a0fdce8ad59626677a22d8ab1}
+
+
+\index{vqec_cli_register.h@{vqec\_\-cli\_\-register.h}!vqec_get_cli_fd@{vqec\_\-get\_\-cli\_\-fd}}
+\index{vqec_get_cli_fd@{vqec\_\-get\_\-cli\_\-fd}!vqec_cli_register.h@{vqec\_\-cli\_\-register.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-get\_\-cli\_\-fd (void $\ast$ {\em cli\_\-handle})}\label{vqec__cli__register_8h_32efc37e7ffb06b897e5ff60087fa796}
+
+

@@ -1,0 +1,190 @@
+\section{vqec\_\-updater\_\-private.h File Reference}
+\label{vqec__updater__private_8h}\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+{\tt \#include \char`\"{}utils/vmd5.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-updater\_\-resource\_\-info\_\-}
+\item 
+struct \bf{vqec\_\-updater\_\-mgr\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{MAX\_\-LINE\_\-LENGTH}~512
+\item 
+\#define \bf{MAX\_\-DOMAIN\_\-NAME\_\-LENGTH}~80
+\item 
+\#define \bf{MAX\_\-DB\_\-NAME\_\-LENGTH}~80
+\item 
+\#define \bf{VQEC\_\-VERSION\_\-FILE\_\-NOT\_\-AVAILABLE}~VQEC\_\-SYSCFG\_\-CHECKSUM\_\-UNAVAILABLE
+\item 
+\#define \bf{VQEC\_\-VERSION\_\-FILE\_\-CORRUPTED}~\char`\"{}$<$file corrupted$>$\char`\"{}
+\item 
+\#define \bf{SERVICE\_\-NAME}~\char`\"{}vqe\_\-channel\_\-cfg\char`\"{}
+\item 
+\#define \bf{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-INDEX}~\char`\"{}index\char`\"{}
+\item 
+\#define \bf{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-NETCFG}~\char`\"{}vqec-network-cfg\char`\"{}
+\item 
+\#define \bf{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-CHANCFG}~\char`\"{}vqe-\bf{channels}\char`\"{}
+\item 
+\#define \bf{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-MAX\_\-LEN}
+\item 
+\#define \bf{VQEC\_\-UPDATER\_\-SERVER\_\-VERSION\_\-LEN}~40
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{vqec\_\-updater\_\-result\_\-err\_\-} \bf{vqec\_\-updater\_\-result\_\-err\_\-t}
+\item 
+typedef \bf{vqec\_\-updater\_\-resource\_\-info\_\-} \bf{vqec\_\-updater\_\-resource\_\-info\_\-t}
+\item 
+typedef \bf{vqec\_\-updater\_\-mgr\_\-} \bf{vqec\_\-updater\_\-mgr\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-updater\_\-result\_\-err\_\-} \{ \par
+\bf{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-OK} =  0, 
+\bf{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-MEM}, 
+\bf{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-NA}, 
+\bf{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-UNNECESSARY}, 
+\par
+\bf{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-LIST}, 
+\bf{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-COMM}, 
+\bf{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-REPLY\_\-OLDVERSION}, 
+\bf{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-REPLY\_\-UNEXPECTED}, 
+\par
+\bf{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-COMMIT}
+ \}
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+UT\_\-STATIC \bf{vqec\_\-updater\_\-mgr\_\-t} \bf{vqec\_\-updater}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!MAX_DB_NAME_LENGTH@{MAX\_\-DB\_\-NAME\_\-LENGTH}}
+\index{MAX_DB_NAME_LENGTH@{MAX\_\-DB\_\-NAME\_\-LENGTH}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-DB\_\-NAME\_\-LENGTH~80}\label{vqec__updater__private_8h_3aa10045e3dfa3194539350c2e8bad0d}
+
+
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!MAX_DOMAIN_NAME_LENGTH@{MAX\_\-DOMAIN\_\-NAME\_\-LENGTH}}
+\index{MAX_DOMAIN_NAME_LENGTH@{MAX\_\-DOMAIN\_\-NAME\_\-LENGTH}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-DOMAIN\_\-NAME\_\-LENGTH~80}\label{vqec__updater__private_8h_6203ee0e41a954b6acdfdd6cc5ae5af6}
+
+
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!MAX_LINE_LENGTH@{MAX\_\-LINE\_\-LENGTH}}
+\index{MAX_LINE_LENGTH@{MAX\_\-LINE\_\-LENGTH}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-LINE\_\-LENGTH~512}\label{vqec__updater__private_8h_67c951c92e776916c9e6b4d2d9663312}
+
+
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!SERVICE_NAME@{SERVICE\_\-NAME}}
+\index{SERVICE_NAME@{SERVICE\_\-NAME}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SERVICE\_\-NAME~\char`\"{}vqe\_\-channel\_\-cfg\char`\"{}}\label{vqec__updater__private_8h_aa7ddb736896fde9f81549839dac00ff}
+
+
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESOURCE_NAME_CHANCFG@{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-CHANCFG}}
+\index{VQEC_UPDATER_RESOURCE_NAME_CHANCFG@{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-CHANCFG}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-CHANCFG~\char`\"{}vqe-\bf{channels}\char`\"{}}\label{vqec__updater__private_8h_3624c821d712ee0424b9fcb653ff5681}
+
+
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESOURCE_NAME_INDEX@{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-INDEX}}
+\index{VQEC_UPDATER_RESOURCE_NAME_INDEX@{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-INDEX}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-INDEX~\char`\"{}index\char`\"{}}\label{vqec__updater__private_8h_596e2417bccb82175bdb741ebee98cdb}
+
+
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESOURCE_NAME_MAX_LEN@{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-MAX\_\-LEN}}
+\index{VQEC_UPDATER_RESOURCE_NAME_MAX_LEN@{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-MAX\_\-LEN}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-MAX\_\-LEN}\label{vqec__updater__private_8h_7049e6fea74b6ad13d1cf87d477708a6}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}(                     \
+        max( max( sizeof(VQEC_UPDATER_RESOURCE_NAME_INDEX),      \
+                  sizeof(VQEC_UPDATER_RESOURCE_NAME_NETCFG)),    \
+             sizeof(VQEC_UPDATER_RESOURCE_NAME_CHANCFG) )        \
+        )
+\end{verbatim}\end{Code}
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESOURCE_NAME_NETCFG@{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-NETCFG}}
+\index{VQEC_UPDATER_RESOURCE_NAME_NETCFG@{VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-NETCFG}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UPDATER\_\-RESOURCE\_\-NAME\_\-NETCFG~\char`\"{}vqec-network-cfg\char`\"{}}\label{vqec__updater__private_8h_9ab40c29cbf783460c7d1ef7934ce57e}
+
+
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_SERVER_VERSION_LEN@{VQEC\_\-UPDATER\_\-SERVER\_\-VERSION\_\-LEN}}
+\index{VQEC_UPDATER_SERVER_VERSION_LEN@{VQEC\_\-UPDATER\_\-SERVER\_\-VERSION\_\-LEN}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UPDATER\_\-SERVER\_\-VERSION\_\-LEN~40}\label{vqec__updater__private_8h_ac2b92b9c78d84a8936cd84f229b9910}
+
+
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_VERSION_FILE_CORRUPTED@{VQEC\_\-VERSION\_\-FILE\_\-CORRUPTED}}
+\index{VQEC_VERSION_FILE_CORRUPTED@{VQEC\_\-VERSION\_\-FILE\_\-CORRUPTED}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-VERSION\_\-FILE\_\-CORRUPTED~\char`\"{}$<$file corrupted$>$\char`\"{}}\label{vqec__updater__private_8h_67537a16c712b6820950ebd9fe6e3b6e}
+
+
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_VERSION_FILE_NOT_AVAILABLE@{VQEC\_\-VERSION\_\-FILE\_\-NOT\_\-AVAILABLE}}
+\index{VQEC_VERSION_FILE_NOT_AVAILABLE@{VQEC\_\-VERSION\_\-FILE\_\-NOT\_\-AVAILABLE}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-VERSION\_\-FILE\_\-NOT\_\-AVAILABLE~VQEC\_\-SYSCFG\_\-CHECKSUM\_\-UNAVAILABLE}\label{vqec__updater__private_8h_d517db53f6001215d602103a5d0e067a}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!vqec_updater_mgr_t@{vqec\_\-updater\_\-mgr\_\-t}}
+\index{vqec_updater_mgr_t@{vqec\_\-updater\_\-mgr\_\-t}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-updater\_\-mgr\_\-}  \bf{vqec\_\-updater\_\-mgr\_\-t}}\label{vqec__updater__private_8h_d2901dccfeb016a4effb22796a6b1255}
+
+
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!vqec_updater_resource_info_t@{vqec\_\-updater\_\-resource\_\-info\_\-t}}
+\index{vqec_updater_resource_info_t@{vqec\_\-updater\_\-resource\_\-info\_\-t}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-updater\_\-resource\_\-info\_\-}  \bf{vqec\_\-updater\_\-resource\_\-info\_\-t}}\label{vqec__updater__private_8h_07c8a385e754fc0ac13f18aee9ee1aee}
+
+
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!vqec_updater_result_err_t@{vqec\_\-updater\_\-result\_\-err\_\-t}}
+\index{vqec_updater_result_err_t@{vqec\_\-updater\_\-result\_\-err\_\-t}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-updater\_\-result\_\-err\_\-}  \bf{vqec\_\-updater\_\-result\_\-err\_\-t}}\label{vqec__updater__private_8h_db98800168f1db1bc6eccf6673d449a2}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!vqec_updater_result_err_@{vqec\_\-updater\_\-result\_\-err\_\-}}
+\index{vqec_updater_result_err_@{vqec\_\-updater\_\-result\_\-err\_\-}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-updater\_\-result\_\-err\_\-}}\label{vqec__updater__private_8h_081dab783c1fcdda0eb6f743c1486fdf}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_UPDATER_RESULT_ERR_OK@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-OK}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESULT_ERR_OK@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-OK}}\item[{\em 
+VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-OK\label{vqec__updater__private_8h_081dab783c1fcdda0eb6f743c1486fdf17ea089ce356e644c182680e048f23bb}
+}]\index{VQEC_UPDATER_RESULT_ERR_MEM@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-MEM}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESULT_ERR_MEM@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-MEM}}\item[{\em 
+VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-MEM\label{vqec__updater__private_8h_081dab783c1fcdda0eb6f743c1486fdf2e53705a4832dfde9c8369b006343177}
+}]\index{VQEC_UPDATER_RESULT_ERR_NA@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-NA}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESULT_ERR_NA@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-NA}}\item[{\em 
+VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-NA\label{vqec__updater__private_8h_081dab783c1fcdda0eb6f743c1486fdfcfb23d14164ff74cd5366a4533e111bd}
+}]\index{VQEC_UPDATER_RESULT_ERR_UNNECESSARY@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-UNNECESSARY}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESULT_ERR_UNNECESSARY@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-UNNECESSARY}}\item[{\em 
+VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-UNNECESSARY\label{vqec__updater__private_8h_081dab783c1fcdda0eb6f743c1486fdf2aeea2d17a16eb75799e804f309ecdcd}
+}]\index{VQEC_UPDATER_RESULT_ERR_VCDS_LIST@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-LIST}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESULT_ERR_VCDS_LIST@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-LIST}}\item[{\em 
+VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-LIST\label{vqec__updater__private_8h_081dab783c1fcdda0eb6f743c1486fdfd373588c6f214b2855c66c78446c3b30}
+}]\index{VQEC_UPDATER_RESULT_ERR_VCDS_COMM@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-COMM}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESULT_ERR_VCDS_COMM@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-COMM}}\item[{\em 
+VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-COMM\label{vqec__updater__private_8h_081dab783c1fcdda0eb6f743c1486fdfa735e0f92d583e49d4fa23354e98222a}
+}]\index{VQEC_UPDATER_RESULT_ERR_VCDS_REPLY_OLDVERSION@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-REPLY\_\-OLDVERSION}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESULT_ERR_VCDS_REPLY_OLDVERSION@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-REPLY\_\-OLDVERSION}}\item[{\em 
+VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-REPLY\_\-OLDVERSION\label{vqec__updater__private_8h_081dab783c1fcdda0eb6f743c1486fdfca96cbf1a60a24881c6ea9521d8a8971}
+}]\index{VQEC_UPDATER_RESULT_ERR_VCDS_REPLY_UNEXPECTED@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-REPLY\_\-UNEXPECTED}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESULT_ERR_VCDS_REPLY_UNEXPECTED@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-REPLY\_\-UNEXPECTED}}\item[{\em 
+VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-VCDS\_\-REPLY\_\-UNEXPECTED\label{vqec__updater__private_8h_081dab783c1fcdda0eb6f743c1486fdf102dfb3e6b3f7cf096290bd3f2b1c3da}
+}]\index{VQEC_UPDATER_RESULT_ERR_COMMIT@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-COMMIT}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!VQEC_UPDATER_RESULT_ERR_COMMIT@{VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-COMMIT}}\item[{\em 
+VQEC\_\-UPDATER\_\-RESULT\_\-ERR\_\-COMMIT\label{vqec__updater__private_8h_081dab783c1fcdda0eb6f743c1486fdfbc25002caeb8e2ab47b36877c5a7e483}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Variable Documentation}
+\index{vqec_updater_private.h@{vqec\_\-updater\_\-private.h}!vqec_updater@{vqec\_\-updater}}
+\index{vqec_updater@{vqec\_\-updater}!vqec_updater_private.h@{vqec\_\-updater\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC \bf{vqec\_\-updater\_\-mgr\_\-t} \bf{vqec\_\-updater}}\label{vqec__updater__private_8h_9f8c8d1630baf528fe41f6fd02bc79b7}
+
+

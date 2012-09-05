@@ -1,0 +1,92 @@
+\section{vqec\_\-url.h File Reference}
+\label{vqec__url_8h}\index{vqec_url.h@{vqec\_\-url.h}}
+{\tt \#include $<$utils/vam\_\-types.h$>$}\par
+{\tt \#include $<$arpa/inet.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-MAX\_\-URL\_\-LEN}~50
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef char $\ast$ \bf{vqec\_\-url\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-protocol\_\-t} \{ \bf{VQEC\_\-PROTOCOL\_\-UNKNOWN}, 
+\bf{VQEC\_\-PROTOCOL\_\-UDP}, 
+\bf{VQEC\_\-PROTOCOL\_\-RTP}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+char $\ast$ \bf{vqec\_\-url\_\-protocol\_\-to\_\-string} (\bf{vqec\_\-protocol\_\-t})
+\item 
+boolean \bf{vqec\_\-url\_\-ip\_\-parse} (char $\ast$ip\_\-string, in\_\-addr\_\-t $\ast$ip)
+\item 
+int \bf{vqec\_\-url\_\-build} (\bf{vqec\_\-protocol\_\-t}, in\_\-addr\_\-t, uint16\_\-t, char $\ast$, int)
+\item 
+boolean \bf{vqec\_\-url\_\-parse} (\bf{vqec\_\-url\_\-t}, \bf{vqec\_\-protocol\_\-t} $\ast$, in\_\-addr\_\-t $\ast$, uint16\_\-t $\ast$)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_url.h@{vqec\_\-url.h}!VQEC_MAX_URL_LEN@{VQEC\_\-MAX\_\-URL\_\-LEN}}
+\index{VQEC_MAX_URL_LEN@{VQEC\_\-MAX\_\-URL\_\-LEN}!vqec_url.h@{vqec\_\-url.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MAX\_\-URL\_\-LEN~50}\label{vqec__url_8h_9b36435fa685e3ce87bd207cb647d8f6}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_url.h@{vqec\_\-url.h}!vqec_url_t@{vqec\_\-url\_\-t}}
+\index{vqec_url_t@{vqec\_\-url\_\-t}!vqec_url.h@{vqec\_\-url.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef char$\ast$ \bf{vqec\_\-url\_\-t}}\label{vqec__url_8h_c9bb72b2c5a03838fdf473e1bf62fc58}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_url.h@{vqec\_\-url.h}!vqec_protocol_t@{vqec\_\-protocol\_\-t}}
+\index{vqec_protocol_t@{vqec\_\-protocol\_\-t}!vqec_url.h@{vqec\_\-url.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-protocol\_\-t}}\label{vqec__url_8h_bf9d427d93c37e54093e8b0029ce05fd}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_PROTOCOL_UNKNOWN@{VQEC\_\-PROTOCOL\_\-UNKNOWN}!vqec_url.h@{vqec\_\-url.h}}\index{vqec_url.h@{vqec\_\-url.h}!VQEC_PROTOCOL_UNKNOWN@{VQEC\_\-PROTOCOL\_\-UNKNOWN}}\item[{\em 
+VQEC\_\-PROTOCOL\_\-UNKNOWN\label{vqec__url_8h_bf9d427d93c37e54093e8b0029ce05fdf85644859381dec5f0e4e28e1ea6b02a}
+}]\index{VQEC_PROTOCOL_UDP@{VQEC\_\-PROTOCOL\_\-UDP}!vqec_url.h@{vqec\_\-url.h}}\index{vqec_url.h@{vqec\_\-url.h}!VQEC_PROTOCOL_UDP@{VQEC\_\-PROTOCOL\_\-UDP}}\item[{\em 
+VQEC\_\-PROTOCOL\_\-UDP\label{vqec__url_8h_bf9d427d93c37e54093e8b0029ce05fd0ce488be1ec36f6ba627e018b8035c47}
+}]\index{VQEC_PROTOCOL_RTP@{VQEC\_\-PROTOCOL\_\-RTP}!vqec_url.h@{vqec\_\-url.h}}\index{vqec_url.h@{vqec\_\-url.h}!VQEC_PROTOCOL_RTP@{VQEC\_\-PROTOCOL\_\-RTP}}\item[{\em 
+VQEC\_\-PROTOCOL\_\-RTP\label{vqec__url_8h_bf9d427d93c37e54093e8b0029ce05fd8cf30a491f6a2a0ea01d5a7f10e2575b}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{vqec_url.h@{vqec\_\-url.h}!vqec_url_build@{vqec\_\-url\_\-build}}
+\index{vqec_url_build@{vqec\_\-url\_\-build}!vqec_url.h@{vqec\_\-url.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-url\_\-build (\bf{vqec\_\-protocol\_\-t}, in\_\-addr\_\-t, uint16\_\-t, char $\ast$, int)}\label{vqec__url_8h_d70d5291b68df0eb1128d8beb44a588c}
+
+
+\index{vqec_url.h@{vqec\_\-url.h}!vqec_url_ip_parse@{vqec\_\-url\_\-ip\_\-parse}}
+\index{vqec_url_ip_parse@{vqec\_\-url\_\-ip\_\-parse}!vqec_url.h@{vqec\_\-url.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-url\_\-ip\_\-parse (char $\ast$ {\em ip\_\-string}, in\_\-addr\_\-t $\ast$ {\em ip})}\label{vqec__url_8h_6259c78b30ea6c7f19ab7440917eb987}
+
+
+\index{vqec_url.h@{vqec\_\-url.h}!vqec_url_parse@{vqec\_\-url\_\-parse}}
+\index{vqec_url_parse@{vqec\_\-url\_\-parse}!vqec_url.h@{vqec\_\-url.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-url\_\-parse (\bf{vqec\_\-url\_\-t}, \bf{vqec\_\-protocol\_\-t} $\ast$, in\_\-addr\_\-t $\ast$, uint16\_\-t $\ast$)}\label{vqec__url_8h_e37e793fe402c38ed651cfab99ff0ac2}
+
+
+\index{vqec_url.h@{vqec\_\-url.h}!vqec_url_protocol_to_string@{vqec\_\-url\_\-protocol\_\-to\_\-string}}
+\index{vqec_url_protocol_to_string@{vqec\_\-url\_\-protocol\_\-to\_\-string}!vqec_url.h@{vqec\_\-url.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ vqec\_\-url\_\-protocol\_\-to\_\-string (\bf{vqec\_\-protocol\_\-t})}\label{vqec__url_8h_e0e18c67467f9ba8c6c56986ffc379e0}
+
+

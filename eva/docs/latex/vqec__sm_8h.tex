@@ -1,0 +1,288 @@
+\section{vqec\_\-sm.h File Reference}
+\label{vqec__sm_8h}\index{vqec_sm.h@{vqec\_\-sm.h}}
+{\tt \#include $<$sys/time.h$>$}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-sm\_\-event\_\-q\_\-}
+\item 
+struct \bf{vqec\_\-sm\_\-log\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-EVENT\_\-MIN\_\-EV}~VQEC\_\-EVENT\_\-RAPID\_\-CHANNEL\_\-CHANGE
+\item 
+\#define \bf{VQEC\_\-EVENT\_\-MAX\_\-EV}~VQEC\_\-EVENT\_\-NUM\_\-VAL - 1
+\item 
+\#define \bf{VQEC\_\-SM\_\-MIN\_\-STATE}~VQEC\_\-SM\_\-STATE\_\-INIT
+\item 
+\#define \bf{VQEC\_\-SM\_\-MAX\_\-STATE}~VQEC\_\-SM\_\-STATE\_\-NUM\_\-VAL - 1
+\item 
+\#define \bf{VQEC\_\-SM\_\-MAX\_\-EVENTQ\_\-DEPTH}~4
+\item 
+\#define \bf{VQEC\_\-SM\_\-LOG\_\-MIN\_\-EVENT}~VQEC\_\-SM\_\-LOG\_\-STATE\_\-EVENT
+\item 
+\#define \bf{VQEC\_\-SM\_\-LOG\_\-MAX\_\-EVENT}~VQEC\_\-SM\_\-LOG\_\-NUM\_\-VAL - 1
+\item 
+\#define \bf{VQEC\_\-SM\_\-LOG\_\-MAX\_\-SIZE}~16
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{vqec\_\-sm\_\-event\_\-} \bf{vqec\_\-sm\_\-event\_\-t}
+\item 
+typedef enum \bf{vqec\_\-sm\_\-state\_\-} \bf{vqec\_\-sm\_\-state\_\-t}
+\item 
+typedef \bf{vqec\_\-sm\_\-event\_\-q\_\-} \bf{vqec\_\-sm\_\-event\_\-q\_\-t}
+\item 
+typedef enum \bf{vqec\_\-sm\_\-log\_\-event\_\-t\_\-} \bf{vqec\_\-sm\_\-log\_\-event\_\-t}
+\item 
+typedef \bf{vqec\_\-sm\_\-log\_\-} \bf{vqec\_\-sm\_\-log\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-sm\_\-event\_\-} \{ \par
+\bf{VQEC\_\-EVENT\_\-RAPID\_\-CHANNEL\_\-CHANGE}, 
+\bf{VQEC\_\-EVENT\_\-SLOW\_\-CHANNEL\_\-CHANGE}, 
+\bf{VQEC\_\-EVENT\_\-NAT\_\-BINDING\_\-COMPLETE}, 
+\bf{VQEC\_\-EVENT\_\-RECEIVE\_\-VALID\_\-APP}, 
+\par
+\bf{VQEC\_\-EVENT\_\-RECEIVE\_\-INVALID\_\-APP}, 
+\bf{VQEC\_\-EVENT\_\-RECEIVE\_\-NULL\_\-APP}, 
+\bf{VQEC\_\-EVENT\_\-RCC\_\-START\_\-TIMEOUT}, 
+\bf{VQEC\_\-EVENT\_\-RCC\_\-IPC\_\-ERR}, 
+\par
+\bf{VQEC\_\-EVENT\_\-RCC\_\-INTERNAL\_\-ERR}, 
+\bf{VQEC\_\-EVENT\_\-CHAN\_\-DEINIT}, 
+\bf{VQEC\_\-EVENT\_\-NUM\_\-VAL}
+ \}
+\item 
+enum \bf{vqec\_\-sm\_\-state\_\-} \{ \par
+\bf{VQEC\_\-SM\_\-STATE\_\-INVALID}, 
+\bf{VQEC\_\-SM\_\-STATE\_\-INIT}, 
+\bf{VQEC\_\-SM\_\-STATE\_\-WAIT\_\-APP}, 
+\bf{VQEC\_\-SM\_\-STATE\_\-FIN\_\-SUCCESS}, 
+\par
+\bf{VQEC\_\-SM\_\-STATE\_\-ABORT}, 
+\bf{VQEC\_\-SM\_\-STATE\_\-NUM\_\-VAL}
+ \}
+\item 
+enum \bf{vqec\_\-sm\_\-log\_\-event\_\-t\_\-} \{ \bf{VQEC\_\-SM\_\-LOG\_\-STATE\_\-EVENT}, 
+\bf{VQEC\_\-SM\_\-LOG\_\-STATE\_\-ENTER}, 
+\bf{VQEC\_\-SM\_\-LOG\_\-STATE\_\-EXIT}, 
+\bf{VQEC\_\-SM\_\-LOG\_\-NUM\_\-VAL}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+const char $\ast$ \bf{vqec\_\-sm\_\-event\_\-to\_\-string} (\bf{vqec\_\-sm\_\-event\_\-t} e)
+\item 
+const char $\ast$ \bf{vqec\_\-sm\_\-state\_\-to\_\-string} (\bf{vqec\_\-sm\_\-state\_\-t} state)
+\item 
+boolean \bf{vqec\_\-sm\_\-deliver\_\-event} (struct \bf{vqec\_\-chan\_\-} $\ast$chan, \bf{vqec\_\-sm\_\-event\_\-t} event, void $\ast$arg)
+\item 
+void \bf{vqec\_\-sm\_\-display\_\-log} (struct \bf{vqec\_\-chan\_\-} $\ast$chan)
+\item 
+void \bf{vqec\_\-sm\_\-init} (struct \bf{vqec\_\-chan\_\-} $\ast$chan)
+\item 
+void \bf{vqec\_\-sm\_\-deinit} (struct \bf{vqec\_\-chan\_\-} $\ast$chan)
+\item 
+const char $\ast$ \bf{vqec\_\-sm\_\-fail\_\-reason} (struct \bf{vqec\_\-chan\_\-} $\ast$chan)
+\item 
+void \bf{vqec\_\-sm\_\-print} (void)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_MAX_EV@{VQEC\_\-EVENT\_\-MAX\_\-EV}}
+\index{VQEC_EVENT_MAX_EV@{VQEC\_\-EVENT\_\-MAX\_\-EV}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-EVENT\_\-MAX\_\-EV~VQEC\_\-EVENT\_\-NUM\_\-VAL - 1}\label{vqec__sm_8h_0c8b79ff1983cdf1da48bca6b7b02400}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_MIN_EV@{VQEC\_\-EVENT\_\-MIN\_\-EV}}
+\index{VQEC_EVENT_MIN_EV@{VQEC\_\-EVENT\_\-MIN\_\-EV}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-EVENT\_\-MIN\_\-EV~VQEC\_\-EVENT\_\-RAPID\_\-CHANNEL\_\-CHANGE}\label{vqec__sm_8h_d1bcc64e0a0f0531e8c9c7a27ba9674a}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_LOG_MAX_EVENT@{VQEC\_\-SM\_\-LOG\_\-MAX\_\-EVENT}}
+\index{VQEC_SM_LOG_MAX_EVENT@{VQEC\_\-SM\_\-LOG\_\-MAX\_\-EVENT}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SM\_\-LOG\_\-MAX\_\-EVENT~VQEC\_\-SM\_\-LOG\_\-NUM\_\-VAL - 1}\label{vqec__sm_8h_080170d4cc0ecef4e51cc4fd20005d77}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_LOG_MAX_SIZE@{VQEC\_\-SM\_\-LOG\_\-MAX\_\-SIZE}}
+\index{VQEC_SM_LOG_MAX_SIZE@{VQEC\_\-SM\_\-LOG\_\-MAX\_\-SIZE}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SM\_\-LOG\_\-MAX\_\-SIZE~16}\label{vqec__sm_8h_231c90eb31b7c22d0bd5485a65a37c83}
+
+
+Log circular buffer entry. \index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_LOG_MIN_EVENT@{VQEC\_\-SM\_\-LOG\_\-MIN\_\-EVENT}}
+\index{VQEC_SM_LOG_MIN_EVENT@{VQEC\_\-SM\_\-LOG\_\-MIN\_\-EVENT}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SM\_\-LOG\_\-MIN\_\-EVENT~VQEC\_\-SM\_\-LOG\_\-STATE\_\-EVENT}\label{vqec__sm_8h_3d87cdbaf289ed0e50b0afb8ce903340}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_MAX_EVENTQ_DEPTH@{VQEC\_\-SM\_\-MAX\_\-EVENTQ\_\-DEPTH}}
+\index{VQEC_SM_MAX_EVENTQ_DEPTH@{VQEC\_\-SM\_\-MAX\_\-EVENTQ\_\-DEPTH}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SM\_\-MAX\_\-EVENTQ\_\-DEPTH~4}\label{vqec__sm_8h_6fa4446620119c63ab7558a7184ae18c}
+
+
+Event Q entry. \index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_MAX_STATE@{VQEC\_\-SM\_\-MAX\_\-STATE}}
+\index{VQEC_SM_MAX_STATE@{VQEC\_\-SM\_\-MAX\_\-STATE}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SM\_\-MAX\_\-STATE~VQEC\_\-SM\_\-STATE\_\-NUM\_\-VAL - 1}\label{vqec__sm_8h_6d10fc5dcdd7f96fbbbfb429be018105}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_MIN_STATE@{VQEC\_\-SM\_\-MIN\_\-STATE}}
+\index{VQEC_SM_MIN_STATE@{VQEC\_\-SM\_\-MIN\_\-STATE}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SM\_\-MIN\_\-STATE~VQEC\_\-SM\_\-STATE\_\-INIT}\label{vqec__sm_8h_67be2497e1a04e94f00d96c53cee0f3e}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_event_q_t@{vqec\_\-sm\_\-event\_\-q\_\-t}}
+\index{vqec_sm_event_q_t@{vqec\_\-sm\_\-event\_\-q\_\-t}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-sm\_\-event\_\-q\_\-}  \bf{vqec\_\-sm\_\-event\_\-q\_\-t}}\label{vqec__sm_8h_2a78fa20a2e5572a01acaa76297fe22c}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_event_t@{vqec\_\-sm\_\-event\_\-t}}
+\index{vqec_sm_event_t@{vqec\_\-sm\_\-event\_\-t}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-sm\_\-event\_\-}  \bf{vqec\_\-sm\_\-event\_\-t}}\label{vqec__sm_8h_df98a95165157f9f9c004e5930b68b71}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_log_event_t@{vqec\_\-sm\_\-log\_\-event\_\-t}}
+\index{vqec_sm_log_event_t@{vqec\_\-sm\_\-log\_\-event\_\-t}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-sm\_\-log\_\-event\_\-t\_\-}  \bf{vqec\_\-sm\_\-log\_\-event\_\-t}}\label{vqec__sm_8h_ee5312be3c716793fbf1e9a5f51ab1be}
+
+
+VQE-C state machine log event type. Each entry in the state machine log is categorized as belonging to one of the following event types. \index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_log_t@{vqec\_\-sm\_\-log\_\-t}}
+\index{vqec_sm_log_t@{vqec\_\-sm\_\-log\_\-t}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-sm\_\-log\_\-}  \bf{vqec\_\-sm\_\-log\_\-t}}\label{vqec__sm_8h_f84089e6995eef7dc1e67633df6b322b}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_state_t@{vqec\_\-sm\_\-state\_\-t}}
+\index{vqec_sm_state_t@{vqec\_\-sm\_\-state\_\-t}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-sm\_\-state\_\-}  \bf{vqec\_\-sm\_\-state\_\-t}}\label{vqec__sm_8h_b1dd9fad5cee8cdc50bd9aa7eda53b04}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_event_@{vqec\_\-sm\_\-event\_\-}}
+\index{vqec_sm_event_@{vqec\_\-sm\_\-event\_\-}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-sm\_\-event\_\-}}\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672b}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_EVENT_RAPID_CHANNEL_CHANGE@{VQEC\_\-EVENT\_\-RAPID\_\-CHANNEL\_\-CHANGE}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_RAPID_CHANNEL_CHANGE@{VQEC\_\-EVENT\_\-RAPID\_\-CHANNEL\_\-CHANGE}}\item[{\em 
+VQEC\_\-EVENT\_\-RAPID\_\-CHANNEL\_\-CHANGE\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672b14c77fda2096edaa593d8cb098db6c6b}
+}]Proceed with rapid channel change. \index{VQEC_EVENT_SLOW_CHANNEL_CHANGE@{VQEC\_\-EVENT\_\-SLOW\_\-CHANNEL\_\-CHANGE}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_SLOW_CHANNEL_CHANGE@{VQEC\_\-EVENT\_\-SLOW\_\-CHANNEL\_\-CHANGE}}\item[{\em 
+VQEC\_\-EVENT\_\-SLOW\_\-CHANNEL\_\-CHANGE\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672b48782e5a93aaf89fe8215301adf08ca9}
+}]Proceed with rapid channel change. \index{VQEC_EVENT_NAT_BINDING_COMPLETE@{VQEC\_\-EVENT\_\-NAT\_\-BINDING\_\-COMPLETE}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_NAT_BINDING_COMPLETE@{VQEC\_\-EVENT\_\-NAT\_\-BINDING\_\-COMPLETE}}\item[{\em 
+VQEC\_\-EVENT\_\-NAT\_\-BINDING\_\-COMPLETE\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672b084d3cee637a0c48f7531176de443e38}
+}]NAT binding is complete. \index{VQEC_EVENT_RECEIVE_VALID_APP@{VQEC\_\-EVENT\_\-RECEIVE\_\-VALID\_\-APP}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_RECEIVE_VALID_APP@{VQEC\_\-EVENT\_\-RECEIVE\_\-VALID\_\-APP}}\item[{\em 
+VQEC\_\-EVENT\_\-RECEIVE\_\-VALID\_\-APP\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672b531fa2f23f69c7a870f6d9d6d3cfc18f}
+}]Received a valid APP packet. \index{VQEC_EVENT_RECEIVE_INVALID_APP@{VQEC\_\-EVENT\_\-RECEIVE\_\-INVALID\_\-APP}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_RECEIVE_INVALID_APP@{VQEC\_\-EVENT\_\-RECEIVE\_\-INVALID\_\-APP}}\item[{\em 
+VQEC\_\-EVENT\_\-RECEIVE\_\-INVALID\_\-APP\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672b53d0d042fb83b9d99cd1589b7651dbd4}
+}]Received invalid APP packet. \index{VQEC_EVENT_RECEIVE_NULL_APP@{VQEC\_\-EVENT\_\-RECEIVE\_\-NULL\_\-APP}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_RECEIVE_NULL_APP@{VQEC\_\-EVENT\_\-RECEIVE\_\-NULL\_\-APP}}\item[{\em 
+VQEC\_\-EVENT\_\-RECEIVE\_\-NULL\_\-APP\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672bd0511f17025a69e634877c40039d63e4}
+}]Received NULL APP packet. \index{VQEC_EVENT_RCC_START_TIMEOUT@{VQEC\_\-EVENT\_\-RCC\_\-START\_\-TIMEOUT}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_RCC_START_TIMEOUT@{VQEC\_\-EVENT\_\-RCC\_\-START\_\-TIMEOUT}}\item[{\em 
+VQEC\_\-EVENT\_\-RCC\_\-START\_\-TIMEOUT\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672bbad04636fcfa82ab11a5b07ca2ab92b6}
+}]Timeout within nat-app wait mode. \index{VQEC_EVENT_RCC_IPC_ERR@{VQEC\_\-EVENT\_\-RCC\_\-IPC\_\-ERR}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_RCC_IPC_ERR@{VQEC\_\-EVENT\_\-RCC\_\-IPC\_\-ERR}}\item[{\em 
+VQEC\_\-EVENT\_\-RCC\_\-IPC\_\-ERR\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672b5d2d1a57d327541bce354958881be9f5}
+}]Error in IPC layer. \index{VQEC_EVENT_RCC_INTERNAL_ERR@{VQEC\_\-EVENT\_\-RCC\_\-INTERNAL\_\-ERR}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_RCC_INTERNAL_ERR@{VQEC\_\-EVENT\_\-RCC\_\-INTERNAL\_\-ERR}}\item[{\em 
+VQEC\_\-EVENT\_\-RCC\_\-INTERNAL\_\-ERR\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672bbcd9a7b663c2eece71d3f3acdbf5eeca}
+}]Internal resource allocation error. \index{VQEC_EVENT_CHAN_DEINIT@{VQEC\_\-EVENT\_\-CHAN\_\-DEINIT}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_CHAN_DEINIT@{VQEC\_\-EVENT\_\-CHAN\_\-DEINIT}}\item[{\em 
+VQEC\_\-EVENT\_\-CHAN\_\-DEINIT\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672ba4181132b9c4c9e650b6f2b4cc473e41}
+}]Channel deinit event \index{VQEC_EVENT_NUM_VAL@{VQEC\_\-EVENT\_\-NUM\_\-VAL}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_EVENT_NUM_VAL@{VQEC\_\-EVENT\_\-NUM\_\-VAL}}\item[{\em 
+VQEC\_\-EVENT\_\-NUM\_\-VAL\label{vqec__sm_8h_bece8113c09a01fa04fbef2397e5672b4d428a9412f3379762012741c3e876bd}
+}]Must be last. \end{description}
+\end{Desc}
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_log_event_t_@{vqec\_\-sm\_\-log\_\-event\_\-t\_\-}}
+\index{vqec_sm_log_event_t_@{vqec\_\-sm\_\-log\_\-event\_\-t\_\-}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-sm\_\-log\_\-event\_\-t\_\-}}\label{vqec__sm_8h_e76cd31de78ec57a4b05bdccd29d38b6}
+
+
+VQE-C state machine log event type. Each entry in the state machine log is categorized as belonging to one of the following event types. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_SM_LOG_STATE_EVENT@{VQEC\_\-SM\_\-LOG\_\-STATE\_\-EVENT}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_LOG_STATE_EVENT@{VQEC\_\-SM\_\-LOG\_\-STATE\_\-EVENT}}\item[{\em 
+VQEC\_\-SM\_\-LOG\_\-STATE\_\-EVENT\label{vqec__sm_8h_e76cd31de78ec57a4b05bdccd29d38b6e8315f6cbc63c3b03b325066132208df}
+}]\index{VQEC_SM_LOG_STATE_ENTER@{VQEC\_\-SM\_\-LOG\_\-STATE\_\-ENTER}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_LOG_STATE_ENTER@{VQEC\_\-SM\_\-LOG\_\-STATE\_\-ENTER}}\item[{\em 
+VQEC\_\-SM\_\-LOG\_\-STATE\_\-ENTER\label{vqec__sm_8h_e76cd31de78ec57a4b05bdccd29d38b636d4ef5e14a6dc34f22a17403b04bbbf}
+}]\index{VQEC_SM_LOG_STATE_EXIT@{VQEC\_\-SM\_\-LOG\_\-STATE\_\-EXIT}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_LOG_STATE_EXIT@{VQEC\_\-SM\_\-LOG\_\-STATE\_\-EXIT}}\item[{\em 
+VQEC\_\-SM\_\-LOG\_\-STATE\_\-EXIT\label{vqec__sm_8h_e76cd31de78ec57a4b05bdccd29d38b658747113767e7eefe0ff139be5a10293}
+}]\index{VQEC_SM_LOG_NUM_VAL@{VQEC\_\-SM\_\-LOG\_\-NUM\_\-VAL}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_LOG_NUM_VAL@{VQEC\_\-SM\_\-LOG\_\-NUM\_\-VAL}}\item[{\em 
+VQEC\_\-SM\_\-LOG\_\-NUM\_\-VAL\label{vqec__sm_8h_e76cd31de78ec57a4b05bdccd29d38b694bd2be617dd098c893706437d9cd8fe}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_state_@{vqec\_\-sm\_\-state\_\-}}
+\index{vqec_sm_state_@{vqec\_\-sm\_\-state\_\-}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-sm\_\-state\_\-}}\label{vqec__sm_8h_af4c37c66965a7461873d07232fba16a}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_SM_STATE_INVALID@{VQEC\_\-SM\_\-STATE\_\-INVALID}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_STATE_INVALID@{VQEC\_\-SM\_\-STATE\_\-INVALID}}\item[{\em 
+VQEC\_\-SM\_\-STATE\_\-INVALID\label{vqec__sm_8h_af4c37c66965a7461873d07232fba16accc0c131ff4196b0d6031b6110b12ad9}
+}]Invalid state. \index{VQEC_SM_STATE_INIT@{VQEC\_\-SM\_\-STATE\_\-INIT}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_STATE_INIT@{VQEC\_\-SM\_\-STATE\_\-INIT}}\item[{\em 
+VQEC\_\-SM\_\-STATE\_\-INIT\label{vqec__sm_8h_af4c37c66965a7461873d07232fba16ab9a4af14e462533446e649051390137d}
+}]Initial state. \index{VQEC_SM_STATE_WAIT_APP@{VQEC\_\-SM\_\-STATE\_\-WAIT\_\-APP}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_STATE_WAIT_APP@{VQEC\_\-SM\_\-STATE\_\-WAIT\_\-APP}}\item[{\em 
+VQEC\_\-SM\_\-STATE\_\-WAIT\_\-APP\label{vqec__sm_8h_af4c37c66965a7461873d07232fba16a93b7019b480621edb40da7b69fa36722}
+}]In wait for a NAT binding update and APP. \index{VQEC_SM_STATE_FIN_SUCCESS@{VQEC\_\-SM\_\-STATE\_\-FIN\_\-SUCCESS}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_STATE_FIN_SUCCESS@{VQEC\_\-SM\_\-STATE\_\-FIN\_\-SUCCESS}}\item[{\em 
+VQEC\_\-SM\_\-STATE\_\-FIN\_\-SUCCESS\label{vqec__sm_8h_af4c37c66965a7461873d07232fba16a2a0ee5b678e6176918a43798a3c9b787}
+}]Final state: control-plane state machine has terminated. \index{VQEC_SM_STATE_ABORT@{VQEC\_\-SM\_\-STATE\_\-ABORT}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_STATE_ABORT@{VQEC\_\-SM\_\-STATE\_\-ABORT}}\item[{\em 
+VQEC\_\-SM\_\-STATE\_\-ABORT\label{vqec__sm_8h_af4c37c66965a7461873d07232fba16a7da1ea4983207bcd05df2b7789d2adf2}
+}]Final state: The operation did not complete successfully, and was aborted. \index{VQEC_SM_STATE_NUM_VAL@{VQEC\_\-SM\_\-STATE\_\-NUM\_\-VAL}!vqec_sm.h@{vqec\_\-sm.h}}\index{vqec_sm.h@{vqec\_\-sm.h}!VQEC_SM_STATE_NUM_VAL@{VQEC\_\-SM\_\-STATE\_\-NUM\_\-VAL}}\item[{\em 
+VQEC\_\-SM\_\-STATE\_\-NUM\_\-VAL\label{vqec__sm_8h_af4c37c66965a7461873d07232fba16ae3f3bb514c2003a8c6e7f7782c1b747a}
+}]Must be last \end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_deinit@{vqec\_\-sm\_\-deinit}}
+\index{vqec_sm_deinit@{vqec\_\-sm\_\-deinit}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-sm\_\-deinit (struct \bf{vqec\_\-chan\_\-} $\ast$ {\em chan})}\label{vqec__sm_8h_0c457159b87416bf2ba9154dd246aa68}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_deliver_event@{vqec\_\-sm\_\-deliver\_\-event}}
+\index{vqec_sm_deliver_event@{vqec\_\-sm\_\-deliver\_\-event}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-sm\_\-deliver\_\-event (struct \bf{vqec\_\-chan\_\-} $\ast$ {\em chan}, \bf{vqec\_\-sm\_\-event\_\-t} {\em event}, void $\ast$ {\em arg})}\label{vqec__sm_8h_46ea9a5a68c6f2af108b0905d3d083a6}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_display_log@{vqec\_\-sm\_\-display\_\-log}}
+\index{vqec_sm_display_log@{vqec\_\-sm\_\-display\_\-log}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-sm\_\-display\_\-log (struct \bf{vqec\_\-chan\_\-} $\ast$ {\em chan})}\label{vqec__sm_8h_65a7ea1bce8fc8292fa8ef8e0a83775e}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_event_to_string@{vqec\_\-sm\_\-event\_\-to\_\-string}}
+\index{vqec_sm_event_to_string@{vqec\_\-sm\_\-event\_\-to\_\-string}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-sm\_\-event\_\-to\_\-string (\bf{vqec\_\-sm\_\-event\_\-t} {\em e})}\label{vqec__sm_8h_c96fbb7e8277e7c4eb3cf17d1565085f}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_fail_reason@{vqec\_\-sm\_\-fail\_\-reason}}
+\index{vqec_sm_fail_reason@{vqec\_\-sm\_\-fail\_\-reason}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-sm\_\-fail\_\-reason (struct \bf{vqec\_\-chan\_\-} $\ast$ {\em chan})}\label{vqec__sm_8h_b2060591b99635fc2cc4a8bcde724485}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_init@{vqec\_\-sm\_\-init}}
+\index{vqec_sm_init@{vqec\_\-sm\_\-init}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-sm\_\-init (struct \bf{vqec\_\-chan\_\-} $\ast$ {\em chan})}\label{vqec__sm_8h_402c9d68b3aecaf3f4becacc215a4a0b}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_print@{vqec\_\-sm\_\-print}}
+\index{vqec_sm_print@{vqec\_\-sm\_\-print}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-sm\_\-print (void)}\label{vqec__sm_8h_e29f0d6d2a9d98ea7636a2f796c7b9af}
+
+
+\index{vqec_sm.h@{vqec\_\-sm.h}!vqec_sm_state_to_string@{vqec\_\-sm\_\-state\_\-to\_\-string}}
+\index{vqec_sm_state_to_string@{vqec\_\-sm\_\-state\_\-to\_\-string}!vqec_sm.h@{vqec\_\-sm.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-sm\_\-state\_\-to\_\-string (\bf{vqec\_\-sm\_\-state\_\-t} {\em state})}\label{vqec__sm_8h_2d8371ac15a5fd09e2eb6d7375da1845}
+
+

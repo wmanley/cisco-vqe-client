@@ -1,0 +1,190 @@
+\section{vqec\_\-gap\_\-reporter.c File Reference}
+\label{vqec__gap__reporter_8c}\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+{\tt \#include \char`\"{}vam\_\-util.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqe\_\-token\_\-bucket.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-gap\_\-reporter.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-debug.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-assert\_\-macros.h\char`\"{}}\par
+{\tt \#include $<$rtp/rtcp\_\-stats\_\-api.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-private.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{UT\_\-STATIC}~static
+\item 
+\#define \bf{MAX\_\-SENDERS\_\-SSM}~1
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+boolean \bf{vqec\_\-get\_\-error\_\-repair} (boolean $\ast$demo\_\-set)
+\item 
+void \bf{vqec\_\-set\_\-error\_\-repair} (boolean enabled)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-set} (boolean set\_\-enabled, boolean enabled, boolean set\_\-rate, uint32\_\-t rate, boolean set\_\-burst, uint32\_\-t burst)
+\item 
+void \bf{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-get} (boolean $\ast$enabled, boolean $\ast$enabled\_\-set, uint32\_\-t $\ast$rate, boolean $\ast$rate\_\-set, uint32\_\-t $\ast$burst, boolean $\ast$burst\_\-set)
+\item 
+void \bf{vqec\_\-error\_\-repair\_\-show} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+UT\_\-STATIC uint32\_\-t \bf{vqec\_\-gap\_\-reporter\_\-construct\_\-generic\_\-nack} (\bf{vqec\_\-chan\_\-t} $\ast$chan, rtcp\_\-rtpfb\_\-generic\_\-nack\_\-t $\ast$nd, int max\_\-fci\_\-count, uint32\_\-t $\ast$num\_\-repairs)
+\item 
+void \bf{vqec\_\-gap\_\-reporter\_\-report} (const vqec\_\-event\_\-t $\ast$const unused\_\-evptr, int unused\_\-fd, short unused\_\-event, void $\ast$arg)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+static boolean \bf{g\_\-vqec\_\-error\_\-repair}
+\item 
+static boolean \bf{g\_\-vqec\_\-error\_\-repair\_\-set} = \bf{FALSE}
+\item 
+static boolean \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-enabled}
+\item 
+static boolean \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-enabled\_\-set} = \bf{FALSE}
+\item 
+static uint8\_\-t \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-rate}
+\item 
+static uint8\_\-t \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-rate\_\-set} = \bf{FALSE}
+\item 
+static uint16\_\-t \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-burst}
+\item 
+static uint16\_\-t \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-burst\_\-set} = \bf{FALSE}
+\item 
+uint64\_\-t \bf{g\_\-vqec\_\-error\_\-repair\_\-policed\_\-requests} = 0
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!MAX_SENDERS_SSM@{MAX\_\-SENDERS\_\-SSM}}
+\index{MAX_SENDERS_SSM@{MAX\_\-SENDERS\_\-SSM}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-SENDERS\_\-SSM~1}\label{vqec__gap__reporter_8c_9b6196bbf8f53106c05338123545b11f}
+
+
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!UT_STATIC@{UT\_\-STATIC}}
+\index{UT_STATIC@{UT\_\-STATIC}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UT\_\-STATIC~static}\label{vqec__gap__reporter_8c_840be0a802b42af3ce4430a7173caa40}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!vqec_error_repair_policer_parameters_get@{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-get}}
+\index{vqec_error_repair_policer_parameters_get@{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-get}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-get (boolean $\ast$ {\em enabled}, boolean $\ast$ {\em enabled\_\-set}, uint32\_\-t $\ast$ {\em rate}, boolean $\ast$ {\em rate\_\-set}, uint32\_\-t $\ast$ {\em burst}, boolean $\ast$ {\em burst\_\-set})}\label{vqec__gap__reporter_8c_c0e2e069011ad7b3ab798021afb56310}
+
+
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!vqec_error_repair_policer_parameters_set@{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-set}}
+\index{vqec_error_repair_policer_parameters_set@{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-set}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-set (boolean {\em set\_\-enabled}, boolean {\em enabled}, boolean {\em set\_\-rate}, uint32\_\-t {\em rate}, boolean {\em set\_\-burst}, uint32\_\-t {\em burst})}\label{vqec__gap__reporter_8c_778580f9fea32afe70ba8f0bf7267695}
+
+
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!vqec_error_repair_show@{vqec\_\-error\_\-repair\_\-show}}
+\index{vqec_error_repair_show@{vqec\_\-error\_\-repair\_\-show}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-error\_\-repair\_\-show (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__gap__reporter_8c_b83b1ce321d896bcf90497941b7fe610}
+
+
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!vqec_gap_reporter_construct_generic_nack@{vqec\_\-gap\_\-reporter\_\-construct\_\-generic\_\-nack}}
+\index{vqec_gap_reporter_construct_generic_nack@{vqec\_\-gap\_\-reporter\_\-construct\_\-generic\_\-nack}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC uint32\_\-t vqec\_\-gap\_\-reporter\_\-construct\_\-generic\_\-nack (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, rtcp\_\-rtpfb\_\-generic\_\-nack\_\-t $\ast$ {\em nd}, int {\em max\_\-fci\_\-count}, uint32\_\-t $\ast$ {\em num\_\-repairs})}\label{vqec__gap__reporter_8c_a8d254e8da6176b759950e76e2d59976}
+
+
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!vqec_gap_reporter_report@{vqec\_\-gap\_\-reporter\_\-report}}
+\index{vqec_gap_reporter_report@{vqec\_\-gap\_\-reporter\_\-report}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-gap\_\-reporter\_\-report (const vqec\_\-event\_\-t $\ast$const  {\em unused\_\-evptr}, int {\em unused\_\-fd}, short {\em unused\_\-event}, void $\ast$ {\em arg})}\label{vqec__gap__reporter_8c_f7691c0b7a828d2eca4e855f99ea0128}
+
+
+vqec\_\-gap\_\-reporter\_\-report
+
+Retrieve the gap list associated with the given channel, convert it into a generic nack, then send it. Don't need to check the lock, caller should get it.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em evptr}]Pointer to the event triggering the callback \item[\mbox{$\leftarrow$} {\em unused\_\-fd}]Not used \item[\mbox{$\leftarrow$} {\em event}]Not used \item[\mbox{$\leftarrow$} {\em arg}]Channel ID for the channel whose gaps are to be reported. \end{description}
+\end{Desc}
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!vqec_get_error_repair@{vqec\_\-get\_\-error\_\-repair}}
+\index{vqec_get_error_repair@{vqec\_\-get\_\-error\_\-repair}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-get\_\-error\_\-repair (boolean $\ast$ {\em demo\_\-set})}\label{vqec__gap__reporter_8c_911bd113de88cc1e99ae67e17ce3b3e2}
+
+
+Retrieves the global settting of RCC, which is based on system configuration but may be overriden by the demo CLI knob (if set).
+
+param[out] demo\_\-set - TRUE: the demo CLI knob is set FALSE: the demo CLI knob is unset param[out] boolean - TRUE: RCC is globally enabled FALSE: RCC is globally disabled \index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!vqec_set_error_repair@{vqec\_\-set\_\-error\_\-repair}}
+\index{vqec_set_error_repair@{vqec\_\-set\_\-error\_\-repair}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-set\_\-error\_\-repair (boolean {\em enabled})}\label{vqec__gap__reporter_8c_e00fa4263506be5328566209134943cb}
+
+
+Enables/disables error repair globally (for all channels), for the purposes of demonstrating the effects of ER on picture quality.
+
+Called upon \char`\"{}error-repair \{enable$|$disable\}\char`\"{} CLI commands being entered.
+
+NOTE: Disabling error-repair for demo purposes causes error repair requests to be surpressed, and \char`\"{}disabled\char`\"{} appears in the \char`\"{}show error-repair\char`\"{} display. However, some channel state and debugs visible on the CLI may still give the appearance that error repair is enabled.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em enabled}]- TRUE to enable (ER will be performed for a channel if specified in its channel description (e.g. SDP file)) FALSE to disable (ER will not be performed regardless of channel description configuration (e.g. SDP file)) \end{description}
+\end{Desc}
+
+
+\subsection{Variable Documentation}
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!g_vqec_error_repair@{g\_\-vqec\_\-error\_\-repair}}
+\index{g_vqec_error_repair@{g\_\-vqec\_\-error\_\-repair}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{g\_\-vqec\_\-error\_\-repair}\hspace{0.3cm}{\tt  [static]}}\label{vqec__gap__reporter_8c_44e92f8810fac92f64c880b11b5af828}
+
+
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!g_vqec_error_repair_policed_requests@{g\_\-vqec\_\-error\_\-repair\_\-policed\_\-requests}}
+\index{g_vqec_error_repair_policed_requests@{g\_\-vqec\_\-error\_\-repair\_\-policed\_\-requests}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{g\_\-vqec\_\-error\_\-repair\_\-policed\_\-requests} = 0}\label{vqec__gap__reporter_8c_112f1305deac7db6409fbf819c32a0cb}
+
+
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!g_vqec_error_repair_set@{g\_\-vqec\_\-error\_\-repair\_\-set}}
+\index{g_vqec_error_repair_set@{g\_\-vqec\_\-error\_\-repair\_\-set}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{g\_\-vqec\_\-error\_\-repair\_\-set} = \bf{FALSE}\hspace{0.3cm}{\tt  [static]}}\label{vqec__gap__reporter_8c_c8c8a5886adf5584e11c1937b1b512f1}
+
+
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!s_vqec_error_repair_policer_burst@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-burst}}
+\index{s_vqec_error_repair_policer_burst@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-burst}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-burst}\hspace{0.3cm}{\tt  [static]}}\label{vqec__gap__reporter_8c_fd0eb5c11a04ff494785872e9c66f9ce}
+
+
+\textbf{Initial value:}
+
+\begin{Code}\begin{verbatim}
+    VQEC_SYSCFG_DEFAULT_ERROR_REPAIR_POLICER_BURST
+\end{verbatim}\end{Code}
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!s_vqec_error_repair_policer_burst_set@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-burst\_\-set}}
+\index{s_vqec_error_repair_policer_burst_set@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-burst\_\-set}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-burst\_\-set} = \bf{FALSE}\hspace{0.3cm}{\tt  [static]}}\label{vqec__gap__reporter_8c_7e3a20c6083133e24505a7e47bf8c2ce}
+
+
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!s_vqec_error_repair_policer_enabled@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-enabled}}
+\index{s_vqec_error_repair_policer_enabled@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-enabled}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-enabled}\hspace{0.3cm}{\tt  [static]}}\label{vqec__gap__reporter_8c_4579e34c1262ed8ffec66f51737e03e7}
+
+
+\textbf{Initial value:}
+
+\begin{Code}\begin{verbatim}
+    VQEC_SYSCFG_DEFAULT_ERROR_REPAIR_POLICER_ENABLE
+\end{verbatim}\end{Code}
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!s_vqec_error_repair_policer_enabled_set@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-enabled\_\-set}}
+\index{s_vqec_error_repair_policer_enabled_set@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-enabled\_\-set}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-enabled\_\-set} = \bf{FALSE}\hspace{0.3cm}{\tt  [static]}}\label{vqec__gap__reporter_8c_848fb9fd3a309796c2714a467237b5c4}
+
+
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!s_vqec_error_repair_policer_rate@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-rate}}
+\index{s_vqec_error_repair_policer_rate@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-rate}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-rate}\hspace{0.3cm}{\tt  [static]}}\label{vqec__gap__reporter_8c_4d11acc16bc6998ff8aff77d3d1995f8}
+
+
+\textbf{Initial value:}
+
+\begin{Code}\begin{verbatim}
+    VQEC_SYSCFG_DEFAULT_ERROR_REPAIR_POLICER_RATE
+\end{verbatim}\end{Code}
+\index{vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}!s_vqec_error_repair_policer_rate_set@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-rate\_\-set}}
+\index{s_vqec_error_repair_policer_rate_set@{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-rate\_\-set}!vqec_gap_reporter.c@{vqec\_\-gap\_\-reporter.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{s\_\-vqec\_\-error\_\-repair\_\-policer\_\-rate\_\-set} = \bf{FALSE}\hspace{0.3cm}{\tt  [static]}}\label{vqec__gap__reporter_8c_cea821535c25ad833fb214400297a6fb}
+
+

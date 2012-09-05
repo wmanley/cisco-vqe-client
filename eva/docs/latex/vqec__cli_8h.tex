@@ -1,0 +1,262 @@
+\section{vqec\_\-cli.h File Reference}
+\label{vqec__cli_8h}\index{vqec_cli.h@{vqec\_\-cli.h}}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$utils/vam\_\-types.h$>$}\par
+{\tt \#include $<$utils/queue\_\-plus.h$>$}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-cli\_\-def}
+\item 
+struct \bf{vqec\_\-cli\_\-command}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-CLI\_\-MAX\_\-ARGS}~(100)
+\item 
+\#define \bf{VQEC\_\-CLI\_\-MAX\_\-HISTORY}~(256)
+\item 
+\#define \bf{VQEC\_\-CLI\_\-MAX\_\-LINE\_\-SIZE}~(800)
+\item 
+\#define \bf{VQEC\_\-CLI\_\-MAXSIZE\_\-PRINTBUF}~(1200)
+\item 
+\#define \bf{PRIVILEGE\_\-UNPRIVILEGED}~0
+\item 
+\#define \bf{PRIVILEGE\_\-PRIVILEGED}~15
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{vqec\_\-cli\_\-error\_\-} \bf{vqec\_\-cli\_\-error\_\-t}
+\item 
+typedef enum \bf{vqec\_\-cli\_\-cmd\_\-mode\_\-} \bf{vqec\_\-cli\_\-cmd\_\-mode\_\-t}
+\item 
+typedef enum \bf{vqec\_\-cli\_\-state\_\-} \bf{vqec\_\-cli\_\-state\_\-t}
+\item 
+typedef enum \bf{vqec\_\-cli\_\-disp\_\-options\_\-} \bf{vqec\_\-cli\_\-disp\_\-options\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-cli\_\-error\_\-} \{ \bf{VQEC\_\-CLI\_\-QUIT} =  -2, 
+\bf{VQEC\_\-CLI\_\-ERROR} =  -1, 
+\bf{VQEC\_\-CLI\_\-OK} =  0, 
+\bf{VQEC\_\-CLI\_\-DUP\_\-OK} =  1
+ \}
+\item 
+enum \bf{vqec\_\-cli\_\-cmd\_\-mode\_\-} \{ \bf{VQEC\_\-CLI\_\-MODE\_\-ANY} =  0, 
+\bf{VQEC\_\-CLI\_\-MODE\_\-EXEC}, 
+\bf{VQEC\_\-CLI\_\-MODE\_\-CONFIG}
+ \}
+\item 
+enum \bf{vqec\_\-cli\_\-state\_\-} \{ \bf{VQEC\_\-CLI\_\-STATE\_\-BASE} =  0, 
+\bf{VQEC\_\-CLI\_\-STATE\_\-EXEC}, 
+\bf{VQEC\_\-CLI\_\-STATE\_\-CONFIG}
+ \}
+\item 
+enum \bf{vqec\_\-cli\_\-disp\_\-options\_\-} \{ \bf{VQEC\_\-CLI\_\-DISP\_\-DESC} =  0, 
+\bf{VQEC\_\-CLI\_\-DISP\_\-USAGE}, 
+\bf{VQEC\_\-CLI\_\-DISP\_\-EXEC}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\bf{VQE\_\-TAILQ\_\-HEAD} (vqec\_\-cmd\_\-tree, \bf{vqec\_\-cli\_\-command})
+\item 
+\bf{vqec\_\-cli\_\-def} $\ast$ \bf{vqec\_\-cli\_\-init} (void)
+\item 
+void \bf{vqec\_\-cli\_\-deinit} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+\bf{vqec\_\-cli\_\-command} $\ast$ \bf{vqec\_\-cli\_\-register\_\-command} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, struct \bf{vqec\_\-cli\_\-command} $\ast$parent, char $\ast$command, int($\ast$callback)(struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$, char $\ast$$\ast$, int), int privilege, int mode, char $\ast$help)
+\item 
+\bf{vqec\_\-cli\_\-error\_\-t} \bf{vqec\_\-cli\_\-loop} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, int sockfd)
+\item 
+void \bf{vqec\_\-cli\_\-set\_\-banner} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$banner\_\-string)
+\item 
+void \bf{vqec\_\-cli\_\-set\_\-hostname} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$hostname)
+\item 
+void \bf{vqec\_\-cli\_\-print\_\-callback} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, void($\ast$callback)(struct \bf{vqec\_\-cli\_\-def} $\ast$, char $\ast$, int))
+\item 
+void \bf{vqec\_\-cli\_\-print} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$format,...)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_cli.h@{vqec\_\-cli.h}!PRIVILEGE_PRIVILEGED@{PRIVILEGE\_\-PRIVILEGED}}
+\index{PRIVILEGE_PRIVILEGED@{PRIVILEGE\_\-PRIVILEGED}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define PRIVILEGE\_\-PRIVILEGED~15}\label{vqec__cli_8h_ba345c19f3e184d9f38b89aa5a85022a}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!PRIVILEGE_UNPRIVILEGED@{PRIVILEGE\_\-UNPRIVILEGED}}
+\index{PRIVILEGE_UNPRIVILEGED@{PRIVILEGE\_\-UNPRIVILEGED}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define PRIVILEGE\_\-UNPRIVILEGED~0}\label{vqec__cli_8h_7a281a8dc0fe390fc8737dbd95580536}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_MAX_ARGS@{VQEC\_\-CLI\_\-MAX\_\-ARGS}}
+\index{VQEC_CLI_MAX_ARGS@{VQEC\_\-CLI\_\-MAX\_\-ARGS}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CLI\_\-MAX\_\-ARGS~(100)}\label{vqec__cli_8h_f66981acebbb9b18c6e6c5c3e4fe6d4f}
+
+
+----------------------------------------------------------------- VQE-C Lightweight command line interpreter
+
+Copyright (c) 2009-2010 by Cisco Systems, Inc. All rights reserved. ------------------------------------------------------------------ \index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_MAX_HISTORY@{VQEC\_\-CLI\_\-MAX\_\-HISTORY}}
+\index{VQEC_CLI_MAX_HISTORY@{VQEC\_\-CLI\_\-MAX\_\-HISTORY}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CLI\_\-MAX\_\-HISTORY~(256)}\label{vqec__cli_8h_c577986eb02ae3b2be4ce9ab255f6567}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_MAX_LINE_SIZE@{VQEC\_\-CLI\_\-MAX\_\-LINE\_\-SIZE}}
+\index{VQEC_CLI_MAX_LINE_SIZE@{VQEC\_\-CLI\_\-MAX\_\-LINE\_\-SIZE}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CLI\_\-MAX\_\-LINE\_\-SIZE~(800)}\label{vqec__cli_8h_715af0a6d16ec50ceb7249d62236db4d}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_MAXSIZE_PRINTBUF@{VQEC\_\-CLI\_\-MAXSIZE\_\-PRINTBUF}}
+\index{VQEC_CLI_MAXSIZE_PRINTBUF@{VQEC\_\-CLI\_\-MAXSIZE\_\-PRINTBUF}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CLI\_\-MAXSIZE\_\-PRINTBUF~(1200)}\label{vqec__cli_8h_6919e4a7193ab954181c0fd604ed2ee8}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_cmd_mode_t@{vqec\_\-cli\_\-cmd\_\-mode\_\-t}}
+\index{vqec_cli_cmd_mode_t@{vqec\_\-cli\_\-cmd\_\-mode\_\-t}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-cli\_\-cmd\_\-mode\_\-}  \bf{vqec\_\-cli\_\-cmd\_\-mode\_\-t}}\label{vqec__cli_8h_e28fba0de660d6d97bc8910386b49793}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_disp_options_t@{vqec\_\-cli\_\-disp\_\-options\_\-t}}
+\index{vqec_cli_disp_options_t@{vqec\_\-cli\_\-disp\_\-options\_\-t}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-cli\_\-disp\_\-options\_\-}  \bf{vqec\_\-cli\_\-disp\_\-options\_\-t}}\label{vqec__cli_8h_a7ba962c5ff852c0d793b0778cb7bafc}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_error_t@{vqec\_\-cli\_\-error\_\-t}}
+\index{vqec_cli_error_t@{vqec\_\-cli\_\-error\_\-t}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-cli\_\-error\_\-}  \bf{vqec\_\-cli\_\-error\_\-t}}\label{vqec__cli_8h_82896b5511c54bf834a4cfe1e848c03d}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_state_t@{vqec\_\-cli\_\-state\_\-t}}
+\index{vqec_cli_state_t@{vqec\_\-cli\_\-state\_\-t}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-cli\_\-state\_\-}  \bf{vqec\_\-cli\_\-state\_\-t}}\label{vqec__cli_8h_08f2869b20bf43cedfaf0d18c0880598}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_cmd_mode_@{vqec\_\-cli\_\-cmd\_\-mode\_\-}}
+\index{vqec_cli_cmd_mode_@{vqec\_\-cli\_\-cmd\_\-mode\_\-}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-cli\_\-cmd\_\-mode\_\-}}\label{vqec__cli_8h_a498694a52cbfa8379c9414e578943af}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_CLI_MODE_ANY@{VQEC\_\-CLI\_\-MODE\_\-ANY}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_MODE_ANY@{VQEC\_\-CLI\_\-MODE\_\-ANY}}\item[{\em 
+VQEC\_\-CLI\_\-MODE\_\-ANY\label{vqec__cli_8h_a498694a52cbfa8379c9414e578943af3455fd1793cb5b8dff8749392d3bc2b0}
+}]\index{VQEC_CLI_MODE_EXEC@{VQEC\_\-CLI\_\-MODE\_\-EXEC}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_MODE_EXEC@{VQEC\_\-CLI\_\-MODE\_\-EXEC}}\item[{\em 
+VQEC\_\-CLI\_\-MODE\_\-EXEC\label{vqec__cli_8h_a498694a52cbfa8379c9414e578943affc45b4500fad20b54ab710f1857ea06d}
+}]\index{VQEC_CLI_MODE_CONFIG@{VQEC\_\-CLI\_\-MODE\_\-CONFIG}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_MODE_CONFIG@{VQEC\_\-CLI\_\-MODE\_\-CONFIG}}\item[{\em 
+VQEC\_\-CLI\_\-MODE\_\-CONFIG\label{vqec__cli_8h_a498694a52cbfa8379c9414e578943af9dd727145d1a1c8e0c262537b3ce9caf}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_disp_options_@{vqec\_\-cli\_\-disp\_\-options\_\-}}
+\index{vqec_cli_disp_options_@{vqec\_\-cli\_\-disp\_\-options\_\-}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-cli\_\-disp\_\-options\_\-}}\label{vqec__cli_8h_43beabdb3714546b10116e344def2bb4}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_CLI_DISP_DESC@{VQEC\_\-CLI\_\-DISP\_\-DESC}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_DISP_DESC@{VQEC\_\-CLI\_\-DISP\_\-DESC}}\item[{\em 
+VQEC\_\-CLI\_\-DISP\_\-DESC\label{vqec__cli_8h_43beabdb3714546b10116e344def2bb4719cd96d01330f5561f18602c7cc06d2}
+}]\index{VQEC_CLI_DISP_USAGE@{VQEC\_\-CLI\_\-DISP\_\-USAGE}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_DISP_USAGE@{VQEC\_\-CLI\_\-DISP\_\-USAGE}}\item[{\em 
+VQEC\_\-CLI\_\-DISP\_\-USAGE\label{vqec__cli_8h_43beabdb3714546b10116e344def2bb4ad01b13a52e50be9f0db8196c8affc5e}
+}]\index{VQEC_CLI_DISP_EXEC@{VQEC\_\-CLI\_\-DISP\_\-EXEC}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_DISP_EXEC@{VQEC\_\-CLI\_\-DISP\_\-EXEC}}\item[{\em 
+VQEC\_\-CLI\_\-DISP\_\-EXEC\label{vqec__cli_8h_43beabdb3714546b10116e344def2bb4ecce910b478a851093b07615c77df1b1}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_error_@{vqec\_\-cli\_\-error\_\-}}
+\index{vqec_cli_error_@{vqec\_\-cli\_\-error\_\-}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-cli\_\-error\_\-}}\label{vqec__cli_8h_6169e30df22b33a0a5f33c6b85974db3}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_CLI_QUIT@{VQEC\_\-CLI\_\-QUIT}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_QUIT@{VQEC\_\-CLI\_\-QUIT}}\item[{\em 
+VQEC\_\-CLI\_\-QUIT\label{vqec__cli_8h_6169e30df22b33a0a5f33c6b85974db3ad00b196bad53d593af7af1a20244c69}
+}]\index{VQEC_CLI_ERROR@{VQEC\_\-CLI\_\-ERROR}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_ERROR@{VQEC\_\-CLI\_\-ERROR}}\item[{\em 
+VQEC\_\-CLI\_\-ERROR\label{vqec__cli_8h_6169e30df22b33a0a5f33c6b85974db33847986993acba25b5e1b3ee0f182d6a}
+}]\index{VQEC_CLI_OK@{VQEC\_\-CLI\_\-OK}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_OK@{VQEC\_\-CLI\_\-OK}}\item[{\em 
+VQEC\_\-CLI\_\-OK\label{vqec__cli_8h_6169e30df22b33a0a5f33c6b85974db381f67b4105d5857ba7e3874c4bf4ffe9}
+}]\index{VQEC_CLI_DUP_OK@{VQEC\_\-CLI\_\-DUP\_\-OK}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_DUP_OK@{VQEC\_\-CLI\_\-DUP\_\-OK}}\item[{\em 
+VQEC\_\-CLI\_\-DUP\_\-OK\label{vqec__cli_8h_6169e30df22b33a0a5f33c6b85974db3e6cbe2c07b09068cab8c953f86a10d49}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_state_@{vqec\_\-cli\_\-state\_\-}}
+\index{vqec_cli_state_@{vqec\_\-cli\_\-state\_\-}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-cli\_\-state\_\-}}\label{vqec__cli_8h_e52152eded04399484bbc7c5789a318e}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_CLI_STATE_BASE@{VQEC\_\-CLI\_\-STATE\_\-BASE}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_STATE_BASE@{VQEC\_\-CLI\_\-STATE\_\-BASE}}\item[{\em 
+VQEC\_\-CLI\_\-STATE\_\-BASE\label{vqec__cli_8h_e52152eded04399484bbc7c5789a318efeef62a126e561c76331a5847f002e3c}
+}]\index{VQEC_CLI_STATE_EXEC@{VQEC\_\-CLI\_\-STATE\_\-EXEC}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_STATE_EXEC@{VQEC\_\-CLI\_\-STATE\_\-EXEC}}\item[{\em 
+VQEC\_\-CLI\_\-STATE\_\-EXEC\label{vqec__cli_8h_e52152eded04399484bbc7c5789a318ee02087bb97c1232d601bcbdc90214a58}
+}]\index{VQEC_CLI_STATE_CONFIG@{VQEC\_\-CLI\_\-STATE\_\-CONFIG}!vqec_cli.h@{vqec\_\-cli.h}}\index{vqec_cli.h@{vqec\_\-cli.h}!VQEC_CLI_STATE_CONFIG@{VQEC\_\-CLI\_\-STATE\_\-CONFIG}}\item[{\em 
+VQEC\_\-CLI\_\-STATE\_\-CONFIG\label{vqec__cli_8h_e52152eded04399484bbc7c5789a318eb2327a5c161c7ac49cbeb76d005c4ff5}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{vqec_cli.h@{vqec\_\-cli.h}!VQE_TAILQ_HEAD@{VQE\_\-TAILQ\_\-HEAD}}
+\index{VQE_TAILQ_HEAD@{VQE\_\-TAILQ\_\-HEAD}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQE\_\-TAILQ\_\-HEAD (vqec\_\-cmd\_\-tree, \bf{vqec\_\-cli\_\-command})}\label{vqec__cli_8h_080ab95f0e9d73dda6d5e9b679b64b9b}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_deinit@{vqec\_\-cli\_\-deinit}}
+\index{vqec_cli_deinit@{vqec\_\-cli\_\-deinit}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-deinit (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli_8h_6bfd13e12cd403734f8189475e286867}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_init@{vqec\_\-cli\_\-init}}
+\index{vqec_cli_init@{vqec\_\-cli\_\-init}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \bf{vqec\_\-cli\_\-def}$\ast$ vqec\_\-cli\_\-init (void)}\label{vqec__cli_8h_bd6c8f21be6c2b3db89e3308d989ec81}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_loop@{vqec\_\-cli\_\-loop}}
+\index{vqec_cli_loop@{vqec\_\-cli\_\-loop}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-cli\_\-error\_\-t} vqec\_\-cli\_\-loop (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, int {\em sockfd})}\label{vqec__cli_8h_38464aa631f910feab674f0714d21a4f}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_print@{vqec\_\-cli\_\-print}}
+\index{vqec_cli_print@{vqec\_\-cli\_\-print}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-print (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em format},  {\em ...})}\label{vqec__cli_8h_b36754687a604f5149a45d60547fbd5c}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_print_callback@{vqec\_\-cli\_\-print\_\-callback}}
+\index{vqec_cli_print_callback@{vqec\_\-cli\_\-print\_\-callback}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-print\_\-callback (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, void($\ast$)(struct \bf{vqec\_\-cli\_\-def} $\ast$, char $\ast$, int) {\em callback})}\label{vqec__cli_8h_3facbceee2638d90385093fb5f5d52c0}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_register_command@{vqec\_\-cli\_\-register\_\-command}}
+\index{vqec_cli_register_command@{vqec\_\-cli\_\-register\_\-command}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \bf{vqec\_\-cli\_\-command}$\ast$ vqec\_\-cli\_\-register\_\-command (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, struct \bf{vqec\_\-cli\_\-command} $\ast$ {\em parent}, char $\ast$ {\em command}, int($\ast$)(struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$, char $\ast$$\ast$, int) {\em callback}, int {\em privilege}, int {\em mode}, char $\ast$ {\em help})}\label{vqec__cli_8h_282f683d908651648579da4513ff2831}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_set_banner@{vqec\_\-cli\_\-set\_\-banner}}
+\index{vqec_cli_set_banner@{vqec\_\-cli\_\-set\_\-banner}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-set\_\-banner (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em banner\_\-string})}\label{vqec__cli_8h_6980efa6b123273643063d49433fd04d}
+
+
+\index{vqec_cli.h@{vqec\_\-cli.h}!vqec_cli_set_hostname@{vqec\_\-cli\_\-set\_\-hostname}}
+\index{vqec_cli_set_hostname@{vqec\_\-cli\_\-set\_\-hostname}!vqec_cli.h@{vqec\_\-cli.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-set\_\-hostname (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em hostname})}\label{vqec__cli_8h_41aa16aea4996aa1a68882a81166dfca}
+
+

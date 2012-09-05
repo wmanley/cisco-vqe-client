@@ -1,0 +1,139 @@
+\section{vqec\_\-igmpv3.h File Reference}
+\label{vqec__igmpv3_8h}\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{igmptype\_\-}
+\item 
+struct \bf{igmp\_\-group\_\-record\_\-}
+\item 
+struct \bf{igmp\_\-v3\_\-report\_\-type\_\-}
+\item 
+struct \bf{igmp\_\-query\_\-type\_\-}
+\item 
+struct \bf{igmp\_\-v1v2\_\-type\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{IGMP\_\-V3\_\-REPORT\_\-TYPE}~0x22
+\item 
+\#define \bf{MODE\_\-IS\_\-INCLUDE}~1
+\item 
+\#define \bf{MODE\_\-IS\_\-EXCLUDE}~2
+\item 
+\#define \bf{CHANGE\_\-TO\_\-INCLUDE\_\-MODE}~3
+\item 
+\#define \bf{CHANGE\_\-TO\_\-EXCLUDE\_\-MODE}~4
+\item 
+\#define \bf{ALLOW\_\-NEW\_\-SOURCES}~5
+\item 
+\#define \bf{BLOCK\_\-OLD\_\-SOURCES}~6
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef \bf{igmptype\_\-} \bf{igmptype}
+\item 
+typedef \bf{igmp\_\-group\_\-record\_\-} \bf{igmp\_\-group\_\-record}
+\item 
+typedef \bf{igmp\_\-v3\_\-report\_\-type\_\-} \bf{igmp\_\-v3\_\-report\_\-type}
+\item 
+typedef \bf{igmp\_\-query\_\-type\_\-} \bf{igmp\_\-query\_\-type}
+\item 
+typedef \bf{igmp\_\-v1v2\_\-type\_\-} \bf{igmp\_\-v1v2\_\-type}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{igmp\_\-versions} \{ \bf{IGMP\_\-VERSION1} =  1, 
+\bf{IGMP\_\-VERSION2} =  2, 
+\bf{IGMP\_\-VERSION3} =  3
+ \}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!ALLOW_NEW_SOURCES@{ALLOW\_\-NEW\_\-SOURCES}}
+\index{ALLOW_NEW_SOURCES@{ALLOW\_\-NEW\_\-SOURCES}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ALLOW\_\-NEW\_\-SOURCES~5}\label{vqec__igmpv3_8h_a3daf7675d0310a7a9c91bb2b6d8db7a}
+
+
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!BLOCK_OLD_SOURCES@{BLOCK\_\-OLD\_\-SOURCES}}
+\index{BLOCK_OLD_SOURCES@{BLOCK\_\-OLD\_\-SOURCES}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define BLOCK\_\-OLD\_\-SOURCES~6}\label{vqec__igmpv3_8h_75bea8c8b672d58cf4a3d091b18c5321}
+
+
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!CHANGE_TO_EXCLUDE_MODE@{CHANGE\_\-TO\_\-EXCLUDE\_\-MODE}}
+\index{CHANGE_TO_EXCLUDE_MODE@{CHANGE\_\-TO\_\-EXCLUDE\_\-MODE}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define CHANGE\_\-TO\_\-EXCLUDE\_\-MODE~4}\label{vqec__igmpv3_8h_979fb06b7d3cf5fed513ef9066a86b0c}
+
+
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!CHANGE_TO_INCLUDE_MODE@{CHANGE\_\-TO\_\-INCLUDE\_\-MODE}}
+\index{CHANGE_TO_INCLUDE_MODE@{CHANGE\_\-TO\_\-INCLUDE\_\-MODE}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define CHANGE\_\-TO\_\-INCLUDE\_\-MODE~3}\label{vqec__igmpv3_8h_3e8d03ceeb7eaa9268580e3f452decfb}
+
+
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!IGMP_V3_REPORT_TYPE@{IGMP\_\-V3\_\-REPORT\_\-TYPE}}
+\index{IGMP_V3_REPORT_TYPE@{IGMP\_\-V3\_\-REPORT\_\-TYPE}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define IGMP\_\-V3\_\-REPORT\_\-TYPE~0x22}\label{vqec__igmpv3_8h_30c9d83cb6c7cb0c4e15cbfd336fc3c5}
+
+
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!MODE_IS_EXCLUDE@{MODE\_\-IS\_\-EXCLUDE}}
+\index{MODE_IS_EXCLUDE@{MODE\_\-IS\_\-EXCLUDE}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MODE\_\-IS\_\-EXCLUDE~2}\label{vqec__igmpv3_8h_391aa9e00ae6cef0ea770c9ab9418485}
+
+
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!MODE_IS_INCLUDE@{MODE\_\-IS\_\-INCLUDE}}
+\index{MODE_IS_INCLUDE@{MODE\_\-IS\_\-INCLUDE}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MODE\_\-IS\_\-INCLUDE~1}\label{vqec__igmpv3_8h_dd678eefd492096cd9b9fa162e907aa6}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!igmp_group_record@{igmp\_\-group\_\-record}}
+\index{igmp_group_record@{igmp\_\-group\_\-record}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{igmp\_\-group\_\-record\_\-}  \bf{igmp\_\-group\_\-record}}\label{vqec__igmpv3_8h_8f571f49040797bb6eafc9b94600a7d5}
+
+
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!igmp_query_type@{igmp\_\-query\_\-type}}
+\index{igmp_query_type@{igmp\_\-query\_\-type}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{igmp\_\-query\_\-type\_\-}  \bf{igmp\_\-query\_\-type}}\label{vqec__igmpv3_8h_eca767e67a69e66eb92844dd4e63dc8a}
+
+
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!igmp_v1v2_type@{igmp\_\-v1v2\_\-type}}
+\index{igmp_v1v2_type@{igmp\_\-v1v2\_\-type}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{igmp\_\-v1v2\_\-type\_\-}  \bf{igmp\_\-v1v2\_\-type}}\label{vqec__igmpv3_8h_add85b651a69120224c4212e0ff9e6ad}
+
+
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!igmp_v3_report_type@{igmp\_\-v3\_\-report\_\-type}}
+\index{igmp_v3_report_type@{igmp\_\-v3\_\-report\_\-type}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{igmp\_\-v3\_\-report\_\-type\_\-}  \bf{igmp\_\-v3\_\-report\_\-type}}\label{vqec__igmpv3_8h_039cc4ec8d940e9c2b1733742904f02b}
+
+
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!igmptype@{igmptype}}
+\index{igmptype@{igmptype}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{igmptype\_\-}  \bf{igmptype}}\label{vqec__igmpv3_8h_806f814036a3da01a1e2c7bbf45c6a77}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!igmp_versions@{igmp\_\-versions}}
+\index{igmp_versions@{igmp\_\-versions}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{igmp\_\-versions}}\label{vqec__igmpv3_8h_952cd2236057ef472986de5604fe9d18}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{IGMP_VERSION1@{IGMP\_\-VERSION1}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!IGMP_VERSION1@{IGMP\_\-VERSION1}}\item[{\em 
+IGMP\_\-VERSION1\label{vqec__igmpv3_8h_952cd2236057ef472986de5604fe9d183ec43109186c728753abf2e4a1ee6ba0}
+}]\index{IGMP_VERSION2@{IGMP\_\-VERSION2}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!IGMP_VERSION2@{IGMP\_\-VERSION2}}\item[{\em 
+IGMP\_\-VERSION2\label{vqec__igmpv3_8h_952cd2236057ef472986de5604fe9d181ba76920348910602f6dda19e04452b9}
+}]\index{IGMP_VERSION3@{IGMP\_\-VERSION3}!vqec_igmpv3.h@{vqec\_\-igmpv3.h}}\index{vqec_igmpv3.h@{vqec\_\-igmpv3.h}!IGMP_VERSION3@{IGMP\_\-VERSION3}}\item[{\em 
+IGMP\_\-VERSION3\label{vqec__igmpv3_8h_952cd2236057ef472986de5604fe9d18327abcc1d4ea0395f79d47b0245e8f2a}
+}]\end{description}
+\end{Desc}
+

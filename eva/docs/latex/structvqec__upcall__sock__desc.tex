@@ -1,0 +1,88 @@
+\section{vqec\_\-upcall\_\-sock\_\-desc Struct Reference}
+\label{structvqec__upcall__sock__desc}\index{vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}}
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+sockaddr\_\-un \bf{sock}
+\item 
+vqec\_\-event\_\-t $\ast$ \bf{ev}
+\item 
+boolean \bf{is\_\-fd\_\-valid}
+\item 
+int32\_\-t \bf{fd}
+\item 
+char $\ast$ \bf{pak\_\-buf}
+\item 
+uint32\_\-t \bf{buf\_\-len}
+\item 
+uint32\_\-t \bf{upcall\_\-events}
+\item 
+uint32\_\-t \bf{upcall\_\-lost\_\-events}
+\item 
+uint32\_\-t \bf{upcall\_\-error\_\-events}
+\item 
+uint32\_\-t \bf{upcall\_\-ack\_\-errors}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Private upcall socket descriptor structure. 
+
+
+
+\subsection{Field Documentation}
+\index{vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}!buf_len@{buf\_\-len}}
+\index{buf_len@{buf\_\-len}!vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-upcall\_\-sock\_\-desc::buf\_\-len}}\label{structvqec__upcall__sock__desc_df6c2b4aeb5452adb1e14a56cf7702de}
+
+
+Socket message buffer length. \index{vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}!ev@{ev}}
+\index{ev@{ev}!vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-event\_\-t$\ast$ \bf{vqec\_\-upcall\_\-sock\_\-desc::ev}}\label{structvqec__upcall__sock__desc_22162584453f7fe7789c7ad4213f122c}
+
+
+Upcall socket event. \index{vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}!fd@{fd}}
+\index{fd@{fd}!vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t \bf{vqec\_\-upcall\_\-sock\_\-desc::fd}}\label{structvqec__upcall__sock__desc_9259e0973bc1b0b79506ba881222b720}
+
+
+Socket descriptor. \index{vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}!is_fd_valid@{is\_\-fd\_\-valid}}
+\index{is_fd_valid@{is\_\-fd\_\-valid}!vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-upcall\_\-sock\_\-desc::is\_\-fd\_\-valid}}\label{structvqec__upcall__sock__desc_b1fc39810dae7b6a668c8778cf1627b2}
+
+
+A valid socket descriptor (to differentiate fd = 0). \index{vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}!pak_buf@{pak\_\-buf}}
+\index{pak_buf@{pak\_\-buf}!vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \bf{vqec\_\-upcall\_\-sock\_\-desc::pak\_\-buf}}\label{structvqec__upcall__sock__desc_6dc459142fde9f3d83509d8f0ae834ac}
+
+
+Socket message buffer (used only for packet sockets). \index{vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}!sock@{sock}}
+\index{sock@{sock}!vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct sockaddr\_\-un \bf{vqec\_\-upcall\_\-sock\_\-desc::sock}}\label{structvqec__upcall__sock__desc_4501d8b61e631c8dd680be5e442fc35f}
+
+
+Upcall socket. \index{vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}!upcall_ack_errors@{upcall\_\-ack\_\-errors}}
+\index{upcall_ack_errors@{upcall\_\-ack\_\-errors}!vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-upcall\_\-sock\_\-desc::upcall\_\-ack\_\-errors}}\label{structvqec__upcall__sock__desc_3d8b6afb08115bf5295f93d277b34f1c}
+
+
+Error while acknowledging / polling events. \index{vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}!upcall_error_events@{upcall\_\-error\_\-events}}
+\index{upcall_error_events@{upcall\_\-error\_\-events}!vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-upcall\_\-sock\_\-desc::upcall\_\-error\_\-events}}\label{structvqec__upcall__sock__desc_ac69a71d4247693f5bbab776c586fc9c}
+
+
+Error events, i.e., events that cannot be parsed. \index{vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}!upcall_events@{upcall\_\-events}}
+\index{upcall_events@{upcall\_\-events}!vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-upcall\_\-sock\_\-desc::upcall\_\-events}}\label{structvqec__upcall__sock__desc_8f7201a176ac27b0e5da547bfbe6c6a9}
+
+
+Upcall events received. \index{vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}!upcall_lost_events@{upcall\_\-lost\_\-events}}
+\index{upcall_lost_events@{upcall\_\-lost\_\-events}!vqec_upcall_sock_desc@{vqec\_\-upcall\_\-sock\_\-desc}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-upcall\_\-sock\_\-desc::upcall\_\-lost\_\-events}}\label{structvqec__upcall__sock__desc_c6278f89d36696bc1d3e48348cc6248d}
+
+
+Upcall events with generation number mismatch. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-upcall\_\-event.c}\end{CompactItemize}

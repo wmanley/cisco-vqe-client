@@ -1,0 +1,330 @@
+\section{vqec\_\-channel\_\-private.h File Reference}
+\label{vqec__channel__private_8h}\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+{\tt \#include \char`\"{}vqec\_\-channel\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}rtp\_\-era\_\-recv.h\char`\"{}}\par
+{\tt \#include \char`\"{}rtp\_\-repair\_\-recv.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqe\_\-token\_\-bucket.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-nat\_\-interface.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-sm.h\char`\"{}}\par
+{\tt \#include $<$utils/mp\_\-tlv\_\-decode.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-fcc.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-channel\_\-module\_\-t\_\-}
+\item 
+struct \bf{vqec\_\-chan\_\-tuner\_\-entry\_\-}
+\item 
+struct \bf{vqec\_\-chan\_\-stats\_\-}
+\item 
+struct \bf{vqec\_\-chan\_\-upcall\_\-data\_\-}
+\item 
+struct \bf{vqec\_\-chan\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-CC\_\-STB\_\-STATS\_\-FIELDS}
+\item 
+\#define \bf{STB\_\-DCR\_\-STATS\_\-POLL\_\-INTERVAL}~MSECS(250)
+\item 
+\#define \bf{VQEC\_\-MAX\_\-CHANNEL\_\-IPV4\_\-PRINT\_\-NAME\_\-SIZE}~(sizeof(\char`\"{}rtp://XXX.XXX.XXX.XXX:65535\char`\"{}))
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef \bf{vqec\_\-channel\_\-module\_\-t\_\-} \bf{vqec\_\-channel\_\-module\_\-t}
+\item 
+typedef \bf{vqec\_\-chan\_\-tuner\_\-entry\_\-} \bf{vqec\_\-chan\_\-tuner\_\-entry\_\-t}
+\item 
+typedef \bf{vqec\_\-chan\_\-stats\_\-} \bf{vqec\_\-chan\_\-stats\_\-t}
+\item 
+typedef \bf{vqec\_\-chan\_\-upcall\_\-data\_\-} \bf{vqec\_\-chan\_\-upcall\_\-data\_\-t}
+\item 
+typedef \bf{vqec\_\-chan\_\-} \bf{vqec\_\-chan\_\-t}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\bf{vqec\_\-chan\_\-t} $\ast$ \bf{vqec\_\-chanid\_\-to\_\-chan} (const \bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+char $\ast$ \bf{vqec\_\-chan\_\-print\_\-name} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+boolean \bf{vqec\_\-chan\_\-get\_\-rtx\_\-nat\_\-ports} (\bf{vqec\_\-chan\_\-t} $\ast$chan, in\_\-port\_\-t $\ast$rtp\_\-port, in\_\-port\_\-t $\ast$rtcp\_\-port)
+\item 
+void \bf{vqec\_\-chan\_\-upcall\_\-prim\_\-inactive\_\-event} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+void \bf{vqec\_\-chan\_\-upcall\_\-fec\_\-update\_\-event} (\bf{vqec\_\-chan\_\-t} $\ast$chan, vqec\_\-dp\_\-upc\_\-fec\_\-update\_\-data\_\-t $\ast$fec\_\-data)
+\item 
+\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ \bf{vqec\_\-chan\_\-get\_\-repair\_\-session} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+\bf{rtp\_\-era\_\-recv\_\-t} $\ast$ \bf{vqec\_\-chan\_\-get\_\-primary\_\-session} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+void \bf{vqec\_\-chan\_\-dcr\_\-stats\_\-event\_\-handler} (const vqec\_\-event\_\-t $\ast$const unused\_\-evptr, int unused\_\-fd, short unused\_\-event, void $\ast$arg)
+\item 
+void \bf{vqec\_\-chan\_\-collect\_\-xr\_\-ma\_\-stats} (\bf{vqec\_\-chan\_\-t} $\ast$chan, boolean force, rtcp\_\-xr\_\-ma\_\-stats\_\-t $\ast$xr\_\-ma\_\-stats)
+\item 
+void \bf{vqec\_\-chan\_\-collect\_\-xr\_\-dc\_\-stats} (\bf{vqec\_\-chan\_\-t} $\ast$chan, rtcp\_\-xr\_\-dc\_\-stats\_\-t $\ast$xr\_\-dc\_\-stats)
+\item 
+static \bf{vqec\_\-chan\_\-upcall\_\-data\_\-t} $\ast$ \bf{vqec\_\-chan\_\-upc\_\-data\_\-ptr} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+static vqec\_\-dp\_\-streamid\_\-t \bf{vqec\_\-chan\_\-primary\_\-session\_\-dp\_\-id} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+static vqec\_\-dp\_\-streamid\_\-t \bf{vqec\_\-chan\_\-repair\_\-session\_\-dp\_\-id} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+static \bf{vqec\_\-chanid\_\-t} \bf{vqec\_\-chan\_\-to\_\-chanid} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+static void \bf{vqec\_\-chan\_\-mrb\_\-transition\_\-actions} (\bf{vqec\_\-chan\_\-t} $\ast$chan, boolean timed\_\-out)
+\item 
+uint32\_\-t \bf{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-rcc} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+uint32\_\-t \bf{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-er} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+void \bf{vqec\_\-chan\_\-update\_\-dcr\_\-stats} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\bf{vqec\_\-channel\_\-module\_\-t} $\ast$ \bf{g\_\-channel\_\-module}
+\item 
+abs\_\-time\_\-t \bf{display\_\-time}
+\item 
+uint64\_\-t \bf{display\_\-pts}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!STB_DCR_STATS_POLL_INTERVAL@{STB\_\-DCR\_\-STATS\_\-POLL\_\-INTERVAL}}
+\index{STB_DCR_STATS_POLL_INTERVAL@{STB\_\-DCR\_\-STATS\_\-POLL\_\-INTERVAL}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define STB\_\-DCR\_\-STATS\_\-POLL\_\-INTERVAL~MSECS(250)}\label{vqec__channel__private_8h_c432722e0ec876b96ec98d0fe1e8d28f}
+
+
+Event for polling decoder stats \index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!VQEC_CC_STB_STATS_FIELDS@{VQEC\_\-CC\_\-STB\_\-STATS\_\-FIELDS}}
+\index{VQEC_CC_STB_STATS_FIELDS@{VQEC\_\-CC\_\-STB\_\-STATS\_\-FIELDS}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CC\_\-STB\_\-STATS\_\-FIELDS}\label{vqec__channel__private_8h_3e58d60c53838a2c22ea88478660e993}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}boolean ir_time_valid; /* true if ir_time field is valid */ \
+    abs_time_t ir_time;   /* ir channel change time */\
+    abs_time_t pat_time;  /* pat found time */\
+    abs_time_t pmt_time;  /* pmt found time */\
+    abs_time_t fst_decode_time;  /* First packet decode time at STB */\
+    uint64_t last_decoded_pts;   /* last decoded PTS.*/\
+    uint32_t dec_picture_cnt;
+\end{verbatim}\end{Code}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!VQEC_MAX_CHANNEL_IPV4_PRINT_NAME_SIZE@{VQEC\_\-MAX\_\-CHANNEL\_\-IPV4\_\-PRINT\_\-NAME\_\-SIZE}}
+\index{VQEC_MAX_CHANNEL_IPV4_PRINT_NAME_SIZE@{VQEC\_\-MAX\_\-CHANNEL\_\-IPV4\_\-PRINT\_\-NAME\_\-SIZE}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MAX\_\-CHANNEL\_\-IPV4\_\-PRINT\_\-NAME\_\-SIZE~(sizeof(\char`\"{}rtp://XXX.XXX.XXX.XXX:65535\char`\"{}))}\label{vqec__channel__private_8h_b1b589cae2262ef7faa9333afc8f8aae}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_stats_t@{vqec\_\-chan\_\-stats\_\-t}}
+\index{vqec_chan_stats_t@{vqec\_\-chan\_\-stats\_\-t}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-chan\_\-stats\_\-}  \bf{vqec\_\-chan\_\-stats\_\-t}}\label{vqec__channel__private_8h_314c46da1490b585d81231b72c58d2a9}
+
+
+Channel statistics. \index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_t@{vqec\_\-chan\_\-t}}
+\index{vqec_chan_t@{vqec\_\-chan\_\-t}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-chan\_\-}  \bf{vqec\_\-chan\_\-t}}\label{vqec__channel__private_8h_1eb683711ce69a877efac259029c5f59}
+
+
+VQEC channel data structure. \index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_tuner_entry_t@{vqec\_\-chan\_\-tuner\_\-entry\_\-t}}
+\index{vqec_chan_tuner_entry_t@{vqec\_\-chan\_\-tuner\_\-entry\_\-t}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-chan\_\-tuner\_\-entry\_\-}  \bf{vqec\_\-chan\_\-tuner\_\-entry\_\-t}}\label{vqec__channel__private_8h_ce43b3eb5914787a368824c408f14f80}
+
+
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_upcall_data_t@{vqec\_\-chan\_\-upcall\_\-data\_\-t}}
+\index{vqec_chan_upcall_data_t@{vqec\_\-chan\_\-upcall\_\-data\_\-t}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-chan\_\-upcall\_\-data\_\-}  \bf{vqec\_\-chan\_\-upcall\_\-data\_\-t}}\label{vqec__channel__private_8h_5eb0d261e0dfaa686897aa89dc46a771}
+
+
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_channel_module_t@{vqec\_\-channel\_\-module\_\-t}}
+\index{vqec_channel_module_t@{vqec\_\-channel\_\-module\_\-t}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-channel\_\-module\_\-t\_\-}  \bf{vqec\_\-channel\_\-module\_\-t}}\label{vqec__channel__private_8h_a32fc6d287800e419d961afcfd80a27b}
+
+
+Storage for all global data within the channel module. 
+
+\subsection{Function Documentation}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_collect_xr_dc_stats@{vqec\_\-chan\_\-collect\_\-xr\_\-dc\_\-stats}}
+\index{vqec_chan_collect_xr_dc_stats@{vqec\_\-chan\_\-collect\_\-xr\_\-dc\_\-stats}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-collect\_\-xr\_\-dc\_\-stats (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, rtcp\_\-xr\_\-dc\_\-stats\_\-t $\ast$ {\em xr\_\-dc\_\-stats})}\label{vqec__channel__private_8h_774ba508bd20a052c52d551ef2f4dd35}
+
+
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_collect_xr_ma_stats@{vqec\_\-chan\_\-collect\_\-xr\_\-ma\_\-stats}}
+\index{vqec_chan_collect_xr_ma_stats@{vqec\_\-chan\_\-collect\_\-xr\_\-ma\_\-stats}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-collect\_\-xr\_\-ma\_\-stats (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, boolean {\em force}, rtcp\_\-xr\_\-ma\_\-stats\_\-t $\ast$ {\em xr\_\-ma\_\-stats})}\label{vqec__channel__private_8h_5901659d83ba9165dd5f57d92f13d655}
+
+
+----------------------------------------------------------------------- Collect XR MA stats and populate structure. Some of the fields must be retrieved from the DP and should be filled in before this is called
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifier of the channel \item[\mbox{$\leftarrow$} {\em force}]Force sending an MA message. This does not wait for all data to be present, and sends whatever is available. \item[\mbox{$\rightarrow$} {\em xr\_\-ma\_\-stats}]Output pointer to location of stats ------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_dcr_stats_event_handler@{vqec\_\-chan\_\-dcr\_\-stats\_\-event\_\-handler}}
+\index{vqec_chan_dcr_stats_event_handler@{vqec\_\-chan\_\-dcr\_\-stats\_\-event\_\-handler}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-dcr\_\-stats\_\-event\_\-handler (const vqec\_\-event\_\-t $\ast$const  {\em unused\_\-evptr}, int {\em unused\_\-fd}, short {\em unused\_\-event}, void $\ast$ {\em arg})}\label{vqec__channel__private_8h_fa77ebd049ad6bed1f3d0362ca1cae9c}
+
+
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_get_max_recv_bw_er@{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-er}}
+\index{vqec_chan_get_max_recv_bw_er@{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-er}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-er (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel__private_8h_e11bfcadea4df3f9351885d9db79a162}
+
+
+Get the maximum receive bandwidth value (for primary stream and VQE services) to send up to the VQE-S for the ER case. This number will already have the FEC bandwidth subtracted out from it, if necessary.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer of the channel. \item[\mbox{$\rightarrow$} {\em uint32\_\-t}]Returns the bandwidth value to be sent to the server. \end{description}
+\end{Desc}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_get_max_recv_bw_rcc@{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-rcc}}
+\index{vqec_chan_get_max_recv_bw_rcc@{vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-rcc}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t vqec\_\-chan\_\-get\_\-max\_\-recv\_\-bw\_\-rcc (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel__private_8h_edabfea9482ae374c47654479fbad4b2}
+
+
+Get the maximum receive bandwidth value (for primary stream and VQE services) to send up to the VQE-S for the RCC case. This number will already have the FEC bandwidth subtracted out from it, if necessary.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer of the channel. \item[\mbox{$\rightarrow$} {\em uint32\_\-t}]Returns the bandwidth value to be sent to the server. \end{description}
+\end{Desc}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_get_primary_session@{vqec\_\-chan\_\-get\_\-primary\_\-session}}
+\index{vqec_chan_get_primary_session@{vqec\_\-chan\_\-get\_\-primary\_\-session}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{rtp\_\-era\_\-recv\_\-t}$\ast$ vqec\_\-chan\_\-get\_\-primary\_\-session (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel__private_8h_0e839faf967bcd4892c8a1a953823b09}
+
+
+--------------------------------------------------------------------------- From channel to it's primary session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\rightarrow$} {\em rtp\_\-era\_\-recv\_\-t$\ast$}]Pointer to the primary session. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_get_repair_session@{vqec\_\-chan\_\-get\_\-repair\_\-session}}
+\index{vqec_chan_get_repair_session@{vqec\_\-chan\_\-get\_\-repair\_\-session}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{rtp\_\-repair\_\-recv\_\-t}$\ast$ vqec\_\-chan\_\-get\_\-repair\_\-session (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel__private_8h_78d97640bf3144d8d57576cba2b43a63}
+
+
+--------------------------------------------------------------------------- From channel to it's repair session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\rightarrow$} {\em rtp\_\-repair\_\-recv\_\-t$\ast$}]Pointer to the repair session. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_get_rtx_nat_ports@{vqec\_\-chan\_\-get\_\-rtx\_\-nat\_\-ports}}
+\index{vqec_chan_get_rtx_nat_ports@{vqec\_\-chan\_\-get\_\-rtx\_\-nat\_\-ports}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-chan\_\-get\_\-rtx\_\-nat\_\-ports (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, in\_\-port\_\-t $\ast$ {\em rtp\_\-port}, in\_\-port\_\-t $\ast$ {\em rtcp\_\-port})}\label{vqec__channel__private_8h_b6e3acf67687e9d1f20d6b4c1e3242e2}
+
+
+--------------------------------------------------------------------------- Retrieve the latest udp-nat port mappings for the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel instance. \item[\mbox{$\rightarrow$} {\em rtp\_\-port}]RTP external mapped udp port. \item[\mbox{$\rightarrow$} {\em rtcp\_\-Port}]RTCP external mapped udp port. \item[\mbox{$\rightarrow$} {\em boolean}]The method returns true if a valid mapping is returned for the rtp and rtcp ports, otherwise returns false. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_mrb_transition_actions@{vqec\_\-chan\_\-mrb\_\-transition\_\-actions}}
+\index{vqec_chan_mrb_transition_actions@{vqec\_\-chan\_\-mrb\_\-transition\_\-actions}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-chan\_\-mrb\_\-transition\_\-actions (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, boolean {\em timed\_\-out})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__channel__private_8h_97137857115a13283af3acf7b6232551}
+
+
+Inlined actions for the max\_\-receive\_\-bandwidth transition event. \index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_primary_session_dp_id@{vqec\_\-chan\_\-primary\_\-session\_\-dp\_\-id}}
+\index{vqec_chan_primary_session_dp_id@{vqec\_\-chan\_\-primary\_\-session\_\-dp\_\-id}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static vqec\_\-dp\_\-streamid\_\-t vqec\_\-chan\_\-primary\_\-session\_\-dp\_\-id (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__channel__private_8h_1e567d73ad8f54d1fe0bf85be2151024}
+
+
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_print_name@{vqec\_\-chan\_\-print\_\-name}}
+\index{vqec_chan_print_name@{vqec\_\-chan\_\-print\_\-name}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ vqec\_\-chan\_\-print\_\-name (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel__private_8h_0d02e7062b9aad5d310b4d093bd1bb23}
+
+
+--------------------------------------------------------------------------- Print the name of the channel in a static buffer: to-be-used only for debug purposes: do-not-cache.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\rightarrow$} {\em char$\ast$}]Pointer to a formatted string for the channel name. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_repair_session_dp_id@{vqec\_\-chan\_\-repair\_\-session\_\-dp\_\-id}}
+\index{vqec_chan_repair_session_dp_id@{vqec\_\-chan\_\-repair\_\-session\_\-dp\_\-id}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static vqec\_\-dp\_\-streamid\_\-t vqec\_\-chan\_\-repair\_\-session\_\-dp\_\-id (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__channel__private_8h_3ec42b0507902481b88f2dd01e5db2da}
+
+
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_to_chanid@{vqec\_\-chan\_\-to\_\-chanid}}
+\index{vqec_chan_to_chanid@{vqec\_\-chan\_\-to\_\-chanid}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static \bf{vqec\_\-chanid\_\-t} vqec\_\-chan\_\-to\_\-chanid (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__channel__private_8h_4a2a54e8e834f6b5d5add7b42807d45f}
+
+
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_upc_data_ptr@{vqec\_\-chan\_\-upc\_\-data\_\-ptr}}
+\index{vqec_chan_upc_data_ptr@{vqec\_\-chan\_\-upc\_\-data\_\-ptr}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static \bf{vqec\_\-chan\_\-upcall\_\-data\_\-t}$\ast$ vqec\_\-chan\_\-upc\_\-data\_\-ptr (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__channel__private_8h_5bd3c85531b0d2f7acc6e1af5b7b96c8}
+
+
+Inlined accessors for upcall event / session support. \index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_upcall_fec_update_event@{vqec\_\-chan\_\-upcall\_\-fec\_\-update\_\-event}}
+\index{vqec_chan_upcall_fec_update_event@{vqec\_\-chan\_\-upcall\_\-fec\_\-update\_\-event}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-upcall\_\-fec\_\-update\_\-event (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan}, vqec\_\-dp\_\-upc\_\-fec\_\-update\_\-data\_\-t $\ast$ {\em fec\_\-data})}\label{vqec__channel__private_8h_80dec6af8eb10990e343299d1feb34b3}
+
+
+--------------------------------------------------------------------------- Process a FEC update upcall event received for the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_upcall_prim_inactive_event@{vqec\_\-chan\_\-upcall\_\-prim\_\-inactive\_\-event}}
+\index{vqec_chan_upcall_prim_inactive_event@{vqec\_\-chan\_\-upcall\_\-prim\_\-inactive\_\-event}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-upcall\_\-prim\_\-inactive\_\-event (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel__private_8h_64063120fbb7b1d87033aa8348aa6c0d}
+
+
+--------------------------------------------------------------------------- Process a primary inactive upcall event received for the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chan_update_dcr_stats@{vqec\_\-chan\_\-update\_\-dcr\_\-stats}}
+\index{vqec_chan_update_dcr_stats@{vqec\_\-chan\_\-update\_\-dcr\_\-stats}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-update\_\-dcr\_\-stats (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})}\label{vqec__channel__private_8h_433bc9ab3ed1e72c0acc26ab3847e387}
+
+
+--------------------------------------------------------------------------- Poll the STB to get channel change information.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\leftarrow$} {\em cur\_\-time}]Current system time. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!vqec_chanid_to_chan@{vqec\_\-chanid\_\-to\_\-chan}}
+\index{vqec_chanid_to_chan@{vqec\_\-chanid\_\-to\_\-chan}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-t}$\ast$ vqec\_\-chanid\_\-to\_\-chan (const \bf{vqec\_\-chanid\_\-t} {\em chanid})}\label{vqec__channel__private_8h_280869744e24992f36392215ccc3bb98}
+
+
+--------------------------------------------------------------------------- Init / deinit / bind / unbind / counters. --------------------------------------------------------------------------- 
+
+\subsection{Variable Documentation}
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!display_pts@{display\_\-pts}}
+\index{display_pts@{display\_\-pts}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{display\_\-pts}}\label{vqec__channel__private_8h_b21affeb6feb001f90af6bf98fc88393}
+
+
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!display_time@{display\_\-time}}
+\index{display_time@{display\_\-time}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}abs\_\-time\_\-t \bf{display\_\-time}}\label{vqec__channel__private_8h_749975c4549f99389baad9e16f40d95b}
+
+
+\index{vqec_channel_private.h@{vqec\_\-channel\_\-private.h}!g_channel_module@{g\_\-channel\_\-module}}
+\index{g_channel_module@{g\_\-channel\_\-module}!vqec_channel_private.h@{vqec\_\-channel\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-channel\_\-module\_\-t}$\ast$ \bf{g\_\-channel\_\-module}}\label{vqec__channel__private_8h_43d3ddc7ce2d1cc28d49126bab428aec}
+
+

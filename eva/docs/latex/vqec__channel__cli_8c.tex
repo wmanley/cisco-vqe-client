@@ -1,0 +1,64 @@
+\section{vqec\_\-channel\_\-cli.c File Reference}
+\label{vqec__channel__cli_8c}\index{vqec_channel_cli.c@{vqec\_\-channel\_\-cli.c}}
+{\tt \#include \char`\"{}vqe\_\-port\_\-macros.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-private.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-cli\_\-interface.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{RTCP\_\-RLE\_\-UNSPECIFIED}~0xffff
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+static void \bf{vqec\_\-chan\_\-display\_\-cc\_\-stb\_\-stats} (\bf{vqec\_\-chan\_\-t} $\ast$chan)
+\item 
+void \bf{vqec\_\-channel\_\-cfg\_\-printf} (channel\_\-cfg\_\-t $\ast$channel\_\-p)
+\item 
+void \bf{vqec\_\-channel\_\-cfg\_\-printf\_\-brief} (channel\_\-cfg\_\-t $\ast$channel\_\-p)
+\item 
+void \bf{vqec\_\-chan\_\-cfg\_\-printf} (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$channel\_\-p)
+\item 
+void \bf{vqec\_\-chan\_\-cfg\_\-printf\_\-brief} (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$channel\_\-p)
+\item 
+void \bf{vqec\_\-chan\_\-display\_\-state} (\bf{vqec\_\-chanid\_\-t} chanid, uint32\_\-t options\_\-flag)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_channel_cli.c@{vqec\_\-channel\_\-cli.c}!RTCP_RLE_UNSPECIFIED@{RTCP\_\-RLE\_\-UNSPECIFIED}}
+\index{RTCP_RLE_UNSPECIFIED@{RTCP\_\-RLE\_\-UNSPECIFIED}!vqec_channel_cli.c@{vqec\_\-channel\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define RTCP\_\-RLE\_\-UNSPECIFIED~0xffff}\label{vqec__channel__cli_8c_bf445bcd9cf25aaaba4e93b547372155}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_channel_cli.c@{vqec\_\-channel\_\-cli.c}!vqec_chan_cfg_printf@{vqec\_\-chan\_\-cfg\_\-printf}}
+\index{vqec_chan_cfg_printf@{vqec\_\-chan\_\-cfg\_\-printf}!vqec_channel_cli.c@{vqec\_\-channel\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-cfg\_\-printf (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em channel\_\-p})}\label{vqec__channel__cli_8c_10c209d5a321ed4ada5f6dfc8729a255}
+
+
+\index{vqec_channel_cli.c@{vqec\_\-channel\_\-cli.c}!vqec_chan_cfg_printf_brief@{vqec\_\-chan\_\-cfg\_\-printf\_\-brief}}
+\index{vqec_chan_cfg_printf_brief@{vqec\_\-chan\_\-cfg\_\-printf\_\-brief}!vqec_channel_cli.c@{vqec\_\-channel\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-cfg\_\-printf\_\-brief (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em channel\_\-p})}\label{vqec__channel__cli_8c_b96bb48de507c6c5a8292082700027fa}
+
+
+\index{vqec_channel_cli.c@{vqec\_\-channel\_\-cli.c}!vqec_chan_display_cc_stb_stats@{vqec\_\-chan\_\-display\_\-cc\_\-stb\_\-stats}}
+\index{vqec_chan_display_cc_stb_stats@{vqec\_\-chan\_\-display\_\-cc\_\-stb\_\-stats}!vqec_channel_cli.c@{vqec\_\-channel\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-chan\_\-display\_\-cc\_\-stb\_\-stats (\bf{vqec\_\-chan\_\-t} $\ast$ {\em chan})\hspace{0.3cm}{\tt  [static]}}\label{vqec__channel__cli_8c_cd720fe421f3c4e461ec6f9820ecd469}
+
+
+Display the channel change stats of STB. These stats are displayed if the CC instrument is available at STB.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]channel \end{description}
+\end{Desc}
+\index{vqec_channel_cli.c@{vqec\_\-channel\_\-cli.c}!vqec_channel_cfg_printf_brief@{vqec\_\-channel\_\-cfg\_\-printf\_\-brief}}
+\index{vqec_channel_cfg_printf_brief@{vqec\_\-channel\_\-cfg\_\-printf\_\-brief}!vqec_channel_cli.c@{vqec\_\-channel\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-channel\_\-cfg\_\-printf\_\-brief (channel\_\-cfg\_\-t $\ast$ {\em channel\_\-p})}\label{vqec__channel__cli_8c_67f58645c4c9bb4c1a6d1d3a13caedd3}
+
+

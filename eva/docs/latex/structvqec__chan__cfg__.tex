@@ -1,0 +1,421 @@
+\section{vqec\_\-chan\_\-cfg\_\- Struct Reference}
+\label{structvqec__chan__cfg__}\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+{\tt \#include $<$vqec\_\-ifclient\_\-defs.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+char \bf{name} [VQEC\_\-MAX\_\-CHANNEL\_\-NAME\_\-LENGTH]
+\item 
+uint8\_\-t \bf{protocol}
+\item 
+\bf{vqec\_\-in\_\-addr\_\-t} \bf{primary\_\-dest\_\-addr}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{primary\_\-dest\_\-port}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{primary\_\-dest\_\-rtcp\_\-port}
+\item 
+\bf{vqec\_\-in\_\-addr\_\-t} \bf{primary\_\-source\_\-addr}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{primary\_\-source\_\-port}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{primary\_\-source\_\-rtcp\_\-port}
+\item 
+uint8\_\-t \bf{primary\_\-payload\_\-type}
+\item 
+uint32\_\-t \bf{primary\_\-bit\_\-rate}
+\item 
+uint32\_\-t \bf{primary\_\-rtcp\_\-sndr\_\-bw}
+\item 
+uint32\_\-t \bf{primary\_\-rtcp\_\-rcvr\_\-bw}
+\item 
+uint32\_\-t \bf{primary\_\-rtcp\_\-per\_\-rcvr\_\-bw}
+\item 
+uint16\_\-t \bf{primary\_\-rtcp\_\-xr\_\-loss\_\-rle}
+\item 
+uint16\_\-t \bf{primary\_\-rtcp\_\-xr\_\-per\_\-loss\_\-rle}
+\item 
+uint32\_\-t \bf{primary\_\-rtcp\_\-xr\_\-stat\_\-flags}
+\item 
+uint8\_\-t \bf{primary\_\-rtcp\_\-xr\_\-multicast\_\-acq}
+\item 
+uint8\_\-t \bf{primary\_\-rtcp\_\-rsize}
+\item 
+uint8\_\-t \bf{primary\_\-rtcp\_\-xr\_\-diagnostic\_\-counters}
+\item 
+\bf{vqec\_\-in\_\-addr\_\-t} \bf{fbt\_\-addr}
+\item 
+uint8\_\-t \bf{er\_\-enable}
+\item 
+uint8\_\-t \bf{rcc\_\-enable}
+\item 
+\bf{vqec\_\-in\_\-addr\_\-t} \bf{rtx\_\-source\_\-addr}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{rtx\_\-source\_\-port}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{rtx\_\-source\_\-rtcp\_\-port}
+\item 
+\bf{vqec\_\-in\_\-addr\_\-t} \bf{rtx\_\-dest\_\-addr}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{rtx\_\-dest\_\-port}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{rtx\_\-dest\_\-rtcp\_\-port}
+\item 
+uint8\_\-t \bf{rtx\_\-payload\_\-type}
+\item 
+uint32\_\-t \bf{rtx\_\-rtcp\_\-sndr\_\-bw}
+\item 
+uint32\_\-t \bf{rtx\_\-rtcp\_\-rcvr\_\-bw}
+\item 
+uint16\_\-t \bf{rtx\_\-rtcp\_\-xr\_\-loss\_\-rle}
+\item 
+uint32\_\-t \bf{rtx\_\-rtcp\_\-xr\_\-stat\_\-flags}
+\item 
+uint8\_\-t \bf{fec\_\-enable}
+\item 
+\bf{vqec\_\-fec\_\-mode\_\-t} \bf{fec\_\-mode}
+\item 
+\bf{vqec\_\-in\_\-addr\_\-t} \bf{fec1\_\-mcast\_\-addr}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{fec1\_\-mcast\_\-port}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{fec1\_\-mcast\_\-rtcp\_\-port}
+\item 
+\bf{vqec\_\-in\_\-addr\_\-t} \bf{fec1\_\-source\_\-addr}
+\item 
+uint8\_\-t \bf{fec1\_\-payload\_\-type}
+\item 
+uint32\_\-t \bf{fec1\_\-rtcp\_\-sndr\_\-bw}
+\item 
+uint32\_\-t \bf{fec1\_\-rtcp\_\-rcvr\_\-bw}
+\item 
+\bf{vqec\_\-in\_\-addr\_\-t} \bf{fec2\_\-mcast\_\-addr}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{fec2\_\-mcast\_\-port}
+\item 
+\bf{vqec\_\-in\_\-port\_\-t} \bf{fec2\_\-mcast\_\-rtcp\_\-port}
+\item 
+\bf{vqec\_\-in\_\-addr\_\-t} \bf{fec2\_\-source\_\-addr}
+\item 
+uint8\_\-t \bf{fec2\_\-payload\_\-type}
+\item 
+uint32\_\-t \bf{fec2\_\-rtcp\_\-sndr\_\-bw}
+\item 
+uint32\_\-t \bf{fec2\_\-rtcp\_\-rcvr\_\-bw}
+\item 
+uint8\_\-t \bf{fec\_\-l\_\-value}
+\item 
+uint8\_\-t \bf{fec\_\-d\_\-value}
+\item 
+\bf{vqec\_\-fec\_\-order\_\-t} \bf{fec\_\-order}
+\item 
+uint64\_\-t \bf{fec\_\-ts\_\-pkt\_\-time}
+\item 
+uint8\_\-t \bf{passthru}
+\item 
+char \bf{client\_\-ufrag} [VQEC\_\-MAX\_\-ICE\_\-UFRAG\_\-LENGTH]
+\item 
+char \bf{server\_\-ufrag} [VQEC\_\-MAX\_\-ICE\_\-UFRAG\_\-LENGTH]
+\item 
+uint8\_\-t \bf{prim\_\-nat\_\-binding}
+\item 
+uint8\_\-t \bf{stun\_\-optimization}
+\end{CompactItemize}
+
+
+\subsection{Field Documentation}
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!client_ufrag@{client\_\-ufrag}}
+\index{client_ufrag@{client\_\-ufrag}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-chan\_\-cfg\_\-::client\_\-ufrag}[VQEC\_\-MAX\_\-ICE\_\-UFRAG\_\-LENGTH]}\label{structvqec__chan__cfg___172791f0a6e371f1e9a3c80ed7016502}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!er_enable@{er\_\-enable}}
+\index{er_enable@{er\_\-enable}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::er\_\-enable}}\label{structvqec__chan__cfg___894b78d2ac18933713831ff14c59207a}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fbt_addr@{fbt\_\-addr}}
+\index{fbt_addr@{fbt\_\-addr}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-addr\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::fbt\_\-addr}}\label{structvqec__chan__cfg___920cf20f42e7e1048347963058f2add8}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec1_mcast_addr@{fec1\_\-mcast\_\-addr}}
+\index{fec1_mcast_addr@{fec1\_\-mcast\_\-addr}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-addr\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::fec1\_\-mcast\_\-addr}}\label{structvqec__chan__cfg___a842249ecc62f431a7e291ae68da3e98}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec1_mcast_port@{fec1\_\-mcast\_\-port}}
+\index{fec1_mcast_port@{fec1\_\-mcast\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::fec1\_\-mcast\_\-port}}\label{structvqec__chan__cfg___869e17310a0a3d747b83e931acafa9eb}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec1_mcast_rtcp_port@{fec1\_\-mcast\_\-rtcp\_\-port}}
+\index{fec1_mcast_rtcp_port@{fec1\_\-mcast\_\-rtcp\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::fec1\_\-mcast\_\-rtcp\_\-port}}\label{structvqec__chan__cfg___bd58ce37c6b5206305ad7b31c384798c}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec1_payload_type@{fec1\_\-payload\_\-type}}
+\index{fec1_payload_type@{fec1\_\-payload\_\-type}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::fec1\_\-payload\_\-type}}\label{structvqec__chan__cfg___cd5b182f57bfc981264144719f306c4f}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec1_rtcp_rcvr_bw@{fec1\_\-rtcp\_\-rcvr\_\-bw}}
+\index{fec1_rtcp_rcvr_bw@{fec1\_\-rtcp\_\-rcvr\_\-bw}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::fec1\_\-rtcp\_\-rcvr\_\-bw}}\label{structvqec__chan__cfg___22088633b112ef85cf7a14a9b1ebc953}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec1_rtcp_sndr_bw@{fec1\_\-rtcp\_\-sndr\_\-bw}}
+\index{fec1_rtcp_sndr_bw@{fec1\_\-rtcp\_\-sndr\_\-bw}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::fec1\_\-rtcp\_\-sndr\_\-bw}}\label{structvqec__chan__cfg___9ea726e93003736c557d8439099ffdeb}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec1_source_addr@{fec1\_\-source\_\-addr}}
+\index{fec1_source_addr@{fec1\_\-source\_\-addr}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-addr\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::fec1\_\-source\_\-addr}}\label{structvqec__chan__cfg___d37c2ae6aed498379ad8f70052ff9498}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec2_mcast_addr@{fec2\_\-mcast\_\-addr}}
+\index{fec2_mcast_addr@{fec2\_\-mcast\_\-addr}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-addr\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::fec2\_\-mcast\_\-addr}}\label{structvqec__chan__cfg___0a1ae1cad7462083fd0bda668545c61e}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec2_mcast_port@{fec2\_\-mcast\_\-port}}
+\index{fec2_mcast_port@{fec2\_\-mcast\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::fec2\_\-mcast\_\-port}}\label{structvqec__chan__cfg___562448424c8edd3eb2da6509aef03499}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec2_mcast_rtcp_port@{fec2\_\-mcast\_\-rtcp\_\-port}}
+\index{fec2_mcast_rtcp_port@{fec2\_\-mcast\_\-rtcp\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::fec2\_\-mcast\_\-rtcp\_\-port}}\label{structvqec__chan__cfg___c45e14125f6f4318fa80e28d7b8ab726}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec2_payload_type@{fec2\_\-payload\_\-type}}
+\index{fec2_payload_type@{fec2\_\-payload\_\-type}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::fec2\_\-payload\_\-type}}\label{structvqec__chan__cfg___edb3e786d5e3d29d2cec273d471e0cd9}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec2_rtcp_rcvr_bw@{fec2\_\-rtcp\_\-rcvr\_\-bw}}
+\index{fec2_rtcp_rcvr_bw@{fec2\_\-rtcp\_\-rcvr\_\-bw}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::fec2\_\-rtcp\_\-rcvr\_\-bw}}\label{structvqec__chan__cfg___dca7d9e7208184ecad52ba2a05c67e4c}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec2_rtcp_sndr_bw@{fec2\_\-rtcp\_\-sndr\_\-bw}}
+\index{fec2_rtcp_sndr_bw@{fec2\_\-rtcp\_\-sndr\_\-bw}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::fec2\_\-rtcp\_\-sndr\_\-bw}}\label{structvqec__chan__cfg___ebd9373a7612961b26a41ddcaf1cbeac}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec2_source_addr@{fec2\_\-source\_\-addr}}
+\index{fec2_source_addr@{fec2\_\-source\_\-addr}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-addr\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::fec2\_\-source\_\-addr}}\label{structvqec__chan__cfg___bb6298543ae48b15d1b58c0d1ae5bc60}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec_d_value@{fec\_\-d\_\-value}}
+\index{fec_d_value@{fec\_\-d\_\-value}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::fec\_\-d\_\-value}}\label{structvqec__chan__cfg___1dd17ac84b303967f45f3b50d3ff326a}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec_enable@{fec\_\-enable}}
+\index{fec_enable@{fec\_\-enable}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::fec\_\-enable}}\label{structvqec__chan__cfg___baed2dd4e19e7f6f41d17c8978b3fa22}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec_l_value@{fec\_\-l\_\-value}}
+\index{fec_l_value@{fec\_\-l\_\-value}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::fec\_\-l\_\-value}}\label{structvqec__chan__cfg___bfd3f799902723c04859207243fcdb39}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec_mode@{fec\_\-mode}}
+\index{fec_mode@{fec\_\-mode}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-fec\_\-mode\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::fec\_\-mode}}\label{structvqec__chan__cfg___4378f2306e3c6c3575cd5e62b776d7d9}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec_order@{fec\_\-order}}
+\index{fec_order@{fec\_\-order}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-fec\_\-order\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::fec\_\-order}}\label{structvqec__chan__cfg___1ae3d2962413d85dce0ef7a69dbdb23f}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!fec_ts_pkt_time@{fec\_\-ts\_\-pkt\_\-time}}
+\index{fec_ts_pkt_time@{fec\_\-ts\_\-pkt\_\-time}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::fec\_\-ts\_\-pkt\_\-time}}\label{structvqec__chan__cfg___fb17858f60a891a0717093746fc950f0}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!name@{name}}
+\index{name@{name}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-chan\_\-cfg\_\-::name}[VQEC\_\-MAX\_\-CHANNEL\_\-NAME\_\-LENGTH]}\label{structvqec__chan__cfg___7e0cf5ae4b51ee6f1663cba114a44c3f}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!passthru@{passthru}}
+\index{passthru@{passthru}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::passthru}}\label{structvqec__chan__cfg___2528e21613dcc691d8cae23fd5516e3f}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!prim_nat_binding@{prim\_\-nat\_\-binding}}
+\index{prim_nat_binding@{prim\_\-nat\_\-binding}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::prim\_\-nat\_\-binding}}\label{structvqec__chan__cfg___8da387bbee9bfa04d1322a2b3ae7330d}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_bit_rate@{primary\_\-bit\_\-rate}}
+\index{primary_bit_rate@{primary\_\-bit\_\-rate}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-bit\_\-rate}}\label{structvqec__chan__cfg___06514ed74e7573b163ee8182260f246e}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_dest_addr@{primary\_\-dest\_\-addr}}
+\index{primary_dest_addr@{primary\_\-dest\_\-addr}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-addr\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-dest\_\-addr}}\label{structvqec__chan__cfg___ba0a9895f3911e564ccdcfa003ae7f0e}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_dest_port@{primary\_\-dest\_\-port}}
+\index{primary_dest_port@{primary\_\-dest\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-dest\_\-port}}\label{structvqec__chan__cfg___13d62332953538957cf785d22ba2dec6}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_dest_rtcp_port@{primary\_\-dest\_\-rtcp\_\-port}}
+\index{primary_dest_rtcp_port@{primary\_\-dest\_\-rtcp\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-dest\_\-rtcp\_\-port}}\label{structvqec__chan__cfg___f8de4ac2c1209cc7ea07f85c12bdb360}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_payload_type@{primary\_\-payload\_\-type}}
+\index{primary_payload_type@{primary\_\-payload\_\-type}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-payload\_\-type}}\label{structvqec__chan__cfg___be43df4e1aaf971fd80a91976f3293ac}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_rtcp_per_rcvr_bw@{primary\_\-rtcp\_\-per\_\-rcvr\_\-bw}}
+\index{primary_rtcp_per_rcvr_bw@{primary\_\-rtcp\_\-per\_\-rcvr\_\-bw}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-rtcp\_\-per\_\-rcvr\_\-bw}}\label{structvqec__chan__cfg___012bdf274771f8efd9c70e51cb66c790}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_rtcp_rcvr_bw@{primary\_\-rtcp\_\-rcvr\_\-bw}}
+\index{primary_rtcp_rcvr_bw@{primary\_\-rtcp\_\-rcvr\_\-bw}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-rtcp\_\-rcvr\_\-bw}}\label{structvqec__chan__cfg___2c1b0888ec57ff364eed5c601ab495a3}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_rtcp_rsize@{primary\_\-rtcp\_\-rsize}}
+\index{primary_rtcp_rsize@{primary\_\-rtcp\_\-rsize}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-rtcp\_\-rsize}}\label{structvqec__chan__cfg___b16ca3b2e14e3e4a1708ce1fd315c772}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_rtcp_sndr_bw@{primary\_\-rtcp\_\-sndr\_\-bw}}
+\index{primary_rtcp_sndr_bw@{primary\_\-rtcp\_\-sndr\_\-bw}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-rtcp\_\-sndr\_\-bw}}\label{structvqec__chan__cfg___dae58e5152a1f1e9213d4fe96551ea8c}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_rtcp_xr_diagnostic_counters@{primary\_\-rtcp\_\-xr\_\-diagnostic\_\-counters}}
+\index{primary_rtcp_xr_diagnostic_counters@{primary\_\-rtcp\_\-xr\_\-diagnostic\_\-counters}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-rtcp\_\-xr\_\-diagnostic\_\-counters}}\label{structvqec__chan__cfg___072ccab177efe3d0cfc522ca84f70527}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_rtcp_xr_loss_rle@{primary\_\-rtcp\_\-xr\_\-loss\_\-rle}}
+\index{primary_rtcp_xr_loss_rle@{primary\_\-rtcp\_\-xr\_\-loss\_\-rle}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-rtcp\_\-xr\_\-loss\_\-rle}}\label{structvqec__chan__cfg___cc189422286d434e262ac31461e14edd}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_rtcp_xr_multicast_acq@{primary\_\-rtcp\_\-xr\_\-multicast\_\-acq}}
+\index{primary_rtcp_xr_multicast_acq@{primary\_\-rtcp\_\-xr\_\-multicast\_\-acq}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-rtcp\_\-xr\_\-multicast\_\-acq}}\label{structvqec__chan__cfg___9f1b3921d0e3caed61fcd874ee7fd541}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_rtcp_xr_per_loss_rle@{primary\_\-rtcp\_\-xr\_\-per\_\-loss\_\-rle}}
+\index{primary_rtcp_xr_per_loss_rle@{primary\_\-rtcp\_\-xr\_\-per\_\-loss\_\-rle}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-rtcp\_\-xr\_\-per\_\-loss\_\-rle}}\label{structvqec__chan__cfg___90eae8a8edfc43d49f7f5ebdb2717d0f}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_rtcp_xr_stat_flags@{primary\_\-rtcp\_\-xr\_\-stat\_\-flags}}
+\index{primary_rtcp_xr_stat_flags@{primary\_\-rtcp\_\-xr\_\-stat\_\-flags}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-rtcp\_\-xr\_\-stat\_\-flags}}\label{structvqec__chan__cfg___c510c5c218deb4bbce898033bfdd98c5}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_source_addr@{primary\_\-source\_\-addr}}
+\index{primary_source_addr@{primary\_\-source\_\-addr}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-addr\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-source\_\-addr}}\label{structvqec__chan__cfg___d1d3721641aab08a119e29ee9c72aba6}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_source_port@{primary\_\-source\_\-port}}
+\index{primary_source_port@{primary\_\-source\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-source\_\-port}}\label{structvqec__chan__cfg___c28de5100f89181c02e062da2f9c8ce2}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!primary_source_rtcp_port@{primary\_\-source\_\-rtcp\_\-port}}
+\index{primary_source_rtcp_port@{primary\_\-source\_\-rtcp\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::primary\_\-source\_\-rtcp\_\-port}}\label{structvqec__chan__cfg___254f878ecbda1c8908c2c0bc7263d484}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!protocol@{protocol}}
+\index{protocol@{protocol}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::protocol}}\label{structvqec__chan__cfg___32fe22ead038d7506a314813810a008f}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rcc_enable@{rcc\_\-enable}}
+\index{rcc_enable@{rcc\_\-enable}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::rcc\_\-enable}}\label{structvqec__chan__cfg___72d88449b07d5fc0408999695c0612f1}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rtx_dest_addr@{rtx\_\-dest\_\-addr}}
+\index{rtx_dest_addr@{rtx\_\-dest\_\-addr}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-addr\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::rtx\_\-dest\_\-addr}}\label{structvqec__chan__cfg___36955b3078d29017847e48431023c2bd}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rtx_dest_port@{rtx\_\-dest\_\-port}}
+\index{rtx_dest_port@{rtx\_\-dest\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::rtx\_\-dest\_\-port}}\label{structvqec__chan__cfg___df27e6d82da58132bdc728091ff2ed06}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rtx_dest_rtcp_port@{rtx\_\-dest\_\-rtcp\_\-port}}
+\index{rtx_dest_rtcp_port@{rtx\_\-dest\_\-rtcp\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::rtx\_\-dest\_\-rtcp\_\-port}}\label{structvqec__chan__cfg___3fb5d9ac37f23d8d2e928b48c0775db4}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rtx_payload_type@{rtx\_\-payload\_\-type}}
+\index{rtx_payload_type@{rtx\_\-payload\_\-type}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::rtx\_\-payload\_\-type}}\label{structvqec__chan__cfg___7dadfa497e5e49c5cae85c84528bd4a1}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rtx_rtcp_rcvr_bw@{rtx\_\-rtcp\_\-rcvr\_\-bw}}
+\index{rtx_rtcp_rcvr_bw@{rtx\_\-rtcp\_\-rcvr\_\-bw}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::rtx\_\-rtcp\_\-rcvr\_\-bw}}\label{structvqec__chan__cfg___a2d3dbf20921e585b064b8ced5bd87ec}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rtx_rtcp_sndr_bw@{rtx\_\-rtcp\_\-sndr\_\-bw}}
+\index{rtx_rtcp_sndr_bw@{rtx\_\-rtcp\_\-sndr\_\-bw}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::rtx\_\-rtcp\_\-sndr\_\-bw}}\label{structvqec__chan__cfg___0bd95d1ab21f3a6b6ca61e27512826d2}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rtx_rtcp_xr_loss_rle@{rtx\_\-rtcp\_\-xr\_\-loss\_\-rle}}
+\index{rtx_rtcp_xr_loss_rle@{rtx\_\-rtcp\_\-xr\_\-loss\_\-rle}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::rtx\_\-rtcp\_\-xr\_\-loss\_\-rle}}\label{structvqec__chan__cfg___64baa2bd37939bfa0d7a05050da5f291}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rtx_rtcp_xr_stat_flags@{rtx\_\-rtcp\_\-xr\_\-stat\_\-flags}}
+\index{rtx_rtcp_xr_stat_flags@{rtx\_\-rtcp\_\-xr\_\-stat\_\-flags}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::rtx\_\-rtcp\_\-xr\_\-stat\_\-flags}}\label{structvqec__chan__cfg___3fa75c06a99c7c571311f23ac963b050}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rtx_source_addr@{rtx\_\-source\_\-addr}}
+\index{rtx_source_addr@{rtx\_\-source\_\-addr}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-addr\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::rtx\_\-source\_\-addr}}\label{structvqec__chan__cfg___b755fcd3ec96d7a03e59e8d5c6c3c825}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rtx_source_port@{rtx\_\-source\_\-port}}
+\index{rtx_source_port@{rtx\_\-source\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::rtx\_\-source\_\-port}}\label{structvqec__chan__cfg___b195c38abc2c25540bffc268890b0c93}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!rtx_source_rtcp_port@{rtx\_\-source\_\-rtcp\_\-port}}
+\index{rtx_source_rtcp_port@{rtx\_\-source\_\-rtcp\_\-port}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-in\_\-port\_\-t} \bf{vqec\_\-chan\_\-cfg\_\-::rtx\_\-source\_\-rtcp\_\-port}}\label{structvqec__chan__cfg___bf7c99cc04638a78db8e22e6ccac42a3}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!server_ufrag@{server\_\-ufrag}}
+\index{server_ufrag@{server\_\-ufrag}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-chan\_\-cfg\_\-::server\_\-ufrag}[VQEC\_\-MAX\_\-ICE\_\-UFRAG\_\-LENGTH]}\label{structvqec__chan__cfg___0162056287da34a5018e45aa798ce498}
+
+
+\index{vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}!stun_optimization@{stun\_\-optimization}}
+\index{stun_optimization@{stun\_\-optimization}!vqec_chan_cfg_@{vqec\_\-chan\_\-cfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-chan\_\-cfg\_\-::stun\_\-optimization}}\label{structvqec__chan__cfg___6c5c0f33590bb8e6f44910b6c4449ba0}
+
+
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-ifclient\_\-defs.h}\end{CompactItemize}

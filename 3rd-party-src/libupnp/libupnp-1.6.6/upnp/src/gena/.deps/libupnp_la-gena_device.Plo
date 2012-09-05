@@ -1,0 +1,6 @@
+src/gena/libupnp_la-gena_device.lo src/gena/libupnp_la-gena_device.o:  \
+ src/gena/gena_device.c src/inc/config.h ../autoconfig.h
+
+src/inc/config.h:
+
+../autoconfig.h:

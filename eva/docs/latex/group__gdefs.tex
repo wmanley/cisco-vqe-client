@@ -1,0 +1,104 @@
+\section{Global constants.}
+\label{group__gdefs}\index{Global constants.@{Global constants.}}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-MSG\_\-MAX\_\-RECV\_\-TIMEOUT}~(100)
+\begin{CompactList}\small\item\em Max timeout for blocking reads (msec). \item\end{CompactList}\item 
+\#define \bf{VQEC\_\-MSG\_\-MAX\_\-IOBUF\_\-CNT}~(32)
+\begin{CompactList}\small\item\em Max limit on the msg iobuf array. \item\end{CompactList}\item 
+\#define \bf{VQEC\_\-MSG\_\-MAX\_\-DATAGRAM\_\-LEN}~(1512)
+\begin{CompactList}\small\item\em Maximum supported datagram size. \item\end{CompactList}\item 
+\#define \bf{VQEC\_\-MSG\_\-FLAGS\_\-APP}~(0x02)
+\begin{CompactList}\small\item\em Message contents is in APP packet. \item\end{CompactList}\item 
+\#define \bf{VQEC\_\-MAX\_\-TUNER\_\-NAMESTR\_\-LEN}~(16)
+\begin{CompactList}\small\item\em Max limit on tuner name. \item\end{CompactList}\item 
+\#define \bf{VQEC\_\-MAX\_\-CNAME\_\-LEN}~33
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{vqec\_\-hist\_\-t\_\-} \bf{vqec\_\-hist\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-hist\_\-t\_\-} \{ \bf{VQEC\_\-HIST\_\-JOIN\_\-DELAY} =  0, 
+\bf{VQEC\_\-HIST\_\-OUTPUTSCHED}, 
+\bf{VQEC\_\-HIST\_\-MAX}
+ \}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The maxima's are bounds enforced by the implementation. Function calls that use arguments outside these upper bounds will truncate inputs to these values. Outputs will also be truncated accordingly. 
+
+\subsection{Define Documentation}
+\index{gdefs@{gdefs}!VQEC_MAX_CNAME_LEN@{VQEC\_\-MAX\_\-CNAME\_\-LEN}}
+\index{VQEC_MAX_CNAME_LEN@{VQEC\_\-MAX\_\-CNAME\_\-LEN}!gdefs@{gdefs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MAX\_\-CNAME\_\-LEN~33}\label{group__gdefs_gded9b9f26b23c5972c12ece28602a69b}
+
+
+\index{gdefs@{gdefs}!VQEC_MAX_TUNER_NAMESTR_LEN@{VQEC\_\-MAX\_\-TUNER\_\-NAMESTR\_\-LEN}}
+\index{VQEC_MAX_TUNER_NAMESTR_LEN@{VQEC\_\-MAX\_\-TUNER\_\-NAMESTR\_\-LEN}!gdefs@{gdefs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MAX\_\-TUNER\_\-NAMESTR\_\-LEN~(16)}\label{group__gdefs_ge841bec9a79e5d763d57494a1728c5d1}
+
+
+Max limit on tuner name. 
+
+\index{gdefs@{gdefs}!VQEC_MSG_FLAGS_APP@{VQEC\_\-MSG\_\-FLAGS\_\-APP}}
+\index{VQEC_MSG_FLAGS_APP@{VQEC\_\-MSG\_\-FLAGS\_\-APP}!gdefs@{gdefs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MSG\_\-FLAGS\_\-APP~(0x02)}\label{group__gdefs_g80860cdbde027a20d0152adbc330e853}
+
+
+Message contents is in APP packet. 
+
+\index{gdefs@{gdefs}!VQEC_MSG_MAX_DATAGRAM_LEN@{VQEC\_\-MSG\_\-MAX\_\-DATAGRAM\_\-LEN}}
+\index{VQEC_MSG_MAX_DATAGRAM_LEN@{VQEC\_\-MSG\_\-MAX\_\-DATAGRAM\_\-LEN}!gdefs@{gdefs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MSG\_\-MAX\_\-DATAGRAM\_\-LEN~(1512)}\label{group__gdefs_g90ffe1a2b38fcf733db0dfa44aad2a3d}
+
+
+Maximum supported datagram size. 
+
+\index{gdefs@{gdefs}!VQEC_MSG_MAX_IOBUF_CNT@{VQEC\_\-MSG\_\-MAX\_\-IOBUF\_\-CNT}}
+\index{VQEC_MSG_MAX_IOBUF_CNT@{VQEC\_\-MSG\_\-MAX\_\-IOBUF\_\-CNT}!gdefs@{gdefs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MSG\_\-MAX\_\-IOBUF\_\-CNT~(32)}\label{group__gdefs_g8da8a2d5f6e264cf620da7db0738415c}
+
+
+Max limit on the msg iobuf array. 
+
+\index{gdefs@{gdefs}!VQEC_MSG_MAX_RECV_TIMEOUT@{VQEC\_\-MSG\_\-MAX\_\-RECV\_\-TIMEOUT}}
+\index{VQEC_MSG_MAX_RECV_TIMEOUT@{VQEC\_\-MSG\_\-MAX\_\-RECV\_\-TIMEOUT}!gdefs@{gdefs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MSG\_\-MAX\_\-RECV\_\-TIMEOUT~(100)}\label{group__gdefs_g22e75aef69084d0bfd2a631e97d66317}
+
+
+Max timeout for blocking reads (msec). 
+
+
+
+\subsection{Typedef Documentation}
+\index{gdefs@{gdefs}!vqec_hist_t@{vqec\_\-hist\_\-t}}
+\index{vqec_hist_t@{vqec\_\-hist\_\-t}!gdefs@{gdefs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-hist\_\-t\_\-}  \bf{vqec\_\-hist\_\-t}}\label{group__gdefs_g828ca8986f370100b1c5fca828bc8540}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{gdefs@{gdefs}!vqec_hist_t_@{vqec\_\-hist\_\-t\_\-}}
+\index{vqec_hist_t_@{vqec\_\-hist\_\-t\_\-}!gdefs@{gdefs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-hist\_\-t\_\-}}\label{group__gdefs_g799745096637e594f019d9dddac55271}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_HIST_JOIN_DELAY@{VQEC\_\-HIST\_\-JOIN\_\-DELAY}!gdefs@{gdefs}}\index{gdefs@{gdefs}!VQEC_HIST_JOIN_DELAY@{VQEC\_\-HIST\_\-JOIN\_\-DELAY}}\item[{\em 
+VQEC\_\-HIST\_\-JOIN\_\-DELAY\label{group__gdefs_gg799745096637e594f019d9dddac552710d617f3f9cdf5e25c6c459cefd911746}
+}]\index{VQEC_HIST_OUTPUTSCHED@{VQEC\_\-HIST\_\-OUTPUTSCHED}!gdefs@{gdefs}}\index{gdefs@{gdefs}!VQEC_HIST_OUTPUTSCHED@{VQEC\_\-HIST\_\-OUTPUTSCHED}}\item[{\em 
+VQEC\_\-HIST\_\-OUTPUTSCHED\label{group__gdefs_gg799745096637e594f019d9dddac5527119c5a24b575769354a74d7e3a9ed0fe0}
+}]\index{VQEC_HIST_MAX@{VQEC\_\-HIST\_\-MAX}!gdefs@{gdefs}}\index{gdefs@{gdefs}!VQEC_HIST_MAX@{VQEC\_\-HIST\_\-MAX}}\item[{\em 
+VQEC\_\-HIST\_\-MAX\label{group__gdefs_gg799745096637e594f019d9dddac552715ebf5d9492801a8c60923d95a1b04a1b}
+}]\end{description}
+\end{Desc}
+

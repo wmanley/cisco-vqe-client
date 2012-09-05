@@ -1,0 +1,165 @@
+\section{vqec\_\-nat\_\-interface.h File Reference}
+\label{vqec__nat__interface_8h}\index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+{\tt \#include $<$stunclient/vqec\_\-nat\_\-api.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-error.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-syscfg.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-nat\_\-module\_\-init} (\bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-t} mode, vqec\_\-nat\_\-proto\_\-t proto, vqec\_\-nat\_\-init\_\-params\_\-t $\ast$params)
+\item 
+void \bf{vqec\_\-nat\_\-module\_\-deinit} (void)
+\item 
+vqec\_\-nat\_\-bindid\_\-t \bf{vqec\_\-nat\_\-open\_\-binding} (vqec\_\-nat\_\-bind\_\-desc\_\-t $\ast$desc)
+\item 
+void \bf{vqec\_\-nat\_\-close\_\-binding} (vqec\_\-nat\_\-bindid\_\-t id)
+\item 
+boolean \bf{vqec\_\-nat\_\-query\_\-binding} (vqec\_\-nat\_\-bindid\_\-t id, vqec\_\-nat\_\-bind\_\-data\_\-t $\ast$data, boolean refresh)
+\item 
+void \bf{vqec\_\-nat\_\-fprint\_\-binding} (vqec\_\-nat\_\-bindid\_\-t id)
+\item 
+void \bf{vqec\_\-nat\_\-fprint\_\-all\_\-bindings} (void)
+\item 
+void \bf{vqec\_\-nat\_\-fprint\_\-all\_\-bindings\_\-safe} (void)
+\item 
+void \bf{vqec\_\-nat\_\-eject\_\-to\_\-binding} (vqec\_\-nat\_\-bindid\_\-t id, char $\ast$buf, uint16\_\-t len, in\_\-addr\_\-t source\_\-ip, in\_\-port\_\-t source\_\-port)
+\item 
+void \bf{vqec\_\-nat\_\-enable\_\-debug} (boolean verbose)
+\item 
+void \bf{vqec\_\-nat\_\-disable\_\-debug} (void)
+\item 
+boolean \bf{vqec\_\-nat\_\-is\_\-behind\_\-nat} (void)
+\item 
+boolean \bf{vqec\_\-nat\_\-is\_\-natmode\_\-en} (void)
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_close_binding@{vqec\_\-nat\_\-close\_\-binding}}
+\index{vqec_nat_close_binding@{vqec\_\-nat\_\-close\_\-binding}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-close\_\-binding (vqec\_\-nat\_\-bindid\_\-t {\em id})}\label{vqec__nat__interface_8h_cdca6fc3afa0147f86504eaaf531ca89}
+
+
+--------------------------------------------------------------------------- Close an open binding.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em vqec\_\-nat\_\-bindid\_\-t}]Identifier of the binding. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_disable_debug@{vqec\_\-nat\_\-disable\_\-debug}}
+\index{vqec_nat_disable_debug@{vqec\_\-nat\_\-disable\_\-debug}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-disable\_\-debug (void)}\label{vqec__nat__interface_8h_64d18e023ac58deec48f819796f07917}
+
+
+--------------------------------------------------------------------------- Disable debugging on protocol. --------------------------------------------------------------------------- \index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_eject_to_binding@{vqec\_\-nat\_\-eject\_\-to\_\-binding}}
+\index{vqec_nat_eject_to_binding@{vqec\_\-nat\_\-eject\_\-to\_\-binding}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-eject\_\-to\_\-binding (vqec\_\-nat\_\-bindid\_\-t {\em id}, char $\ast$ {\em buf}, uint16\_\-t {\em len}, in\_\-addr\_\-t {\em source\_\-ip}, in\_\-port\_\-t {\em source\_\-port})}\label{vqec__nat__interface_8h_a72964d0432ce95945839d0ce77d6bc7}
+
+
+--------------------------------------------------------------------------- Forward an eject packet to the protocol for a binding.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em vqec\_\-nat\_\-bindid\_\-t}]Identifier of the binding. \item[\mbox{$\rightarrow$} {\em buf}]Contents of the packet. \item[\mbox{$\rightarrow$} {\em len}]Length of the packet. \item[\mbox{$\leftarrow$} {\em source\_\-ip,:}]source ip of the packet (ip of the pak sender) \item[\mbox{$\leftarrow$} {\em source\_\-port,:}]source port of the packet --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_enable_debug@{vqec\_\-nat\_\-enable\_\-debug}}
+\index{vqec_nat_enable_debug@{vqec\_\-nat\_\-enable\_\-debug}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-enable\_\-debug (boolean {\em verbose})}\label{vqec__nat__interface_8h_3ff22996ca5865f197472e49376ff6fc}
+
+
+--------------------------------------------------------------------------- Enable debugging on protocol.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em verbose}]Enable a more verbose mode. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_fprint_all_bindings@{vqec\_\-nat\_\-fprint\_\-all\_\-bindings}}
+\index{vqec_nat_fprint_all_bindings@{vqec\_\-nat\_\-fprint\_\-all\_\-bindings}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-fprint\_\-all\_\-bindings (void)}\label{vqec__nat__interface_8h_2d793836b5a6eb9960fd6a319a9865ad}
+
+
+--------------------------------------------------------------------------- Print the status of all bindings. --------------------------------------------------------------------------- \index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_fprint_all_bindings_safe@{vqec\_\-nat\_\-fprint\_\-all\_\-bindings\_\-safe}}
+\index{vqec_nat_fprint_all_bindings_safe@{vqec\_\-nat\_\-fprint\_\-all\_\-bindings\_\-safe}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-fprint\_\-all\_\-bindings\_\-safe (void)}\label{vqec__nat__interface_8h_cc358fb4fc880240511b24b1003e9d10}
+
+
+--------------------------------------------------------------------------- Print the status of all bindings, with acquisition of the global lock. --------------------------------------------------------------------------- \index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_fprint_binding@{vqec\_\-nat\_\-fprint\_\-binding}}
+\index{vqec_nat_fprint_binding@{vqec\_\-nat\_\-fprint\_\-binding}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-fprint\_\-binding (vqec\_\-nat\_\-bindid\_\-t {\em id})}\label{vqec__nat__interface_8h_09109143f3deb6fef2d3023a748f06c4}
+
+
+--------------------------------------------------------------------------- Print the status of a binding.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em vqec\_\-nat\_\-bindid\_\-t}]Identifier of the binding. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_is_behind_nat@{vqec\_\-nat\_\-is\_\-behind\_\-nat}}
+\index{vqec_nat_is_behind_nat@{vqec\_\-nat\_\-is\_\-behind\_\-nat}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-nat\_\-is\_\-behind\_\-nat (void)}\label{vqec__nat__interface_8h_fcb807b3a55de54bfa848411d6bb1c34}
+
+
+--------------------------------------------------------------------------- Is the device behind a NAT?
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em Returns}]false if it the protocol has determined that the device is not behind a NAT, true otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_is_natmode_en@{vqec\_\-nat\_\-is\_\-natmode\_\-en}}
+\index{vqec_nat_is_natmode_en@{vqec\_\-nat\_\-is\_\-natmode\_\-en}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-nat\_\-is\_\-natmode\_\-en (void)}\label{vqec__nat__interface_8h_3633769cdfeadc830826ee6ff1da092d}
+
+
+--------------------------------------------------------------------------- Is the system in NAT mode?
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em Returns}]true if it the system is configured for NAT mode. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_module_deinit@{vqec\_\-nat\_\-module\_\-deinit}}
+\index{vqec_nat_module_deinit@{vqec\_\-nat\_\-module\_\-deinit}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-module\_\-deinit (void)}\label{vqec__nat__interface_8h_a36b72241b333e6268eb9c0bc3761449}
+
+
+--------------------------------------------------------------------------- Deinitialize the module. --------------------------------------------------------------------------- \index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_module_init@{vqec\_\-nat\_\-module\_\-init}}
+\index{vqec_nat_module_init@{vqec\_\-nat\_\-module\_\-init}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-nat\_\-module\_\-init (\bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-t} {\em mode}, vqec\_\-nat\_\-proto\_\-t {\em proto}, vqec\_\-nat\_\-init\_\-params\_\-t $\ast$ {\em params})}\label{vqec__nat__interface_8h_83633147de37d3301648f68a352304ea}
+
+
+--------------------------------------------------------------------------- Initialize the NAT module.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em mode}]Current NAT mode. If NAT mode is standard, the null NAT protocol will be used. \item[\mbox{$\leftarrow$} {\em params}]Protocol configuration parameters. \item[\mbox{$\rightarrow$} {\em Returns}]VQEC\_\-OK on success, error code on failure. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_open_binding@{vqec\_\-nat\_\-open\_\-binding}}
+\index{vqec_nat_open_binding@{vqec\_\-nat\_\-open\_\-binding}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-nat\_\-bindid\_\-t vqec\_\-nat\_\-open\_\-binding (vqec\_\-nat\_\-bind\_\-desc\_\-t $\ast$ {\em desc})}\label{vqec__nat__interface_8h_c74d504ee5e09aabf2362fd74f414fb0}
+
+
+--------------------------------------------------------------------------- Request creation / opening of a binding for a 4-tuple: (inside IP addr, inside IP port, remote IP addr, remote port). A new binding is created and an identifier is returned for the binding.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em desc}]The attributes of the binding. \item[\mbox{$\rightarrow$} {\em vqec\_\-nat\_\-bindid\_\-t}]Identifier of the created binding. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}!vqec_nat_query_binding@{vqec\_\-nat\_\-query\_\-binding}}
+\index{vqec_nat_query_binding@{vqec\_\-nat\_\-query\_\-binding}!vqec_nat_interface.h@{vqec\_\-nat\_\-interface.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-nat\_\-query\_\-binding (vqec\_\-nat\_\-bindid\_\-t {\em id}, vqec\_\-nat\_\-bind\_\-data\_\-t $\ast$ {\em data}, boolean {\em refresh})}\label{vqec__nat__interface_8h_11f5bd7a7ac577f32a1e90a2da0c78a2}
+
+
+--------------------------------------------------------------------------- Query an open binding.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em vqec\_\-nat\_\-bindid\_\-t}]Identifier of the binding. \item[\mbox{$\rightarrow$} {\em data}]All data associated with the binding / mapping. \item[\mbox{$\leftarrow$} {\em refresh}]Refresh the binding if it is incomplete. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the query succeeds. --------------------------------------------------------------------------- \end{description}
+\end{Desc}

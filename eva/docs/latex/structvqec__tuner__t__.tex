@@ -1,0 +1,69 @@
+\section{vqec\_\-tuner\_\-t\_\- Struct Reference}
+\label{structvqec__tuner__t__}\index{vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}}
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+char \bf{name} [VQEC\_\-MAX\_\-NAME\_\-LEN+1]
+\item 
+vqec\_\-tunerid\_\-t \bf{id}
+\item 
+vqec\_\-dp\_\-tunerid\_\-t \bf{dp\_\-id}
+\item 
+\bf{vqec\_\-chanid\_\-t} \bf{chanid}
+\item 
+int32\_\-t \bf{context\_\-id}
+\item 
+int \bf{output\_\-sock\_\-fd}
+\item 
+int \bf{output\_\-sock\_\-buf}
+\item 
+int \bf{output\_\-sock\_\-enable}
+\end{CompactItemize}
+
+
+\subsection{Field Documentation}
+\index{vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}!chanid@{chanid}}
+\index{chanid@{chanid}!vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chanid\_\-t} \bf{vqec\_\-tuner\_\-t\_\-::chanid}}\label{structvqec__tuner__t___1aec81d741de2d0f5c1d1fc8459c2a66}
+
+
+bound channel id \index{vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}!context_id@{context\_\-id}}
+\index{context_id@{context\_\-id}!vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t \bf{vqec\_\-tuner\_\-t\_\-::context\_\-id}}\label{structvqec__tuner__t___c2ec1479d6624a5df89187164d820112}
+
+
+context-id for the decoder \index{vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}!dp_id@{dp\_\-id}}
+\index{dp_id@{dp\_\-id}!vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-tunerid\_\-t \bf{vqec\_\-tuner\_\-t\_\-::dp\_\-id}}\label{structvqec__tuner__t___0ef0021fc66a8ee27466181c85fc8fdd}
+
+
+associated dataplane tuner's ID \index{vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}!id@{id}}
+\index{id@{id}!vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-tunerid\_\-t \bf{vqec\_\-tuner\_\-t\_\-::id}}\label{structvqec__tuner__t___eddf2970b29b76dcc50f77894391f218}
+
+
+tuner id \index{vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}!name@{name}}
+\index{name@{name}!vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-tuner\_\-t\_\-::name}[VQEC\_\-MAX\_\-NAME\_\-LEN+1]}\label{structvqec__tuner__t___a817f07246f10c7155e6c0a02d0885f9}
+
+
+name \index{vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}!output_sock_buf@{output\_\-sock\_\-buf}}
+\index{output_sock_buf@{output\_\-sock\_\-buf}!vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int \bf{vqec\_\-tuner\_\-t\_\-::output\_\-sock\_\-buf}}\label{structvqec__tuner__t___cf8fb5664ed659268bead6cfb4bfe25a}
+
+
+so\_\-rcvbuf of output sock \index{vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}!output_sock_enable@{output\_\-sock\_\-enable}}
+\index{output_sock_enable@{output\_\-sock\_\-enable}!vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int \bf{vqec\_\-tuner\_\-t\_\-::output\_\-sock\_\-enable}}\label{structvqec__tuner__t___903d1a6d372b79415dc5319e9b6def55}
+
+
+output sock needs to be created \index{vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}!output_sock_fd@{output\_\-sock\_\-fd}}
+\index{output_sock_fd@{output\_\-sock\_\-fd}!vqec_tuner_t_@{vqec\_\-tuner\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int \bf{vqec\_\-tuner\_\-t\_\-::output\_\-sock\_\-fd}}\label{structvqec__tuner__t___e0b38260bd1978c725a2ee002de56e08}
+
+
+fd of output sock of kernel dp 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-tuner.c}\end{CompactItemize}

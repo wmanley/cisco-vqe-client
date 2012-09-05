@@ -1,0 +1,59 @@
+#!/bin/sh
+# syslog_docgen -- script to generate HTML documentation of VQE system messages
+# 
+# Copyright (c) 2007-2008 by cisco Systems, Inc.
+# All rights reserved.
+#
+# This must be run from the vam/include/log directory.
+
+# Check if CFLAGS variable was passed by Makefile or is set in environment.
+# If CFLAGS is not set then exit the syslog generation build.
+if [ "$CFLAGS" ]; then
+echo "CFLAGS = $CFLAGS"
+else
+echo "No CFLAGS variable set!"
+exit 1
+fi
+
+
+function rm_temp_files {
+for f in syslog_all.h syslog_doc.h syslog.def ; do
+        if [ -f $f ] ; then
+                rm $f
+        fi
+done
+}
+
+# get rid of earlier output and temporary files (if any)
+if [ -f syslog_def.html ] ; then 
+        rm syslog_def.html
+fi
+rm_temp_files
+
+# create master include file of *_syslog_def.h files
+
+for f in *syslog_def.h ; do 
+        echo "#include <log/"$f">" >>syslog_all.h ; 
+done
+
+# filter out any definitions that should not be documented
+# - do not document the "example" syslog definitions
+# - do not document VQM, for the time being
+
+grep -v "ex_syslog_def\|vqm_syslog_def" syslog_all.h >syslog_doc.h
+
+# invoke the preprocessor to produce syslog.def
+
+gcc $CFLAGS -I.. -E syslog_doc.h \
+| grep -v '#' >syslog.def
+
+# convert the definitions into HTML
+
+./syslog_doc.pl
+
+# remove temporary files
+rm_temp_files
+
+
+
+

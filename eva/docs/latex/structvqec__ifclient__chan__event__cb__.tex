@@ -1,0 +1,34 @@
+\section{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\- Struct Reference}
+\label{structvqec__ifclient__chan__event__cb__}\index{vqec_ifclient_chan_event_cb_@{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-}}
+{\tt \#include $<$vqec\_\-ifclient\_\-defs.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+uint32\_\-t \bf{chan\_\-event\_\-context}
+\item 
+void($\ast$ \bf{chan\_\-event\_\-cb} )(int32\_\-t \bf{chan\_\-event\_\-context}, \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-t} $\ast$cb\_\-args)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Methods which if registered will allow the client to signal a channel event. The callback is per channel basis. We use a structure here for easy extension in the future. 
+
+
+
+\subsection{Field Documentation}
+\index{vqec_ifclient_chan_event_cb_@{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-}!chan_event_cb@{chan\_\-event\_\-cb}}
+\index{chan_event_cb@{chan\_\-event\_\-cb}!vqec_ifclient_chan_event_cb_@{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-::chan\_\-event\_\-cb})(int32\_\-t \bf{chan\_\-event\_\-context}, \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-t} $\ast$cb\_\-args)}\label{structvqec__ifclient__chan__event__cb___0df0a5c8398f8a4b70f52fa7c48b96d8}
+
+
+\index{vqec_ifclient_chan_event_cb_@{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-}!chan_event_context@{chan\_\-event\_\-context}}
+\index{chan_event_context@{chan\_\-event\_\-context}!vqec_ifclient_chan_event_cb_@{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-::chan\_\-event\_\-context}}\label{structvqec__ifclient__chan__event__cb___feaa960409cecdcff526be91fec24c4d}
+
+
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-ifclient\_\-defs.h}\end{CompactItemize}

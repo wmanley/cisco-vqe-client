@@ -1,0 +1,534 @@
+\section{vqec\_\-chan\_\- Struct Reference}
+\label{structvqec__chan__}\index{vqec_chan_@{vqec\_\-chan\_\-}}
+{\tt \#include $<$vqec\_\-channel\_\-private.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\bf{VQE\_\-LIST\_\-ENTRY} (\bf{vqec\_\-chan\_\-}) list\_\-obj
+\item 
+\bf{VQE\_\-TAILQ\_\-HEAD} (vqec\_\-chan\_\-tuner\_\-head\_\-, \bf{vqec\_\-chan\_\-tuner\_\-entry\_\-}) tuner\_\-list
+\end{CompactItemize}
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+\bf{vqec\_\-chanid\_\-t} \bf{chanid}
+\item 
+\bf{vqec\_\-chan\_\-cfg\_\-t} \bf{cfg}
+\item 
+abs\_\-time\_\-t \bf{last\_\-cfg\_\-update\_\-ts}
+\item 
+boolean \bf{shutdown}
+\item 
+\bf{vqec\_\-chan\_\-stats\_\-t} \bf{stats}
+\item 
+\bf{vqec\_\-chan\_\-stats\_\-t} \bf{stats\_\-snapshot}
+\item 
+in\_\-addr\_\-t \bf{input\_\-if\_\-addr}
+\item 
+abs\_\-time\_\-t \bf{bind\_\-time}
+\item 
+int32\_\-t \bf{context\_\-id}
+\item 
+\bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t} \bf{dcr\_\-ops}
+\item 
+\bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t} \bf{chan\_\-event\_\-cb}
+\item 
+int32\_\-t \bf{bye\_\-count}
+\item 
+rel\_\-time\_\-t \bf{bye\_\-delay}
+\item 
+vqec\_\-event\_\-t $\ast$ \bf{bye\_\-ev}
+\item 
+vqec\_\-dp\_\-graphid\_\-t \bf{graph\_\-id}
+\item 
+vqec\_\-dp\_\-chanid\_\-t \bf{dp\_\-chanid}
+\item 
+vqec\_\-dp\_\-streamid\_\-t \bf{prim\_\-rtp\_\-id}
+\item 
+vqec\_\-dp\_\-streamid\_\-t \bf{repair\_\-rtp\_\-id}
+\item 
+vqec\_\-dp\_\-streamid\_\-t \bf{fec0\_\-rtp\_\-id}
+\item 
+vqec\_\-dp\_\-streamid\_\-t \bf{fec1\_\-rtp\_\-id}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>vqec\_dp\_streamid\_t \bf{prim\_rtp\_id}\\
+\>vqec\_dp\_streamid\_t \bf{repair\_rtp\_id}\\
+\>vqec\_dp\_streamid\_t \bf{fec0\_rtp\_id}\\
+\>vqec\_dp\_streamid\_t \bf{fec1\_rtp\_id}\\
+\} \bf{inputshim}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>vqec\_dp\_streamid\_t \bf{postrepair\_id}\\
+\} \bf{outputshim}\\
+
+\end{tabbing}\item 
+\bf{rtp\_\-era\_\-recv\_\-t} $\ast$ \bf{prim\_\-session}
+\item 
+\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ \bf{repair\_\-session}
+\item 
+uint16\_\-t \bf{rtp\_\-rtx\_\-port}
+\item 
+uint16\_\-t \bf{rtcp\_\-rtx\_\-port}
+\item 
+boolean \bf{nat\_\-enabled}
+\item 
+vqec\_\-nat\_\-bindid\_\-t \bf{repair\_\-rtp\_\-nat\_\-id}
+\item 
+boolean \bf{rtp\_\-nat\_\-complete}
+\item 
+vqec\_\-nat\_\-bindid\_\-t \bf{repair\_\-rtcp\_\-nat\_\-id}
+\item 
+boolean \bf{rtcp\_\-nat\_\-complete}
+\item 
+char \bf{nat\_\-username} [VQEC\_\-NAT\_\-API\_\-NAME\_\-MAX\_\-LEN]
+\item 
+vqec\_\-nat\_\-bindid\_\-t \bf{prim\_\-rtp\_\-nat\_\-id}
+\item 
+boolean \bf{prim\_\-rtp\_\-nat\_\-complete}
+\item 
+vqec\_\-nat\_\-bindid\_\-t \bf{prim\_\-rtcp\_\-nat\_\-id}
+\item 
+boolean \bf{prim\_\-rtcp\_\-nat\_\-complete}
+\item 
+boolean \bf{src\_\-ip\_\-filter\_\-enable}
+\item 
+boolean \bf{er\_\-enabled}
+\item 
+rel\_\-time\_\-t \bf{repair\_\-trigger\_\-time}
+\item 
+boolean \bf{er\_\-poll\_\-active}
+\item 
+boolean \bf{er\_\-policer\_\-enabled}
+\item 
+token\_\-bucket\_\-info\_\-t \bf{er\_\-policer\_\-tb}
+\item 
+abs\_\-time\_\-t \bf{next\_\-er\_\-sched\_\-time}
+\item 
+boolean \bf{fec\_\-enabled}
+\item 
+boolean \bf{rcc\_\-enabled}
+\item 
+boolean \bf{fast\_\-fill\_\-enabled}
+\item 
+rel\_\-time\_\-t \bf{fast\_\-fill\_\-time}
+\item 
+uint32\_\-t \bf{total\_\-fast\_\-fill\_\-bytes}
+\item 
+abs\_\-time\_\-t \bf{fast\_\-fill\_\-start\_\-time}
+\item 
+abs\_\-time\_\-t \bf{fast\_\-fill\_\-end\_\-time}
+\item 
+\bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t} \bf{fastfill\_\-ops}
+\item 
+vqec\_\-event\_\-t $\ast$ \bf{stb\_\-dcr\_\-stats\_\-ev}
+\item 
+\bf{vqec\_\-chan\_\-upcall\_\-data\_\-t} \bf{upc\_\-data}
+\item 
+uint32\_\-t \bf{fec\_\-recv\_\-bw}
+\item 
+uint32\_\-t \bf{max\_\-recv\_\-bw\_\-rcc}
+\item 
+uint32\_\-t \bf{max\_\-recv\_\-bw\_\-er}
+\item 
+boolean \bf{use\_\-rcc\_\-bw\_\-for\_\-er}
+\item 
+void($\ast$ \bf{mrb\_\-transition\_\-cb} )(int32\_\-t \bf{context\_\-id})
+\item 
+vqec\_\-event\_\-t $\ast$ \bf{mrb\_\-transition\_\-ev}
+\item 
+vqec\_\-seq\_\-num\_\-t \bf{first\_\-primary\_\-seq}
+\item 
+boolean \bf{first\_\-primary\_\-valid}
+\item 
+\bf{VQEC\_\-CC\_\-STB\_\-STATS\_\-FIELDS}
+\item 
+uint64\_\-t \bf{primary\_\-rtp\_\-expected\_\-snapshot}
+\item 
+int64\_\-t \bf{primary\_\-rtp\_\-lost\_\-snapshot}
+\item 
+uint64\_\-t \bf{primary\_\-rtcp\_\-inputs\_\-snapshot}
+\item 
+uint64\_\-t \bf{primary\_\-rtcp\_\-outputs\_\-snapshot}
+\item 
+uint64\_\-t \bf{repair\_\-rtcp\_\-inputs\_\-snapshot}
+\item 
+boolean \bf{cc\_\-cleared}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+VQEC channel data structure. 
+
+
+
+\subsection{Member Function Documentation}
+\index{vqec_chan_@{vqec\_\-chan\_\-}!VQE_LIST_ENTRY@{VQE\_\-LIST\_\-ENTRY}}
+\index{VQE_LIST_ENTRY@{VQE\_\-LIST\_\-ENTRY}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-chan\_\-::VQE\_\-LIST\_\-ENTRY (\bf{vqec\_\-chan\_\-})}\label{structvqec__chan___3ce61ec45f6f0fadfc55bf696aeab723}
+
+
+Allows channel to be linked in a list. \index{vqec_chan_@{vqec\_\-chan\_\-}!VQE_TAILQ_HEAD@{VQE\_\-TAILQ\_\-HEAD}}
+\index{VQE_TAILQ_HEAD@{VQE\_\-TAILQ\_\-HEAD}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-chan\_\-::VQE\_\-TAILQ\_\-HEAD (vqec\_\-chan\_\-tuner\_\-head\_\-, \bf{vqec\_\-chan\_\-tuner\_\-entry\_\-})}\label{structvqec__chan___c476c7506ef132aa0f51e7e5b79286e5}
+
+
+List of tuners associated with this channel. 
+
+\subsection{Field Documentation}
+\index{vqec_chan_@{vqec\_\-chan\_\-}!bind_time@{bind\_\-time}}
+\index{bind_time@{bind\_\-time}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}abs\_\-time\_\-t \bf{vqec\_\-chan\_\-::bind\_\-time}}\label{structvqec__chan___ba51fbd54c0e3170d9316dae8070e565}
+
+
+Initial channel bind time \index{vqec_chan_@{vqec\_\-chan\_\-}!bye_count@{bye\_\-count}}
+\index{bye_count@{bye\_\-count}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t \bf{vqec\_\-chan\_\-::bye\_\-count}}\label{structvqec__chan___1104308f5603bb73c185be1cc43187fd}
+
+
+Byes to send at channel destroy. \index{vqec_chan_@{vqec\_\-chan\_\-}!bye_delay@{bye\_\-delay}}
+\index{bye_delay@{bye\_\-delay}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}rel\_\-time\_\-t \bf{vqec\_\-chan\_\-::bye\_\-delay}}\label{structvqec__chan___d135e71b49d6f9afca6aea7c6d2583b4}
+
+
+per Bye-delay. \index{vqec_chan_@{vqec\_\-chan\_\-}!bye_ev@{bye\_\-ev}}
+\index{bye_ev@{bye\_\-ev}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-event\_\-t$\ast$ \bf{vqec\_\-chan\_\-::bye\_\-ev}}\label{structvqec__chan___d49e0c664f4a7a262fea7ccf36adf9ee}
+
+
+Bye-timer event.. \index{vqec_chan_@{vqec\_\-chan\_\-}!cc_cleared@{cc\_\-cleared}}
+\index{cc_cleared@{cc\_\-cleared}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::cc\_\-cleared}}\label{structvqec__chan___bfef00e21ff13991c3d885ba1e987d8a}
+
+
+\index{vqec_chan_@{vqec\_\-chan\_\-}!cfg@{cfg}}
+\index{cfg@{cfg}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-cfg\_\-t} \bf{vqec\_\-chan\_\-::cfg}}\label{structvqec__chan___37f638600fc933857a55acd0f91f2488}
+
+
+Channel configuration. \index{vqec_chan_@{vqec\_\-chan\_\-}!chan_event_cb@{chan\_\-event\_\-cb}}
+\index{chan_event_cb@{chan\_\-event\_\-cb}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t} \bf{vqec\_\-chan\_\-::chan\_\-event\_\-cb}}\label{structvqec__chan___022a433e13f9af1a0ffd381c1739e664}
+
+
+The function pointer for chan\_\-event\_\-cb \index{vqec_chan_@{vqec\_\-chan\_\-}!chanid@{chanid}}
+\index{chanid@{chanid}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chanid\_\-t} \bf{vqec\_\-chan\_\-::chanid}}\label{structvqec__chan___71925ec4cd7279aaffe991537dae0b4c}
+
+
+Opaque channel id. \index{vqec_chan_@{vqec\_\-chan\_\-}!context_id@{context\_\-id}}
+\index{context_id@{context\_\-id}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t \bf{vqec\_\-chan\_\-::context\_\-id}}\label{structvqec__chan___95aa607cf594ea21594eedd49acbcce4}
+
+
+Context-id for the decoder \index{vqec_chan_@{vqec\_\-chan\_\-}!dcr_ops@{dcr\_\-ops}}
+\index{dcr_ops@{dcr\_\-ops}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t} \bf{vqec\_\-chan\_\-::dcr\_\-ops}}\label{structvqec__chan___e7a4556f84e9e02d9504316f2129be13}
+
+
+The function pointers passed by STB \index{vqec_chan_@{vqec\_\-chan\_\-}!dp_chanid@{dp\_\-chanid}}
+\index{dp_chanid@{dp\_\-chanid}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-chanid\_\-t \bf{vqec\_\-chan\_\-::dp\_\-chanid}}\label{structvqec__chan___34f225c2909889ef5cc88ad82f93122b}
+
+
+Dataplane channel identifier associated with this channel. \index{vqec_chan_@{vqec\_\-chan\_\-}!er_enabled@{er\_\-enabled}}
+\index{er_enabled@{er\_\-enabled}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::er\_\-enabled}}\label{structvqec__chan___7be709a661778c133766fecccd15774e}
+
+
+ER: Is Error-repair enabled? \index{vqec_chan_@{vqec\_\-chan\_\-}!er_policer_enabled@{er\_\-policer\_\-enabled}}
+\index{er_policer_enabled@{er\_\-policer\_\-enabled}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::er\_\-policer\_\-enabled}}\label{structvqec__chan___9fdc7937e9a69f6aec38a725d7c8442f}
+
+
+ER: repair policer enabled? \index{vqec_chan_@{vqec\_\-chan\_\-}!er_policer_tb@{er\_\-policer\_\-tb}}
+\index{er_policer_tb@{er\_\-policer\_\-tb}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}token\_\-bucket\_\-info\_\-t \bf{vqec\_\-chan\_\-::er\_\-policer\_\-tb}}\label{structvqec__chan___1d3144e065b64a96f3a8dd7da74d5936}
+
+
+ER: repair policer token bucket \index{vqec_chan_@{vqec\_\-chan\_\-}!er_poll_active@{er\_\-poll\_\-active}}
+\index{er_poll_active@{er\_\-poll\_\-active}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::er\_\-poll\_\-active}}\label{structvqec__chan___863421ff1a3205b4295031c6763ae68d}
+
+
+ER: has polling been enabled? \index{vqec_chan_@{vqec\_\-chan\_\-}!fast_fill_enabled@{fast\_\-fill\_\-enabled}}
+\index{fast_fill_enabled@{fast\_\-fill\_\-enabled}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::fast\_\-fill\_\-enabled}}\label{structvqec__chan___206165f809840d9325c98e0c1bf5c8a0}
+
+
+Is fast fill enabled? \index{vqec_chan_@{vqec\_\-chan\_\-}!fast_fill_end_time@{fast\_\-fill\_\-end\_\-time}}
+\index{fast_fill_end_time@{fast\_\-fill\_\-end\_\-time}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}abs\_\-time\_\-t \bf{vqec\_\-chan\_\-::fast\_\-fill\_\-end\_\-time}}\label{structvqec__chan___910d145ab18995d33a4473ee45394ee6}
+
+
+Time at which fast fill ended. \index{vqec_chan_@{vqec\_\-chan\_\-}!fast_fill_start_time@{fast\_\-fill\_\-start\_\-time}}
+\index{fast_fill_start_time@{fast\_\-fill\_\-start\_\-time}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}abs\_\-time\_\-t \bf{vqec\_\-chan\_\-::fast\_\-fill\_\-start\_\-time}}\label{structvqec__chan___226066032ad8ec0aac8cb97484884140}
+
+
+Time at which fast fill started. \index{vqec_chan_@{vqec\_\-chan\_\-}!fast_fill_time@{fast\_\-fill\_\-time}}
+\index{fast_fill_time@{fast\_\-fill\_\-time}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}rel\_\-time\_\-t \bf{vqec\_\-chan\_\-::fast\_\-fill\_\-time}}\label{structvqec__chan___cad4f5d039510b481629067124dd7e68}
+
+
+fast fill time. \index{vqec_chan_@{vqec\_\-chan\_\-}!fastfill_ops@{fastfill\_\-ops}}
+\index{fastfill_ops@{fastfill\_\-ops}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t} \bf{vqec\_\-chan\_\-::fastfill\_\-ops}}\label{structvqec__chan___6802bd29d9230bef52700cc84e30d681}
+
+
+STB fast fill vectors. \index{vqec_chan_@{vqec\_\-chan\_\-}!fec0_rtp_id@{fec0\_\-rtp\_\-id}}
+\index{fec0_rtp_id@{fec0\_\-rtp\_\-id}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-streamid\_\-t \bf{vqec\_\-chan\_\-::fec0\_\-rtp\_\-id}}\label{structvqec__chan___6f8d4b5d02f57993796f2b3db73ba4c1}
+
+
+FEC session 0 identifier in the dataplane. \index{vqec_chan_@{vqec\_\-chan\_\-}!fec1_rtp_id@{fec1\_\-rtp\_\-id}}
+\index{fec1_rtp_id@{fec1\_\-rtp\_\-id}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-streamid\_\-t \bf{vqec\_\-chan\_\-::fec1\_\-rtp\_\-id}}\label{structvqec__chan___5a56bdaaa37b5bd6ac6a6c86a055663e}
+
+
+FEC session 1 identifier in the dataplane. \index{vqec_chan_@{vqec\_\-chan\_\-}!fec_enabled@{fec\_\-enabled}}
+\index{fec_enabled@{fec\_\-enabled}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::fec\_\-enabled}}\label{structvqec__chan___69b84d70ea52c3e378f5428f1c9ed20c}
+
+
+Is FEC enabled? \index{vqec_chan_@{vqec\_\-chan\_\-}!fec_recv_bw@{fec\_\-recv\_\-bw}}
+\index{fec_recv_bw@{fec\_\-recv\_\-bw}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-::fec\_\-recv\_\-bw}}\label{structvqec__chan___5c2066dd83398e4c991fce0d95871286}
+
+
+Bandwidth of the FEC stream(s). \index{vqec_chan_@{vqec\_\-chan\_\-}!first_primary_seq@{first\_\-primary\_\-seq}}
+\index{first_primary_seq@{first\_\-primary\_\-seq}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-seq\_\-num\_\-t \bf{vqec\_\-chan\_\-::first\_\-primary\_\-seq}}\label{structvqec__chan___e2b2359ce6058fdb4461acec6057f13c}
+
+
+First primary sequence number received on this channel. \index{vqec_chan_@{vqec\_\-chan\_\-}!first_primary_valid@{first\_\-primary\_\-valid}}
+\index{first_primary_valid@{first\_\-primary\_\-valid}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::first\_\-primary\_\-valid}}\label{structvqec__chan___5eee52eae96ad22aa455283e840d5a4f}
+
+
+Indicates whether or not the value of first\_\-primary\_\-seq is valid. \index{vqec_chan_@{vqec\_\-chan\_\-}!graph_id@{graph\_\-id}}
+\index{graph_id@{graph\_\-id}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-graphid\_\-t \bf{vqec\_\-chan\_\-::graph\_\-id}}\label{structvqec__chan___de566d9f5ec156edc9dfe29fb37cda47}
+
+
+Dataplane graph identifier associated with this channel. \index{vqec_chan_@{vqec\_\-chan\_\-}!input_if_addr@{input\_\-if\_\-addr}}
+\index{input_if_addr@{input\_\-if\_\-addr}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}in\_\-addr\_\-t \bf{vqec\_\-chan\_\-::input\_\-if\_\-addr}}\label{structvqec__chan___88791afaa82228ca7d934375a333ee92}
+
+
+Input interface address which is to be used for all data transfers. \index{vqec_chan_@{vqec\_\-chan\_\-}!inputshim@{inputshim}}
+\index{inputshim@{inputshim}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   \bf{vqec\_\-chan\_\-::inputshim}}\label{structvqec__chan___4b4388aed074d4e59a3ecfb6e5f0472f}
+
+
+stream identifiers in the input shim \index{vqec_chan_@{vqec\_\-chan\_\-}!last_cfg_update_ts@{last\_\-cfg\_\-update\_\-ts}}
+\index{last_cfg_update_ts@{last\_\-cfg\_\-update\_\-ts}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}abs\_\-time\_\-t \bf{vqec\_\-chan\_\-::last\_\-cfg\_\-update\_\-ts}}\label{structvqec__chan___08a9f0e95387a405be4a3ae03d90536b}
+
+
+Time of last channel configuration update (after initial bind). If the channel's config has not been updated, this will be zero'd. \index{vqec_chan_@{vqec\_\-chan\_\-}!max_recv_bw_er@{max\_\-recv\_\-bw\_\-er}}
+\index{max_recv_bw_er@{max\_\-recv\_\-bw\_\-er}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-::max\_\-recv\_\-bw\_\-er}}\label{structvqec__chan___6f19b0d1298b296db937fe1a31089cf4}
+
+
+Maximum receive bandwidth for ER. \index{vqec_chan_@{vqec\_\-chan\_\-}!max_recv_bw_rcc@{max\_\-recv\_\-bw\_\-rcc}}
+\index{max_recv_bw_rcc@{max\_\-recv\_\-bw\_\-rcc}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-::max\_\-recv\_\-bw\_\-rcc}}\label{structvqec__chan___2651ebee2905b51ed7a2b8cfc7605057}
+
+
+Maximum receive bandwidth for RCC. \index{vqec_chan_@{vqec\_\-chan\_\-}!mrb_transition_cb@{mrb\_\-transition\_\-cb}}
+\index{mrb_transition_cb@{mrb\_\-transition\_\-cb}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ \bf{vqec\_\-chan\_\-::mrb\_\-transition\_\-cb})(int32\_\-t \bf{context\_\-id})}\label{structvqec__chan___c6c270210df55fe993561cf4d0627855}
+
+
+Callback function pointer to be called during the MRB transition event. \index{vqec_chan_@{vqec\_\-chan\_\-}!mrb_transition_ev@{mrb\_\-transition\_\-ev}}
+\index{mrb_transition_ev@{mrb\_\-transition\_\-ev}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-event\_\-t$\ast$ \bf{vqec\_\-chan\_\-::mrb\_\-transition\_\-ev}}\label{structvqec__chan___b8f3694656cd8c3883a2810218f1013f}
+
+
+Event pointer for the MRB transition event. \index{vqec_chan_@{vqec\_\-chan\_\-}!nat_enabled@{nat\_\-enabled}}
+\index{nat_enabled@{nat\_\-enabled}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::nat\_\-enabled}}\label{structvqec__chan___914dd4a91cc443e140b73993d67dbb42}
+
+
+NAT traversal enabled \index{vqec_chan_@{vqec\_\-chan\_\-}!nat_username@{nat\_\-username}}
+\index{nat_username@{nat\_\-username}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-chan\_\-::nat\_\-username}[VQEC\_\-NAT\_\-API\_\-NAME\_\-MAX\_\-LEN]}\label{structvqec__chan___ad2fc42f85122f037d5108be2f5de7d3}
+
+
+\index{vqec_chan_@{vqec\_\-chan\_\-}!next_er_sched_time@{next\_\-er\_\-sched\_\-time}}
+\index{next_er_sched_time@{next\_\-er\_\-sched\_\-time}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}abs\_\-time\_\-t \bf{vqec\_\-chan\_\-::next\_\-er\_\-sched\_\-time}}\label{structvqec__chan___68d61b6251affca31e1d37cfca5eb802}
+
+
+ER: Absolute time at which next gap-report is scheduled: \index{vqec_chan_@{vqec\_\-chan\_\-}!outputshim@{outputshim}}
+\index{outputshim@{outputshim}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   \bf{vqec\_\-chan\_\-::outputshim}}\label{structvqec__chan___a417422079dedf97c39b0a8105041549}
+
+
+stream identifiers in the output shim \index{vqec_chan_@{vqec\_\-chan\_\-}!postrepair_id@{postrepair\_\-id}}
+\index{postrepair_id@{postrepair\_\-id}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-streamid\_\-t \bf{vqec\_\-chan\_\-::postrepair\_\-id}}\label{structvqec__chan___bb77397d473b1f3c7a734326e266ed23}
+
+
+\index{vqec_chan_@{vqec\_\-chan\_\-}!prim_rtcp_nat_complete@{prim\_\-rtcp\_\-nat\_\-complete}}
+\index{prim_rtcp_nat_complete@{prim\_\-rtcp\_\-nat\_\-complete}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::prim\_\-rtcp\_\-nat\_\-complete}}\label{structvqec__chan___b19f66926b911bc0c9a7773106ccc3b1}
+
+
+Has binding completed? \index{vqec_chan_@{vqec\_\-chan\_\-}!prim_rtcp_nat_id@{prim\_\-rtcp\_\-nat\_\-id}}
+\index{prim_rtcp_nat_id@{prim\_\-rtcp\_\-nat\_\-id}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-nat\_\-bindid\_\-t \bf{vqec\_\-chan\_\-::prim\_\-rtcp\_\-nat\_\-id}}\label{structvqec__chan___07f07e85a24a048d95580b005bebb7c0}
+
+
+NAT id for the primary RTCP port. \index{vqec_chan_@{vqec\_\-chan\_\-}!prim_rtp_id@{prim\_\-rtp\_\-id}}
+\index{prim_rtp_id@{prim\_\-rtp\_\-id}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-streamid\_\-t \bf{vqec\_\-chan\_\-::prim\_\-rtp\_\-id}}\label{structvqec__chan___f8283863ab586fe2c2ac780ba6bf14c8}
+
+
+Primary session's identifier in the dataplane. \index{vqec_chan_@{vqec\_\-chan\_\-}!prim_rtp_nat_complete@{prim\_\-rtp\_\-nat\_\-complete}}
+\index{prim_rtp_nat_complete@{prim\_\-rtp\_\-nat\_\-complete}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::prim\_\-rtp\_\-nat\_\-complete}}\label{structvqec__chan___848425dce3f92e6745dd46984212da13}
+
+
+Has binding completed? \index{vqec_chan_@{vqec\_\-chan\_\-}!prim_rtp_nat_id@{prim\_\-rtp\_\-nat\_\-id}}
+\index{prim_rtp_nat_id@{prim\_\-rtp\_\-nat\_\-id}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-nat\_\-bindid\_\-t \bf{vqec\_\-chan\_\-::prim\_\-rtp\_\-nat\_\-id}}\label{structvqec__chan___388d468912e9f12320d783f59dc02330}
+
+
+NAT id for the primary RTP port. \index{vqec_chan_@{vqec\_\-chan\_\-}!prim_session@{prim\_\-session}}
+\index{prim_session@{prim\_\-session}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{rtp\_\-era\_\-recv\_\-t}$\ast$ \bf{vqec\_\-chan\_\-::prim\_\-session}}\label{structvqec__chan___69b24c9988d74ee254034c9120a1111a}
+
+
+Primary session for the channel. \index{vqec_chan_@{vqec\_\-chan\_\-}!primary_rtcp_inputs_snapshot@{primary\_\-rtcp\_\-inputs\_\-snapshot}}
+\index{primary_rtcp_inputs_snapshot@{primary\_\-rtcp\_\-inputs\_\-snapshot}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-chan\_\-::primary\_\-rtcp\_\-inputs\_\-snapshot}}\label{structvqec__chan___30e72236046790a08ed6bc29c1fefcbb}
+
+
+\index{vqec_chan_@{vqec\_\-chan\_\-}!primary_rtcp_outputs_snapshot@{primary\_\-rtcp\_\-outputs\_\-snapshot}}
+\index{primary_rtcp_outputs_snapshot@{primary\_\-rtcp\_\-outputs\_\-snapshot}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-chan\_\-::primary\_\-rtcp\_\-outputs\_\-snapshot}}\label{structvqec__chan___42e72682ad472d68955cf35506746fca}
+
+
+\index{vqec_chan_@{vqec\_\-chan\_\-}!primary_rtp_expected_snapshot@{primary\_\-rtp\_\-expected\_\-snapshot}}
+\index{primary_rtp_expected_snapshot@{primary\_\-rtp\_\-expected\_\-snapshot}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-chan\_\-::primary\_\-rtp\_\-expected\_\-snapshot}}\label{structvqec__chan___f43e2fa7953c9a1814b39c458b79f2cc}
+
+
+\index{vqec_chan_@{vqec\_\-chan\_\-}!primary_rtp_lost_snapshot@{primary\_\-rtp\_\-lost\_\-snapshot}}
+\index{primary_rtp_lost_snapshot@{primary\_\-rtp\_\-lost\_\-snapshot}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int64\_\-t \bf{vqec\_\-chan\_\-::primary\_\-rtp\_\-lost\_\-snapshot}}\label{structvqec__chan___fe7c7eb82c94e0bd0f1894eb1967482c}
+
+
+\index{vqec_chan_@{vqec\_\-chan\_\-}!rcc_enabled@{rcc\_\-enabled}}
+\index{rcc_enabled@{rcc\_\-enabled}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::rcc\_\-enabled}}\label{structvqec__chan___be2d1efc09d0806068de9009175c0891}
+
+
+Is RCC enabled? \index{vqec_chan_@{vqec\_\-chan\_\-}!repair_rtcp_inputs_snapshot@{repair\_\-rtcp\_\-inputs\_\-snapshot}}
+\index{repair_rtcp_inputs_snapshot@{repair\_\-rtcp\_\-inputs\_\-snapshot}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-chan\_\-::repair\_\-rtcp\_\-inputs\_\-snapshot}}\label{structvqec__chan___b2abc44bc158e5352e7b1ba57010e57f}
+
+
+\index{vqec_chan_@{vqec\_\-chan\_\-}!repair_rtcp_nat_id@{repair\_\-rtcp\_\-nat\_\-id}}
+\index{repair_rtcp_nat_id@{repair\_\-rtcp\_\-nat\_\-id}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-nat\_\-bindid\_\-t \bf{vqec\_\-chan\_\-::repair\_\-rtcp\_\-nat\_\-id}}\label{structvqec__chan___3972d937ee1b4cc87eb454a9b6fe97db}
+
+
+NAT id for the retransmission RTCP port. \index{vqec_chan_@{vqec\_\-chan\_\-}!repair_rtp_id@{repair\_\-rtp\_\-id}}
+\index{repair_rtp_id@{repair\_\-rtp\_\-id}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-streamid\_\-t \bf{vqec\_\-chan\_\-::repair\_\-rtp\_\-id}}\label{structvqec__chan___17c110311029ad51d8eb84d218e87d21}
+
+
+Repair session's identifier in the dataplane. \index{vqec_chan_@{vqec\_\-chan\_\-}!repair_rtp_nat_id@{repair\_\-rtp\_\-nat\_\-id}}
+\index{repair_rtp_nat_id@{repair\_\-rtp\_\-nat\_\-id}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-nat\_\-bindid\_\-t \bf{vqec\_\-chan\_\-::repair\_\-rtp\_\-nat\_\-id}}\label{structvqec__chan___6db557f8714fe6ff3b7674bda0dd3b5e}
+
+
+NAT id for the retransmission RTP port. \index{vqec_chan_@{vqec\_\-chan\_\-}!repair_session@{repair\_\-session}}
+\index{repair_session@{repair\_\-session}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{rtp\_\-repair\_\-recv\_\-t}$\ast$ \bf{vqec\_\-chan\_\-::repair\_\-session}}\label{structvqec__chan___1c7a68490f8448613486671b83e80fd7}
+
+
+Reapair session for the channel \index{vqec_chan_@{vqec\_\-chan\_\-}!repair_trigger_time@{repair\_\-trigger\_\-time}}
+\index{repair_trigger_time@{repair\_\-trigger\_\-time}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}rel\_\-time\_\-t \bf{vqec\_\-chan\_\-::repair\_\-trigger\_\-time}}\label{structvqec__chan___7936acba05ea4703700dfe6ad61f9c5c}
+
+
+ER: Repair trigger time? \index{vqec_chan_@{vqec\_\-chan\_\-}!rtcp_nat_complete@{rtcp\_\-nat\_\-complete}}
+\index{rtcp_nat_complete@{rtcp\_\-nat\_\-complete}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::rtcp\_\-nat\_\-complete}}\label{structvqec__chan___3781b6e955832f1ffbc079ccde8e838e}
+
+
+Has binding completed? \index{vqec_chan_@{vqec\_\-chan\_\-}!rtcp_rtx_port@{rtcp\_\-rtx\_\-port}}
+\index{rtcp_rtx_port@{rtcp\_\-rtx\_\-port}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{vqec\_\-chan\_\-::rtcp\_\-rtx\_\-port}}\label{structvqec__chan___05cc0ae6a184e69f1d9feb50f86b77ca}
+
+
+Retransmission RTCP port, which may be ephemeral (cp). \index{vqec_chan_@{vqec\_\-chan\_\-}!rtp_nat_complete@{rtp\_\-nat\_\-complete}}
+\index{rtp_nat_complete@{rtp\_\-nat\_\-complete}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::rtp\_\-nat\_\-complete}}\label{structvqec__chan___d5ff04c2b33843315f0150ffbd78ddca}
+
+
+Has binding completed? \index{vqec_chan_@{vqec\_\-chan\_\-}!rtp_rtx_port@{rtp\_\-rtx\_\-port}}
+\index{rtp_rtx_port@{rtp\_\-rtx\_\-port}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{vqec\_\-chan\_\-::rtp\_\-rtx\_\-port}}\label{structvqec__chan___3dd3b0426e09eb63cb41150d7c0332b5}
+
+
+Retransmission RTP port, which may be ephemeral (dp). \index{vqec_chan_@{vqec\_\-chan\_\-}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::shutdown}}\label{structvqec__chan___9499f91f56d1df1ef1b7e94a31a866c6}
+
+
+Is channel shutdown, in a transition period waiting for tx of multiple-bye(s). \index{vqec_chan_@{vqec\_\-chan\_\-}!src_ip_filter_enable@{src\_\-ip\_\-filter\_\-enable}}
+\index{src_ip_filter_enable@{src\_\-ip\_\-filter\_\-enable}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::src\_\-ip\_\-filter\_\-enable}}\label{structvqec__chan___574da7f2da547450e221925cce660fdf}
+
+
+Is a source filter configured for the channel streams? This field caches the syscfg value of the same name upon channel bind. \index{vqec_chan_@{vqec\_\-chan\_\-}!stats@{stats}}
+\index{stats@{stats}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-stats\_\-t} \bf{vqec\_\-chan\_\-::stats}}\label{structvqec__chan___23b14675ec3122b0c60e218c11dc9d93}
+
+
+Control plane statistics \index{vqec_chan_@{vqec\_\-chan\_\-}!stats_snapshot@{stats\_\-snapshot}}
+\index{stats_snapshot@{stats\_\-snapshot}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-stats\_\-t} \bf{vqec\_\-chan\_\-::stats\_\-snapshot}}\label{structvqec__chan___3ad235306ab286ee0c6a8a20040070b8}
+
+
+\index{vqec_chan_@{vqec\_\-chan\_\-}!stb_dcr_stats_ev@{stb\_\-dcr\_\-stats\_\-ev}}
+\index{stb_dcr_stats_ev@{stb\_\-dcr\_\-stats\_\-ev}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-event\_\-t$\ast$ \bf{vqec\_\-chan\_\-::stb\_\-dcr\_\-stats\_\-ev}}\label{structvqec__chan___3398b9c053caa1a7d6a6a6051ec62671}
+
+
+\index{vqec_chan_@{vqec\_\-chan\_\-}!total_fast_fill_bytes@{total\_\-fast\_\-fill\_\-bytes}}
+\index{total_fast_fill_bytes@{total\_\-fast\_\-fill\_\-bytes}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-::total\_\-fast\_\-fill\_\-bytes}}\label{structvqec__chan___c1541a4e1451324ad75adf574943c375}
+
+
+total fast fill bytes \index{vqec_chan_@{vqec\_\-chan\_\-}!upc_data@{upc\_\-data}}
+\index{upc_data@{upc\_\-data}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-upcall\_\-data\_\-t} \bf{vqec\_\-chan\_\-::upc\_\-data}}\label{structvqec__chan___85ec79ea81d64ce5b693d42fb43a54b3}
+
+
+\index{vqec_chan_@{vqec\_\-chan\_\-}!use_rcc_bw_for_er@{use\_\-rcc\_\-bw\_\-for\_\-er}}
+\index{use_rcc_bw_for_er@{use\_\-rcc\_\-bw\_\-for\_\-er}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-chan\_\-::use\_\-rcc\_\-bw\_\-for\_\-er}}\label{structvqec__chan___bbdbd4c512de724952f9f6f38888bfbd}
+
+
+This specifies whether to use the RCC bandwidth value for ER requests. \index{vqec_chan_@{vqec\_\-chan\_\-}!VQEC_CC_STB_STATS_FIELDS@{VQEC\_\-CC\_\-STB\_\-STATS\_\-FIELDS}}
+\index{VQEC_CC_STB_STATS_FIELDS@{VQEC\_\-CC\_\-STB\_\-STATS\_\-FIELDS}!vqec_chan_@{vqec\_\-chan\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-::VQEC\_\-CC\_\-STB\_\-STATS\_\-FIELDS}}\label{structvqec__chan___f49e124c68096ebc58889177026eab34}
+
+
+stats information from STB 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-channel\_\-private.h}\end{CompactItemize}

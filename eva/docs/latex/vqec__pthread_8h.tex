@@ -1,0 +1,44 @@
+\section{vqec\_\-pthread.h File Reference}
+\label{vqec__pthread_8h}\index{vqec_pthread.h@{vqec\_\-pthread.h}}
+{\tt \#include $<$stdint.h$>$}\par
+{\tt \#include $<$pthread.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-SMALL\_\-STACK}~32768
+\item 
+\#define \bf{VQEC\_\-NORMAL\_\-STACK}~65536
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int32\_\-t \bf{vqec\_\-pthread\_\-set\_\-priosched} (pthread\_\-t tid)
+\item 
+int32\_\-t \bf{vqec\_\-pthread\_\-create} (pthread\_\-t $\ast$tid, void $\ast$($\ast$start\_\-routine)(void $\ast$), void $\ast$arg)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_pthread.h@{vqec\_\-pthread.h}!VQEC_NORMAL_STACK@{VQEC\_\-NORMAL\_\-STACK}}
+\index{VQEC_NORMAL_STACK@{VQEC\_\-NORMAL\_\-STACK}!vqec_pthread.h@{vqec\_\-pthread.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-NORMAL\_\-STACK~65536}\label{vqec__pthread_8h_a48ee1e82d8002499cc60bf943f40571}
+
+
+\index{vqec_pthread.h@{vqec\_\-pthread.h}!VQEC_SMALL_STACK@{VQEC\_\-SMALL\_\-STACK}}
+\index{VQEC_SMALL_STACK@{VQEC\_\-SMALL\_\-STACK}!vqec_pthread.h@{vqec\_\-pthread.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SMALL\_\-STACK~32768}\label{vqec__pthread_8h_065e7476d58765750f568383b4cd009f}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_pthread.h@{vqec\_\-pthread.h}!vqec_pthread_create@{vqec\_\-pthread\_\-create}}
+\index{vqec_pthread_create@{vqec\_\-pthread\_\-create}!vqec_pthread.h@{vqec\_\-pthread.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t vqec\_\-pthread\_\-create (pthread\_\-t $\ast$ {\em tid}, void $\ast$($\ast$)(void $\ast$) {\em start\_\-routine}, void $\ast$ {\em arg})}\label{vqec__pthread_8h_a52015e6e3e5befbdb5816ac2f261d4c}
+
+
+\index{vqec_pthread.h@{vqec\_\-pthread.h}!vqec_pthread_set_priosched@{vqec\_\-pthread\_\-set\_\-priosched}}
+\index{vqec_pthread_set_priosched@{vqec\_\-pthread\_\-set\_\-priosched}!vqec_pthread.h@{vqec\_\-pthread.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t vqec\_\-pthread\_\-set\_\-priosched (pthread\_\-t {\em tid})}\label{vqec__pthread_8h_b12ffd057fc1f1a5504fa8164d4879bf}
+
+

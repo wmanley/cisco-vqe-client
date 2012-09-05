@@ -1,0 +1,41 @@
+\section{newline\_\-table\_\- Struct Reference}
+\label{structnewline__table__}\index{newline_table_@{newline\_\-table\_\-}}
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+uint16\_\-t $\ast$ \bf{table}
+\item 
+int \bf{size}
+\item 
+char $\ast$ \bf{buf\_\-addr}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Structure to store the indices of the newline characters within the configuration buffer. This is used to reverse lookup what line a given section of the post-processed (whitespace and comments removed) configuration buffer came from in the original file or buffer. These lookups are useful to indicate to the user where an error occurred.
+
+The table is laid out such that the index represents the line in the original file or buffer, and the value at that index represents the index within the post-processed configuration buffer. 
+
+
+
+\subsection{Field Documentation}
+\index{newline_table_@{newline\_\-table\_\-}!buf_addr@{buf\_\-addr}}
+\index{buf_addr@{buf\_\-addr}!newline_table_@{newline\_\-table\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \bf{newline\_\-table\_\-::buf\_\-addr}}\label{structnewline__table___52c9be19ab5c790b3b1bf4f578b87c99}
+
+
+\index{newline_table_@{newline\_\-table\_\-}!size@{size}}
+\index{size@{size}!newline_table_@{newline\_\-table\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int \bf{newline\_\-table\_\-::size}}\label{structnewline__table___ae43fca7f0a07ddd9d47c386ae49e310}
+
+
+\index{newline_table_@{newline\_\-table\_\-}!table@{table}}
+\index{table@{table}!newline_table_@{newline\_\-table\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t$\ast$ \bf{newline\_\-table\_\-::table}}\label{structnewline__table___3609c962099dbda0487bb499e819f6ca}
+
+
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-config\_\-parser.c}\end{CompactItemize}

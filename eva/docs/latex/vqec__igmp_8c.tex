@@ -1,0 +1,212 @@
+\section{vqec\_\-igmp.c File Reference}
+\label{vqec__igmp_8c}\index{vqec_igmp.c@{vqec\_\-igmp.c}}
+{\tt \#include \char`\"{}vqec\_\-recv\_\-socket.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-event.h\char`\"{}}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$netinet/igmp.h$>$}\par
+{\tt \#include $<$netinet/ip.h$>$}\par
+{\tt \#include $<$sys/select.h$>$}\par
+{\tt \#include $<$sys/socket.h$>$}\par
+{\tt \#include $<$net/if.h$>$}\par
+{\tt \#include $<$sys/ioctl.h$>$}\par
+{\tt \#include $<$netinet/in.h$>$}\par
+{\tt \#include $<$arpa/inet.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include $<$netinet/if\_\-ether.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-debug.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-igmp.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-url.h\char`\"{}}\par
+{\tt \#include $<$cfg/cfgapi.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-syscfg.h\char`\"{}}\par
+{\tt \#include $<$utils/vam\_\-util.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-igmpv3.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-syslog\_\-def.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-assert\_\-macros.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-lock\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}raw\_\-socket.h\char`\"{}}\par
+{\tt \#include \char`\"{}socket\_\-filter.h\char`\"{}}\par
+{\tt \#include $<$net/ethernet.h$>$}\par
+{\tt \#include $<$utils/strl.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-stream\_\-output\_\-thread\_\-mgr.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-config\_\-parser.h\char`\"{}}\par
+{\tt \#include $<$linux/if\_\-packet.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-IGMP\_\-MAX\_\-TUNER}~VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-TUNERS
+\item 
+\#define \bf{UT\_\-STATIC}~static
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+UT\_\-STATIC void \bf{vqec\_\-igmp\_\-do\_\-join} (vqec\_\-tunerid\_\-t tuner\_\-id, struct in\_\-addr group\_\-ip)
+\item 
+UT\_\-STATIC void \bf{vqec\_\-igmp\_\-do\_\-leave} (vqec\_\-tunerid\_\-t tuner\_\-id, struct in\_\-addr group\_\-ip)
+\item 
+UT\_\-STATIC \bf{vqec\_\-igmp\_\-t} $\ast$ \bf{vqec\_\-igmp\_\-get\_\-entry\_\-by\_\-tuner\_\-id} (vqec\_\-tunerid\_\-t id)
+\item 
+void \bf{vqec\_\-igmp\_\-filter\_\-attach} (vqec\_\-recv\_\-sock\_\-t $\ast$sock, unsigned int stb\_\-ip\_\-addr)
+\item 
+UT\_\-STATIC channel\_\-cfg\_\-t $\ast$ \bf{vqec\_\-igmp\_\-channel\_\-search} (struct in\_\-addr group\_\-ip)
+\item 
+UT\_\-STATIC uint32\_\-t \bf{vqec\_\-igmp\_\-process\_\-igmp\_\-pak} (vqec\_\-tunerid\_\-t tuner\_\-id, char $\ast$buf, int recv\_\-len)
+\item 
+UT\_\-STATIC void \bf{vqec\_\-igmp\_\-event\_\-handler\_\-internal} (int fd, short event, vqec\_\-tunerid\_\-t tuner\_\-id)
+\item 
+void \bf{vqec\_\-igmp\_\-event\_\-handler} (const vqec\_\-event\_\-t $\ast$const evptr, int fd, short event, void $\ast$event\_\-params)
+\item 
+void \bf{vqec\_\-igmp\_\-sock\_\-destroy} (vqec\_\-recv\_\-sock\_\-t $\ast$sock)
+\item 
+boolean \bf{bind\_\-to\_\-if} (int sock\_\-fd, char $\ast$if\_\-name)
+\item 
+void \bf{vqec\_\-igmp\_\-sock\_\-create} (char $\ast$name, char $\ast$if\_\-name, in\_\-addr\_\-t output\_\-if, \bf{vqec\_\-igmp\_\-t} $\ast$ptr\_\-vqec\_\-igmp\_\-t)
+\item 
+boolean \bf{vqec\_\-igmp\_\-create} (vqec\_\-tunerid\_\-t tuner\_\-id, char $\ast$if\_\-name, in\_\-addr\_\-t output\_\-if)
+\item 
+void \bf{vqec\_\-igmp\_\-destroy} (vqec\_\-tunerid\_\-t tuner\_\-id)
+\item 
+boolean \bf{vqec\_\-igmp\_\-module\_\-init} (void)
+\item 
+void \bf{vqec\_\-igmp\_\-module\_\-deinit} (void)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-proxy\_\-igmp\_\-join} (const char $\ast$name, char $\ast$if\_\-name, in\_\-addr\_\-t stb\_\-addr, void($\ast$channel\_\-join\_\-call\_\-back\_\-func), void $\ast$channel\_\-join\_\-call\_\-back\_\-data, void($\ast$channel\_\-leave\_\-call\_\-back\_\-func), void $\ast$channel\_\-leave\_\-call\_\-back\_\-data)
+\item 
+void \bf{vqec\_\-cmd\_\-show\_\-proxy\_\-igmp\_\-stats} (vqec\_\-tunerid\_\-t id)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-set\_\-igmp\_\-proxy\_\-param} (char $\ast$tuner\_\-name, char $\ast$stb\_\-if, char $\ast$stb\_\-ip)
+\item 
+void \bf{vqec\_\-igmp\_\-proxy\_\-init} (char $\ast$\bf{filename})
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+static \bf{vqec\_\-igmp\_\-t} $\ast$ \bf{s\_\-igmp} [VQEC\_\-IGMP\_\-MAX\_\-TUNER]
+\item 
+static boolean \bf{s\_\-igmp\_\-module\_\-initialized} = \bf{FALSE}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!UT_STATIC@{UT\_\-STATIC}}
+\index{UT_STATIC@{UT\_\-STATIC}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UT\_\-STATIC~static}\label{vqec__igmp_8c_840be0a802b42af3ce4430a7173caa40}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!VQEC_IGMP_MAX_TUNER@{VQEC\_\-IGMP\_\-MAX\_\-TUNER}}
+\index{VQEC_IGMP_MAX_TUNER@{VQEC\_\-IGMP\_\-MAX\_\-TUNER}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-IGMP\_\-MAX\_\-TUNER~VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-TUNERS}\label{vqec__igmp_8c_a6de7143f6a8e1dd2956d09054a74ce8}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!bind_to_if@{bind\_\-to\_\-if}}
+\index{bind_to_if@{bind\_\-to\_\-if}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean bind\_\-to\_\-if (int {\em sock\_\-fd}, char $\ast$ {\em if\_\-name})}\label{vqec__igmp_8c_2573cc1e8458a40cb40995bf41291581}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_cmd_show_proxy_igmp_stats@{vqec\_\-cmd\_\-show\_\-proxy\_\-igmp\_\-stats}}
+\index{vqec_cmd_show_proxy_igmp_stats@{vqec\_\-cmd\_\-show\_\-proxy\_\-igmp\_\-stats}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cmd\_\-show\_\-proxy\_\-igmp\_\-stats (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__igmp_8c_6e2a49fa65a62111093f5a4adaf4e212}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_channel_search@{vqec\_\-igmp\_\-channel\_\-search}}
+\index{vqec_igmp_channel_search@{vqec\_\-igmp\_\-channel\_\-search}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC channel\_\-cfg\_\-t$\ast$ vqec\_\-igmp\_\-channel\_\-search (struct in\_\-addr {\em group\_\-ip})}\label{vqec__igmp_8c_2e2e91b3e86d89ded9be35ca61eb172a}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_create@{vqec\_\-igmp\_\-create}}
+\index{vqec_igmp_create@{vqec\_\-igmp\_\-create}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-igmp\_\-create (vqec\_\-tunerid\_\-t {\em tuner\_\-id}, char $\ast$ {\em if\_\-name}, in\_\-addr\_\-t {\em output\_\-if})}\label{vqec__igmp_8c_350126a48298494233cc957f20b7d1fd}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_destroy@{vqec\_\-igmp\_\-destroy}}
+\index{vqec_igmp_destroy@{vqec\_\-igmp\_\-destroy}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-igmp\_\-destroy (vqec\_\-tunerid\_\-t {\em tuner\_\-id})}\label{vqec__igmp_8c_f1ad06f18c385d3f341c300f000c2ad6}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_do_join@{vqec\_\-igmp\_\-do\_\-join}}
+\index{vqec_igmp_do_join@{vqec\_\-igmp\_\-do\_\-join}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC void vqec\_\-igmp\_\-do\_\-join (vqec\_\-tunerid\_\-t {\em tuner\_\-id}, struct in\_\-addr {\em group\_\-ip})}\label{vqec__igmp_8c_1dcd83e52d0c76f94e4991e4323ea308}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_do_leave@{vqec\_\-igmp\_\-do\_\-leave}}
+\index{vqec_igmp_do_leave@{vqec\_\-igmp\_\-do\_\-leave}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC void vqec\_\-igmp\_\-do\_\-leave (vqec\_\-tunerid\_\-t {\em tuner\_\-id}, struct in\_\-addr {\em group\_\-ip})}\label{vqec__igmp_8c_1730887742f71d3a9db025263df7f1d3}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_event_handler@{vqec\_\-igmp\_\-event\_\-handler}}
+\index{vqec_igmp_event_handler@{vqec\_\-igmp\_\-event\_\-handler}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-igmp\_\-event\_\-handler (const vqec\_\-event\_\-t $\ast$const  {\em evptr}, int {\em fd}, short {\em event}, void $\ast$ {\em event\_\-params})}\label{vqec__igmp_8c_90cd65ec6ae5e98967f6ce9276c3613f}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_event_handler_internal@{vqec\_\-igmp\_\-event\_\-handler\_\-internal}}
+\index{vqec_igmp_event_handler_internal@{vqec\_\-igmp\_\-event\_\-handler\_\-internal}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC void vqec\_\-igmp\_\-event\_\-handler\_\-internal (int {\em fd}, short {\em event}, vqec\_\-tunerid\_\-t {\em tuner\_\-id})}\label{vqec__igmp_8c_d8e2c104b91c157c411d9463632696f9}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_filter_attach@{vqec\_\-igmp\_\-filter\_\-attach}}
+\index{vqec_igmp_filter_attach@{vqec\_\-igmp\_\-filter\_\-attach}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-igmp\_\-filter\_\-attach (vqec\_\-recv\_\-sock\_\-t $\ast$ {\em sock}, unsigned int {\em stb\_\-ip\_\-addr})}\label{vqec__igmp_8c_460578561ccc10c88982fd7bd50d2eb4}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_get_entry_by_tuner_id@{vqec\_\-igmp\_\-get\_\-entry\_\-by\_\-tuner\_\-id}}
+\index{vqec_igmp_get_entry_by_tuner_id@{vqec\_\-igmp\_\-get\_\-entry\_\-by\_\-tuner\_\-id}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC \bf{vqec\_\-igmp\_\-t}$\ast$ vqec\_\-igmp\_\-get\_\-entry\_\-by\_\-tuner\_\-id (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__igmp_8c_4a65e94867b7cab28ded80b5341d922f}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_module_deinit@{vqec\_\-igmp\_\-module\_\-deinit}}
+\index{vqec_igmp_module_deinit@{vqec\_\-igmp\_\-module\_\-deinit}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-igmp\_\-module\_\-deinit (void)}\label{vqec__igmp_8c_2f205e8ed740201453bbb1a72e267774}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_module_init@{vqec\_\-igmp\_\-module\_\-init}}
+\index{vqec_igmp_module_init@{vqec\_\-igmp\_\-module\_\-init}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-igmp\_\-module\_\-init (void)}\label{vqec__igmp_8c_561d8284f54157b65d11db6bdfe064ac}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_process_igmp_pak@{vqec\_\-igmp\_\-process\_\-igmp\_\-pak}}
+\index{vqec_igmp_process_igmp_pak@{vqec\_\-igmp\_\-process\_\-igmp\_\-pak}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC uint32\_\-t vqec\_\-igmp\_\-process\_\-igmp\_\-pak (vqec\_\-tunerid\_\-t {\em tuner\_\-id}, char $\ast$ {\em buf}, int {\em recv\_\-len})}\label{vqec__igmp_8c_a8a410e7121afa027773125bf936d135}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_proxy_init@{vqec\_\-igmp\_\-proxy\_\-init}}
+\index{vqec_igmp_proxy_init@{vqec\_\-igmp\_\-proxy\_\-init}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-igmp\_\-proxy\_\-init (char $\ast$ {\em filename})}\label{vqec__igmp_8c_69ae7b54e63d564330ae3951b90d5ad5}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_sock_create@{vqec\_\-igmp\_\-sock\_\-create}}
+\index{vqec_igmp_sock_create@{vqec\_\-igmp\_\-sock\_\-create}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-igmp\_\-sock\_\-create (char $\ast$ {\em name}, char $\ast$ {\em if\_\-name}, in\_\-addr\_\-t {\em output\_\-if}, \bf{vqec\_\-igmp\_\-t} $\ast$ {\em ptr\_\-vqec\_\-igmp\_\-t})}\label{vqec__igmp_8c_83afb658af43e238e6fe440786d03ad1}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_igmp_sock_destroy@{vqec\_\-igmp\_\-sock\_\-destroy}}
+\index{vqec_igmp_sock_destroy@{vqec\_\-igmp\_\-sock\_\-destroy}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-igmp\_\-sock\_\-destroy (vqec\_\-recv\_\-sock\_\-t $\ast$ {\em sock})}\label{vqec__igmp_8c_da6f3bae31ca4a8c043f89c09ec65174}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_proxy_igmp_join@{vqec\_\-proxy\_\-igmp\_\-join}}
+\index{vqec_proxy_igmp_join@{vqec\_\-proxy\_\-igmp\_\-join}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-proxy\_\-igmp\_\-join (const char $\ast$ {\em name}, char $\ast$ {\em if\_\-name}, in\_\-addr\_\-t {\em stb\_\-addr}, void $\ast$ {\em channel\_\-join\_\-call\_\-back\_\-func}, void $\ast$ {\em channel\_\-join\_\-call\_\-back\_\-data}, void $\ast$ {\em channel\_\-leave\_\-call\_\-back\_\-func}, void $\ast$ {\em channel\_\-leave\_\-call\_\-back\_\-data})}\label{vqec__igmp_8c_4fe27944c8062d69d2d34cd036b617b0}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!vqec_set_igmp_proxy_param@{vqec\_\-set\_\-igmp\_\-proxy\_\-param}}
+\index{vqec_set_igmp_proxy_param@{vqec\_\-set\_\-igmp\_\-proxy\_\-param}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-set\_\-igmp\_\-proxy\_\-param (char $\ast$ {\em tuner\_\-name}, char $\ast$ {\em stb\_\-if}, char $\ast$ {\em stb\_\-ip})}\label{vqec__igmp_8c_613ccba9f602a715b6f0b422721b95a2}
+
+
+
+
+\subsection{Variable Documentation}
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!s_igmp@{s\_\-igmp}}
+\index{s_igmp@{s\_\-igmp}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-igmp\_\-t}$\ast$ \bf{s\_\-igmp}[VQEC\_\-IGMP\_\-MAX\_\-TUNER]\hspace{0.3cm}{\tt  [static]}}\label{vqec__igmp_8c_750063e971178611840614ddd1d7ce5f}
+
+
+\index{vqec_igmp.c@{vqec\_\-igmp.c}!s_igmp_module_initialized@{s\_\-igmp\_\-module\_\-initialized}}
+\index{s_igmp_module_initialized@{s\_\-igmp\_\-module\_\-initialized}!vqec_igmp.c@{vqec\_\-igmp.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{s\_\-igmp\_\-module\_\-initialized} = \bf{FALSE}\hspace{0.3cm}{\tt  [static]}}\label{vqec__igmp_8c_24aa3eecf8c309c3ee4a465835502329}
+
+

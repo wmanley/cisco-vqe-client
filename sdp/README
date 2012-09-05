@@ -1,0 +1,232 @@
+/*
+ *------------------------------------------------------------------
+ * README - Description of SDP library and how to extend new attributes
+ *
+ * June 2001, D. Renee Revis
+ *
+ * Copyright (c) 2001,2004 by cisco Systems, Inc.
+ * All rights reserved.
+ *------------------------------------------------------------------
+ */
+
+SDP Library Programming Guide
+
+The SDP library parses and builds SDP descriptions based on RFC2327.  The
+initial design specification can be found in ENG-109490.  This file describes
+the file layout, general overview and how to add support for new attributes.
+
+The SDP library is written to be OS independent. It currently runs on
+IOS, Unix, and CCM platforms.  The sdp_os_defs.h file defines platform 
+specific header information for all OS types and each OS must define 
+its own services file (e.g., sdp_services_ios.c). 
+
+A sdp-gpp directory is added to allow for compiling with the g++
+compiler.  This ensures easy portability to platforms like CCM.
+
+The Unix version of the library is used with the SDP library test tool
+and so the Unix specific files (e.g., sdp_services_unix.c, Makefile, 
+sdp_test.c) are checked in with the test tool in the ptd_tools vob.
+To access the tool, create a view with branch name 'main' and vob
+/vob/ptd_tools, as in:
+
+start_task -t <mytask> -l LATEST -b main -d /vws/bk? -v /vob/ptd_tools
+
+The sdp tool is in /vob/ptd_tools/sdp/parser_tool and there is a 
+corresponding README in this directory for using the tool.
+
+
+SDP library files:
+
+sdp.h                 // Public header file, included by applications
+sdp_private.h         // Private header file, only used by the library
+sdp_os_defs.h         // OS specific definitions
+sdp_base64.h          // Public header file containing base64 encoding
+                      // definitions
+sdp-gpp/sdp_gpp_defs.h  // definitions needed for g++ compiling
+
+sdp_access.c          // APIs used to access all token info except a= lines
+sdp_attr.c            // Routines to parse/build attribute lines
+sdp_attr_access.c     // APIs used to access all attribute parameters
+sdp_config.c          // Application configuration routines
+sdp_main.c            // Main routines to init/parse/build/free SDPs
+sdp_services_ios.c    // IOS specific routines
+sdp_services_unix.c   // Unix specific routines
+sdp_test.c            // Unix test harness
+sdp_token.c           // Routines to parse/build token lines except a=
+sdp_utils.c           // Supporting utility routines
+msg_sdp.c             // IOS specific error message definition
+Makefile              // Unix makefile
+sdp-gpp/Makefile      // g++ makefile
+sdp-gpp/sdp_gppmain.c // Dummy main function for g++ compile
+sdp-gpp/sdp_stubs.c   // stub functions for g++ compile
+
+
+
+The SDP library can be used by multiple applications.  Each appl creates its
+own configuration data structure to customize the library functionality.  It
+can then initialize SDP structures, parse an SDP into these data structures,
+build SDPs from them, and free them when no longer needed.  The library
+allocates and manages all required memory.  
+
+Note that all SDP parameters accessed are 1-based - e.g., media lines, media
+line payload types, attribute instance number, and so on.
+
+
+Media Line Handling
+
+An SDP description consists of a session level portion followed by one or more
+media level descriptions.  To access information at the session level, an
+application specifies the level as SDP_SESSION_LEVEL.  To access the
+information at a media level, the application specifies which media level it
+wants to access (again noting that this is 1-based).
+
+
+Attribute Handling
+
+Attributes can exist at either the session level or a media level.  Attributes
+specified at the session level are default values that can be overridden at a
+specific media level.  Note that when accessing attributes at the media level,
+the library does not attempt to provide default information from the session
+level if the attribute is not defined at the media level.  It is the
+responsibility of the application to understand which attributes are defined
+at which levels.  Because more than one instance of an attribute may exist at
+any level, each attribute is referred to by both level and instance number.
+
+In addition to the location (i.e., level) of an attribute, there are two basic
+types of attributes handled by the SDP library, those defined by a= token
+lines, and those embedded with a=X-cpar lines.  The handling for each of these
+is described here. 
+
+Simple (non X-cpar attributes):
+
+Attributes not embedded in a=X-cpar lines are referenced by level and 
+instance number.  For these attributes the capability number is always
+set to zero.
+
+An application will typically process these attributes in one of two ways.
+With the first method, the application can determine the total number 
+of attributes defined at a given level and process them one at a time.  
+For each attribute, the application will query the library to find out
+what type of attribute it is and which instance within that type. The
+application can then process this particular attribute referencing it
+by level and instance number.
+
+A second method of processing attributes is for applications to determine
+each type of attribute they are interested in, query the SDP library to
+find out how many of that type of attribute exist at a given level, and
+process each one at a time.
+
+X-cpar attribute processing:
+
+X-cpar attributes can contain embedded attributes.  They are associated
+with X-cap attribute lines.  An example of X-cap and X-cpar attributes 
+found in an SDP is as follows:
+
+v=0
+o=- 25678 753849 IN IP4 128.96.41.1
+s=-
+t=0 0
+c=IN IP4 10.1.0.2
+m=audio 3456 RTP/AVP 18 96
+a=rtpmap:96 telephone-event/8000
+a=fmtp:96 0-15,32-35
+a=X-sqn: 0
+a=X-cap: 1 audio RTP/AVP 0 18 96 97
+a=X-cpar: a=fmtp:96 0-16,32-35
+a=X-cpar: a=rtpmap:97 X-NSE/8000
+a=X-cpar: a=fmtp:97 195-197
+a=X-cap: 5 image udptl t38
+a=X-cap: 6 application udp X-tmr
+a=X-cap: 7 audio RTP/AVP 100 101
+a=X-cpar: a=rtpmap:100 g.711/8000
+a=X-cpar: a=rtpmap:101 g.729/8000
+ 
+X-cap attributes can be defined at the SESSION_LEVEL or any media level.
+An X-cap attr is defined by the level and instance number just like 
+other attributes.  In the example above, X-cap attrs are defined at 
+media level 1 and there are four instances at that level.
+ 
+The X-cpar attribute is actually two attributes in one.  There is the X-cpar
+attribute, and then there is the attribute contained within the X-cpar
+attribute - e.g., fmtp or rtpmap. The X-cpar attribute itself is referenced by
+level and instance number, with the capability number set to zero . However,
+the embedded attribute within an X-cpar attribute must be referenced by level,
+instance number, and capability number.  This is because the X-cpar attribute
+is associated with a particular X-cap/capability.  
+
+For all attributes that are not embedded within an X-cpar attribute, the
+cap_num should be referenced as zero.  But for X-cpar attributes, the
+cap_num is specified to be one of the capability numbers of the previous
+X-cap line.  The number of capabilities specified in an X-cap line is
+equal to the number of payloads.  Thus, in this example, the first X-cap 
+attr instance specifies capabilities 1-4, the second specifies capability
+5, the third capability 6, and the fourth capabilities 7-8.
+
+X-cpar attributes can be processed with methods similar to the two 
+previously mentioned.  For each X-cap attribute, the application can
+use one of two methods to process the X-cpar attributes.  First, it
+can query the total number of X-cpar attributes associated with a 
+given X-cap attribute.  The X-cap attribute is here defined by a level
+and a capability number.  In the example above, the total number of 
+attributes defined is as follows:
+ level 1, cap_num 1 - total attrs: 3
+ level 1, cap_num 5 - total attrs: 0
+ level 1, cap_num 6 - total attrs: 0
+ level 1, cap_num 7 - total attrs: 2
+ 
+Note that if the application queried the number of attributes for 
+cap_num 2, 3, or 4, it would also return 3 attrs, and for cap_num
+8 the library would return 2.
+
+Once the application determines the total number of attributes for
+that capability, it can again query the embedded attribute type and
+instance.  For example, sdp_get_attr_type would return the following:
+ level 1, cap_num 1, attr 1 -> attr type fmtp, instance 1
+ level 1, cap_num 1, attr 2 -> attr type rtpmap, instance 1 
+ level 1, cap_num 1, attr 3 -> attr type fmtp, instance 2
+ level 1, cap_num 7, attr 1 -> attr type rtpmap, instance 1
+ level 1, cap_num 7, attr 2 -> attr type rtpmap, instance 2
+
+The individual embedded attributes can then be accessed by level,
+cap_num, and instance number.
+
+With the second method for handling X-cpar attributes, the application
+determines the types of attributes it is interested in.  It can then
+query the SDP library to determine the number of attributes of that 
+type found for that level and cap_num, and then process each one at 
+a time.  e.g., calling sdp_attr_num_instances would give:
+ level 1, cap_num 1, attr_type fmtp -> two instances
+ level 1, cap_num 1, attr_type rtpmap -> one instance
+ level 1, cap_num 7, attr_type fmtp -> zero instances
+ level 1, cap_num 7, attr_type rtpmap -> two instances
+
+
+Adding New Supported Attributes
+
+To add support for a new attribute to the SDP library, a new type must be
+added to the sdp_attr_e enum.  An entry should also be added to the sdp_attr
+table specifying the string name of the attribute, and the names of the
+functions to parse and build the attribute.  *Note that the order of this
+table must exactly match the enum type*.
+
+If the new attribute has a simple type, i.e., contains only one parameter
+which is either a string, an unsigned 32-bit value, or a boolean, then the
+generic routines for handling these types can be used.  The table should
+reference the existing routines and the routine should be modified to
+recognize the new attribute type as valid.  These routines are found at the
+top of the sdp_attr.c and sdp_attr_access.c files - e.g.,
+sdp_parse_attr_simple_string() and sdp_attr_get_simple_string. 
+
+If the new attribute is not a simple type, new functions should be created to
+parse and build the info.  A new data structure type should be created and
+added to the union in the sdp_attr_t structure.  If a new enum type is
+needed/desired, the enum type should be created along with a name_array type
+structure to define the recognized strings and an sdp_get_xxx_name routine to
+reference the name when building.  For an example, look at the handling of the
+T38FaxRateManagement attribute.
+
+
+
+
+
+

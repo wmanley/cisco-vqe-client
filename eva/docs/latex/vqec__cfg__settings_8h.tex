@@ -1,0 +1,987 @@
+\section{vqec\_\-cfg\_\-settings.h File Reference}
+\label{vqec__cfg__settings_8h}\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+{\tt \#include \char`\"{}vqec\_\-cfg\_\-macros.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}~1
+\item 
+\#define \bf{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}~2
+\item 
+\#define \bf{VQEC\_\-V2\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}~3
+\item 
+\#define \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}~4
+\item 
+\#define \bf{VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}~5
+\item 
+\#define \bf{VQEC\_\-ATTRIBUTES\_\-VERSION}~VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID.0
+\item 
+\#define \bf{VQEC\_\-UINT32\_\-CONSTRUCTOR}(default\-Value, min\-Value, max\-Value)
+\item 
+\#define \bf{VQEC\_\-UINT32\_\-RANGE\_\-CONSTRUCTOR}(default\-Value, range1,)
+\item 
+\#define \bf{VQEC\_\-STRING\_\-CONSTRUCTOR}(default\-Str, max\-Str\-Length)
+\item 
+\#define \bf{VQEC\_\-BOOL\_\-CONSTUCTOR}(default\-Value)
+\item 
+\#define \bf{VQEC\_\-MULTICAST\_\-ADDR\_\-CONSTRUCTOR}(default\-Value)
+\item 
+\#define \bf{\_\-\_\-DEFAULT}
+\item 
+\#define \bf{VQEC\_\-STRING\_\-LIST\_\-CONSTRUCTOR}(str\-A,)
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\bf{ARR\_\-ELEM} (\char`\"{}max\_\-tuners\char`\"{}, VQEC\_\-CFG\_\-MAX\_\-TUNERS, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T},\char`\"{}Maximum number of simultaneous streams \char`\"{}\char`\"{}that may be supported\char`\"{}, FALSE, \bf{FALSE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(1, 1, 32), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}channel\_\-lineup\char`\"{}
+\item 
+VQEC Channel lineup configuration \bf{VQEC\_\-STRING\_\-CONSTRUCTOR} (\char`\"{}\char`\"{}, 255)
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}network\_\-cfg\_\-pathname\char`\"{}, VQEC\_\-CFG\_\-NETWORK\_\-CFG\_\-PATHNAME, \bf{VQEC\_\-TYPE\_\-STRING},\char`\"{}VQEC Per-client Network configuration \bf{filename}\char`\"{}, FALSE, \bf{FALSE}, VQEC\_\-STRING\_\-CONSTRUCTOR(\char`\"{}\char`\"{}, 255), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}override\_\-cfg\_\-pathname\char`\"{}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}index\_\-cfg\_\-pathname\char`\"{}, VQEC\_\-CFG\_\-INDEX\_\-CFG\_\-PATHNAME, \bf{VQEC\_\-TYPE\_\-STRING},\char`\"{}VQEC Configuration Index \bf{filename}\char`\"{}, FALSE, \bf{FALSE}, VQEC\_\-STRING\_\-CONSTRUCTOR(\char`\"{}\char`\"{}, 255), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}vqec\_\-enable\char`\"{}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{file} (deprecated:use qoe\_\-enable)\char`\"{}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{VQEC\_\-BOOL\_\-CONSTRUCTOR} (\bf{TRUE})
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED \bf{ARR\_\-ELEM} (\char`\"{}jitter\_\-buff\_\-size\char`\"{}, VQEC\_\-CFG\_\-JITTER\_\-BUFF\_\-SIZE, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T},\char`\"{}RTP jitter buffer size in \bf{ms}\char`\"{}, TRUE, \bf{TRUE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(200, 0, 20000), \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}repair\_\-trigger\_\-point\_\-abs\char`\"{}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in \bf{VQEC\_\-UINT32\_\-CONSTRUCTOR} (20, 0, 200)
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}repair\_\-trigger\_\-point\char`\"{}, VQEC\_\-CFG\_\-REPAIR\_\-TRIGGER\_\-POINT, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T},\char`\"{}RTP repair trigger point pct of jitter-buff-size [0..100] \char`\"{}\char`\"{}(deprecated: use repair\_\-trigger\_\-point\_\-abs)\char`\"{}, FALSE, \bf{FALSE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(20, 0, 100), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED) ARR\_\-ELEM(\char`\"{}pakpool\_\-size\char`\"{}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} \bf{VQEC\_\-UINT32\_\-CONSTRUCTOR} (1000, 100, 200000)
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}so\_\-rcvbuf\char`\"{}, VQEC\_\-CFG\_\-SO\_\-RCVBUF, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T},\char`\"{}Socket receive buffer size in bytes\char`\"{}, TRUE, \bf{FALSE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(128000, 0, 1000000), \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}strip\_\-rtp\char`\"{}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}input\_\-ifname\char`\"{}, VQEC\_\-CFG\_\-INPUT\_\-IFNAME, \bf{VQEC\_\-TYPE\_\-STRING},\char`\"{}Input interface name. Specifying a NULL \char`\"{}\char`\"{}interface name allows the OS \bf{to} pick a default input interface for \char`\"{}\char`\"{}the stream\char`\"{}, FALSE, \bf{FALSE}, VQEC\_\-STRING\_\-CONSTRUCTOR(\char`\"{}\char`\"{}, 255), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}sig\_\-mode\char`\"{}
+\item 
+if it is greater than or equal it is considered \bf{VQEC\_\-UINT32\_\-CONSTRUCTOR} (0, 0, 1000000000)
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}max\_\-fastfill\char`\"{}, VQEC\_\-CFG\_\-MAX\_\-FASTFILL, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T},\char`\"{}Global max amount of video data (in bytes) \bf{to} be \char`\"{}\char`\"{}fastfilled into the decoder HW buffer.\char`\"{}, TRUE, \bf{FALSE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(0, 0, 1000000000), \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}, \bf{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}app\_\-delay\char`\"{}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output \bf{delay} (in msec)\char`\"{} \char`\"{}between replicated APP packets.\char`\"{}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output \bf{VQEC\_\-UINT32\_\-CONSTRUCTOR} (0, 0, 60000)
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}src\_\-ip\_\-filter\_\-enable\char`\"{}, VQEC\_\-CFG\_\-SRC\_\-IP\_\-FILTER\_\-ENABLE, \bf{VQEC\_\-TYPE\_\-BOOLEAN},\char`\"{}Enable Source IP Filter for Channel Streams.\char`\"{}, TRUE, \bf{FALSE}, VQEC\_\-BOOL\_\-CONSTRUCTOR(\bf{FALSE}), \bf{VQEC\_\-UPDATE\_\-STARTUP}, \bf{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}qoe\_\-enable\char`\"{}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}rcc\_\-extra\_\-igmp\_\-ip\char`\"{}, VQEC\_\-CFG\_\-RCC\_\-EXTRA\_\-IGMP\_\-IP, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T},\char`\"{}IP address of extra multicast group \bf{to} be \char`\"{}\char`\"{}joined during \bf{RCC} burst.\char`\"{}, TRUE, \bf{TRUE}, VQEC\_\-MULTICAST\_\-ADDR\_\-CONSTRUCTOR(0), \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}, \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}rcc\_\-max\_\-concurrent\char`\"{}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with \bf{VQEC\_\-UINT32\_\-CONSTRUCTOR} (1, 0, 32)
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}integrated\_\-rtp\_\-fallback\char`\"{}, VQEC\_\-CFG\_\-INTEGRATED\_\-RTP\_\-FALLBACK, \bf{VQEC\_\-TYPE\_\-BOOLEAN},\char`\"{}When \bf{TRUE}, enables the creation of dynamic \char`\"{}\char`\"{}\bf{channels} for RTP \bf{channels} not in the SDP channel database.\char`\"{}, FALSE, \bf{FALSE}, VQEC\_\-BOOL\_\-CONSTRUCTOR(\bf{TRUE}), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}udp\_\-passthru\_\-support\char`\"{}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE \bf{VQEC\_\-BOOL\_\-CONSTRUCTOR} (\bf{FALSE})
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}vod\_\-cmd\_\-timeout\char`\"{}, VQEC\_\-CFG\_\-VOD\_\-CMD\_\-TIMEOUT, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T},\char`\"{}VOD RTSP response timeout in ms. \char`\"{}\char`\"{}The amount of time the client will wait for an RTSP response \char`\"{}\char`\"{}after sending an RTSP request\char`\"{}, TRUE, \bf{TRUE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(2000, 100, 10000), \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}, \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}vod\_\-max\_\-sessions\char`\"{}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} \bf{VQEC\_\-UINT32\_\-CONSTRUCTOR} (1, 1, 32)
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}vod\_\-mode\char`\"{}, VQEC\_\-CFG\_\-VOD\_\-MODE, \bf{VQEC\_\-TYPE\_\-STRING},\char`\"{}VOD working mode. \char`\"{}\char`\"{}Two types of modes are supported: IPTV and CABLE\char`\"{}, TRUE, \bf{FALSE}, VQEC\_\-STRING\_\-LIST\_\-CONSTRUCTOR(\_\-\_\-DEFAULT\char`\"{}iptv\char`\"{},\char`\"{}cable\char`\"{}), VQEC\_\-UPDATE\_\-STARTUP, \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}log\_\-level\char`\"{}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from \bf{VQEC\_\-UINT32\_\-CONSTRUCTOR} (4, 0, 7)
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{ARR\_\-ELEM} (\char`\"{}stun\_\-optimization\char`\"{}, VQEC\_\-CFG\_\-STUN\_\-OPTIMIZATION, \bf{VQEC\_\-TYPE\_\-BOOLEAN},\char`\"{}When \bf{TRUE}, enables stun signaling optimization,\char`\"{}\char`\"{}i.e no stun signaling after detecting not behind nat; \char`\"{}\char`\"{}when \bf{FALSE}, stun signaling for each channel change.\char`\"{}, FALSE, \bf{FALSE}, VQEC\_\-BOOL\_\-CONSTRUCTOR(\bf{FALSE}), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT) ARR\_\-ELEM(\char`\"{}must\_\-be\_\-last\char`\"{}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after \bf{VQEC\_\-STRING\_\-CONSTRUCTOR} (\char`\"{}\char`\"{}, 0)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\bf{VQEC\_\-CFG\_\-CHANNEL\_\-LINEUP}
+\item 
+\bf{VQEC\_\-TYPE\_\-STRING}
+\item 
+VQEC Channel lineup configuration \bf{filename}
+\item 
+VQEC Channel lineup configuration \bf{FALSE}
+\item 
+VQEC Channel lineup configuration \bf{FALSE}
+\item 
+VQEC Channel lineup configuration \bf{VQEC\_\-UPDATE\_\-INVALID}
+\item 
+VQEC Channel lineup configuration \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-OVERRIDE\_\-CFG\_\-PATHNAME}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-STRING}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration \bf{filename}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration \bf{FALSE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration \bf{FALSE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration \bf{VQEC\_\-UPDATE\_\-INVALID}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-VQEC\_\-ENABLE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-BOOLEAN}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{TRUE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{TRUE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{VQEC\_\-UPDATE\_\-STARTUP}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED \bf{VQEC\_\-CFG\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in \bf{ms}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in \bf{TRUE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in \bf{FALSE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-PAKPOOL\_\-SIZE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} \bf{create}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} \bf{TRUE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} \bf{FALSE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} \bf{VQEC\_\-UPDATE\_\-STARTUP}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-STRIP\_\-RTP}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-BOOLEAN}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp \bf{header} [true/false]
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp \bf{FALSE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp \bf{FALSE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp \bf{VQEC\_\-UPDATE\_\-INVALID}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-SIG\_\-MODE}
+\item 
+VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-STRING}
+\item 
+if it is greater than or equal it is considered \bf{HD}
+\item 
+if it is greater than or equal it is considered \bf{TRUE}
+\item 
+if it is greater than or equal it is considered \bf{TRUE}
+\item 
+if it is greater than or equal it is considered \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}
+\item 
+if it is greater than or equal it is considered \bf{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-APP\_\-DELAY}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output \bf{TRUE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output \bf{FALSE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output \bf{VQEC\_\-UPDATE\_\-STARTUP}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output \bf{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-QOE\_\-ENABLE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-BOOLEAN}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{file}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{TRUE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{TRUE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{VQEC\_\-UPDATE\_\-STARTUP}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{VQEC\_\-V2\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-RCC\_\-MAX\_\-CONCURRENT}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with \bf{RCC}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with \bf{FALSE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with \bf{FALSE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with \bf{VQEC\_\-UPDATE\_\-INVALID}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-UDP\_\-PASSTHRU\_\-SUPPORT}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-BOOLEAN}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When \bf{TRUE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP \bf{channels}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE \bf{C}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE \bf{FALSE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE \bf{FALSE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE \bf{VQEC\_\-UPDATE\_\-INVALID}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-VOD\_\-MAX\_\-SESSIONS}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} \bf{box}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} \bf{TRUE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} \bf{FALSE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} \bf{VQEC\_\-UPDATE\_\-STARTUP}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-LOG\_\-LEVEL}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from \bf{to}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from \bf{TRUE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from \bf{TRUE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from \bf{VQEC\_\-UPDATE\_\-IMMEDIATE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from \bf{VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-STRING}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after \bf{this}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after \bf{FALSE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after \bf{FALSE}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after \bf{VQEC\_\-UPDATE\_\-INVALID}
+\item 
+if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!__DEFAULT@{\_\-\_\-DEFAULT}}
+\index{__DEFAULT@{\_\-\_\-DEFAULT}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-DEFAULT}\label{vqec__cfg__settings_8h_e0d5b995cbcb73740b33621e59fc85be}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_ATTRIBUTES_VERSION@{VQEC\_\-ATTRIBUTES\_\-VERSION}}
+\index{VQEC_ATTRIBUTES_VERSION@{VQEC\_\-ATTRIBUTES\_\-VERSION}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-ATTRIBUTES\_\-VERSION~VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID.0}\label{vqec__cfg__settings_8h_fa187a121c67e1995376e242c7433bbb}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_BOOL_CONSTUCTOR@{VQEC\_\-BOOL\_\-CONSTUCTOR}}
+\index{VQEC_BOOL_CONSTUCTOR@{VQEC\_\-BOOL\_\-CONSTUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-BOOL\_\-CONSTUCTOR(default\-Value)}\label{vqec__cfg__settings_8h_81812ca8c17c42e39b1ccc345b1005a9}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_MULTICAST_ADDR_CONSTRUCTOR@{VQEC\_\-MULTICAST\_\-ADDR\_\-CONSTRUCTOR}}
+\index{VQEC_MULTICAST_ADDR_CONSTRUCTOR@{VQEC\_\-MULTICAST\_\-ADDR\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MULTICAST\_\-ADDR\_\-CONSTRUCTOR(default\-Value)}\label{vqec__cfg__settings_8h_b8300b268035fddeb09837eff9c032c0}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_STRING_CONSTRUCTOR@{VQEC\_\-STRING\_\-CONSTRUCTOR}}
+\index{VQEC_STRING_CONSTRUCTOR@{VQEC\_\-STRING\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-STRING\_\-CONSTRUCTOR(default\-Str, max\-Str\-Length)}\label{vqec__cfg__settings_8h_49fcd8d75c2add2e688725bf9395e1a1}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_STRING_LIST_CONSTRUCTOR@{VQEC\_\-STRING\_\-LIST\_\-CONSTRUCTOR}}
+\index{VQEC_STRING_LIST_CONSTRUCTOR@{VQEC\_\-STRING\_\-LIST\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-STRING\_\-LIST\_\-CONSTRUCTOR(str\-A)}\label{vqec__cfg__settings_8h_cba1e5ba8ccf0e08d7b97e917ba6784b}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}}
+\index{VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UINT32\_\-CONSTRUCTOR(default\-Value, min\-Value, max\-Value)}\label{vqec__cfg__settings_8h_f86ac6f108e4e5a49c1d165b30520e80}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UINT32_RANGE_CONSTRUCTOR@{VQEC\_\-UINT32\_\-RANGE\_\-CONSTRUCTOR}}
+\index{VQEC_UINT32_RANGE_CONSTRUCTOR@{VQEC\_\-UINT32\_\-RANGE\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UINT32\_\-RANGE\_\-CONSTRUCTOR(default\-Value, range1)}\label{vqec__cfg__settings_8h_9cbab8519b6977fd132e8cc84c2d8cf5}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}~1}\label{vqec__cfg__settings_8h_a2accc15418bfa3288d9b8ac9fc06c0a}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V1_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V1_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \bf{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}~2}\label{vqec__cfg__settings_8h_1324680acbf29479b9d093bfd4963410}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V2_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V2\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V2_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V2\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \bf{VQEC\_\-V2\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}~3}\label{vqec__cfg__settings_8h_f021aad4b972047f1a900eacc94fca5b}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V3_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V3_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}~4}\label{vqec__cfg__settings_8h_07db01da1f870f344d8a421de7fe1b35}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V4_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V4_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \bf{VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}~5}\label{vqec__cfg__settings_8h_84f61d06fc48a3debf5400e575f80125}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}stun\_\-optimization\char`\"{}, VQEC\_\-CFG\_\-STUN\_\-OPTIMIZATION, \bf{VQEC\_\-TYPE\_\-BOOLEAN}, \char`\"{}When  {\em TRUE}, enables stun signaling {\em optimization}, \char`\"{} \char`\"{}i.e no stun signaling after detecting not behind nat;\char`\"{} \char`\"{}when {\em FALSE}, stun signaling for each channel change.\char`\"{}, \bf{FALSE}, \bf{FALSE}, VQEC\_\-BOOL\_\-CONSTRUCTOR(\bf{FALSE}), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_ac293a6c6286d07d44597c8c3e80469e}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}vod\_\-mode\char`\"{}, VQEC\_\-CFG\_\-VOD\_\-MODE, \bf{VQEC\_\-TYPE\_\-STRING}, \char`\"{}VOD working mode. \char`\"{}\char`\"{}Two types of modes are supported: IPTV and CABLE\char`\"{}, \bf{TRUE}, \bf{FALSE}, VQEC\_\-STRING\_\-LIST\_\-CONSTRUCTOR(\_\-\_\-DEFAULT\char`\"{}iptv\char`\"{},\char`\"{}cable\char`\"{}), \bf{VQEC\_\-UPDATE\_\-STARTUP}, \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_3bf308d81580ddca11c3437b7b2980b8}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}vod\_\-cmd\_\-timeout\char`\"{}, VQEC\_\-CFG\_\-VOD\_\-CMD\_\-TIMEOUT, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}, \char`\"{}VOD RTSP response timeout in ms. \char`\"{}\char`\"{}The amount of time the client will wait for an RTSP response \char`\"{}\char`\"{}after sending an RTSP request\char`\"{}, \bf{TRUE}, \bf{TRUE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(2000, 100, 10000), \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}, \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_04ee6c9961f5ab588f16dd5115a7608e}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}integrated\_\-rtp\_\-fallback\char`\"{}, VQEC\_\-CFG\_\-INTEGRATED\_\-RTP\_\-FALLBACK, \bf{VQEC\_\-TYPE\_\-BOOLEAN}, \char`\"{}When  {\em TRUE}, enables the creation of dynamic\char`\"{} \char`\"{}\bf{channels} for RTP \bf{channels} not in the SDP channel database.\char`\"{}, \bf{FALSE}, \bf{FALSE}, VQEC\_\-BOOL\_\-CONSTRUCTOR(\bf{TRUE}), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_99c948cac81d9ba0f5c5c73c227d24b4}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}rcc\_\-extra\_\-igmp\_\-ip\char`\"{}, VQEC\_\-CFG\_\-RCC\_\-EXTRA\_\-IGMP\_\-IP, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}, \char`\"{}IP address of extra multicast group \bf{to} be \char`\"{}\char`\"{}joined during \bf{RCC} burst.\char`\"{}, \bf{TRUE}, \bf{TRUE}, VQEC\_\-MULTICAST\_\-ADDR\_\-CONSTRUCTOR(0), \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}, \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_6e77ffd6970ea9199f5027c9d54320b4}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}src\_\-ip\_\-filter\_\-enable\char`\"{}, VQEC\_\-CFG\_\-SRC\_\-IP\_\-FILTER\_\-ENABLE, \bf{VQEC\_\-TYPE\_\-BOOLEAN}, \char`\"{}Enable Source IP Filter for Channel Streams.\char`\"{}, \bf{TRUE}, \bf{FALSE}, VQEC\_\-BOOL\_\-CONSTRUCTOR(\bf{FALSE}), \bf{VQEC\_\-UPDATE\_\-STARTUP}, \bf{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_185ec760b39b20535e423495cc829241}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}max\_\-fastfill\char`\"{}, VQEC\_\-CFG\_\-MAX\_\-FASTFILL, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}, \char`\"{}Global max amount of video data (in bytes) \bf{to} be \char`\"{}\char`\"{}fastfilled into the decoder HW buffer.\char`\"{}, \bf{TRUE}, \bf{FALSE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(0, 0, 1000000000), \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}, \bf{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_897e14ca44de0143df98ae4fe8e2334a}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}input\_\-ifname\char`\"{}, VQEC\_\-CFG\_\-INPUT\_\-IFNAME, \bf{VQEC\_\-TYPE\_\-STRING}, \char`\"{}Input interface name. Specifying a NULL \char`\"{}\char`\"{}interface name allows the OS \bf{to} pick a default input interface for \char`\"{}\char`\"{}the stream\char`\"{}, \bf{FALSE}, \bf{FALSE}, VQEC\_\-STRING\_\-CONSTRUCTOR(\char`\"{}\char`\"{}, 255), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_2b9ec0070b4befe0ee1d67e74422e71b}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}so\_\-rcvbuf\char`\"{}, VQEC\_\-CFG\_\-SO\_\-RCVBUF, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}, \char`\"{}Socket receive buffer size in bytes\char`\"{}, \bf{TRUE}, \bf{FALSE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(128000, 0, 1000000), \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_5f3b5ccd57496519a044595a9773bb90}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}repair\_\-trigger\_\-point\char`\"{}, VQEC\_\-CFG\_\-REPAIR\_\-TRIGGER\_\-POINT, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}, \char`\"{}RTP repair trigger point pct of jitter-buff-size  \char`\"{}\char`\"{}(deprecated: use repair\_\-trigger\_\-point\_\-abs)\char`\"{}[0..100], \bf{FALSE}, \bf{FALSE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(20, 0, 100), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED)}\label{vqec__cfg__settings_8h_c0ad2979bcb7fb6c4d9ad0769e04dc4b}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED ARR\_\-ELEM (\char`\"{}jitter\_\-buff\_\-size\char`\"{}, VQEC\_\-CFG\_\-JITTER\_\-BUFF\_\-SIZE, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}, \char`\"{}RTP jitter buffer size in \bf{ms}\char`\"{}, \bf{TRUE}, \bf{TRUE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(200, 0, 20000), \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_ac6bc27cfa5ef82783edc4dba843b105}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}index\_\-cfg\_\-pathname\char`\"{}, VQEC\_\-CFG\_\-INDEX\_\-CFG\_\-PATHNAME, \bf{VQEC\_\-TYPE\_\-STRING}, \char`\"{}VQEC Configuration Index \bf{filename}\char`\"{}, \bf{FALSE}, \bf{FALSE}, VQEC\_\-STRING\_\-CONSTRUCTOR(\char`\"{}\char`\"{}, 255), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_c158da076b728569dcdf81bfc6124e99}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT ARR\_\-ELEM (\char`\"{}network\_\-cfg\_\-pathname\char`\"{}, VQEC\_\-CFG\_\-NETWORK\_\-CFG\_\-PATHNAME, \bf{VQEC\_\-TYPE\_\-STRING}, \char`\"{}VQEC Per-client Network configuration \bf{filename}\char`\"{}, \bf{FALSE}, \bf{FALSE}, VQEC\_\-STRING\_\-CONSTRUCTOR(\char`\"{}\char`\"{}, 255), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_e5059a2568590b53b109896956eaac45}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ARR_ELEM@{ARR\_\-ELEM}}
+\index{ARR_ELEM@{ARR\_\-ELEM}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}ARR\_\-ELEM (\char`\"{}max\_\-tuners\char`\"{}, VQEC\_\-CFG\_\-MAX\_\-TUNERS, \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}, \char`\"{}Maximum number of simultaneous streams \char`\"{}\char`\"{}that may be supported\char`\"{}, \bf{FALSE}, \bf{FALSE}, VQEC\_\-UINT32\_\-CONSTRUCTOR(1, 1, 32), \bf{VQEC\_\-UPDATE\_\-INVALID}, \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}, VQEC\_\-PARAM\_\-STATUS\_\-CURRENT)}\label{vqec__cfg__settings_8h_a219ee708e6588c5116673dd9848d1d3}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!delay@{delay}}
+\index{delay@{delay}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output delay (in {\em msec})}\label{vqec__cfg__settings_8h_361d4e6971811d1808c09d8580a85263}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!file@{file}}
+\index{file@{file}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration file (deprecated:use {\em qoe\_\-enable})}\label{vqec__cfg__settings_8h_85a51cea08b65ba6fa628a74b9ce7b18}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_BOOL_CONSTRUCTOR@{VQEC\_\-BOOL\_\-CONSTRUCTOR}}
+\index{VQEC_BOOL_CONSTRUCTOR@{VQEC\_\-BOOL\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-BOOL\_\-CONSTRUCTOR (\bf{FALSE})}\label{vqec__cfg__settings_8h_c475b7da024bfdf8ad9792f704859601}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_BOOL_CONSTRUCTOR@{VQEC\_\-BOOL\_\-CONSTRUCTOR}}
+\index{VQEC_BOOL_CONSTRUCTOR@{VQEC\_\-BOOL\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-BOOL\_\-CONSTRUCTOR (\bf{TRUE})}\label{vqec__cfg__settings_8h_7d2cd23db298e1f7619fced6897f126b}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_STRING_CONSTRUCTOR@{VQEC\_\-STRING\_\-CONSTRUCTOR}}
+\index{VQEC_STRING_CONSTRUCTOR@{VQEC\_\-STRING\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after VQEC\_\-STRING\_\-CONSTRUCTOR (\char`\"{}\char`\"{}, 0)}\label{vqec__cfg__settings_8h_3a2a74a1db1e21c9ded79da7aaa95927}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_STRING_CONSTRUCTOR@{VQEC\_\-STRING\_\-CONSTRUCTOR}}
+\index{VQEC_STRING_CONSTRUCTOR@{VQEC\_\-STRING\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-STRING\_\-CONSTRUCTOR (\char`\"{}\char`\"{}, 255)}\label{vqec__cfg__settings_8h_5a394a40eec2c949acf4310fab04f832}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}}
+\index{VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-UINT32\_\-CONSTRUCTOR (4, 0, 7)}\label{vqec__cfg__settings_8h_e14518135d5e00b87260e9f55777ad06}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}}
+\index{VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-UINT32\_\-CONSTRUCTOR (1, 1, 32)}\label{vqec__cfg__settings_8h_ee86459042b3662b6aa6d68a92e52cdd}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}}
+\index{VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-UINT32\_\-CONSTRUCTOR (1, 0, 32)}\label{vqec__cfg__settings_8h_cbeccdc98eb46649f3067822697e452e}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}}
+\index{VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-UINT32\_\-CONSTRUCTOR (0, 0, 60000)}\label{vqec__cfg__settings_8h_9e5b74cac36591cf031ec0562e3910d2}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}}
+\index{VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-UINT32\_\-CONSTRUCTOR (0, 0, 1000000000)}\label{vqec__cfg__settings_8h_172b66370acaaceb69c4ac1bb3d992db}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}}
+\index{VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-UINT32\_\-CONSTRUCTOR (1000, 100, 200000)}\label{vqec__cfg__settings_8h_82888791bd1f6ffd244cfcc8c93f0595}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}}
+\index{VQEC_UINT32_CONSTRUCTOR@{VQEC\_\-UINT32\_\-CONSTRUCTOR}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-UINT32\_\-CONSTRUCTOR (20, 0, 200)}\label{vqec__cfg__settings_8h_e9146310da81672060e905b491c06de7}
+
+
+
+
+\subsection{Variable Documentation}
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!box@{box}}
+\index{box@{box}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} \bf{box}}\label{vqec__cfg__settings_8h_3bd04bf50f5d41e7652f55a6b5a7a4b8}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!C@{C}}
+\index{C@{C}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE \bf{C}}\label{vqec__cfg__settings_8h_99d041f03695e88e709b5d061ad6ff0a}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!channels@{channels}}
+\index{channels@{channels}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP \bf{channels}}\label{vqec__cfg__settings_8h_53bba5c73b1407b32cf1096eae0da5b1}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!create@{create}}
+\index{create@{create}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} \bf{create}}\label{vqec__cfg__settings_8h_ce07ea375d7b1c22171a79282a8981fb}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after \bf{FALSE}}\label{vqec__cfg__settings_8h_969f99546ecc2fe02459c201773cd5ea}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after \bf{FALSE}}\label{vqec__cfg__settings_8h_969f99546ecc2fe02459c201773cd5ea}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} \bf{FALSE}}\label{vqec__cfg__settings_8h_fcec48ae23b6a0e5121492222bd963f3}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE \bf{FALSE}}\label{vqec__cfg__settings_8h_acb743cdbda86dafafdb311f52ae1b1f}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE \bf{FALSE}}\label{vqec__cfg__settings_8h_acb743cdbda86dafafdb311f52ae1b1f}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with \bf{FALSE}}\label{vqec__cfg__settings_8h_344788433766858e3cf63c6834eb8de8}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with \bf{FALSE}}\label{vqec__cfg__settings_8h_344788433766858e3cf63c6834eb8de8}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output \bf{FALSE}}\label{vqec__cfg__settings_8h_1937ccbfc5d9a0f8334871632b12f706}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp \bf{FALSE}}\label{vqec__cfg__settings_8h_947386a257303125912a5c38c9e2f771}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp \bf{FALSE}}\label{vqec__cfg__settings_8h_947386a257303125912a5c38c9e2f771}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} \bf{FALSE}}\label{vqec__cfg__settings_8h_c10468e2a10eddf6c7dcc682a180fdf9}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in \bf{FALSE}}\label{vqec__cfg__settings_8h_ab800ff96d93f95167de0aed04faaca0}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration \bf{FALSE}}\label{vqec__cfg__settings_8h_fdc672e399b0251a42e251081a6c0e86}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration \bf{FALSE}}\label{vqec__cfg__settings_8h_fdc672e399b0251a42e251081a6c0e86}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration \bf{FALSE}}\label{vqec__cfg__settings_8h_239598b47c1cdb2f6f8b047de3bb847d}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration \bf{FALSE}}\label{vqec__cfg__settings_8h_239598b47c1cdb2f6f8b047de3bb847d}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!file@{file}}
+\index{file@{file}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration file}\label{vqec__cfg__settings_8h_326efb463a633ec8c87619288f19f948}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!filename@{filename}}
+\index{filename@{filename}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration \bf{filename}}\label{vqec__cfg__settings_8h_41375debba13953bb40d94f90ad38cbb}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!filename@{filename}}
+\index{filename@{filename}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration \bf{filename}}\label{vqec__cfg__settings_8h_9886b20026034057952daf2161f77ea9}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!HD@{HD}}
+\index{HD@{HD}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered \bf{HD}}\label{vqec__cfg__settings_8h_3404cfaf7d61e875b0dae1b73f757954}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!header@{header}}
+\index{header@{header}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp \bf{header}[true/false]}\label{vqec__cfg__settings_8h_38eb5d1a6826a95e4a204cb93413b35e}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!ms@{ms}}
+\index{ms@{ms}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in \bf{ms}}\label{vqec__cfg__settings_8h_894ec893e9cf53f3ae8342b308a652a3}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!RCC@{RCC}}
+\index{RCC@{RCC}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with \bf{RCC}}\label{vqec__cfg__settings_8h_7326bbcb47a7fb63f045fe49f1b1b8c9}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!this@{this}}
+\index{this@{this}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after \bf{this}}\label{vqec__cfg__settings_8h_9451079fa177e510349a6d9e24ea0ae5}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!to@{to}}
+\index{to@{to}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from \bf{to}}\label{vqec__cfg__settings_8h_1e4735bd0370a5336430b00a24c1cc30}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from \bf{TRUE}}\label{vqec__cfg__settings_8h_9b83e07cdf53ed83b96d72854add8fb5}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from \bf{TRUE}}\label{vqec__cfg__settings_8h_9b83e07cdf53ed83b96d72854add8fb5}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} \bf{TRUE}}\label{vqec__cfg__settings_8h_6393538b4837beb0d0e341648ce810bf}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When \bf{TRUE}}\label{vqec__cfg__settings_8h_26960adc9190c76d82db37d5c73810d9}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{TRUE}}\label{vqec__cfg__settings_8h_97dadabd18c24611b92b65b3e6d70dd6}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{TRUE}}\label{vqec__cfg__settings_8h_97dadabd18c24611b92b65b3e6d70dd6}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output \bf{TRUE}}\label{vqec__cfg__settings_8h_f6e2fbe2cdebc7e0661a36ab3e446586}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered \bf{TRUE}}\label{vqec__cfg__settings_8h_0e99cc0a2843468096049595d939954f}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered \bf{TRUE}}\label{vqec__cfg__settings_8h_0e99cc0a2843468096049595d939954f}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} \bf{TRUE}}\label{vqec__cfg__settings_8h_8b978c6996db14d80a2ce862c2dfeeb9}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in \bf{TRUE}}\label{vqec__cfg__settings_8h_d8b5de84915eb9652bf81be52f47aa9a}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{TRUE}}\label{vqec__cfg__settings_8h_ec8519b59092e4f991d4a4ab0df44712}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{TRUE}}\label{vqec__cfg__settings_8h_ec8519b59092e4f991d4a4ab0df44712}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_APP_DELAY@{VQEC\_\-CFG\_\-APP\_\-DELAY}}
+\index{VQEC_CFG_APP_DELAY@{VQEC\_\-CFG\_\-APP\_\-DELAY}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-APP\_\-DELAY}}\label{vqec__cfg__settings_8h_a2284379e5f53a63d044d83d1c389018}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_CHANNEL_LINEUP@{VQEC\_\-CFG\_\-CHANNEL\_\-LINEUP}}
+\index{VQEC_CFG_CHANNEL_LINEUP@{VQEC\_\-CFG\_\-CHANNEL\_\-LINEUP}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{VQEC\_\-CFG\_\-CHANNEL\_\-LINEUP}}\label{vqec__cfg__settings_8h_4848c2d78648bb9f25bb37699471afe8}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_LOG_LEVEL@{VQEC\_\-CFG\_\-LOG\_\-LEVEL}}
+\index{VQEC_CFG_LOG_LEVEL@{VQEC\_\-CFG\_\-LOG\_\-LEVEL}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-LOG\_\-LEVEL}}\label{vqec__cfg__settings_8h_81d2a8bff68c49710bc54598b339df25}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_MUST_BE_LAST@{VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST}}
+\index{VQEC_CFG_MUST_BE_LAST@{VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST}}\label{vqec__cfg__settings_8h_2a5ca37b951675be7dd048703f90aae0}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_OVERRIDE_CFG_PATHNAME@{VQEC\_\-CFG\_\-OVERRIDE\_\-CFG\_\-PATHNAME}}
+\index{VQEC_CFG_OVERRIDE_CFG_PATHNAME@{VQEC\_\-CFG\_\-OVERRIDE\_\-CFG\_\-PATHNAME}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-OVERRIDE\_\-CFG\_\-PATHNAME}}\label{vqec__cfg__settings_8h_6c18445f211489730df2673cf1e22b71}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_PAKPOOL_SIZE@{VQEC\_\-CFG\_\-PAKPOOL\_\-SIZE}}
+\index{VQEC_CFG_PAKPOOL_SIZE@{VQEC\_\-CFG\_\-PAKPOOL\_\-SIZE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-PAKPOOL\_\-SIZE}}\label{vqec__cfg__settings_8h_8a26779d9e26bb712cd9125ddcd12d18}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_QOE_ENABLE@{VQEC\_\-CFG\_\-QOE\_\-ENABLE}}
+\index{VQEC_CFG_QOE_ENABLE@{VQEC\_\-CFG\_\-QOE\_\-ENABLE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-QOE\_\-ENABLE}}\label{vqec__cfg__settings_8h_85d5d1ebb9a2bef85f344dd7e7ddcd0e}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_RCC_MAX_CONCURRENT@{VQEC\_\-CFG\_\-RCC\_\-MAX\_\-CONCURRENT}}
+\index{VQEC_CFG_RCC_MAX_CONCURRENT@{VQEC\_\-CFG\_\-RCC\_\-MAX\_\-CONCURRENT}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-RCC\_\-MAX\_\-CONCURRENT}}\label{vqec__cfg__settings_8h_961c51b8d9dc1e912f923837d14e43dd}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_REPAIR_TRIGGER_POINT_ABS@{VQEC\_\-CFG\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}}
+\index{VQEC_CFG_REPAIR_TRIGGER_POINT_ABS@{VQEC\_\-CFG\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED \bf{VQEC\_\-CFG\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}}\label{vqec__cfg__settings_8h_0ef06bb2b7cd85d977b66c2ed8efa728}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_SIG_MODE@{VQEC\_\-CFG\_\-SIG\_\-MODE}}
+\index{VQEC_CFG_SIG_MODE@{VQEC\_\-CFG\_\-SIG\_\-MODE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-SIG\_\-MODE}}\label{vqec__cfg__settings_8h_45e57048dddace3cfc51d7e830b7f879}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_STRIP_RTP@{VQEC\_\-CFG\_\-STRIP\_\-RTP}}
+\index{VQEC_CFG_STRIP_RTP@{VQEC\_\-CFG\_\-STRIP\_\-RTP}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-STRIP\_\-RTP}}\label{vqec__cfg__settings_8h_24dbbb8d6a2df355043aabfbc01b995d}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_UDP_PASSTHRU_SUPPORT@{VQEC\_\-CFG\_\-UDP\_\-PASSTHRU\_\-SUPPORT}}
+\index{VQEC_CFG_UDP_PASSTHRU_SUPPORT@{VQEC\_\-CFG\_\-UDP\_\-PASSTHRU\_\-SUPPORT}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-UDP\_\-PASSTHRU\_\-SUPPORT}}\label{vqec__cfg__settings_8h_c6dba96cafff0ecd66f3e0e39c6423a8}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_VOD_MAX_SESSIONS@{VQEC\_\-CFG\_\-VOD\_\-MAX\_\-SESSIONS}}
+\index{VQEC_CFG_VOD_MAX_SESSIONS@{VQEC\_\-CFG\_\-VOD\_\-MAX\_\-SESSIONS}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-VOD\_\-MAX\_\-SESSIONS}}\label{vqec__cfg__settings_8h_cf3ced7860579b834bb419f375de75b3}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_CFG_VQEC_ENABLE@{VQEC\_\-CFG\_\-VQEC\_\-ENABLE}}
+\index{VQEC_CFG_VQEC_ENABLE@{VQEC\_\-CFG\_\-VQEC\_\-ENABLE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-CFG\_\-VQEC\_\-ENABLE}}\label{vqec__cfg__settings_8h_0e2ce77a43bc04ba1425d4adf49bb22e}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_BOOLEAN@{VQEC\_\-TYPE\_\-BOOLEAN}}
+\index{VQEC_TYPE_BOOLEAN@{VQEC\_\-TYPE\_\-BOOLEAN}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-BOOLEAN}}\label{vqec__cfg__settings_8h_b4739c5f95f4c03fb9b6686fd9d82742}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_BOOLEAN@{VQEC\_\-TYPE\_\-BOOLEAN}}
+\index{VQEC_TYPE_BOOLEAN@{VQEC\_\-TYPE\_\-BOOLEAN}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-BOOLEAN}}\label{vqec__cfg__settings_8h_03927f758bb871048a3cbad7bb7cfce4}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_BOOLEAN@{VQEC\_\-TYPE\_\-BOOLEAN}}
+\index{VQEC_TYPE_BOOLEAN@{VQEC\_\-TYPE\_\-BOOLEAN}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-BOOLEAN}}\label{vqec__cfg__settings_8h_65f349dfd4585e5ce39a6de8bc71baf6}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_BOOLEAN@{VQEC\_\-TYPE\_\-BOOLEAN}}
+\index{VQEC_TYPE_BOOLEAN@{VQEC\_\-TYPE\_\-BOOLEAN}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-BOOLEAN}}\label{vqec__cfg__settings_8h_05ac76be324e5c85ddb7d47474e4d219}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_STRING@{VQEC\_\-TYPE\_\-STRING}}
+\index{VQEC_TYPE_STRING@{VQEC\_\-TYPE\_\-STRING}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-STRING}}\label{vqec__cfg__settings_8h_cf5b8a7ae8e220460bcf697d3993055f}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_STRING@{VQEC\_\-TYPE\_\-STRING}}
+\index{VQEC_TYPE_STRING@{VQEC\_\-TYPE\_\-STRING}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-STRING}}\label{vqec__cfg__settings_8h_b121988872f77ebb941a0b558d272cdd}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_STRING@{VQEC\_\-TYPE\_\-STRING}}
+\index{VQEC_TYPE_STRING@{VQEC\_\-TYPE\_\-STRING}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-STRING}}\label{vqec__cfg__settings_8h_ff95e1faf4dc02361e611526770f4aa1}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_STRING@{VQEC\_\-TYPE\_\-STRING}}
+\index{VQEC_TYPE_STRING@{VQEC\_\-TYPE\_\-STRING}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{VQEC\_\-TYPE\_\-STRING}}\label{vqec__cfg__settings_8h_b8ff95b4d9e7c8fe29be1429aaa7322b}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}}
+\index{VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}}\label{vqec__cfg__settings_8h_a8cdf5bed5236a8a2561c109ac0ac209}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}}
+\index{VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}}\label{vqec__cfg__settings_8h_f3e76e06276df066ce9808b18929cdd6}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}}
+\index{VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}}\label{vqec__cfg__settings_8h_a4306321194a09e827323f47519a8d59}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}}
+\index{VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}}\label{vqec__cfg__settings_8h_17400c57b695cc4445fddd590fc0967d}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}}
+\index{VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}}\label{vqec__cfg__settings_8h_422d6b715114531b8bbeb59a9eaf1669}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}}
+\index{VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED \bf{VQEC\_\-TYPE\_\-UINT32\_\-T}}\label{vqec__cfg__settings_8h_be83b6d7d0e339c6e17cd2e0309d4cef}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_IMMEDIATE@{VQEC\_\-UPDATE\_\-IMMEDIATE}}
+\index{VQEC_UPDATE_IMMEDIATE@{VQEC\_\-UPDATE\_\-IMMEDIATE}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from \bf{VQEC\_\-UPDATE\_\-IMMEDIATE}}\label{vqec__cfg__settings_8h_3267d98d1b1a3361f63ff1dcc7a10c18}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}}
+\index{VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after \bf{VQEC\_\-UPDATE\_\-INVALID}}\label{vqec__cfg__settings_8h_d9d86950dd4680a3da2f0e21df311026}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}}
+\index{VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE \bf{VQEC\_\-UPDATE\_\-INVALID}}\label{vqec__cfg__settings_8h_53a5adc14a3b681c6fca440c51498a23}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}}
+\index{VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with \bf{VQEC\_\-UPDATE\_\-INVALID}}\label{vqec__cfg__settings_8h_cde1abf2bd4b2d9e97381b47dc25b01e}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}}
+\index{VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp \bf{VQEC\_\-UPDATE\_\-INVALID}}\label{vqec__cfg__settings_8h_d0ccea016358f79c551c2365a6db75cd}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}}
+\index{VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration \bf{VQEC\_\-UPDATE\_\-INVALID}}\label{vqec__cfg__settings_8h_e99f7fea410e4130955ba0b61059b4cc}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}}
+\index{VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration \bf{VQEC\_\-UPDATE\_\-INVALID}}\label{vqec__cfg__settings_8h_f356fb29bbc5c5d34c3beaa9352b5c7e}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_NEWCHANCHG@{VQEC\_\-UPDATE\_\-NEWCHANCHG}}
+\index{VQEC_UPDATE_NEWCHANCHG@{VQEC\_\-UPDATE\_\-NEWCHANCHG}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}}\label{vqec__cfg__settings_8h_267a52857e201e6deeffa843d346aae8}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_NEWCHANCHG@{VQEC\_\-UPDATE\_\-NEWCHANCHG}}
+\index{VQEC_UPDATE_NEWCHANCHG@{VQEC\_\-UPDATE\_\-NEWCHANCHG}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in \bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}}\label{vqec__cfg__settings_8h_55a124ff7cf04dc93bf877a88076ee0a}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}}
+\index{VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} \bf{VQEC\_\-UPDATE\_\-STARTUP}}\label{vqec__cfg__settings_8h_a74c6ef31ce94121578a15a1c8be91c3}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}}
+\index{VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{VQEC\_\-UPDATE\_\-STARTUP}}\label{vqec__cfg__settings_8h_4d3208636e1f43557e0107b9181f382a}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}}
+\index{VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output \bf{VQEC\_\-UPDATE\_\-STARTUP}}\label{vqec__cfg__settings_8h_9a395c44988aab7aa4d387060d3060cb}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}}
+\index{VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} \bf{VQEC\_\-UPDATE\_\-STARTUP}}\label{vqec__cfg__settings_8h_7c847a5a0137d68bd60bf24c0ece08b0}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}}
+\index{VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{VQEC\_\-UPDATE\_\-STARTUP}}\label{vqec__cfg__settings_8h_c0fe883c4b63474e3fa8660a66d98473}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Don t add after \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_27cb8b339f2d8f41f564258d0a90e5b6}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Strip the rtp \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_24333049fe916b0496fece8ec67c2d04}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Number of pak pool packets \bf{to} \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_eab2460757545c97bc0ae5e47642884f}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED RTP repair trigger point in \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_2b29554675276a94a0885b2fdb7cf5e1}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_1b50fd144546772318c9ae7ae27bb9e2}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT VQEC Override configuration \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_dff2fa9c6dc56a1ec5087f7c9afe643f}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V0_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQEC Channel lineup configuration \bf{VQEC\_\-V0\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_9953e85c4e01bf04c2ad5697ca9f303d}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V1_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V1_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output \bf{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_52d77f9a2b152f879a00b46b43a1209f}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V1_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V1_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered \bf{VQEC\_\-V1\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_70323be4668afcca12258e9e2f2ac02c}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V2_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V2\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V2_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V2\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration \bf{VQEC\_\-V2\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_5664bbcbd954432adf081e8f0a1af327}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V3_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V3_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_b2f1ba44c7f4b7f3dbe743d9ebd73031}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V3_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V3_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_d0b8dfdb887dc11bbc41619806bd12af}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V3_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V3_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with \bf{VQEC\_\-V3\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_e3efeea4951212d35c8cd16ca6b6b222}
+
+
+\index{vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}!VQEC_V4_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}
+\index{VQEC_V4_ATTRIBUTES_NAMESPACE_ID@{VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}!vqec_cfg_settings.h@{vqec\_\-cfg\_\-settings.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}if it is greater than or equal it is considered VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Specifies the interpacket output VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Controls whether VQE \bf{C} is enabled If false VQE \bf{C} will be disabled and will not use any resources If CDI is disabled VQE \bf{C} may check for updates \bf{to} the system configuration VQEC\_\-PARAM\_\-STATUS\_\-CURRENT The maximum number of \bf{channels} that may be simultaneously bound with VQEC\_\-PARAM\_\-STATUS\_\-CURRENT When enables the creation of dynamic \bf{channels} for UDP so that UDP video traffic will be passed through VQE VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Max vod sessions supported The max number of vod session supported in \bf{this} VQEC\_\-PARAM\_\-STATUS\_\-CURRENT Log level from \bf{VQEC\_\-V4\_\-ATTRIBUTES\_\-NAMESPACE\_\-ID}}\label{vqec__cfg__settings_8h_80e8911220ecdf5ea2656a14a20b7126}
+
+

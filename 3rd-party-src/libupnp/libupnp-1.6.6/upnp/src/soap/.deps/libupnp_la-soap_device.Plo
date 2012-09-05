@@ -1,0 +1,6 @@
+src/soap/libupnp_la-soap_device.lo src/soap/libupnp_la-soap_device.o:  \
+ src/soap/soap_device.c src/inc/config.h ../autoconfig.h
+
+src/inc/config.h:
+
+../autoconfig.h:

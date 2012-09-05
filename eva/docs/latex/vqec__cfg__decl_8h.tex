@@ -1,0 +1,116 @@
+\section{vqec\_\-cfg\_\-decl.h File Reference}
+\label{vqec__cfg__decl_8h}\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-cfg\_\-item\_\-\_\-}
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{vqec\_\-param\_\-type\_\-} \bf{vqec\_\-param\_\-type\_\-t}
+\item 
+typedef \bf{vqec\_\-cfg\_\-item\_\-\_\-} \bf{vqec\_\-cfg\_\-item\_\-t}
+\item 
+typedef enum \bf{vqec\_\-cfg\_\-attrib\_\-update\_\-type\_\-} \bf{vqec\_\-cfg\_\-attrib\_\-update\_\-type\_\-t}
+\item 
+typedef enum \bf{vqec\_\-cfg\_\-param\_\-status\_\-t\_\-} \bf{vqec\_\-cfg\_\-param\_\-status\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-param\_\-type\_\-} \{ \bf{VQEC\_\-TYPE\_\-STRING}, 
+\bf{VQEC\_\-TYPE\_\-BOOLEAN}, 
+\bf{VQEC\_\-TYPE\_\-UINT32\_\-T}
+ \}
+\item 
+enum \bf{vqec\_\-cfg\_\-attrib\_\-update\_\-type\_\-} \{ \bf{VQEC\_\-UPDATE\_\-INVALID}, 
+\bf{VQEC\_\-UPDATE\_\-STARTUP}, 
+\bf{VQEC\_\-UPDATE\_\-IMMEDIATE}, 
+\bf{VQEC\_\-UPDATE\_\-NEWCHANCHG}
+ \}
+\item 
+enum \bf{vqec\_\-cfg\_\-param\_\-status\_\-t\_\-} \{ \bf{VQEC\_\-PARAM\_\-STATUS\_\-CURRENT} =  0, 
+\bf{VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED}, 
+\bf{VQEC\_\-PARAM\_\-STATUS\_\-OBSOLETE}
+ \}
+\end{CompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!vqec_cfg_attrib_update_type_t@{vqec\_\-cfg\_\-attrib\_\-update\_\-type\_\-t}}
+\index{vqec_cfg_attrib_update_type_t@{vqec\_\-cfg\_\-attrib\_\-update\_\-type\_\-t}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-cfg\_\-attrib\_\-update\_\-type\_\-}  \bf{vqec\_\-cfg\_\-attrib\_\-update\_\-type\_\-t}}\label{vqec__cfg__decl_8h_2b789857f640be73b43dab545a067550}
+
+
+\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!vqec_cfg_item_t@{vqec\_\-cfg\_\-item\_\-t}}
+\index{vqec_cfg_item_t@{vqec\_\-cfg\_\-item\_\-t}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-cfg\_\-item\_\-\_\-}  \bf{vqec\_\-cfg\_\-item\_\-t}}\label{vqec__cfg__decl_8h_ed2e59492dbbfda50c53e790126db4a4}
+
+
+\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!vqec_cfg_param_status_t@{vqec\_\-cfg\_\-param\_\-status\_\-t}}
+\index{vqec_cfg_param_status_t@{vqec\_\-cfg\_\-param\_\-status\_\-t}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-cfg\_\-param\_\-status\_\-t\_\-}  \bf{vqec\_\-cfg\_\-param\_\-status\_\-t}}\label{vqec__cfg__decl_8h_345f8ab0afd588f9d93dec4b924fedd3}
+
+
+\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!vqec_param_type_t@{vqec\_\-param\_\-type\_\-t}}
+\index{vqec_param_type_t@{vqec\_\-param\_\-type\_\-t}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-param\_\-type\_\-}  \bf{vqec\_\-param\_\-type\_\-t}}\label{vqec__cfg__decl_8h_f1aef9d7ceb58dc5dd7153b322a3d06b}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!vqec_cfg_attrib_update_type_@{vqec\_\-cfg\_\-attrib\_\-update\_\-type\_\-}}
+\index{vqec_cfg_attrib_update_type_@{vqec\_\-cfg\_\-attrib\_\-update\_\-type\_\-}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-cfg\_\-attrib\_\-update\_\-type\_\-}}\label{vqec__cfg__decl_8h_40d3d5cbec3aa2c0ee99b01bc5cd3c18}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!VQEC_UPDATE_INVALID@{VQEC\_\-UPDATE\_\-INVALID}}\item[{\em 
+VQEC\_\-UPDATE\_\-INVALID\label{vqec__cfg__decl_8h_40d3d5cbec3aa2c0ee99b01bc5cd3c18240e4ef679fbb4ba7f8df76b693d17f6}
+}]\index{VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!VQEC_UPDATE_STARTUP@{VQEC\_\-UPDATE\_\-STARTUP}}\item[{\em 
+VQEC\_\-UPDATE\_\-STARTUP\label{vqec__cfg__decl_8h_40d3d5cbec3aa2c0ee99b01bc5cd3c1858e335bd4608601e7575910d02f11cd3}
+}]\index{VQEC_UPDATE_IMMEDIATE@{VQEC\_\-UPDATE\_\-IMMEDIATE}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!VQEC_UPDATE_IMMEDIATE@{VQEC\_\-UPDATE\_\-IMMEDIATE}}\item[{\em 
+VQEC\_\-UPDATE\_\-IMMEDIATE\label{vqec__cfg__decl_8h_40d3d5cbec3aa2c0ee99b01bc5cd3c18e80c53f9e2dd77fed5a284e7a32b109f}
+}]\index{VQEC_UPDATE_NEWCHANCHG@{VQEC\_\-UPDATE\_\-NEWCHANCHG}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!VQEC_UPDATE_NEWCHANCHG@{VQEC\_\-UPDATE\_\-NEWCHANCHG}}\item[{\em 
+VQEC\_\-UPDATE\_\-NEWCHANCHG\label{vqec__cfg__decl_8h_40d3d5cbec3aa2c0ee99b01bc5cd3c18d25ec9808c0ea08e5f2ef45d12c533d9}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!vqec_cfg_param_status_t_@{vqec\_\-cfg\_\-param\_\-status\_\-t\_\-}}
+\index{vqec_cfg_param_status_t_@{vqec\_\-cfg\_\-param\_\-status\_\-t\_\-}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-cfg\_\-param\_\-status\_\-t\_\-}}\label{vqec__cfg__decl_8h_dffff6e02243013e255e3af26025b729}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_PARAM_STATUS_CURRENT@{VQEC\_\-PARAM\_\-STATUS\_\-CURRENT}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!VQEC_PARAM_STATUS_CURRENT@{VQEC\_\-PARAM\_\-STATUS\_\-CURRENT}}\item[{\em 
+VQEC\_\-PARAM\_\-STATUS\_\-CURRENT\label{vqec__cfg__decl_8h_dffff6e02243013e255e3af26025b7290e9dcab2dafebb26dba9d799b7775f32}
+}]\index{VQEC_PARAM_STATUS_DEPRECATED@{VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!VQEC_PARAM_STATUS_DEPRECATED@{VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED}}\item[{\em 
+VQEC\_\-PARAM\_\-STATUS\_\-DEPRECATED\label{vqec__cfg__decl_8h_dffff6e02243013e255e3af26025b729ea8bc77940bfce62a6ac8b56dbad10ce}
+}]\index{VQEC_PARAM_STATUS_OBSOLETE@{VQEC\_\-PARAM\_\-STATUS\_\-OBSOLETE}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!VQEC_PARAM_STATUS_OBSOLETE@{VQEC\_\-PARAM\_\-STATUS\_\-OBSOLETE}}\item[{\em 
+VQEC\_\-PARAM\_\-STATUS\_\-OBSOLETE\label{vqec__cfg__decl_8h_dffff6e02243013e255e3af26025b7297fa4143e0894141252a518d550b4d0dd}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!vqec_param_type_@{vqec\_\-param\_\-type\_\-}}
+\index{vqec_param_type_@{vqec\_\-param\_\-type\_\-}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-param\_\-type\_\-}}\label{vqec__cfg__decl_8h_43b41237ccb54a0565c77cafcee2ad37}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_TYPE_STRING@{VQEC\_\-TYPE\_\-STRING}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!VQEC_TYPE_STRING@{VQEC\_\-TYPE\_\-STRING}}\item[{\em 
+VQEC\_\-TYPE\_\-STRING\label{vqec__cfg__decl_8h_43b41237ccb54a0565c77cafcee2ad378e4fd2ba85c2ce9f682e2e692e202be1}
+}]\index{VQEC_TYPE_BOOLEAN@{VQEC\_\-TYPE\_\-BOOLEAN}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!VQEC_TYPE_BOOLEAN@{VQEC\_\-TYPE\_\-BOOLEAN}}\item[{\em 
+VQEC\_\-TYPE\_\-BOOLEAN\label{vqec__cfg__decl_8h_43b41237ccb54a0565c77cafcee2ad37eb1812c16c93aba0f46dafe9db47fb69}
+}]\index{VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}!vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}}\index{vqec_cfg_decl.h@{vqec\_\-cfg\_\-decl.h}!VQEC_TYPE_UINT32_T@{VQEC\_\-TYPE\_\-UINT32\_\-T}}\item[{\em 
+VQEC\_\-TYPE\_\-UINT32\_\-T\label{vqec__cfg__decl_8h_43b41237ccb54a0565c77cafcee2ad372aefaf3aaa64e5793caf13691f6094e0}
+}]\end{description}
+\end{Desc}
+

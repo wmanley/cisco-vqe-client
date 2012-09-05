@@ -1,0 +1,150 @@
+\section{vqec\_\-updater\_\-mgr\_\- Struct Reference}
+\label{structvqec__updater__mgr__}\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+{\tt \#include $<$vqec\_\-updater\_\-private.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+char \bf{domain\_\-name} [MAX\_\-DOMAIN\_\-NAME\_\-LENGTH]
+\item 
+char \bf{cname} [VQEC\_\-MAX\_\-CNAME\_\-LEN]
+\item 
+in\_\-addr\_\-t \bf{vcds\_\-addr}
+\item 
+in\_\-port\_\-t \bf{vcds\_\-port}
+\item 
+\bf{vqec\_\-updater\_\-status\_\-t} \bf{status}
+\item 
+timeval \bf{last\_\-update\_\-time}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int16\_t \bf{vcds\_servers\_eligible}\\
+\>int16\_t \bf{vcds\_servers\_attempted}\\
+\>char \bf{vcds\_addr} [MAX\_DOMAIN\_NAME\_LENGTH]\\
+\>in\_port\_t \bf{vcds\_port}\\
+\>\bf{vqec\_updater\_result\_err\_t} \bf{result}\\
+\>char \bf{server\_version} [VQEC\_UPDATER\_SERVER\_VERSION\_LEN]\\
+\} \bf{last\_index\_request}\\
+
+\end{tabbing}\item 
+uint32\_\-t \bf{total\_\-update\_\-attempts}
+\item 
+uint32\_\-t \bf{total\_\-update\_\-failures}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int32\_t \bf{seconds\_until\_update}\\
+\>int32\_t \bf{update\_window}\\
+\} \bf{next\_index\_request}\\
+
+\end{tabbing}\item 
+\bf{vqec\_\-updater\_\-resource\_\-info\_\-t} \bf{attrcfg}
+\item 
+\bf{vqec\_\-updater\_\-resource\_\-info\_\-t} \bf{chancfg}
+\end{CompactItemize}
+
+
+\subsection{Field Documentation}
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!attrcfg@{attrcfg}}
+\index{attrcfg@{attrcfg}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-updater\_\-resource\_\-info\_\-t} \bf{vqec\_\-updater\_\-mgr\_\-::attrcfg}}\label{structvqec__updater__mgr___68fe5bc47839622a6b30fa459e28fd43}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!chancfg@{chancfg}}
+\index{chancfg@{chancfg}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-updater\_\-resource\_\-info\_\-t} \bf{vqec\_\-updater\_\-mgr\_\-::chancfg}}\label{structvqec__updater__mgr___26dde7b01801f9eb12f0cd8f5e4ba6a0}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!cname@{cname}}
+\index{cname@{cname}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-updater\_\-mgr\_\-::cname}[VQEC\_\-MAX\_\-CNAME\_\-LEN]}\label{structvqec__updater__mgr___c94829b978aa64bad5c1baffdbd6cc9f}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!domain_name@{domain\_\-name}}
+\index{domain_name@{domain\_\-name}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-updater\_\-mgr\_\-::domain\_\-name}[MAX\_\-DOMAIN\_\-NAME\_\-LENGTH]}\label{structvqec__updater__mgr___da663a1ce8de0210e421666b000af14d}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!last_index_request@{last\_\-index\_\-request}}
+\index{last_index_request@{last\_\-index\_\-request}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   \bf{vqec\_\-updater\_\-mgr\_\-::last\_\-index\_\-request}}\label{structvqec__updater__mgr___d588bb58e4851248cabe4196834cdff1}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!last_update_time@{last\_\-update\_\-time}}
+\index{last_update_time@{last\_\-update\_\-time}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct timeval \bf{vqec\_\-updater\_\-mgr\_\-::last\_\-update\_\-time}}\label{structvqec__updater__mgr___ea0111a99cc745408998660c2e2665b5}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!next_index_request@{next\_\-index\_\-request}}
+\index{next_index_request@{next\_\-index\_\-request}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   \bf{vqec\_\-updater\_\-mgr\_\-::next\_\-index\_\-request}}\label{structvqec__updater__mgr___89ae431bf6fec097c473ca75c47890fd}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!result@{result}}
+\index{result@{result}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-updater\_\-result\_\-err\_\-t} \bf{vqec\_\-updater\_\-mgr\_\-::result}}\label{structvqec__updater__mgr___f5f91df71fd94faedf7e95d91f9cad76}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!seconds_until_update@{seconds\_\-until\_\-update}}
+\index{seconds_until_update@{seconds\_\-until\_\-update}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t \bf{vqec\_\-updater\_\-mgr\_\-::seconds\_\-until\_\-update}}\label{structvqec__updater__mgr___a9016a4714e1fb2c6e84407f6f817caa}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!server_version@{server\_\-version}}
+\index{server_version@{server\_\-version}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-updater\_\-mgr\_\-::server\_\-version}[VQEC\_\-UPDATER\_\-SERVER\_\-VERSION\_\-LEN]}\label{structvqec__updater__mgr___2665249b6c0de065a84e2c8140626502}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!status@{status}}
+\index{status@{status}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-updater\_\-status\_\-t} \bf{vqec\_\-updater\_\-mgr\_\-::status}}\label{structvqec__updater__mgr___299b152b2aaaca60cef43917957cb290}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!total_update_attempts@{total\_\-update\_\-attempts}}
+\index{total_update_attempts@{total\_\-update\_\-attempts}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-updater\_\-mgr\_\-::total\_\-update\_\-attempts}}\label{structvqec__updater__mgr___60121db0dc5fa4f28354af7709fcf6f3}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!total_update_failures@{total\_\-update\_\-failures}}
+\index{total_update_failures@{total\_\-update\_\-failures}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-updater\_\-mgr\_\-::total\_\-update\_\-failures}}\label{structvqec__updater__mgr___61f6a8a16f8b035018d426611f3928f4}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!update_window@{update\_\-window}}
+\index{update_window@{update\_\-window}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t \bf{vqec\_\-updater\_\-mgr\_\-::update\_\-window}}\label{structvqec__updater__mgr___cc81567cdd77c0561ba6b755bb2b321d}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!vcds_addr@{vcds\_\-addr}}
+\index{vcds_addr@{vcds\_\-addr}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-updater\_\-mgr\_\-::vcds\_\-addr}[MAX\_\-DOMAIN\_\-NAME\_\-LENGTH]}\label{structvqec__updater__mgr___e3f9b51c92a01b8811a0b39eee8858b9}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!vcds_addr@{vcds\_\-addr}}
+\index{vcds_addr@{vcds\_\-addr}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}in\_\-addr\_\-t \bf{vqec\_\-updater\_\-mgr\_\-::vcds\_\-addr}}\label{structvqec__updater__mgr___3ddfc4842b6722e6f47d1a8fb30ea20d}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!vcds_port@{vcds\_\-port}}
+\index{vcds_port@{vcds\_\-port}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}in\_\-port\_\-t \bf{vqec\_\-updater\_\-mgr\_\-::vcds\_\-port}}\label{structvqec__updater__mgr___74824cbcff86e8b55823184fdeca1019}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!vcds_servers_attempted@{vcds\_\-servers\_\-attempted}}
+\index{vcds_servers_attempted@{vcds\_\-servers\_\-attempted}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int16\_\-t \bf{vqec\_\-updater\_\-mgr\_\-::vcds\_\-servers\_\-attempted}}\label{structvqec__updater__mgr___b5c32ea7f5c465d35574f47d15f0900f}
+
+
+\index{vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}!vcds_servers_eligible@{vcds\_\-servers\_\-eligible}}
+\index{vcds_servers_eligible@{vcds\_\-servers\_\-eligible}!vqec_updater_mgr_@{vqec\_\-updater\_\-mgr\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int16\_\-t \bf{vqec\_\-updater\_\-mgr\_\-::vcds\_\-servers\_\-eligible}}\label{structvqec__updater__mgr___314bb5441f487b1dc6f1ad062eb937da}
+
+
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-updater\_\-private.h}\end{CompactItemize}

@@ -1,0 +1,48 @@
+Visual Quality Experience Client (VQE-C) README
+
+Copyright (c) 2006-2009 by Cisco Systems, Inc.
+All Rights Reserved.
+
+
+I.  Visual Quality Experience Client (VQE-C)
+
+    A.  Introduction
+
+        VQE-C is the client-side library of the VQE system.
+
+    B.  Licensing
+
+        VQE-C source code is covered by the Cisco BSD license.  The text for
+        this license is contained in LICENSE.txt.
+
+        In addition VQE-C has dependencies on several other 3rd party 
+        libraries with separate licenses that are bundled with the VQE-C
+        distribution.
+
+        See the <root>/3rd-party-src directory for bundled components.
+        Below is a summary of the 3rd-party-src components on which VQE-C is
+        dependent:
+
+        libevent - an event notification library
+              license type: BSD
+              location: <root>/3rd-party-src/libevent/libevent-1.1a/.c files
+              repository: http://monkey.org/~provos/libevent
+        
+    C.  Documentation
+
+        The VQE-C SDK includes the source and documentation for VQE-C
+        and its dependent components and libraries. A sample application
+        and the following documentation are also included:
+            VQE-C System Integration Guide - guide to how to build, integrate
+                            and test the VQE-C on the target platform.
+            VQE-C System Configuration Reference - an introduction and
+                            resource for configuring VQE-C.
+            VQE-C Command Reference - an introduction to the VQE-C
+                            CLI and reference for its capabilities.
+            Source documentation - created using Doxygen in both HTML
+                            and LaTeX formats.
+
+        All VQE-C documentation is included in the directory <root>/eva/docs.
+
+  
+

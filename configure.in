@@ -1,0 +1,277 @@
+###############################################################################
+# Configure.in
+#
+# Copyright (c) 2006-2009 by Cisco Systems, Inc.
+# All rights reserved. 
+###############################################################################
+
+dnl configure.in for vqe
+
+AC_INIT(vqe, 1.0)
+
+AC_CONFIG_FILES(environ.mk)
+
+dnl Check for optional args
+AC_ARG_ENABLE(openssl,
+  [  --disable-openssl       compile without openssl support (enabled by default)],
+  [sslon=$enableval], [sslon=yes])
+AC_ARG_ENABLE(elog,
+  [  --enable-elog           compile with elog support (disabled by default)],
+  [elogon=$enableval], [elogon=no])
+AC_ARG_ENABLE(syslog,
+  [  --disable-syslog        compile without syslog support (enabled by default)],
+  [syslogon=$enableval], [syslogon=yes])
+AC_ARG_ENABLE(fcc,
+  [  --disable-fcc           compile without fcc support (enabled by default)],
+  [fccon=$enableval], [fccon=yes])
+AC_ARG_ENABLE(hag,
+  [  --disable-hag           compile with hag commands (enabled by default)],
+  [hagon=$enableval], [hagon=yes])
+AC_ARG_ENABLE(stun,
+  [  --disable-stun          compile without stun support (enabled by default)],
+  [stunon=$enableval], [stunon=yes])
+AC_ARG_ENABLE(iplm,
+  [  --enable-iplm           compile with iplm_support (disabled by default)],
+  [iplmon=$enableval], [iplmon=no])
+AC_ARG_ENABLE(smallvqecstack,
+  [  --enable-smallvqecstack compile with a small vqec stack size (disabled by default)],
+  [smallvqecstackon=$enableval], [smallvqecstackon=no])
+AC_ARG_ENABLE(upnp,
+  [  --enable-upnp           compile with upnp support (disabled by default)],
+  [upnpon=$enableval], [upnpon=no])
+AC_ARG_ENABLE(cisco-rtsp-library,
+  [  --enable-cisco-rtsp-library
+                          compile with Cisco RTSP library for VoD support (disabled by default)],
+  [rtsplibon=$enableval], [rtsplibon=no])
+AC_ARG_ENABLE(sched-jitter-histogram,
+  [  --enable-sched-jitter-histogram
+                          compile with scheduling jitter histogram enabled (disabled by default)],
+  [histon=$enableval], [histon=no])
+AC_ARG_VAR(VQEC_TMP_FILE_PATH,
+  	upcall socket temporary files path (default is /tmp))
+AC_ARG_VAR(VQEC_KERNEL_DEVNODE_PATH,
+	kernel module vqec0 device path (default is /dev))
+
+dnl Checks for programs.
+AC_PROG_CC
+AC_PROG_LN_S
+AC_PROG_CXX
+AC_CHECK_TOOL([AR], [ar], [:])
+AC_CHECK_TOOL([LD], [ld], [:])
+AC_CHECK_TOOL([STRIP], [strip], [:])
+AC_PATH_PROG([ARPATH], [ar], [:])
+AC_PATH_PROG([ARPATH], [ld], [:])
+AC_PATH_PROG([ARPATH], [strip], [:])
+
+dnl Set target-type, KERNELSOURCE and CROSS_COMPILE
+dnl
+dnl KERNELSOURCE is only set for the i?86 case, since the assumption
+dnl is that the user is compiling for the native machine whose kernel
+dnl version can be detected
+dnl
+dnl CROSS_COMPILE is set for non-native builds (we assume the build
+dnl machine is an i?86) based on the $CC prefix
+machine=`($CC -dumpmachine)`
+case $machine in
+ i?86-*-*) 	AC_SUBST(OBJECT_X86, 1)
+		AC_SUBST(DOBJ_TARGET, "-DOBJECT_X86=1")
+		AC_SUBST(ARCH, x86)
+		if test -e "/lib/modules/`uname -r`/source"; then
+		   AC_SUBST(KERNELSOURCE, "/lib/modules/`uname -r`/source")
+		fi;;
+ mipsel-*-*)	AC_SUBST(OBJECT_4K, 1)
+		AC_SUBST(DOBJ_TARGET, "-DOBJECT_4K=1")
+		AC_SUBST(ARCH, mipsel-linux)
+		AC_SUBST(CROSS_COMPILE, `echo $CC | sed 's/gcc$//'`);;
+ mips-*)	AC_SUBST(OBJECT_4K, 1)
+		AC_SUBST(DOBJ_TARGET, "-DOBJECT_4K=1")
+		AC_SUBST(ARCH, mips-linux)
+		AC_SUBST(CROSS_COMPILE, `echo $CC | sed 's/gcc$//'`);;
+ sh4-*)		AC_SUBST(OBJECT_SH4, 1)
+		AC_SUBST(DOBJ_TARGET, "-DOBJECT_SH4=1")
+		AC_SUBST(ARCH, sh4-linux)
+		AC_SUBST(CROSS_COMPILE, `echo $CC | sed 's/gcc$//'`);;
+ *) 		AC_MSG_ERROR("Unsupported target");;
+esac
+
+dnl OpenSSL check
+AC_CHECK_HEADERS(openssl/evp.h)
+
+if test "x$ac_cv_header_openssl_evp_h" = "xyes"; then
+	AC_CHECK_LIB(ssl, EVP_sha1)
+fi
+
+if test "$sslon" = "yes"; then
+	if test "x$ac_cv_lib_ssl_EVP_sha1" = "xyes"; then
+		AC_DEFINE(HAVE_OPENSSL, 1,
+			[Define if your system supports the openssl library])
+		AC_MSG_RESULT(openSSL support enabled)
+		AC_SUBST(HAVE_OPENSSL, 1)
+		AC_SUBST(DHAVE_OPENSSL, "-DHAVE_OPENSSL=1")
+	else
+		AC_MSG_ERROR(openSSL not found!)
+	fi
+else
+	AC_MSG_RESULT(openSSL support disabled)		
+fi
+
+
+dnl Libc-lock check for Syslog client
+AC_CHECK_HEADERS(bits/libc-lock.h) 
+
+if test "$syslogon" = "yes"; then
+	if test "x$ac_cv_header_bits_libc_lock_h" = "xyes"; then
+		AC_DEFINE(HAVE_SYSLOG, 1,
+			[Define if your system will support syslog])
+		AC_MSG_RESULT(Syslog enabled)
+		AC_SUBST(HAVE_SYSLOG, 1)
+		AC_SUBST(DHAVE_SYSLOG, "-DHAVE_SYSLOG=1")
+	else
+		AC_MSG_ERROR(Syslog cannot be supported!)
+	fi
+else
+	AC_MSG_RESULT(Syslog support disabled)
+fi
+
+if test "$fccon" = "yes"; then
+   	AC_DEFINE(HAVE_FCC, 1,
+		[Define if your system will support fcc])
+	AC_MSG_RESULT(Fcc enabled)
+	AC_SUBST(HAVE_FCC, 1)
+	AC_SUBST(DHAVE_FCC, "-DHAVE_FCC=1")
+else
+	AC_MSG_RESULT(Fcc support disabled)
+fi
+
+if test "$hagon" = "yes"; then
+   	AC_DEFINE(HAVE_HAG_MODE, 1,
+		[Define if your system will support hag-mode commands])
+	AC_MSG_RESULT(Hag commands enabled)
+	AC_SUBST(HAVE_HAG_MODE, 1)
+	AC_SUBST(DHAVE_HAG_MODE, "-DHAVE_HAG_MODE=1")
+else
+	AC_MSG_RESULT(Hag commands disabled)
+fi
+
+if test "$iplmon" = "yes"; then
+   	AC_DEFINE(HAVE_IPLM, 1,
+		[Define if your system will support iplm])
+	AC_MSG_RESULT(Iplm enabled)
+	AC_SUBST(HAVE_IPLM, 1)
+	AC_SUBST(DHAVE_IPLM, "-DHAVE_IPLM=1")
+else
+	AC_MSG_RESULT(Iplm disabled)
+fi
+
+
+dnl Elog support
+AC_CHECK_LIB(rt, aio_fsync)
+
+if test "$elogon" = "yes"; then
+	if test "x$ac_cv_lib_rt_aio_fsync" = "xyes"; then
+		AC_DEFINE(HAVE_ELOG, 1,
+			[Define if your system will support elog])
+		AC_MSG_RESULT(Elog enabled)
+		AC_SUBST(HAVE_ELOG, 1)
+		AC_SUBST(DHAVE_ELOG, "-DHAVE_ELOG=1")
+	else
+		AC_MSG_ERROR(Librt cannot be supported!)
+	fi
+else
+	AC_MSG_RESULT(Elog support disabled)
+fi
+
+dnl STUN support
+if test "$stunon" = "yes"; then
+   	AC_DEFINE(HAVE_STUN, 1,
+		[Define if your system will support STUN])
+	AC_MSG_RESULT(STUN enabled)
+	AC_SUBST(HAVE_STUN, 1)
+	AC_SUBST(DHAVE_STUN, "-DHAVE_STUN=1")
+else
+	AC_MSG_RESULT(STUN support disabled)
+fi
+
+dnl VQEC stack size
+if test "$smallvqecstackon" = "yes"; then
+	AC_DEFINE(USE_SMALL_VQEC_STACK, 1,
+		[Define if your system needs a small client image])
+	AC_MSG_RESULT(USE_SMALL_VQEC_STACK enabled)
+	AC_SUBST(USE_SMALL_VQEC_STACK, 1)
+	AC_SUBST(DUSE_SMALL_VQEC_STACK, "-DUSE_SMALL_VQEC_STACK=1")
+else
+	AC_MSG_RESULT(VQEC normal stack size enabled)
+fi
+
+dnl UPNP support
+if test "$upnpon" = "yes"; then
+	AC_DEFINE(HAVE_UPNP, 1,
+		[Define if your system will support UPnP])
+	AC_MSG_RESULT(HAVE_UPNP enabled)
+	AC_SUBST(HAVE_UPNP, 1)
+	AC_SUBST(DHAVE_UPNP, "-DHAVE_UPNP=1")
+else
+	AC_MSG_RESULT(UPNP support disabled)
+fi
+
+dnl Cisco RTSP library support
+if test "$rtsplibon" = "yes"; then
+	AC_DEFINE(HAVE_CISCO_RTSP_LIBRARY, 1,
+		[Define if your system will support the Cisco RTSP library])
+	AC_MSG_RESULT(HAVE_CISCO_RTSP_LIBRARY enabled)
+	AC_SUBST(HAVE_CISCO_RTSP_LIBRARY, 1)
+	AC_SUBST(DHAVE_CISCO_RTSP_LIBRARY, "-DHAVE_CISCO_RTSP_LIBRARY=1")
+else
+	AC_MSG_RESULT(Cisco RTSP library support disabled)
+fi
+
+dnl Scheduling jitter histogram support
+if test "$histon" = "yes"; then
+	AC_DEFINE(HAVE_SCHED_JITTER_HISTOGRAM, 1,
+		[Define to enable the scheduling jitter histogram])
+	AC_MSG_RESULT(HAVE_SCHED_JITTER_HISTOGRAM enabled)
+	AC_SUBST(HAVE_SCHED_JITTER_HISTOGRAM, 1)
+	AC_SUBST(DHAVE_SCHED_JITTER_HISTOGRAM, "-DHAVE_SCHED_JITTER_HISTOGRAM=1")
+else
+	AC_MSG_RESULT(SCHED_JITTER_HISTOGRAM support disabled)
+fi
+
+dnl Check for strlcpy and strlcat
+AC_CHECK_FUNC(strlcpy)
+AC_CHECK_FUNC(strlcat)
+
+if test "x$ac_cv_func_strlcpy" = "xyes" &&
+   test "x$ac_cv_func_strlcat" = "xyes"; then
+	AC_DEFINE(HAVE_STRLFUNCS, 1,
+		[Define if your system has strlcpy() and strlcat()])
+	AC_SUBST(HAVE_STRLFUNCS, 1)
+	AC_SUBST(DHAVE_STRLFUNCS, "-DHAVE_STRLFUNCS=1")
+fi
+
+dnl Output override to the socket temporary file path 
+tmpfilepath=`echo "$VQEC_TMP_FILE_PATH" | sed 's/\/\s*$//' `
+if test "x$VQEC_TMP_FILE_PATH" != "x"; then
+	AC_SUBST(DVQEC_TMP_FILE_PATH, 
+		-DVQEC_TMP_FILE_PATH="\"\\\"$tmpfilepath""/\\\"\"")
+fi
+
+dnl Output override to the device node file path 
+tmpdevpath=`echo "$VQEC_KERNEL_DEVNODE_PATH" | sed 's/\/\s*$//' `
+if test "x$VQEC_KERNEL_DEVNODE_PATH" != "x"; then
+	AC_SUBST(DVQEC_KERNEL_DEVNODE_PATH, 
+		-DVQEC_KERNEL_DEVNODE_PATH="\"\\\"$tmpdevpath""/\\\"\"")
+fi
+
+AC_OUTPUT()
+
+# Configure 3rd-party packages here.
+AC_CONFIG_COMMANDS_POST ([
+ if [ -d 3rd-party-src ];
+ then 
+   echo "Configuring 3rd-party packages...";
+   make -wC vqec_obj vqec_config_packages;
+ else 
+   echo "Cannot find subdir 3rd-party-src; not configuring 3rd-party libs.";
+ fi;
+])
+

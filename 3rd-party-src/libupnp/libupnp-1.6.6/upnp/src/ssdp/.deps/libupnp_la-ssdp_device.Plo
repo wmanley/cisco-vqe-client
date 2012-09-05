@@ -1,0 +1,6 @@
+src/ssdp/libupnp_la-ssdp_device.lo src/ssdp/libupnp_la-ssdp_device.o:  \
+ src/ssdp/ssdp_device.c src/inc/config.h ../autoconfig.h
+
+src/inc/config.h:
+
+../autoconfig.h:

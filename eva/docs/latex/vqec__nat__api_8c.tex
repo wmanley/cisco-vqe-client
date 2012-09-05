@@ -1,0 +1,354 @@
+\section{vqec\_\-nat\_\-api.c File Reference}
+\label{vqec__nat__api_8c}\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+{\tt \#include \char`\"{}vqec\_\-nat\_\-interface.h\char`\"{}}\par
+{\tt \#include $<$stdarg.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-error.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-debug.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-event.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-private.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-lock\_\-defs.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-nat\_\-}
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef \bf{vqec\_\-nat\_\-} \bf{vqec\_\-nat\_\-t}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \bf{vqec\_\-nat\_\-log\_\-error} (const char $\ast$fmt,...)
+\item 
+void \bf{vqec\_\-nat\_\-log\_\-debug} (const char $\ast$fmt,...)
+\item 
+void \bf{vqec\_\-nat\_\-print} (const char $\ast$fmt,...)
+\item 
+boolean \bf{vqec\_\-nat\_\-inject\_\-tx} (vqec\_\-nat\_\-bindid\_\-t id, vqec\_\-nat\_\-bind\_\-desc\_\-t $\ast$desc, char $\ast$buf, uint16\_\-t len)
+\item 
+void \bf{vqec\_\-nat\_\-bind\_\-update} (vqec\_\-nat\_\-bindid\_\-t id, vqec\_\-nat\_\-bind\_\-data\_\-t $\ast$data)
+\item 
+vqec\_\-event\_\- $\ast$ \bf{vqec\_\-nat\_\-timer\_\-create} (boolean periodic, vqec\_\-nat\_\-proto\_\-evt\_\-handler handler, void $\ast$arg)
+\item 
+void \bf{vqec\_\-nat\_\-timer\_\-destroy} (struct vqec\_\-event\_\- $\ast$p\_\-timer)
+\item 
+boolean \bf{vqec\_\-nat\_\-timer\_\-start} (struct vqec\_\-event\_\- $\ast$p\_\-timer, uint32\_\-t timeout\_\-msec)
+\item 
+boolean \bf{vqec\_\-nat\_\-timer\_\-stop} (struct vqec\_\-event\_\- $\ast$p\_\-timer)
+\item 
+void \bf{vqec\_\-nat\_\-acquire\_\-lock} (void)
+\item 
+void \bf{vqec\_\-nat\_\-release\_\-lock} (void)
+\item 
+const char $\ast$ \bf{vqec\_\-nat\_\-state\_\-to\_\-str} (vqec\_\-nat\_\-bind\_\-state\_\-t state)
+\item 
+void \bf{vqec\_\-nat\_\-module\_\-deinit} (void)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-nat\_\-module\_\-init} (\bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-t} mode, vqec\_\-nat\_\-proto\_\-t proto, vqec\_\-nat\_\-init\_\-params\_\-t $\ast$params)
+\item 
+vqec\_\-nat\_\-bindid\_\-t \bf{vqec\_\-nat\_\-open\_\-binding} (vqec\_\-nat\_\-bind\_\-desc\_\-t $\ast$desc)
+\item 
+void \bf{vqec\_\-nat\_\-close\_\-binding} (vqec\_\-nat\_\-bindid\_\-t id)
+\item 
+boolean \bf{vqec\_\-nat\_\-query\_\-binding} (vqec\_\-nat\_\-bindid\_\-t id, vqec\_\-nat\_\-bind\_\-data\_\-t $\ast$data, boolean refresh)
+\item 
+void \bf{vqec\_\-nat\_\-fprint\_\-binding} (vqec\_\-nat\_\-bindid\_\-t id)
+\item 
+void \bf{vqec\_\-nat\_\-fprint\_\-all\_\-bindings} (void)
+\item 
+void \bf{vqec\_\-nat\_\-fprint\_\-all\_\-bindings\_\-safe} (void)
+\item 
+void \bf{vqec\_\-nat\_\-eject\_\-to\_\-binding} (vqec\_\-nat\_\-bindid\_\-t id, char $\ast$buf, uint16\_\-t len, in\_\-addr\_\-t source\_\-ip, in\_\-port\_\-t source\_\-port)
+\item 
+void \bf{vqec\_\-nat\_\-enable\_\-debug} (boolean verbose)
+\item 
+void \bf{vqec\_\-nat\_\-disable\_\-debug} (void)
+\item 
+boolean \bf{vqec\_\-nat\_\-is\_\-behind\_\-nat} (void)
+\item 
+boolean \bf{vqec\_\-nat\_\-is\_\-natmode\_\-en} (void)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+static \bf{vqec\_\-nat\_\-t} \bf{m\_\-natmodule}
+\end{CompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_t@{vqec\_\-nat\_\-t}}
+\index{vqec_nat_t@{vqec\_\-nat\_\-t}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-nat\_\-}  \bf{vqec\_\-nat\_\-t}}\label{vqec__nat__api_8c_97622474f7a948edb7da37161173b78e}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_acquire_lock@{vqec\_\-nat\_\-acquire\_\-lock}}
+\index{vqec_nat_acquire_lock@{vqec\_\-nat\_\-acquire\_\-lock}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-acquire\_\-lock (void)}\label{vqec__nat__api_8c_5422862de25da395b7a61b47f0502fce}
+
+
+--------------------------------------------------------------------------- Acquire vqec global lock. --------------------------------------------------------------------------- \index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_bind_update@{vqec\_\-nat\_\-bind\_\-update}}
+\index{vqec_nat_bind_update@{vqec\_\-nat\_\-bind\_\-update}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-bind\_\-update (vqec\_\-nat\_\-bindid\_\-t {\em id}, vqec\_\-nat\_\-bind\_\-data\_\-t $\ast$ {\em data})}\label{vqec__nat__api_8c_dcac0556e012248edc0b846b395b1e8d}
+
+
+--------------------------------------------------------------------------- Callback by the protocol when a binding is updated.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Id of the binding updated. \item[\mbox{$\leftarrow$} {\em data}]Data associated with the binding. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_close_binding@{vqec\_\-nat\_\-close\_\-binding}}
+\index{vqec_nat_close_binding@{vqec\_\-nat\_\-close\_\-binding}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-close\_\-binding (vqec\_\-nat\_\-bindid\_\-t {\em id})}\label{vqec__nat__api_8c_cdca6fc3afa0147f86504eaaf531ca89}
+
+
+--------------------------------------------------------------------------- Close an open binding.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em vqec\_\-nat\_\-bindid\_\-t}]Identifier of the binding. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_disable_debug@{vqec\_\-nat\_\-disable\_\-debug}}
+\index{vqec_nat_disable_debug@{vqec\_\-nat\_\-disable\_\-debug}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-disable\_\-debug (void)}\label{vqec__nat__api_8c_64d18e023ac58deec48f819796f07917}
+
+
+--------------------------------------------------------------------------- Disable debugging on protocol. --------------------------------------------------------------------------- \index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_eject_to_binding@{vqec\_\-nat\_\-eject\_\-to\_\-binding}}
+\index{vqec_nat_eject_to_binding@{vqec\_\-nat\_\-eject\_\-to\_\-binding}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-eject\_\-to\_\-binding (vqec\_\-nat\_\-bindid\_\-t {\em id}, char $\ast$ {\em buf}, uint16\_\-t {\em len}, in\_\-addr\_\-t {\em source\_\-ip}, in\_\-port\_\-t {\em source\_\-port})}\label{vqec__nat__api_8c_a72964d0432ce95945839d0ce77d6bc7}
+
+
+--------------------------------------------------------------------------- Forward an eject packet to the protocol for a binding.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em vqec\_\-nat\_\-bindid\_\-t}]Identifier of the binding. \item[\mbox{$\rightarrow$} {\em buf}]Contents of the packet. \item[\mbox{$\rightarrow$} {\em len}]Length of the packet. \item[\mbox{$\leftarrow$} {\em source\_\-ip,:}]source ip of the packet (ip of the pak sender) \item[\mbox{$\leftarrow$} {\em source\_\-port,:}]source port of the packet --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_enable_debug@{vqec\_\-nat\_\-enable\_\-debug}}
+\index{vqec_nat_enable_debug@{vqec\_\-nat\_\-enable\_\-debug}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-enable\_\-debug (boolean {\em verbose})}\label{vqec__nat__api_8c_3ff22996ca5865f197472e49376ff6fc}
+
+
+--------------------------------------------------------------------------- Enable debugging on protocol.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em verbose}]Enable a more verbose mode. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_fprint_all_bindings@{vqec\_\-nat\_\-fprint\_\-all\_\-bindings}}
+\index{vqec_nat_fprint_all_bindings@{vqec\_\-nat\_\-fprint\_\-all\_\-bindings}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-fprint\_\-all\_\-bindings (void)}\label{vqec__nat__api_8c_2d793836b5a6eb9960fd6a319a9865ad}
+
+
+--------------------------------------------------------------------------- Print the status of all bindings. --------------------------------------------------------------------------- \index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_fprint_all_bindings_safe@{vqec\_\-nat\_\-fprint\_\-all\_\-bindings\_\-safe}}
+\index{vqec_nat_fprint_all_bindings_safe@{vqec\_\-nat\_\-fprint\_\-all\_\-bindings\_\-safe}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-fprint\_\-all\_\-bindings\_\-safe (void)}\label{vqec__nat__api_8c_cc358fb4fc880240511b24b1003e9d10}
+
+
+--------------------------------------------------------------------------- Print the status of all bindings, with acquisition of the global lock. --------------------------------------------------------------------------- \index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_fprint_binding@{vqec\_\-nat\_\-fprint\_\-binding}}
+\index{vqec_nat_fprint_binding@{vqec\_\-nat\_\-fprint\_\-binding}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-fprint\_\-binding (vqec\_\-nat\_\-bindid\_\-t {\em id})}\label{vqec__nat__api_8c_09109143f3deb6fef2d3023a748f06c4}
+
+
+--------------------------------------------------------------------------- Print the status of a binding.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em vqec\_\-nat\_\-bindid\_\-t}]Identifier of the binding. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_inject_tx@{vqec\_\-nat\_\-inject\_\-tx}}
+\index{vqec_nat_inject_tx@{vqec\_\-nat\_\-inject\_\-tx}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-nat\_\-inject\_\-tx (vqec\_\-nat\_\-bindid\_\-t {\em id}, vqec\_\-nat\_\-bind\_\-desc\_\-t $\ast$ {\em desc}, char $\ast$ {\em buf}, uint16\_\-t {\em len})}\label{vqec__nat__api_8c_3f50d5f51249a0c261a53d8fa07fb74e}
+
+
+--------------------------------------------------------------------------- Inject a NAT packet via the channel that owns the socket.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Id of the binding sending the NAT packet. \item[\mbox{$\leftarrow$} {\em desc}]Attributes of the binding. \item[\mbox{$\leftarrow$} {\em buf}]Pointer to the buffer. \item[\mbox{$\leftarrow$} {\em len}]Length of the buffer. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the successfully enqueued for transmit to the socket or to the dataplane. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_is_behind_nat@{vqec\_\-nat\_\-is\_\-behind\_\-nat}}
+\index{vqec_nat_is_behind_nat@{vqec\_\-nat\_\-is\_\-behind\_\-nat}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-nat\_\-is\_\-behind\_\-nat (void)}\label{vqec__nat__api_8c_fcb807b3a55de54bfa848411d6bb1c34}
+
+
+--------------------------------------------------------------------------- Is the device behind a NAT?
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em Returns}]false if it the protocol has determined that the device is not behind a NAT, true otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_is_natmode_en@{vqec\_\-nat\_\-is\_\-natmode\_\-en}}
+\index{vqec_nat_is_natmode_en@{vqec\_\-nat\_\-is\_\-natmode\_\-en}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-nat\_\-is\_\-natmode\_\-en (void)}\label{vqec__nat__api_8c_3633769cdfeadc830826ee6ff1da092d}
+
+
+--------------------------------------------------------------------------- Is the system in NAT mode?
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em Returns}]true if it the system is configured for NAT mode. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_log_debug@{vqec\_\-nat\_\-log\_\-debug}}
+\index{vqec_nat_log_debug@{vqec\_\-nat\_\-log\_\-debug}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-log\_\-debug (const char $\ast$ {\em fmt},  {\em ...})}\label{vqec__nat__api_8c_216ead5a9e5e1d509a76963c6963d1f6}
+
+
+--------------------------------------------------------------------------- Log a debug message through the client.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em str}]Format string; variable arguments. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_log_error@{vqec\_\-nat\_\-log\_\-error}}
+\index{vqec_nat_log_error@{vqec\_\-nat\_\-log\_\-error}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-log\_\-error (const char $\ast$ {\em fmt},  {\em ...})}\label{vqec__nat__api_8c_63f19664be82f295bbb41d506779c9c7}
+
+
+--------------------------------------------------------------------------- Log an error through the client.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em str}]Format string; variable arguments. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_module_deinit@{vqec\_\-nat\_\-module\_\-deinit}}
+\index{vqec_nat_module_deinit@{vqec\_\-nat\_\-module\_\-deinit}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-module\_\-deinit (void)}\label{vqec__nat__api_8c_a36b72241b333e6268eb9c0bc3761449}
+
+
+--------------------------------------------------------------------------- Deinitialize the module. --------------------------------------------------------------------------- \index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_module_init@{vqec\_\-nat\_\-module\_\-init}}
+\index{vqec_nat_module_init@{vqec\_\-nat\_\-module\_\-init}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-nat\_\-module\_\-init (\bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-t} {\em mode}, vqec\_\-nat\_\-proto\_\-t {\em proto}, vqec\_\-nat\_\-init\_\-params\_\-t $\ast$ {\em params})}\label{vqec__nat__api_8c_83633147de37d3301648f68a352304ea}
+
+
+--------------------------------------------------------------------------- Initialize the NAT module.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em mode}]Current NAT mode. If NAT mode is standard, the null NAT protocol will be used. \item[\mbox{$\leftarrow$} {\em params}]Protocol configuration parameters. \item[\mbox{$\rightarrow$} {\em Returns}]VQEC\_\-OK on success, error code on failure. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_open_binding@{vqec\_\-nat\_\-open\_\-binding}}
+\index{vqec_nat_open_binding@{vqec\_\-nat\_\-open\_\-binding}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-nat\_\-bindid\_\-t vqec\_\-nat\_\-open\_\-binding (vqec\_\-nat\_\-bind\_\-desc\_\-t $\ast$ {\em desc})}\label{vqec__nat__api_8c_c74d504ee5e09aabf2362fd74f414fb0}
+
+
+--------------------------------------------------------------------------- Request creation / opening of a binding for a 4-tuple: (inside IP addr, inside IP port, remote IP addr, remote port). A new binding is created and an identifier is returned for the binding.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em desc}]The attributes of the binding. \item[\mbox{$\rightarrow$} {\em vqec\_\-nat\_\-bindid\_\-t}]Identifier of the created binding. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_print@{vqec\_\-nat\_\-print}}
+\index{vqec_nat_print@{vqec\_\-nat\_\-print}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-print (const char $\ast$ {\em fmt},  {\em ...})}\label{vqec__nat__api_8c_242d3fb466cdea27b1a8f0d8195c785a}
+
+
+--------------------------------------------------------------------------- Print a console message via the client.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em str}]Format string; variable arguments. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_query_binding@{vqec\_\-nat\_\-query\_\-binding}}
+\index{vqec_nat_query_binding@{vqec\_\-nat\_\-query\_\-binding}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-nat\_\-query\_\-binding (vqec\_\-nat\_\-bindid\_\-t {\em id}, vqec\_\-nat\_\-bind\_\-data\_\-t $\ast$ {\em data}, boolean {\em refresh})}\label{vqec__nat__api_8c_11f5bd7a7ac577f32a1e90a2da0c78a2}
+
+
+--------------------------------------------------------------------------- Query an open binding.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em vqec\_\-nat\_\-bindid\_\-t}]Identifier of the binding. \item[\mbox{$\rightarrow$} {\em data}]All data associated with the binding / mapping. \item[\mbox{$\leftarrow$} {\em refresh}]Refresh the binding if it is incomplete. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the query succeeds. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_release_lock@{vqec\_\-nat\_\-release\_\-lock}}
+\index{vqec_nat_release_lock@{vqec\_\-nat\_\-release\_\-lock}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-release\_\-lock (void)}\label{vqec__nat__api_8c_71744177776635f97d65302664112ce0}
+
+
+--------------------------------------------------------------------------- Release vqec global lock. --------------------------------------------------------------------------- \index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_state_to_str@{vqec\_\-nat\_\-state\_\-to\_\-str}}
+\index{vqec_nat_state_to_str@{vqec\_\-nat\_\-state\_\-to\_\-str}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-nat\_\-state\_\-to\_\-str (vqec\_\-nat\_\-bind\_\-state\_\-t {\em state})}\label{vqec__nat__api_8c_987450462ffbfe9f9f474c9ca74f97de}
+
+
+--------------------------------------------------------------------------- A textual representation of the NAT binding state.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em state}]NAT binding state. \item[\mbox{$\rightarrow$} {\em char$\ast$}]Textual representation of the state. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_timer_create@{vqec\_\-nat\_\-timer\_\-create}}
+\index{vqec_nat_timer_create@{vqec\_\-nat\_\-timer\_\-create}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct vqec\_\-event\_\-$\ast$ vqec\_\-nat\_\-timer\_\-create (boolean {\em periodic}, vqec\_\-nat\_\-proto\_\-evt\_\-handler {\em handler}, void $\ast$ {\em arg})}\label{vqec__nat__api_8c_3b08c8c3f11dbc4b1cc88d0697ad2a1c}
+
+
+--------------------------------------------------------------------------- Create a libevent timer.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em periodic}]If the timer is periodic, set to true. \item[\mbox{$\leftarrow$} {\em handler}]Handler associated with the timer. \item[\mbox{$\leftarrow$} {\em arg}]Argument to be echoed in the callback. \item[\mbox{$\rightarrow$} {\em vqec\_\-event\_\-$\ast$}]A pointer to an opaque event structure. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_timer_destroy@{vqec\_\-nat\_\-timer\_\-destroy}}
+\index{vqec_nat_timer_destroy@{vqec\_\-nat\_\-timer\_\-destroy}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-nat\_\-timer\_\-destroy (struct vqec\_\-event\_\- $\ast$ {\em p\_\-timer})}\label{vqec__nat__api_8c_8be27c768eb9f6f160cc82ed0d184e85}
+
+
+--------------------------------------------------------------------------- Destroy a libevent timer. A destroy also stops a timer that is running.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-timer}]Pointer to the timer to be destroyed. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_timer_start@{vqec\_\-nat\_\-timer\_\-start}}
+\index{vqec_nat_timer_start@{vqec\_\-nat\_\-timer\_\-start}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-nat\_\-timer\_\-start (struct vqec\_\-event\_\- $\ast$ {\em p\_\-timer}, uint32\_\-t {\em timeout\_\-msec})}\label{vqec__nat__api_8c_abcf1d19e9d57cf33706988e1323ee36}
+
+
+--------------------------------------------------------------------------- Start a libevent timer.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-timer}]Pointer to the timer to be start. \item[\mbox{$\leftarrow$} {\em timeout\_\-msec}]Timeout in msecs. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the timer was successfully started. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!vqec_nat_timer_stop@{vqec\_\-nat\_\-timer\_\-stop}}
+\index{vqec_nat_timer_stop@{vqec\_\-nat\_\-timer\_\-stop}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-nat\_\-timer\_\-stop (struct vqec\_\-event\_\- $\ast$ {\em p\_\-timer})}\label{vqec__nat__api_8c_50d1558966f5b43d5a690426f1b99507}
+
+
+--------------------------------------------------------------------------- Stop a libevent timer.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-timer}]Pointer to the timer to be stopped. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the timer was successfully stopped. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+
+
+\subsection{Variable Documentation}
+\index{vqec_nat_api.c@{vqec\_\-nat\_\-api.c}!m_natmodule@{m\_\-natmodule}}
+\index{m_natmodule@{m\_\-natmodule}!vqec_nat_api.c@{vqec\_\-nat\_\-api.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-nat\_\-t} \bf{m\_\-natmodule}\hspace{0.3cm}{\tt  [static]}}\label{vqec__nat__api_8c_35eb7bb1ae64c55bac1ae98ae8d9644a}
+
+

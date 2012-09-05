@@ -1,0 +1,1330 @@
+\section{vqec\_\-cfg\_\-limits.h File Reference}
+\label{vqec__cfg__limits_8h}\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-SIG\_\-MODE\_\-STD}~\char`\"{}std\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-SIG\_\-MODE\_\-NAT}~\char`\"{}nat\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-VOD\_\-MODE\_\-IPTV}~\char`\"{}iptv\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-VOD\_\-MODE\_\-CABLE}~\char`\"{}cable\char`\"{}
+\item 
+\#define \bf{VQEC\_\-MAX\_\-NAME\_\-LEN}~(255)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-TUNERS}~(1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-TUNERS}~(1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-TUNERS}~(32)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CHANNEL\_\-LINEUP}~\char`\"{}\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NETWORK\_\-CFG\_\-PATHNAME}~\char`\"{}\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-OVERRIDE\_\-CFG\_\-PATHNAME}~\char`\"{}\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-INDEX\_\-CFG\_\-PATHNAME}~\char`\"{}\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VQEC\_\-ENABLE}~(\bf{TRUE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-JITTER\_\-BUFF\_\-SIZE}~(200)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-JITTER\_\-BUFF\_\-SIZE}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-JITTER\_\-BUFF\_\-SIZE}~(20000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}~(20)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}~(200)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REPAIR\_\-TRIGGER\_\-POINT}~(20)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-REPAIR\_\-TRIGGER\_\-POINT}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-REPAIR\_\-TRIGGER\_\-POINT}~(100)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-PAKPOOL\_\-SIZE}~(1000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-PAKPOOL\_\-SIZE}~(100)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-PAKPOOL\_\-SIZE}~(200000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-SO\_\-RCVBUF}~(128000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-SO\_\-RCVBUF}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-SO\_\-RCVBUF}~(1000000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STRIP\_\-RTP}~(\bf{TRUE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-INPUT\_\-IFNAME}~\char`\"{}\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-SIG\_\-MODE}~\char`\"{}nat\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL}~(30)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL}~(100000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL}~(30)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL}~(100000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-PAKSIZE}~(1508)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-PAKSIZE}~(1330)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-PAKSIZE}~(10000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-SERVER\_\-IP}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-STUN\_\-SERVER\_\-IP}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-STUN\_\-SERVER\_\-IP}~((1$<$$<$32) - 1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-SERVER\_\-PORT}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-STUN\_\-SERVER\_\-PORT}~(1000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-STUN\_\-SERVER\_\-PORT}~((1$<$$<$16) - 1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CDI\_\-ENABLE}~(\bf{FALSE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-DOMAIN\_\-NAME\_\-OVERRIDE}~\char`\"{}\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CLI\_\-TELNET\_\-PORT}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-R0\_\-CLI\_\-TELNET\_\-PORT}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-R0\_\-CLI\_\-TELNET\_\-PORT}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-R1\_\-CLI\_\-TELNET\_\-PORT}~(8000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-R1\_\-CLI\_\-TELNET\_\-PORT}~((1$<$$<$16)- 1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-OUTPUT\_\-PAKQ\_\-LIMIT}~(200)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-OUTPUT\_\-PAKQ\_\-LIMIT}~(100)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-OUTPUT\_\-PAKQ\_\-LIMIT}~(20000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-UPDATE\_\-WINDOW}~(60)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-UPDATE\_\-WINDOW}~(1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-UPDATE\_\-WINDOW}~(100000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-UPDATE\_\-INTERVAL\_\-MAX}~(3600)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-R0\_\-UPDATE\_\-INTERVAL\_\-MAX}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-R0\_\-UPDATE\_\-INTERVAL\_\-MAX}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-R1\_\-UPDATE\_\-INTERVAL\_\-MAX}~(30)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-R1\_\-UPDATE\_\-INTERVAL\_\-MAX}~(604800)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-APP\_\-PAKS\_\-PER\_\-RCC}~(1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-APP\_\-PAKS\_\-PER\_\-RCC}~(1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-APP\_\-PAKS\_\-PER\_\-RCC}~(20)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-ENABLE}~(\bf{TRUE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-ENABLE}~(\bf{FALSE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE}~(5)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE}~(1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE}~(100)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST}~(10000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST}~(1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST}~(60000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-FEC\_\-ENABLE}~(\bf{TRUE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-ENABLE}~(\bf{TRUE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT}~(80)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT}~(100)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-START\_\-TIMEOUT}~(120)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-START\_\-TIMEOUT}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-START\_\-TIMEOUT}~(1000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NUM\_\-BYES}~(2)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-NUM\_\-BYES}~(2)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-NUM\_\-BYES}~(5)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-BYE\_\-DELAY}~(40)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-BYE\_\-DELAY}~(10)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-BYE\_\-DELAY}~(100)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REORDER\_\-DELAY\_\-ABS}~(20)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-REORDER\_\-DELAY\_\-ABS}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-REORDER\_\-DELAY\_\-ABS}~(200)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REORDER\_\-DELAY}~(20)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-REORDER\_\-DELAY}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-REORDER\_\-DELAY}~(100)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VCDS\_\-SERVER\_\-IP}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-VCDS\_\-SERVER\_\-IP}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-VCDS\_\-SERVER\_\-IP}~((1$<$$<$32) - 1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VCDS\_\-SERVER\_\-PORT}~(8554)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-VCDS\_\-SERVER\_\-PORT}~(1024)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-VCDS\_\-SERVER\_\-PORT}~((1$<$$<$16) - 1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CLI\_\-IFNAME}~\char`\"{}lo\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-TUNER\_\-LIST}~\char`\"{}\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RTCP\_\-DSCP\_\-VALUE}~(24)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-RTCP\_\-DSCP\_\-VALUE}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-RTCP\_\-DSCP\_\-VALUE}~(63)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-DELIVER\_\-PAKS\_\-TO\_\-USER}~(\bf{TRUE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-FASTFILL\_\-ENABLE}~(\bf{TRUE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD}~(1000000000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC}~(1000000000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD}~(1000000000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC}~(1000000000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE}~(1000000000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-FASTFILL}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-FASTFILL}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-FASTFILL}~(1000000000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-APP\_\-DELAY}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-APP\_\-DELAY}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-APP\_\-DELAY}~(60000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-SRC\_\-IP\_\-FILTER\_\-ENABLE}~(\bf{FALSE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-QOE\_\-ENABLE}~(\bf{TRUE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-EXTRA\_\-IGMP\_\-IP}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-MAX\_\-CONCURRENT}~(1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-MAX\_\-CONCURRENT}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-MAX\_\-CONCURRENT}~(32)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-INTEGRATED\_\-RTP\_\-FALLBACK}~(\bf{TRUE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-UDP\_\-PASSTHRU\_\-SUPPORT}~(\bf{FALSE})
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-CMD\_\-TIMEOUT}~(2000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-VOD\_\-CMD\_\-TIMEOUT}~(100)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-VOD\_\-CMD\_\-TIMEOUT}~(10000)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-MAX\_\-SESSIONS}~(1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-VOD\_\-MAX\_\-SESSIONS}~(1)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-VOD\_\-MAX\_\-SESSIONS}~(32)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-MODE}~\char`\"{}iptv\char`\"{}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-LOG\_\-LEVEL}~(4)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-LOG\_\-LEVEL}~(0)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-LOG\_\-LEVEL}~(7)
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-OPTIMIZATION}~(\bf{TRUE})
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-max\_\-tuners\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-jitter\_\-buff\_\-size\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-repair\_\-trigger\_\-point\_\-abs\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-repair\_\-trigger\_\-point\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-pakpool\_\-size\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-so\_\-rcvbuf\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-sig\_\-mode\_\-valid} (char $\ast$str)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-nat\_\-binding\_\-refresh\_\-interval\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-nat\_\-filter\_\-refresh\_\-interval\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-max\_\-paksize\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-stun\_\-server\_\-ip\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-stun\_\-server\_\-port\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-cli\_\-telnet\_\-port\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-output\_\-pakq\_\-limit\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-update\_\-window\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-update\_\-interval\_\-max\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-app\_\-paks\_\-per\_\-rcc\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-error\_\-repair\_\-policer\_\-rate\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-error\_\-repair\_\-policer\_\-burst\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-rcc\_\-pakpool\_\-max\_\-pct\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-rcc\_\-start\_\-timeout\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-num\_\-byes\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-bye\_\-delay\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-reorder\_\-delay\_\-abs\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-reorder\_\-delay\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-vcds\_\-server\_\-ip\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-vcds\_\-server\_\-port\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-rtcp\_\-dscp\_\-value\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-sd\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-sd\_\-rcc\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-hd\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-hd\_\-rcc\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-min\_\-hd\_\-stream\_\-bitrate\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-max\_\-fastfill\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-app\_\-delay\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-rcc\_\-max\_\-concurrent\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-vod\_\-cmd\_\-timeout\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-vod\_\-max\_\-sessions\_\-valid} (uint32\_\-t val)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-vod\_\-mode\_\-valid} (char $\ast$str)
+\item 
+static boolean \bf{is\_\-vqec\_\-cfg\_\-log\_\-level\_\-valid} (uint32\_\-t val)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_MAX_NAME_LEN@{VQEC\_\-MAX\_\-NAME\_\-LEN}}
+\index{VQEC_MAX_NAME_LEN@{VQEC\_\-MAX\_\-NAME\_\-LEN}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MAX\_\-NAME\_\-LEN~(255)}\label{vqec__cfg__limits_8h_1dd02f4db6f86e68bcca79d190e11be9}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_APP_DELAY@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-APP\_\-DELAY}}
+\index{VQEC_SYSCFG_DEFAULT_APP_DELAY@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-APP\_\-DELAY}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-APP\_\-DELAY~(0)}\label{vqec__cfg__limits_8h_d17c068f6a7dfb192d241d479fd4b2b2}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_APP_PAKS_PER_RCC@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-APP\_\-PAKS\_\-PER\_\-RCC}}
+\index{VQEC_SYSCFG_DEFAULT_APP_PAKS_PER_RCC@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-APP\_\-PAKS\_\-PER\_\-RCC}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-APP\_\-PAKS\_\-PER\_\-RCC~(1)}\label{vqec__cfg__limits_8h_25d209503e950ca47dd04fb738f51848}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_BYE_DELAY@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-BYE\_\-DELAY}}
+\index{VQEC_SYSCFG_DEFAULT_BYE_DELAY@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-BYE\_\-DELAY}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-BYE\_\-DELAY~(40)}\label{vqec__cfg__limits_8h_9d9527d67bd831bed4a7c838eb01c1e0}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_CDI_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CDI\_\-ENABLE}}
+\index{VQEC_SYSCFG_DEFAULT_CDI_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CDI\_\-ENABLE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-CDI\_\-ENABLE~(\bf{FALSE})}\label{vqec__cfg__limits_8h_a9aaf64765ef9002d8a945d14104d3da}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_CHANNEL_LINEUP@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CHANNEL\_\-LINEUP}}
+\index{VQEC_SYSCFG_DEFAULT_CHANNEL_LINEUP@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CHANNEL\_\-LINEUP}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-CHANNEL\_\-LINEUP~\char`\"{}\char`\"{}}\label{vqec__cfg__limits_8h_b8a14a68ee4678a7cc1edd6228bd2e6e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_CLI_IFNAME@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CLI\_\-IFNAME}}
+\index{VQEC_SYSCFG_DEFAULT_CLI_IFNAME@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CLI\_\-IFNAME}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-CLI\_\-IFNAME~\char`\"{}lo\char`\"{}}\label{vqec__cfg__limits_8h_3c60b6e5b5cd10cbda611a7f033bbcd8}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_CLI_TELNET_PORT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CLI\_\-TELNET\_\-PORT}}
+\index{VQEC_SYSCFG_DEFAULT_CLI_TELNET_PORT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-CLI\_\-TELNET\_\-PORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-CLI\_\-TELNET\_\-PORT~(0)}\label{vqec__cfg__limits_8h_a8597ac844d87ec9521c4f756d2e277b}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_DELIVER_PAKS_TO_USER@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-DELIVER\_\-PAKS\_\-TO\_\-USER}}
+\index{VQEC_SYSCFG_DEFAULT_DELIVER_PAKS_TO_USER@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-DELIVER\_\-PAKS\_\-TO\_\-USER}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-DELIVER\_\-PAKS\_\-TO\_\-USER~(\bf{TRUE})}\label{vqec__cfg__limits_8h_bdba4491e11b600c98d15e404ada1825}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_DOMAIN_NAME_OVERRIDE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-DOMAIN\_\-NAME\_\-OVERRIDE}}
+\index{VQEC_SYSCFG_DEFAULT_DOMAIN_NAME_OVERRIDE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-DOMAIN\_\-NAME\_\-OVERRIDE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-DOMAIN\_\-NAME\_\-OVERRIDE~\char`\"{}\char`\"{}}\label{vqec__cfg__limits_8h_bc8f27cda1924f23085694e362b2270c}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_ERROR_REPAIR_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-ENABLE}}
+\index{VQEC_SYSCFG_DEFAULT_ERROR_REPAIR_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-ENABLE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-ENABLE~(\bf{TRUE})}\label{vqec__cfg__limits_8h_3ea20b92f39dd3f9e630f9268633f187}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_ERROR_REPAIR_POLICER_BURST@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST}}
+\index{VQEC_SYSCFG_DEFAULT_ERROR_REPAIR_POLICER_BURST@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST~(10000)}\label{vqec__cfg__limits_8h_8703888e3ac30e5ca816e3273e2e5cdf}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_ERROR_REPAIR_POLICER_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-ENABLE}}
+\index{VQEC_SYSCFG_DEFAULT_ERROR_REPAIR_POLICER_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-ENABLE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-ENABLE~(\bf{FALSE})}\label{vqec__cfg__limits_8h_de5ef528f482b2501fa886fcdcd69e34}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_ERROR_REPAIR_POLICER_RATE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE}}
+\index{VQEC_SYSCFG_DEFAULT_ERROR_REPAIR_POLICER_RATE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE~(5)}\label{vqec__cfg__limits_8h_6c58e63781c478f5b84f29b1827abaed}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_FASTFILL_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-FASTFILL\_\-ENABLE}}
+\index{VQEC_SYSCFG_DEFAULT_FASTFILL_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-FASTFILL\_\-ENABLE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-FASTFILL\_\-ENABLE~(\bf{TRUE})}\label{vqec__cfg__limits_8h_92d7405f8d3cdf2747d62c35160428ef}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_FEC_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-FEC\_\-ENABLE}}
+\index{VQEC_SYSCFG_DEFAULT_FEC_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-FEC\_\-ENABLE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-FEC\_\-ENABLE~(\bf{TRUE})}\label{vqec__cfg__limits_8h_1b62c7c209f3a991a6571fbbbe3bde2a}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_INDEX_CFG_PATHNAME@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-INDEX\_\-CFG\_\-PATHNAME}}
+\index{VQEC_SYSCFG_DEFAULT_INDEX_CFG_PATHNAME@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-INDEX\_\-CFG\_\-PATHNAME}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-INDEX\_\-CFG\_\-PATHNAME~\char`\"{}\char`\"{}}\label{vqec__cfg__limits_8h_ca1dc24ad943bc537420b4018eb1fc41}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_INPUT_IFNAME@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-INPUT\_\-IFNAME}}
+\index{VQEC_SYSCFG_DEFAULT_INPUT_IFNAME@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-INPUT\_\-IFNAME}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-INPUT\_\-IFNAME~\char`\"{}\char`\"{}}\label{vqec__cfg__limits_8h_7a790d3b9e42fec88ca9ee73721ef53f}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_INTEGRATED_RTP_FALLBACK@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-INTEGRATED\_\-RTP\_\-FALLBACK}}
+\index{VQEC_SYSCFG_DEFAULT_INTEGRATED_RTP_FALLBACK@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-INTEGRATED\_\-RTP\_\-FALLBACK}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-INTEGRATED\_\-RTP\_\-FALLBACK~(\bf{TRUE})}\label{vqec__cfg__limits_8h_a85aeecb5eb9d94d289ef70773a37965}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_JITTER_BUFF_SIZE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-JITTER\_\-BUFF\_\-SIZE}}
+\index{VQEC_SYSCFG_DEFAULT_JITTER_BUFF_SIZE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-JITTER\_\-BUFF\_\-SIZE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-JITTER\_\-BUFF\_\-SIZE~(200)}\label{vqec__cfg__limits_8h_d9546c32f968a2ba3a4e41b6b68ce067}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_LOG_LEVEL@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-LOG\_\-LEVEL}}
+\index{VQEC_SYSCFG_DEFAULT_LOG_LEVEL@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-LOG\_\-LEVEL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-LOG\_\-LEVEL~(4)}\label{vqec__cfg__limits_8h_6b62766e983999a0d828b71b5d42719c}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_MAX_FASTFILL@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-FASTFILL}}
+\index{VQEC_SYSCFG_DEFAULT_MAX_FASTFILL@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-FASTFILL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-FASTFILL~(0)}\label{vqec__cfg__limits_8h_75c4020cfce1e3e48c64f2fe525c6ba7}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_MAX_PAKSIZE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-PAKSIZE}}
+\index{VQEC_SYSCFG_DEFAULT_MAX_PAKSIZE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-PAKSIZE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-PAKSIZE~(1508)}\label{vqec__cfg__limits_8h_becb217067a2828034ccdc49eced8882}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_MAX_RECEIVE_BANDWIDTH_HD@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD}}
+\index{VQEC_SYSCFG_DEFAULT_MAX_RECEIVE_BANDWIDTH_HD@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD~(0)}\label{vqec__cfg__limits_8h_803439fb01a412a74eb10b94e3e11b54}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_MAX_RECEIVE_BANDWIDTH_HD_RCC@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC}}
+\index{VQEC_SYSCFG_DEFAULT_MAX_RECEIVE_BANDWIDTH_HD_RCC@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC~(0)}\label{vqec__cfg__limits_8h_70977ccbacf19d105fc3072a7475a4ae}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_MAX_RECEIVE_BANDWIDTH_SD@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD}}
+\index{VQEC_SYSCFG_DEFAULT_MAX_RECEIVE_BANDWIDTH_SD@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD~(0)}\label{vqec__cfg__limits_8h_a354a9ef74b903d7def934915051550e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_MAX_RECEIVE_BANDWIDTH_SD_RCC@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC}}
+\index{VQEC_SYSCFG_DEFAULT_MAX_RECEIVE_BANDWIDTH_SD_RCC@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC~(0)}\label{vqec__cfg__limits_8h_480729c15206cefb7fab15a7f103b162}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_MAX_TUNERS@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-TUNERS}}
+\index{VQEC_SYSCFG_DEFAULT_MAX_TUNERS@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-TUNERS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-MAX\_\-TUNERS~(1)}\label{vqec__cfg__limits_8h_2cddba11e4841944f39e9340f6d1de00}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_MIN_HD_STREAM_BITRATE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE}}
+\index{VQEC_SYSCFG_DEFAULT_MIN_HD_STREAM_BITRATE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE~(0)}\label{vqec__cfg__limits_8h_2d54796677b679c1d9400c5fdd330af1}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_NAT_BINDING_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL}}
+\index{VQEC_SYSCFG_DEFAULT_NAT_BINDING_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL~(30)}\label{vqec__cfg__limits_8h_6318fbe14853cf020d988cc8ca7e5dfa}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_NAT_FILTER_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL}}
+\index{VQEC_SYSCFG_DEFAULT_NAT_FILTER_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL~(30)}\label{vqec__cfg__limits_8h_2cb55ac8d06685ca73b709adaf31df48}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_NETWORK_CFG_PATHNAME@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NETWORK\_\-CFG\_\-PATHNAME}}
+\index{VQEC_SYSCFG_DEFAULT_NETWORK_CFG_PATHNAME@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NETWORK\_\-CFG\_\-PATHNAME}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-NETWORK\_\-CFG\_\-PATHNAME~\char`\"{}\char`\"{}}\label{vqec__cfg__limits_8h_38d08f69dc1e44cc414bf7bdd60e73b6}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_NUM_BYES@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NUM\_\-BYES}}
+\index{VQEC_SYSCFG_DEFAULT_NUM_BYES@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-NUM\_\-BYES}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-NUM\_\-BYES~(2)}\label{vqec__cfg__limits_8h_a27b90c175c83e15391c4d4ea783dd56}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_OUTPUT_PAKQ_LIMIT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-OUTPUT\_\-PAKQ\_\-LIMIT}}
+\index{VQEC_SYSCFG_DEFAULT_OUTPUT_PAKQ_LIMIT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-OUTPUT\_\-PAKQ\_\-LIMIT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-OUTPUT\_\-PAKQ\_\-LIMIT~(200)}\label{vqec__cfg__limits_8h_641dca314981a9c5d672b7745248d036}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_OVERRIDE_CFG_PATHNAME@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-OVERRIDE\_\-CFG\_\-PATHNAME}}
+\index{VQEC_SYSCFG_DEFAULT_OVERRIDE_CFG_PATHNAME@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-OVERRIDE\_\-CFG\_\-PATHNAME}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-OVERRIDE\_\-CFG\_\-PATHNAME~\char`\"{}\char`\"{}}\label{vqec__cfg__limits_8h_c905e5eb8abdfedb4d3e209fdeef1bf7}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_PAKPOOL_SIZE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-PAKPOOL\_\-SIZE}}
+\index{VQEC_SYSCFG_DEFAULT_PAKPOOL_SIZE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-PAKPOOL\_\-SIZE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-PAKPOOL\_\-SIZE~(1000)}\label{vqec__cfg__limits_8h_78e56488b5fb5b40a367ae1271e15190}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_QOE_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-QOE\_\-ENABLE}}
+\index{VQEC_SYSCFG_DEFAULT_QOE_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-QOE\_\-ENABLE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-QOE\_\-ENABLE~(\bf{TRUE})}\label{vqec__cfg__limits_8h_f14187573bfa1a45e57ceb85a446eed5}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_RCC_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-ENABLE}}
+\index{VQEC_SYSCFG_DEFAULT_RCC_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-ENABLE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-ENABLE~(\bf{TRUE})}\label{vqec__cfg__limits_8h_0e150503145f00d223a9969e3d944d93}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_RCC_EXTRA_IGMP_IP@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-EXTRA\_\-IGMP\_\-IP}}
+\index{VQEC_SYSCFG_DEFAULT_RCC_EXTRA_IGMP_IP@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-EXTRA\_\-IGMP\_\-IP}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-EXTRA\_\-IGMP\_\-IP~(0)}\label{vqec__cfg__limits_8h_69922a784a9d8ceb72529797ea4c1378}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_RCC_MAX_CONCURRENT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-MAX\_\-CONCURRENT}}
+\index{VQEC_SYSCFG_DEFAULT_RCC_MAX_CONCURRENT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-MAX\_\-CONCURRENT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-MAX\_\-CONCURRENT~(1)}\label{vqec__cfg__limits_8h_7368242534fda6b1f2a6d18b1697dbac}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_RCC_PAKPOOL_MAX_PCT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT}}
+\index{VQEC_SYSCFG_DEFAULT_RCC_PAKPOOL_MAX_PCT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT~(80)}\label{vqec__cfg__limits_8h_c9691571c67bfc8fc358804f9f975eeb}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_RCC_START_TIMEOUT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-START\_\-TIMEOUT}}
+\index{VQEC_SYSCFG_DEFAULT_RCC_START_TIMEOUT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-START\_\-TIMEOUT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-RCC\_\-START\_\-TIMEOUT~(120)}\label{vqec__cfg__limits_8h_0968778bdfd25e5d0e62f8176f7b989f}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_REORDER_DELAY@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REORDER\_\-DELAY}}
+\index{VQEC_SYSCFG_DEFAULT_REORDER_DELAY@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REORDER\_\-DELAY}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-REORDER\_\-DELAY~(20)}\label{vqec__cfg__limits_8h_4bf10f6acf2b9811d70c6808f25e488b}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_REORDER_DELAY_ABS@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REORDER\_\-DELAY\_\-ABS}}
+\index{VQEC_SYSCFG_DEFAULT_REORDER_DELAY_ABS@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REORDER\_\-DELAY\_\-ABS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-REORDER\_\-DELAY\_\-ABS~(20)}\label{vqec__cfg__limits_8h_d134971f2f74271e5ac421e4a7c71fc6}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_REPAIR_TRIGGER_POINT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REPAIR\_\-TRIGGER\_\-POINT}}
+\index{VQEC_SYSCFG_DEFAULT_REPAIR_TRIGGER_POINT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REPAIR\_\-TRIGGER\_\-POINT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-REPAIR\_\-TRIGGER\_\-POINT~(20)}\label{vqec__cfg__limits_8h_04ffdaaa291fa5c0105d4b82c983d1cd}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_REPAIR_TRIGGER_POINT_ABS@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}}
+\index{VQEC_SYSCFG_DEFAULT_REPAIR_TRIGGER_POINT_ABS@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS~(20)}\label{vqec__cfg__limits_8h_377316d86ed0720d945c82d35eee994c}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_RTCP_DSCP_VALUE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RTCP\_\-DSCP\_\-VALUE}}
+\index{VQEC_SYSCFG_DEFAULT_RTCP_DSCP_VALUE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-RTCP\_\-DSCP\_\-VALUE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-RTCP\_\-DSCP\_\-VALUE~(24)}\label{vqec__cfg__limits_8h_4a67b26004d6da782e2feb6bfe8e8b05}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_SIG_MODE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-SIG\_\-MODE}}
+\index{VQEC_SYSCFG_DEFAULT_SIG_MODE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-SIG\_\-MODE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-SIG\_\-MODE~\char`\"{}nat\char`\"{}}\label{vqec__cfg__limits_8h_924bf3ff100353f3b7fbc85c93b0b010}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_SO_RCVBUF@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-SO\_\-RCVBUF}}
+\index{VQEC_SYSCFG_DEFAULT_SO_RCVBUF@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-SO\_\-RCVBUF}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-SO\_\-RCVBUF~(128000)}\label{vqec__cfg__limits_8h_a4928e436de39b20867ad92afbef5a17}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_SRC_IP_FILTER_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-SRC\_\-IP\_\-FILTER\_\-ENABLE}}
+\index{VQEC_SYSCFG_DEFAULT_SRC_IP_FILTER_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-SRC\_\-IP\_\-FILTER\_\-ENABLE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-SRC\_\-IP\_\-FILTER\_\-ENABLE~(\bf{FALSE})}\label{vqec__cfg__limits_8h_744531745f81db60086e326bbad90500}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_STRIP_RTP@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STRIP\_\-RTP}}
+\index{VQEC_SYSCFG_DEFAULT_STRIP_RTP@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STRIP\_\-RTP}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-STRIP\_\-RTP~(\bf{TRUE})}\label{vqec__cfg__limits_8h_127c748fee4a89c7168e599f05a72422}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_STUN_OPTIMIZATION@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-OPTIMIZATION}}
+\index{VQEC_SYSCFG_DEFAULT_STUN_OPTIMIZATION@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-OPTIMIZATION}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-OPTIMIZATION~(\bf{TRUE})}\label{vqec__cfg__limits_8h_de3cd32491df67d536944f81a52090ab}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_STUN_SERVER_IP@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-SERVER\_\-IP}}
+\index{VQEC_SYSCFG_DEFAULT_STUN_SERVER_IP@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-SERVER\_\-IP}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-SERVER\_\-IP~(0)}\label{vqec__cfg__limits_8h_19451d167ed5e1713bf982e8bf080129}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_STUN_SERVER_PORT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-SERVER\_\-PORT}}
+\index{VQEC_SYSCFG_DEFAULT_STUN_SERVER_PORT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-SERVER\_\-PORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-STUN\_\-SERVER\_\-PORT~(0)}\label{vqec__cfg__limits_8h_663d164a072a74a37550819380d5214b}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_TUNER_LIST@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-TUNER\_\-LIST}}
+\index{VQEC_SYSCFG_DEFAULT_TUNER_LIST@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-TUNER\_\-LIST}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-TUNER\_\-LIST~\char`\"{}\char`\"{}}\label{vqec__cfg__limits_8h_c696ad0b461d73f6cf2549200f6d0df8}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_UDP_PASSTHRU_SUPPORT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-UDP\_\-PASSTHRU\_\-SUPPORT}}
+\index{VQEC_SYSCFG_DEFAULT_UDP_PASSTHRU_SUPPORT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-UDP\_\-PASSTHRU\_\-SUPPORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-UDP\_\-PASSTHRU\_\-SUPPORT~(\bf{FALSE})}\label{vqec__cfg__limits_8h_dc53a7fa6d23c0bf6522dcab9ae878d6}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_UPDATE_INTERVAL_MAX@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-UPDATE\_\-INTERVAL\_\-MAX}}
+\index{VQEC_SYSCFG_DEFAULT_UPDATE_INTERVAL_MAX@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-UPDATE\_\-INTERVAL\_\-MAX}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-UPDATE\_\-INTERVAL\_\-MAX~(3600)}\label{vqec__cfg__limits_8h_d8e9ccf8968cb6c16275676e1874b979}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_UPDATE_WINDOW@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-UPDATE\_\-WINDOW}}
+\index{VQEC_SYSCFG_DEFAULT_UPDATE_WINDOW@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-UPDATE\_\-WINDOW}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-UPDATE\_\-WINDOW~(60)}\label{vqec__cfg__limits_8h_4ee5ab3bb98be05836d1434a7bc9c81b}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_VCDS_SERVER_IP@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VCDS\_\-SERVER\_\-IP}}
+\index{VQEC_SYSCFG_DEFAULT_VCDS_SERVER_IP@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VCDS\_\-SERVER\_\-IP}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-VCDS\_\-SERVER\_\-IP~(0)}\label{vqec__cfg__limits_8h_637ff28ba3f138f5988c7304c225351c}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_VCDS_SERVER_PORT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VCDS\_\-SERVER\_\-PORT}}
+\index{VQEC_SYSCFG_DEFAULT_VCDS_SERVER_PORT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VCDS\_\-SERVER\_\-PORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-VCDS\_\-SERVER\_\-PORT~(8554)}\label{vqec__cfg__limits_8h_5807a285077f06887c2953e9754ff461}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_VOD_CMD_TIMEOUT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-CMD\_\-TIMEOUT}}
+\index{VQEC_SYSCFG_DEFAULT_VOD_CMD_TIMEOUT@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-CMD\_\-TIMEOUT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-CMD\_\-TIMEOUT~(2000)}\label{vqec__cfg__limits_8h_da045552cb76e83b5bc19ff92db0b0b5}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_VOD_MAX_SESSIONS@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-MAX\_\-SESSIONS}}
+\index{VQEC_SYSCFG_DEFAULT_VOD_MAX_SESSIONS@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-MAX\_\-SESSIONS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-MAX\_\-SESSIONS~(1)}\label{vqec__cfg__limits_8h_9de754718dbff79b5b1a07f017f7101a}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_VOD_MODE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-MODE}}
+\index{VQEC_SYSCFG_DEFAULT_VOD_MODE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-MODE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-VOD\_\-MODE~\char`\"{}iptv\char`\"{}}\label{vqec__cfg__limits_8h_e7e599ddd1d53b6d1314ed812ce34722}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_DEFAULT_VQEC_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VQEC\_\-ENABLE}}
+\index{VQEC_SYSCFG_DEFAULT_VQEC_ENABLE@{VQEC\_\-SYSCFG\_\-DEFAULT\_\-VQEC\_\-ENABLE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-DEFAULT\_\-VQEC\_\-ENABLE~(\bf{TRUE})}\label{vqec__cfg__limits_8h_576452a99aafa5ec9aaa255e806b77ab}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_APP_DELAY@{VQEC\_\-SYSCFG\_\-MAX\_\-APP\_\-DELAY}}
+\index{VQEC_SYSCFG_MAX_APP_DELAY@{VQEC\_\-SYSCFG\_\-MAX\_\-APP\_\-DELAY}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-APP\_\-DELAY~(60000)}\label{vqec__cfg__limits_8h_6e38989dd862bdd2e6f4cfbeec8b5a3e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_APP_PAKS_PER_RCC@{VQEC\_\-SYSCFG\_\-MAX\_\-APP\_\-PAKS\_\-PER\_\-RCC}}
+\index{VQEC_SYSCFG_MAX_APP_PAKS_PER_RCC@{VQEC\_\-SYSCFG\_\-MAX\_\-APP\_\-PAKS\_\-PER\_\-RCC}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-APP\_\-PAKS\_\-PER\_\-RCC~(20)}\label{vqec__cfg__limits_8h_0928741d2a21fd4c5dd537fad1d6db9d}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_BYE_DELAY@{VQEC\_\-SYSCFG\_\-MAX\_\-BYE\_\-DELAY}}
+\index{VQEC_SYSCFG_MAX_BYE_DELAY@{VQEC\_\-SYSCFG\_\-MAX\_\-BYE\_\-DELAY}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-BYE\_\-DELAY~(100)}\label{vqec__cfg__limits_8h_94597ae3f305d9be1304368a4b5d1946}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_ERROR_REPAIR_POLICER_BURST@{VQEC\_\-SYSCFG\_\-MAX\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST}}
+\index{VQEC_SYSCFG_MAX_ERROR_REPAIR_POLICER_BURST@{VQEC\_\-SYSCFG\_\-MAX\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST~(60000)}\label{vqec__cfg__limits_8h_34b1f2fef1079fa7bfc6b785ae955d3b}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_ERROR_REPAIR_POLICER_RATE@{VQEC\_\-SYSCFG\_\-MAX\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE}}
+\index{VQEC_SYSCFG_MAX_ERROR_REPAIR_POLICER_RATE@{VQEC\_\-SYSCFG\_\-MAX\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE~(100)}\label{vqec__cfg__limits_8h_3fec8f322a4cd3d60a2cc8f4d914614d}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_JITTER_BUFF_SIZE@{VQEC\_\-SYSCFG\_\-MAX\_\-JITTER\_\-BUFF\_\-SIZE}}
+\index{VQEC_SYSCFG_MAX_JITTER_BUFF_SIZE@{VQEC\_\-SYSCFG\_\-MAX\_\-JITTER\_\-BUFF\_\-SIZE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-JITTER\_\-BUFF\_\-SIZE~(20000)}\label{vqec__cfg__limits_8h_50bfd1151cdec7cd423a018cd1d31e26}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_LOG_LEVEL@{VQEC\_\-SYSCFG\_\-MAX\_\-LOG\_\-LEVEL}}
+\index{VQEC_SYSCFG_MAX_LOG_LEVEL@{VQEC\_\-SYSCFG\_\-MAX\_\-LOG\_\-LEVEL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-LOG\_\-LEVEL~(7)}\label{vqec__cfg__limits_8h_bbb52b2da202c8fb606ab1b5bf864ead}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_MAX_FASTFILL@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-FASTFILL}}
+\index{VQEC_SYSCFG_MAX_MAX_FASTFILL@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-FASTFILL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-FASTFILL~(1000000000)}\label{vqec__cfg__limits_8h_7f588ce3374df4286585b630e54389c0}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_MAX_PAKSIZE@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-PAKSIZE}}
+\index{VQEC_SYSCFG_MAX_MAX_PAKSIZE@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-PAKSIZE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-PAKSIZE~(10000)}\label{vqec__cfg__limits_8h_27f687dd87cfc1a6167e2214e0ac2bde}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_MAX_RECEIVE_BANDWIDTH_HD@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD}}
+\index{VQEC_SYSCFG_MAX_MAX_RECEIVE_BANDWIDTH_HD@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD~(1000000000)}\label{vqec__cfg__limits_8h_41935f68f30522c4b54aa7f77d32a809}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_MAX_RECEIVE_BANDWIDTH_HD_RCC@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC}}
+\index{VQEC_SYSCFG_MAX_MAX_RECEIVE_BANDWIDTH_HD_RCC@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC~(1000000000)}\label{vqec__cfg__limits_8h_626f47e47aa80bd96d89a70938b6c226}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_MAX_RECEIVE_BANDWIDTH_SD@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD}}
+\index{VQEC_SYSCFG_MAX_MAX_RECEIVE_BANDWIDTH_SD@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD~(1000000000)}\label{vqec__cfg__limits_8h_79ada2c25792433810f70e12ea2f07de}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_MAX_RECEIVE_BANDWIDTH_SD_RCC@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC}}
+\index{VQEC_SYSCFG_MAX_MAX_RECEIVE_BANDWIDTH_SD_RCC@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC~(1000000000)}\label{vqec__cfg__limits_8h_ee36a3d64d247cf1de2b5add2497ae7b}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_MAX_TUNERS@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-TUNERS}}
+\index{VQEC_SYSCFG_MAX_MAX_TUNERS@{VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-TUNERS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-TUNERS~(32)}\label{vqec__cfg__limits_8h_cee7ab4538d092474212ca6a6284153d}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_MIN_HD_STREAM_BITRATE@{VQEC\_\-SYSCFG\_\-MAX\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE}}
+\index{VQEC_SYSCFG_MAX_MIN_HD_STREAM_BITRATE@{VQEC\_\-SYSCFG\_\-MAX\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE~(1000000000)}\label{vqec__cfg__limits_8h_313c707f9f0266144be5eb3fbee264bc}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_NAT_BINDING_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-MAX\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL}}
+\index{VQEC_SYSCFG_MAX_NAT_BINDING_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-MAX\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL~(100000)}\label{vqec__cfg__limits_8h_1c35cf7bc75f40d244ce82547b838d1e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_NAT_FILTER_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-MAX\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL}}
+\index{VQEC_SYSCFG_MAX_NAT_FILTER_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-MAX\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL~(100000)}\label{vqec__cfg__limits_8h_e6177d0b6453acc573f699c23a83a97e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_NUM_BYES@{VQEC\_\-SYSCFG\_\-MAX\_\-NUM\_\-BYES}}
+\index{VQEC_SYSCFG_MAX_NUM_BYES@{VQEC\_\-SYSCFG\_\-MAX\_\-NUM\_\-BYES}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-NUM\_\-BYES~(5)}\label{vqec__cfg__limits_8h_ed84c4d6b0e375e53e249fb4a35aa50c}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_OUTPUT_PAKQ_LIMIT@{VQEC\_\-SYSCFG\_\-MAX\_\-OUTPUT\_\-PAKQ\_\-LIMIT}}
+\index{VQEC_SYSCFG_MAX_OUTPUT_PAKQ_LIMIT@{VQEC\_\-SYSCFG\_\-MAX\_\-OUTPUT\_\-PAKQ\_\-LIMIT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-OUTPUT\_\-PAKQ\_\-LIMIT~(20000)}\label{vqec__cfg__limits_8h_3aec03c1372f2109ce39b9b49410ce54}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_PAKPOOL_SIZE@{VQEC\_\-SYSCFG\_\-MAX\_\-PAKPOOL\_\-SIZE}}
+\index{VQEC_SYSCFG_MAX_PAKPOOL_SIZE@{VQEC\_\-SYSCFG\_\-MAX\_\-PAKPOOL\_\-SIZE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-PAKPOOL\_\-SIZE~(200000)}\label{vqec__cfg__limits_8h_476d5406cf476bc89112439aa92c0f65}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_R0_CLI_TELNET_PORT@{VQEC\_\-SYSCFG\_\-MAX\_\-R0\_\-CLI\_\-TELNET\_\-PORT}}
+\index{VQEC_SYSCFG_MAX_R0_CLI_TELNET_PORT@{VQEC\_\-SYSCFG\_\-MAX\_\-R0\_\-CLI\_\-TELNET\_\-PORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-R0\_\-CLI\_\-TELNET\_\-PORT~(0)}\label{vqec__cfg__limits_8h_5734340f5eae5d594c4d675e744e0ba8}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_R0_UPDATE_INTERVAL_MAX@{VQEC\_\-SYSCFG\_\-MAX\_\-R0\_\-UPDATE\_\-INTERVAL\_\-MAX}}
+\index{VQEC_SYSCFG_MAX_R0_UPDATE_INTERVAL_MAX@{VQEC\_\-SYSCFG\_\-MAX\_\-R0\_\-UPDATE\_\-INTERVAL\_\-MAX}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-R0\_\-UPDATE\_\-INTERVAL\_\-MAX~(0)}\label{vqec__cfg__limits_8h_37a1c8c0b070f061804fd6bc6150f556}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_R1_CLI_TELNET_PORT@{VQEC\_\-SYSCFG\_\-MAX\_\-R1\_\-CLI\_\-TELNET\_\-PORT}}
+\index{VQEC_SYSCFG_MAX_R1_CLI_TELNET_PORT@{VQEC\_\-SYSCFG\_\-MAX\_\-R1\_\-CLI\_\-TELNET\_\-PORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-R1\_\-CLI\_\-TELNET\_\-PORT~((1$<$$<$16)- 1)}\label{vqec__cfg__limits_8h_42f6fcf29e02a68bf667eadd6194df0f}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_R1_UPDATE_INTERVAL_MAX@{VQEC\_\-SYSCFG\_\-MAX\_\-R1\_\-UPDATE\_\-INTERVAL\_\-MAX}}
+\index{VQEC_SYSCFG_MAX_R1_UPDATE_INTERVAL_MAX@{VQEC\_\-SYSCFG\_\-MAX\_\-R1\_\-UPDATE\_\-INTERVAL\_\-MAX}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-R1\_\-UPDATE\_\-INTERVAL\_\-MAX~(604800)}\label{vqec__cfg__limits_8h_450524fc14d7deaee41414e6771f9ffe}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_RCC_MAX_CONCURRENT@{VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-MAX\_\-CONCURRENT}}
+\index{VQEC_SYSCFG_MAX_RCC_MAX_CONCURRENT@{VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-MAX\_\-CONCURRENT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-MAX\_\-CONCURRENT~(32)}\label{vqec__cfg__limits_8h_86438ea3b994a7ce75d2cabad9f9d9ea}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_RCC_PAKPOOL_MAX_PCT@{VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT}}
+\index{VQEC_SYSCFG_MAX_RCC_PAKPOOL_MAX_PCT@{VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT~(100)}\label{vqec__cfg__limits_8h_d489c422af48aae5796adc90529d5a60}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_RCC_START_TIMEOUT@{VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-START\_\-TIMEOUT}}
+\index{VQEC_SYSCFG_MAX_RCC_START_TIMEOUT@{VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-START\_\-TIMEOUT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-RCC\_\-START\_\-TIMEOUT~(1000)}\label{vqec__cfg__limits_8h_8a6d89f9bbebeb8461ae11d07963b105}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_REORDER_DELAY@{VQEC\_\-SYSCFG\_\-MAX\_\-REORDER\_\-DELAY}}
+\index{VQEC_SYSCFG_MAX_REORDER_DELAY@{VQEC\_\-SYSCFG\_\-MAX\_\-REORDER\_\-DELAY}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-REORDER\_\-DELAY~(100)}\label{vqec__cfg__limits_8h_f06ee87fc9d0b0e742e1ed1abf191104}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_REORDER_DELAY_ABS@{VQEC\_\-SYSCFG\_\-MAX\_\-REORDER\_\-DELAY\_\-ABS}}
+\index{VQEC_SYSCFG_MAX_REORDER_DELAY_ABS@{VQEC\_\-SYSCFG\_\-MAX\_\-REORDER\_\-DELAY\_\-ABS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-REORDER\_\-DELAY\_\-ABS~(200)}\label{vqec__cfg__limits_8h_db84c67e136534b453c25dd74173aa98}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_REPAIR_TRIGGER_POINT@{VQEC\_\-SYSCFG\_\-MAX\_\-REPAIR\_\-TRIGGER\_\-POINT}}
+\index{VQEC_SYSCFG_MAX_REPAIR_TRIGGER_POINT@{VQEC\_\-SYSCFG\_\-MAX\_\-REPAIR\_\-TRIGGER\_\-POINT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-REPAIR\_\-TRIGGER\_\-POINT~(100)}\label{vqec__cfg__limits_8h_459e2075a45a38425aef2f50064cf80c}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_REPAIR_TRIGGER_POINT_ABS@{VQEC\_\-SYSCFG\_\-MAX\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}}
+\index{VQEC_SYSCFG_MAX_REPAIR_TRIGGER_POINT_ABS@{VQEC\_\-SYSCFG\_\-MAX\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS~(200)}\label{vqec__cfg__limits_8h_c4affa87d1138c723281866c34d8236b}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_RTCP_DSCP_VALUE@{VQEC\_\-SYSCFG\_\-MAX\_\-RTCP\_\-DSCP\_\-VALUE}}
+\index{VQEC_SYSCFG_MAX_RTCP_DSCP_VALUE@{VQEC\_\-SYSCFG\_\-MAX\_\-RTCP\_\-DSCP\_\-VALUE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-RTCP\_\-DSCP\_\-VALUE~(63)}\label{vqec__cfg__limits_8h_cfc87f76f61d8712fed3355050b48b1d}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_SO_RCVBUF@{VQEC\_\-SYSCFG\_\-MAX\_\-SO\_\-RCVBUF}}
+\index{VQEC_SYSCFG_MAX_SO_RCVBUF@{VQEC\_\-SYSCFG\_\-MAX\_\-SO\_\-RCVBUF}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-SO\_\-RCVBUF~(1000000)}\label{vqec__cfg__limits_8h_0ed0ec4636eb27cd1ebe2e62a9abdba4}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_STUN_SERVER_IP@{VQEC\_\-SYSCFG\_\-MAX\_\-STUN\_\-SERVER\_\-IP}}
+\index{VQEC_SYSCFG_MAX_STUN_SERVER_IP@{VQEC\_\-SYSCFG\_\-MAX\_\-STUN\_\-SERVER\_\-IP}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-STUN\_\-SERVER\_\-IP~((1$<$$<$32) - 1)}\label{vqec__cfg__limits_8h_bd6116f7db21278d60c33be33e851c9c}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_STUN_SERVER_PORT@{VQEC\_\-SYSCFG\_\-MAX\_\-STUN\_\-SERVER\_\-PORT}}
+\index{VQEC_SYSCFG_MAX_STUN_SERVER_PORT@{VQEC\_\-SYSCFG\_\-MAX\_\-STUN\_\-SERVER\_\-PORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-STUN\_\-SERVER\_\-PORT~((1$<$$<$16) - 1)}\label{vqec__cfg__limits_8h_2d9d39b490d2395bfa1267c6534ae046}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_UPDATE_WINDOW@{VQEC\_\-SYSCFG\_\-MAX\_\-UPDATE\_\-WINDOW}}
+\index{VQEC_SYSCFG_MAX_UPDATE_WINDOW@{VQEC\_\-SYSCFG\_\-MAX\_\-UPDATE\_\-WINDOW}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-UPDATE\_\-WINDOW~(100000)}\label{vqec__cfg__limits_8h_0a284f1d919d7ff92d6aadb55f225d74}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_VCDS_SERVER_IP@{VQEC\_\-SYSCFG\_\-MAX\_\-VCDS\_\-SERVER\_\-IP}}
+\index{VQEC_SYSCFG_MAX_VCDS_SERVER_IP@{VQEC\_\-SYSCFG\_\-MAX\_\-VCDS\_\-SERVER\_\-IP}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-VCDS\_\-SERVER\_\-IP~((1$<$$<$32) - 1)}\label{vqec__cfg__limits_8h_5330c4bdd69129ce99ec3e3edd285c8c}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_VCDS_SERVER_PORT@{VQEC\_\-SYSCFG\_\-MAX\_\-VCDS\_\-SERVER\_\-PORT}}
+\index{VQEC_SYSCFG_MAX_VCDS_SERVER_PORT@{VQEC\_\-SYSCFG\_\-MAX\_\-VCDS\_\-SERVER\_\-PORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-VCDS\_\-SERVER\_\-PORT~((1$<$$<$16) - 1)}\label{vqec__cfg__limits_8h_b75bf6b55ab01cc2529cf075808691f5}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_VOD_CMD_TIMEOUT@{VQEC\_\-SYSCFG\_\-MAX\_\-VOD\_\-CMD\_\-TIMEOUT}}
+\index{VQEC_SYSCFG_MAX_VOD_CMD_TIMEOUT@{VQEC\_\-SYSCFG\_\-MAX\_\-VOD\_\-CMD\_\-TIMEOUT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-VOD\_\-CMD\_\-TIMEOUT~(10000)}\label{vqec__cfg__limits_8h_220e2307bdef54374f085922c639fe5d}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MAX_VOD_MAX_SESSIONS@{VQEC\_\-SYSCFG\_\-MAX\_\-VOD\_\-MAX\_\-SESSIONS}}
+\index{VQEC_SYSCFG_MAX_VOD_MAX_SESSIONS@{VQEC\_\-SYSCFG\_\-MAX\_\-VOD\_\-MAX\_\-SESSIONS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-VOD\_\-MAX\_\-SESSIONS~(32)}\label{vqec__cfg__limits_8h_0536a376dfdc7fb077a1b772daeb4656}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_APP_DELAY@{VQEC\_\-SYSCFG\_\-MIN\_\-APP\_\-DELAY}}
+\index{VQEC_SYSCFG_MIN_APP_DELAY@{VQEC\_\-SYSCFG\_\-MIN\_\-APP\_\-DELAY}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-APP\_\-DELAY~(0)}\label{vqec__cfg__limits_8h_b497f018f0c7188aacbf298ba496cd5e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_APP_PAKS_PER_RCC@{VQEC\_\-SYSCFG\_\-MIN\_\-APP\_\-PAKS\_\-PER\_\-RCC}}
+\index{VQEC_SYSCFG_MIN_APP_PAKS_PER_RCC@{VQEC\_\-SYSCFG\_\-MIN\_\-APP\_\-PAKS\_\-PER\_\-RCC}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-APP\_\-PAKS\_\-PER\_\-RCC~(1)}\label{vqec__cfg__limits_8h_bc17b2cfe329612590ab7857143b98d1}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_BYE_DELAY@{VQEC\_\-SYSCFG\_\-MIN\_\-BYE\_\-DELAY}}
+\index{VQEC_SYSCFG_MIN_BYE_DELAY@{VQEC\_\-SYSCFG\_\-MIN\_\-BYE\_\-DELAY}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-BYE\_\-DELAY~(10)}\label{vqec__cfg__limits_8h_fda2f1f4b2bdc3c0b22f439b500a1036}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_ERROR_REPAIR_POLICER_BURST@{VQEC\_\-SYSCFG\_\-MIN\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST}}
+\index{VQEC_SYSCFG_MIN_ERROR_REPAIR_POLICER_BURST@{VQEC\_\-SYSCFG\_\-MIN\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-ERROR\_\-REPAIR\_\-POLICER\_\-BURST~(1)}\label{vqec__cfg__limits_8h_b8ef623c876fbbd338d2c48a4d135dda}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_ERROR_REPAIR_POLICER_RATE@{VQEC\_\-SYSCFG\_\-MIN\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE}}
+\index{VQEC_SYSCFG_MIN_ERROR_REPAIR_POLICER_RATE@{VQEC\_\-SYSCFG\_\-MIN\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-ERROR\_\-REPAIR\_\-POLICER\_\-RATE~(1)}\label{vqec__cfg__limits_8h_bb1848e44c269b8144bbfcaf5ab0400c}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_JITTER_BUFF_SIZE@{VQEC\_\-SYSCFG\_\-MIN\_\-JITTER\_\-BUFF\_\-SIZE}}
+\index{VQEC_SYSCFG_MIN_JITTER_BUFF_SIZE@{VQEC\_\-SYSCFG\_\-MIN\_\-JITTER\_\-BUFF\_\-SIZE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-JITTER\_\-BUFF\_\-SIZE~(0)}\label{vqec__cfg__limits_8h_19e888d185fbd62d0a665de48ebe3e6c}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_LOG_LEVEL@{VQEC\_\-SYSCFG\_\-MIN\_\-LOG\_\-LEVEL}}
+\index{VQEC_SYSCFG_MIN_LOG_LEVEL@{VQEC\_\-SYSCFG\_\-MIN\_\-LOG\_\-LEVEL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-LOG\_\-LEVEL~(0)}\label{vqec__cfg__limits_8h_19a657e12955465b9813fb62af2d11d3}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_MAX_FASTFILL@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-FASTFILL}}
+\index{VQEC_SYSCFG_MIN_MAX_FASTFILL@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-FASTFILL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-FASTFILL~(0)}\label{vqec__cfg__limits_8h_b83515630a392ad35a9831b06131b268}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_MAX_PAKSIZE@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-PAKSIZE}}
+\index{VQEC_SYSCFG_MIN_MAX_PAKSIZE@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-PAKSIZE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-PAKSIZE~(1330)}\label{vqec__cfg__limits_8h_7ac814f466c9c9f4875ac26700923efc}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_MAX_RECEIVE_BANDWIDTH_HD@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD}}
+\index{VQEC_SYSCFG_MIN_MAX_RECEIVE_BANDWIDTH_HD@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD~(0)}\label{vqec__cfg__limits_8h_2c7d5cbd4ad8635e8fd2ba5b899b7dbf}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_MAX_RECEIVE_BANDWIDTH_HD_RCC@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC}}
+\index{VQEC_SYSCFG_MIN_MAX_RECEIVE_BANDWIDTH_HD_RCC@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-HD\_\-RCC~(0)}\label{vqec__cfg__limits_8h_1c16bd6e8ff1ea38d9707457dc827213}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_MAX_RECEIVE_BANDWIDTH_SD@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD}}
+\index{VQEC_SYSCFG_MIN_MAX_RECEIVE_BANDWIDTH_SD@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD~(0)}\label{vqec__cfg__limits_8h_bd6b9486a0b4f6ea71bd00982477bb68}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_MAX_RECEIVE_BANDWIDTH_SD_RCC@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC}}
+\index{VQEC_SYSCFG_MIN_MAX_RECEIVE_BANDWIDTH_SD_RCC@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-SD\_\-RCC~(0)}\label{vqec__cfg__limits_8h_1078a417701a5996e7fb8f5596c25d98}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_MAX_TUNERS@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-TUNERS}}
+\index{VQEC_SYSCFG_MIN_MAX_TUNERS@{VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-TUNERS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-MAX\_\-TUNERS~(1)}\label{vqec__cfg__limits_8h_bc8721695a44838746fbc2c174ab0772}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_MIN_HD_STREAM_BITRATE@{VQEC\_\-SYSCFG\_\-MIN\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE}}
+\index{VQEC_SYSCFG_MIN_MIN_HD_STREAM_BITRATE@{VQEC\_\-SYSCFG\_\-MIN\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-MIN\_\-HD\_\-STREAM\_\-BITRATE~(0)}\label{vqec__cfg__limits_8h_8472f7115efb89bd21a9097f22c199b7}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_NAT_BINDING_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-MIN\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL}}
+\index{VQEC_SYSCFG_MIN_NAT_BINDING_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-MIN\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-NAT\_\-BINDING\_\-REFRESH\_\-INTERVAL~(0)}\label{vqec__cfg__limits_8h_2aab3e78a8d5e70d877c105d6288a7e0}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_NAT_FILTER_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-MIN\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL}}
+\index{VQEC_SYSCFG_MIN_NAT_FILTER_REFRESH_INTERVAL@{VQEC\_\-SYSCFG\_\-MIN\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-NAT\_\-FILTER\_\-REFRESH\_\-INTERVAL~(0)}\label{vqec__cfg__limits_8h_db48da5dbf815d38627d3a7383183ffb}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_NUM_BYES@{VQEC\_\-SYSCFG\_\-MIN\_\-NUM\_\-BYES}}
+\index{VQEC_SYSCFG_MIN_NUM_BYES@{VQEC\_\-SYSCFG\_\-MIN\_\-NUM\_\-BYES}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-NUM\_\-BYES~(2)}\label{vqec__cfg__limits_8h_1f64ca60681f7689e15efb76b16f2f19}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_OUTPUT_PAKQ_LIMIT@{VQEC\_\-SYSCFG\_\-MIN\_\-OUTPUT\_\-PAKQ\_\-LIMIT}}
+\index{VQEC_SYSCFG_MIN_OUTPUT_PAKQ_LIMIT@{VQEC\_\-SYSCFG\_\-MIN\_\-OUTPUT\_\-PAKQ\_\-LIMIT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-OUTPUT\_\-PAKQ\_\-LIMIT~(100)}\label{vqec__cfg__limits_8h_70677c729df535e1900217d7b3943455}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_PAKPOOL_SIZE@{VQEC\_\-SYSCFG\_\-MIN\_\-PAKPOOL\_\-SIZE}}
+\index{VQEC_SYSCFG_MIN_PAKPOOL_SIZE@{VQEC\_\-SYSCFG\_\-MIN\_\-PAKPOOL\_\-SIZE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-PAKPOOL\_\-SIZE~(100)}\label{vqec__cfg__limits_8h_4891f3afe3f295515d86315d4848cb02}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_R0_CLI_TELNET_PORT@{VQEC\_\-SYSCFG\_\-MIN\_\-R0\_\-CLI\_\-TELNET\_\-PORT}}
+\index{VQEC_SYSCFG_MIN_R0_CLI_TELNET_PORT@{VQEC\_\-SYSCFG\_\-MIN\_\-R0\_\-CLI\_\-TELNET\_\-PORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-R0\_\-CLI\_\-TELNET\_\-PORT~(0)}\label{vqec__cfg__limits_8h_18fe28632619f6c69ef948b285248fb9}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_R0_UPDATE_INTERVAL_MAX@{VQEC\_\-SYSCFG\_\-MIN\_\-R0\_\-UPDATE\_\-INTERVAL\_\-MAX}}
+\index{VQEC_SYSCFG_MIN_R0_UPDATE_INTERVAL_MAX@{VQEC\_\-SYSCFG\_\-MIN\_\-R0\_\-UPDATE\_\-INTERVAL\_\-MAX}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-R0\_\-UPDATE\_\-INTERVAL\_\-MAX~(0)}\label{vqec__cfg__limits_8h_2d261a0bf7900007956dadb103a771b2}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_R1_CLI_TELNET_PORT@{VQEC\_\-SYSCFG\_\-MIN\_\-R1\_\-CLI\_\-TELNET\_\-PORT}}
+\index{VQEC_SYSCFG_MIN_R1_CLI_TELNET_PORT@{VQEC\_\-SYSCFG\_\-MIN\_\-R1\_\-CLI\_\-TELNET\_\-PORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-R1\_\-CLI\_\-TELNET\_\-PORT~(8000)}\label{vqec__cfg__limits_8h_a4634ea54109251f612643245412194a}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_R1_UPDATE_INTERVAL_MAX@{VQEC\_\-SYSCFG\_\-MIN\_\-R1\_\-UPDATE\_\-INTERVAL\_\-MAX}}
+\index{VQEC_SYSCFG_MIN_R1_UPDATE_INTERVAL_MAX@{VQEC\_\-SYSCFG\_\-MIN\_\-R1\_\-UPDATE\_\-INTERVAL\_\-MAX}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-R1\_\-UPDATE\_\-INTERVAL\_\-MAX~(30)}\label{vqec__cfg__limits_8h_653ce5424e819cbf43c1df5de3379ad6}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_RCC_MAX_CONCURRENT@{VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-MAX\_\-CONCURRENT}}
+\index{VQEC_SYSCFG_MIN_RCC_MAX_CONCURRENT@{VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-MAX\_\-CONCURRENT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-MAX\_\-CONCURRENT~(0)}\label{vqec__cfg__limits_8h_71fae55eedb6945672b7b267a1c55a47}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_RCC_PAKPOOL_MAX_PCT@{VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT}}
+\index{VQEC_SYSCFG_MIN_RCC_PAKPOOL_MAX_PCT@{VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-PAKPOOL\_\-MAX\_\-PCT~(0)}\label{vqec__cfg__limits_8h_cf8eca53541b58bba88c6daa738ba553}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_RCC_START_TIMEOUT@{VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-START\_\-TIMEOUT}}
+\index{VQEC_SYSCFG_MIN_RCC_START_TIMEOUT@{VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-START\_\-TIMEOUT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-RCC\_\-START\_\-TIMEOUT~(0)}\label{vqec__cfg__limits_8h_79603a84130ca4259e5b19373faf659c}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_REORDER_DELAY@{VQEC\_\-SYSCFG\_\-MIN\_\-REORDER\_\-DELAY}}
+\index{VQEC_SYSCFG_MIN_REORDER_DELAY@{VQEC\_\-SYSCFG\_\-MIN\_\-REORDER\_\-DELAY}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-REORDER\_\-DELAY~(0)}\label{vqec__cfg__limits_8h_0520ce9f534be8c277ea9686be767124}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_REORDER_DELAY_ABS@{VQEC\_\-SYSCFG\_\-MIN\_\-REORDER\_\-DELAY\_\-ABS}}
+\index{VQEC_SYSCFG_MIN_REORDER_DELAY_ABS@{VQEC\_\-SYSCFG\_\-MIN\_\-REORDER\_\-DELAY\_\-ABS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-REORDER\_\-DELAY\_\-ABS~(0)}\label{vqec__cfg__limits_8h_867096734f9437275658da27f0abd2f8}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_REPAIR_TRIGGER_POINT@{VQEC\_\-SYSCFG\_\-MIN\_\-REPAIR\_\-TRIGGER\_\-POINT}}
+\index{VQEC_SYSCFG_MIN_REPAIR_TRIGGER_POINT@{VQEC\_\-SYSCFG\_\-MIN\_\-REPAIR\_\-TRIGGER\_\-POINT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-REPAIR\_\-TRIGGER\_\-POINT~(0)}\label{vqec__cfg__limits_8h_a664eef20ce9a3065821e6f0415774fa}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_REPAIR_TRIGGER_POINT_ABS@{VQEC\_\-SYSCFG\_\-MIN\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}}
+\index{VQEC_SYSCFG_MIN_REPAIR_TRIGGER_POINT_ABS@{VQEC\_\-SYSCFG\_\-MIN\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-REPAIR\_\-TRIGGER\_\-POINT\_\-ABS~(0)}\label{vqec__cfg__limits_8h_9805aa348c5df80fe4d0fdcc00c38053}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_RTCP_DSCP_VALUE@{VQEC\_\-SYSCFG\_\-MIN\_\-RTCP\_\-DSCP\_\-VALUE}}
+\index{VQEC_SYSCFG_MIN_RTCP_DSCP_VALUE@{VQEC\_\-SYSCFG\_\-MIN\_\-RTCP\_\-DSCP\_\-VALUE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-RTCP\_\-DSCP\_\-VALUE~(0)}\label{vqec__cfg__limits_8h_21f51162b870fc9975c54e489ef2fccd}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_SO_RCVBUF@{VQEC\_\-SYSCFG\_\-MIN\_\-SO\_\-RCVBUF}}
+\index{VQEC_SYSCFG_MIN_SO_RCVBUF@{VQEC\_\-SYSCFG\_\-MIN\_\-SO\_\-RCVBUF}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-SO\_\-RCVBUF~(0)}\label{vqec__cfg__limits_8h_dae76290d2935c406170912f28151b50}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_STUN_SERVER_IP@{VQEC\_\-SYSCFG\_\-MIN\_\-STUN\_\-SERVER\_\-IP}}
+\index{VQEC_SYSCFG_MIN_STUN_SERVER_IP@{VQEC\_\-SYSCFG\_\-MIN\_\-STUN\_\-SERVER\_\-IP}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-STUN\_\-SERVER\_\-IP~(0)}\label{vqec__cfg__limits_8h_d51fc7ec0b797649ef1c8a9624cda968}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_STUN_SERVER_PORT@{VQEC\_\-SYSCFG\_\-MIN\_\-STUN\_\-SERVER\_\-PORT}}
+\index{VQEC_SYSCFG_MIN_STUN_SERVER_PORT@{VQEC\_\-SYSCFG\_\-MIN\_\-STUN\_\-SERVER\_\-PORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-STUN\_\-SERVER\_\-PORT~(1000)}\label{vqec__cfg__limits_8h_2e6e91c058d3fb82502f09d92c33e550}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_UPDATE_WINDOW@{VQEC\_\-SYSCFG\_\-MIN\_\-UPDATE\_\-WINDOW}}
+\index{VQEC_SYSCFG_MIN_UPDATE_WINDOW@{VQEC\_\-SYSCFG\_\-MIN\_\-UPDATE\_\-WINDOW}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-UPDATE\_\-WINDOW~(1)}\label{vqec__cfg__limits_8h_219a60bc3a76fe24be840fd6f6b22078}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_VCDS_SERVER_IP@{VQEC\_\-SYSCFG\_\-MIN\_\-VCDS\_\-SERVER\_\-IP}}
+\index{VQEC_SYSCFG_MIN_VCDS_SERVER_IP@{VQEC\_\-SYSCFG\_\-MIN\_\-VCDS\_\-SERVER\_\-IP}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-VCDS\_\-SERVER\_\-IP~(0)}\label{vqec__cfg__limits_8h_08319d22ac079d462114b7fb249bedff}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_VCDS_SERVER_PORT@{VQEC\_\-SYSCFG\_\-MIN\_\-VCDS\_\-SERVER\_\-PORT}}
+\index{VQEC_SYSCFG_MIN_VCDS_SERVER_PORT@{VQEC\_\-SYSCFG\_\-MIN\_\-VCDS\_\-SERVER\_\-PORT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-VCDS\_\-SERVER\_\-PORT~(1024)}\label{vqec__cfg__limits_8h_304ddbe5170a74a8bf927b09d8fbbd37}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_VOD_CMD_TIMEOUT@{VQEC\_\-SYSCFG\_\-MIN\_\-VOD\_\-CMD\_\-TIMEOUT}}
+\index{VQEC_SYSCFG_MIN_VOD_CMD_TIMEOUT@{VQEC\_\-SYSCFG\_\-MIN\_\-VOD\_\-CMD\_\-TIMEOUT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-VOD\_\-CMD\_\-TIMEOUT~(100)}\label{vqec__cfg__limits_8h_7976908522d40c1453e2cf4dee3b6cd9}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_MIN_VOD_MAX_SESSIONS@{VQEC\_\-SYSCFG\_\-MIN\_\-VOD\_\-MAX\_\-SESSIONS}}
+\index{VQEC_SYSCFG_MIN_VOD_MAX_SESSIONS@{VQEC\_\-SYSCFG\_\-MIN\_\-VOD\_\-MAX\_\-SESSIONS}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-VOD\_\-MAX\_\-SESSIONS~(1)}\label{vqec__cfg__limits_8h_64c0dac6e58683abfda4e39530eef33e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_SIG_MODE_NAT@{VQEC\_\-SYSCFG\_\-SIG\_\-MODE\_\-NAT}}
+\index{VQEC_SYSCFG_SIG_MODE_NAT@{VQEC\_\-SYSCFG\_\-SIG\_\-MODE\_\-NAT}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-SIG\_\-MODE\_\-NAT~\char`\"{}nat\char`\"{}}\label{vqec__cfg__limits_8h_0961f2a2013260074f226c7168868ded}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_SIG_MODE_STD@{VQEC\_\-SYSCFG\_\-SIG\_\-MODE\_\-STD}}
+\index{VQEC_SYSCFG_SIG_MODE_STD@{VQEC\_\-SYSCFG\_\-SIG\_\-MODE\_\-STD}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-SIG\_\-MODE\_\-STD~\char`\"{}std\char`\"{}}\label{vqec__cfg__limits_8h_82046aa9ab37e632b6274ca681de9ada}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_VOD_MODE_CABLE@{VQEC\_\-SYSCFG\_\-VOD\_\-MODE\_\-CABLE}}
+\index{VQEC_SYSCFG_VOD_MODE_CABLE@{VQEC\_\-SYSCFG\_\-VOD\_\-MODE\_\-CABLE}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-VOD\_\-MODE\_\-CABLE~\char`\"{}cable\char`\"{}}\label{vqec__cfg__limits_8h_882e82de5512e9dd2b076bef3e0aa37e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!VQEC_SYSCFG_VOD_MODE_IPTV@{VQEC\_\-SYSCFG\_\-VOD\_\-MODE\_\-IPTV}}
+\index{VQEC_SYSCFG_VOD_MODE_IPTV@{VQEC\_\-SYSCFG\_\-VOD\_\-MODE\_\-IPTV}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-VOD\_\-MODE\_\-IPTV~\char`\"{}iptv\char`\"{}}\label{vqec__cfg__limits_8h_268a32b8f6d56a45243c77bbd2451a9d}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_app_delay_valid@{is\_\-vqec\_\-cfg\_\-app\_\-delay\_\-valid}}
+\index{is_vqec_cfg_app_delay_valid@{is\_\-vqec\_\-cfg\_\-app\_\-delay\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-app\_\-delay\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_8e2cb3c44c6a9b40b368e307256f33ea}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_app_paks_per_rcc_valid@{is\_\-vqec\_\-cfg\_\-app\_\-paks\_\-per\_\-rcc\_\-valid}}
+\index{is_vqec_cfg_app_paks_per_rcc_valid@{is\_\-vqec\_\-cfg\_\-app\_\-paks\_\-per\_\-rcc\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-app\_\-paks\_\-per\_\-rcc\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_e8b6197d9de5b1e298926137395c49b1}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_bye_delay_valid@{is\_\-vqec\_\-cfg\_\-bye\_\-delay\_\-valid}}
+\index{is_vqec_cfg_bye_delay_valid@{is\_\-vqec\_\-cfg\_\-bye\_\-delay\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-bye\_\-delay\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_4e44cd685dfdb047f0b7bf7e81183097}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_cli_telnet_port_valid@{is\_\-vqec\_\-cfg\_\-cli\_\-telnet\_\-port\_\-valid}}
+\index{is_vqec_cfg_cli_telnet_port_valid@{is\_\-vqec\_\-cfg\_\-cli\_\-telnet\_\-port\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-cli\_\-telnet\_\-port\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_dbcdc2201429873d6a013e2e0a67da16}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_error_repair_policer_burst_valid@{is\_\-vqec\_\-cfg\_\-error\_\-repair\_\-policer\_\-burst\_\-valid}}
+\index{is_vqec_cfg_error_repair_policer_burst_valid@{is\_\-vqec\_\-cfg\_\-error\_\-repair\_\-policer\_\-burst\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-error\_\-repair\_\-policer\_\-burst\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_2614cd315e0d5437e38a6b8ecf1fb63a}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_error_repair_policer_rate_valid@{is\_\-vqec\_\-cfg\_\-error\_\-repair\_\-policer\_\-rate\_\-valid}}
+\index{is_vqec_cfg_error_repair_policer_rate_valid@{is\_\-vqec\_\-cfg\_\-error\_\-repair\_\-policer\_\-rate\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-error\_\-repair\_\-policer\_\-rate\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_00615cd6aad0a60d7d7aecf98977b3fd}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_jitter_buff_size_valid@{is\_\-vqec\_\-cfg\_\-jitter\_\-buff\_\-size\_\-valid}}
+\index{is_vqec_cfg_jitter_buff_size_valid@{is\_\-vqec\_\-cfg\_\-jitter\_\-buff\_\-size\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-jitter\_\-buff\_\-size\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_3bf6d24fecb7d48bf4ce7679bef33974}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_log_level_valid@{is\_\-vqec\_\-cfg\_\-log\_\-level\_\-valid}}
+\index{is_vqec_cfg_log_level_valid@{is\_\-vqec\_\-cfg\_\-log\_\-level\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-log\_\-level\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_e5aa890e00c42180957eb6d1101314cf}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_max_fastfill_valid@{is\_\-vqec\_\-cfg\_\-max\_\-fastfill\_\-valid}}
+\index{is_vqec_cfg_max_fastfill_valid@{is\_\-vqec\_\-cfg\_\-max\_\-fastfill\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-max\_\-fastfill\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_5b56fea82923f316bba9372e3d6d113e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_max_paksize_valid@{is\_\-vqec\_\-cfg\_\-max\_\-paksize\_\-valid}}
+\index{is_vqec_cfg_max_paksize_valid@{is\_\-vqec\_\-cfg\_\-max\_\-paksize\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-max\_\-paksize\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_093140d22eae12706868cf7fc9caab6d}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_max_receive_bandwidth_hd_rcc_valid@{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-hd\_\-rcc\_\-valid}}
+\index{is_vqec_cfg_max_receive_bandwidth_hd_rcc_valid@{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-hd\_\-rcc\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-hd\_\-rcc\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_3b56f051939bd7ee9628f7fe42d7837b}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_max_receive_bandwidth_hd_valid@{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-hd\_\-valid}}
+\index{is_vqec_cfg_max_receive_bandwidth_hd_valid@{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-hd\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-hd\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_b30e50d96d58a03db7292bee14d3c66e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_max_receive_bandwidth_sd_rcc_valid@{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-sd\_\-rcc\_\-valid}}
+\index{is_vqec_cfg_max_receive_bandwidth_sd_rcc_valid@{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-sd\_\-rcc\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-sd\_\-rcc\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_f0e8d447439bf0938500dc48408dfee3}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_max_receive_bandwidth_sd_valid@{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-sd\_\-valid}}
+\index{is_vqec_cfg_max_receive_bandwidth_sd_valid@{is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-sd\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-max\_\-receive\_\-bandwidth\_\-sd\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_57cc57bb4907720733ce7cb2b69f529b}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_max_tuners_valid@{is\_\-vqec\_\-cfg\_\-max\_\-tuners\_\-valid}}
+\index{is_vqec_cfg_max_tuners_valid@{is\_\-vqec\_\-cfg\_\-max\_\-tuners\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-max\_\-tuners\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_e7bf776092f433d5efb888a4aacc3b67}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_min_hd_stream_bitrate_valid@{is\_\-vqec\_\-cfg\_\-min\_\-hd\_\-stream\_\-bitrate\_\-valid}}
+\index{is_vqec_cfg_min_hd_stream_bitrate_valid@{is\_\-vqec\_\-cfg\_\-min\_\-hd\_\-stream\_\-bitrate\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-min\_\-hd\_\-stream\_\-bitrate\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_111b186096c24c5214313bdcda0b0108}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_nat_binding_refresh_interval_valid@{is\_\-vqec\_\-cfg\_\-nat\_\-binding\_\-refresh\_\-interval\_\-valid}}
+\index{is_vqec_cfg_nat_binding_refresh_interval_valid@{is\_\-vqec\_\-cfg\_\-nat\_\-binding\_\-refresh\_\-interval\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-nat\_\-binding\_\-refresh\_\-interval\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_c13ad36d5e32956d65e33bcbce8ae221}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_nat_filter_refresh_interval_valid@{is\_\-vqec\_\-cfg\_\-nat\_\-filter\_\-refresh\_\-interval\_\-valid}}
+\index{is_vqec_cfg_nat_filter_refresh_interval_valid@{is\_\-vqec\_\-cfg\_\-nat\_\-filter\_\-refresh\_\-interval\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-nat\_\-filter\_\-refresh\_\-interval\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_966f7bfd8502f14a60d92b7cb3be94b9}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_num_byes_valid@{is\_\-vqec\_\-cfg\_\-num\_\-byes\_\-valid}}
+\index{is_vqec_cfg_num_byes_valid@{is\_\-vqec\_\-cfg\_\-num\_\-byes\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-num\_\-byes\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_011593bc48a2795b7e54845a02ed3d18}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_output_pakq_limit_valid@{is\_\-vqec\_\-cfg\_\-output\_\-pakq\_\-limit\_\-valid}}
+\index{is_vqec_cfg_output_pakq_limit_valid@{is\_\-vqec\_\-cfg\_\-output\_\-pakq\_\-limit\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-output\_\-pakq\_\-limit\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_9077c837f4bc410f5371ee56db247c3e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_pakpool_size_valid@{is\_\-vqec\_\-cfg\_\-pakpool\_\-size\_\-valid}}
+\index{is_vqec_cfg_pakpool_size_valid@{is\_\-vqec\_\-cfg\_\-pakpool\_\-size\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-pakpool\_\-size\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_2a1113b6888bcb75191fad77571db647}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_rcc_max_concurrent_valid@{is\_\-vqec\_\-cfg\_\-rcc\_\-max\_\-concurrent\_\-valid}}
+\index{is_vqec_cfg_rcc_max_concurrent_valid@{is\_\-vqec\_\-cfg\_\-rcc\_\-max\_\-concurrent\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-rcc\_\-max\_\-concurrent\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_e417c2733f17773633d79ce7d2ea9aa5}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_rcc_pakpool_max_pct_valid@{is\_\-vqec\_\-cfg\_\-rcc\_\-pakpool\_\-max\_\-pct\_\-valid}}
+\index{is_vqec_cfg_rcc_pakpool_max_pct_valid@{is\_\-vqec\_\-cfg\_\-rcc\_\-pakpool\_\-max\_\-pct\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-rcc\_\-pakpool\_\-max\_\-pct\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_c3b04098447cb532c99f4a320b10cd19}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_rcc_start_timeout_valid@{is\_\-vqec\_\-cfg\_\-rcc\_\-start\_\-timeout\_\-valid}}
+\index{is_vqec_cfg_rcc_start_timeout_valid@{is\_\-vqec\_\-cfg\_\-rcc\_\-start\_\-timeout\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-rcc\_\-start\_\-timeout\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_c464dc092173658bf271c48b30c63310}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_reorder_delay_abs_valid@{is\_\-vqec\_\-cfg\_\-reorder\_\-delay\_\-abs\_\-valid}}
+\index{is_vqec_cfg_reorder_delay_abs_valid@{is\_\-vqec\_\-cfg\_\-reorder\_\-delay\_\-abs\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-reorder\_\-delay\_\-abs\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_783f9bbe96b80acc2e6113d9cacd5de3}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_reorder_delay_valid@{is\_\-vqec\_\-cfg\_\-reorder\_\-delay\_\-valid}}
+\index{is_vqec_cfg_reorder_delay_valid@{is\_\-vqec\_\-cfg\_\-reorder\_\-delay\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-reorder\_\-delay\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_9b52c9cfff0749061fbb96fb7be792e0}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_repair_trigger_point_abs_valid@{is\_\-vqec\_\-cfg\_\-repair\_\-trigger\_\-point\_\-abs\_\-valid}}
+\index{is_vqec_cfg_repair_trigger_point_abs_valid@{is\_\-vqec\_\-cfg\_\-repair\_\-trigger\_\-point\_\-abs\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-repair\_\-trigger\_\-point\_\-abs\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_e8e77bd6bde483542f1075f9a8552e83}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_repair_trigger_point_valid@{is\_\-vqec\_\-cfg\_\-repair\_\-trigger\_\-point\_\-valid}}
+\index{is_vqec_cfg_repair_trigger_point_valid@{is\_\-vqec\_\-cfg\_\-repair\_\-trigger\_\-point\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-repair\_\-trigger\_\-point\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_333f07b271f431ebeac610bfd89da1de}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_rtcp_dscp_value_valid@{is\_\-vqec\_\-cfg\_\-rtcp\_\-dscp\_\-value\_\-valid}}
+\index{is_vqec_cfg_rtcp_dscp_value_valid@{is\_\-vqec\_\-cfg\_\-rtcp\_\-dscp\_\-value\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-rtcp\_\-dscp\_\-value\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_98e6ca986ee4a6338bc5b96cbcafb465}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_sig_mode_valid@{is\_\-vqec\_\-cfg\_\-sig\_\-mode\_\-valid}}
+\index{is_vqec_cfg_sig_mode_valid@{is\_\-vqec\_\-cfg\_\-sig\_\-mode\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-sig\_\-mode\_\-valid (char $\ast$ {\em str})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_ba3c2edd4df29c0ecd62ec29fc7ec865}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_so_rcvbuf_valid@{is\_\-vqec\_\-cfg\_\-so\_\-rcvbuf\_\-valid}}
+\index{is_vqec_cfg_so_rcvbuf_valid@{is\_\-vqec\_\-cfg\_\-so\_\-rcvbuf\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-so\_\-rcvbuf\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_85ce9fd55d63820fd2d8795da2e0fd14}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_stun_server_ip_valid@{is\_\-vqec\_\-cfg\_\-stun\_\-server\_\-ip\_\-valid}}
+\index{is_vqec_cfg_stun_server_ip_valid@{is\_\-vqec\_\-cfg\_\-stun\_\-server\_\-ip\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-stun\_\-server\_\-ip\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_03301d4827aa3d8f95a67289bc5e0c49}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_stun_server_port_valid@{is\_\-vqec\_\-cfg\_\-stun\_\-server\_\-port\_\-valid}}
+\index{is_vqec_cfg_stun_server_port_valid@{is\_\-vqec\_\-cfg\_\-stun\_\-server\_\-port\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-stun\_\-server\_\-port\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_2376421b868959c1ef8189ea8585c7cd}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_update_interval_max_valid@{is\_\-vqec\_\-cfg\_\-update\_\-interval\_\-max\_\-valid}}
+\index{is_vqec_cfg_update_interval_max_valid@{is\_\-vqec\_\-cfg\_\-update\_\-interval\_\-max\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-update\_\-interval\_\-max\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_1a455892556b05a4002d2a508a48b51b}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_update_window_valid@{is\_\-vqec\_\-cfg\_\-update\_\-window\_\-valid}}
+\index{is_vqec_cfg_update_window_valid@{is\_\-vqec\_\-cfg\_\-update\_\-window\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-update\_\-window\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_a9ec2bc3a63ed7a8b25a09aab953043e}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_vcds_server_ip_valid@{is\_\-vqec\_\-cfg\_\-vcds\_\-server\_\-ip\_\-valid}}
+\index{is_vqec_cfg_vcds_server_ip_valid@{is\_\-vqec\_\-cfg\_\-vcds\_\-server\_\-ip\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-vcds\_\-server\_\-ip\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_b002685c34d5704ca711451280a1543a}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_vcds_server_port_valid@{is\_\-vqec\_\-cfg\_\-vcds\_\-server\_\-port\_\-valid}}
+\index{is_vqec_cfg_vcds_server_port_valid@{is\_\-vqec\_\-cfg\_\-vcds\_\-server\_\-port\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-vcds\_\-server\_\-port\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_a3118fb6554943516627461e3292161f}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_vod_cmd_timeout_valid@{is\_\-vqec\_\-cfg\_\-vod\_\-cmd\_\-timeout\_\-valid}}
+\index{is_vqec_cfg_vod_cmd_timeout_valid@{is\_\-vqec\_\-cfg\_\-vod\_\-cmd\_\-timeout\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-vod\_\-cmd\_\-timeout\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_8bfc3d6c2e2648d113fb879561ce1081}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_vod_max_sessions_valid@{is\_\-vqec\_\-cfg\_\-vod\_\-max\_\-sessions\_\-valid}}
+\index{is_vqec_cfg_vod_max_sessions_valid@{is\_\-vqec\_\-cfg\_\-vod\_\-max\_\-sessions\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-vod\_\-max\_\-sessions\_\-valid (uint32\_\-t {\em val})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_c0331b5756d2366ea3c27356f11fa0ef}
+
+
+\index{vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}!is_vqec_cfg_vod_mode_valid@{is\_\-vqec\_\-cfg\_\-vod\_\-mode\_\-valid}}
+\index{is_vqec_cfg_vod_mode_valid@{is\_\-vqec\_\-cfg\_\-vod\_\-mode\_\-valid}!vqec_cfg_limits.h@{vqec\_\-cfg\_\-limits.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean is\_\-vqec\_\-cfg\_\-vod\_\-mode\_\-valid (char $\ast$ {\em str})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cfg__limits_8h_e682c992af64546695136e6b08a206f7}
+
+

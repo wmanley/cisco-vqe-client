@@ -1,0 +1,539 @@
+\section{VQEC control-plane Channel API.}
+\label{group__vqechan}\index{VQEC control-plane Channel API.@{VQEC control-plane Channel API.}}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-CHANID\_\-INVALID}~0
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef int32\_\-t \bf{vqec\_\-chanid\_\-t}
+\item 
+typedef enum \bf{vqec\_\-chan\_\-err\_\-} \bf{vqec\_\-chan\_\-err\_\-t}
+\item 
+typedef enum \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-} \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-chan\_\-err\_\-} \{ \par
+\bf{VQEC\_\-CHAN\_\-ERR\_\-OK}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-INVALIDARGS}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOMORECHANNELS}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOTINITIALIZED}, 
+\par
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOSUCHCHAN}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOTFOUND}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOSUCHBINDING}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOMEM}, 
+\par
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOROOM}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-INTERNAL}
+ \}
+\item 
+enum \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-} \{ \bf{VQEC\_\-CHAN\_\-RTP\_\-SESSION\_\-PRIMARY}, 
+\bf{VQEC\_\-CHAN\_\-RTP\_\-SESSION\_\-REPAIR}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+const char $\ast$ \bf{vqec\_\-chan\_\-err2str} (\bf{vqec\_\-chan\_\-err\_\-t} err)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-module\_\-init} (void)
+\item 
+void \bf{vqec\_\-chan\_\-module\_\-deinit} (void)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-find\_\-chanid} (\bf{vqec\_\-chanid\_\-t} $\ast$chanid, in\_\-addr\_\-t ip, uint16\_\-t port)
+\item 
+void \bf{vqec\_\-chan\_\-convert\_\-sdp\_\-to\_\-cfg} (channel\_\-cfg\_\-t $\ast$sdp, \bf{vqec\_\-chan\_\-type\_\-t} chan\_\-type, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-chanid} (\bf{vqec\_\-chanid\_\-t} $\ast$chanid, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-update\_\-source} (\bf{vqec\_\-chanid\_\-t} chanid, const \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-update\_\-nat\_\-binding} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-put\_\-chanid} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-bind} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-tunerid\_\-t tid, const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, const \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t} $\ast$chan\_\-event\_\-cb)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-unbind} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-tunerid\_\-t tid)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-counters} (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$stats, boolean cumulative)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-counters\_\-channel} (\bf{vqec\_\-chanid\_\-t} chanid, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$stats, boolean cumulative)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-counters\_\-channel\_\-tr135\_\-sample} (\bf{vqec\_\-chanid\_\-t} chanid, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-tr135\_\-sample\_\-t} $\ast$stats)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-set\_\-tr135\_\-params} (\bf{vqec\_\-chanid\_\-t} chanid, \bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t} $\ast$params)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-tuner\_\-q\_\-drops} (\bf{vqec\_\-chanid\_\-t} chanid, uint64\_\-t $\ast$tuner\_\-queue\_\-drops, boolean cumulative)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-inputshim\_\-streams} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-streamid\_\-t $\ast$prim\_\-rtp\_\-id, vqec\_\-dp\_\-streamid\_\-t $\ast$repair\_\-rtp\_\-id, vqec\_\-dp\_\-streamid\_\-t $\ast$fec0\_\-rtp\_\-id, vqec\_\-dp\_\-streamid\_\-t $\ast$fec1\_\-rtp\_\-id)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-outputshim\_\-stream} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-streamid\_\-t $\ast$postrepair\_\-id)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-clear\_\-counters} (void)
+\item 
+void \bf{vqec\_\-chan\_\-display\_\-state} (\bf{vqec\_\-chanid\_\-t} chanid, uint32\_\-t options\_\-flag)
+\item 
+void \bf{vqec\_\-channel\_\-cfg\_\-printf} (channel\_\-cfg\_\-t $\ast$channel\_\-p)
+\item 
+void \bf{vqec\_\-chan\_\-nat\_\-bind\_\-update} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-nat\_\-bindid\_\-t bindid, vqec\_\-nat\_\-bind\_\-data\_\-t $\ast$data)
+\item 
+boolean \bf{vqec\_\-chan\_\-nat\_\-inject\_\-pak} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-nat\_\-bindid\_\-t bindid, vqec\_\-nat\_\-bind\_\-desc\_\-t $\ast$desc, char $\ast$buf, uint16\_\-t len)
+\item 
+boolean \bf{vqec\_\-chan\_\-eject\_\-rtcp\_\-nat\_\-pak} (\bf{vqec\_\-chanid\_\-t} chanid, char $\ast$buf, uint16\_\-t len, \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-t} session\_\-t, in\_\-addr\_\-t source\_\-ip, in\_\-port\_\-t source\_\-port)
+\item 
+boolean \bf{vqec\_\-chan\_\-eject\_\-rtp\_\-nat\_\-pak} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-chanid\_\-t dp\_\-chanid, char $\ast$buf, uint16\_\-t len, vqec\_\-dp\_\-streamid\_\-t is\_\-id, in\_\-addr\_\-t source\_\-ip, in\_\-port\_\-t source\_\-port)
+\item 
+void \bf{vqec\_\-chan\_\-show\_\-nat\_\-bindings} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+vqec\_\-dp\_\-chanid\_\-t \bf{vqec\_\-chan\_\-id\_\-to\_\-dpchanid} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+uint8\_\-t \bf{vqec\_\-chan\_\-is\_\-fastfill\_\-enabled} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+uint8\_\-t \bf{vqec\_\-chan\_\-is\_\-rcc\_\-enabled} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+uint16\_\-t \bf{vqec\_\-chan\_\-get\_\-max\_\-fec\_\-block\_\-size\_\-observed} (void)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqechan@{vqechan}!VQEC_CHANID_INVALID@{VQEC\_\-CHANID\_\-INVALID}}
+\index{VQEC_CHANID_INVALID@{VQEC\_\-CHANID\_\-INVALID}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CHANID\_\-INVALID~0}\label{group__vqechan_ge827484c4f669e4b3e55a0378c422acf}
+
+
+Invalid ID for a channel 
+
+\subsection{Typedef Documentation}
+\index{vqechan@{vqechan}!vqec_chan_err_t@{vqec\_\-chan\_\-err\_\-t}}
+\index{vqec_chan_err_t@{vqec\_\-chan\_\-err\_\-t}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-chan\_\-err\_\-}  \bf{vqec\_\-chan\_\-err\_\-t}}\label{group__vqechan_ga657bf43fc3880afdc1bea9882be821e}
+
+
+Channel module API error codes. \index{vqechan@{vqechan}!vqec_chan_rtp_session_type_t@{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-t}}
+\index{vqec_chan_rtp_session_type_t@{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-t}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-}  \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-t}}\label{group__vqechan_g9eb229d82de4f056772d27cac440ccea}
+
+
+Channel RTP session types. \index{vqechan@{vqechan}!vqec_chanid_t@{vqec\_\-chanid\_\-t}}
+\index{vqec_chanid_t@{vqec\_\-chanid\_\-t}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef int32\_\-t \bf{vqec\_\-chanid\_\-t}}\label{group__vqechan_gb187e796c5ef76f6d0c99ba164783c29}
+
+
+Channel ID 
+
+\subsection{Enumeration Type Documentation}
+\index{vqechan@{vqechan}!vqec_chan_err_@{vqec\_\-chan\_\-err\_\-}}
+\index{vqec_chan_err_@{vqec\_\-chan\_\-err\_\-}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-chan\_\-err\_\-}}\label{group__vqechan_gfac7d2c12c9c62322063839f64a5ff62}
+
+
+Channel module API error codes. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_CHAN_ERR_OK@{VQEC\_\-CHAN\_\-ERR\_\-OK}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_ERR_OK@{VQEC\_\-CHAN\_\-ERR\_\-OK}}\item[{\em 
+VQEC\_\-CHAN\_\-ERR\_\-OK\label{group__vqechan_ggfac7d2c12c9c62322063839f64a5ff6284879d5628e7875d1f27082dc5b57a2e}
+}]Success \index{VQEC_CHAN_ERR_INVALIDARGS@{VQEC\_\-CHAN\_\-ERR\_\-INVALIDARGS}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_ERR_INVALIDARGS@{VQEC\_\-CHAN\_\-ERR\_\-INVALIDARGS}}\item[{\em 
+VQEC\_\-CHAN\_\-ERR\_\-INVALIDARGS\label{group__vqechan_ggfac7d2c12c9c62322063839f64a5ff62b7c64e29c4ae0e40a0e17f7846b43bb2}
+}]Invalid arguments given to function \index{VQEC_CHAN_ERR_NOMORECHANNELS@{VQEC\_\-CHAN\_\-ERR\_\-NOMORECHANNELS}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_ERR_NOMORECHANNELS@{VQEC\_\-CHAN\_\-ERR\_\-NOMORECHANNELS}}\item[{\em 
+VQEC\_\-CHAN\_\-ERR\_\-NOMORECHANNELS\label{group__vqechan_ggfac7d2c12c9c62322063839f64a5ff626d8db38dd33059ea87d25c68d9561c1f}
+}]\index{VQEC_CHAN_ERR_NOTINITIALIZED@{VQEC\_\-CHAN\_\-ERR\_\-NOTINITIALIZED}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_ERR_NOTINITIALIZED@{VQEC\_\-CHAN\_\-ERR\_\-NOTINITIALIZED}}\item[{\em 
+VQEC\_\-CHAN\_\-ERR\_\-NOTINITIALIZED\label{group__vqechan_ggfac7d2c12c9c62322063839f64a5ff62aa7eda2e24a28382fd4ab904b569797e}
+}]Channel module not initialized \index{VQEC_CHAN_ERR_NOSUCHCHAN@{VQEC\_\-CHAN\_\-ERR\_\-NOSUCHCHAN}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_ERR_NOSUCHCHAN@{VQEC\_\-CHAN\_\-ERR\_\-NOSUCHCHAN}}\item[{\em 
+VQEC\_\-CHAN\_\-ERR\_\-NOSUCHCHAN\label{group__vqechan_ggfac7d2c12c9c62322063839f64a5ff621fb04dd8a153718bb1e46d3581213a3d}
+}]Invalid channel ID supplied \index{VQEC_CHAN_ERR_NOTFOUND@{VQEC\_\-CHAN\_\-ERR\_\-NOTFOUND}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_ERR_NOTFOUND@{VQEC\_\-CHAN\_\-ERR\_\-NOTFOUND}}\item[{\em 
+VQEC\_\-CHAN\_\-ERR\_\-NOTFOUND\label{group__vqechan_ggfac7d2c12c9c62322063839f64a5ff622c26c8f1175f15554466988057555219}
+}]Channel not found \index{VQEC_CHAN_ERR_NOSUCHBINDING@{VQEC\_\-CHAN\_\-ERR\_\-NOSUCHBINDING}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_ERR_NOSUCHBINDING@{VQEC\_\-CHAN\_\-ERR\_\-NOSUCHBINDING}}\item[{\em 
+VQEC\_\-CHAN\_\-ERR\_\-NOSUCHBINDING\label{group__vqechan_ggfac7d2c12c9c62322063839f64a5ff62df7908ab7ffdb243081231957386e3ad}
+}]Channel not bound to given tuner \index{VQEC_CHAN_ERR_NOMEM@{VQEC\_\-CHAN\_\-ERR\_\-NOMEM}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_ERR_NOMEM@{VQEC\_\-CHAN\_\-ERR\_\-NOMEM}}\item[{\em 
+VQEC\_\-CHAN\_\-ERR\_\-NOMEM\label{group__vqechan_ggfac7d2c12c9c62322063839f64a5ff62e4421d1ac907160faea419c1e464b242}
+}]Memory allocation failed \index{VQEC_CHAN_ERR_NOROOM@{VQEC\_\-CHAN\_\-ERR\_\-NOROOM}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_ERR_NOROOM@{VQEC\_\-CHAN\_\-ERR\_\-NOROOM}}\item[{\em 
+VQEC\_\-CHAN\_\-ERR\_\-NOROOM\label{group__vqechan_ggfac7d2c12c9c62322063839f64a5ff62d3c0b41dd1065a5725c89c2269ed58a6}
+}]Insufficient buffer size for info \index{VQEC_CHAN_ERR_INTERNAL@{VQEC\_\-CHAN\_\-ERR\_\-INTERNAL}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_ERR_INTERNAL@{VQEC\_\-CHAN\_\-ERR\_\-INTERNAL}}\item[{\em 
+VQEC\_\-CHAN\_\-ERR\_\-INTERNAL\label{group__vqechan_ggfac7d2c12c9c62322063839f64a5ff621ced59126ad9d565deeef4319c9082aa}
+}]Internal error \end{description}
+\end{Desc}
+
+\index{vqechan@{vqechan}!vqec_chan_rtp_session_type_@{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-}}
+\index{vqec_chan_rtp_session_type_@{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-}}\label{group__vqechan_g414d5ccb2c35817ac8ac79830970764f}
+
+
+Channel RTP session types. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_CHAN_RTP_SESSION_PRIMARY@{VQEC\_\-CHAN\_\-RTP\_\-SESSION\_\-PRIMARY}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_RTP_SESSION_PRIMARY@{VQEC\_\-CHAN\_\-RTP\_\-SESSION\_\-PRIMARY}}\item[{\em 
+VQEC\_\-CHAN\_\-RTP\_\-SESSION\_\-PRIMARY\label{group__vqechan_gg414d5ccb2c35817ac8ac79830970764f7b3544ddb44f63a545765df250d99ebf}
+}]\index{VQEC_CHAN_RTP_SESSION_REPAIR@{VQEC\_\-CHAN\_\-RTP\_\-SESSION\_\-REPAIR}!vqechan@{vqechan}}\index{vqechan@{vqechan}!VQEC_CHAN_RTP_SESSION_REPAIR@{VQEC\_\-CHAN\_\-RTP\_\-SESSION\_\-REPAIR}}\item[{\em 
+VQEC\_\-CHAN\_\-RTP\_\-SESSION\_\-REPAIR\label{group__vqechan_gg414d5ccb2c35817ac8ac79830970764fd6c91140243899ef40b791a740916e86}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{vqechan@{vqechan}!vqec_chan_bind@{vqec\_\-chan\_\-bind}}
+\index{vqec_chan_bind@{vqec\_\-chan\_\-bind}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-bind (\bf{vqec\_\-chanid\_\-t} {\em chanid}, vqec\_\-dp\_\-tunerid\_\-t {\em tid}, const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$ {\em bp}, const \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t} $\ast$ {\em chan\_\-event\_\-cb})}\label{group__vqechan_ge7d45c2814e1a34ce29b2303bd2f254b}
+
+
+--------------------------------------------------------------------------- Binds the given channel to a tuner.
+
+Note that channels may be bound to more than one tuner.
+
+Upon a successful binding, the following actions are taken: o The tuner ID is stored with the channel object o A flowgraph is built (if the channel is not already bound to a tuner) or augmented (if the channel is already bound) in the dataplane for the channel o A PLI-NACK is sent to initiate RCC (if the channel is not already bound to a tuner)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Channel to be bound \item[\mbox{$\leftarrow$} {\em tid}]Tuner to which the channel should be bound (specified by its dataplane tuner ID). \item[\mbox{$\leftarrow$} {\em bp}]Bind parameters \item[\mbox{$\leftarrow$} {\em chan\_\-event\_\-cb,:}]chan event cb function \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]Returns VQEC\_\-CHAN\_\-ERR\_\-OK on success, and an error code on failure. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_clear_counters@{vqec\_\-chan\_\-clear\_\-counters}}
+\index{vqec_chan_clear_counters@{vqec\_\-chan\_\-clear\_\-counters}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-clear\_\-counters (void)}\label{group__vqechan_gde9961807a14fdcb0871c949022bfa13}
+
+
+Clears the channel counters.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]Indicates success or reason for failure. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_convert_sdp_to_cfg@{vqec\_\-chan\_\-convert\_\-sdp\_\-to\_\-cfg}}
+\index{vqec_chan_convert_sdp_to_cfg@{vqec\_\-chan\_\-convert\_\-sdp\_\-to\_\-cfg}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-convert\_\-sdp\_\-to\_\-cfg (channel\_\-cfg\_\-t $\ast$ {\em sdp}, \bf{vqec\_\-chan\_\-type\_\-t} {\em chan\_\-type}, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em cfg})}\label{group__vqechan_gdf34494e93f3a75caf6653d322396df1}
+
+
+Converts a channel\_\-cfg\_\-t structure (based on SDP) into a vqec\_\-chan\_\-cfg\_\-t structure (internal VQE-C representation of a channel configuration). If sdp is NULL, cfg is set to defaults.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em sdp}]sdp channel configuration \item[\mbox{$\leftarrow$} {\em chan\_\-type}]channel type (linear or vod) \item[\mbox{$\rightarrow$} {\em cfg}]target channel cfg \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_display_state@{vqec\_\-chan\_\-display\_\-state}}
+\index{vqec_chan_display_state@{vqec\_\-chan\_\-display\_\-state}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-display\_\-state (\bf{vqec\_\-chanid\_\-t} {\em chanid}, uint32\_\-t {\em options\_\-flag})}\label{group__vqechan_ge859717b262244f5adbcbdb26b3499c6}
+
+
+Display the state of a channel (equivalent to src\_\-dump sans the display of channel configuration from the configuration manager) to the given file stream.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Channel whose state is to be written \item[\mbox{$\leftarrow$} {\em options\_\-flag}]Conditional flags under which to display. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_eject_rtcp_nat_pak@{vqec\_\-chan\_\-eject\_\-rtcp\_\-nat\_\-pak}}
+\index{vqec_chan_eject_rtcp_nat_pak@{vqec\_\-chan\_\-eject\_\-rtcp\_\-nat\_\-pak}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-chan\_\-eject\_\-rtcp\_\-nat\_\-pak (\bf{vqec\_\-chanid\_\-t} {\em chanid}, char $\ast$ {\em buf}, uint16\_\-t {\em len}, \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-t} {\em sess\_\-t}, in\_\-addr\_\-t {\em source\_\-ip}, in\_\-port\_\-t {\em source\_\-port})}\label{group__vqechan_g93659d5be2b0a6ae045225bd605809e8}
+
+
+--------------------------------------------------------------------------- Eject a RTCP packet to the NAT protocol.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chan}]Pointer to the channel. \item[\mbox{$\leftarrow$} {\em buf}]Pointer to the packet contents. \item[\mbox{$\leftarrow$} {\em len}]Length of the contents. \item[\mbox{$\leftarrow$} {\em session\_\-t}]Type of session. \item[\mbox{$\leftarrow$} {\em source\_\-ip,:}]source ip of the packet \item[\mbox{$\leftarrow$} {\em source\_\-port,:}]source port of the packet \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the packet was successfully sent to the NAT protocol, false otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_eject_rtp_nat_pak@{vqec\_\-chan\_\-eject\_\-rtp\_\-nat\_\-pak}}
+\index{vqec_chan_eject_rtp_nat_pak@{vqec\_\-chan\_\-eject\_\-rtp\_\-nat\_\-pak}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-chan\_\-eject\_\-rtp\_\-nat\_\-pak (\bf{vqec\_\-chanid\_\-t} {\em chanid}, vqec\_\-dp\_\-chanid\_\-t {\em dp\_\-chanid}, char $\ast$ {\em buf}, uint16\_\-t {\em len}, vqec\_\-dp\_\-streamid\_\-t {\em is\_\-id}, in\_\-addr\_\-t {\em source\_\-ip}, in\_\-port\_\-t {\em source\_\-port})}\label{group__vqechan_gd0f67f530682617b0b4a98ded40e6d03}
+
+
+--------------------------------------------------------------------------- Eject a RTP packet from the dataplane to the NAT protocol.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifier of the channel. \item[\mbox{$\leftarrow$} {\em dp\_\-chanid}]Identifier of the dataplane channel. \item[\mbox{$\leftarrow$} {\em buf}]Pointer to the packet contents. \item[\mbox{$\leftarrow$} {\em len}]Length of the contents. \item[\mbox{$\leftarrow$} {\em session\_\-t}]Type of session. \item[\mbox{$\leftarrow$} {\em source\_\-ip,:}]source ip of the packet \item[\mbox{$\leftarrow$} {\em source\_\-port,:}]source port of the packet \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the packet was successfully sent to the NAT protocol, false otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_err2str@{vqec\_\-chan\_\-err2str}}
+\index{vqec_chan_err2str@{vqec\_\-chan\_\-err2str}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-chan\_\-err2str (\bf{vqec\_\-chan\_\-err\_\-t} {\em err})}\label{group__vqechan_g649a783fc51d26367b1f69f1bfbf6586}
+
+
+Returns a descriptive error string corresponding to an vqec\_\-chan\_\-err\_\-t error code.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em err}]Error code \item[\mbox{$\rightarrow$} {\em const}]char $\ast$ Descriptive string corresponding to error code \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_find_chanid@{vqec\_\-chan\_\-find\_\-chanid}}
+\index{vqec_chan_find_chanid@{vqec\_\-chan\_\-find\_\-chanid}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-find\_\-chanid (\bf{vqec\_\-chanid\_\-t} $\ast$ {\em chanid}, in\_\-addr\_\-t {\em ip}, uint16\_\-t {\em port})}\label{group__vqechan_g1d5e42dc3e2517a8ace7cefd37778d7e}
+
+
+Retrieves a channel manager ID for the supplied active channel, as specified by its destination (ip addr, port) pair. If no active channel exists with the given (ip addr, port) pair, then VQEC\_\-ERR\_\-CHANNOTACTIVE will be returned.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em chanid}]Retrieved channel's ID upon success, or VQEC\_\-CHANID\_\-INVALID upon failure. \item[\mbox{$\leftarrow$} {\em ip}]requested channel's destination IP address \item[\mbox{$\leftarrow$} {\em port}]requested channel's destination port \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]Returns VQEC\_\-CHAN\_\-ERR\_\-OK upon success, or a failure code indicating why a channel ID could not be retrieved. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_get_chanid@{vqec\_\-chan\_\-get\_\-chanid}}
+\index{vqec_chan_get_chanid@{vqec\_\-chan\_\-get\_\-chanid}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-get\_\-chanid (\bf{vqec\_\-chanid\_\-t} $\ast$ {\em chanid}, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em cfg})}\label{group__vqechan_g6ba686f1c9a755488eba791a8078e2ab}
+
+
+Retrieves a channel manager ID for the supplied channel.
+
+If the supplied channel exists in the channel manager database (implying that a tuner is already associated with it), then its ID will be returned. If the supplied channel does not exist, then it will be created and inserted into the channel database, and its ID returned.
+
+Channels are uniquely identified by their destination IP and port pair (cfg-$>$primary\_\-dest\_\-addr.s\_\-addr, cfg-$>$primary\_\-dest\_\-port). The other fields of the cfg structure are used only when the channel does not already exist in the channel database. Note that this channel configuration is currently NOT validated within this function--the supplied configuration is assumed to be valid.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em chanid}]Retrieved channel's ID upon success, or VQEC\_\-CHANID\_\-INVALID upon failure. \item[\mbox{$\leftarrow$} {\em cfg}]Channel configuration. A copy of this configuration will be cached, and used to construct various dynamic components of the channel. The configuration is assumed valid. \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]Returns VQEC\_\-CHAN\_\-ERR\_\-OK upon success, or a failure code indicating why a channel ID could not be retrieved. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_get_counters@{vqec\_\-chan\_\-get\_\-counters}}
+\index{vqec_chan_get_counters@{vqec\_\-chan\_\-get\_\-counters}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-get\_\-counters (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$ {\em stats}, boolean {\em cumulative})}\label{group__vqechan_g9bcfc846d710ac77d4c61d5215f499d9}
+
+
+This API accepts a vqec\_\-ifclient\_\-stats\_\-t structure, which is the public data structure for exporting aggregated data across ALL channels.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em stats}]Pointer to the aggregate/global statistics structure. \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]Indicates success or reason for failure. \item[\mbox{$\leftarrow$} {\em cumulative}]Flag indicating that Cumulative counters are desired. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_get_counters_channel@{vqec\_\-chan\_\-get\_\-counters\_\-channel}}
+\index{vqec_chan_get_counters_channel@{vqec\_\-chan\_\-get\_\-counters\_\-channel}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-get\_\-counters\_\-channel (\bf{vqec\_\-chanid\_\-t} {\em chanid}, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$ {\em stats}, boolean {\em cumulative})}\label{group__vqechan_g94bade83b8e94e45fe0621f0a5fb74f4}
+
+
+Populate counters for an individual channel.
+
+This API accepts a vqec\_\-ifclient\_\-stats\_\-channel\_\-t structure, which is the public data structure for exporting data on an individual channel.
+
+Note that 1) Additional stats/fields may be added to vqec\_\-ifclient\_\-stats\_\-channel\_\-t in the future, including ones which match the names of those defined in vqec\_\-ifclient\_\-stats\_\-t, as requirements for retrieving these stats appear. 2) The stats retrieved by this API start accumulating when the channel becomes active, and are NOT cleared by the \char`\"{}clear counters\char`\"{} command or \doxyref{vqec\_\-ifclient\_\-clear\_\-stats()}{p.}{vqec__ifclient_8c_c95471634604a1a4bfac183b59422344} API since there is no current requirement for this behavior. 3) This API does not populate stats collected at the tuner(s) connected to this channel (e.g. tuner\_\-queue\_\-drops will not be populated by this API)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]ID of channel whose counters are requested \item[\mbox{$\rightarrow$} {\em stats}]Pointer to the channel statistics structure. \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]Indicates success or reason for failure. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_get_counters_channel_tr135_sample@{vqec\_\-chan\_\-get\_\-counters\_\-channel\_\-tr135\_\-sample}}
+\index{vqec_chan_get_counters_channel_tr135_sample@{vqec\_\-chan\_\-get\_\-counters\_\-channel\_\-tr135\_\-sample}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-get\_\-counters\_\-channel\_\-tr135\_\-sample (\bf{vqec\_\-chanid\_\-t} {\em chanid}, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-tr135\_\-sample\_\-t} $\ast$ {\em stats})}\label{group__vqechan_g85854c0935126e4f00d9862121cf216e}
+
+
+Get TR-135 sample counters for an individual channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]ID of channel whose counters are requested \item[\mbox{$\rightarrow$} {\em stats}]Pointer to the tr135 sample statistics structure. \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]Indicates success or reason for failure. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_get_inputshim_streams@{vqec\_\-chan\_\-get\_\-inputshim\_\-streams}}
+\index{vqec_chan_get_inputshim_streams@{vqec\_\-chan\_\-get\_\-inputshim\_\-streams}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-get\_\-inputshim\_\-streams (\bf{vqec\_\-chanid\_\-t} {\em chanid}, vqec\_\-dp\_\-streamid\_\-t $\ast$ {\em prim\_\-rtp\_\-id}, vqec\_\-dp\_\-streamid\_\-t $\ast$ {\em repair\_\-rtp\_\-id}, vqec\_\-dp\_\-streamid\_\-t $\ast$ {\em fec0\_\-rtp\_\-id}, vqec\_\-dp\_\-streamid\_\-t $\ast$ {\em fec1\_\-rtp\_\-id})}\label{group__vqechan_gdd0237b4fb47bedc61b0aebae4878202}
+
+
+Retrieve a channel's input shim stream identifiers.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]- specifies channel of interest \item[\mbox{$\rightarrow$} {\em prim\_\-rtp\_\-id}]- primary rtp stream ID \item[\mbox{$\rightarrow$} {\em repair\_\-rtp\_\-id}]- repair rtp stream ID \item[\mbox{$\rightarrow$} {\em fec0\_\-rtp\_\-id}]- fec0 rtp stream ID \item[\mbox{$\rightarrow$} {\em fec1\_\-rtp\_\-id}]- fec1 rtp stream ID \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]- VQEC\_\-CHAN\_\-ERR\_\-OK: success VQEC\_\-CHAN\_\-ERR\_\-NOSUCHCHAN: channel not found \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_get_max_fec_block_size_observed@{vqec\_\-chan\_\-get\_\-max\_\-fec\_\-block\_\-size\_\-observed}}
+\index{vqec_chan_get_max_fec_block_size_observed@{vqec\_\-chan\_\-get\_\-max\_\-fec\_\-block\_\-size\_\-observed}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t vqec\_\-chan\_\-get\_\-max\_\-fec\_\-block\_\-size\_\-observed (void)}\label{group__vqechan_g333380f423fb6b930ba340a1cb54db2f}
+
+
+Get the max observed FEC block size.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em uint16\_\-t}]the max observed block size. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_get_outputshim_stream@{vqec\_\-chan\_\-get\_\-outputshim\_\-stream}}
+\index{vqec_chan_get_outputshim_stream@{vqec\_\-chan\_\-get\_\-outputshim\_\-stream}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-get\_\-outputshim\_\-stream (\bf{vqec\_\-chanid\_\-t} {\em chanid}, vqec\_\-dp\_\-streamid\_\-t $\ast$ {\em postrepair\_\-id})}\label{group__vqechan_g51dce6eb27220336d8b38414eff63e5c}
+
+
+\index{vqechan@{vqechan}!vqec_chan_get_tuner_q_drops@{vqec\_\-chan\_\-get\_\-tuner\_\-q\_\-drops}}
+\index{vqec_chan_get_tuner_q_drops@{vqec\_\-chan\_\-get\_\-tuner\_\-q\_\-drops}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-get\_\-tuner\_\-q\_\-drops (\bf{vqec\_\-chanid\_\-t} {\em chanid}, uint64\_\-t $\ast$ {\em tuner\_\-queue\_\-drops}, boolean {\em cumulative})}\label{group__vqechan_g2c55194d95971c0a9a434a8ab2606590}
+
+
+--------------------------------------------------------------------------- Get the tuner Q drops for all the tuners bound to a channel
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Channel identifier. \item[\mbox{$\rightarrow$} {\em tuner\_\-queue\_\-drops}]Pointer to the uint64\_\-t variable that will be populated by this function \item[\mbox{$\leftarrow$} {\em cumulative}]Boolean specifying if cumulative stats are desired \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]vqec\_\-chan\_\-err\_\-t --------------------------------------------------------------------------- \end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_id_to_dpchanid@{vqec\_\-chan\_\-id\_\-to\_\-dpchanid}}
+\index{vqec_chan_id_to_dpchanid@{vqec\_\-chan\_\-id\_\-to\_\-dpchanid}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-chanid\_\-t vqec\_\-chan\_\-id\_\-to\_\-dpchanid (\bf{vqec\_\-chanid\_\-t} {\em chanid})}\label{group__vqechan_ga1dddbaa8eb11ab0ea8f34ed745248a8}
+
+
+--------------------------------------------------------------------------- From CP channel id to DP channel id. (only use for CLI interface).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]CP channel identifier. \item[\mbox{$\rightarrow$} {\em vqec\_\-dp\_\-chanid\_\-t}]Dataplane channel identifier. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_is_fastfill_enabled@{vqec\_\-chan\_\-is\_\-fastfill\_\-enabled}}
+\index{vqec_chan_is_fastfill_enabled@{vqec\_\-chan\_\-is\_\-fastfill\_\-enabled}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t vqec\_\-chan\_\-is\_\-fastfill\_\-enabled (\bf{vqec\_\-chanid\_\-t} {\em chanid})}\label{group__vqechan_gf06185cee04456a31413db5a033a6075}
+
+
+--------------------------------------------------------------------------- Has fastfill been requested for this channel from the server.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifier of the channel. \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]Returns TRUE if fastfill is enabled, FALSE otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_is_rcc_enabled@{vqec\_\-chan\_\-is\_\-rcc\_\-enabled}}
+\index{vqec_chan_is_rcc_enabled@{vqec\_\-chan\_\-is\_\-rcc\_\-enabled}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t vqec\_\-chan\_\-is\_\-rcc\_\-enabled (\bf{vqec\_\-chanid\_\-t} {\em chanid})}\label{group__vqechan_ge9449176077c28e148fad09b632f946d}
+
+
+--------------------------------------------------------------------------- Is RCC enabled for this channel?
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifier of the channel. \item[\mbox{$\rightarrow$} {\em uint8\_\-t}]Returns TRUE if rcc is enabled, FALSE otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_module_deinit@{vqec\_\-chan\_\-module\_\-deinit}}
+\index{vqec_chan_module_deinit@{vqec\_\-chan\_\-module\_\-deinit}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-module\_\-deinit (void)}\label{group__vqechan_g724aa220b3063eb91d2c25ffa351a31e}
+
+
+--------------------------------------------------------------------------- Deallocate all resources allocated for the channel manager. All channels that are currently cached are destroyed. Also, the flowgraphs for these channels are also destroyed in the dataplane. --------------------------------------------------------------------------- \index{vqechan@{vqechan}!vqec_chan_module_init@{vqec\_\-chan\_\-module\_\-init}}
+\index{vqec_chan_module_init@{vqec\_\-chan\_\-module\_\-init}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-module\_\-init (void)}\label{group__vqechan_gccd3819e150669269ed0e3fb5de5dc76}
+
+
+--------------------------------------------------------------------------- Initialize the channel module, and allocate any static resources.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\rightarrow$} {\em vqec\_\-err\_\-t}]Returns VQEC\_\-CHAN\_\-ERR\_\-OK on success. If resources cannot be allocated returns an error code. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_nat_bind_update@{vqec\_\-chan\_\-nat\_\-bind\_\-update}}
+\index{vqec_chan_nat_bind_update@{vqec\_\-chan\_\-nat\_\-bind\_\-update}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-nat\_\-bind\_\-update (\bf{vqec\_\-chanid\_\-t} {\em chanid}, vqec\_\-nat\_\-bindid\_\-t {\em bindid}, vqec\_\-nat\_\-bind\_\-data\_\-t $\ast$ {\em data})}\label{group__vqechan_g97dec90564fc5b93e16b99c4e6d24d9d}
+
+
+--------------------------------------------------------------------------- A NAT binding update - propagate to RCC state machine.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifier of the channel. \item[\mbox{$\leftarrow$} {\em bindid}]Identifier of the binding. \item[\mbox{$\leftarrow$} {\em data}]Attributes and current mapping for the binding. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_nat_inject_pak@{vqec\_\-chan\_\-nat\_\-inject\_\-pak}}
+\index{vqec_chan_nat_inject_pak@{vqec\_\-chan\_\-nat\_\-inject\_\-pak}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-chan\_\-nat\_\-inject\_\-pak (\bf{vqec\_\-chanid\_\-t} {\em chanid}, vqec\_\-nat\_\-bindid\_\-t {\em bindid}, vqec\_\-nat\_\-bind\_\-desc\_\-t $\ast$ {\em desc}, char $\ast$ {\em buf}, uint16\_\-t {\em len})}\label{group__vqechan_g54095302687f99dbb81abac0e0a1feb6}
+
+
+--------------------------------------------------------------------------- Inject a packet into the repair RTP or RTCP sockets.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifier of the channel. \item[\mbox{$\leftarrow$} {\em bindid}]Identifier of the binding. \item[\mbox{$\leftarrow$} {\em desc}]Attributes of the binding. \item[\mbox{$\leftarrow$} {\em buf}]Pointer to the packet contents. \item[\mbox{$\leftarrow$} {\em len}]Length of the contents. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the packet was successfully en\-Qd in the socket (RTCP) or delivered to the dataplane. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_put_chanid@{vqec\_\-chan\_\-put\_\-chanid}}
+\index{vqec_chan_put_chanid@{vqec\_\-chan\_\-put\_\-chanid}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-put\_\-chanid (\bf{vqec\_\-chanid\_\-t} {\em chanid})}\label{group__vqechan_g66ffd3ea2c7be5a942ff0f7c5625b10a}
+
+
+Negates a vqec\_\-chan\_\-get\_\-chanid call.
+
+The effects of a vqec\_\-chan\_\-get\_\-chanid call can be undone by calling vqec\_\-chan\_\-put\_\-chanid. If no tuners are bound to the channel referenced by the supplied chanid, the channel is destroyed.
+
+For example, if a vqec\_\-chan\_\-get\_\-chanid is called before binding a tuner but the tuner bind call fails, this function may be used to ensure that no memory is leaked.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]channel ID of an existing channel \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]Returns VQEC\_\-CHAN\_\-ERR\_\-OK on success \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_set_tr135_params@{vqec\_\-chan\_\-set\_\-tr135\_\-params}}
+\index{vqec_chan_set_tr135_params@{vqec\_\-chan\_\-set\_\-tr135\_\-params}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-set\_\-tr135\_\-params (\bf{vqec\_\-chanid\_\-t} {\em chanid}, \bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t} $\ast$ {\em params})}\label{group__vqechan_g9ff78958248b68d511b30ef980bab962}
+
+
+API to set TR-135 parameters for a channel
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]ID of channel whose counters are requested \item[\mbox{$\leftarrow$} {\em params}]TR-135 writable parameters for this channel \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]Indicates success or reason for failure. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_show_nat_bindings@{vqec\_\-chan\_\-show\_\-nat\_\-bindings}}
+\index{vqec_chan_show_nat_bindings@{vqec\_\-chan\_\-show\_\-nat\_\-bindings}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-chan\_\-show\_\-nat\_\-bindings (\bf{vqec\_\-chanid\_\-t} {\em chanid})}\label{group__vqechan_ga7e57727ddce403ac16aeb2b630198b3}
+
+
+--------------------------------------------------------------------------- Display NAT bindings for the channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifier of the channel. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_unbind@{vqec\_\-chan\_\-unbind}}
+\index{vqec_chan_unbind@{vqec\_\-chan\_\-unbind}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-unbind (\bf{vqec\_\-chanid\_\-t} {\em chanid}, vqec\_\-dp\_\-tunerid\_\-t {\em tid})}\label{group__vqechan_gdd81fb327fc9202ac2eb2da7636c15b5}
+
+
+Unbinds the given channel from the specified tuner.
+
+Upon a successful unbinding, the following actions are taken: o The tuner ID is removed from the channel object o The channel's flowgraph is modified to exclude the tuner (if other tuners remain bound to the channel) or destroyed (if no other tuners remain bound to the channel) o All its other control and dataplane resources are destroyed
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]channel to be unbound \item[\mbox{$\leftarrow$} {\em tid}]tuner to be unbound from the given channel \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]Returns VQEC\_\-CHAN\_\-ERR\_\-OK if the unbind was successful, and an error code on failure. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_update_nat_binding@{vqec\_\-chan\_\-update\_\-nat\_\-binding}}
+\index{vqec_chan_update_nat_binding@{vqec\_\-chan\_\-update\_\-nat\_\-binding}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-update\_\-nat\_\-binding (\bf{vqec\_\-chanid\_\-t} {\em chanid})}\label{group__vqechan_g507ffe7342d9fce0d6f562ecc46c6b6c}
+
+
+Update the nat binding of a channel. This function close the previous nat binding of the channel and restart a new nat binding process. It is mainly use for VOD failover support.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifies channel to update. \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]VQEC\_\-CHAN\_\-ERR\_\-OK upon success, or a failure code indicating why the channel could not be updated. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_chan_update_source@{vqec\_\-chan\_\-update\_\-source}}
+\index{vqec_chan_update_source@{vqec\_\-chan\_\-update\_\-source}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chan\_\-err\_\-t} vqec\_\-chan\_\-update\_\-source (\bf{vqec\_\-chanid\_\-t} {\em chanid}, const \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em cfg})}\label{group__vqechan_g546ea3b893bab39161c469e761c6baf0}
+
+
+Updates the configuration of an active channel. Only updates to fields documented in the header for vqec\_\-ifclient\_\-chan\_\-cfg\_\-update() are updated; other fields are silently ignored.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifies channel to update. \item[\mbox{$\leftarrow$} {\em cfg}]Contains configuration updates \item[\mbox{$\rightarrow$} {\em vqec\_\-chan\_\-err\_\-t}]VQEC\_\-CHAN\_\-ERR\_\-OK upon success, or a failure code indicating why the channel could not be updated. \end{description}
+\end{Desc}
+\index{vqechan@{vqechan}!vqec_channel_cfg_printf@{vqec\_\-channel\_\-cfg\_\-printf}}
+\index{vqec_channel_cfg_printf@{vqec\_\-channel\_\-cfg\_\-printf}!vqechan@{vqechan}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-channel\_\-cfg\_\-printf (channel\_\-cfg\_\-t $\ast$ {\em channel\_\-p})}\label{group__vqechan_g3ec8b4f1ea1fe7a76589dd90ae418688}
+
+
+Function: \doxyref{vqec\_\-channel\_\-cfg\_\-printf()}{p.}{group__vqechan_g3ec8b4f1ea1fe7a76589dd90ae418688} Description: Print out the channel configuration data Parameters: channel cfg to print Returns: void 

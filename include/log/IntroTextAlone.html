@@ -1,0 +1,231 @@
+<p>&nbsp;</p>
+</ul> </ul><h1><a NAME="INTRO">Introduction to VQE System Messages</a></h1>
+<p>
+<p>This file lists and describes the Cisco VQE system messages and recovery procedures. The VQE software 
+writes these messages to the following locations:</p>
+<ul>
+	<li>On VQE-S and VQE Tools servers, VQE system messages are written to the /var/log/vqe/vqe.log file.</li>
+	<li>VQE Client Channel Configuration Delivery Server (VCDS) system messages 
+	are also written to the /var/log/vqe/vqe.log file.</li>
+</ul>
+<p>
+Not all system messages indicate problems with VQE. Some messages are purely 
+informational, while others may help diagnose problems with communications links 
+or the operating system (for example, file permission problems). Only critical 
+messages are displayed on the CDE110 console.</p>
+<p>
+For information on VQE-S AMT and VCPT logging output, see the 
+<i><a href="http://www.cisco.com/en/US/docs/video/cds/cda/vqe/3_0/user/guide/vqe_guide3_0.html">Cisco CDA Visual Quality Experience Application User Guide</a></i>.</p>
+<h2>
+System Message Structure</h2>
+<p>
+System messages are structured as follows:</p>
+<p style="font-family: 'Courier New', Courier, monospace; font-size: x-small">
+&nbsp;&nbsp;&nbsp;&nbsp; FACILITY-SEVERITY-MNEMONIC: Message-text 
+</p>
+<dl>
+	<dt>FACILITY code</dt>
+	<dd>The facility code consists of two or more uppercase letters that indicate the 
+facility to which the message refers. The following table lists the VQE facility codes.
+	</dd>
+</dl>
+
+	<table style="width: 75%" border ="1">
+		<tr style="border-style: solid; border-width: 4px; padding: 1px 4px">
+			<td style="width: 165px"><strong>Code </strong></td>
+			<td style="width: 497px"><strong>VQE Facility </strong></td>
+		</tr>
+		<tr>
+			<td style="width: 165px">STUN_SERVER</td>
+			<td style="width: 497px">STUN Server (VQE-S) </td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQES_CP VQE-S </td>
+			<td style="width: 497px">VQE-S Control Plane </td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQES_DP_CLIENT </td>
+			<td style="width: 497px">VQE-S Data Plane Client </td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQES_DP </td>
+			<td style="width: 497px">VQE-S Data Plane</td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQES_MLB_Client</td>
+			<td style="width: 497px">VQE-S Multicast Load Balancer Client</td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQES_MLB</td>
+			<td style="width: 497px">VQE-S Multicast Load Balancer</td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQES_PM</td>
+			<td style="width: 497px">VQE-S Process Monitor</td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQE_CFGTOOL</td>
+			<td style="width: 497px">VQE Configuration Tool (<b>vqe_cfgtool</b> command) </td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQE_CFG</td>
+			<td style="width: 497px">VQE channel configuration</td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQE_UTILS</td>
+			<td style="width: 497px">VQE Utilities</td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQE_RPC</td>
+			<td style="width: 497px">VQE-S Remote Procedure Call facility</td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQE_RTP</td>
+			<td style="width: 497px">VQE Real-Time Transport Protocol<br />
+(Many of these messages are related to RTP Control Protocol (RTCP)). </td>
+		</tr>
+		<tr>
+			<td style="width: 165px">VQE_RTSP</td>
+			<td style="width: 497px">VQE Real Time Streaming Protocol (VCDS) </td>
+		</tr>
+	</table>
+	<br />
+<dl>
+<dt>SEVERITY level </dt>
+<dd>The severity level is a single-digit code from 0 to 7 that reflects the severity 
+of the condition. The lower the number, the more serious the situation. Messages of severity 7 (Debugging) are 
+not described in this appendix. The message severity levels are as follows:</dd>
+</dl>
+<ul>
+	<li>0--Emergency (System is unusable.)<br />
+	</li>
+	<li>1--Alert (Immediate action is required.)<br />
+	</li>
+	<li>2--Critical (Critical condition)<br />
+	</li>
+	<li>3--Error (Error condition)<br />
+	</li>
+	<li>4--Warning (Warning condition)<br />
+	</li>
+	<li>5--Notification (Normal but significant condition)<br />
+	</li>
+	<li>6--Informational (Information message only)<br />
+	</li>
+	<li>7--Debugging (Message that appears during debugging only)</li>
+</ul>
+<dl>
+<dt>MNEMONIC code</dt> 
+<dd>The combination of the facility code and the mnemonic code uniquely identifies 
+the error message.</dd>
+</dl>
+<dl>
+<dt>Message-text</dt>
+<dd>Message-text is a text string that describes the condition. The text string 
+sometimes contains detailed information about the event, including port numbers 
+and network addresses. Because variable fields change from message to message, 
+they are represented here by short strings enclosed in square brackets ([ ]). A 
+decimal number, for example, is represented as [dec]. The following table lists the 
+variable fields in messages. </dd>
+</dl>
+
+	<table style="width: 44%" border ="1" >
+		<tr>
+			<td style="width: 165px"><strong>Representation </strong></td>
+			<td style="width: 201px"><strong>Type of Information&nbsp; </strong></td>
+		</tr>
+		<tr>
+			<td style="width: 165px">[chars] or [char]</td>
+			<td style="width: 201px">Character string </td>
+		</tr>
+		<tr>
+			<td style="width: 165px">[dec]</td>
+			<td style="width: 201px">Decimal</td>
+		</tr>
+		<tr>
+			<td style="width: 165px">[hex]</td>
+			<td style="width: 201px">Hexadecimal integer</td>
+		</tr>
+		<tr>
+			<td style="width: 165px">[int]</td>
+			<td style="width: 201px">Integer</td>
+		</tr>
+		<tr>
+			<td style="width: 165px">[num]</td>
+			<td style="width: 201px">Number</td>
+		</tr>
+		</table>
+<p>&nbsp;</p>
+<h2>System Message Example</h2>
+<p>The following is an example of a VQE system message:</p>
+<p style="font-family: 'Courier New', Courier, monospace; font-size: x-small">&nbsp;&nbsp;&nbsp;&nbsp;
+VQES_CP-3-CP_CHANNEL_DELETE_ERR: Failed to delete a channel due to [chars] </p>
+<ul>
+	<li>VQES_CP is the facility code. </li>
+	<li>3 is the severity level. </li>
+	<li>CP_CHANNEL_DELETE_ERR is the mnemonic code.<br />
+	</li>
+	<li>“Failed to delete a channel due to [chars]” is the message text. <br />
+	</li>
+</ul>
+<h2>Basic Recovery Procedures<br />
+</h2>
+<p>In the Recommended Actions of the system messages, certain recovery procedures 
+that VQE users should perform are referred to numerous times. The following 
+table provides 
+references to where you can find more information on these recovery procedures.
+</p>
+<p><b>Note:</b>&nbsp; In the following table, all references are to sections found in the 
+<i><a href="http://www.cisco.com/en/US/docs/video/cds/cda/vqe/3_0/user/guide/vqe_guide3_0.html">Cisco CDA Visual Quality Experience Application User Guide</a></i></body>
+.
+</p>
+
+	<table style="width: 100%" border ="1">
+		<tr style="font-weight: 700; border-style: solid; border-width: 1px; padding: 1px 4px">
+			<td style="width: 402px">Recovery Procedure in Recommended Action</td>
+			<td style="width: 544px">Notes and Where to Find Information</td>			
+		</tr>
+		<tr>
+			<td style="width: 402px">Reboot the VQE-S server. </td>
+			<td style="width: 544px">See the &quot;Restarting the System and Verifying System 
+			and VQE-S Status&quot; section in 
+			<a href="http://www.cisco.com/en/US/docs/video/cds/cda/vqe/3_0/user/guide/app_mcfg.html">Appendix&nbsp;D</a>. </td>
+		</tr>
+		<tr>
+			<td style="width: 402px">Restart the VQE-S application. </td>
+			<td style="width: 544px">See the &quot;Stopping, Starting, and Restarting VQE-S&quot; 
+			section in 
+			<a href="http://www.cisco.com/en/US/docs/video/cds/cda/vqe/3_0/user/guide/ch5_trbl.html">Chapter&nbsp;5.</a> </td>
+		</tr>
+		<tr>
+			<td style="width: 402px">Restart the VQE-S channels. </td>
+			<td style="width: 544px">In VCPT, use the Force Update button to 
+			send channel information to the VQE Server. See the &quot;Force Update 
+			Button&quot; section in 
+			<a href="http://www.cisco.com/en/US/docs/video/cds/cda/vqe/3_0/user/guide/ch3_vcpt.html">Chapter&nbsp;3</a>. </td>
+		</tr>
+		<tr>
+			<td style="width: 402px">Modify the channel configuration and resend 
+			it to the VQE Servers and/or VCDS servers.</td>
+			<td style="width: 544px">See
+			<a href="http://www.cisco.com/en/US/docs/video/cds/cda/vqe/3_0/user/guide/ch3_vcpt.html">
+			Chapter 3, &quot;Using the VQE Channel Provisioning Tool.&quot;</a></td>
+		</tr>
+		<tr>
+			<td style="width: 402px">Modify vcdb.conf and apply the configuration.</td>
+			<td style="width: 544px">For VQE configuration (vcdb.conf) information, see
+			<a href="http://www.cisco.com/en/US/docs/video/cds/cda/vqe/3_0/user/guide/ch6_conf.html">
+			Chapter 6, &quot;Configuring VQE Server and VQE Tools.&quot;</a><br />
+			<br />
+			For information on applying a VQE configuration with the <b>-apply</b> option to <b>vqe_cfgtool</b>, 
+			see the &quot;Using the Configuration Tool Command-Line Options&quot; section in 
+			<a href="http://www.cisco.com/en/US/docs/video/cds/cda/vqe/3_0/user/guide/ch6_conf.html">Chapter&nbsp;6.</a> </td>
+		</tr>
+		<tr>
+			<td style="width: 402px">Issue the <b>vqereport</b> command to gather 
+			data that may help identify the nature of the error.</td>
+			<td style="width: 544px">See the “Using the vqereport Command” 
+			section in 
+			<a href="http://www.cisco.com/en/US/docs/video/cds/cda/vqe/3_0/user/guide/ch5_trbl.html">Chapter&nbsp;5.</a> </td>
+		</tr>
+		</table>
+<p>&nbsp;</p>

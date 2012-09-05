@@ -1,0 +1,527 @@
+\section{rtp\_\-repair\_\-recv.c File Reference}
+\label{rtp__repair__recv_8c}\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$utils/vam\_\-util.h$>$}\par
+{\tt \#include $<$rtp/rtp\_\-util.h$>$}\par
+{\tt \#include $<$utils/mp\_\-tlv\_\-decode.h$>$}\par
+{\tt \#include \char`\"{}rtp\_\-repair\_\-recv.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-debug.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-rtp.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-assert\_\-macros.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-event.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-private.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{RTP\_\-REPAIR\_\-LOCK\_\-RECURSIVE\_\-DEL}()
+\item 
+\#define \bf{RTP\_\-REPAIR\_\-UNLOCK\_\-RECURSIVE\_\-DEL}()
+\item 
+\#define \bf{RTP\_\-REPAIR\_\-IS\_\-DEL\_\-RECURSIVE}()
+\item 
+\#define \bf{REPAIR\_\-SESSION\_\-NAMESTR}~\char`\"{}Repair \char`\"{}
+\item 
+\#define \bf{RTP\_\-REPAIR\_\-INVALID\_\-SRC\_\-INDEX}~-1
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{rtp\_\-repair\_\-error\_\-cause\_\-} \bf{rtp\_\-repair\_\-error\_\-cause\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{rtp\_\-repair\_\-error\_\-cause\_\-} \{ \par
+\bf{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-RTPDATASOURCE} =  1, 
+\bf{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-IPCDELETE}, 
+\bf{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-MAXSOURCES}, 
+\bf{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-IPCSSRC}, 
+\par
+\bf{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-OUTOFSYNC}, 
+\bf{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-BADTABLE}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+uint32\_\-t \bf{rtcp\_\-construct\_\-report\_\-repair\_\-recv} (rtp\_\-session\_\-t $\ast$p\_\-sess, rtp\_\-member\_\-t $\ast$p\_\-source, rtcptype $\ast$p\_\-rtcp, uint32\_\-t bufflen, rtcp\_\-pkt\_\-info\_\-t $\ast$p\_\-pkt\_\-info, boolean reset\_\-xr\_\-stats)
+\item 
+static rtcp\_\-parse\_\-status\_\-t \bf{rtcp\_\-process\_\-app} (rtp\_\-session\_\-t $\ast$p\_\-sess, rtp\_\-member\_\-t $\ast$p\_\-pak\_\-source, ipaddrtype src\_\-addr, uint16\_\-t src\_\-port, rtcptype $\ast$p\_\-rtcp, uint16\_\-t count, uint8\_\-t $\ast$p\_\-end\_\-of\_\-frame)
+\item 
+void \bf{repair\_\-rtcp\_\-event\_\-handler} (const vqec\_\-event\_\-t $\ast$const evptr, int fd, short event, void $\ast$dptr)
+\item 
+\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ \bf{rtp\_\-create\_\-session\_\-repair\_\-recv} (vqec\_\-dp\_\-streamid\_\-t dp\_\-id, in\_\-addr\_\-t src\_\-addr, char $\ast$cname, in\_\-addr\_\-t fbt\_\-ip\_\-addr, uint16\_\-t $\ast$recv\_\-rtcp\_\-port, uint16\_\-t send\_\-rtcp\_\-port, uint32\_\-t local\_\-ssrc, rtcp\_\-bw\_\-cfg\_\-t $\ast$rtcp\_\-bw\_\-cfg, rtcp\_\-xr\_\-cfg\_\-t $\ast$rtcp\_\-xr\_\-cfg, in\_\-addr\_\-t orig\_\-source\_\-addr, uint16\_\-t orig\_\-source\_\-port, uint32\_\-t sock\_\-buf\_\-depth, uint8\_\-t rtcp\_\-dscp\_\-value, uint8\_\-t rtcp\_\-rsize, \bf{vqec\_\-chan\_\-t} $\ast$parent\_\-chan)
+\item 
+boolean \bf{rtp\_\-update\_\-session\_\-repair\_\-recv} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-repair\_\-recv, in\_\-addr\_\-t fbt\_\-ip\_\-addr, uint16\_\-t send\_\-rtcp\_\-port)
+\item 
+void \bf{rtp\_\-delete\_\-session\_\-repair\_\-recv} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$$\ast$pp\_\-repair\_\-recv\_\-sess, boolean deallocate)
+\item 
+void \bf{rtp\_\-show\_\-session\_\-repair\_\-recv} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-sess)
+\item 
+static void \bf{rtp\_\-repair\_\-update\_\-receiver\_\-stats} (rtp\_\-session\_\-t $\ast$p\_\-sess, rtp\_\-member\_\-t $\ast$p\_\-source, boolean reset\_\-xr\_\-stats)
+\item 
+static void \bf{rtp\_\-repair\_\-enter\_\-error\_\-state} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-session)
+\item 
+static int32\_\-t \bf{rtp\_\-repair\_\-lookup\_\-local\_\-src} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-sess, rtp\_\-source\_\-id\_\-t $\ast$lookup)
+\item 
+static boolean \bf{rtp\_\-repair\_\-compare\_\-src\_\-table} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-sess, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$table)
+\item 
+static boolean \bf{rtp\_\-repair\_\-check\_\-src\_\-table} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-sess, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$table)
+\item 
+void \bf{rtp\_\-repair\_\-delete\_\-member} (rtp\_\-session\_\-t $\ast$p\_\-sess, rtp\_\-member\_\-t $\ast$$\ast$pp\_\-source, boolean destroy\_\-flag)
+\item 
+static boolean \bf{rtp\_\-repair\_\-add\_\-new\_\-source} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-session, rtp\_\-source\_\-id\_\-t $\ast$p\_\-source\_\-id)
+\item 
+static boolean \bf{rtp\_\-repair\_\-find\_\-add\_\-new\_\-sources} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-session, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$table)
+\item 
+static boolean \bf{rtp\_\-repair\_\-update\_\-sources} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-session, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$p\_\-table)
+\item 
+static void \bf{rtp\_\-repair\_\-upcall\_\-ev} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-session, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$p\_\-table)
+\item 
+static void \bf{rtp\_\-repair\_\-del\_\-stale\_\-sources} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-session, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$table)
+\item 
+static void \bf{rtp\_\-repair\_\-primary\_\-pktflow\_\-src\_\-update} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-session, rtp\_\-source\_\-id\_\-t $\ast$id)
+\item 
+static boolean \bf{rtp\_\-repair\_\-send\_\-to\_\-rtcp\_\-socket} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-repair, in\_\-addr\_\-t remote\_\-addr, in\_\-port\_\-t remote\_\-port, char $\ast$buf, uint16\_\-t len)
+\item 
+void \bf{rtp\_\-session\_\-repair\_\-recv\_\-send\_\-bye} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$pp\_\-repair\_\-recv)
+\item 
+\bf{vqec\_\-chanid\_\-t} \bf{rtp\_\-repair\_\-session\_\-chanid} (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$p\_\-repair)
+\item 
+static void \bf{rtp\_\-repair\_\-recv\_\-set\_\-methods} (\bf{rtp\_\-repair\_\-recv\_\-methods\_\-t} $\ast$table)
+\item 
+static void \bf{rtp\_\-repair\_\-recv\_\-set\_\-rtcp\_\-handlers} (rtcp\_\-handlers\_\-t $\ast$table)
+\item 
+static boolean \bf{rtp\_\-repair\_\-recv\_\-init\_\-memory} (rtcp\_\-memory\_\-t $\ast$memory, int max\_\-sessions)
+\item 
+boolean \bf{rtp\_\-repair\_\-recv\_\-init\_\-module} (uint32\_\-t max\_\-sessions)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+static \bf{rtp\_\-repair\_\-recv\_\-methods\_\-t} \bf{rtp\_\-repair\_\-recv\_\-methods\_\-table}
+\item 
+static rtcp\_\-handlers\_\-t \bf{rtp\_\-repair\_\-recv\_\-rtcp\_\-handler}
+\item 
+static rtcp\_\-memory\_\-t \bf{rtp\_\-repair\_\-recv\_\-memory}
+\item 
+static boolean \bf{s\_\-rtp\_\-repair\_\-recv\_\-initted} = \bf{FALSE}
+\item 
+static boolean \bf{s\_\-rtp\_\-repair\_\-del\_\-lock}
+\item 
+static \bf{rtp\_\-repair\_\-error\_\-cause\_\-t} \bf{s\_\-rtp\_\-repair\_\-error\_\-cause}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!REPAIR_SESSION_NAMESTR@{REPAIR\_\-SESSION\_\-NAMESTR}}
+\index{REPAIR_SESSION_NAMESTR@{REPAIR\_\-SESSION\_\-NAMESTR}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define REPAIR\_\-SESSION\_\-NAMESTR~\char`\"{}Repair \char`\"{}}\label{rtp__repair__recv_8c_5d49897c464fee6a8c9cad3d7f476ef0}
+
+
+--------------------------------------------------------------------------- Show session statistics for a repair session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-sess}]Pointer to the repair session. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!RTP_REPAIR_INVALID_SRC_INDEX@{RTP\_\-REPAIR\_\-INVALID\_\-SRC\_\-INDEX}}
+\index{RTP_REPAIR_INVALID_SRC_INDEX@{RTP\_\-REPAIR\_\-INVALID\_\-SRC\_\-INDEX}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define RTP\_\-REPAIR\_\-INVALID\_\-SRC\_\-INDEX~-1}\label{rtp__repair__recv_8c_a57950193284005b63361d48ef38b909}
+
+
+--------------------------------------------------------------------------- Lookup a rtp source in the local cache of dataplane sources.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-sess}]Pointer to the repair session. \item[\mbox{$\leftarrow$} {\em lookup}]Attributes of the source to be looked up. \item[\mbox{$\rightarrow$} {\em int32\_\-t}]Returns the index of the source if a match is found, -1 otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!RTP_REPAIR_IS_DEL_RECURSIVE@{RTP\_\-REPAIR\_\-IS\_\-DEL\_\-RECURSIVE}}
+\index{RTP_REPAIR_IS_DEL_RECURSIVE@{RTP\_\-REPAIR\_\-IS\_\-DEL\_\-RECURSIVE}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define RTP\_\-REPAIR\_\-IS\_\-DEL\_\-RECURSIVE()}\label{rtp__repair__recv_8c_9986a7e94e7919415256bb6cb1755ce4}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}({                                          \
+            s_rtp_repair_del_lock;                  \
+        })
+\end{verbatim}\end{Code}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!RTP_REPAIR_LOCK_RECURSIVE_DEL@{RTP\_\-REPAIR\_\-LOCK\_\-RECURSIVE\_\-DEL}}
+\index{RTP_REPAIR_LOCK_RECURSIVE_DEL@{RTP\_\-REPAIR\_\-LOCK\_\-RECURSIVE\_\-DEL}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define RTP\_\-REPAIR\_\-LOCK\_\-RECURSIVE\_\-DEL()}\label{rtp__repair__recv_8c_b2963c8dc048defbf7c4fad42709ff6c}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}({                                          \
+        s_rtp_repair_del_lock = TRUE;           \
+    })
+\end{verbatim}\end{Code}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!RTP_REPAIR_UNLOCK_RECURSIVE_DEL@{RTP\_\-REPAIR\_\-UNLOCK\_\-RECURSIVE\_\-DEL}}
+\index{RTP_REPAIR_UNLOCK_RECURSIVE_DEL@{RTP\_\-REPAIR\_\-UNLOCK\_\-RECURSIVE\_\-DEL}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define RTP\_\-REPAIR\_\-UNLOCK\_\-RECURSIVE\_\-DEL()}\label{rtp__repair__recv_8c_c8904761cff2bca97858e1b3a26f9139}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}({                                          \
+        s_rtp_repair_del_lock = FALSE;           \
+    })
+\end{verbatim}\end{Code}
+
+
+\subsection{Typedef Documentation}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_error_cause_t@{rtp\_\-repair\_\-error\_\-cause\_\-t}}
+\index{rtp_repair_error_cause_t@{rtp\_\-repair\_\-error\_\-cause\_\-t}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{rtp\_\-repair\_\-error\_\-cause\_\-}  \bf{rtp\_\-repair\_\-error\_\-cause\_\-t}}\label{rtp__repair__recv_8c_1e7a44f80d593fb766d4101a7191f9a7}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_error_cause_@{rtp\_\-repair\_\-error\_\-cause\_\-}}
+\index{rtp_repair_error_cause_@{rtp\_\-repair\_\-error\_\-cause\_\-}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{rtp\_\-repair\_\-error\_\-cause\_\-}}\label{rtp__repair__recv_8c_a477403dfea5e50d9f78e9e8e45c2963}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{RTP_REPAIR_ERROR_CAUSE_RTPDATASOURCE@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-RTPDATASOURCE}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!RTP_REPAIR_ERROR_CAUSE_RTPDATASOURCE@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-RTPDATASOURCE}}\item[{\em 
+RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-RTPDATASOURCE\label{rtp__repair__recv_8c_a477403dfea5e50d9f78e9e8e45c2963343c045cf4ce5096ec32bb59b12455e3}
+}]\index{RTP_REPAIR_ERROR_CAUSE_IPCDELETE@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-IPCDELETE}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!RTP_REPAIR_ERROR_CAUSE_IPCDELETE@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-IPCDELETE}}\item[{\em 
+RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-IPCDELETE\label{rtp__repair__recv_8c_a477403dfea5e50d9f78e9e8e45c2963fd42f787fe8ac76f17c0d8acde2d5256}
+}]\index{RTP_REPAIR_ERROR_CAUSE_MAXSOURCES@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-MAXSOURCES}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!RTP_REPAIR_ERROR_CAUSE_MAXSOURCES@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-MAXSOURCES}}\item[{\em 
+RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-MAXSOURCES\label{rtp__repair__recv_8c_a477403dfea5e50d9f78e9e8e45c296338ac0d66d09a910671ec54309c701454}
+}]\index{RTP_REPAIR_ERROR_CAUSE_IPCSSRC@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-IPCSSRC}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!RTP_REPAIR_ERROR_CAUSE_IPCSSRC@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-IPCSSRC}}\item[{\em 
+RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-IPCSSRC\label{rtp__repair__recv_8c_a477403dfea5e50d9f78e9e8e45c29639df68957f8d15069274057191892e25e}
+}]\index{RTP_REPAIR_ERROR_CAUSE_OUTOFSYNC@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-OUTOFSYNC}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!RTP_REPAIR_ERROR_CAUSE_OUTOFSYNC@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-OUTOFSYNC}}\item[{\em 
+RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-OUTOFSYNC\label{rtp__repair__recv_8c_a477403dfea5e50d9f78e9e8e45c2963474732856aa020a9efb7519fd06dd538}
+}]\index{RTP_REPAIR_ERROR_CAUSE_BADTABLE@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-BADTABLE}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!RTP_REPAIR_ERROR_CAUSE_BADTABLE@{RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-BADTABLE}}\item[{\em 
+RTP\_\-REPAIR\_\-ERROR\_\-CAUSE\_\-BADTABLE\label{rtp__repair__recv_8c_a477403dfea5e50d9f78e9e8e45c296330068ed3513a93380580d995fb9b6262}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!repair_rtcp_event_handler@{repair\_\-rtcp\_\-event\_\-handler}}
+\index{repair_rtcp_event_handler@{repair\_\-rtcp\_\-event\_\-handler}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void repair\_\-rtcp\_\-event\_\-handler (const vqec\_\-event\_\-t $\ast$const  {\em evptr}, int {\em fd}, short {\em event}, void $\ast$ {\em dptr})}\label{rtp__repair__recv_8c_64a8164900cfb8a5d349feac015ac3b7}
+
+
+--------------------------------------------------------------------------- Repair RTCP event handler for libevent. NOTE: All other arguments except dptr are unused.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em dptr}]Pointer to the repair session object. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtcp_construct_report_repair_recv@{rtcp\_\-construct\_\-report\_\-repair\_\-recv}}
+\index{rtcp_construct_report_repair_recv@{rtcp\_\-construct\_\-report\_\-repair\_\-recv}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t rtcp\_\-construct\_\-report\_\-repair\_\-recv (rtp\_\-session\_\-t $\ast$ {\em p\_\-sess}, rtp\_\-member\_\-t $\ast$ {\em p\_\-source}, rtcptype $\ast$ {\em p\_\-rtcp}, uint32\_\-t {\em bufflen}, rtcp\_\-pkt\_\-info\_\-t $\ast$ {\em p\_\-pkt\_\-info}, boolean {\em reset\_\-xr\_\-stats})}\label{rtp__repair__recv_8c_4a35775b17d59b406634fee753d7eee4}
+
+
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtcp_process_app@{rtcp\_\-process\_\-app}}
+\index{rtcp_process_app@{rtcp\_\-process\_\-app}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static rtcp\_\-parse\_\-status\_\-t rtcp\_\-process\_\-app (rtp\_\-session\_\-t $\ast$ {\em p\_\-sess}, rtp\_\-member\_\-t $\ast$ {\em p\_\-pak\_\-source}, ipaddrtype {\em src\_\-addr}, uint16\_\-t {\em src\_\-port}, rtcptype $\ast$ {\em p\_\-rtcp}, uint16\_\-t {\em count}, uint8\_\-t $\ast$ {\em p\_\-end\_\-of\_\-frame})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_72b67dccf4038f6d7697ea556a09c15c}
+
+
+--------------------------------------------------------------------------- Function: rtcp\_\-process\_\-app Description: Deal with incoming APP RTCP packet \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-sess}]ptr to repair session object \item[\mbox{$\leftarrow$} {\em p\_\-pak\_\-source}]ptr to RTP (sender) member \item[\mbox{$\leftarrow$} {\em src\_\-addr}]src ip address of sender \item[\mbox{$\leftarrow$} {\em src\_\-port}]src UDP port \item[\mbox{$\leftarrow$} {\em p\_\-rtcp}]ptr to start of RTCP header in packet \item[\mbox{$\leftarrow$} {\em count}]count of the rtcp packet in compound packet \item[\mbox{$\leftarrow$} {\em p\_\-end\_\-of\_\-frame}]end of RTCP frame --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_create_session_repair_recv@{rtp\_\-create\_\-session\_\-repair\_\-recv}}
+\index{rtp_create_session_repair_recv@{rtp\_\-create\_\-session\_\-repair\_\-recv}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{rtp\_\-repair\_\-recv\_\-t}$\ast$ rtp\_\-create\_\-session\_\-repair\_\-recv (vqec\_\-dp\_\-streamid\_\-t {\em dp\_\-id}, in\_\-addr\_\-t {\em src\_\-addr}, char $\ast$ {\em cname}, in\_\-addr\_\-t {\em fbt\_\-ip\_\-addr}, uint16\_\-t $\ast$ {\em recv\_\-rtcp\_\-port}, uint16\_\-t {\em send\_\-rtcp\_\-port}, uint32\_\-t {\em local\_\-ssrc}, rtcp\_\-bw\_\-cfg\_\-t $\ast$ {\em rtcp\_\-bw\_\-cfg}, rtcp\_\-xr\_\-cfg\_\-t $\ast$ {\em rtcp\_\-xr\_\-cfg}, in\_\-addr\_\-t {\em orig\_\-source\_\-addr}, uint16\_\-t {\em orig\_\-source\_\-port}, uint32\_\-t {\em sock\_\-buf\_\-depth}, uint8\_\-t {\em rtcp\_\-dscp\_\-value}, uint8\_\-t {\em rtcp\_\-rsize}, \bf{vqec\_\-chan\_\-t} $\ast$ {\em parent\_\-chan})}\label{rtp__repair__recv_8c_80abe31ba022a333d4a040a33a69d5db}
+
+
+--------------------------------------------------------------------------- Create the session structure for an repair-recv RTP/RTCP session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em dp\_\-id}]- Dataplane session identifier. \item[\mbox{$\leftarrow$} {\em src\_\-addr}]- Sessions src address to use for transmitting packets. \item[\mbox{$\leftarrow$} {\em cname}]- SDES cname for this session. \item[\mbox{$\leftarrow$} {\em fbt\_\-ip\_\-addr}]- IP address of feedback target. \item[\mbox{$\leftarrow$} {\em recv\_\-rtcp\_\-port}]- RTCP port number of recv sock repair session. If the port number is 0, an ephemeral port will be allocated. \item[\mbox{$\leftarrow$} {\em send\_\-rtcp\_\-port}]- Remote rtcp port number of repair session (may be 0, which means don't do RTCP) \item[\mbox{$\leftarrow$} {\em local\_\-ssrc}]- SSRC of the local source \item[\mbox{$\leftarrow$} {\em rtcp\_\-bw\_\-cfg}]- Ptr to RTCP bandwidth config info \item[\mbox{$\leftarrow$} {\em rtcp\_\-xr\_\-cfg}]- Ptr to RTCP XR config info \item[\mbox{$\leftarrow$} {\em orig\_\-source\_\-addr}]- Original channel source address. \item[\mbox{$\leftarrow$} {\em orig\_\-source\_\-port}]- Original channel source port. \item[\mbox{$\leftarrow$} {\em sock\_\-buf\_\-depth}]- Socket input buffer depth in bytes. \item[\mbox{$\leftarrow$} {\em rtcp\_\-dscp\_\-value}]- DSCP class for RTCP packets. \item[\mbox{$\leftarrow$} {\em rtcp\_\-rsize}]- Boolean flag for setting Reduced Size RTCP \item[\mbox{$\leftarrow$} {\em parent\_\-chan}]- Parent channel ptr. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Pointer to a repair session. --------------------------------------------------------------------------- \end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_delete_session_repair_recv@{rtp\_\-delete\_\-session\_\-repair\_\-recv}}
+\index{rtp_delete_session_repair_recv@{rtp\_\-delete\_\-session\_\-repair\_\-recv}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void rtp\_\-delete\_\-session\_\-repair\_\-recv (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$$\ast$ {\em pp\_\-repair\_\-recv\_\-sess}, boolean {\em deallocate})}\label{rtp__repair__recv_8c_eedbc64c08d77028493de61af7af34a0}
+
+
+--------------------------------------------------------------------------- Frees a session. The session will be cleaned first using rtp\_\-cleanup\_\-session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pp\_\-sess}]ptr ptr to session object \item[\mbox{$\leftarrow$} {\em deallocate}]boolen to check if the object should be destroyed --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_add_new_source@{rtp\_\-repair\_\-add\_\-new\_\-source}}
+\index{rtp_repair_add_new_source@{rtp\_\-repair\_\-add\_\-new\_\-source}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean rtp\_\-repair\_\-add\_\-new\_\-source (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-session}, rtp\_\-source\_\-id\_\-t $\ast$ {\em p\_\-source\_\-id})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_b5e40148ef7ffcc645e224a29979a2a6}
+
+
+--------------------------------------------------------------------------- Add a new source member to a rtp session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-session}]Pointer to the repair rtp session. \item[\mbox{$\leftarrow$} {\em p\_\-source\_\-id}]Pointer to the source member attributes. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the addition of the source member succeeded, false otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_check_src_table@{rtp\_\-repair\_\-check\_\-src\_\-table}}
+\index{rtp_repair_check_src_table@{rtp\_\-repair\_\-check\_\-src\_\-table}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean rtp\_\-repair\_\-check\_\-src\_\-table (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-sess}, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$ {\em table})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_768db6efb86f519c8a17f51fd4f0296e}
+
+
+--------------------------------------------------------------------------- Verify that all entries in the source table: -- pass the SSRC filter check if one is installed. -- no two sources with the same SSRC, can have the same $<$IP source, port$>$ tuple. [such a sender will cause rtp to throw a duplicate member error. [The dataplane inputshim has a source filter for the repair session IP address, port thus the condition cannot happen under normal operation and is considered an error case].
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-sess}]Pointer to the repair session. \item[\mbox{$\leftarrow$} {\em table}]Dataplane source table. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true, if all entries are verified, false if there is an error condition. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_compare_src_table@{rtp\_\-repair\_\-compare\_\-src\_\-table}}
+\index{rtp_repair_compare_src_table@{rtp\_\-repair\_\-compare\_\-src\_\-table}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean rtp\_\-repair\_\-compare\_\-src\_\-table (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-sess}, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$ {\em table})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_98c2b34d128f3323acb6de301e768561}
+
+
+--------------------------------------------------------------------------- Compare a dataplane source table against the local source cache. It is assumed that there are no duplicates.
+
+CAUTION: O(N$^\wedge$2) loop for search. Fortunately, N will be 3 or 4 so no issues will arise.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-sess}]Pointer to the repair session. \item[\mbox{$\leftarrow$} {\em table}]Dataplane source table. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true, if there are no mismatches, false otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_del_stale_sources@{rtp\_\-repair\_\-del\_\-stale\_\-sources}}
+\index{rtp_repair_del_stale_sources@{rtp\_\-repair\_\-del\_\-stale\_\-sources}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void rtp\_\-repair\_\-del\_\-stale\_\-sources (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-session}, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$ {\em table})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_e76a08b68c0fe25f21ddc9d1e2d7e67e}
+
+
+--------------------------------------------------------------------------- Helper to remove all stale source entries from the control-plane.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-session}]Pointer to the repair session. \item[\mbox{$\leftarrow$} {\em table}]Pointer to the source table. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_delete_member@{rtp\_\-repair\_\-delete\_\-member}}
+\index{rtp_repair_delete_member@{rtp\_\-repair\_\-delete\_\-member}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void rtp\_\-repair\_\-delete\_\-member (rtp\_\-session\_\-t $\ast$ {\em p\_\-sess}, rtp\_\-member\_\-t $\ast$$\ast$ {\em pp\_\-source}, boolean {\em destroy\_\-flag})}\label{rtp__repair__recv_8c_c8ab0a418dfab4fa239176f0b04635ad}
+
+
+--------------------------------------------------------------------------- Delete a data member - IPC to dataplane to cleanup.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-sess}]Pointer to the repair session. \item[\mbox{$\leftarrow$} {\em pp\_\-source}]Pointer to a pointer to a rtp member. \item[\mbox{$\leftarrow$} {\em destroy\_\-flag}]If memory for the member is to be released. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_enter_error_state@{rtp\_\-repair\_\-enter\_\-error\_\-state}}
+\index{rtp_repair_enter_error_state@{rtp\_\-repair\_\-enter\_\-error\_\-state}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void rtp\_\-repair\_\-enter\_\-error\_\-state (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-session})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_44e9bec421840142406f102dbd5817ed}
+
+
+--------------------------------------------------------------------------- Cleanup a session's state prior to entering error state.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-session}]Pointer to the repair session. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_find_add_new_sources@{rtp\_\-repair\_\-find\_\-add\_\-new\_\-sources}}
+\index{rtp_repair_find_add_new_sources@{rtp\_\-repair\_\-find\_\-add\_\-new\_\-sources}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean rtp\_\-repair\_\-find\_\-add\_\-new\_\-sources (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-session}, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$ {\em table})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_4059b9b903c3849fbfc1c125fe6397b6}
+
+
+--------------------------------------------------------------------------- Find and add new sources in the repair table to the repair session.
+
+CAUTION: O(N$^\wedge$2) loop for search. Fortunately, N will be 3 or 4 so no issues will arise.
+
+ASSUMPTION: The combined dataplane RTP receiver source-pool is less than or equal to the control-plane pool.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-session}]Pointer to the repair rtp session. \item[\mbox{$\leftarrow$} {\em table}]Pointer to the dataplane source table. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the addition of all the new source members succeeded, false otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_lookup_local_src@{rtp\_\-repair\_\-lookup\_\-local\_\-src}}
+\index{rtp_repair_lookup_local_src@{rtp\_\-repair\_\-lookup\_\-local\_\-src}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static int32\_\-t rtp\_\-repair\_\-lookup\_\-local\_\-src (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-sess}, rtp\_\-source\_\-id\_\-t $\ast$ {\em lookup})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_e7af10f296671a604fea79f4ca1aa06c}
+
+
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_primary_pktflow_src_update@{rtp\_\-repair\_\-primary\_\-pktflow\_\-src\_\-update}}
+\index{rtp_repair_primary_pktflow_src_update@{rtp\_\-repair\_\-primary\_\-pktflow\_\-src\_\-update}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void rtp\_\-repair\_\-primary\_\-pktflow\_\-src\_\-update (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-session}, rtp\_\-source\_\-id\_\-t $\ast$ {\em id})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_e8c2df32fe23d244e96b2c53878414f8}
+
+
+--------------------------------------------------------------------------- The primary packet flow source has changed - install a new SSRC filter. The sources for the session are updated after the new SSRC filter is installed.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em session}]Pointer to the repair session. \item[\mbox{$\leftarrow$} {\em id}]Attributes of the new source. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_recv_init_memory@{rtp\_\-repair\_\-recv\_\-init\_\-memory}}
+\index{rtp_repair_recv_init_memory@{rtp\_\-repair\_\-recv\_\-init\_\-memory}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean rtp\_\-repair\_\-recv\_\-init\_\-memory (rtcp\_\-memory\_\-t $\ast$ {\em memory}, int {\em max\_\-sessions})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_8e922bf841466612d9f981bcfd25e740}
+
+
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_recv_init_module@{rtp\_\-repair\_\-recv\_\-init\_\-module}}
+\index{rtp_repair_recv_init_module@{rtp\_\-repair\_\-recv\_\-init\_\-module}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean rtp\_\-repair\_\-recv\_\-init\_\-module (uint32\_\-t {\em max\_\-sessions})}\label{rtp__repair__recv_8c_341a71fb87c931353f51e2a1d85c05fc}
+
+
+Function: rtp\_\-repair\_\-recv\_\-init\_\-module Description: One time (class level) initialization of various function tables \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em max\_\-sessions}]The maximum number of repair sessions to be created MUST BE AT LEAST 1. \item[\mbox{$\rightarrow$} {\em boolean}]TRUE(1) if successfully initialized this module else returns FALSE(0). \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_recv_set_methods@{rtp\_\-repair\_\-recv\_\-set\_\-methods}}
+\index{rtp_repair_recv_set_methods@{rtp\_\-repair\_\-recv\_\-set\_\-methods}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void rtp\_\-repair\_\-recv\_\-set\_\-methods (\bf{rtp\_\-repair\_\-recv\_\-methods\_\-t} $\ast$ {\em table})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_48923ca07af93b33fd0bd9bed416f5b6}
+
+
+Function: rtp\_\-repair\_\-recv\_\-set\_\-methods Description: Sets the function pointers in the func ptr table \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em table}]pointer to a function ptr table which gets populated by this funciton \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_recv_set_rtcp_handlers@{rtp\_\-repair\_\-recv\_\-set\_\-rtcp\_\-handlers}}
+\index{rtp_repair_recv_set_rtcp_handlers@{rtp\_\-repair\_\-recv\_\-set\_\-rtcp\_\-handlers}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void rtp\_\-repair\_\-recv\_\-set\_\-rtcp\_\-handlers (rtcp\_\-handlers\_\-t $\ast$ {\em table})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_c03e72c0f59a04cc8eb21f5e21e3cd1e}
+
+
+Function: rtp\_\-repair\_\-recv\_\-set\_\-rtcp\_\-handler Description: Sets the function pointers for RTCP handlers \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em table}]Table of rtcp handlers \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_send_to_rtcp_socket@{rtp\_\-repair\_\-send\_\-to\_\-rtcp\_\-socket}}
+\index{rtp_repair_send_to_rtcp_socket@{rtp\_\-repair\_\-send\_\-to\_\-rtcp\_\-socket}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean rtp\_\-repair\_\-send\_\-to\_\-rtcp\_\-socket (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-repair}, in\_\-addr\_\-t {\em remote\_\-addr}, in\_\-port\_\-t {\em remote\_\-port}, char $\ast$ {\em buf}, uint16\_\-t {\em len})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_1955349ee797b7e5908282e0ad58a959}
+
+
+--------------------------------------------------------------------------- Inject a RTCP packet into the repair RTCP socket.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-repair}]Pointer to the repair session. \item[\mbox{$\leftarrow$} {\em remote\_\-addr}]IP address to which the packet is sent. \item[\mbox{$\leftarrow$} {\em remote\_\-port}]UDP port to which the packet is sent. \item[\mbox{$\leftarrow$} {\em buf}]Pointer to the packet contents. \item[\mbox{$\leftarrow$} {\em len}]Length of the contents. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the packet was successfully en\-Qd in the socket. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_session_chanid@{rtp\_\-repair\_\-session\_\-chanid}}
+\index{rtp_repair_session_chanid@{rtp\_\-repair\_\-session\_\-chanid}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chanid\_\-t} rtp\_\-repair\_\-session\_\-chanid (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-repair})}\label{rtp__repair__recv_8c_4820478135788dfb92428daa334b2ca6}
+
+
+--------------------------------------------------------------------------- From a repair session to channel identifier of parent channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-repair}]Pointer to the repair session. \item[\mbox{$\rightarrow$} {\em vqec\_\-chanid\_\-t}]Parent channel's id. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_upcall_ev@{rtp\_\-repair\_\-upcall\_\-ev}}
+\index{rtp_repair_upcall_ev@{rtp\_\-repair\_\-upcall\_\-ev}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void rtp\_\-repair\_\-upcall\_\-ev (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-session}, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$ {\em p\_\-table})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_94e622490e42efa436dbe54fb9a80cb1}
+
+
+--------------------------------------------------------------------------- Process an upcall event for this session from the dataplane.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em session}]Pointer to the repair session. \item[\mbox{$\leftarrow$} {\em p\_\-table}]Pointer to the dataplane's source entry table. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_update_receiver_stats@{rtp\_\-repair\_\-update\_\-receiver\_\-stats}}
+\index{rtp_repair_update_receiver_stats@{rtp\_\-repair\_\-update\_\-receiver\_\-stats}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void rtp\_\-repair\_\-update\_\-receiver\_\-stats (rtp\_\-session\_\-t $\ast$ {\em p\_\-sess}, rtp\_\-member\_\-t $\ast$ {\em p\_\-source}, boolean {\em reset\_\-xr\_\-stats})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_9487dd2a811919c4dd7b055f3a1bbffc}
+
+
+--------------------------------------------------------------------------- Update RTP statistics for an repair session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-session}]Pointer to the repair session. \item[\mbox{$\leftarrow$} {\em p\_\-source}]Pointer to the per-member data for a remote source. \item[\mbox{$\leftarrow$} {\em reset\_\-xr\_\-stats}]True if XR should be reset. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_update_sources@{rtp\_\-repair\_\-update\_\-sources}}
+\index{rtp_repair_update_sources@{rtp\_\-repair\_\-update\_\-sources}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean rtp\_\-repair\_\-update\_\-sources (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-session}, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$ {\em p\_\-table})\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_074199be8833724656fb8c95054dce2b}
+
+
+--------------------------------------------------------------------------- Process the repair session's dataplane source-table, and install new sources in the control-plane.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-session}]Pointer to the repair session. \item[\mbox{$\leftarrow$} {\em p\_\-table}]Pointer to the dataplane RTP source table. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the update of the source is successful, false otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_session_repair_recv_send_bye@{rtp\_\-session\_\-repair\_\-recv\_\-send\_\-bye}}
+\index{rtp_session_repair_recv_send_bye@{rtp\_\-session\_\-repair\_\-recv\_\-send\_\-bye}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void rtp\_\-session\_\-repair\_\-recv\_\-send\_\-bye (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em pp\_\-repair\_\-recv})}\label{rtp__repair__recv_8c_a24b309f4dc43c934a1d0d73fb38cccf}
+
+
+--------------------------------------------------------------------------- Send a BYE on the repair session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pp\_\-repair\_\-recv}]Pointer to the repair session. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_show_session_repair_recv@{rtp\_\-show\_\-session\_\-repair\_\-recv}}
+\index{rtp_show_session_repair_recv@{rtp\_\-show\_\-session\_\-repair\_\-recv}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void rtp\_\-show\_\-session\_\-repair\_\-recv (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-sess})}\label{rtp__repair__recv_8c_f5512608ba29d4342b401ef07646e38d}
+
+
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_update_session_repair_recv@{rtp\_\-update\_\-session\_\-repair\_\-recv}}
+\index{rtp_update_session_repair_recv@{rtp\_\-update\_\-session\_\-repair\_\-recv}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean rtp\_\-update\_\-session\_\-repair\_\-recv (\bf{rtp\_\-repair\_\-recv\_\-t} $\ast$ {\em p\_\-repair\_\-recv}, in\_\-addr\_\-t {\em fbt\_\-ip\_\-addr}, uint16\_\-t {\em send\_\-rtcp\_\-port})}\label{rtp__repair__recv_8c_40c0c2567996ea54f866f61490a7ac05}
+
+
+--------------------------------------------------------------------------- Update the session structure for an repair-recv RTP/RTCP session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em fbt\_\-ip\_\-addr}]IP address of feedback target. \item[\mbox{$\leftarrow$} {\em send\_\-rtcp\_\-port}]Remote rtcp port number of repair session (may be 0, which means don't do RTCP) \item[\mbox{$\rightarrow$} {\em boolean}]TRUE upon successful update, FALSE otherwise --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+
+
+\subsection{Variable Documentation}
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_recv_memory@{rtp\_\-repair\_\-recv\_\-memory}}
+\index{rtp_repair_recv_memory@{rtp\_\-repair\_\-recv\_\-memory}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}rtcp\_\-memory\_\-t \bf{rtp\_\-repair\_\-recv\_\-memory}\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_928c5a63309e0cf6ca0ea3e574891cf7}
+
+
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_recv_methods_table@{rtp\_\-repair\_\-recv\_\-methods\_\-table}}
+\index{rtp_repair_recv_methods_table@{rtp\_\-repair\_\-recv\_\-methods\_\-table}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{rtp\_\-repair\_\-recv\_\-methods\_\-t} \bf{rtp\_\-repair\_\-recv\_\-methods\_\-table}\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_1a44405cbf83cabaa0aad2751942d2fb}
+
+
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!rtp_repair_recv_rtcp_handler@{rtp\_\-repair\_\-recv\_\-rtcp\_\-handler}}
+\index{rtp_repair_recv_rtcp_handler@{rtp\_\-repair\_\-recv\_\-rtcp\_\-handler}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}rtcp\_\-handlers\_\-t \bf{rtp\_\-repair\_\-recv\_\-rtcp\_\-handler}\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_3f838f4b22ad4bf38c487caad68378bb}
+
+
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!s_rtp_repair_del_lock@{s\_\-rtp\_\-repair\_\-del\_\-lock}}
+\index{s_rtp_repair_del_lock@{s\_\-rtp\_\-repair\_\-del\_\-lock}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{s\_\-rtp\_\-repair\_\-del\_\-lock}\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_81b45563796a9449ae36a102cbbb380b}
+
+
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!s_rtp_repair_error_cause@{s\_\-rtp\_\-repair\_\-error\_\-cause}}
+\index{s_rtp_repair_error_cause@{s\_\-rtp\_\-repair\_\-error\_\-cause}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{rtp\_\-repair\_\-error\_\-cause\_\-t} \bf{s\_\-rtp\_\-repair\_\-error\_\-cause}\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_c54c9e2e5c1b3acf1f0f978c07991905}
+
+
+\index{rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}!s_rtp_repair_recv_initted@{s\_\-rtp\_\-repair\_\-recv\_\-initted}}
+\index{s_rtp_repair_recv_initted@{s\_\-rtp\_\-repair\_\-recv\_\-initted}!rtp_repair_recv.c@{rtp\_\-repair\_\-recv.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{s\_\-rtp\_\-repair\_\-recv\_\-initted} = \bf{FALSE}\hspace{0.3cm}{\tt  [static]}}\label{rtp__repair__recv_8c_ca67840c7bf1ab894f92dc5656116f73}
+
+

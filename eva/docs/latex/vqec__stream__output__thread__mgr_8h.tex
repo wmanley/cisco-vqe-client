@@ -1,0 +1,106 @@
+\section{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h File Reference}
+\label{vqec__stream__output__thread__mgr_8h}\index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+{\tt \#include $<$sys/socket.h$>$}\par
+{\tt \#include $<$netinet/in.h$>$}\par
+{\tt \#include $<$arpa/inet.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-error.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-url.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-stream\_\-output\_\-sock\_\-}
+\item 
+struct \bf{vqec\_\-stream\_\-output\_\-thread\_\-}
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef \bf{vqec\_\-stream\_\-output\_\-sock\_\-} \bf{vqec\_\-stream\_\-output\_\-sock\_\-t}
+\item 
+typedef \bf{vqec\_\-stream\_\-output\_\-thread\_\-} \bf{vqec\_\-stream\_\-output\_\-thread\_\-t}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-stream\_\-output} (char $\ast$name, char $\ast$if\_\-name, char $\ast$url)
+\item 
+void \bf{vqec\_\-stream\_\-output\_\-channel\_\-join\_\-call\_\-back\_\-func} (char $\ast$url, vqec\_\-tunerid\_\-t tuner\_\-id, in\_\-addr\_\-t output\_\-ifaddr, in\_\-addr\_\-t output\_\-dest, in\_\-port\_\-t output\_\-port, void $\ast$call\_\-back\_\-data)
+\item 
+void \bf{vqec\_\-stream\_\-output\_\-channel\_\-leave\_\-call\_\-back\_\-func} (char $\ast$url, vqec\_\-tunerid\_\-t tuner\_\-id, in\_\-addr\_\-t output\_\-ifaddr, in\_\-addr\_\-t output\_\-dest, in\_\-port\_\-t output\_\-port, void $\ast$call\_\-back\_\-data)
+\item 
+void \bf{vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-module\_\-init} (void)
+\item 
+void \bf{vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-module\_\-deinit} (void)
+\item 
+void \bf{vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-init\_\-startup\_\-streams} (char $\ast$\bf{filename})
+\item 
+void \bf{vqec\_\-stream\_\-output\_\-mgr\_\-show\_\-stats} (vqec\_\-tunerid\_\-t id)
+\item 
+void \bf{vqec\_\-stream\_\-output\_\-mgr\_\-clear\_\-stats} (vqec\_\-tunerid\_\-t id)
+\item 
+\bf{vqec\_\-stream\_\-output\_\-thread\_\-t} $\ast$ \bf{vqec\_\-stream\_\-output\_\-thread\_\-get\_\-by\_\-tuner\_\-id} (vqec\_\-tunerid\_\-t tuner\_\-id)
+\end{CompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}!vqec_stream_output_sock_t@{vqec\_\-stream\_\-output\_\-sock\_\-t}}
+\index{vqec_stream_output_sock_t@{vqec\_\-stream\_\-output\_\-sock\_\-t}!vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-stream\_\-output\_\-sock\_\-}  \bf{vqec\_\-stream\_\-output\_\-sock\_\-t}}\label{vqec__stream__output__thread__mgr_8h_b5b6a6782bdacc1b972b16fc5623e2be}
+
+
+socket structure \index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}!vqec_stream_output_thread_t@{vqec\_\-stream\_\-output\_\-thread\_\-t}}
+\index{vqec_stream_output_thread_t@{vqec\_\-stream\_\-output\_\-thread\_\-t}!vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-stream\_\-output\_\-thread\_\-}  \bf{vqec\_\-stream\_\-output\_\-thread\_\-t}}\label{vqec__stream__output__thread__mgr_8h_1cbe71e640a1b3367360f471355b19f4}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}!vqec_stream_output@{vqec\_\-stream\_\-output}}
+\index{vqec_stream_output@{vqec\_\-stream\_\-output}!vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-stream\_\-output (char $\ast$ {\em name}, char $\ast$ {\em if\_\-name}, char $\ast$ {\em url})}\label{vqec__stream__output__thread__mgr_8h_6a88996443223009484455f5af17d0c3}
+
+
+\index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}!vqec_stream_output_channel_join_call_back_func@{vqec\_\-stream\_\-output\_\-channel\_\-join\_\-call\_\-back\_\-func}}
+\index{vqec_stream_output_channel_join_call_back_func@{vqec\_\-stream\_\-output\_\-channel\_\-join\_\-call\_\-back\_\-func}!vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-stream\_\-output\_\-channel\_\-join\_\-call\_\-back\_\-func (char $\ast$ {\em url}, vqec\_\-tunerid\_\-t {\em tuner\_\-id}, in\_\-addr\_\-t {\em output\_\-ifaddr}, in\_\-addr\_\-t {\em output\_\-dest}, in\_\-port\_\-t {\em output\_\-port}, void $\ast$ {\em call\_\-back\_\-data})}\label{vqec__stream__output__thread__mgr_8h_31c7a5019f1bf8b6882441adb43eab9c}
+
+
+\index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}!vqec_stream_output_channel_leave_call_back_func@{vqec\_\-stream\_\-output\_\-channel\_\-leave\_\-call\_\-back\_\-func}}
+\index{vqec_stream_output_channel_leave_call_back_func@{vqec\_\-stream\_\-output\_\-channel\_\-leave\_\-call\_\-back\_\-func}!vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-stream\_\-output\_\-channel\_\-leave\_\-call\_\-back\_\-func (char $\ast$ {\em url}, vqec\_\-tunerid\_\-t {\em tuner\_\-id}, in\_\-addr\_\-t {\em output\_\-ifaddr}, in\_\-addr\_\-t {\em output\_\-dest}, in\_\-port\_\-t {\em output\_\-port}, void $\ast$ {\em call\_\-back\_\-data})}\label{vqec__stream__output__thread__mgr_8h_9b24ec972b58c5d250fe8b89ffa4c94a}
+
+
+\index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}!vqec_stream_output_mgr_clear_stats@{vqec\_\-stream\_\-output\_\-mgr\_\-clear\_\-stats}}
+\index{vqec_stream_output_mgr_clear_stats@{vqec\_\-stream\_\-output\_\-mgr\_\-clear\_\-stats}!vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-stream\_\-output\_\-mgr\_\-clear\_\-stats (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__stream__output__thread__mgr_8h_f171f39aee094b56d8065e93491c7fd7}
+
+
+\index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}!vqec_stream_output_mgr_show_stats@{vqec\_\-stream\_\-output\_\-mgr\_\-show\_\-stats}}
+\index{vqec_stream_output_mgr_show_stats@{vqec\_\-stream\_\-output\_\-mgr\_\-show\_\-stats}!vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-stream\_\-output\_\-mgr\_\-show\_\-stats (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__stream__output__thread__mgr_8h_76f099665eaef50a21828666aaf860ff}
+
+
+\index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}!vqec_stream_output_thread_get_by_tuner_id@{vqec\_\-stream\_\-output\_\-thread\_\-get\_\-by\_\-tuner\_\-id}}
+\index{vqec_stream_output_thread_get_by_tuner_id@{vqec\_\-stream\_\-output\_\-thread\_\-get\_\-by\_\-tuner\_\-id}!vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-stream\_\-output\_\-thread\_\-t}$\ast$ vqec\_\-stream\_\-output\_\-thread\_\-get\_\-by\_\-tuner\_\-id (vqec\_\-tunerid\_\-t {\em tuner\_\-id})}\label{vqec__stream__output__thread__mgr_8h_f7c5c31b196a89d3945db4a6247fde09}
+
+
+\index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}!vqec_stream_output_thread_mgr_init_startup_streams@{vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-init\_\-startup\_\-streams}}
+\index{vqec_stream_output_thread_mgr_init_startup_streams@{vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-init\_\-startup\_\-streams}!vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-init\_\-startup\_\-streams (char $\ast$ {\em filename})}\label{vqec__stream__output__thread__mgr_8h_d5171a4db78cd0efe14aea13fe74dc4a}
+
+
+\index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}!vqec_stream_output_thread_mgr_module_deinit@{vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-module\_\-deinit}}
+\index{vqec_stream_output_thread_mgr_module_deinit@{vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-module\_\-deinit}!vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-module\_\-deinit (void)}\label{vqec__stream__output__thread__mgr_8h_7b4627507698f3b183cea0ea80f4e9b6}
+
+
+\index{vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}!vqec_stream_output_thread_mgr_module_init@{vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-module\_\-init}}
+\index{vqec_stream_output_thread_mgr_module_init@{vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-module\_\-init}!vqec_stream_output_thread_mgr.h@{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-stream\_\-output\_\-thread\_\-mgr\_\-module\_\-init (void)}\label{vqec__stream__output__thread__mgr_8h_e132901cb1ce3a524bc4488a575ec131}
+
+

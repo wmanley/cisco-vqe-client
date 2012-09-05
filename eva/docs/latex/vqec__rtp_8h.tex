@@ -1,0 +1,310 @@
+\section{vqec\_\-rtp.h File Reference}
+\label{vqec__rtp_8h}\index{vqec_rtp.h@{vqec\_\-rtp.h}}
+{\tt \#include $<$netinet/in.h$>$}\par
+{\tt \#include $<$cfg/cfgapi.h$>$}\par
+{\tt \#include $<$rtp/rtp\_\-ssm\_\-rsi\_\-rcvr.h$>$}\par
+{\tt \#include $<$rtp/rtcp\_\-bandwidth.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-dp\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-recv\_\-socket.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-event.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-api.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-rtp\_\-source\_\-id\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-RTP\_\-MEMBERS\_\-MAX}~3
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{vqec\_\-rtcp\_\-timer\_\-type\_\-} \bf{vqec\_\-rtcp\_\-timer\_\-type}
+\item 
+typedef \bf{vqec\_\-rtp\_\-source\_\-id\_\-} \bf{vqec\_\-rtp\_\-source\_\-id\_\-t}
+\item 
+typedef enum \bf{vqec\_\-rtp\_\-session\_\-state\_\-} \bf{vqec\_\-rtp\_\-session\_\-state\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-rtcp\_\-timer\_\-type\_\-} \{ \bf{VQEC\_\-RTCP\_\-MEMBER\_\-TIMEOUT}, 
+\bf{VQEC\_\-RTCP\_\-SEND\_\-REPORT\_\-TIMEOUT}, 
+\bf{VQEC\_\-RTCP\_\-LAST\_\-TIMEOUT}
+ \}
+\item 
+enum \bf{vqec\_\-rtp\_\-session\_\-state\_\-} \{ \par
+\bf{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-INACTIVE\_\-WAITFIRST}, 
+\bf{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-ACTIVE}, 
+\bf{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-INACTIVE}, 
+\bf{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-ERROR}, 
+\par
+\bf{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-SHUTDOWN}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+boolean \bf{rtp\_\-get\_\-local\_\-source\_\-ssrc} (const rtp\_\-session\_\-t $\ast$rtp\_\-session, uint32\_\-t $\ast$ssrc)
+\item 
+uint32\_\-t \bf{rtcp\_\-construct\_\-report\_\-pubports} (rtp\_\-session\_\-t $\ast$p\_\-sess, rtp\_\-member\_\-t $\ast$p\_\-source, rtcptype $\ast$p\_\-rtcp, uint32\_\-t bufflen, rtcp\_\-pkt\_\-info\_\-t $\ast$p\_\-pkt\_\-info, boolean primary, boolean reset\_\-xr\_\-stats, in\_\-port\_\-t rtp\_\-port, in\_\-port\_\-t rtcp\_\-port)
+\item 
+void \bf{rtp\_\-show\_\-drop\_\-stats} (rtp\_\-session\_\-t $\ast$p\_\-sess)
+\item 
+void \bf{rtcp\_\-event\_\-handler\_\-internal} (rtp\_\-session\_\-t $\ast$rtp\_\-session, vqec\_\-recv\_\-sock\_\-t $\ast$rtp\_\-sock, char $\ast$iobuf, uint32\_\-t iobuf\_\-len, boolean is\_\-primary\_\-session)
+\item 
+vqec\_\-event\_\-t $\ast$ \bf{rtcp\_\-timer\_\-event\_\-create} (\bf{vqec\_\-rtcp\_\-timer\_\-type} to\_\-type, struct timeval $\ast$p\_\-tv, void $\ast$p\_\-sess)
+\item 
+void \bf{vqec\_\-set\_\-primary\_\-rtcp\_\-bw} (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$chan\_\-cfg, rtcp\_\-bw\_\-cfg\_\-t $\ast$rtcp\_\-bw\_\-cfg)
+\item 
+void \bf{vqec\_\-set\_\-resourced\_\-rtcp\_\-bw} (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$chan\_\-cfg, rtcp\_\-bw\_\-cfg\_\-t $\ast$rtcp\_\-bw\_\-cfg)
+\item 
+void \bf{vqec\_\-set\_\-repair\_\-rtcp\_\-bw} (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$chan\_\-cfg, rtcp\_\-bw\_\-cfg\_\-t $\ast$rtcp\_\-bw\_\-cfg)
+\item 
+void \bf{vqec\_\-set\_\-primary\_\-rtcp\_\-xr\_\-options} (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$chan\_\-cfg, rtcp\_\-xr\_\-cfg\_\-t $\ast$rtcp\_\-xr\_\-cfg)
+\item 
+void \bf{vqec\_\-set\_\-repair\_\-rtcp\_\-xr\_\-options} (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$chan\_\-cfg, rtcp\_\-xr\_\-cfg\_\-t $\ast$rtcp\_\-xr\_\-cfg)
+\item 
+void \bf{vqec\_\-rtp\_\-session\_\-show} (vqec\_\-dp\_\-streamid\_\-t id, rtp\_\-session\_\-t $\ast$p\_\-session, const char $\ast$namestr, boolean first\_\-pak\_\-rx)
+\item 
+const char $\ast$ \bf{vqec\_\-rtp\_\-session\_\-state\_\-tostr} (\bf{vqec\_\-rtp\_\-session\_\-state\_\-t} state)
+\item 
+vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-entry\_\-t $\ast$ \bf{vqec\_\-rtp\_\-src\_\-table\_\-find\_\-pktflow\_\-entry} (vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$table)
+\item 
+vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-entry\_\-t $\ast$ \bf{vqec\_\-rtp\_\-src\_\-table\_\-most\_\-recent\_\-active\_\-src} (vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$table)
+\item 
+vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-entry\_\-t $\ast$ \bf{vqec\_\-rtp\_\-src\_\-table\_\-failover\_\-src} (vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$table)
+\item 
+boolean \bf{vqec\_\-rtp\_\-session\_\-dp\_\-src\_\-delete} (rtp\_\-session\_\-t $\ast$p\_\-session, vqec\_\-dp\_\-streamid\_\-t id, rtp\_\-source\_\-id\_\-t $\ast$source\_\-id, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$table)
+\item 
+boolean \bf{vqec\_\-rtp\_\-session\_\-dp\_\-get\_\-src\_\-table} (rtp\_\-session\_\-t $\ast$p\_\-session, vqec\_\-dp\_\-streamid\_\-t id, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$table)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!VQEC_RTP_MEMBERS_MAX@{VQEC\_\-RTP\_\-MEMBERS\_\-MAX}}
+\index{VQEC_RTP_MEMBERS_MAX@{VQEC\_\-RTP\_\-MEMBERS\_\-MAX}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-MEMBERS\_\-MAX~3}\label{vqec__rtp_8h_01a067d8cbac5e22e0829c2bc2b554eb}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtcp_timer_type@{vqec\_\-rtcp\_\-timer\_\-type}}
+\index{vqec_rtcp_timer_type@{vqec\_\-rtcp\_\-timer\_\-type}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-rtcp\_\-timer\_\-type\_\-}  \bf{vqec\_\-rtcp\_\-timer\_\-type}}\label{vqec__rtp_8h_d077812494418ba9420bb6bcd71302c5}
+
+
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtp_session_state_t@{vqec\_\-rtp\_\-session\_\-state\_\-t}}
+\index{vqec_rtp_session_state_t@{vqec\_\-rtp\_\-session\_\-state\_\-t}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-rtp\_\-session\_\-state\_\-}  \bf{vqec\_\-rtp\_\-session\_\-state\_\-t}}\label{vqec__rtp_8h_ee2c1c671781875058ba955f449c6cff}
+
+
+Control-plane rtp session state which is modified by dataplane events. \index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtp_source_id_t@{vqec\_\-rtp\_\-source\_\-id\_\-t}}
+\index{vqec_rtp_source_id_t@{vqec\_\-rtp\_\-source\_\-id\_\-t}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-rtp\_\-source\_\-id\_\-}  \bf{vqec\_\-rtp\_\-source\_\-id\_\-t}}\label{vqec__rtp_8h_6a40e3abd7bc1c30d554900eac47d033}
+
+
+Structure to maintain RTP pktflow sources. 
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtcp_timer_type_@{vqec\_\-rtcp\_\-timer\_\-type\_\-}}
+\index{vqec_rtcp_timer_type_@{vqec\_\-rtcp\_\-timer\_\-type\_\-}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-rtcp\_\-timer\_\-type\_\-}}\label{vqec__rtp_8h_4068b21f5fc3a6adc0ebaedc6f829ec4}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_RTCP_MEMBER_TIMEOUT@{VQEC\_\-RTCP\_\-MEMBER\_\-TIMEOUT}!vqec_rtp.h@{vqec\_\-rtp.h}}\index{vqec_rtp.h@{vqec\_\-rtp.h}!VQEC_RTCP_MEMBER_TIMEOUT@{VQEC\_\-RTCP\_\-MEMBER\_\-TIMEOUT}}\item[{\em 
+VQEC\_\-RTCP\_\-MEMBER\_\-TIMEOUT\label{vqec__rtp_8h_4068b21f5fc3a6adc0ebaedc6f829ec455313a9d9c4981522cf6419c7ba20540}
+}]\index{VQEC_RTCP_SEND_REPORT_TIMEOUT@{VQEC\_\-RTCP\_\-SEND\_\-REPORT\_\-TIMEOUT}!vqec_rtp.h@{vqec\_\-rtp.h}}\index{vqec_rtp.h@{vqec\_\-rtp.h}!VQEC_RTCP_SEND_REPORT_TIMEOUT@{VQEC\_\-RTCP\_\-SEND\_\-REPORT\_\-TIMEOUT}}\item[{\em 
+VQEC\_\-RTCP\_\-SEND\_\-REPORT\_\-TIMEOUT\label{vqec__rtp_8h_4068b21f5fc3a6adc0ebaedc6f829ec4eeb810da5d2334a50a557e1cb640f855}
+}]\index{VQEC_RTCP_LAST_TIMEOUT@{VQEC\_\-RTCP\_\-LAST\_\-TIMEOUT}!vqec_rtp.h@{vqec\_\-rtp.h}}\index{vqec_rtp.h@{vqec\_\-rtp.h}!VQEC_RTCP_LAST_TIMEOUT@{VQEC\_\-RTCP\_\-LAST\_\-TIMEOUT}}\item[{\em 
+VQEC\_\-RTCP\_\-LAST\_\-TIMEOUT\label{vqec__rtp_8h_4068b21f5fc3a6adc0ebaedc6f829ec46d1b7fe24572df19841fe2df4c015a5f}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtp_session_state_@{vqec\_\-rtp\_\-session\_\-state\_\-}}
+\index{vqec_rtp_session_state_@{vqec\_\-rtp\_\-session\_\-state\_\-}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-rtp\_\-session\_\-state\_\-}}\label{vqec__rtp_8h_b5701dc51a0cfd26d80d82d0a60d0a4e}
+
+
+Control-plane rtp session state which is modified by dataplane events. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_RTP_SESSION_STATE_INACTIVE_WAITFIRST@{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-INACTIVE\_\-WAITFIRST}!vqec_rtp.h@{vqec\_\-rtp.h}}\index{vqec_rtp.h@{vqec\_\-rtp.h}!VQEC_RTP_SESSION_STATE_INACTIVE_WAITFIRST@{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-INACTIVE\_\-WAITFIRST}}\item[{\em 
+VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-INACTIVE\_\-WAITFIRST\label{vqec__rtp_8h_b5701dc51a0cfd26d80d82d0a60d0a4e9a635fe5b212f42ad0357e3a937032e5}
+}]Inactive after creation, in-wait for first rtp source event from dp. \index{VQEC_RTP_SESSION_STATE_ACTIVE@{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-ACTIVE}!vqec_rtp.h@{vqec\_\-rtp.h}}\index{vqec_rtp.h@{vqec\_\-rtp.h}!VQEC_RTP_SESSION_STATE_ACTIVE@{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-ACTIVE}}\item[{\em 
+VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-ACTIVE\label{vqec__rtp_8h_b5701dc51a0cfd26d80d82d0a60d0a4e7c5423700b6007c0673b7537bbe90338}
+}]An active pktflow rtp source is present. \index{VQEC_RTP_SESSION_STATE_INACTIVE@{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-INACTIVE}!vqec_rtp.h@{vqec\_\-rtp.h}}\index{vqec_rtp.h@{vqec\_\-rtp.h}!VQEC_RTP_SESSION_STATE_INACTIVE@{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-INACTIVE}}\item[{\em 
+VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-INACTIVE\label{vqec__rtp_8h_b5701dc51a0cfd26d80d82d0a60d0a4e076fa16f3e8e4c59f4bed02215bb60ef}
+}]No active pktflow rtp source is present. \index{VQEC_RTP_SESSION_STATE_ERROR@{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-ERROR}!vqec_rtp.h@{vqec\_\-rtp.h}}\index{vqec_rtp.h@{vqec\_\-rtp.h}!VQEC_RTP_SESSION_STATE_ERROR@{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-ERROR}}\item[{\em 
+VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-ERROR\label{vqec__rtp_8h_b5701dc51a0cfd26d80d82d0a60d0a4ea81ff383f337408e625d0c9af72b1c54}
+}]Error state. \index{VQEC_RTP_SESSION_STATE_SHUTDOWN@{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-SHUTDOWN}!vqec_rtp.h@{vqec\_\-rtp.h}}\index{vqec_rtp.h@{vqec\_\-rtp.h}!VQEC_RTP_SESSION_STATE_SHUTDOWN@{VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-SHUTDOWN}}\item[{\em 
+VQEC\_\-RTP\_\-SESSION\_\-STATE\_\-SHUTDOWN\label{vqec__rtp_8h_b5701dc51a0cfd26d80d82d0a60d0a4e7980af67238eaa51ed727b3f94e0206f}
+}]CP shutdown state - used for multiple byes. \end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!rtcp_construct_report_pubports@{rtcp\_\-construct\_\-report\_\-pubports}}
+\index{rtcp_construct_report_pubports@{rtcp\_\-construct\_\-report\_\-pubports}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t rtcp\_\-construct\_\-report\_\-pubports (rtp\_\-session\_\-t $\ast$ {\em p\_\-sess}, rtp\_\-member\_\-t $\ast$ {\em p\_\-source}, rtcptype $\ast$ {\em p\_\-rtcp}, uint32\_\-t {\em bufflen}, rtcp\_\-pkt\_\-info\_\-t $\ast$ {\em p\_\-pkt\_\-info}, boolean {\em primary}, boolean {\em reset\_\-xr\_\-stats}, in\_\-port\_\-t {\em rtp\_\-port}, in\_\-port\_\-t {\em rtcp\_\-port})}\label{vqec__rtp_8h_a3b35e0f9039796566fd84aed604c932}
+
+
+Construct a report including the PUBPORTS message. This is an overriding implementation of the rtcp\_\-construct\_\-report method, for the \char`\"{}repair-recv\char`\"{} and \char`\"{}era-recv\char`\"{} application-level classes.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-sess}]Pointer to session object \item[\mbox{$\leftarrow$} {\em p\_\-source}]Pointer to local source member \item[\mbox{$\leftarrow$} {\em p\_\-rtcp}]Pointer to start of RTCP packet in the buffer \item[\mbox{$\leftarrow$} {\em bufflen}]Length (in bytes) of RTCP packet buffer \item[\mbox{$\leftarrow$} {\em p\_\-pkt\_\-info}]Pointer to additional packet info (if any; may be NULL) \item[{\em in\mbox{[}$\,$\mbox{]}}]primary Indicates whether this is the primary or repair rtp session \item[\mbox{$\leftarrow$} {\em reset\_\-xr\_\-stats}]Flag for whether to reset the RTCP XR stats \item[\mbox{$\leftarrow$} {\em rtp\_\-port}]External rtp port for pubports. \item[\mbox{$\leftarrow$} {\em rtcp\_\-port}]External rtcp port for pubports. \item[\mbox{$\rightarrow$} {\em uint32\_\-t}]Returns length of the packet including RTCP header; zero indicates a construction failure. \end{description}
+\end{Desc}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!rtcp_event_handler_internal@{rtcp\_\-event\_\-handler\_\-internal}}
+\index{rtcp_event_handler_internal@{rtcp\_\-event\_\-handler\_\-internal}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void rtcp\_\-event\_\-handler\_\-internal (rtp\_\-session\_\-t $\ast$ {\em rtp\_\-session}, vqec\_\-recv\_\-sock\_\-t $\ast$ {\em rtcp\_\-sock}, char $\ast$ {\em iobuf}, uint32\_\-t {\em iobuf\_\-len}, boolean {\em is\_\-primary\_\-session})}\label{vqec__rtp_8h_476870a2570664e165ce779338f33827}
+
+
+--------------------------------------------------------------------------- Front-end RTCP event handler.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em rtp\_\-session}]Pointer to a repair or primary session. \item[\mbox{$\leftarrow$} {\em rtcp\_\-sock}]Input socket to be read. \item[\mbox{$\leftarrow$} {\em iobuf}]An IO buffer to receive RTCP packet data. \item[\mbox{$\leftarrow$} {\em iobuf\_\-len}]Length of the IO buffer. \item[\mbox{$\leftarrow$} {\em is\_\-primary\_\-session}]True if the session is the primary session. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!rtcp_timer_event_create@{rtcp\_\-timer\_\-event\_\-create}}
+\index{rtcp_timer_event_create@{rtcp\_\-timer\_\-event\_\-create}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-event\_\-t$\ast$ rtcp\_\-timer\_\-event\_\-create (\bf{vqec\_\-rtcp\_\-timer\_\-type} {\em to\_\-type}, struct timeval $\ast$ {\em p\_\-tv}, void $\ast$ {\em p\_\-sess})}\label{vqec__rtp_8h_4083ee4b737ceb7aaffc7e0738b543a0}
+
+
+Create a timer event and add it to libevent scheduler. \begin{Desc}
+\item[Returns:]null if the event couldn't be added successfully, otherwise returns the pointer to the event. It's the caller's responsibility to free the event ptr. \end{Desc}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!rtp_get_local_source_ssrc@{rtp\_\-get\_\-local\_\-source\_\-ssrc}}
+\index{rtp_get_local_source_ssrc@{rtp\_\-get\_\-local\_\-source\_\-ssrc}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean rtp\_\-get\_\-local\_\-source\_\-ssrc (const rtp\_\-session\_\-t $\ast$ {\em rtp\_\-session}, uint32\_\-t $\ast$ {\em ssrc})}\label{vqec__rtp_8h_63ae673e310741ef9ef8b004218ad1bd}
+
+
+Get the ssrc of the local source.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em rtp\_\-session}]Pointer to an rtp\_\-session \item[\mbox{$\rightarrow$} {\em ssrc}]SSRC of the local source. \item[\mbox{$\rightarrow$} {\em boolean}]TRUE if we were able to get a local\_\-source else FALSE. \end{description}
+\end{Desc}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!rtp_show_drop_stats@{rtp\_\-show\_\-drop\_\-stats}}
+\index{rtp_show_drop_stats@{rtp\_\-show\_\-drop\_\-stats}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void rtp\_\-show\_\-drop\_\-stats (rtp\_\-session\_\-t $\ast$ {\em p\_\-sess})}\label{vqec__rtp_8h_e10fd8d5553cf71774f8ffa86e1e0c2b}
+
+
+Show RTP drop statistics.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-sess}]Pointer to a RTP session. \end{description}
+\end{Desc}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtp_session_dp_get_src_table@{vqec\_\-rtp\_\-session\_\-dp\_\-get\_\-src\_\-table}}
+\index{vqec_rtp_session_dp_get_src_table@{vqec\_\-rtp\_\-session\_\-dp\_\-get\_\-src\_\-table}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-rtp\_\-session\_\-dp\_\-get\_\-src\_\-table (rtp\_\-session\_\-t $\ast$ {\em p\_\-session}, vqec\_\-dp\_\-streamid\_\-t {\em id}, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$ {\em table})}\label{vqec__rtp_8h_8a96b722d5fcf873e1ed454e76b3ef21}
+
+
+--------------------------------------------------------------------------- Fetch a copy of the source table for a RTP session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-session}]Pointer to the RTP session (unused). \item[\mbox{$\leftarrow$} {\em id}]Identifier of the RTP IS in the dataplane. \item[\mbox{$\rightarrow$} {\em table}]The most recent source table will be returned in this parameter. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if a valid table was returned, false otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtp_session_dp_src_delete@{vqec\_\-rtp\_\-session\_\-dp\_\-src\_\-delete}}
+\index{vqec_rtp_session_dp_src_delete@{vqec\_\-rtp\_\-session\_\-dp\_\-src\_\-delete}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-rtp\_\-session\_\-dp\_\-src\_\-delete (rtp\_\-session\_\-t $\ast$ {\em p\_\-session}, vqec\_\-dp\_\-streamid\_\-t {\em id}, rtp\_\-source\_\-id\_\-t $\ast$ {\em source\_\-id}, vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$ {\em table})}\label{vqec__rtp_8h_d9af1c970be1aa9934b5b854dc2e7b14}
+
+
+--------------------------------------------------------------------------- Delete a dataplane source entry for a RTP session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-session}]Pointer to the RTP session \item[\mbox{$\leftarrow$} {\em id}]Identifier of the RTP IS in the dataplane. \item[\mbox{$\leftarrow$} {\em source\_\-id}]Attributes of the source. \item[\mbox{$\rightarrow$} {\em table}][optional]If the caller needs, the most recent source table will be returned in this parameter. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the delete succeeded, or if the source-entry was not present in the dataplane. All other cases, such as null-pointers, non-existent stream in the dataplane, etc. are considered failures. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtp_session_show@{vqec\_\-rtp\_\-session\_\-show}}
+\index{vqec_rtp_session_show@{vqec\_\-rtp\_\-session\_\-show}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-rtp\_\-session\_\-show (vqec\_\-dp\_\-streamid\_\-t {\em id}, rtp\_\-session\_\-t $\ast$ {\em p\_\-session}, const char $\ast$ {\em namestr}, boolean {\em first\_\-pak\_\-rx})}\label{vqec__rtp_8h_f7947081d49749e84e0395a351505a45}
+
+
+Display statistics from a RTP session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em is\_\-id}]Input stream identifier of the session in the dataplane. It can be used to fetch the most recent copy of the statistics. \item[\mbox{$\leftarrow$} {\em p\_\-session}]pointer to the RTP session. \item[\mbox{$\leftarrow$} {\em namestr}]\char`\"{}Primary\char`\"{} or \char`\"{}Repair \char`\"{} session name. \item[\mbox{$\leftarrow$} {\em first\_\-pak\_\-rx}]True if the session has received at least one packet since creation. \end{description}
+\end{Desc}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtp_session_state_tostr@{vqec\_\-rtp\_\-session\_\-state\_\-tostr}}
+\index{vqec_rtp_session_state_tostr@{vqec\_\-rtp\_\-session\_\-state\_\-tostr}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-rtp\_\-session\_\-state\_\-tostr (\bf{vqec\_\-rtp\_\-session\_\-state\_\-t} {\em state})}\label{vqec__rtp_8h_21554655b6da62aa13f1f42a82e0202b}
+
+
+--------------------------------------------------------------------------- Session states to constant string name. --------------------------------------------------------------------------- \index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtp_src_table_failover_src@{vqec\_\-rtp\_\-src\_\-table\_\-failover\_\-src}}
+\index{vqec_rtp_src_table_failover_src@{vqec\_\-rtp\_\-src\_\-table\_\-failover\_\-src}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-entry\_\-t$\ast$ vqec\_\-rtp\_\-src\_\-table\_\-failover\_\-src (vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$ {\em table})}\label{vqec__rtp_8h_9238e5b69456210d90b9eaa979b885c3}
+
+
+--------------------------------------------------------------------------- Find the failover source entry in the rtp source table. The failover source corresponds to an non-packetflow sender whose most-recent packets are being queued by the dataplane. If no such failover source exists, or if the failover source is not active, NULL will be returned
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em table}]Pointer to the RTP source table. \item[\mbox{$\rightarrow$} {\em vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-entry\_\-t$\ast$}]Pointer to the failover entry if there is one, null otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtp_src_table_find_pktflow_entry@{vqec\_\-rtp\_\-src\_\-table\_\-find\_\-pktflow\_\-entry}}
+\index{vqec_rtp_src_table_find_pktflow_entry@{vqec\_\-rtp\_\-src\_\-table\_\-find\_\-pktflow\_\-entry}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-entry\_\-t$\ast$ vqec\_\-rtp\_\-src\_\-table\_\-find\_\-pktflow\_\-entry (vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$ {\em table})}\label{vqec__rtp_8h_fc26268188d656d4079859e4044881c0}
+
+
+--------------------------------------------------------------------------- Find the first entry in the rtp source table that has pktflow status.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em table}]Pointer to the RTP source table. \item[\mbox{$\rightarrow$} {\em vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-entry\_\-t$\ast$}]Pointer to the pktflow entry if one exists, null otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_rtp_src_table_most_recent_active_src@{vqec\_\-rtp\_\-src\_\-table\_\-most\_\-recent\_\-active\_\-src}}
+\index{vqec_rtp_src_table_most_recent_active_src@{vqec\_\-rtp\_\-src\_\-table\_\-most\_\-recent\_\-active\_\-src}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-entry\_\-t$\ast$ vqec\_\-rtp\_\-src\_\-table\_\-most\_\-recent\_\-active\_\-src (vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-t $\ast$ {\em table})}\label{vqec__rtp_8h_b3ff3d8702bde7ce7e9651c3c05b16a1}
+
+
+--------------------------------------------------------------------------- Find the most recent active entry in the rtp source table.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em table}]Pointer to the RTP source table. \item[\mbox{$\rightarrow$} {\em vqec\_\-dp\_\-rtp\_\-src\_\-table\_\-entry\_\-t$\ast$}]Pointer to the most recent active entry if there is one, null otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_set_primary_rtcp_bw@{vqec\_\-set\_\-primary\_\-rtcp\_\-bw}}
+\index{vqec_set_primary_rtcp_bw@{vqec\_\-set\_\-primary\_\-rtcp\_\-bw}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-set\_\-primary\_\-rtcp\_\-bw (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em chan\_\-cfg}, rtcp\_\-bw\_\-cfg\_\-t $\ast$ {\em rtcp\_\-bw\_\-cfg})}\label{vqec__rtp_8h_f87f2016b6057f77a3d30323125ac09a}
+
+
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_set_primary_rtcp_xr_options@{vqec\_\-set\_\-primary\_\-rtcp\_\-xr\_\-options}}
+\index{vqec_set_primary_rtcp_xr_options@{vqec\_\-set\_\-primary\_\-rtcp\_\-xr\_\-options}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-set\_\-primary\_\-rtcp\_\-xr\_\-options (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em chan\_\-cfg}, rtcp\_\-xr\_\-cfg\_\-t $\ast$ {\em rtcp\_\-xr\_\-cfg})}\label{vqec__rtp_8h_6c9e4a2caf94b7c042087d478f95139d}
+
+
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_set_repair_rtcp_bw@{vqec\_\-set\_\-repair\_\-rtcp\_\-bw}}
+\index{vqec_set_repair_rtcp_bw@{vqec\_\-set\_\-repair\_\-rtcp\_\-bw}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-set\_\-repair\_\-rtcp\_\-bw (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em chan\_\-cfg}, rtcp\_\-bw\_\-cfg\_\-t $\ast$ {\em rtcp\_\-bw\_\-cfg})}\label{vqec__rtp_8h_2112da11c848c2d8a98ff39acf28a3ad}
+
+
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_set_repair_rtcp_xr_options@{vqec\_\-set\_\-repair\_\-rtcp\_\-xr\_\-options}}
+\index{vqec_set_repair_rtcp_xr_options@{vqec\_\-set\_\-repair\_\-rtcp\_\-xr\_\-options}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-set\_\-repair\_\-rtcp\_\-xr\_\-options (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em chan\_\-cfg}, rtcp\_\-xr\_\-cfg\_\-t $\ast$ {\em rtcp\_\-xr\_\-cfg})}\label{vqec__rtp_8h_b7f3f44ea0b50169c0ef38694d609bbb}
+
+
+\index{vqec_rtp.h@{vqec\_\-rtp.h}!vqec_set_resourced_rtcp_bw@{vqec\_\-set\_\-resourced\_\-rtcp\_\-bw}}
+\index{vqec_set_resourced_rtcp_bw@{vqec\_\-set\_\-resourced\_\-rtcp\_\-bw}!vqec_rtp.h@{vqec\_\-rtp.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-set\_\-resourced\_\-rtcp\_\-bw (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em chan\_\-cfg}, rtcp\_\-bw\_\-cfg\_\-t $\ast$ {\em rtcp\_\-bw\_\-cfg})}\label{vqec__rtp_8h_a9a0cbe0c0a51b3c0dd4b910c4dc0989}
+
+

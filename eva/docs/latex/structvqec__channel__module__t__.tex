@@ -1,0 +1,124 @@
+\section{vqec\_\-channel\_\-module\_\-t\_\- Struct Reference}
+\label{structvqec__channel__module__t__}\index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+{\tt \#include $<$vqec\_\-channel\_\-private.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\bf{VQE\_\-LIST\_\-HEAD} (, \bf{vqec\_\-chan\_\-}) channel\_\-list
+\end{CompactItemize}
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+id\_\-table\_\-key\_\-t \bf{id\_\-table\_\-key}
+\item 
+uint16\_\-t \bf{fec\_\-default\_\-block\_\-size}
+\item 
+uint32\_\-t \bf{max\_\-channels}
+\item 
+uint32\_\-t \bf{num\_\-current\_\-rccs}
+\item 
+uint64\_\-t \bf{total\_\-app\_\-timeout\_\-counter}
+\item 
+uint64\_\-t \bf{total\_\-null\_\-app\_\-paks}
+\item 
+uint64\_\-t \bf{total\_\-app\_\-paks}
+\item 
+uint64\_\-t \bf{total\_\-app\_\-parse\_\-errors}
+\item 
+\bf{vqec\_\-ifclient\_\-stats\_\-t} \bf{historical\_\-stats\_\-cumulative}
+\item 
+\bf{vqec\_\-ifclient\_\-stats\_\-t} \bf{historical\_\-stats}
+\item 
+vqec\_\-event\_\-t $\ast$ \bf{poll\_\-ev}
+\item 
+char $\ast$ \bf{rtcp\_\-iobuf}
+\item 
+uint32\_\-t \bf{rtcp\_\-iobuf\_\-len}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Storage for all global data within the channel module. 
+
+
+
+\subsection{Member Function Documentation}
+\index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!VQE_LIST_HEAD@{VQE\_\-LIST\_\-HEAD}}
+\index{VQE_LIST_HEAD@{VQE\_\-LIST\_\-HEAD}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-channel\_\-module\_\-t\_\-::VQE\_\-LIST\_\-HEAD (\bf{vqec\_\-chan\_\-})}\label{structvqec__channel__module__t___2e1f0a5d6a42d9987467bcb37a9c4659}
+
+
+List of active channels 
+
+\subsection{Field Documentation}
+\index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!fec_default_block_size@{fec\_\-default\_\-block\_\-size}}
+\index{fec_default_block_size@{fec\_\-default\_\-block\_\-size}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{vqec\_\-channel\_\-module\_\-t\_\-::fec\_\-default\_\-block\_\-size}}\label{structvqec__channel__module__t___17632c40cbdfae3c340eb7dc4654d84a}
+
+
+FEC default block size (Lx\-D) in packets. \index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!historical_stats@{historical\_\-stats}}
+\index{historical_stats@{historical\_\-stats}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-ifclient\_\-stats\_\-t} \bf{vqec\_\-channel\_\-module\_\-t\_\-::historical\_\-stats}}\label{structvqec__channel__module__t___20cd5a0e340d00ab2c741e7764efc316}
+
+
+!$<$ Stats collected from all !$<$ previously-tuned channels. !$<$ These get bumped only upon !$<$ a channel going inactive. \index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!historical_stats_cumulative@{historical\_\-stats\_\-cumulative}}
+\index{historical_stats_cumulative@{historical\_\-stats\_\-cumulative}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-ifclient\_\-stats\_\-t} \bf{vqec\_\-channel\_\-module\_\-t\_\-::historical\_\-stats\_\-cumulative}}\label{structvqec__channel__module__t___b3ae7932c0ee7f2acc751eff42d4d3cb}
+
+
+\index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!id_table_key@{id\_\-table\_\-key}}
+\index{id_table_key@{id\_\-table\_\-key}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}id\_\-table\_\-key\_\-t \bf{vqec\_\-channel\_\-module\_\-t\_\-::id\_\-table\_\-key}}\label{structvqec__channel__module__t___33846536ceac709aaa26a66e916e1fd6}
+
+
+ID manager table key \index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!max_channels@{max\_\-channels}}
+\index{max_channels@{max\_\-channels}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-channel\_\-module\_\-t\_\-::max\_\-channels}}\label{structvqec__channel__module__t___bf3384306988dd2e71807f8b84517f45}
+
+
+Maximum channels to be supported. \index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!num_current_rccs@{num\_\-current\_\-rccs}}
+\index{num_current_rccs@{num\_\-current\_\-rccs}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-channel\_\-module\_\-t\_\-::num\_\-current\_\-rccs}}\label{structvqec__channel__module__t___c0508975e459c3b0817ec2069ff37001}
+
+
+Number of tuners currently bound with RCC resources (i.e., in-progress or previously successful RCC since the last bind on the channel). \index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!poll_ev@{poll\_\-ev}}
+\index{poll_ev@{poll\_\-ev}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-event\_\-t$\ast$ \bf{vqec\_\-channel\_\-module\_\-t\_\-::poll\_\-ev}}\label{structvqec__channel__module__t___b15266d2123a17fea8af5127aa42cb62}
+
+
+channel polling event \index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!rtcp_iobuf@{rtcp\_\-iobuf}}
+\index{rtcp_iobuf@{rtcp\_\-iobuf}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \bf{vqec\_\-channel\_\-module\_\-t\_\-::rtcp\_\-iobuf}}\label{structvqec__channel__module__t___5cd6d704b9c12511b3d8934907640b06}
+
+
+RTCP packet buffer \index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!rtcp_iobuf_len@{rtcp\_\-iobuf\_\-len}}
+\index{rtcp_iobuf_len@{rtcp\_\-iobuf\_\-len}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-channel\_\-module\_\-t\_\-::rtcp\_\-iobuf\_\-len}}\label{structvqec__channel__module__t___a01c2869190db0eda62e37f1f269c019}
+
+
+RTCP packet buffer length \index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!total_app_paks@{total\_\-app\_\-paks}}
+\index{total_app_paks@{total\_\-app\_\-paks}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-channel\_\-module\_\-t\_\-::total\_\-app\_\-paks}}\label{structvqec__channel__module__t___83a4e9df2883861b2c71a928c42436f8}
+
+
+total app packets received \index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!total_app_parse_errors@{total\_\-app\_\-parse\_\-errors}}
+\index{total_app_parse_errors@{total\_\-app\_\-parse\_\-errors}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-channel\_\-module\_\-t\_\-::total\_\-app\_\-parse\_\-errors}}\label{structvqec__channel__module__t___9a8226c886afdee76e0dbdc9d5bf5aad}
+
+
+total app parse errors \index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!total_app_timeout_counter@{total\_\-app\_\-timeout\_\-counter}}
+\index{total_app_timeout_counter@{total\_\-app\_\-timeout\_\-counter}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-channel\_\-module\_\-t\_\-::total\_\-app\_\-timeout\_\-counter}}\label{structvqec__channel__module__t___7e6020971305d753780a4a64068fd48b}
+
+
+total app timeout counter \index{vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}!total_null_app_paks@{total\_\-null\_\-app\_\-paks}}
+\index{total_null_app_paks@{total\_\-null\_\-app\_\-paks}!vqec_channel_module_t_@{vqec\_\-channel\_\-module\_\-t\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-channel\_\-module\_\-t\_\-::total\_\-null\_\-app\_\-paks}}\label{structvqec__channel__module__t___2534afbc6d4e0282b9321e45b51a1a01}
+
+
+total null app packets 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-channel\_\-private.h}\end{CompactItemize}

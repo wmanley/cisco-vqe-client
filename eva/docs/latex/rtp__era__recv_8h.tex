@@ -1,0 +1,206 @@
+\section{rtp\_\-era\_\-recv.h File Reference}
+\label{rtp__era__recv_8h}\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+{\tt \#include $<$netinet/in.h$>$}\par
+{\tt \#include $<$utils/vam\_\-types.h$>$}\par
+{\tt \#include $<$rtp/rtp\_\-ssm\_\-rsi\_\-rcvr.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-event.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-recv\_\-socket.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-rtp.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-dp\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-api.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{era\_\-recv\_\-member\_\-}
+\item 
+struct \bf{rtp\_\-era\_\-recv\_\-methods\_\-t\_\-}
+\item 
+struct \bf{rtp\_\-era\_\-recv\_\-t\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{ERA\_\-RECV\_\-MEMBER\_\-INFO}
+\item 
+\#define \bf{RTP\_\-ERA\_\-RECV\_\-METHODS}
+\item 
+\#define \bf{RTP\_\-ERA\_\-RECV\_\-INFO}
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef \bf{era\_\-recv\_\-member\_\-} \bf{era\_\-recv\_\-member\_\-t}
+\item 
+typedef \bf{rtp\_\-era\_\-recv\_\-methods\_\-t\_\-} \bf{rtp\_\-era\_\-recv\_\-methods\_\-t}
+\item 
+typedef \bf{rtp\_\-era\_\-recv\_\-t\_\-} \bf{rtp\_\-era\_\-recv\_\-t}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \bf{rtp\_\-era\_\-recv\_\-set\_\-methods} (\bf{rtp\_\-era\_\-recv\_\-methods\_\-t} $\ast$ssm\_\-table, \bf{rtp\_\-era\_\-recv\_\-methods\_\-t} $\ast$ptp\_\-table)
+\item 
+boolean \bf{rtp\_\-era\_\-recv\_\-init\_\-memory} (rtcp\_\-memory\_\-t $\ast$memory, int32\_\-t max\_\-sessions)
+\item 
+boolean \bf{rtp\_\-era\_\-recv\_\-init\_\-module} (uint32\_\-t max\_\-sessions)
+\item 
+\bf{rtp\_\-era\_\-recv\_\-t} $\ast$ \bf{rtp\_\-create\_\-session\_\-era\_\-recv} (vqec\_\-dp\_\-streamid\_\-t dp\_\-id, in\_\-addr\_\-t src\_\-addr, char $\ast$p\_\-cname, in\_\-addr\_\-t era\_\-dest\_\-addr, uint16\_\-t recv\_\-rtcp\_\-port, uint16\_\-t send\_\-rtcp\_\-port, in\_\-addr\_\-t fbt\_\-ip\_\-addr, rtcp\_\-bw\_\-cfg\_\-t $\ast$rtcp\_\-bw\_\-cfg, rtcp\_\-xr\_\-cfg\_\-t $\ast$rtcp\_\-xr\_\-cfg, in\_\-addr\_\-t orig\_\-source\_\-addr, uint16\_\-t orig\_\-source\_\-port, uint32\_\-t sock\_\-buf\_\-depth, uint8\_\-t rtcp\_\-dscp\_\-value, uint8\_\-t rtcp\_\-rsize, struct \bf{vqec\_\-chan\_\-} $\ast$parent\_\-chan)
+\item 
+boolean \bf{rtp\_\-update\_\-session\_\-era\_\-recv} (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$p\_\-era\_\-recv, in\_\-addr\_\-t fbt\_\-ip\_\-addr, uint16\_\-t send\_\-rtcp\_\-port)
+\item 
+void \bf{rtp\_\-delete\_\-session\_\-era\_\-recv} (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$$\ast$p\_\-era\_\-recv, boolean deallocate)
+\item 
+void \bf{rtp\_\-show\_\-session\_\-era\_\-recv} (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$p\_\-era\_\-sess)
+\item 
+uint32\_\-t \bf{rtcp\_\-construct\_\-report\_\-era\_\-recv} (rtp\_\-session\_\-t $\ast$p\_\-sess, rtp\_\-member\_\-t $\ast$p\_\-source, rtcptype $\ast$p\_\-rtcp, uint32\_\-t bufflen, rtcp\_\-pkt\_\-info\_\-t $\ast$p\_\-pkt\_\-info, boolean reset\_\-xr\_\-stats)
+\item 
+void \bf{rtp\_\-session\_\-era\_\-recv\_\-send\_\-bye} (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$pp\_\-era\_\-recv)
+\item 
+boolean \bf{rtp\_\-era\_\-send\_\-to\_\-rtcp\_\-socket} (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$p\_\-session, in\_\-addr\_\-t remote\_\-addr, in\_\-port\_\-t remote\_\-port, char $\ast$buf, uint16\_\-t len)
+\item 
+\bf{vqec\_\-chanid\_\-t} \bf{rtp\_\-era\_\-session\_\-chanid} (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$p\_\-primary)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!ERA_RECV_MEMBER_INFO@{ERA\_\-RECV\_\-MEMBER\_\-INFO}}
+\index{ERA_RECV_MEMBER_INFO@{ERA\_\-RECV\_\-MEMBER\_\-INFO}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ERA\_\-RECV\_\-MEMBER\_\-INFO}\label{rtp__era__recv_8h_300dc035cdd9417a77fe87a3c6caa41b}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}SSM_RSI_RCVR_MEMBER_INFO                        \
+    /* RTCP XR stats storage */                     \
+    rtcp_xr_stats_t xr_stats_data;                  \
+    /* RTCP Post ER XR stats storage */             \
+    rtcp_xr_post_rpr_stats_t post_er_stats_data;
+\end{verbatim}\end{Code}
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!RTP_ERA_RECV_INFO@{RTP\_\-ERA\_\-RECV\_\-INFO}}
+\index{RTP_ERA_RECV_INFO@{RTP\_\-ERA\_\-RECV\_\-INFO}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define RTP\_\-ERA\_\-RECV\_\-INFO}\label{rtp__era__recv_8h_497daec1605a1821a3430bebe8ac836a}
+
+
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!RTP_ERA_RECV_METHODS@{RTP\_\-ERA\_\-RECV\_\-METHODS}}
+\index{RTP_ERA_RECV_METHODS@{RTP\_\-ERA\_\-RECV\_\-METHODS}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define RTP\_\-ERA\_\-RECV\_\-METHODS}\label{rtp__era__recv_8h_1ec82eac97bf52ce409dcddbfe701155}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}RTP_SSM_RSI_RCVR_METHODS                                    \
+                                                                \                                                         \
+    void (*process_upcall_event)(struct rtp_era_recv_t_ *this,  \
+                                 vqec_dp_rtp_src_table_t *table); \
+                                                                \                                                         \
+    void (*shutdown_allow_byes)(struct rtp_era_recv_t_ *this);  \
+\end{verbatim}\end{Code}
+
+
+\subsection{Typedef Documentation}
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!era_recv_member_t@{era\_\-recv\_\-member\_\-t}}
+\index{era_recv_member_t@{era\_\-recv\_\-member\_\-t}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{era\_\-recv\_\-member\_\-}  \bf{era\_\-recv\_\-member\_\-t}}\label{rtp__era__recv_8h_083852498639187dccb841a604d33170}
+
+
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_era_recv_methods_t@{rtp\_\-era\_\-recv\_\-methods\_\-t}}
+\index{rtp_era_recv_methods_t@{rtp\_\-era\_\-recv\_\-methods\_\-t}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{rtp\_\-era\_\-recv\_\-methods\_\-t\_\-}  \bf{rtp\_\-era\_\-recv\_\-methods\_\-t}}\label{rtp__era__recv_8h_5a2a5c9101d07282ecb69aa038f8a479}
+
+
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_era_recv_t@{rtp\_\-era\_\-recv\_\-t}}
+\index{rtp_era_recv_t@{rtp\_\-era\_\-recv\_\-t}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{rtp\_\-era\_\-recv\_\-t\_\-}  \bf{rtp\_\-era\_\-recv\_\-t}}\label{rtp__era__recv_8h_d4b8ab94e638fbce1d201c99b5df16cc}
+
+
+rtp\_\-era\_\-recv\_\-t 
+
+\subsection{Function Documentation}
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtcp_construct_report_era_recv@{rtcp\_\-construct\_\-report\_\-era\_\-recv}}
+\index{rtcp_construct_report_era_recv@{rtcp\_\-construct\_\-report\_\-era\_\-recv}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t rtcp\_\-construct\_\-report\_\-era\_\-recv (rtp\_\-session\_\-t $\ast$ {\em p\_\-sess}, rtp\_\-member\_\-t $\ast$ {\em p\_\-source}, rtcptype $\ast$ {\em p\_\-rtcp}, uint32\_\-t {\em bufflen}, rtcp\_\-pkt\_\-info\_\-t $\ast$ {\em p\_\-pkt\_\-info}, boolean {\em reset\_\-xr\_\-stats})}\label{rtp__era__recv_8h_774bed7d45489c2375da8625b14c1cbf}
+
+
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_create_session_era_recv@{rtp\_\-create\_\-session\_\-era\_\-recv}}
+\index{rtp_create_session_era_recv@{rtp\_\-create\_\-session\_\-era\_\-recv}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{rtp\_\-era\_\-recv\_\-t}$\ast$ rtp\_\-create\_\-session\_\-era\_\-recv (vqec\_\-dp\_\-streamid\_\-t {\em dp\_\-id}, in\_\-addr\_\-t {\em src\_\-addr}, char $\ast$ {\em p\_\-cname}, in\_\-addr\_\-t {\em era\_\-dest\_\-addr}, uint16\_\-t {\em recv\_\-rtcp\_\-port}, uint16\_\-t {\em send\_\-rtcp\_\-port}, in\_\-addr\_\-t {\em fbt\_\-ip\_\-addr}, rtcp\_\-bw\_\-cfg\_\-t $\ast$ {\em rtcp\_\-bw\_\-cfg}, rtcp\_\-xr\_\-cfg\_\-t $\ast$ {\em rtcp\_\-xr\_\-cfg}, in\_\-addr\_\-t {\em orig\_\-source\_\-addr}, uint16\_\-t {\em orig\_\-source\_\-port}, uint32\_\-t {\em sock\_\-buf\_\-depth}, uint8\_\-t {\em rtcp\_\-dscp\_\-value}, uint8\_\-t {\em rtcp\_\-rsize}, \bf{vqec\_\-chan\_\-t} $\ast$ {\em parent\_\-chan})}\label{rtp__era__recv_8h_3e351495e95228ec851dffe4293af997}
+
+
+Function: rtp\_\-create\_\-session\_\-era\_\-recv Description: Create the session structure for an RTP/RTCP session for era\_\-recv environment. Parameters: \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em src\_\-addr}]- sessions src address to use for transmitting packets. \item[\mbox{$\leftarrow$} {\em p\_\-cname}]- name \item[\mbox{$\leftarrow$} {\em era\_\-dest\_\-addr}]- destination address of primary session \item[\mbox{$\leftarrow$} {\em recv\_\-rtcp\_\-port}]- Client port on which RTCP packets are recvd. May be zero to disable RTCP reception. \item[\mbox{$\leftarrow$} {\em send\_\-rtcp\_\-port}]- Server port to which RTCP packets are sent. May be zero to disable RTCP transmission. \item[\mbox{$\leftarrow$} {\em fbt\_\-ip\_\-addr}]- ip address of feedback target \item[\mbox{$\leftarrow$} {\em rtcp\_\-bw\_\-cfg}]- ptr to RTCP bandwidth config info \item[\mbox{$\leftarrow$} {\em rtcp\_\-xr\_\-cfg}]- ptr to RTCP XR config info \item[\mbox{$\leftarrow$} {\em orig\_\-source\_\-addr}]- Original primary stream's source address. \item[\mbox{$\leftarrow$} {\em orig\_\-source\_\-port}]- Original primary stream's source port. \item[\mbox{$\leftarrow$} {\em sock\_\-buf\_\-depth}]- The rx socket buffer depth to be used. \item[\mbox{$\leftarrow$} {\em rtcp\_\-dscp\_\-value}]- DSCP value to use for RTCP packets sent \item[\mbox{$\leftarrow$} {\em rtcp\_\-rsize}]- Reduced size RTCP setting for this session \item[\mbox{$\leftarrow$} {\em parent\_\-chan}]- Pointer to parent channel.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]pointer to rtp\_\-era\_\-recv\_\-t session that is allocated, or NULL on failure. \end{Desc}
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_delete_session_era_recv@{rtp\_\-delete\_\-session\_\-era\_\-recv}}
+\index{rtp_delete_session_era_recv@{rtp\_\-delete\_\-session\_\-era\_\-recv}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void rtp\_\-delete\_\-session\_\-era\_\-recv (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$$\ast$ {\em p\_\-era\_\-recv}, boolean {\em deallocate})}\label{rtp__era__recv_8h_c9a262f8c9197253342eb1e2b2e4c83f}
+
+
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_era_recv_init_memory@{rtp\_\-era\_\-recv\_\-init\_\-memory}}
+\index{rtp_era_recv_init_memory@{rtp\_\-era\_\-recv\_\-init\_\-memory}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean rtp\_\-era\_\-recv\_\-init\_\-memory (rtcp\_\-memory\_\-t $\ast$ {\em memory}, int32\_\-t {\em max\_\-sessions})}\label{rtp__era__recv_8h_6a757687453696e8e54e9fdf6579a961}
+
+
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_era_recv_init_module@{rtp\_\-era\_\-recv\_\-init\_\-module}}
+\index{rtp_era_recv_init_module@{rtp\_\-era\_\-recv\_\-init\_\-module}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean rtp\_\-era\_\-recv\_\-init\_\-module (uint32\_\-t {\em max\_\-sessions})}\label{rtp__era__recv_8h_45028b37bd2db55724168229a1ae60c7}
+
+
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_era_recv_set_methods@{rtp\_\-era\_\-recv\_\-set\_\-methods}}
+\index{rtp_era_recv_set_methods@{rtp\_\-era\_\-recv\_\-set\_\-methods}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void rtp\_\-era\_\-recv\_\-set\_\-methods (\bf{rtp\_\-era\_\-recv\_\-methods\_\-t} $\ast$ {\em ssm\_\-table}, \bf{rtp\_\-era\_\-recv\_\-methods\_\-t} $\ast$ {\em ptp\_\-table})}\label{rtp__era__recv_8h_5e061481074e518041fd41e9f722cc8a}
+
+
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_era_send_to_rtcp_socket@{rtp\_\-era\_\-send\_\-to\_\-rtcp\_\-socket}}
+\index{rtp_era_send_to_rtcp_socket@{rtp\_\-era\_\-send\_\-to\_\-rtcp\_\-socket}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean rtp\_\-era\_\-send\_\-to\_\-rtcp\_\-socket (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$ {\em p\_\-session}, in\_\-addr\_\-t {\em remote\_\-addr}, in\_\-port\_\-t {\em remote\_\-port}, char $\ast$ {\em buf}, uint16\_\-t {\em len})}\label{rtp__era__recv_8h_d258d31a1cf483004011f7bd93de0cfd}
+
+
+--------------------------------------------------------------------------- Inject a RTCP packet into the primary RTCP socket.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-session}]Pointer to the primary session. \item[\mbox{$\leftarrow$} {\em remote\_\-addr}]IP address to which the packet is sent. \item[\mbox{$\leftarrow$} {\em remote\_\-port}]UDP port to which the packet is sent. \item[\mbox{$\leftarrow$} {\em buf}]Pointer to the packet contents. \item[\mbox{$\leftarrow$} {\em len}]Length of the contents. \item[\mbox{$\rightarrow$} {\em boolean}]Returns true if the packet was successfully en\-Qd in the socket. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_era_session_chanid@{rtp\_\-era\_\-session\_\-chanid}}
+\index{rtp_era_session_chanid@{rtp\_\-era\_\-session\_\-chanid}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-chanid\_\-t} rtp\_\-era\_\-session\_\-chanid (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$ {\em p\_\-primary})}\label{rtp__era__recv_8h_6b471ba50a286d9745e0e4445c0efe07}
+
+
+--------------------------------------------------------------------------- From a primary session to channel identifier of parent channel.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-primary}]Pointer to the primary session. \item[\mbox{$\rightarrow$} {\em vqec\_\-chanid\_\-t}]Parent channel's id. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_session_era_recv_send_bye@{rtp\_\-session\_\-era\_\-recv\_\-send\_\-bye}}
+\index{rtp_session_era_recv_send_bye@{rtp\_\-session\_\-era\_\-recv\_\-send\_\-bye}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void rtp\_\-session\_\-era\_\-recv\_\-send\_\-bye (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$ {\em pp\_\-era\_\-recv})}\label{rtp__era__recv_8h_677955d12269304e7c2e0079f025e1b9}
+
+
+--------------------------------------------------------------------------- Send a BYE on the primary session.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pp\_\-era\_\-recv}]Pointer to the primary session. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_show_session_era_recv@{rtp\_\-show\_\-session\_\-era\_\-recv}}
+\index{rtp_show_session_era_recv@{rtp\_\-show\_\-session\_\-era\_\-recv}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void rtp\_\-show\_\-session\_\-era\_\-recv (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$ {\em p\_\-era\_\-sess})}\label{rtp__era__recv_8h_306a6d64c5e6a6c633cdc813030552e2}
+
+
+\index{rtp_era_recv.h@{rtp\_\-era\_\-recv.h}!rtp_update_session_era_recv@{rtp\_\-update\_\-session\_\-era\_\-recv}}
+\index{rtp_update_session_era_recv@{rtp\_\-update\_\-session\_\-era\_\-recv}!rtp_era_recv.h@{rtp\_\-era\_\-recv.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean rtp\_\-update\_\-session\_\-era\_\-recv (\bf{rtp\_\-era\_\-recv\_\-t} $\ast$ {\em p\_\-era\_\-recv}, in\_\-addr\_\-t {\em fbt\_\-ip\_\-addr}, uint16\_\-t {\em send\_\-rtcp\_\-port})}\label{rtp__era__recv_8h_a3439cae09397ed5241ddf6c5337f1f8}
+
+
+Function: rtp\_\-update\_\-session\_\-era\_\-recv Description: Updates the session structure for an RTP/RTCP session for era\_\-recv environment. Parameters: \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p\_\-era\_\-recv}]session to be updated \item[\mbox{$\leftarrow$} {\em fbt\_\-ip\_\-addr}]ip address of feedback target \item[\mbox{$\leftarrow$} {\em send\_\-rtcp\_\-port}]server port to which RTCP packets are sent. \item[\mbox{$\rightarrow$} {\em boolean}]TRUE upon successful update, FALSE upon failure \end{description}
+\end{Desc}

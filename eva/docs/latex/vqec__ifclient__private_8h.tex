@@ -1,0 +1,127 @@
+\section{vqec\_\-ifclient\_\-private.h File Reference}
+\label{vqec__ifclient__private_8h}\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{\_\-common\_\-stats\_\-t}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-MAX\_\-STREAMS\_\-PER\_\-CHANNEL}~5
+\item 
+\#define \bf{VQEC\_\-IFCLIENT\_\-ERR\_\-STRLEN}~256
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{vqec\_\-ifclient\_\-errtype\_\-t\_\-} \bf{vqec\_\-ifclient\_\-errtype\_\-t}
+\item 
+typedef \bf{\_\-common\_\-stats\_\-t} \bf{vqec\_\-ifclient\_\-common\_\-stats\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-ifclient\_\-errtype\_\-t\_\-} \{ \bf{VQEC\_\-IFCLIENT\_\-ERR\_\-GENERAL}, 
+\bf{VQEC\_\-IFCLIENT\_\-ERR\_\-MALLOC}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \bf{vqec\_\-ifclient\_\-log\_\-err} (\bf{vqec\_\-ifclient\_\-errtype\_\-t} type, const char $\ast$format,...)
+\item 
+void \bf{vqec\_\-ifclient\_\-add\_\-stats} (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$total, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$stats)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-get\_\-stats\_\-tuner\_\-legacy} (vqec\_\-tunerid\_\-t id, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$stats)
+\item 
+uint8\_\-t \bf{vqec\_\-ifclient\_\-is\_\-vqec\_\-enabled\_\-ul} (void)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-config\_\-status\_\-ul} (\bf{vqec\_\-ifclient\_\-config\_\-status\_\-params\_\-t} $\ast$params)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-ifclient\_\-config\_\-register\_\-ul} (const \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t} $\ast$params)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!VQEC_IFCLIENT_ERR_STRLEN@{VQEC\_\-IFCLIENT\_\-ERR\_\-STRLEN}}
+\index{VQEC_IFCLIENT_ERR_STRLEN@{VQEC\_\-IFCLIENT\_\-ERR\_\-STRLEN}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-IFCLIENT\_\-ERR\_\-STRLEN~256}\label{vqec__ifclient__private_8h_2dd732612ed6241150613e87fe1d0b21}
+
+
+\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!VQEC_MAX_STREAMS_PER_CHANNEL@{VQEC\_\-MAX\_\-STREAMS\_\-PER\_\-CHANNEL}}
+\index{VQEC_MAX_STREAMS_PER_CHANNEL@{VQEC\_\-MAX\_\-STREAMS\_\-PER\_\-CHANNEL}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MAX\_\-STREAMS\_\-PER\_\-CHANNEL~5}\label{vqec__ifclient__private_8h_dbf36bafdc7e9dd0ff37418a07ba5452}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!vqec_ifclient_common_stats_t@{vqec\_\-ifclient\_\-common\_\-stats\_\-t}}
+\index{vqec_ifclient_common_stats_t@{vqec\_\-ifclient\_\-common\_\-stats\_\-t}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{\_\-common\_\-stats\_\-t}  \bf{vqec\_\-ifclient\_\-common\_\-stats\_\-t}}\label{vqec__ifclient__private_8h_aedb6b22aecf550b80207b1b06564ed5}
+
+
+\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!vqec_ifclient_errtype_t@{vqec\_\-ifclient\_\-errtype\_\-t}}
+\index{vqec_ifclient_errtype_t@{vqec\_\-ifclient\_\-errtype\_\-t}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-ifclient\_\-errtype\_\-t\_\-}  \bf{vqec\_\-ifclient\_\-errtype\_\-t}}\label{vqec__ifclient__private_8h_aa6189ad9861bc68401e9482ae620f4a}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!vqec_ifclient_errtype_t_@{vqec\_\-ifclient\_\-errtype\_\-t\_\-}}
+\index{vqec_ifclient_errtype_t_@{vqec\_\-ifclient\_\-errtype\_\-t\_\-}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-ifclient\_\-errtype\_\-t\_\-}}\label{vqec__ifclient__private_8h_18ffc9af336881d94f960d8f652f8646}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_IFCLIENT_ERR_GENERAL@{VQEC\_\-IFCLIENT\_\-ERR\_\-GENERAL}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!VQEC_IFCLIENT_ERR_GENERAL@{VQEC\_\-IFCLIENT\_\-ERR\_\-GENERAL}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-ERR\_\-GENERAL\label{vqec__ifclient__private_8h_18ffc9af336881d94f960d8f652f86461ed32cf1ae3d0c1047225d2a78f11786}
+}]\index{VQEC_IFCLIENT_ERR_MALLOC@{VQEC\_\-IFCLIENT\_\-ERR\_\-MALLOC}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!VQEC_IFCLIENT_ERR_MALLOC@{VQEC\_\-IFCLIENT\_\-ERR\_\-MALLOC}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-ERR\_\-MALLOC\label{vqec__ifclient__private_8h_18ffc9af336881d94f960d8f652f864634294c8f65429f266d6c1f05450fd826}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!vqec_ifclient_add_stats@{vqec\_\-ifclient\_\-add\_\-stats}}
+\index{vqec_ifclient_add_stats@{vqec\_\-ifclient\_\-add\_\-stats}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-ifclient\_\-add\_\-stats (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$ {\em total}, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$ {\em stats})}\label{vqec__ifclient__private_8h_cc857f46e18345d598e5dbc05162e6e9}
+
+
+Add stats to a running total.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftrightarrow$} {\em total}]- stats structure to which \char`\"{}stats\char`\"{} are added \item[\mbox{$\leftarrow$} {\em stats}]- stats to be added to \char`\"{}total\char`\"{} \end{description}
+\end{Desc}
+\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!vqec_ifclient_config_register_ul@{vqec\_\-ifclient\_\-config\_\-register\_\-ul}}
+\index{vqec_ifclient_config_register_ul@{vqec\_\-ifclient\_\-config\_\-register\_\-ul}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-ifclient\_\-config\_\-register\_\-ul (const \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t} $\ast$ {\em params})}\label{vqec__ifclient__private_8h_9fc2c235f972334bfa0c0fb2e404387c}
+
+
+\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!vqec_ifclient_config_status_ul@{vqec\_\-ifclient\_\-config\_\-status\_\-ul}}
+\index{vqec_ifclient_config_status_ul@{vqec\_\-ifclient\_\-config\_\-status\_\-ul}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-ifclient\_\-config\_\-status\_\-ul (\bf{vqec\_\-ifclient\_\-config\_\-status\_\-params\_\-t} $\ast$ {\em params})}\label{vqec__ifclient__private_8h_31e84f82f7c9cbe6bd9257d9a0a4559f}
+
+
+\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!vqec_ifclient_get_stats_tuner_legacy@{vqec\_\-ifclient\_\-get\_\-stats\_\-tuner\_\-legacy}}
+\index{vqec_ifclient_get_stats_tuner_legacy@{vqec\_\-ifclient\_\-get\_\-stats\_\-tuner\_\-legacy}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-ifclient\_\-get\_\-stats\_\-tuner\_\-legacy (vqec\_\-tunerid\_\-t {\em id}, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$ {\em stats})}\label{vqec__ifclient__private_8h_e4b7e44273bad6ba8b6c231dc7bd3701}
+
+
+\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!vqec_ifclient_is_vqec_enabled_ul@{vqec\_\-ifclient\_\-is\_\-vqec\_\-enabled\_\-ul}}
+\index{vqec_ifclient_is_vqec_enabled_ul@{vqec\_\-ifclient\_\-is\_\-vqec\_\-enabled\_\-ul}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t vqec\_\-ifclient\_\-is\_\-vqec\_\-enabled\_\-ul (void)}\label{vqec__ifclient__private_8h_3af2f31ed1beec3c0f591483db00c0c4}
+
+
+\index{vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}!vqec_ifclient_log_err@{vqec\_\-ifclient\_\-log\_\-err}}
+\index{vqec_ifclient_log_err@{vqec\_\-ifclient\_\-log\_\-err}!vqec_ifclient_private.h@{vqec\_\-ifclient\_\-private.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-ifclient\_\-log\_\-err (\bf{vqec\_\-ifclient\_\-errtype\_\-t} {\em type}, const char $\ast$ {\em format},  {\em ...})}\label{vqec__ifclient__private_8h_b29c2f5a0459e3daa4f971240cd8f8e2}
+
+

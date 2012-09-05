@@ -1,0 +1,234 @@
+\section{vqec\_\-cli.c File Reference}
+\label{vqec__cli_8c}\index{vqec_cli.c@{vqec\_\-cli.c}}
+{\tt \#include \char`\"{}vqec\_\-cli.h\char`\"{}}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdarg.h$>$}\par
+{\tt \#include $<$utils/strl.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{UT\_\-STATIC}~static
+\item 
+\#define \bf{CTRL}(c)~(c - '@')
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+static void \bf{vqec\_\-cli\_\-display\_\-prompt} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, int sockfd)
+\item 
+static \bf{vqec\_\-cli\_\-error\_\-t} \bf{exec\_\-cmd} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$cmd\_\-ptr, int cmd\_\-ptr\_\-len, \bf{vqec\_\-cli\_\-disp\_\-options\_\-t} disp\_\-opt)
+\item 
+void \bf{cli\_\-write} (int fd, const void $\ast$buf, size\_\-t count, struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+static void \bf{vqec\_\-cli\_\-str\_\-to\_\-lower} (char $\ast$output\_\-string, char $\ast$in\_\-string, int len)
+\item 
+static \bf{vqec\_\-cli\_\-error\_\-t} \bf{cmd\_\-exec\_\-check} (int mode, int privilege, int cli\_\-state)
+\item 
+static \bf{vqec\_\-cli\_\-error\_\-t} \bf{search\_\-node} (struct vqec\_\-cmd\_\-tree $\ast$tqh, char $\ast$dest\_\-cmd, int cmd\_\-len, \bf{vqec\_\-cli\_\-state\_\-t} state, struct \bf{vqec\_\-cli\_\-command} $\ast$$\ast$result\_\-ptr, struct \bf{vqec\_\-cli\_\-def} $\ast$cli, boolean print\_\-help)
+\item 
+static void \bf{insert\_\-node} (struct vqec\_\-cmd\_\-tree $\ast$vqec\_\-cmd\_\-tree\_\-head, struct \bf{vqec\_\-cli\_\-command} $\ast$parent, struct \bf{vqec\_\-cli\_\-command} $\ast$child\_\-node)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cli\_\-history\_\-func} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cli\_\-help\_\-func} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cli\_\-quit\_\-func} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cli\_\-exit\_\-func} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cli\_\-enable\_\-func} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cli\_\-disable\_\-func} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cli\_\-conf\_\-terminal\_\-func} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+\bf{vqec\_\-cli\_\-def} $\ast$ \bf{vqec\_\-cli\_\-init} (void)
+\item 
+static void \bf{delete\_\-tree} (struct vqec\_\-cmd\_\-tree $\ast$tqh)
+\item 
+void \bf{vqec\_\-cli\_\-deinit} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+\bf{vqec\_\-cli\_\-command} $\ast$ \bf{vqec\_\-cli\_\-register\_\-command} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, struct \bf{vqec\_\-cli\_\-command} $\ast$parent, char $\ast$command, int($\ast$callback)(struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$, char $\ast$$\ast$, int), int privilege, int mode, char $\ast$help)
+\item 
+static void \bf{print\_\-list} (struct vqec\_\-cmd\_\-tree $\ast$tqh, struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+static void \bf{remove\_\-quotes} (char $\ast$in\_\-string, int len)
+\item 
+static int \bf{has\_\-non\_\-space} (char $\ast$cmd)
+\item 
+static void \bf{move\_\-disp\_\-to\_\-start\_\-of\_\-line\_\-func} (int cursor, int sockfd, struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+static void \bf{move\_\-disp\_\-to\_\-end\_\-of\_\-line\_\-func} (int cursor, int sockfd, char $\ast$cmd, struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+\bf{vqec\_\-cli\_\-error\_\-t} \bf{vqec\_\-cli\_\-loop} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, int sockfd)
+\item 
+void \bf{vqec\_\-cli\_\-set\_\-banner} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$banner\_\-string)
+\item 
+void \bf{vqec\_\-cli\_\-set\_\-hostname} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$hostname)
+\item 
+void \bf{vqec\_\-cli\_\-print\_\-callback} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, void($\ast$callback)(struct \bf{vqec\_\-cli\_\-def} $\ast$, char $\ast$, int))
+\item 
+void \bf{vqec\_\-cli\_\-print} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$format,...)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_cli.c@{vqec\_\-cli.c}!CTRL@{CTRL}}
+\index{CTRL@{CTRL}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define CTRL(c)~(c - '@')}\label{vqec__cli_8c_ce556068ea6a47ea6fea51e73b84d5e8}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!UT_STATIC@{UT\_\-STATIC}}
+\index{UT_STATIC@{UT\_\-STATIC}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UT\_\-STATIC~static}\label{vqec__cli_8c_840be0a802b42af3ce4430a7173caa40}
+
+
+----------------------------------------------------------------- VQE-C Lightweight command line interpreter
+
+Copyright (c) 2009-2011 by Cisco Systems, Inc. All rights reserved. ------------------------------------------------------------------ 
+
+\subsection{Function Documentation}
+\index{vqec_cli.c@{vqec\_\-cli.c}!cli_write@{cli\_\-write}}
+\index{cli_write@{cli\_\-write}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void cli\_\-write (int {\em fd}, const void $\ast$ {\em buf}, size\_\-t {\em count}, struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli_8c_5f7d68a828813b1c9a31ad9a429bb53c}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!cmd_exec_check@{cmd\_\-exec\_\-check}}
+\index{cmd_exec_check@{cmd\_\-exec\_\-check}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static \bf{vqec\_\-cli\_\-error\_\-t} cmd\_\-exec\_\-check (int {\em mode}, int {\em privilege}, int {\em cli\_\-state})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_5c4c188f9313cf4648486b112c33ee21}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!delete_tree@{delete\_\-tree}}
+\index{delete_tree@{delete\_\-tree}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void delete\_\-tree (struct vqec\_\-cmd\_\-tree $\ast$ {\em tqh})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_e84312b2240fcbed6f4976a75f5faba8}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!exec_cmd@{exec\_\-cmd}}
+\index{exec_cmd@{exec\_\-cmd}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static \bf{vqec\_\-cli\_\-error\_\-t} exec\_\-cmd (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em cmd\_\-ptr}, int {\em cmd\_\-ptr\_\-len}, \bf{vqec\_\-cli\_\-disp\_\-options\_\-t} {\em disp\_\-opt})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_bc7094ed20f4ce46f80227669e97f901}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!has_non_space@{has\_\-non\_\-space}}
+\index{has_non_space@{has\_\-non\_\-space}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static int has\_\-non\_\-space (char $\ast$ {\em cmd})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_bfce2a16528a39fdb73f3eba55ff375a}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!insert_node@{insert\_\-node}}
+\index{insert_node@{insert\_\-node}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void insert\_\-node (struct vqec\_\-cmd\_\-tree $\ast$ {\em vqec\_\-cmd\_\-tree\_\-head}, struct \bf{vqec\_\-cli\_\-command} $\ast$ {\em parent}, struct \bf{vqec\_\-cli\_\-command} $\ast$ {\em child\_\-node})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_c88cc7b1bf64a96fd99f90f8e2e74e39}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!move_disp_to_end_of_line_func@{move\_\-disp\_\-to\_\-end\_\-of\_\-line\_\-func}}
+\index{move_disp_to_end_of_line_func@{move\_\-disp\_\-to\_\-end\_\-of\_\-line\_\-func}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void move\_\-disp\_\-to\_\-end\_\-of\_\-line\_\-func (int {\em cursor}, int {\em sockfd}, char $\ast$ {\em cmd}, struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_7b55c79a7b5b91ea5eed9683ab2acd7d}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!move_disp_to_start_of_line_func@{move\_\-disp\_\-to\_\-start\_\-of\_\-line\_\-func}}
+\index{move_disp_to_start_of_line_func@{move\_\-disp\_\-to\_\-start\_\-of\_\-line\_\-func}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void move\_\-disp\_\-to\_\-start\_\-of\_\-line\_\-func (int {\em cursor}, int {\em sockfd}, struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_3fa4168232181db0caab059314a020c8}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!print_list@{print\_\-list}}
+\index{print_list@{print\_\-list}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void print\_\-list (struct vqec\_\-cmd\_\-tree $\ast$ {\em tqh}, struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_38dbcd69811549754992202aa3e4f0e4}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!remove_quotes@{remove\_\-quotes}}
+\index{remove_quotes@{remove\_\-quotes}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void remove\_\-quotes (char $\ast$ {\em in\_\-string}, int {\em len})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_8c243607b6ad5fdf03d40716f00e0a2e}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!search_node@{search\_\-node}}
+\index{search_node@{search\_\-node}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static \bf{vqec\_\-cli\_\-error\_\-t} search\_\-node (struct vqec\_\-cmd\_\-tree $\ast$ {\em tqh}, char $\ast$ {\em dest\_\-cmd}, int {\em cmd\_\-len}, \bf{vqec\_\-cli\_\-state\_\-t} {\em state}, struct \bf{vqec\_\-cli\_\-command} $\ast$$\ast$ {\em result\_\-ptr}, struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, boolean {\em print\_\-help})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_247b97c1ca4d45f59e8bcf2f00e5dbfd}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_conf_terminal_func@{vqec\_\-cli\_\-conf\_\-terminal\_\-func}}
+\index{vqec_cli_conf_terminal_func@{vqec\_\-cli\_\-conf\_\-terminal\_\-func}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cli\_\-conf\_\-terminal\_\-func (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli_8c_10b6d9b8f3b9c69e9918d2d8b88dcdac}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_deinit@{vqec\_\-cli\_\-deinit}}
+\index{vqec_cli_deinit@{vqec\_\-cli\_\-deinit}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-deinit (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli_8c_6bfd13e12cd403734f8189475e286867}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_disable_func@{vqec\_\-cli\_\-disable\_\-func}}
+\index{vqec_cli_disable_func@{vqec\_\-cli\_\-disable\_\-func}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cli\_\-disable\_\-func (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli_8c_6e5e659211e6292557bdf2389077cbdc}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_display_prompt@{vqec\_\-cli\_\-display\_\-prompt}}
+\index{vqec_cli_display_prompt@{vqec\_\-cli\_\-display\_\-prompt}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-cli\_\-display\_\-prompt (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, int {\em sockfd})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_3773d221413e6c5afd32a208498b1b05}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_enable_func@{vqec\_\-cli\_\-enable\_\-func}}
+\index{vqec_cli_enable_func@{vqec\_\-cli\_\-enable\_\-func}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cli\_\-enable\_\-func (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli_8c_28c43ab1bff0f5da5c4eb27bedd33335}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_exit_func@{vqec\_\-cli\_\-exit\_\-func}}
+\index{vqec_cli_exit_func@{vqec\_\-cli\_\-exit\_\-func}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cli\_\-exit\_\-func (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli_8c_59a3d53ab6fe5b2400aa7a1113cb0f97}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_help_func@{vqec\_\-cli\_\-help\_\-func}}
+\index{vqec_cli_help_func@{vqec\_\-cli\_\-help\_\-func}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cli\_\-help\_\-func (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli_8c_2a0d36b29e71e536b4186ee0ea529676}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_history_func@{vqec\_\-cli\_\-history\_\-func}}
+\index{vqec_cli_history_func@{vqec\_\-cli\_\-history\_\-func}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cli\_\-history\_\-func (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli_8c_ab441b778a452abf4a87679acc1203ae}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_init@{vqec\_\-cli\_\-init}}
+\index{vqec_cli_init@{vqec\_\-cli\_\-init}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \bf{vqec\_\-cli\_\-def}$\ast$ vqec\_\-cli\_\-init (void)}\label{vqec__cli_8c_bd6c8f21be6c2b3db89e3308d989ec81}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_loop@{vqec\_\-cli\_\-loop}}
+\index{vqec_cli_loop@{vqec\_\-cli\_\-loop}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-cli\_\-error\_\-t} vqec\_\-cli\_\-loop (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, int {\em sockfd})}\label{vqec__cli_8c_38464aa631f910feab674f0714d21a4f}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_print@{vqec\_\-cli\_\-print}}
+\index{vqec_cli_print@{vqec\_\-cli\_\-print}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-print (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em format},  {\em ...})}\label{vqec__cli_8c_b36754687a604f5149a45d60547fbd5c}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_print_callback@{vqec\_\-cli\_\-print\_\-callback}}
+\index{vqec_cli_print_callback@{vqec\_\-cli\_\-print\_\-callback}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-print\_\-callback (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, void($\ast$)(struct \bf{vqec\_\-cli\_\-def} $\ast$, char $\ast$, int) {\em callback})}\label{vqec__cli_8c_3facbceee2638d90385093fb5f5d52c0}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_quit_func@{vqec\_\-cli\_\-quit\_\-func}}
+\index{vqec_cli_quit_func@{vqec\_\-cli\_\-quit\_\-func}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cli\_\-quit\_\-func (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli_8c_9ead6d14fa2fd77cac5f036207bccf13}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_register_command@{vqec\_\-cli\_\-register\_\-command}}
+\index{vqec_cli_register_command@{vqec\_\-cli\_\-register\_\-command}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \bf{vqec\_\-cli\_\-command}$\ast$ vqec\_\-cli\_\-register\_\-command (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, struct \bf{vqec\_\-cli\_\-command} $\ast$ {\em parent}, char $\ast$ {\em command}, int($\ast$)(struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$, char $\ast$$\ast$, int) {\em callback}, int {\em privilege}, int {\em mode}, char $\ast$ {\em help})}\label{vqec__cli_8c_282f683d908651648579da4513ff2831}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_set_banner@{vqec\_\-cli\_\-set\_\-banner}}
+\index{vqec_cli_set_banner@{vqec\_\-cli\_\-set\_\-banner}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-set\_\-banner (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em banner\_\-string})}\label{vqec__cli_8c_6980efa6b123273643063d49433fd04d}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_set_hostname@{vqec\_\-cli\_\-set\_\-hostname}}
+\index{vqec_cli_set_hostname@{vqec\_\-cli\_\-set\_\-hostname}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-set\_\-hostname (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em hostname})}\label{vqec__cli_8c_41aa16aea4996aa1a68882a81166dfca}
+
+
+\index{vqec_cli.c@{vqec\_\-cli.c}!vqec_cli_str_to_lower@{vqec\_\-cli\_\-str\_\-to\_\-lower}}
+\index{vqec_cli_str_to_lower@{vqec\_\-cli\_\-str\_\-to\_\-lower}!vqec_cli.c@{vqec\_\-cli.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-cli\_\-str\_\-to\_\-lower (char $\ast$ {\em output\_\-string}, char $\ast$ {\em in\_\-string}, int {\em len})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli_8c_a438b641fb0986344f19b0214b3932c8}
+
+

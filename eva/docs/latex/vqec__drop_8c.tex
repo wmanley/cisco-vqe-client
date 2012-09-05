@@ -1,0 +1,68 @@
+\section{vqec\_\-drop.c File Reference}
+\label{vqec__drop_8c}\index{vqec_drop.c@{vqec\_\-drop.c}}
+{\tt \#include \char`\"{}vqec\_\-drop.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-assert\_\-macros.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-error.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-dp\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-syscfg.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{UT\_\-STATIC}~static
+\item 
+\#define \bf{VQEC\_\-DROP\_\-SESSION\_\-STR\_\-MAXLEN}~7
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \bf{vqec\_\-set\_\-drop\_\-interval} (vqec\_\-dp\_\-input\_\-stream\_\-type\_\-t session, uint32\_\-t continuous\_\-drops, uint32\_\-t drop\_\-interval)
+\item 
+void \bf{vqec\_\-set\_\-drop\_\-ratio} (vqec\_\-dp\_\-input\_\-stream\_\-type\_\-t session, uint32\_\-t drop\_\-ratio)
+\item 
+void \bf{vqec\_\-set\_\-drop\_\-enable} (vqec\_\-dp\_\-input\_\-stream\_\-type\_\-t session, boolean enable)
+\item 
+void \bf{vqec\_\-drop\_\-dump\_\-stream} (vqec\_\-dp\_\-input\_\-stream\_\-type\_\-t session)
+\item 
+void \bf{vqec\_\-drop\_\-dump} (void)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_drop.c@{vqec\_\-drop.c}!UT_STATIC@{UT\_\-STATIC}}
+\index{UT_STATIC@{UT\_\-STATIC}!vqec_drop.c@{vqec\_\-drop.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UT\_\-STATIC~static}\label{vqec__drop_8c_840be0a802b42af3ce4430a7173caa40}
+
+
+\index{vqec_drop.c@{vqec\_\-drop.c}!VQEC_DROP_SESSION_STR_MAXLEN@{VQEC\_\-DROP\_\-SESSION\_\-STR\_\-MAXLEN}}
+\index{VQEC_DROP_SESSION_STR_MAXLEN@{VQEC\_\-DROP\_\-SESSION\_\-STR\_\-MAXLEN}!vqec_drop.c@{vqec\_\-drop.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-DROP\_\-SESSION\_\-STR\_\-MAXLEN~7}\label{vqec__drop_8c_c0625591a08a57b0317351a4bf97c938}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_drop.c@{vqec\_\-drop.c}!vqec_drop_dump@{vqec\_\-drop\_\-dump}}
+\index{vqec_drop_dump@{vqec\_\-drop\_\-dump}!vqec_drop.c@{vqec\_\-drop.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-drop\_\-dump (void)}\label{vqec__drop_8c_718b1f91793ce1f3a4bd10fdc0bc08b5}
+
+
+\index{vqec_drop.c@{vqec\_\-drop.c}!vqec_drop_dump_stream@{vqec\_\-drop\_\-dump\_\-stream}}
+\index{vqec_drop_dump_stream@{vqec\_\-drop\_\-dump\_\-stream}!vqec_drop.c@{vqec\_\-drop.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-drop\_\-dump\_\-stream (vqec\_\-dp\_\-input\_\-stream\_\-type\_\-t {\em session})}\label{vqec__drop_8c_72e6205fdb36e6483ac358f8be12d3bf}
+
+
+\index{vqec_drop.c@{vqec\_\-drop.c}!vqec_set_drop_enable@{vqec\_\-set\_\-drop\_\-enable}}
+\index{vqec_set_drop_enable@{vqec\_\-set\_\-drop\_\-enable}!vqec_drop.c@{vqec\_\-drop.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-set\_\-drop\_\-enable (vqec\_\-dp\_\-input\_\-stream\_\-type\_\-t {\em session}, boolean {\em enable})}\label{vqec__drop_8c_b9d7e1d8d3eec27160d51c2385623ec0}
+
+
+\index{vqec_drop.c@{vqec\_\-drop.c}!vqec_set_drop_interval@{vqec\_\-set\_\-drop\_\-interval}}
+\index{vqec_set_drop_interval@{vqec\_\-set\_\-drop\_\-interval}!vqec_drop.c@{vqec\_\-drop.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-set\_\-drop\_\-interval (vqec\_\-dp\_\-input\_\-stream\_\-type\_\-t {\em session}, uint32\_\-t {\em continuous\_\-drops}, uint32\_\-t {\em drop\_\-interval})}\label{vqec__drop_8c_3902451666dca15181293308df4de0bd}
+
+
+\index{vqec_drop.c@{vqec\_\-drop.c}!vqec_set_drop_ratio@{vqec\_\-set\_\-drop\_\-ratio}}
+\index{vqec_set_drop_ratio@{vqec\_\-set\_\-drop\_\-ratio}!vqec_drop.c@{vqec\_\-drop.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-set\_\-drop\_\-ratio (vqec\_\-dp\_\-input\_\-stream\_\-type\_\-t {\em session}, uint32\_\-t {\em drop\_\-ratio})}\label{vqec__drop_8c_3336e7a76ec4c7b613c90a3e661b20b0}
+
+

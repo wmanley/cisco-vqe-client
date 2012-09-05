@@ -1,0 +1,78 @@
+\section{vqec\_\-chan\_\-upcall\_\-data\_\- Struct Reference}
+\label{structvqec__chan__upcall__data__}\index{vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}}
+{\tt \#include $<$vqec\_\-channel\_\-private.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+uint32\_\-t \bf{upcall\_\-last\_\-generation\_\-num}
+\item 
+uint32\_\-t \bf{upcall\_\-events}
+\item 
+uint32\_\-t \bf{upcall\_\-lost\_\-events}
+\item 
+uint32\_\-t \bf{upcall\_\-repeat\_\-events}
+\item 
+uint32\_\-t \bf{upcall\_\-error\_\-events}
+\item 
+uint32\_\-t \bf{upcall\_\-ack\_\-inputs}
+\item 
+uint32\_\-t \bf{upcall\_\-ack\_\-nulls}
+\item 
+uint32\_\-t \bf{upcall\_\-ack\_\-errors}
+\item 
+uint32\_\-t \bf{dp\_\-generation\_\-id}
+\end{CompactItemize}
+
+
+\subsection{Field Documentation}
+\index{vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}!dp_generation_id@{dp\_\-generation\_\-id}}
+\index{dp_generation_id@{dp\_\-generation\_\-id}!vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-upcall\_\-data\_\-::dp\_\-generation\_\-id}}\label{structvqec__chan__upcall__data___df9b45e944a1adf2715f15e52b713869}
+
+
+Dataplane generation Id for channel (last cached value). \index{vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}!upcall_ack_errors@{upcall\_\-ack\_\-errors}}
+\index{upcall_ack_errors@{upcall\_\-ack\_\-errors}!vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-upcall\_\-data\_\-::upcall\_\-ack\_\-errors}}\label{structvqec__chan__upcall__data___6caf39a44ab7754eb9c387285d63bc60}
+
+
+Data acknowledgment messages that were malformed / in-error. \index{vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}!upcall_ack_inputs@{upcall\_\-ack\_\-inputs}}
+\index{upcall_ack_inputs@{upcall\_\-ack\_\-inputs}!vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-upcall\_\-data\_\-::upcall\_\-ack\_\-inputs}}\label{structvqec__chan__upcall__data___7e1e19171fa8dfada299e924261dfdb2}
+
+
+IRQ data acknowledgments received. \index{vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}!upcall_ack_nulls@{upcall\_\-ack\_\-nulls}}
+\index{upcall_ack_nulls@{upcall\_\-ack\_\-nulls}!vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-upcall\_\-data\_\-::upcall\_\-ack\_\-nulls}}\label{structvqec__chan__upcall__data___a5409198f6bee5d50e8c43d4d51be07d}
+
+
+IRQ data acknowledgments that were null. \index{vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}!upcall_error_events@{upcall\_\-error\_\-events}}
+\index{upcall_error_events@{upcall\_\-error\_\-events}!vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-upcall\_\-data\_\-::upcall\_\-error\_\-events}}\label{structvqec__chan__upcall__data___a94598de62e3fd918dcf6745dfc441bf}
+
+
+Error event count. \index{vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}!upcall_events@{upcall\_\-events}}
+\index{upcall_events@{upcall\_\-events}!vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-upcall\_\-data\_\-::upcall\_\-events}}\label{structvqec__chan__upcall__data___be018f6255f32b5f9249f54819239cf6}
+
+
+Upcall event counter. \index{vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}!upcall_last_generation_num@{upcall\_\-last\_\-generation\_\-num}}
+\index{upcall_last_generation_num@{upcall\_\-last\_\-generation\_\-num}!vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-upcall\_\-data\_\-::upcall\_\-last\_\-generation\_\-num}}\label{structvqec__chan__upcall__data___b0931a9a05d68a2115213fec8427c10f}
+
+
+Last received generation number. \index{vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}!upcall_lost_events@{upcall\_\-lost\_\-events}}
+\index{upcall_lost_events@{upcall\_\-lost\_\-events}!vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-upcall\_\-data\_\-::upcall\_\-lost\_\-events}}\label{structvqec__chan__upcall__data___c96199be2ffc7c158e5794039be03aad}
+
+
+Lost event count. \index{vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}!upcall_repeat_events@{upcall\_\-repeat\_\-events}}
+\index{upcall_repeat_events@{upcall\_\-repeat\_\-events}!vqec_chan_upcall_data_@{vqec\_\-chan\_\-upcall\_\-data\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-chan\_\-upcall\_\-data\_\-::upcall\_\-repeat\_\-events}}\label{structvqec__chan__upcall__data___dbbca5031b31e18647918d889ccf05b3}
+
+
+Repeated or out-of-order event count. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-channel\_\-private.h}\end{CompactItemize}

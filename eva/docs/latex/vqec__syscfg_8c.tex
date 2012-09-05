@@ -1,0 +1,495 @@
+\section{vqec\_\-syscfg.c File Reference}
+\label{vqec__syscfg_8c}\index{vqec_syscfg.c@{vqec\_\-syscfg.c}}
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-assert\_\-macros.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-syscfg.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-config\_\-parser.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-cfg\_\-settings.h\char`\"{}}\par
+{\tt \#include \char`\"{}utils/vam\_\-util.h\char`\"{}}\par
+{\tt \#include \char`\"{}cfgapi.h\char`\"{}}\par
+{\tt \#include $<$arpa/inet.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-debug.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-syslog\_\-def.h\char`\"{}}\par
+{\tt \#include $<$log/vqe\_\-cfg\_\-syslog\_\-def.h$>$}\par
+{\tt \#include $<$log/vqe\_\-cfg\_\-debug.h$>$}\par
+{\tt \#include $<$log/vqe\_\-rtp\_\-syslog\_\-def.h$>$}\par
+{\tt \#include $<$log/vqe\_\-utils\_\-syslog\_\-def.h$>$}\par
+{\tt \#include $<$utils/strl.h$>$}\par
+{\tt \#include $<$utils/vmd5.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-stream\_\-output\_\-thread\_\-mgr.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-gap\_\-reporter.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-private.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{\_\-GNU\_\-SOURCE}
+\item 
+\#define \bf{\_\-\_\-DECLARE\_\-CONFIG\_\-ARR\_\-\_\-}
+\item 
+\#define \bf{\_\-\_\-DECLARE\_\-CONFIG\_\-NUMS\_\-\_\-}
+\item 
+\#define \bf{\_\-\_\-DECLARE\_\-CONFIG\_\-ATTRIBUTES\_\-\_\-}
+\item 
+\#define \bf{\_\-\_\-DECLARE\_\-CONFIG\_\-OVERRIDES\_\-\_\-}
+\item 
+\#define \bf{\_\-\_\-DECLARE\_\-CONFIG\_\-UPDATE\_\-TYPE\_\-\_\-}
+\item 
+\#define \bf{\_\-\_\-DECLARE\_\-CONFIG\_\-STATUS\_\-\_\-}
+\item 
+\#define \bf{\_\-\_\-DECLARE\_\-CONFIG\_\-IS\_\-STATUS\_\-CURRENT\_\-\_\-}
+\item 
+\#define \bf{UT\_\-STATIC}~static
+\item 
+\#define \bf{vqec\_\-inv\_\-int\_\-range\_\-fmt}~\char`\"{}Invalid \%s value (\%d); Valid range: \%d - \%d$\backslash$n\char`\"{}
+\item 
+\#define \bf{vqec\_\-tuner\_\-inv\_\-int\_\-range\_\-fmt}~\char`\"{}Invalid tuner[\%d].\%s value (\%d); Valid range: \%d - \%d$\backslash$n\char`\"{}
+\item 
+\#define \bf{vqec\_\-inv\_\-string\_\-value\_\-fmt}~\char`\"{}Invalid \%s value; Value must be a string$\backslash$n\char`\"{}
+\item 
+\#define \bf{vqec\_\-param\_\-deprecated\_\-conflict\_\-fmt}
+\item 
+\#define \bf{vqec\_\-param\_\-deprecated\_\-accepted\_\-fmt}
+\item 
+\#define \bf{vqec\_\-param\_\-obsoleted\_\-fmt}~\char`\"{}WARNING: config parameter $\backslash$\char`\"{}\%s$\backslash$\char`\"{} is obsolete$\backslash$n\char`\"{}
+\item 
+\#define \bf{MAX\_\-LINE\_\-LENGTH}~80
+\item 
+\#define \bf{MAX\_\-LINE\_\-LENGTH}~80
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{vqec\_\-syscfg\_\-dump\_\-} \bf{vqec\_\-syscfg\_\-dump\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-syscfg\_\-dump\_\-} \{ \bf{VQEC\_\-SYSCFG\_\-DUMP\_\-STARTUP}, 
+\bf{VQEC\_\-SYSCFG\_\-DUMP\_\-NETWORK}, 
+\bf{VQEC\_\-SYSCFG\_\-DUMP\_\-OVERRIDE}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+char $\ast$ \bf{vqec\_\-syscfg\_\-get\_\-filename} (\bf{vqec\_\-ifclient\_\-config\_\-t} config)
+\item 
+vqec\_\-cfg\_\-enum\_\-t \bf{vqec\_\-syscfg\_\-param\_\-lookup} (const char $\ast$param\_\-name)
+\item 
+void \bf{vqec\_\-set\_\-cname} (char $\ast$input\_\-ifname)
+\item 
+const char $\ast$ \bf{vqec\_\-get\_\-cname} (void)
+\item 
+boolean \bf{vqec\_\-syscfg\_\-register\_\-cname} (char $\ast$cname)
+\item 
+UT\_\-STATIC void \bf{vqec\_\-syscfg\_\-set\_\-defaults} (\bf{vqec\_\-syscfg\_\-t} $\ast$cfg, boolean cfg\_\-present[\bf{VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST}])
+\item 
+UT\_\-STATIC void \bf{vqec\_\-syscfg\_\-dump\_\-tuner\_\-list} (const \bf{vqec\_\-syscfg\_\-t} $\ast$cfg)
+\item 
+UT\_\-STATIC void \bf{vqec\_\-syscfg\_\-dump} (const \bf{vqec\_\-syscfg\_\-t} $\ast$v\_\-cfg, boolean cfg\_\-display[$\,$])
+\item 
+static void \bf{strtolower} (char $\ast$out\_\-str, int out\_\-len, const char $\ast$in\_\-str)
+\item 
+UT\_\-STATIC vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-read\_\-tuner\_\-list} (\bf{vqec\_\-syscfg\_\-t} $\ast$cfg, \bf{vqec\_\-config\_\-setting\_\-t} $\ast$r\_\-setting, boolean log\_\-nonfatal\_\-messages)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-load} (\bf{vqec\_\-syscfg\_\-t} $\ast$cfg, const boolean cfg\_\-supported[\bf{VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST}], boolean cfg\_\-present[\bf{VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST}], const char $\ast$\bf{filename}, const char $\ast$buffer, const boolean log\_\-nonfatal\_\-messages)
+\item 
+void \bf{vqec\_\-syscfg\_\-index\_\-read} (\bf{vqec\_\-ifclient\_\-config\_\-t} config, char checksum[MD5\_\-CHECKSUM\_\-STRLEN])
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-index\_\-write} (\bf{vqec\_\-ifclient\_\-config\_\-t} config, char checksum[MD5\_\-CHECKSUM\_\-STRLEN])
+\item 
+boolean \bf{vqec\_\-syscfg\_\-checksum\_\-is\_\-valid} (\bf{vqec\_\-ifclient\_\-config\_\-t} config)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-verify\_\-and\_\-load} (\bf{vqec\_\-ifclient\_\-config\_\-t} config, \bf{vqec\_\-syscfg\_\-t} $\ast$cfg, boolean cfg\_\-present[\bf{VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST}])
+\item 
+void \bf{vqec\_\-syscfg\_\-dump\_\-from\_\-file} (const char $\ast$\bf{filename}, const boolean cfg\_\-supported[\bf{VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST}], const char $\ast$descr, const \bf{vqec\_\-syscfg\_\-dump\_\-t} dump\_\-config)
+\item 
+void \bf{vqec\_\-syscfg\_\-dump\_\-startup} (void)
+\item 
+void \bf{vqec\_\-syscfg\_\-dump\_\-attributes} (void)
+\item 
+void \bf{vqec\_\-syscfg\_\-dump\_\-overrides} (void)
+\item 
+void \bf{vqec\_\-syscfg\_\-dump\_\-system} (void)
+\item 
+void \bf{vqec\_\-syscfg\_\-dump\_\-defaults} (void)
+\item 
+void \bf{vqec\_\-syscfg\_\-read} (\bf{vqec\_\-syscfg\_\-t} $\ast$cfg)
+\item 
+const \bf{vqec\_\-syscfg\_\-t} $\ast$ \bf{vqec\_\-syscfg\_\-get\_\-ptr} (void)
+\item 
+void \bf{vqec\_\-syscfg\_\-get} (\bf{vqec\_\-syscfg\_\-t} $\ast$cfg)
+\item 
+void \bf{vqec\_\-syscfg\_\-set} (\bf{vqec\_\-syscfg\_\-t} $\ast$cfg, boolean update)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-write\_\-to\_\-file} (\bf{vqec\_\-ifclient\_\-config\_\-t} config, const char $\ast$buffer)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-update} (const \bf{vqec\_\-ifclient\_\-config\_\-t} config, const char $\ast$buffer)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-update\_\-override\_\-tags} (const char $\ast$tags[$\,$], const char $\ast$values[$\,$])
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-register} (const \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t} $\ast$params)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-update\_\-network} (const char $\ast$buffer)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-init} (const char $\ast$\bf{filename})
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+const char $\ast$ \bf{vqec\_\-syscfg\_\-index\_\-names} [$\,$] = \{ \char`\"{}Network\char`\"{}, \char`\"{}Override\char`\"{}, \char`\"{}Channel\char`\"{} \}
+\item 
+static \bf{vqec\_\-ifclient\_\-config\_\-event\_\-cb\_\-t} \bf{vqec\_\-syscfg\_\-callback} [$\,$]
+\item 
+static \bf{vqec\_\-config\_\-t} \bf{vqec\_\-cfg}
+\item 
+static \bf{vqec\_\-syscfg\_\-t} \bf{s\_\-cfg}
+\item 
+static int \bf{s\_\-cname\_\-registered} = 0
+\item 
+static char \bf{s\_\-cname} [VQEC\_\-MAX\_\-CNAME\_\-LEN]
+\item 
+static char \bf{s\_\-vqec\_\-syscfg\_\-filename} [VQEC\_\-MAX\_\-NAME\_\-LEN]
+\item 
+static char \bf{box\_\-cname} [VQEC\_\-MAX\_\-NAME\_\-LEN]
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!__DECLARE_CONFIG_ARR__@{\_\-\_\-DECLARE\_\-CONFIG\_\-ARR\_\-\_\-}}
+\index{__DECLARE_CONFIG_ARR__@{\_\-\_\-DECLARE\_\-CONFIG\_\-ARR\_\-\_\-}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-DECLARE\_\-CONFIG\_\-ARR\_\-\_\-}\label{vqec__syscfg_8c_ea338e0ce04e2dc259cb6c37594370b3}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!__DECLARE_CONFIG_ATTRIBUTES__@{\_\-\_\-DECLARE\_\-CONFIG\_\-ATTRIBUTES\_\-\_\-}}
+\index{__DECLARE_CONFIG_ATTRIBUTES__@{\_\-\_\-DECLARE\_\-CONFIG\_\-ATTRIBUTES\_\-\_\-}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-DECLARE\_\-CONFIG\_\-ATTRIBUTES\_\-\_\-}\label{vqec__syscfg_8c_06ee26cd0e8095ca5c846edefb798a3e}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!__DECLARE_CONFIG_IS_STATUS_CURRENT__@{\_\-\_\-DECLARE\_\-CONFIG\_\-IS\_\-STATUS\_\-CURRENT\_\-\_\-}}
+\index{__DECLARE_CONFIG_IS_STATUS_CURRENT__@{\_\-\_\-DECLARE\_\-CONFIG\_\-IS\_\-STATUS\_\-CURRENT\_\-\_\-}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-DECLARE\_\-CONFIG\_\-IS\_\-STATUS\_\-CURRENT\_\-\_\-}\label{vqec__syscfg_8c_b2e1636f12013e7ed0da760310ad4913}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!__DECLARE_CONFIG_NUMS__@{\_\-\_\-DECLARE\_\-CONFIG\_\-NUMS\_\-\_\-}}
+\index{__DECLARE_CONFIG_NUMS__@{\_\-\_\-DECLARE\_\-CONFIG\_\-NUMS\_\-\_\-}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-DECLARE\_\-CONFIG\_\-NUMS\_\-\_\-}\label{vqec__syscfg_8c_944c9f66a4a2d89009d18ec5691f883b}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!__DECLARE_CONFIG_OVERRIDES__@{\_\-\_\-DECLARE\_\-CONFIG\_\-OVERRIDES\_\-\_\-}}
+\index{__DECLARE_CONFIG_OVERRIDES__@{\_\-\_\-DECLARE\_\-CONFIG\_\-OVERRIDES\_\-\_\-}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-DECLARE\_\-CONFIG\_\-OVERRIDES\_\-\_\-}\label{vqec__syscfg_8c_77aa63099e32c314ee3a05c67acf088e}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!__DECLARE_CONFIG_STATUS__@{\_\-\_\-DECLARE\_\-CONFIG\_\-STATUS\_\-\_\-}}
+\index{__DECLARE_CONFIG_STATUS__@{\_\-\_\-DECLARE\_\-CONFIG\_\-STATUS\_\-\_\-}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-DECLARE\_\-CONFIG\_\-STATUS\_\-\_\-}\label{vqec__syscfg_8c_c09c70f962b368afd3b60cdf914a459a}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!__DECLARE_CONFIG_UPDATE_TYPE__@{\_\-\_\-DECLARE\_\-CONFIG\_\-UPDATE\_\-TYPE\_\-\_\-}}
+\index{__DECLARE_CONFIG_UPDATE_TYPE__@{\_\-\_\-DECLARE\_\-CONFIG\_\-UPDATE\_\-TYPE\_\-\_\-}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-DECLARE\_\-CONFIG\_\-UPDATE\_\-TYPE\_\-\_\-}\label{vqec__syscfg_8c_d4afeb23cb19f16579d13f2025949ecb}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!_GNU_SOURCE@{\_\-GNU\_\-SOURCE}}
+\index{_GNU_SOURCE@{\_\-GNU\_\-SOURCE}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-GNU\_\-SOURCE}\label{vqec__syscfg_8c_53abf256730d533302d1910e5fb61efe}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!MAX_LINE_LENGTH@{MAX\_\-LINE\_\-LENGTH}}
+\index{MAX_LINE_LENGTH@{MAX\_\-LINE\_\-LENGTH}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-LINE\_\-LENGTH~80}\label{vqec__syscfg_8c_67c951c92e776916c9e6b4d2d9663312}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!MAX_LINE_LENGTH@{MAX\_\-LINE\_\-LENGTH}}
+\index{MAX_LINE_LENGTH@{MAX\_\-LINE\_\-LENGTH}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-LINE\_\-LENGTH~80}\label{vqec__syscfg_8c_67c951c92e776916c9e6b4d2d9663312}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!UT_STATIC@{UT\_\-STATIC}}
+\index{UT_STATIC@{UT\_\-STATIC}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UT\_\-STATIC~static}\label{vqec__syscfg_8c_840be0a802b42af3ce4430a7173caa40}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_inv_int_range_fmt@{vqec\_\-inv\_\-int\_\-range\_\-fmt}}
+\index{vqec_inv_int_range_fmt@{vqec\_\-inv\_\-int\_\-range\_\-fmt}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define vqec\_\-inv\_\-int\_\-range\_\-fmt~\char`\"{}Invalid \%s value (\%d); Valid range: \%d - \%d$\backslash$n\char`\"{}}\label{vqec__syscfg_8c_8bebc8c832fddd41b50a24f5bd881b6d}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_inv_string_value_fmt@{vqec\_\-inv\_\-string\_\-value\_\-fmt}}
+\index{vqec_inv_string_value_fmt@{vqec\_\-inv\_\-string\_\-value\_\-fmt}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define vqec\_\-inv\_\-string\_\-value\_\-fmt~\char`\"{}Invalid \%s value; Value must be a string$\backslash$n\char`\"{}}\label{vqec__syscfg_8c_7cdbbc0d5273dcf5c425615f833859a9}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_param_deprecated_accepted_fmt@{vqec\_\-param\_\-deprecated\_\-accepted\_\-fmt}}
+\index{vqec_param_deprecated_accepted_fmt@{vqec\_\-param\_\-deprecated\_\-accepted\_\-fmt}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define vqec\_\-param\_\-deprecated\_\-accepted\_\-fmt}\label{vqec__syscfg_8c_01c82e6f8bedb7a1d94cd98b2437f2c3}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}"WARNING: config parameter \"%s\" accepted but is being " \
+              "deprecated, use \"%s\" instead\n"
+\end{verbatim}\end{Code}
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_param_deprecated_conflict_fmt@{vqec\_\-param\_\-deprecated\_\-conflict\_\-fmt}}
+\index{vqec_param_deprecated_conflict_fmt@{vqec\_\-param\_\-deprecated\_\-conflict\_\-fmt}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define vqec\_\-param\_\-deprecated\_\-conflict\_\-fmt}\label{vqec__syscfg_8c_92dd7f1954f77b43e776fde2fc2f7f6e}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}"WARNING: config parameter \"%s\" ignored, " \
+              "conflicts with parameter \"%s\"\n"
+\end{verbatim}\end{Code}
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_param_obsoleted_fmt@{vqec\_\-param\_\-obsoleted\_\-fmt}}
+\index{vqec_param_obsoleted_fmt@{vqec\_\-param\_\-obsoleted\_\-fmt}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define vqec\_\-param\_\-obsoleted\_\-fmt~\char`\"{}WARNING: config parameter $\backslash$\char`\"{}\%s$\backslash$\char`\"{} is obsolete$\backslash$n\char`\"{}}\label{vqec__syscfg_8c_ad1977c2cbfe819e50b3c2841bbb54a2}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_tuner_inv_int_range_fmt@{vqec\_\-tuner\_\-inv\_\-int\_\-range\_\-fmt}}
+\index{vqec_tuner_inv_int_range_fmt@{vqec\_\-tuner\_\-inv\_\-int\_\-range\_\-fmt}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define vqec\_\-tuner\_\-inv\_\-int\_\-range\_\-fmt~\char`\"{}Invalid tuner[\%d].\%s value (\%d); Valid range: \%d - \%d$\backslash$n\char`\"{}}\label{vqec__syscfg_8c_f1414ff74e89acb962d1c24c5cd06dbd}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_dump_t@{vqec\_\-syscfg\_\-dump\_\-t}}
+\index{vqec_syscfg_dump_t@{vqec\_\-syscfg\_\-dump\_\-t}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-syscfg\_\-dump\_\-}  \bf{vqec\_\-syscfg\_\-dump\_\-t}}\label{vqec__syscfg_8c_100974bdf8899add6cef07e4fc8eb663}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_dump_@{vqec\_\-syscfg\_\-dump\_\-}}
+\index{vqec_syscfg_dump_@{vqec\_\-syscfg\_\-dump\_\-}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-syscfg\_\-dump\_\-}}\label{vqec__syscfg_8c_0f2f4343650a5fdb713ce633bf1770cb}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_SYSCFG_DUMP_STARTUP@{VQEC\_\-SYSCFG\_\-DUMP\_\-STARTUP}!vqec_syscfg.c@{vqec\_\-syscfg.c}}\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!VQEC_SYSCFG_DUMP_STARTUP@{VQEC\_\-SYSCFG\_\-DUMP\_\-STARTUP}}\item[{\em 
+VQEC\_\-SYSCFG\_\-DUMP\_\-STARTUP\label{vqec__syscfg_8c_0f2f4343650a5fdb713ce633bf1770cb86201bf9828d1cefc0d116a4a450f6db}
+}]\index{VQEC_SYSCFG_DUMP_NETWORK@{VQEC\_\-SYSCFG\_\-DUMP\_\-NETWORK}!vqec_syscfg.c@{vqec\_\-syscfg.c}}\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!VQEC_SYSCFG_DUMP_NETWORK@{VQEC\_\-SYSCFG\_\-DUMP\_\-NETWORK}}\item[{\em 
+VQEC\_\-SYSCFG\_\-DUMP\_\-NETWORK\label{vqec__syscfg_8c_0f2f4343650a5fdb713ce633bf1770cb6ace5ab62f958fbbff328b28e0fb3327}
+}]\index{VQEC_SYSCFG_DUMP_OVERRIDE@{VQEC\_\-SYSCFG\_\-DUMP\_\-OVERRIDE}!vqec_syscfg.c@{vqec\_\-syscfg.c}}\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!VQEC_SYSCFG_DUMP_OVERRIDE@{VQEC\_\-SYSCFG\_\-DUMP\_\-OVERRIDE}}\item[{\em 
+VQEC\_\-SYSCFG\_\-DUMP\_\-OVERRIDE\label{vqec__syscfg_8c_0f2f4343650a5fdb713ce633bf1770cb9e404d75ef27548b0f1bbe5e516c3ade}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!strtolower@{strtolower}}
+\index{strtolower@{strtolower}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void strtolower (char $\ast$ {\em out\_\-str}, int {\em out\_\-len}, const char $\ast$ {\em in\_\-str})\hspace{0.3cm}{\tt  [static]}}\label{vqec__syscfg_8c_18ac10108d29f92336d7b7b1a6da3bb1}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_get_cname@{vqec\_\-get\_\-cname}}
+\index{vqec_get_cname@{vqec\_\-get\_\-cname}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-get\_\-cname (void)}\label{vqec__syscfg_8c_f3ac2a9365d0ab9bbae5ddb905dc6bb3}
+
+
+get the cname pointer \index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_set_cname@{vqec\_\-set\_\-cname}}
+\index{vqec_set_cname@{vqec\_\-set\_\-cname}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-set\_\-cname (char $\ast$ {\em input\_\-ifname})}\label{vqec__syscfg_8c_899e12e233c67be526db6e6e71cd0f26}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_checksum_is_valid@{vqec\_\-syscfg\_\-checksum\_\-is\_\-valid}}
+\index{vqec_syscfg_checksum_is_valid@{vqec\_\-syscfg\_\-checksum\_\-is\_\-valid}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-syscfg\_\-checksum\_\-is\_\-valid (\bf{vqec\_\-ifclient\_\-config\_\-t} {\em config})}\label{vqec__syscfg_8c_2075cfe8a79baad3ce22ad4cf739634b}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_dump@{vqec\_\-syscfg\_\-dump}}
+\index{vqec_syscfg_dump@{vqec\_\-syscfg\_\-dump}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC void vqec\_\-syscfg\_\-dump (const \bf{vqec\_\-syscfg\_\-t} $\ast$ {\em v\_\-cfg}, boolean {\em cfg\_\-display}[$\,$])}\label{vqec__syscfg_8c_525ce121a93994df73d9187e2757c069}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_dump_attributes@{vqec\_\-syscfg\_\-dump\_\-attributes}}
+\index{vqec_syscfg_dump_attributes@{vqec\_\-syscfg\_\-dump\_\-attributes}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-dump\_\-attributes (void)}\label{vqec__syscfg_8c_cd6fab0185414b5ef2374903189f562a}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_dump_defaults@{vqec\_\-syscfg\_\-dump\_\-defaults}}
+\index{vqec_syscfg_dump_defaults@{vqec\_\-syscfg\_\-dump\_\-defaults}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-dump\_\-defaults (void)}\label{vqec__syscfg_8c_81ed4de44a49d988d980ef9a0ffbeaeb}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_dump_from_file@{vqec\_\-syscfg\_\-dump\_\-from\_\-file}}
+\index{vqec_syscfg_dump_from_file@{vqec\_\-syscfg\_\-dump\_\-from\_\-file}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-dump\_\-from\_\-file (const char $\ast$ {\em filename}, const boolean {\em cfg\_\-supported}[VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST], const char $\ast$ {\em descr}, const \bf{vqec\_\-syscfg\_\-dump\_\-t} {\em dump\_\-config})}\label{vqec__syscfg_8c_3cd2efffcf7f3f74c40e19f582d244bb}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_dump_overrides@{vqec\_\-syscfg\_\-dump\_\-overrides}}
+\index{vqec_syscfg_dump_overrides@{vqec\_\-syscfg\_\-dump\_\-overrides}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-dump\_\-overrides (void)}\label{vqec__syscfg_8c_5bf0143f170ca8f7adb00dbc85cf4d45}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_dump_startup@{vqec\_\-syscfg\_\-dump\_\-startup}}
+\index{vqec_syscfg_dump_startup@{vqec\_\-syscfg\_\-dump\_\-startup}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-dump\_\-startup (void)}\label{vqec__syscfg_8c_c850fe1fdd879cfcd71ad4fd769b2164}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_dump_system@{vqec\_\-syscfg\_\-dump\_\-system}}
+\index{vqec_syscfg_dump_system@{vqec\_\-syscfg\_\-dump\_\-system}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-dump\_\-system (void)}\label{vqec__syscfg_8c_ef6f720b28ba935d064fb91106dcd9e1}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_dump_tuner_list@{vqec\_\-syscfg\_\-dump\_\-tuner\_\-list}}
+\index{vqec_syscfg_dump_tuner_list@{vqec\_\-syscfg\_\-dump\_\-tuner\_\-list}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC void vqec\_\-syscfg\_\-dump\_\-tuner\_\-list (const \bf{vqec\_\-syscfg\_\-t} $\ast$ {\em cfg})}\label{vqec__syscfg_8c_80d36f575968351f6230d1ce41ec5195}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_get@{vqec\_\-syscfg\_\-get}}
+\index{vqec_syscfg_get@{vqec\_\-syscfg\_\-get}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-get (\bf{vqec\_\-syscfg\_\-t} $\ast$ {\em cfg})}\label{vqec__syscfg_8c_13ebca19ae662a6449361df39512b572}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_get_filename@{vqec\_\-syscfg\_\-get\_\-filename}}
+\index{vqec_syscfg_get_filename@{vqec\_\-syscfg\_\-get\_\-filename}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ vqec\_\-syscfg\_\-get\_\-filename (\bf{vqec\_\-ifclient\_\-config\_\-t} {\em config})}\label{vqec__syscfg_8c_47a1ab7c403cd4c317142f7df7e6cc13}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_get_ptr@{vqec\_\-syscfg\_\-get\_\-ptr}}
+\index{vqec_syscfg_get_ptr@{vqec\_\-syscfg\_\-get\_\-ptr}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const \bf{vqec\_\-syscfg\_\-t}$\ast$ vqec\_\-syscfg\_\-get\_\-ptr (void)}\label{vqec__syscfg_8c_91c32699aaf9b6c5785c3a87d5d40d1f}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_index_read@{vqec\_\-syscfg\_\-index\_\-read}}
+\index{vqec_syscfg_index_read@{vqec\_\-syscfg\_\-index\_\-read}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-index\_\-read (\bf{vqec\_\-ifclient\_\-config\_\-t} {\em config}, char {\em checksum}[MD5\_\-CHECKSUM\_\-STRLEN])}\label{vqec__syscfg_8c_01c598dc7e2ab451e908ef0d9626716e}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_index_write@{vqec\_\-syscfg\_\-index\_\-write}}
+\index{vqec_syscfg_index_write@{vqec\_\-syscfg\_\-index\_\-write}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-index\_\-write (\bf{vqec\_\-ifclient\_\-config\_\-t} {\em config}, char {\em checksum}[MD5\_\-CHECKSUM\_\-STRLEN])}\label{vqec__syscfg_8c_f6881da3faf29edd82176249f51aad39}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_init@{vqec\_\-syscfg\_\-init}}
+\index{vqec_syscfg_init@{vqec\_\-syscfg\_\-init}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-init (const char $\ast$ {\em filename})}\label{vqec__syscfg_8c_2539a4d61d5c73b91c6c44e7d8822370}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_load@{vqec\_\-syscfg\_\-load}}
+\index{vqec_syscfg_load@{vqec\_\-syscfg\_\-load}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-load (\bf{vqec\_\-syscfg\_\-t} $\ast$ {\em cfg}, const boolean {\em cfg\_\-supported}[VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST], boolean {\em cfg\_\-present}[VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST], const char $\ast$ {\em filename}, const char $\ast$ {\em buffer}, const boolean {\em log\_\-nonfatal\_\-messages})}\label{vqec__syscfg_8c_54ef35e9448605b5630dc87785f8eb78}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_param_lookup@{vqec\_\-syscfg\_\-param\_\-lookup}}
+\index{vqec_syscfg_param_lookup@{vqec\_\-syscfg\_\-param\_\-lookup}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-cfg\_\-enum\_\-t vqec\_\-syscfg\_\-param\_\-lookup (const char $\ast$ {\em param\_\-name})}\label{vqec__syscfg_8c_4d31f6a307a336bd420226e719b74ec8}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_read@{vqec\_\-syscfg\_\-read}}
+\index{vqec_syscfg_read@{vqec\_\-syscfg\_\-read}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-read (\bf{vqec\_\-syscfg\_\-t} $\ast$ {\em cfg})}\label{vqec__syscfg_8c_86e3a197802023c1b414e89461ad40ba}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_read_tuner_list@{vqec\_\-syscfg\_\-read\_\-tuner\_\-list}}
+\index{vqec_syscfg_read_tuner_list@{vqec\_\-syscfg\_\-read\_\-tuner\_\-list}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC vqec\_\-error\_\-t vqec\_\-syscfg\_\-read\_\-tuner\_\-list (\bf{vqec\_\-syscfg\_\-t} $\ast$ {\em cfg}, \bf{vqec\_\-config\_\-setting\_\-t} $\ast$ {\em r\_\-setting}, boolean {\em log\_\-nonfatal\_\-messages})}\label{vqec__syscfg_8c_3d8f99d9c713feed11695e0509c679e8}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_register@{vqec\_\-syscfg\_\-register}}
+\index{vqec_syscfg_register@{vqec\_\-syscfg\_\-register}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-register (const \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t} $\ast$ {\em params})}\label{vqec__syscfg_8c_1043abb292cf43126e3cee673a4fcfe8}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_register_cname@{vqec\_\-syscfg\_\-register\_\-cname}}
+\index{vqec_syscfg_register_cname@{vqec\_\-syscfg\_\-register\_\-cname}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-syscfg\_\-register\_\-cname (char $\ast$ {\em cname})}\label{vqec__syscfg_8c_bd355227b8a9ec40fb4be0176a2388a3}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em Pointer}]to the cname character array. \end{description}
+\end{Desc}
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_set@{vqec\_\-syscfg\_\-set}}
+\index{vqec_syscfg_set@{vqec\_\-syscfg\_\-set}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-set (\bf{vqec\_\-syscfg\_\-t} $\ast$ {\em cfg}, boolean {\em update})}\label{vqec__syscfg_8c_fe5af2a8f5bc39326c2be2f16ff579e8}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_set_defaults@{vqec\_\-syscfg\_\-set\_\-defaults}}
+\index{vqec_syscfg_set_defaults@{vqec\_\-syscfg\_\-set\_\-defaults}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC void vqec\_\-syscfg\_\-set\_\-defaults (\bf{vqec\_\-syscfg\_\-t} $\ast$ {\em cfg}, boolean {\em cfg\_\-present}[VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST])}\label{vqec__syscfg_8c_b03927e45b8a38c85618d51947d6a3bb}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_update@{vqec\_\-syscfg\_\-update}}
+\index{vqec_syscfg_update@{vqec\_\-syscfg\_\-update}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-update (const \bf{vqec\_\-ifclient\_\-config\_\-t} {\em config}, const char $\ast$ {\em buffer})}\label{vqec__syscfg_8c_8501a5345a3971281596afd9a0e311a9}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_update_network@{vqec\_\-syscfg\_\-update\_\-network}}
+\index{vqec_syscfg_update_network@{vqec\_\-syscfg\_\-update\_\-network}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-update\_\-network (const char $\ast$ {\em buffer})}\label{vqec__syscfg_8c_9c35bc59498e0ce4d86ce0fcc4a3a7fa}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_update_override_tags@{vqec\_\-syscfg\_\-update\_\-override\_\-tags}}
+\index{vqec_syscfg_update_override_tags@{vqec\_\-syscfg\_\-update\_\-override\_\-tags}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-update\_\-override\_\-tags (const char $\ast$ {\em tags}[$\,$], const char $\ast$ {\em values}[$\,$])}\label{vqec__syscfg_8c_5570b99d51981a95efe1a9bf975f4e82}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_verify_and_load@{vqec\_\-syscfg\_\-verify\_\-and\_\-load}}
+\index{vqec_syscfg_verify_and_load@{vqec\_\-syscfg\_\-verify\_\-and\_\-load}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-verify\_\-and\_\-load (\bf{vqec\_\-ifclient\_\-config\_\-t} {\em config}, \bf{vqec\_\-syscfg\_\-t} $\ast$ {\em cfg}, boolean {\em cfg\_\-present}[VQEC\_\-CFG\_\-MUST\_\-BE\_\-LAST])}\label{vqec__syscfg_8c_cf892ca77ac7c46535e746c4e0189381}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_write_to_file@{vqec\_\-syscfg\_\-write\_\-to\_\-file}}
+\index{vqec_syscfg_write_to_file@{vqec\_\-syscfg\_\-write\_\-to\_\-file}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-write\_\-to\_\-file (\bf{vqec\_\-ifclient\_\-config\_\-t} {\em config}, const char $\ast$ {\em buffer})}\label{vqec__syscfg_8c_977ba7ffce5979b37d8ac18d58535b4f}
+
+
+
+
+\subsection{Variable Documentation}
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!box_cname@{box\_\-cname}}
+\index{box_cname@{box\_\-cname}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{box\_\-cname}[VQEC\_\-MAX\_\-NAME\_\-LEN]\hspace{0.3cm}{\tt  [static]}}\label{vqec__syscfg_8c_94528266b2eafd19ce53a8e6e0cb285e}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!s_cfg@{s\_\-cfg}}
+\index{s_cfg@{s\_\-cfg}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-syscfg\_\-t} \bf{s\_\-cfg}\hspace{0.3cm}{\tt  [static]}}\label{vqec__syscfg_8c_604824c65d378670603dac3a8ad48256}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!s_cname@{s\_\-cname}}
+\index{s_cname@{s\_\-cname}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{s\_\-cname}[VQEC\_\-MAX\_\-CNAME\_\-LEN]\hspace{0.3cm}{\tt  [static]}}\label{vqec__syscfg_8c_dccc0d9fc0322486a3722a648d6b65e9}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!s_cname_registered@{s\_\-cname\_\-registered}}
+\index{s_cname_registered@{s\_\-cname\_\-registered}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int \bf{s\_\-cname\_\-registered} = 0\hspace{0.3cm}{\tt  [static]}}\label{vqec__syscfg_8c_e0ec7f080f3fd74bd7bb739fe41afa9a}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!s_vqec_syscfg_filename@{s\_\-vqec\_\-syscfg\_\-filename}}
+\index{s_vqec_syscfg_filename@{s\_\-vqec\_\-syscfg\_\-filename}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{s\_\-vqec\_\-syscfg\_\-filename}[VQEC\_\-MAX\_\-NAME\_\-LEN]\hspace{0.3cm}{\tt  [static]}}\label{vqec__syscfg_8c_6feb9952f9bcf0b762d6167de0da1c5f}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_cfg@{vqec\_\-cfg}}
+\index{vqec_cfg@{vqec\_\-cfg}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-config\_\-t} \bf{vqec\_\-cfg}\hspace{0.3cm}{\tt  [static]}}\label{vqec__syscfg_8c_57a081d0130637fb201c6fe4ecd0aaa0}
+
+
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_callback@{vqec\_\-syscfg\_\-callback}}
+\index{vqec_syscfg_callback@{vqec\_\-syscfg\_\-callback}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-ifclient\_\-config\_\-event\_\-cb\_\-t} \bf{vqec\_\-syscfg\_\-callback}[$\,$]\hspace{0.3cm}{\tt  [static]}}\label{vqec__syscfg_8c_40a5d08f795635946586488587837710}
+
+
+\textbf{Initial value:}
+
+\begin{Code}\begin{verbatim} 
+            { NULL, NULL, NULL }
+\end{verbatim}\end{Code}
+\index{vqec_syscfg.c@{vqec\_\-syscfg.c}!vqec_syscfg_index_names@{vqec\_\-syscfg\_\-index\_\-names}}
+\index{vqec_syscfg_index_names@{vqec\_\-syscfg\_\-index\_\-names}!vqec_syscfg.c@{vqec\_\-syscfg.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ \bf{vqec\_\-syscfg\_\-index\_\-names}[$\,$] = \{ \char`\"{}Network\char`\"{}, \char`\"{}Override\char`\"{}, \char`\"{}Channel\char`\"{} \}}\label{vqec__syscfg_8c_c02123a006a65e80d7f678fe382f126c}
+
+

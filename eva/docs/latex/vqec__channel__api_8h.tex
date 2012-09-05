@@ -1,0 +1,105 @@
+\section{vqec\_\-channel\_\-api.h File Reference}
+\label{vqec__channel__api_8h}\index{vqec_channel_api.h@{vqec\_\-channel\_\-api.h}}
+{\tt \#include $<$cfg/cfgapi.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec-dp/vqec\_\-dp\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-nat\_\-interface.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-CHANID\_\-INVALID}~0
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef int32\_\-t \bf{vqec\_\-chanid\_\-t}
+\item 
+typedef enum \bf{vqec\_\-chan\_\-err\_\-} \bf{vqec\_\-chan\_\-err\_\-t}
+\item 
+typedef enum \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-} \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-chan\_\-err\_\-} \{ \par
+\bf{VQEC\_\-CHAN\_\-ERR\_\-OK}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-INVALIDARGS}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOMORECHANNELS}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOTINITIALIZED}, 
+\par
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOSUCHCHAN}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOTFOUND}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOSUCHBINDING}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOMEM}, 
+\par
+\bf{VQEC\_\-CHAN\_\-ERR\_\-NOROOM}, 
+\bf{VQEC\_\-CHAN\_\-ERR\_\-INTERNAL}
+ \}
+\item 
+enum \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-} \{ \bf{VQEC\_\-CHAN\_\-RTP\_\-SESSION\_\-PRIMARY}, 
+\bf{VQEC\_\-CHAN\_\-RTP\_\-SESSION\_\-REPAIR}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+const char $\ast$ \bf{vqec\_\-chan\_\-err2str} (\bf{vqec\_\-chan\_\-err\_\-t} err)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-module\_\-init} (void)
+\item 
+void \bf{vqec\_\-chan\_\-module\_\-deinit} (void)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-find\_\-chanid} (\bf{vqec\_\-chanid\_\-t} $\ast$chanid, in\_\-addr\_\-t ip, uint16\_\-t port)
+\item 
+void \bf{vqec\_\-chan\_\-convert\_\-sdp\_\-to\_\-cfg} (channel\_\-cfg\_\-t $\ast$sdp, \bf{vqec\_\-chan\_\-type\_\-t} chan\_\-type, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-chanid} (\bf{vqec\_\-chanid\_\-t} $\ast$chanid, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-update\_\-source} (\bf{vqec\_\-chanid\_\-t} chanid, const \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-update\_\-nat\_\-binding} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-put\_\-chanid} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-bind} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-tunerid\_\-t tid, const \bf{vqec\_\-bind\_\-params\_\-t} $\ast$bp, const \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t} $\ast$chan\_\-event\_\-cb)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-unbind} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-tunerid\_\-t tid)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-counters} (\bf{vqec\_\-ifclient\_\-stats\_\-t} $\ast$stats, boolean cumulative)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-counters\_\-channel} (\bf{vqec\_\-chanid\_\-t} chanid, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t} $\ast$stats, boolean cumulative)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-counters\_\-channel\_\-tr135\_\-sample} (\bf{vqec\_\-chanid\_\-t} chanid, \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-tr135\_\-sample\_\-t} $\ast$stats)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-set\_\-tr135\_\-params} (\bf{vqec\_\-chanid\_\-t} chanid, \bf{vqec\_\-ifclient\_\-tr135\_\-params\_\-t} $\ast$params)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-tuner\_\-q\_\-drops} (\bf{vqec\_\-chanid\_\-t} chanid, uint64\_\-t $\ast$tuner\_\-queue\_\-drops, boolean cumulative)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-inputshim\_\-streams} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-streamid\_\-t $\ast$prim\_\-rtp\_\-id, vqec\_\-dp\_\-streamid\_\-t $\ast$repair\_\-rtp\_\-id, vqec\_\-dp\_\-streamid\_\-t $\ast$fec0\_\-rtp\_\-id, vqec\_\-dp\_\-streamid\_\-t $\ast$fec1\_\-rtp\_\-id)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-get\_\-outputshim\_\-stream} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-streamid\_\-t $\ast$postrepair\_\-id)
+\item 
+\bf{vqec\_\-chan\_\-err\_\-t} \bf{vqec\_\-chan\_\-clear\_\-counters} (void)
+\item 
+void \bf{vqec\_\-chan\_\-display\_\-state} (\bf{vqec\_\-chanid\_\-t} chanid, uint32\_\-t options\_\-flag)
+\item 
+void \bf{vqec\_\-channel\_\-cfg\_\-printf} (channel\_\-cfg\_\-t $\ast$channel\_\-p)
+\item 
+void \bf{vqec\_\-chan\_\-nat\_\-bind\_\-update} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-nat\_\-bindid\_\-t bindid, vqec\_\-nat\_\-bind\_\-data\_\-t $\ast$data)
+\item 
+boolean \bf{vqec\_\-chan\_\-nat\_\-inject\_\-pak} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-nat\_\-bindid\_\-t bindid, vqec\_\-nat\_\-bind\_\-desc\_\-t $\ast$desc, char $\ast$buf, uint16\_\-t len)
+\item 
+boolean \bf{vqec\_\-chan\_\-eject\_\-rtcp\_\-nat\_\-pak} (\bf{vqec\_\-chanid\_\-t} chanid, char $\ast$buf, uint16\_\-t len, \bf{vqec\_\-chan\_\-rtp\_\-session\_\-type\_\-t} session\_\-t, in\_\-addr\_\-t source\_\-ip, in\_\-port\_\-t source\_\-port)
+\item 
+boolean \bf{vqec\_\-chan\_\-eject\_\-rtp\_\-nat\_\-pak} (\bf{vqec\_\-chanid\_\-t} chanid, vqec\_\-dp\_\-chanid\_\-t dp\_\-chanid, char $\ast$buf, uint16\_\-t len, vqec\_\-dp\_\-streamid\_\-t is\_\-id, in\_\-addr\_\-t source\_\-ip, in\_\-port\_\-t source\_\-port)
+\item 
+void \bf{vqec\_\-chan\_\-show\_\-nat\_\-bindings} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+vqec\_\-dp\_\-chanid\_\-t \bf{vqec\_\-chan\_\-id\_\-to\_\-dpchanid} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+uint8\_\-t \bf{vqec\_\-chan\_\-is\_\-fastfill\_\-enabled} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+uint8\_\-t \bf{vqec\_\-chan\_\-is\_\-rcc\_\-enabled} (\bf{vqec\_\-chanid\_\-t} chanid)
+\item 
+uint16\_\-t \bf{vqec\_\-chan\_\-get\_\-max\_\-fec\_\-block\_\-size\_\-observed} (void)
+\end{CompactItemize}

@@ -1,0 +1,417 @@
+\section{Data Structures.}
+\label{group__structs}\index{Data Structures.@{Data Structures.}}
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-tuner\_\-iter\_\-t\_\-}
+\begin{CompactList}\small\item\em Tuner iterator structure. \item\end{CompactList}\item 
+struct \bf{vqec\_\-rtphdr\_\-t\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-stats\_\-t\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-updater\_\-stats\_\-t\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-dcr\_\-stats\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-fastfill\_\-params\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-RTP\_\-VERSION\_\-SHIFT}~14
+\item 
+\#define \bf{VQEC\_\-RTP\_\-PADDING\_\-SHIFT}~13
+\item 
+\#define \bf{VQEC\_\-RTP\_\-EXT\_\-SHIFT}~12
+\item 
+\#define \bf{VQEC\_\-RTP\_\-CSRCC\_\-SHIFT}~8
+\item 
+\#define \bf{VQEC\_\-RTP\_\-MARKER\_\-SHIFT}~7
+\item 
+\#define \bf{VQEC\_\-RTP\_\-PAYLOAD\_\-SHIFT}~0
+\item 
+\#define \bf{VQEC\_\-RTP\_\-VERSION}(a)
+\item 
+\#define \bf{VQEC\_\-RTP\_\-PADDING}(a)
+\item 
+\#define \bf{VQEC\_\-RTP\_\-EXT}(a)
+\item 
+\#define \bf{VQEC\_\-RTP\_\-CSRCC}(a)
+\item 
+\#define \bf{VQEC\_\-RTP\_\-MARKER}(a)
+\item 
+\#define \bf{VQEC\_\-RTP\_\-PAYLOAD}(a)
+\item 
+\#define \bf{VQE\_\-STAT\_\-COUNTERS}
+\item 
+\#define \bf{VQEC\_\-UPDATER\_\-VERSION\_\-STRLEN}~33
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef \bf{vqec\_\-tuner\_\-iter\_\-t\_\-} \bf{vqec\_\-tuner\_\-iter\_\-t}
+\begin{CompactList}\small\item\em Tuner iterator structure. \item\end{CompactList}\item 
+typedef \bf{vqec\_\-rtphdr\_\-t\_\-} \bf{vqec\_\-rtphdr\_\-t}
+\item 
+typedef enum \bf{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t\_\-} \bf{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-stats\_\-t\_\-} \bf{vqec\_\-ifclient\_\-stats\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-} \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-updater\_\-stats\_\-t\_\-} \bf{vqec\_\-ifclient\_\-updater\_\-stats\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-dcr\_\-stats\_\-} \bf{vqec\_\-ifclient\_\-dcr\_\-stats\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-} \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t}
+\item 
+typedef enum \bf{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t\_\-} \bf{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-} \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-fastfill\_\-params\_\-} \bf{vqec\_\-ifclient\_\-fastfill\_\-params\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-} \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t}
+\item 
+typedef enum \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-} \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-} \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-} \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-} \bf{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-t}
+\item 
+typedef \bf{vqec\_\-bind\_\-params\_\-} \bf{vqec\_\-bind\_\-params\_\-t}
+\item 
+typedef vqec\_\-update\_\-params\_\- \bf{vqec\_\-update\_\-params\_\-t}
+\item 
+typedef char $\ast$ \bf{vqec\_\-sdp\_\-handle\_\-t}
+\item 
+typedef char \bf{sdp\_\-block\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t\_\-} \{ \par
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-SERVER\_\-REJECT}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-STUN\_\-TIMEOUT}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-RESPONSE\_\-TIMEOUT}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-RESPONSE\_\-INVALID}, 
+\par
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-BURST\_\-START}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-BURST\_\-ACTIVITY}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-OTHER}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-MAX}
+ \}
+\item 
+enum \bf{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t\_\-} \{ \bf{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-SERVER}, 
+\bf{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-CLIENT}, 
+\bf{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-MAX}
+ \}
+\item 
+enum \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-} \{ \bf{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-UNKNOWN}, 
+\bf{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-INACTIVE}, 
+\bf{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-NEW\_\-SOURCE}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t} $\ast$ \bf{get\_\-dcr\_\-ops} (void)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{structs@{structs}!VQE_STAT_COUNTERS@{VQE\_\-STAT\_\-COUNTERS}}
+\index{VQE_STAT_COUNTERS@{VQE\_\-STAT\_\-COUNTERS}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQE\_\-STAT\_\-COUNTERS}\label{group__structs_g32eb559d994fb28d2b194437bea80bc4}
+
+
+\index{structs@{structs}!VQEC_RTP_CSRCC@{VQEC\_\-RTP\_\-CSRCC}}
+\index{VQEC_RTP_CSRCC@{VQEC\_\-RTP\_\-CSRCC}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-CSRCC(a)}\label{group__structs_g4a118ec22c6097100b858af94c3dcb75}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}(((((a)->combined_bits) & 0x0f00)       \
+                            >> VQEC_RTP_CSRCC_SHIFT) & 0x000f)
+\end{verbatim}\end{Code}
+\index{structs@{structs}!VQEC_RTP_CSRCC_SHIFT@{VQEC\_\-RTP\_\-CSRCC\_\-SHIFT}}
+\index{VQEC_RTP_CSRCC_SHIFT@{VQEC\_\-RTP\_\-CSRCC\_\-SHIFT}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-CSRCC\_\-SHIFT~8}\label{group__structs_g75b4a74bbd5b986ccbef971657948aae}
+
+
+\index{structs@{structs}!VQEC_RTP_EXT@{VQEC\_\-RTP\_\-EXT}}
+\index{VQEC_RTP_EXT@{VQEC\_\-RTP\_\-EXT}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-EXT(a)}\label{group__structs_gcf72c27b8aed35f05485232bda822123}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}((((a)->combined_bits) & 0x1000)        \
+                            >> VQEC_RTP_EXT_SHIFT)
+\end{verbatim}\end{Code}
+\index{structs@{structs}!VQEC_RTP_EXT_SHIFT@{VQEC\_\-RTP\_\-EXT\_\-SHIFT}}
+\index{VQEC_RTP_EXT_SHIFT@{VQEC\_\-RTP\_\-EXT\_\-SHIFT}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-EXT\_\-SHIFT~12}\label{group__structs_g00f7c6b3cfd5bec96beafa9631e87216}
+
+
+\index{structs@{structs}!VQEC_RTP_MARKER@{VQEC\_\-RTP\_\-MARKER}}
+\index{VQEC_RTP_MARKER@{VQEC\_\-RTP\_\-MARKER}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-MARKER(a)}\label{group__structs_gc5708eacc70a8bb8aeafcd68db5c6df3}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}((((a)->combined_bits) & 0x0080)        \
+                            >> VQEC_RTP_MARKER_SHIFT)
+\end{verbatim}\end{Code}
+\index{structs@{structs}!VQEC_RTP_MARKER_SHIFT@{VQEC\_\-RTP\_\-MARKER\_\-SHIFT}}
+\index{VQEC_RTP_MARKER_SHIFT@{VQEC\_\-RTP\_\-MARKER\_\-SHIFT}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-MARKER\_\-SHIFT~7}\label{group__structs_g1d8231f39f336263f1c67c548a9cf655}
+
+
+\index{structs@{structs}!VQEC_RTP_PADDING@{VQEC\_\-RTP\_\-PADDING}}
+\index{VQEC_RTP_PADDING@{VQEC\_\-RTP\_\-PADDING}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-PADDING(a)}\label{group__structs_g6f872ace5442870e79d37dd8daac17b5}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}((((a)->combined_bits) & 0x2000)        \
+                            >> VQEC_RTP_PADDING_SHIFT)
+\end{verbatim}\end{Code}
+\index{structs@{structs}!VQEC_RTP_PADDING_SHIFT@{VQEC\_\-RTP\_\-PADDING\_\-SHIFT}}
+\index{VQEC_RTP_PADDING_SHIFT@{VQEC\_\-RTP\_\-PADDING\_\-SHIFT}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-PADDING\_\-SHIFT~13}\label{group__structs_gd71963d4f22105082f0647b35be4df2b}
+
+
+\index{structs@{structs}!VQEC_RTP_PAYLOAD@{VQEC\_\-RTP\_\-PAYLOAD}}
+\index{VQEC_RTP_PAYLOAD@{VQEC\_\-RTP\_\-PAYLOAD}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-PAYLOAD(a)}\label{group__structs_g00506bdab8e8ceee65e85a588c7f18f2}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}((((a)->combined_bits) & 0x007f)        \
+                            >> VQEC_RTP_PAYLOAD_SHIFT)
+\end{verbatim}\end{Code}
+\index{structs@{structs}!VQEC_RTP_PAYLOAD_SHIFT@{VQEC\_\-RTP\_\-PAYLOAD\_\-SHIFT}}
+\index{VQEC_RTP_PAYLOAD_SHIFT@{VQEC\_\-RTP\_\-PAYLOAD\_\-SHIFT}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-PAYLOAD\_\-SHIFT~0}\label{group__structs_g3cf978e75cffc9a29db1c950e6a84568}
+
+
+\index{structs@{structs}!VQEC_RTP_VERSION@{VQEC\_\-RTP\_\-VERSION}}
+\index{VQEC_RTP_VERSION@{VQEC\_\-RTP\_\-VERSION}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-VERSION(a)}\label{group__structs_g65529c17c4be577fad6b8c88a6626960}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}((((a)->combined_bits) & 0xc000)        \
+                            >> VQEC_RTP_VERSION_SHIFT)
+\end{verbatim}\end{Code}
+\index{structs@{structs}!VQEC_RTP_VERSION_SHIFT@{VQEC\_\-RTP\_\-VERSION\_\-SHIFT}}
+\index{VQEC_RTP_VERSION_SHIFT@{VQEC\_\-RTP\_\-VERSION\_\-SHIFT}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTP\_\-VERSION\_\-SHIFT~14}\label{group__structs_g32ede23c5df511d505f72e5ed99dbee5}
+
+
+\index{structs@{structs}!VQEC_UPDATER_VERSION_STRLEN@{VQEC\_\-UPDATER\_\-VERSION\_\-STRLEN}}
+\index{VQEC_UPDATER_VERSION_STRLEN@{VQEC\_\-UPDATER\_\-VERSION\_\-STRLEN}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-UPDATER\_\-VERSION\_\-STRLEN~33}\label{group__structs_g24aeb8e11f560407b08043b906d5e102}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{structs@{structs}!sdp_block_t@{sdp\_\-block\_\-t}}
+\index{sdp_block_t@{sdp\_\-block\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef char \bf{sdp\_\-block\_\-t}}\label{group__structs_g5ad720aeacf08bb2edf00d6d23ebc50c}
+
+
+\index{structs@{structs}!vqec_bind_params_t@{vqec\_\-bind\_\-params\_\-t}}
+\index{vqec_bind_params_t@{vqec\_\-bind\_\-params\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-bind\_\-params\_\-} \bf{vqec\_\-bind\_\-params\_\-t}}\label{group__structs_g8874cb6d3399bef6f642d6a2868576be}
+
+
+\index{structs@{structs}!vqec_ifclient_chan_event_args_t@{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-t}}
+\index{vqec_ifclient_chan_event_args_t@{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-}  \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-t}}\label{group__structs_g0b7c4936c875d054bf484d80c6a0e993}
+
+
+chan event call back function argument \index{structs@{structs}!vqec_ifclient_chan_event_cb_t@{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t}}
+\index{vqec_ifclient_chan_event_cb_t@{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-}  \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t}}\label{group__structs_g30849ea6195a02679a41a921799043bd}
+
+
+Methods which if registered will allow the client to signal a channel event. The callback is per channel basis. We use a structure here for easy extension in the future. \index{structs@{structs}!vqec_ifclient_chan_event_t@{vqec\_\-ifclient\_\-chan\_\-event\_\-t}}
+\index{vqec_ifclient_chan_event_t@{vqec\_\-ifclient\_\-chan\_\-event\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-}  \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-t}}\label{group__structs_g91a75d6a36f5171177568febfcb72700}
+
+
+chan event defined for chan event call back function. INACTIVE - triggered when incoming data for a channel has been active, but then stops NEW\_\-SOURCE - triggered when a channel's existing source changes (i.e. not when the channel's first source appears) \index{structs@{structs}!vqec_ifclient_dcr_stats_t@{vqec\_\-ifclient\_\-dcr\_\-stats\_\-t}}
+\index{vqec_ifclient_dcr_stats_t@{vqec\_\-ifclient\_\-dcr\_\-stats\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-dcr\_\-stats\_\-}  \bf{vqec\_\-ifclient\_\-dcr\_\-stats\_\-t}}\label{group__structs_gc57f999831bbb072545fb34ae3726fd8}
+
+
+Decoder statistics imported by the client. \index{structs@{structs}!vqec_ifclient_fastfill_abort_t@{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t}}
+\index{vqec_ifclient_fastfill_abort_t@{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t\_\-}  \bf{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t}}\label{group__structs_g5770ef1bff97a78fcec7b409bd1b3383}
+
+
+\index{structs@{structs}!vqec_ifclient_fastfill_cb_ops_t@{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t}}
+\index{vqec_ifclient_fastfill_cb_ops_t@{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-}  \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t}}\label{group__structs_g965f88201b7fd6680023a49e38c7b0bc}
+
+
+\index{structs@{structs}!vqec_ifclient_fastfill_params_t@{vqec\_\-ifclient\_\-fastfill\_\-params\_\-t}}
+\index{vqec_ifclient_fastfill_params_t@{vqec\_\-ifclient\_\-fastfill\_\-params\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-fastfill\_\-params\_\-}  \bf{vqec\_\-ifclient\_\-fastfill\_\-params\_\-t}}\label{group__structs_gc8179a594c72a807b110b067b2fcfce4}
+
+
+\index{structs@{structs}!vqec_ifclient_fastfill_status_t@{vqec\_\-ifclient\_\-fastfill\_\-status\_\-t}}
+\index{vqec_ifclient_fastfill_status_t@{vqec\_\-ifclient\_\-fastfill\_\-status\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-}  \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-t}}\label{group__structs_g401de2b13673d7c1aed365ef9896ab88}
+
+
+\index{structs@{structs}!vqec_ifclient_get_dcr_info_ops_t@{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t}}
+\index{vqec_ifclient_get_dcr_info_ops_t@{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-}  \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t}}\label{group__structs_gf7f22702611a3333676ec36e9bf5eb48}
+
+
+Methods which if registered will allow the client to control and report-on on the progress of various CC optimizations. We use a structure here for easy extension in the future. \index{structs@{structs}!vqec_ifclient_rcc_abort_t@{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t}}
+\index{vqec_ifclient_rcc_abort_t@{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t\_\-}  \bf{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t}}\label{group__structs_g0b18c80fa5b94f3509929843b5cdb08b}
+
+
+\index{structs@{structs}!vqec_ifclient_stats_channel_t@{vqec\_\-ifclient\_\-stats\_\-channel\_\-t}}
+\index{vqec_ifclient_stats_channel_t@{vqec\_\-ifclient\_\-stats\_\-channel\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-}  \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t}}\label{group__structs_gf550dc0ba28c32384aaec603f722857c}
+
+
+\index{structs@{structs}!vqec_ifclient_stats_t@{vqec\_\-ifclient\_\-stats\_\-t}}
+\index{vqec_ifclient_stats_t@{vqec\_\-ifclient\_\-stats\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-stats\_\-t\_\-}  \bf{vqec\_\-ifclient\_\-stats\_\-t}}\label{group__structs_g937716b9fbdcf9fc55c0c0c44368d07e}
+
+
+$\ast$ \index{structs@{structs}!vqec_ifclient_tmp_chan_params_t@{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-t}}
+\index{vqec_ifclient_tmp_chan_params_t@{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-}  \bf{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-t}}\label{group__structs_g3d791aed0e7218fa42bfea3773a5a6cd}
+
+
+Parameters when add a tmp chan \index{structs@{structs}!vqec_ifclient_updater_stats_t@{vqec\_\-ifclient\_\-updater\_\-stats\_\-t}}
+\index{vqec_ifclient_updater_stats_t@{vqec\_\-ifclient\_\-updater\_\-stats\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-updater\_\-stats\_\-t\_\-}  \bf{vqec\_\-ifclient\_\-updater\_\-stats\_\-t}}\label{group__structs_gc4fceb52573355b7bc572cc1b49d05aa}
+
+
+\index{structs@{structs}!vqec_rtphdr_t@{vqec\_\-rtphdr\_\-t}}
+\index{vqec_rtphdr_t@{vqec\_\-rtphdr\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-rtphdr\_\-t\_\-}  \bf{vqec\_\-rtphdr\_\-t}}\label{group__structs_g959a9f97647459e6d8d875347a828718}
+
+
+\index{structs@{structs}!vqec_sdp_handle_t@{vqec\_\-sdp\_\-handle\_\-t}}
+\index{vqec_sdp_handle_t@{vqec\_\-sdp\_\-handle\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef char$\ast$ \bf{vqec\_\-sdp\_\-handle\_\-t}}\label{group__structs_g99080185a89f9a9a14621886d40ad20d}
+
+
+vqec\_\-sdp\_\-handle\_\-t - defines the per tv channel globally unique identifier\begin{itemize}
+\item this field is really a NULL terminated text string\item in the form of a valid \char`\"{}o=\char`\"{} SDP description.\item See RFC 4456 for a description of the \char`\"{}o=\char`\"{} syntax. \end{itemize}
+\index{structs@{structs}!vqec_tuner_iter_t@{vqec\_\-tuner\_\-iter\_\-t}}
+\index{vqec_tuner_iter_t@{vqec\_\-tuner\_\-iter\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-tuner\_\-iter\_\-t\_\-}  \bf{vqec\_\-tuner\_\-iter\_\-t}}\label{group__structs_g37f72b7881759cca0d25c70e93fdca16}
+
+
+Tuner iterator structure. 
+
+\index{structs@{structs}!vqec_update_params_t@{vqec\_\-update\_\-params\_\-t}}
+\index{vqec_update_params_t@{vqec\_\-update\_\-params\_\-t}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct vqec\_\-update\_\-params\_\- \bf{vqec\_\-update\_\-params\_\-t}}\label{group__structs_gaa6ff9543c48fe548fd04ca654fdc03c}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{structs@{structs}!vqec_ifclient_chan_event_@{vqec\_\-ifclient\_\-chan\_\-event\_\-}}
+\index{vqec_ifclient_chan_event_@{vqec\_\-ifclient\_\-chan\_\-event\_\-}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-}}\label{group__structs_g92fc6fe4008bf0f53a88413fb72bba3b}
+
+
+chan event defined for chan event call back function. INACTIVE - triggered when incoming data for a channel has been active, but then stops NEW\_\-SOURCE - triggered when a channel's existing source changes (i.e. not when the channel's first source appears) \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_IFCLIENT_CHAN_EVENT_UNKNOWN@{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-UNKNOWN}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_CHAN_EVENT_UNKNOWN@{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-UNKNOWN}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-UNKNOWN\label{group__structs_gg92fc6fe4008bf0f53a88413fb72bba3bf6fe353118bcbe0a8933efb84dacafd7}
+}]\index{VQEC_IFCLIENT_CHAN_EVENT_INACTIVE@{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-INACTIVE}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_CHAN_EVENT_INACTIVE@{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-INACTIVE}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-INACTIVE\label{group__structs_gg92fc6fe4008bf0f53a88413fb72bba3b7a52d51261950d527bfdf5827b4e8eac}
+}]\index{VQEC_IFCLIENT_CHAN_EVENT_NEW_SOURCE@{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-NEW\_\-SOURCE}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_CHAN_EVENT_NEW_SOURCE@{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-NEW\_\-SOURCE}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-NEW\_\-SOURCE\label{group__structs_gg92fc6fe4008bf0f53a88413fb72bba3b1beb0e3a0a4a995e5337c3a554fab64d}
+}]\end{description}
+\end{Desc}
+
+\index{structs@{structs}!vqec_ifclient_fastfill_abort_t_@{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t\_\-}}
+\index{vqec_ifclient_fastfill_abort_t_@{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t\_\-}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t\_\-}}\label{group__structs_gde0a68da85ea4b5d0a7a72aa022a26fa}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_IFCLIENT_FASTFILL_ABORT_SERVER@{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-SERVER}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_FASTFILL_ABORT_SERVER@{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-SERVER}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-SERVER\label{group__structs_ggde0a68da85ea4b5d0a7a72aa022a26fac37fa1520c3ab5a8c325c2ee83bb3d6f}
+}]fastfill request rejected by VQE-S \index{VQEC_IFCLIENT_FASTFILL_ABORT_CLIENT@{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-CLIENT}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_FASTFILL_ABORT_CLIENT@{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-CLIENT}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-CLIENT\label{group__structs_ggde0a68da85ea4b5d0a7a72aa022a26fa08e4b12864d9dbe32f467c533bcb2e3b}
+}]RCC aborted \index{VQEC_IFCLIENT_FASTFILL_ABORT_MAX@{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-MAX}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_FASTFILL_ABORT_MAX@{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-MAX}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-MAX\label{group__structs_ggde0a68da85ea4b5d0a7a72aa022a26fa0c25326739ad28aefa48ca876db8a909}
+}]unused - MUST BE LAST \end{description}
+\end{Desc}
+
+\index{structs@{structs}!vqec_ifclient_rcc_abort_t_@{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t\_\-}}
+\index{vqec_ifclient_rcc_abort_t_@{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t\_\-}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t\_\-}}\label{group__structs_gb58f0c6f9cdc41f1f4aaf23ef43facbe}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_IFCLIENT_RCC_ABORT_SERVER_REJECT@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-SERVER\_\-REJECT}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_RCC_ABORT_SERVER_REJECT@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-SERVER\_\-REJECT}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-SERVER\_\-REJECT\label{group__structs_ggb58f0c6f9cdc41f1f4aaf23ef43facbe2aca0ff8e90b3e646f4de1240ce7c9dc}
+}]RCC request rejected by VQE-S \index{VQEC_IFCLIENT_RCC_ABORT_STUN_TIMEOUT@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-STUN\_\-TIMEOUT}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_RCC_ABORT_STUN_TIMEOUT@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-STUN\_\-TIMEOUT}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-STUN\_\-TIMEOUT\label{group__structs_ggb58f0c6f9cdc41f1f4aaf23ef43facbe45f3aa8aa1dcdf2611212ff81300a0b8}
+}]STUN response not rcvd from VQE-S \index{VQEC_IFCLIENT_RCC_ABORT_RESPONSE_TIMEOUT@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-RESPONSE\_\-TIMEOUT}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_RCC_ABORT_RESPONSE_TIMEOUT@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-RESPONSE\_\-TIMEOUT}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-RESPONSE\_\-TIMEOUT\label{group__structs_ggb58f0c6f9cdc41f1f4aaf23ef43facbe0b609fa4940cd775b0b8f857af8d3c91}
+}]APP packet not received from VQE-S \index{VQEC_IFCLIENT_RCC_ABORT_RESPONSE_INVALID@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-RESPONSE\_\-INVALID}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_RCC_ABORT_RESPONSE_INVALID@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-RESPONSE\_\-INVALID}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-RESPONSE\_\-INVALID\label{group__structs_ggb58f0c6f9cdc41f1f4aaf23ef43facbe8cc317c4d77de84837eb916aeb50cf4a}
+}]invalid contents within rcvd APP pkt \index{VQEC_IFCLIENT_RCC_ABORT_BURST_START@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-BURST\_\-START}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_RCC_ABORT_BURST_START@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-BURST\_\-START}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-BURST\_\-START\label{group__structs_ggb58f0c6f9cdc41f1f4aaf23ef43facbed02dad4fce4828a30970bddc0b74818e}
+}]first repair pkt not received in time \index{VQEC_IFCLIENT_RCC_ABORT_BURST_ACTIVITY@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-BURST\_\-ACTIVITY}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_RCC_ABORT_BURST_ACTIVITY@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-BURST\_\-ACTIVITY}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-BURST\_\-ACTIVITY\label{group__structs_ggb58f0c6f9cdc41f1f4aaf23ef43facbe72ef67e9f1b2a205999530b3f3ff0a2f}
+}]repair burst activity timed out \index{VQEC_IFCLIENT_RCC_ABORT_OTHER@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-OTHER}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_RCC_ABORT_OTHER@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-OTHER}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-OTHER\label{group__structs_ggb58f0c6f9cdc41f1f4aaf23ef43facbe6c4362a3ddb0f23f86e3e3f3b389e67c}
+}]internal errors, etc. \index{VQEC_IFCLIENT_RCC_ABORT_MAX@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-MAX}!structs@{structs}}\index{structs@{structs}!VQEC_IFCLIENT_RCC_ABORT_MAX@{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-MAX}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-MAX\label{group__structs_ggb58f0c6f9cdc41f1f4aaf23ef43facbe613aa45a60f76f3adb4c5f41e74d483d}
+}]unused - MUST BE LAST \end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{structs@{structs}!get_dcr_ops@{get\_\-dcr\_\-ops}}
+\index{get_dcr_ops@{get\_\-dcr\_\-ops}!structs@{structs}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t}$\ast$ get\_\-dcr\_\-ops (void)}\label{group__structs_gf17628598db78c225bf8811e1a8b5acc}
+
+

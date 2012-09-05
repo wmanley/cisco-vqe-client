@@ -1,0 +1,393 @@
+\section{vqec\_\-syscfg\_\- Struct Reference}
+\label{structvqec__syscfg__}\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+{\tt \#include $<$vqec\_\-syscfg.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+uint32\_\-t \bf{max\_\-tuners}
+\item 
+uint8\_\-t \bf{src\_\-ip\_\-filter\_\-enable}
+\item 
+char \bf{channel\_\-lineup} [VQEC\_\-MAX\_\-NAME\_\-LEN]
+\item 
+char \bf{network\_\-cfg\_\-pathname} [VQEC\_\-MAX\_\-NAME\_\-LEN]
+\item 
+char \bf{override\_\-cfg\_\-pathname} [VQEC\_\-MAX\_\-NAME\_\-LEN]
+\item 
+char \bf{index\_\-cfg\_\-pathname} [VQEC\_\-MAX\_\-NAME\_\-LEN]
+\item 
+boolean \bf{d\_\-vqec\_\-enable}
+\item 
+boolean \bf{qoe\_\-enable}
+\item 
+uint32\_\-t \bf{jitter\_\-buff\_\-size}
+\item 
+uint32\_\-t \bf{repair\_\-trigger\_\-point\_\-abs}
+\item 
+uint32\_\-t \bf{d\_\-repair\_\-trigger\_\-point}
+\item 
+uint32\_\-t \bf{pakpool\_\-size}
+\item 
+uint32\_\-t \bf{so\_\-rcvbuf}
+\item 
+uint32\_\-t \bf{strip\_\-rtp}
+\item 
+char \bf{input\_\-ifname} [VQEC\_\-MAX\_\-NAME\_\-LEN]
+\item 
+\bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-t} \bf{sig\_\-mode}
+\item 
+uint32\_\-t \bf{nat\_\-binding\_\-refresh\_\-interval}
+\item 
+uint32\_\-t \bf{max\_\-paksize}
+\item 
+uint32\_\-t \bf{cdi\_\-enable}
+\item 
+char \bf{domain\_\-name\_\-override} [VQEC\_\-MAX\_\-NAME\_\-LEN]
+\item 
+uint16\_\-t \bf{cli\_\-telnet\_\-port}
+\item 
+uint32\_\-t \bf{output\_\-pakq\_\-limit}
+\item 
+uint32\_\-t \bf{update\_\-window}
+\item 
+uint32\_\-t \bf{update\_\-interval\_\-max}
+\item 
+uint16\_\-t \bf{app\_\-paks\_\-per\_\-rcc}
+\item 
+uint32\_\-t \bf{error\_\-repair\_\-enable}
+\item 
+boolean \bf{error\_\-repair\_\-policer\_\-enable}
+\item 
+uint8\_\-t \bf{error\_\-repair\_\-policer\_\-rate}
+\item 
+uint16\_\-t \bf{error\_\-repair\_\-policer\_\-burst}
+\item 
+uint8\_\-t \bf{log\_\-level}
+\item 
+uint32\_\-t \bf{reorder\_\-delay\_\-abs}
+\item 
+uint32\_\-t \bf{d\_\-reorder\_\-delay}
+\item 
+uint32\_\-t \bf{vcds\_\-server\_\-ip}
+\item 
+uint16\_\-t \bf{vcds\_\-server\_\-port}
+\item 
+\bf{vqec\_\-tunercfg\_\-t} \bf{tuner\_\-list} [VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-TUNERS+1]
+\item 
+uint32\_\-t \bf{fec\_\-enable}
+\item 
+uint32\_\-t \bf{num\_\-byes}
+\item 
+uint32\_\-t \bf{bye\_\-delay}
+\item 
+uint8\_\-t \bf{rtcp\_\-dscp\_\-value}
+\item 
+uint32\_\-t \bf{deliver\_\-paks\_\-to\_\-user}
+\item 
+char \bf{cli\_\-ifname} [VQEC\_\-MAX\_\-NAME\_\-LEN]
+\item 
+uint32\_\-t \bf{max\_\-fastfill}
+\item 
+uint32\_\-t \bf{max\_\-receive\_\-bandwidth\_\-sd}
+\item 
+uint32\_\-t \bf{max\_\-receive\_\-bandwidth\_\-sd\_\-rcc}
+\item 
+uint32\_\-t \bf{max\_\-receive\_\-bandwidth\_\-hd}
+\item 
+uint32\_\-t \bf{max\_\-receive\_\-bandwidth\_\-hd\_\-rcc}
+\item 
+uint32\_\-t \bf{min\_\-hd\_\-stream\_\-bitrate}
+\item 
+uint32\_\-t \bf{app\_\-delay}
+\item 
+boolean \bf{integrated\_\-rtp\_\-fallback}
+\item 
+boolean \bf{udp\_\-passthru\_\-support}
+\item 
+uint32\_\-t \bf{vod\_\-cmd\_\-timeout}
+\item 
+uint32\_\-t \bf{vod\_\-max\_\-sessions}
+\item 
+\bf{vqec\_\-syscfg\_\-vod\_\-mode\_\-t} \bf{vod\_\-mode}
+\item 
+boolean \bf{stun\_\-optimization}
+\end{CompactItemize}
+
+
+\subsection{Field Documentation}
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!app_delay@{app\_\-delay}}
+\index{app_delay@{app\_\-delay}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::app\_\-delay}}\label{structvqec__syscfg___28d9ff5d265a12cdf83d3d7c2274db75}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!app_paks_per_rcc@{app\_\-paks\_\-per\_\-rcc}}
+\index{app_paks_per_rcc@{app\_\-paks\_\-per\_\-rcc}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{vqec\_\-syscfg\_\-::app\_\-paks\_\-per\_\-rcc}}\label{structvqec__syscfg___9258fee5836df2277e3de304d2899b8e}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!bye_delay@{bye\_\-delay}}
+\index{bye_delay@{bye\_\-delay}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::bye\_\-delay}}\label{structvqec__syscfg___99d1f9e5546bbc5819a03c027a01818a}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!cdi_enable@{cdi\_\-enable}}
+\index{cdi_enable@{cdi\_\-enable}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::cdi\_\-enable}}\label{structvqec__syscfg___f0accea16181835b1aea0b2855db8bc8}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!channel_lineup@{channel\_\-lineup}}
+\index{channel_lineup@{channel\_\-lineup}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-syscfg\_\-::channel\_\-lineup}[VQEC\_\-MAX\_\-NAME\_\-LEN]}\label{structvqec__syscfg___3fbb4041ed91e10c0c9557c26b821b4a}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!cli_ifname@{cli\_\-ifname}}
+\index{cli_ifname@{cli\_\-ifname}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-syscfg\_\-::cli\_\-ifname}[VQEC\_\-MAX\_\-NAME\_\-LEN]}\label{structvqec__syscfg___963196652a69dfc1891a806b80e5504a}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!cli_telnet_port@{cli\_\-telnet\_\-port}}
+\index{cli_telnet_port@{cli\_\-telnet\_\-port}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{vqec\_\-syscfg\_\-::cli\_\-telnet\_\-port}}\label{structvqec__syscfg___b49aac10db605dc6a48ffc89d38398e1}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!d_reorder_delay@{d\_\-reorder\_\-delay}}
+\index{d_reorder_delay@{d\_\-reorder\_\-delay}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::d\_\-reorder\_\-delay}}\label{structvqec__syscfg___00c72de104a0fa7cc6466e267b241a8a}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!d_repair_trigger_point@{d\_\-repair\_\-trigger\_\-point}}
+\index{d_repair_trigger_point@{d\_\-repair\_\-trigger\_\-point}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::d\_\-repair\_\-trigger\_\-point}}\label{structvqec__syscfg___091012cee443ca360a17ea802607f44f}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!d_vqec_enable@{d\_\-vqec\_\-enable}}
+\index{d_vqec_enable@{d\_\-vqec\_\-enable}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-syscfg\_\-::d\_\-vqec\_\-enable}}\label{structvqec__syscfg___5fdab80cc18721c967d54dd695e86593}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!deliver_paks_to_user@{deliver\_\-paks\_\-to\_\-user}}
+\index{deliver_paks_to_user@{deliver\_\-paks\_\-to\_\-user}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::deliver\_\-paks\_\-to\_\-user}}\label{structvqec__syscfg___c6e984bfab78fc63149b080d790421e7}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!domain_name_override@{domain\_\-name\_\-override}}
+\index{domain_name_override@{domain\_\-name\_\-override}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-syscfg\_\-::domain\_\-name\_\-override}[VQEC\_\-MAX\_\-NAME\_\-LEN]}\label{structvqec__syscfg___bf00ef32b550274e5cdf8338611b3a45}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!error_repair_enable@{error\_\-repair\_\-enable}}
+\index{error_repair_enable@{error\_\-repair\_\-enable}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::error\_\-repair\_\-enable}}\label{structvqec__syscfg___a1400b0080cb2d0e9e995d1ce9512e94}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!error_repair_policer_burst@{error\_\-repair\_\-policer\_\-burst}}
+\index{error_repair_policer_burst@{error\_\-repair\_\-policer\_\-burst}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{vqec\_\-syscfg\_\-::error\_\-repair\_\-policer\_\-burst}}\label{structvqec__syscfg___43bec91c548cd3131a09cb01ffa963b2}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!error_repair_policer_enable@{error\_\-repair\_\-policer\_\-enable}}
+\index{error_repair_policer_enable@{error\_\-repair\_\-policer\_\-enable}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-syscfg\_\-::error\_\-repair\_\-policer\_\-enable}}\label{structvqec__syscfg___b095f97320b07053c1ea2987eae1c114}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!error_repair_policer_rate@{error\_\-repair\_\-policer\_\-rate}}
+\index{error_repair_policer_rate@{error\_\-repair\_\-policer\_\-rate}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-syscfg\_\-::error\_\-repair\_\-policer\_\-rate}}\label{structvqec__syscfg___d98b339acb865c3b7f4796bcb634585e}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!fec_enable@{fec\_\-enable}}
+\index{fec_enable@{fec\_\-enable}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::fec\_\-enable}}\label{structvqec__syscfg___92ec8d09004a8f12b5bc7e18f7567892}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!index_cfg_pathname@{index\_\-cfg\_\-pathname}}
+\index{index_cfg_pathname@{index\_\-cfg\_\-pathname}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-syscfg\_\-::index\_\-cfg\_\-pathname}[VQEC\_\-MAX\_\-NAME\_\-LEN]}\label{structvqec__syscfg___9ee3018bc6e1470f9900be6b329fbc18}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!input_ifname@{input\_\-ifname}}
+\index{input_ifname@{input\_\-ifname}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-syscfg\_\-::input\_\-ifname}[VQEC\_\-MAX\_\-NAME\_\-LEN]}\label{structvqec__syscfg___8a51b27c9c2b676fd1f255ca43115512}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!integrated_rtp_fallback@{integrated\_\-rtp\_\-fallback}}
+\index{integrated_rtp_fallback@{integrated\_\-rtp\_\-fallback}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-syscfg\_\-::integrated\_\-rtp\_\-fallback}}\label{structvqec__syscfg___cfd0bd3df89f3d8e893ca82278d2bac2}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!jitter_buff_size@{jitter\_\-buff\_\-size}}
+\index{jitter_buff_size@{jitter\_\-buff\_\-size}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::jitter\_\-buff\_\-size}}\label{structvqec__syscfg___c67fe7bf964b74da779ff6a5678b949e}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!log_level@{log\_\-level}}
+\index{log_level@{log\_\-level}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-syscfg\_\-::log\_\-level}}\label{structvqec__syscfg___fe80455b883ea4049028944dcfaaf1f1}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!max_fastfill@{max\_\-fastfill}}
+\index{max_fastfill@{max\_\-fastfill}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::max\_\-fastfill}}\label{structvqec__syscfg___a5b655e8e8c81ac6fd0a477fb39fce02}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!max_paksize@{max\_\-paksize}}
+\index{max_paksize@{max\_\-paksize}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::max\_\-paksize}}\label{structvqec__syscfg___4738260a27383a7ac89d6e26ad68f0af}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!max_receive_bandwidth_hd@{max\_\-receive\_\-bandwidth\_\-hd}}
+\index{max_receive_bandwidth_hd@{max\_\-receive\_\-bandwidth\_\-hd}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::max\_\-receive\_\-bandwidth\_\-hd}}\label{structvqec__syscfg___0e154685b012329058cf2acf13231b65}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!max_receive_bandwidth_hd_rcc@{max\_\-receive\_\-bandwidth\_\-hd\_\-rcc}}
+\index{max_receive_bandwidth_hd_rcc@{max\_\-receive\_\-bandwidth\_\-hd\_\-rcc}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::max\_\-receive\_\-bandwidth\_\-hd\_\-rcc}}\label{structvqec__syscfg___e53a73fc9924b197062fc66895c51122}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!max_receive_bandwidth_sd@{max\_\-receive\_\-bandwidth\_\-sd}}
+\index{max_receive_bandwidth_sd@{max\_\-receive\_\-bandwidth\_\-sd}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::max\_\-receive\_\-bandwidth\_\-sd}}\label{structvqec__syscfg___1581d77e4a6647cec1285e922a3fc0d6}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!max_receive_bandwidth_sd_rcc@{max\_\-receive\_\-bandwidth\_\-sd\_\-rcc}}
+\index{max_receive_bandwidth_sd_rcc@{max\_\-receive\_\-bandwidth\_\-sd\_\-rcc}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::max\_\-receive\_\-bandwidth\_\-sd\_\-rcc}}\label{structvqec__syscfg___b4d2f4f023c252fb10763af6414e1707}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!max_tuners@{max\_\-tuners}}
+\index{max_tuners@{max\_\-tuners}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::max\_\-tuners}}\label{structvqec__syscfg___c40ca5380b69d409471ddcd7477e5ad1}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!min_hd_stream_bitrate@{min\_\-hd\_\-stream\_\-bitrate}}
+\index{min_hd_stream_bitrate@{min\_\-hd\_\-stream\_\-bitrate}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::min\_\-hd\_\-stream\_\-bitrate}}\label{structvqec__syscfg___b84687b1bf259d1d92e6a4ce64cf2198}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!nat_binding_refresh_interval@{nat\_\-binding\_\-refresh\_\-interval}}
+\index{nat_binding_refresh_interval@{nat\_\-binding\_\-refresh\_\-interval}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::nat\_\-binding\_\-refresh\_\-interval}}\label{structvqec__syscfg___b2684ed2e7e32a24131135d1734b2d65}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!network_cfg_pathname@{network\_\-cfg\_\-pathname}}
+\index{network_cfg_pathname@{network\_\-cfg\_\-pathname}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-syscfg\_\-::network\_\-cfg\_\-pathname}[VQEC\_\-MAX\_\-NAME\_\-LEN]}\label{structvqec__syscfg___441e13821fb92cc5c1266184c0d4eb80}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!num_byes@{num\_\-byes}}
+\index{num_byes@{num\_\-byes}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::num\_\-byes}}\label{structvqec__syscfg___f33a13a22f8b6895149c004699507c45}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!output_pakq_limit@{output\_\-pakq\_\-limit}}
+\index{output_pakq_limit@{output\_\-pakq\_\-limit}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::output\_\-pakq\_\-limit}}\label{structvqec__syscfg___f0b88300d85ec8a8f34cd5a160711979}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!override_cfg_pathname@{override\_\-cfg\_\-pathname}}
+\index{override_cfg_pathname@{override\_\-cfg\_\-pathname}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{vqec\_\-syscfg\_\-::override\_\-cfg\_\-pathname}[VQEC\_\-MAX\_\-NAME\_\-LEN]}\label{structvqec__syscfg___122fa0c73a96900babf0a022c2d2403c}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!pakpool_size@{pakpool\_\-size}}
+\index{pakpool_size@{pakpool\_\-size}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::pakpool\_\-size}}\label{structvqec__syscfg___b5d26b997ac58557cb961c8d3442d511}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!qoe_enable@{qoe\_\-enable}}
+\index{qoe_enable@{qoe\_\-enable}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-syscfg\_\-::qoe\_\-enable}}\label{structvqec__syscfg___1d226586d7a48a45b0ad90f0f0482c6e}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!reorder_delay_abs@{reorder\_\-delay\_\-abs}}
+\index{reorder_delay_abs@{reorder\_\-delay\_\-abs}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::reorder\_\-delay\_\-abs}}\label{structvqec__syscfg___021a9c66f0e2845b12e70b2ded53b0d4}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!repair_trigger_point_abs@{repair\_\-trigger\_\-point\_\-abs}}
+\index{repair_trigger_point_abs@{repair\_\-trigger\_\-point\_\-abs}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::repair\_\-trigger\_\-point\_\-abs}}\label{structvqec__syscfg___a8825c46bb2a833c865a91ef34a929aa}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!rtcp_dscp_value@{rtcp\_\-dscp\_\-value}}
+\index{rtcp_dscp_value@{rtcp\_\-dscp\_\-value}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-syscfg\_\-::rtcp\_\-dscp\_\-value}}\label{structvqec__syscfg___82c9b60de52dfa3f769665eee3d421b6}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!sig_mode@{sig\_\-mode}}
+\index{sig_mode@{sig\_\-mode}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-t} \bf{vqec\_\-syscfg\_\-::sig\_\-mode}}\label{structvqec__syscfg___bafff6303c774699313c6302a426e4d9}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!so_rcvbuf@{so\_\-rcvbuf}}
+\index{so_rcvbuf@{so\_\-rcvbuf}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::so\_\-rcvbuf}}\label{structvqec__syscfg___bbae01a96a6dd7fc6e71f3b93e4ced76}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!src_ip_filter_enable@{src\_\-ip\_\-filter\_\-enable}}
+\index{src_ip_filter_enable@{src\_\-ip\_\-filter\_\-enable}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t \bf{vqec\_\-syscfg\_\-::src\_\-ip\_\-filter\_\-enable}}\label{structvqec__syscfg___9c64023b8abd557791a2a9767f738d3a}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!strip_rtp@{strip\_\-rtp}}
+\index{strip_rtp@{strip\_\-rtp}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::strip\_\-rtp}}\label{structvqec__syscfg___fa21770606076d44cb886b31773cffac}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!stun_optimization@{stun\_\-optimization}}
+\index{stun_optimization@{stun\_\-optimization}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-syscfg\_\-::stun\_\-optimization}}\label{structvqec__syscfg___ed5a5d82456c4873d651f03f7249012b}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!tuner_list@{tuner\_\-list}}
+\index{tuner_list@{tuner\_\-list}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-tunercfg\_\-t} \bf{vqec\_\-syscfg\_\-::tuner\_\-list}[VQEC\_\-SYSCFG\_\-MAX\_\-MAX\_\-TUNERS+1]}\label{structvqec__syscfg___4195c428d02fbe8f3efc5388b5bae74a}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!udp_passthru_support@{udp\_\-passthru\_\-support}}
+\index{udp_passthru_support@{udp\_\-passthru\_\-support}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{vqec\_\-syscfg\_\-::udp\_\-passthru\_\-support}}\label{structvqec__syscfg___9942cf6218dc70539e2eec44880618e1}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!update_interval_max@{update\_\-interval\_\-max}}
+\index{update_interval_max@{update\_\-interval\_\-max}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::update\_\-interval\_\-max}}\label{structvqec__syscfg___425f1f8dc28fd4879d8616778351aab3}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!update_window@{update\_\-window}}
+\index{update_window@{update\_\-window}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::update\_\-window}}\label{structvqec__syscfg___4fc95d480d2d8b6c60e096b78c9ae4bd}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!vcds_server_ip@{vcds\_\-server\_\-ip}}
+\index{vcds_server_ip@{vcds\_\-server\_\-ip}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::vcds\_\-server\_\-ip}}\label{structvqec__syscfg___9acd227ff1b7d3b98cbfd46c9df9ec24}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!vcds_server_port@{vcds\_\-server\_\-port}}
+\index{vcds_server_port@{vcds\_\-server\_\-port}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t \bf{vqec\_\-syscfg\_\-::vcds\_\-server\_\-port}}\label{structvqec__syscfg___64e93bb2edaf3179d85a4d5350141952}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!vod_cmd_timeout@{vod\_\-cmd\_\-timeout}}
+\index{vod_cmd_timeout@{vod\_\-cmd\_\-timeout}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::vod\_\-cmd\_\-timeout}}\label{structvqec__syscfg___7673262b1c72f7928683ff3f686283cb}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!vod_max_sessions@{vod\_\-max\_\-sessions}}
+\index{vod_max_sessions@{vod\_\-max\_\-sessions}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-syscfg\_\-::vod\_\-max\_\-sessions}}\label{structvqec__syscfg___1bcedf3d7b957fa49891f54db077fed5}
+
+
+\index{vqec_syscfg_@{vqec\_\-syscfg\_\-}!vod_mode@{vod\_\-mode}}
+\index{vod_mode@{vod\_\-mode}!vqec_syscfg_@{vqec\_\-syscfg\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-syscfg\_\-vod\_\-mode\_\-t} \bf{vqec\_\-syscfg\_\-::vod\_\-mode}}\label{structvqec__syscfg___a4e01a83e599c34fff913f287811f703}
+
+
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-syscfg.h}\end{CompactItemize}

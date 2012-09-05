@@ -1,0 +1,1013 @@
+\section{vqec\_\-cli\_\-register.c File Reference}
+\label{vqec__cli__register_8c}\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+VQE-C CLI command definition utilizing vqec\_\-cli. VQEC uses CLI commands for providing commands for test, debug and diagnostics via telnet. 
+
+{\tt \#include $<$utils/strl.h$>$}\par
+{\tt \#include $<$sys/stat.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-assert\_\-macros.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-private.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-stream\_\-output\_\-thread\_\-mgr.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-cli\_\-register.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-igmp.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-lock\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-gap\_\-reporter.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-drop.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-version.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqe\_\-port\_\-macros.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-pthread.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-cli.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-debug.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-tuner.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-updater.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-nat\_\-interface.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-upcall\_\-event.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-cli\_\-interface.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-dp\_\-api.h\char`\"{}}\par
+{\tt \#include $<$log/vqe\_\-cfg\_\-syslog\_\-def.h$>$}\par
+{\tt \#include $<$log/vqe\_\-cfg\_\-debug.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{UT\_\-STATIC}~static
+\item 
+\#define \bf{VQEC\_\-PRIVILEGE\_\-INIT\_\-ONLY}~100
+\item 
+\#define \bf{VQEC\_\-MAXCMDLEN}~256
+\item 
+\#define \bf{VQEC\_\-MAXHELPLEN}~512
+\item 
+\#define \bf{VQEC\_\-CNT1}~\char`\"{}\%-13llu \char`\"{}
+\item 
+\#define \bf{VQEC\_\-CNT2}~\char`\"{}\%llu (\%llu) \char`\"{}
+\item 
+\#define \bf{VQEC\_\-CNT3}~\char`\"{}\%-10d\char`\"{}
+\item 
+\#define \bf{VQEC\_\-NA}~\char`\"{}-             \char`\"{}
+\item 
+\#define \bf{INFINITY\_\-U64}~(-1)
+\item 
+\#define \bf{CHAN\_\-STATUS\_\-STRLEN}~1024
+\item 
+\#define \bf{VQEC\_\-DP\_\-IPC\_\-GET\_\-DEBUG\_\-FLAG}(name, flag)
+\item 
+\#define \bf{VQEC\_\-CMD\_\-OVERRIDE\_\-PARAMS\_\-MAX}~(50)
+\item 
+\#define \bf{VQEC\_\-CMD\_\-BUFFER\_\-LINE\_\-MAX}~(2$\ast$VQEC\_\-MAX\_\-NAME\_\-LEN+1)
+\item 
+\#define \bf{ARG\_\-STRLEN}~64
+\item 
+\#define \bf{VQEC\_\-PARSE\_\-ADDR\_\-PARAM}(\_\-name, \_\-field)
+\item 
+\#define \bf{VQEC\_\-PARSE\_\-PORT\_\-PARAM}(\_\-name, \_\-field)
+\item 
+\#define \bf{VQEC\_\-PARSE\_\-INT\_\-PARAM}(\_\-name, \_\-field, \_\-type)
+\item 
+\#define \bf{VQEC\_\-PARSE\_\-ENABLE\_\-PARAM}(\_\-name, \_\-field)
+\item 
+\#define \bf{VQEC\_\-PARSE\_\-XRENABLE\_\-PARAM}(\_\-name, \_\-field)
+\item 
+\#define \bf{VQEC\_\-PARSE\_\-XRFLAGS\_\-PARAM}(\_\-name, \_\-field)
+\item 
+\#define \bf{VQEC\_\-PRINT\_\-ADDR\_\-PARAM}(\_\-name, \_\-field)
+\item 
+\#define \bf{VQEC\_\-PRINT\_\-PORT\_\-PARAM}(\_\-name, \_\-field)~fprintf(f, \char`\"{}\%s \%hu \char`\"{}, \_\-name, ntohs(cfg $\rightarrow$ \_\-field))
+\item 
+\#define \bf{VQEC\_\-PRINT\_\-INT\_\-PARAM}(\_\-name, \_\-field, \_\-format)~fprintf(f, \char`\"{}\%s \char`\"{} \_\-format \char`\"{} \char`\"{}, \_\-name, cfg $\rightarrow$ \_\-field)
+\item 
+\#define \bf{VQEC\_\-PRINT\_\-XRFLAGS\_\-PARAM}(\_\-name, \_\-field)
+\item 
+\#define \bf{VQEC\_\-PRINT\_\-ENABLE\_\-PARAM}(\_\-name, \_\-field)
+\item 
+\#define \bf{VQEC\_\-PRINT\_\-XRENABLE\_\-PARAM}(\_\-name, \_\-field)
+\item 
+\#define \bf{VQEC\_\-CLI\_\-CLIENT\_\-MAX}~1
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+UT\_\-STATIC void \bf{vqec\_\-enable\_\-debugs\_\-goto\_\-cli} (boolean ena)
+\item 
+UT\_\-STATIC void \bf{vqec\_\-str\_\-to\_\-lower} (char $\ast$output\-String, const char $\ast$in\-String)
+\item 
+int \bf{vqec\_\-str\_\-match} (char $\ast$s, char $\ast$params[$\,$])
+\item 
+int \bf{vqec\_\-check\_\-args\_\-for\_\-help\_\-char} (char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC void \bf{vqec\_\-print\_\-callback} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$string, int string\_\-len)
+\item 
+UT\_\-STATIC unsigned int \bf{vqec\_\-set\_\-sc\_\-options\_\-flag} (char $\ast$argv[$\,$], int argc, struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+UT\_\-STATIC unsigned int \bf{vqec\_\-set\_\-st\_\-options\_\-flag} (char $\ast$argv[$\,$], int argc, struct \bf{vqec\_\-cli\_\-def} $\ast$cli, vqec\_\-tunerid\_\-t $\ast$ptr\_\-tuner\_\-id)
+\item 
+UT\_\-STATIC void \bf{vqec\_\-cmd\_\-show\_\-counters\_\-dump} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, const char $\ast$name, const \bf{vqec\_\-ifclient\_\-common\_\-stats\_\-t} $\ast$stats)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-show\_\-tuner\_\-output} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, unsigned int options\_\-flag, vqec\_\-tunerid\_\-t vqec\_\-tuner\_\-id)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-tuner} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+int \bf{cli\_\-display\_\-chan\_\-stats} (char $\ast$chan\_\-url, struct \bf{vqec\_\-cli\_\-def} $\ast$cli, boolean cumulative)
+\item 
+boolean \bf{build\_\-chan\_\-url\_\-from\_\-idx} (int index, char $\ast$chan\_\-url\_\-string, channel\_\-cfg\_\-t $\ast$$\ast$ptr\_\-chan)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-channel} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-drop} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-update} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-error\_\-repair} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-fec} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-pak\_\-pool} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-counters} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-debug} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-system\_\-config} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int32\_\-t \bf{vqec\_\-cmd\_\-show\_\-nat} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int32\_\-t \bf{vqec\_\-cmd\_\-show\_\-ipc} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int32\_\-t \bf{vqec\_\-cmd\_\-show\_\-proxy\_\-igmp} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int32\_\-t \bf{vqec\_\-cmd\_\-show\_\-dp} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-drop\_\-interval} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-drop\_\-percentage} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-drop\_\-enable} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-drop\_\-disable} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-error\_\-repair\_\-enable} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-error\_\-repair\_\-disable} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-enable} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-disable} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-rate} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-burst} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-update} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+static void \bf{vqec\_\-cmd\_\-tuner\_\-bind\_\-print\_\-usage} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+static boolean \bf{vqec\_\-cmd\_\-is\_\-str\_\-uint32} (char $\ast$str, uint32\_\-t len)
+\item 
+static void \bf{fast\-Fill\-Start\-Handler} (int32\_\-t context\_\-id, \bf{vqec\_\-ifclient\_\-fastfill\_\-params\_\-t} $\ast$params)
+\item 
+static void \bf{fast\-Fill\-Abort\-Handler} (int32\_\-t context\_\-id, \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-t} $\ast$status)
+\item 
+static void \bf{fast\-Fill\-Done\-Handler} (int32\_\-t context\_\-id, \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-t} $\ast$status)
+\item 
+static boolean \bf{vqec\_\-cmd\_\-parse\_\-chan\_\-param} (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg, char $\ast$param\_\-name, char $\ast$param\_\-value, int $\ast$cur\_\-arg)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-tuner\_\-bind} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-channel\_\-tr135} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-tuner\_\-unbind} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-tuner\_\-create} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-tuner\_\-destroy} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+void \bf{vqec\_\-cmd\_\-parse\_\-print\_\-params} (FILE $\ast$f, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$cfg, boolean newline)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-channel\_\-update} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-parse\_\-sdp} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-fec\_\-enable} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-fec\_\-disable} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-clear\_\-counters} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+static void \bf{vqec\_\-debug\_\-en\_\-module\_\-flags} (\bf{vqec\_\-cli\_\-debug\_\-type\_\-t} type, boolean enabled)
+\item 
+int \bf{vqec\_\-debug\_\-func} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-send\_\-debugs\_\-to\_\-cli\_\-enable} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-send\_\-debugs\_\-to\_\-cli\_\-disable} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-stream\_\-output} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-stream\_\-output} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+static void \bf{vqec\_\-cmd\_\-test\_\-dp\_\-reader\_\-print\_\-usage} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-test\_\-dp\_\-reader} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-show} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-off} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-on} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-reset} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-monitor\_\-benchmark\_\-show} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-monitor\_\-benchmark\_\-off} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-monitor\_\-benchmark\_\-on} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+UT\_\-STATIC int \bf{vqec\_\-cmd\_\-show\_\-tech\_\-support} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$command, char $\ast$argv[$\,$], int argc)
+\item 
+void \bf{vqec\_\-register\_\-show\_\-cmds} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+void \bf{vqec\_\-register\_\-drop\_\-commands} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, struct \bf{vqec\_\-cli\_\-command} $\ast$cmd\_\-node, boolean deprecated)
+\item 
+void \bf{vqec\_\-register\_\-global\_\-cmds} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+void \bf{vqec\_\-register\_\-test\_\-cmds} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+void \bf{vqec\_\-register\_\-clear\_\-cmds} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+\bf{vqec\_\-cli\_\-command} $\ast$ \bf{vqec\_\-cli\_\-register\_\-debug\_\-values} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, struct \bf{vqec\_\-cli\_\-command} $\ast$parent, char $\ast$command, int($\ast$callback)(struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$, char $\ast$$\ast$, int), int privilege, int mode, char $\ast$help)
+\item 
+\bf{vqec\_\-cli\_\-command} $\ast$ \bf{vqec\_\-cli\_\-register\_\-debug\_\-cmd} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli, struct \bf{vqec\_\-cli\_\-command} $\ast$parent, char $\ast$command, int($\ast$callback)(struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$, char $\ast$$\ast$, int), int privilege, int mode, char $\ast$help)
+\item 
+void \bf{vqec\_\-register\_\-debug\_\-cmds} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+void \bf{vqec\_\-register\_\-hag\_\-cmds} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+void \bf{vqec\_\-register\_\-monitor\_\-cmds} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+void \bf{vqec\_\-register\_\-parse\_\-cmds} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+static void $\ast$ \bf{vqec\_\-cli\_\-loop\_\-thread} (void $\ast$arg)
+\item 
+int \bf{vqec\_\-cli\_\-loop\_\-wrapper} (uint16\_\-t cli\_\-port, in\_\-addr\_\-t cli\_\-if\_\-addr)
+\item 
+int \bf{vqec\_\-get\_\-cli\_\-fd} (void $\ast$cli\_\-handle)
+\item 
+void $\ast$ \bf{vqec\_\-cli\_\-startup} (void)
+\item 
+void \bf{vqec\_\-destroy\_\-cli} (void)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+static int32\_\-t \bf{g\_\-vqec\_\-cli\_\-tcpsock} = -1
+\item 
+static void $\ast$ \bf{g\_\-cli\_\-handle}
+\item 
+static boolean \bf{s\_\-vqec\_\-debugs\_\-goto\_\-cli\_\-enabled} = \bf{TRUE}
+\item 
+static \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t} \bf{fast\-Fill\-Ops}
+\item 
+char \bf{id\_\-name\_\-pair} [32][VQEC\_\-MAX\_\-NAME\_\-LEN]
+\item 
+static uint32\_\-t \bf{g\_\-cli\_\-client\_\-count} = 0
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+VQE-C CLI command definition utilizing vqec\_\-cli. VQEC uses CLI commands for providing commands for test, debug and diagnostics via telnet. 
+
+
+
+\subsection{Define Documentation}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!ARG_STRLEN@{ARG\_\-STRLEN}}
+\index{ARG_STRLEN@{ARG\_\-STRLEN}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ARG\_\-STRLEN~64}\label{vqec__cli__register_8c_c70560c96c1f5c2dc3eecfe6a8634c2e}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!CHAN_STATUS_STRLEN@{CHAN\_\-STATUS\_\-STRLEN}}
+\index{CHAN_STATUS_STRLEN@{CHAN\_\-STATUS\_\-STRLEN}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define CHAN\_\-STATUS\_\-STRLEN~1024}\label{vqec__cli__register_8c_5de53fb0f1b9c4c5e7fcb6fba093d44c}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!INFINITY_U64@{INFINITY\_\-U64}}
+\index{INFINITY_U64@{INFINITY\_\-U64}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define INFINITY\_\-U64~(-1)}\label{vqec__cli__register_8c_9ba8c7435b14a9a69624387470ccb3ec}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!UT_STATIC@{UT\_\-STATIC}}
+\index{UT_STATIC@{UT\_\-STATIC}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UT\_\-STATIC~static}\label{vqec__cli__register_8c_840be0a802b42af3ce4430a7173caa40}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_CLI_CLIENT_MAX@{VQEC\_\-CLI\_\-CLIENT\_\-MAX}}
+\index{VQEC_CLI_CLIENT_MAX@{VQEC\_\-CLI\_\-CLIENT\_\-MAX}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CLI\_\-CLIENT\_\-MAX~1}\label{vqec__cli__register_8c_109a1e708ff2f9e7c74f1a14cb420a14}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_CMD_BUFFER_LINE_MAX@{VQEC\_\-CMD\_\-BUFFER\_\-LINE\_\-MAX}}
+\index{VQEC_CMD_BUFFER_LINE_MAX@{VQEC\_\-CMD\_\-BUFFER\_\-LINE\_\-MAX}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CMD\_\-BUFFER\_\-LINE\_\-MAX~(2$\ast$VQEC\_\-MAX\_\-NAME\_\-LEN+1)}\label{vqec__cli__register_8c_851388d94997a74274eeaf32bab06836}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_CMD_OVERRIDE_PARAMS_MAX@{VQEC\_\-CMD\_\-OVERRIDE\_\-PARAMS\_\-MAX}}
+\index{VQEC_CMD_OVERRIDE_PARAMS_MAX@{VQEC\_\-CMD\_\-OVERRIDE\_\-PARAMS\_\-MAX}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CMD\_\-OVERRIDE\_\-PARAMS\_\-MAX~(50)}\label{vqec__cli__register_8c_c0cb8a365a2a4638801bed0c8f76771b}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_CNT1@{VQEC\_\-CNT1}}
+\index{VQEC_CNT1@{VQEC\_\-CNT1}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CNT1~\char`\"{}\%-13llu \char`\"{}}\label{vqec__cli__register_8c_5f93c94132c12e2bb3f3760b00bdeea8}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_CNT2@{VQEC\_\-CNT2}}
+\index{VQEC_CNT2@{VQEC\_\-CNT2}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CNT2~\char`\"{}\%llu (\%llu) \char`\"{}}\label{vqec__cli__register_8c_0c08906a616e55085ca700f68d2074f2}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_CNT3@{VQEC\_\-CNT3}}
+\index{VQEC_CNT3@{VQEC\_\-CNT3}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CNT3~\char`\"{}\%-10d\char`\"{}}\label{vqec__cli__register_8c_a3699237ee23d86dfe425f24e56aeb9b}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_DP_IPC_GET_DEBUG_FLAG@{VQEC\_\-DP\_\-IPC\_\-GET\_\-DEBUG\_\-FLAG}}
+\index{VQEC_DP_IPC_GET_DEBUG_FLAG@{VQEC\_\-DP\_\-IPC\_\-GET\_\-DEBUG\_\-FLAG}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-DP\_\-IPC\_\-GET\_\-DEBUG\_\-FLAG(name, flag)}\label{vqec__cli__register_8c_5915c142a6a1d7bbb9256e702341a80f}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}({                                                                  \
+        *flag = FALSE;                                                  \
+        (void)vqec_dp_debug_flag_get(name, flag);                       \
+        *flag;                                                          \
+    })
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_MAXCMDLEN@{VQEC\_\-MAXCMDLEN}}
+\index{VQEC_MAXCMDLEN@{VQEC\_\-MAXCMDLEN}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MAXCMDLEN~256}\label{vqec__cli__register_8c_e696185ee3b251188551474f7345c3c6}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_MAXHELPLEN@{VQEC\_\-MAXHELPLEN}}
+\index{VQEC_MAXHELPLEN@{VQEC\_\-MAXHELPLEN}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MAXHELPLEN~512}\label{vqec__cli__register_8c_0e807b7f02dbb9619a18aa2c780626a5}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_NA@{VQEC\_\-NA}}
+\index{VQEC_NA@{VQEC\_\-NA}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-NA~\char`\"{}-             \char`\"{}}\label{vqec__cli__register_8c_7aa77462b4641ea331356a502fd6e1c7}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PARSE_ADDR_PARAM@{VQEC\_\-PARSE\_\-ADDR\_\-PARAM}}
+\index{VQEC_PARSE_ADDR_PARAM@{VQEC\_\-PARSE\_\-ADDR\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PARSE\_\-ADDR\_\-PARAM(\_\-name, \_\-field)}\label{vqec__cli__register_8c_e45a69ea2bd339ae55428e5b28092c84}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}if (!strncmp(_name, param_name, ARG_STRLEN)) {              \
+        temp_addr.s_addr = inet_addr(param_value);              \
+        cfg->_field = temp_addr;                                \
+        inet_ntop(AF_INET, &cfg->_field, tmp, INET_ADDRSTRLEN); \
+        /* dotted-decimal format check */                       \
+        if (strncmp(param_value, tmp, INET_ADDRSTRLEN)) {       \
+            return FALSE;                                       \
+        }                                                       \
+    } else
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PARSE_ENABLE_PARAM@{VQEC\_\-PARSE\_\-ENABLE\_\-PARAM}}
+\index{VQEC_PARSE_ENABLE_PARAM@{VQEC\_\-PARSE\_\-ENABLE\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PARSE\_\-ENABLE\_\-PARAM(\_\-name, \_\-field)}\label{vqec__cli__register_8c_b164951881635f913d165ac15c79523a}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}if (!strncmp(_name, param_name, ARG_STRLEN)) {      \
+        cfg->_field = TRUE;                             \
+    } else
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PARSE_INT_PARAM@{VQEC\_\-PARSE\_\-INT\_\-PARAM}}
+\index{VQEC_PARSE_INT_PARAM@{VQEC\_\-PARSE\_\-INT\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PARSE\_\-INT\_\-PARAM(\_\-name, \_\-field, \_\-type)}\label{vqec__cli__register_8c_9862c7c2dc0cb17d9de59fb9a01f6d49}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}if (!strncmp(_name, param_name, ARG_STRLEN)) {      \
+        cfg->_field = (_type)atol(param_value);         \
+        /* Overflow check (cast may not succeed) */     \
+        if (cfg->_field != atol(param_value)) {         \
+            return FALSE;                               \
+        }                                               \
+    } else
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PARSE_PORT_PARAM@{VQEC\_\-PARSE\_\-PORT\_\-PARAM}}
+\index{VQEC_PARSE_PORT_PARAM@{VQEC\_\-PARSE\_\-PORT\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PARSE\_\-PORT\_\-PARAM(\_\-name, \_\-field)}\label{vqec__cli__register_8c_4dc4d88f7bc7cf2f1c88a93456dcbbb8}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}if (!strncmp(_name, param_name, ARG_STRLEN)) {          \
+        cfg->_field = htons((uint16_t)atoi(param_value));   \
+        if (ntohs(cfg->_field) != atol(param_value)) {      \
+            return FALSE;                                   \
+        }                                                   \
+    } else
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PARSE_XRENABLE_PARAM@{VQEC\_\-PARSE\_\-XRENABLE\_\-PARAM}}
+\index{VQEC_PARSE_XRENABLE_PARAM@{VQEC\_\-PARSE\_\-XRENABLE\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PARSE\_\-XRENABLE\_\-PARAM(\_\-name, \_\-field)}\label{vqec__cli__register_8c_f9c2de969c6c5c235d67c615afcfbe29}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}if (!strncmp(_name, param_name, ARG_STRLEN)) {      \
+        cfg->_field = VQEC_RTCP_XR_RLE_ENABLE;          \
+    } else
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PARSE_XRFLAGS_PARAM@{VQEC\_\-PARSE\_\-XRFLAGS\_\-PARAM}}
+\index{VQEC_PARSE_XRFLAGS_PARAM@{VQEC\_\-PARSE\_\-XRFLAGS\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PARSE\_\-XRFLAGS\_\-PARAM(\_\-name, \_\-field)}\label{vqec__cli__register_8c_737064459d027b3af6c2f013688e8ea5}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}if (!strncmp(_name, param_name, ARG_STRLEN)) {      \
+        if (strstr(param_value, "loss")) {              \
+            cfg->_field |= VQEC_RTCP_XR_STAT_LOSS;      \
+        }                                               \
+        if (strstr(param_value, "dup")) {               \
+            cfg->_field |= VQEC_RTCP_XR_STAT_DUP;       \
+        }                                               \
+        if (strstr(param_value, "jitt")) {              \
+            cfg->_field |= VQEC_RTCP_XR_STAT_JITT;      \
+        }                                               \
+    } else
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PRINT_ADDR_PARAM@{VQEC\_\-PRINT\_\-ADDR\_\-PARAM}}
+\index{VQEC_PRINT_ADDR_PARAM@{VQEC\_\-PRINT\_\-ADDR\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PRINT\_\-ADDR\_\-PARAM(\_\-name, \_\-field)}\label{vqec__cli__register_8c_49cba0717ba2960f25e43518a4673a1a}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}fprintf(f, "%s %s ", _name,              \
+            inet_ntop(AF_INET, &cfg->_field, \
+                      tmp, INET_ADDRSTRLEN))
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PRINT_ENABLE_PARAM@{VQEC\_\-PRINT\_\-ENABLE\_\-PARAM}}
+\index{VQEC_PRINT_ENABLE_PARAM@{VQEC\_\-PRINT\_\-ENABLE\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PRINT\_\-ENABLE\_\-PARAM(\_\-name, \_\-field)}\label{vqec__cli__register_8c_433841279735078be78a6b928d2a8dcb}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}if (cfg->_field) {                          \
+        fprintf(f, "%s", _name);                \
+    }                                           \
+    fprintf(f, " ")
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PRINT_INT_PARAM@{VQEC\_\-PRINT\_\-INT\_\-PARAM}}
+\index{VQEC_PRINT_INT_PARAM@{VQEC\_\-PRINT\_\-INT\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PRINT\_\-INT\_\-PARAM(\_\-name, \_\-field, \_\-format)~fprintf(f, \char`\"{}\%s \char`\"{} \_\-format \char`\"{} \char`\"{}, \_\-name, cfg $\rightarrow$ \_\-field)}\label{vqec__cli__register_8c_0fe122bf17d45bb395968c726dec8a0d}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PRINT_PORT_PARAM@{VQEC\_\-PRINT\_\-PORT\_\-PARAM}}
+\index{VQEC_PRINT_PORT_PARAM@{VQEC\_\-PRINT\_\-PORT\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PRINT\_\-PORT\_\-PARAM(\_\-name, \_\-field)~fprintf(f, \char`\"{}\%s \%hu \char`\"{}, \_\-name, ntohs(cfg $\rightarrow$ \_\-field))}\label{vqec__cli__register_8c_c55f6a2ce5924e414bb04686df42d132}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PRINT_XRENABLE_PARAM@{VQEC\_\-PRINT\_\-XRENABLE\_\-PARAM}}
+\index{VQEC_PRINT_XRENABLE_PARAM@{VQEC\_\-PRINT\_\-XRENABLE\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PRINT\_\-XRENABLE\_\-PARAM(\_\-name, \_\-field)}\label{vqec__cli__register_8c_83fce6158202af00181bbe0b949ff2cb}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}if (cfg->_field != VQEC_RTCP_XR_RLE_UNSPECIFIED) {  \
+        fprintf(f, "%s", _name);                        \
+    }                                                   \
+    fprintf(f, " ")
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PRINT_XRFLAGS_PARAM@{VQEC\_\-PRINT\_\-XRFLAGS\_\-PARAM}}
+\index{VQEC_PRINT_XRFLAGS_PARAM@{VQEC\_\-PRINT\_\-XRFLAGS\_\-PARAM}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PRINT\_\-XRFLAGS\_\-PARAM(\_\-name, \_\-field)}\label{vqec__cli__register_8c_53dbb5bad1a846f9cd6aacea2dc04158}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}if (cfg->_field) {                          \
+        fprintf(f, "%s ", _name);               \
+    }                                           \
+    if (cfg->_field & VQEC_RTCP_XR_STAT_LOSS) { \
+        fprintf(f, "loss");                     \
+    }                                           \
+    if (cfg->_field & VQEC_RTCP_XR_STAT_DUP) {  \
+        fprintf(f, ",dup");                     \
+    }                                           \
+    if (cfg->_field & VQEC_RTCP_XR_STAT_JITT) { \
+        fprintf(f, ",jitt");                    \
+    }                                           \
+    fprintf(f, " ")
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!VQEC_PRIVILEGE_INIT_ONLY@{VQEC\_\-PRIVILEGE\_\-INIT\_\-ONLY}}
+\index{VQEC_PRIVILEGE_INIT_ONLY@{VQEC\_\-PRIVILEGE\_\-INIT\_\-ONLY}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-PRIVILEGE\_\-INIT\_\-ONLY~100}\label{vqec__cli__register_8c_83577058f4c8079d913cfa4fa7afb4de}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!build_chan_url_from_idx@{build\_\-chan\_\-url\_\-from\_\-idx}}
+\index{build_chan_url_from_idx@{build\_\-chan\_\-url\_\-from\_\-idx}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean build\_\-chan\_\-url\_\-from\_\-idx (int {\em index}, char $\ast$ {\em chan\_\-url\_\-string}, channel\_\-cfg\_\-t $\ast$$\ast$ {\em ptr\_\-chan})}\label{vqec__cli__register_8c_68114c6f87c7c2775320e0b55dad92c7}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!cli_display_chan_stats@{cli\_\-display\_\-chan\_\-stats}}
+\index{cli_display_chan_stats@{cli\_\-display\_\-chan\_\-stats}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int cli\_\-display\_\-chan\_\-stats (char $\ast$ {\em chan\_\-url}, struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, boolean {\em cumulative})}\label{vqec__cli__register_8c_d0f43b92e1a373b2d538e99d24d44036}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!fastFillAbortHandler@{fastFillAbortHandler}}
+\index{fastFillAbortHandler@{fastFillAbortHandler}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void fast\-Fill\-Abort\-Handler (int32\_\-t {\em context\_\-id}, \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-t} $\ast$ {\em status})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__register_8c_fa47169773615e5dff646f101de62f34}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!fastFillDoneHandler@{fastFillDoneHandler}}
+\index{fastFillDoneHandler@{fastFillDoneHandler}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void fast\-Fill\-Done\-Handler (int32\_\-t {\em context\_\-id}, \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-t} $\ast$ {\em status})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__register_8c_f8b7d1367885800a50d2e1bb78c09db5}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!fastFillStartHandler@{fastFillStartHandler}}
+\index{fastFillStartHandler@{fastFillStartHandler}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void fast\-Fill\-Start\-Handler (int32\_\-t {\em context\_\-id}, \bf{vqec\_\-ifclient\_\-fastfill\_\-params\_\-t} $\ast$ {\em params})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__register_8c_c1a99a6c442090814bf9c04596d1a1bf}
+
+
+The following three functions are used to test VQE-C fast fill feature from vqec CLI \char`\"{}tuner bind\char`\"{}, without the STB.
+
+Please note, these functions are only for testing purpose. If you are in a STB which has fast fill feature integrated, doing \char`\"{}tuner bind\char`\"{} from CLI does not provide you the full functionalities of fast fill. It only streams out packets from VQE-C in a faster rate. \index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_check_args_for_help_char@{vqec\_\-check\_\-args\_\-for\_\-help\_\-char}}
+\index{vqec_check_args_for_help_char@{vqec\_\-check\_\-args\_\-for\_\-help\_\-char}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-check\_\-args\_\-for\_\-help\_\-char (char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_3d9370d980d4cd61197514609e8f7f2b}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cli_loop_thread@{vqec\_\-cli\_\-loop\_\-thread}}
+\index{vqec_cli_loop_thread@{vqec\_\-cli\_\-loop\_\-thread}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void$\ast$ vqec\_\-cli\_\-loop\_\-thread (void $\ast$ {\em arg})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__register_8c_59688ec9546df1d34fe1e02f974acfeb}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cli_loop_wrapper@{vqec\_\-cli\_\-loop\_\-wrapper}}
+\index{vqec_cli_loop_wrapper@{vqec\_\-cli\_\-loop\_\-wrapper}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-cli\_\-loop\_\-wrapper (uint16\_\-t {\em cli\_\-port}, in\_\-addr\_\-t {\em cli\_\-if\_\-addr})}\label{vqec__cli__register_8c_c633b1929d242adb624a6b087aca273b}
+
+
+Creates a telnet socket listening to the $<$cli\_\-port$>$ and then loops waiting to receive cli commands on that port. Only VQEC\_\-CLI\_\-CLIENT\_\-MAX clients are accepted. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em cli\_\-port}]- specifies telnet port for the cli. note specifying a cli\_\-port of zero does not start a telnet server. \item[\mbox{$\leftarrow$} {\em cli\_\-if\_\-addr}]- specifies the interface address to bind the telnet server to. note specifying a cli\_\-if\_\-addr of zero binds the server to listen on all interfaces. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 if the loop exits normally, 1 if the loop exited because the telnet server failed to start.\end{Desc}
+CLI telnet session. See vqec\_\-cli\_\-loop. \index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cli_register_debug_cmd@{vqec\_\-cli\_\-register\_\-debug\_\-cmd}}
+\index{vqec_cli_register_debug_cmd@{vqec\_\-cli\_\-register\_\-debug\_\-cmd}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \bf{vqec\_\-cli\_\-command}$\ast$ vqec\_\-cli\_\-register\_\-debug\_\-cmd (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, struct \bf{vqec\_\-cli\_\-command} $\ast$ {\em parent}, char $\ast$ {\em command}, int($\ast$)(struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$, char $\ast$$\ast$, int) {\em callback}, int {\em privilege}, int {\em mode}, char $\ast$ {\em help})}\label{vqec__cli__register_8c_9a65f558da2216192a635d03246b30a8}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cli_register_debug_values@{vqec\_\-cli\_\-register\_\-debug\_\-values}}
+\index{vqec_cli_register_debug_values@{vqec\_\-cli\_\-register\_\-debug\_\-values}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct \bf{vqec\_\-cli\_\-command}$\ast$ vqec\_\-cli\_\-register\_\-debug\_\-values (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, struct \bf{vqec\_\-cli\_\-command} $\ast$ {\em parent}, char $\ast$ {\em command}, int($\ast$)(struct \bf{vqec\_\-cli\_\-def} $\ast$cli, char $\ast$, char $\ast$$\ast$, int) {\em callback}, int {\em privilege}, int {\em mode}, char $\ast$ {\em help})}\label{vqec__cli__register_8c_de9d0271fd5665818a868f0a84128512}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cli_startup@{vqec\_\-cli\_\-startup}}
+\index{vqec_cli_startup@{vqec\_\-cli\_\-startup}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ vqec\_\-cli\_\-startup (void)}\label{vqec__cli__register_8c_5314b6d20c5f74e68629aad10f432b6b}
+
+
+Initialize VQEC's CLI. \begin{Desc}
+\item[Returns:]A cli\_\-handle, for use in starting an optional CLI telnet session. See vqec\_\-cli\_\-loop. \end{Desc}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_channel_tr135@{vqec\_\-cmd\_\-channel\_\-tr135}}
+\index{vqec_cmd_channel_tr135@{vqec\_\-cmd\_\-channel\_\-tr135}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-channel\_\-tr135 (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_e9a6343c47c0b0e548863af9089af914}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_channel_update@{vqec\_\-cmd\_\-channel\_\-update}}
+\index{vqec_cmd_channel_update@{vqec\_\-cmd\_\-channel\_\-update}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-channel\_\-update (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_d7a3374071d47db8d31c51aaf02e2aa9}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_clear_counters@{vqec\_\-cmd\_\-clear\_\-counters}}
+\index{vqec_cmd_clear_counters@{vqec\_\-cmd\_\-clear\_\-counters}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-clear\_\-counters (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_5f794aca4f31e68ac4a5a6a746efa353}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_drop_disable@{vqec\_\-cmd\_\-drop\_\-disable}}
+\index{vqec_cmd_drop_disable@{vqec\_\-cmd\_\-drop\_\-disable}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-drop\_\-disable (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_f86ccf5e13cc73f21c09bc6c3bd798f6}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_drop_enable@{vqec\_\-cmd\_\-drop\_\-enable}}
+\index{vqec_cmd_drop_enable@{vqec\_\-cmd\_\-drop\_\-enable}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-drop\_\-enable (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_c2826f098026a8fcda9ccbc65b8bb770}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_drop_interval@{vqec\_\-cmd\_\-drop\_\-interval}}
+\index{vqec_cmd_drop_interval@{vqec\_\-cmd\_\-drop\_\-interval}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-drop\_\-interval (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_7d89f0670415b69c03121dadb8f07e8f}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_drop_percentage@{vqec\_\-cmd\_\-drop\_\-percentage}}
+\index{vqec_cmd_drop_percentage@{vqec\_\-cmd\_\-drop\_\-percentage}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-drop\_\-percentage (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_bd20274ee5f81ee6eb89fb2376ed23ce}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_error_repair_disable@{vqec\_\-cmd\_\-error\_\-repair\_\-disable}}
+\index{vqec_cmd_error_repair_disable@{vqec\_\-cmd\_\-error\_\-repair\_\-disable}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-error\_\-repair\_\-disable (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_a346eb3d1810840b949a21e578aaf34a}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_error_repair_enable@{vqec\_\-cmd\_\-error\_\-repair\_\-enable}}
+\index{vqec_cmd_error_repair_enable@{vqec\_\-cmd\_\-error\_\-repair\_\-enable}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-error\_\-repair\_\-enable (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_86910c8cf054dd3b083f5a7975fa6336}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_error_repair_policer_burst@{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-burst}}
+\index{vqec_cmd_error_repair_policer_burst@{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-burst}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-burst (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_1caa87e17ced7fbbf5e5fed48371e82e}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_error_repair_policer_disable@{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-disable}}
+\index{vqec_cmd_error_repair_policer_disable@{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-disable}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-disable (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_4898dde7a0b8c48e2ecc8c32f191e8cf}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_error_repair_policer_enable@{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-enable}}
+\index{vqec_cmd_error_repair_policer_enable@{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-enable}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-enable (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_9b6098beeabbe3fc0c1ae331564ccf34}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_error_repair_policer_rate@{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-rate}}
+\index{vqec_cmd_error_repair_policer_rate@{vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-rate}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-error\_\-repair\_\-policer\_\-rate (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_62829e8456621939b0de5218715df450}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_fec_disable@{vqec\_\-cmd\_\-fec\_\-disable}}
+\index{vqec_cmd_fec_disable@{vqec\_\-cmd\_\-fec\_\-disable}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-fec\_\-disable (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_c08673eb79e45440f0e3538bfadcaf84}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_fec_enable@{vqec\_\-cmd\_\-fec\_\-enable}}
+\index{vqec_cmd_fec_enable@{vqec\_\-cmd\_\-fec\_\-enable}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-fec\_\-enable (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_5fd843747ae17892437cafdce71445d6}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_is_str_uint32@{vqec\_\-cmd\_\-is\_\-str\_\-uint32}}
+\index{vqec_cmd_is_str_uint32@{vqec\_\-cmd\_\-is\_\-str\_\-uint32}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-cmd\_\-is\_\-str\_\-uint32 (char $\ast$ {\em str}, uint32\_\-t {\em len})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cli__register_8c_b6358ff759e385be18a019061372d31d}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_monitor_benchmark_off@{vqec\_\-cmd\_\-monitor\_\-benchmark\_\-off}}
+\index{vqec_cmd_monitor_benchmark_off@{vqec\_\-cmd\_\-monitor\_\-benchmark\_\-off}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-monitor\_\-benchmark\_\-off (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_d4e13d97bbc9c76ec12911f12e792b93}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_monitor_benchmark_on@{vqec\_\-cmd\_\-monitor\_\-benchmark\_\-on}}
+\index{vqec_cmd_monitor_benchmark_on@{vqec\_\-cmd\_\-monitor\_\-benchmark\_\-on}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-monitor\_\-benchmark\_\-on (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_266027b09eccc8caabc9c1548b3c3f6c}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_monitor_benchmark_show@{vqec\_\-cmd\_\-monitor\_\-benchmark\_\-show}}
+\index{vqec_cmd_monitor_benchmark_show@{vqec\_\-cmd\_\-monitor\_\-benchmark\_\-show}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-monitor\_\-benchmark\_\-show (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_2bf5c9ddd6a27aa5629d254eb2b1ff11}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_monitor_outputsched_off@{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-off}}
+\index{vqec_cmd_monitor_outputsched_off@{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-off}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-monitor\_\-outputsched\_\-off (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_5b74990c208c9330164bf547b86db24b}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_monitor_outputsched_on@{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-on}}
+\index{vqec_cmd_monitor_outputsched_on@{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-on}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-monitor\_\-outputsched\_\-on (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_2a7a4ed9215765e2806ac2e3834ac06a}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_monitor_outputsched_reset@{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-reset}}
+\index{vqec_cmd_monitor_outputsched_reset@{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-reset}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-monitor\_\-outputsched\_\-reset (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_bf605d4eee8fc0ca03b61af23c3da670}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_monitor_outputsched_show@{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-show}}
+\index{vqec_cmd_monitor_outputsched_show@{vqec\_\-cmd\_\-monitor\_\-outputsched\_\-show}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-monitor\_\-outputsched\_\-show (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_a85c17d3ac11c75ac92d08b2c9fdd322}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_parse_chan_param@{vqec\_\-cmd\_\-parse\_\-chan\_\-param}}
+\index{vqec_cmd_parse_chan_param@{vqec\_\-cmd\_\-parse\_\-chan\_\-param}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static boolean vqec\_\-cmd\_\-parse\_\-chan\_\-param (\bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em cfg}, char $\ast$ {\em param\_\-name}, char $\ast$ {\em param\_\-value}, int $\ast$ {\em cur\_\-arg})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cli__register_8c_bc35a59336d39a11c6b1cf31573894fa}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_parse_print_params@{vqec\_\-cmd\_\-parse\_\-print\_\-params}}
+\index{vqec_cmd_parse_print_params@{vqec\_\-cmd\_\-parse\_\-print\_\-params}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cmd\_\-parse\_\-print\_\-params (FILE $\ast$ {\em f}, \bf{vqec\_\-chan\_\-cfg\_\-t} $\ast$ {\em cfg}, boolean {\em newline})}\label{vqec__cli__register_8c_79f7a92991a72445d52dcb2760355312}
+
+
+Print all parameters in the chan cfg structure. Retransmission stream parameters are only printed if error repair or RCC is enabled. FEC stream parameters are only printed if FEC is enabled. Cached FEC parameters (L value, D value, etc.) are printed only if their values are non-default (non-zero).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em f}]target stream for printing \item[\mbox{$\leftarrow$} {\em cfg}]chan configuration struct \item[\mbox{$\leftarrow$} {\em newline}]TRUE adds a trailing newline, FALSE omits a trailing newline \end{description}
+\end{Desc}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_parse_sdp@{vqec\_\-cmd\_\-parse\_\-sdp}}
+\index{vqec_cmd_parse_sdp@{vqec\_\-cmd\_\-parse\_\-sdp}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-parse\_\-sdp (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_afe1360f01411a6df3f4441835ed3da4}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_send_debugs_to_cli_disable@{vqec\_\-cmd\_\-send\_\-debugs\_\-to\_\-cli\_\-disable}}
+\index{vqec_cmd_send_debugs_to_cli_disable@{vqec\_\-cmd\_\-send\_\-debugs\_\-to\_\-cli\_\-disable}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-send\_\-debugs\_\-to\_\-cli\_\-disable (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_091277027ca1d0d72320e852c8fd8901}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_send_debugs_to_cli_enable@{vqec\_\-cmd\_\-send\_\-debugs\_\-to\_\-cli\_\-enable}}
+\index{vqec_cmd_send_debugs_to_cli_enable@{vqec\_\-cmd\_\-send\_\-debugs\_\-to\_\-cli\_\-enable}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-send\_\-debugs\_\-to\_\-cli\_\-enable (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_fbeaa53ec2f6aa8ca079503bf300bb57}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_channel@{vqec\_\-cmd\_\-show\_\-channel}}
+\index{vqec_cmd_show_channel@{vqec\_\-cmd\_\-show\_\-channel}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-channel (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_c45162df589269799a8e036ce31c9951}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_counters@{vqec\_\-cmd\_\-show\_\-counters}}
+\index{vqec_cmd_show_counters@{vqec\_\-cmd\_\-show\_\-counters}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-counters (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_1a1cbd9d548a50d17d41a2c1f5bfd939}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_counters_dump@{vqec\_\-cmd\_\-show\_\-counters\_\-dump}}
+\index{vqec_cmd_show_counters_dump@{vqec\_\-cmd\_\-show\_\-counters\_\-dump}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC void vqec\_\-cmd\_\-show\_\-counters\_\-dump (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, const char $\ast$ {\em name}, const \bf{vqec\_\-ifclient\_\-common\_\-stats\_\-t} $\ast$ {\em stats})}\label{vqec__cli__register_8c_7d9b76bc2a6337df265307b7dbc13a4b}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_debug@{vqec\_\-cmd\_\-show\_\-debug}}
+\index{vqec_cmd_show_debug@{vqec\_\-cmd\_\-show\_\-debug}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-debug (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_7c7346d89827ba3cc2c3b663e7dce640}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_dp@{vqec\_\-cmd\_\-show\_\-dp}}
+\index{vqec_cmd_show_dp@{vqec\_\-cmd\_\-show\_\-dp}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int32\_\-t vqec\_\-cmd\_\-show\_\-dp (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_f9174efc13653f6b4ceda8844ff5a22c}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_drop@{vqec\_\-cmd\_\-show\_\-drop}}
+\index{vqec_cmd_show_drop@{vqec\_\-cmd\_\-show\_\-drop}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-drop (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_3da2793935843990294a6c026043a4bc}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_error_repair@{vqec\_\-cmd\_\-show\_\-error\_\-repair}}
+\index{vqec_cmd_show_error_repair@{vqec\_\-cmd\_\-show\_\-error\_\-repair}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-error\_\-repair (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_e527711a5b468478c370cfbc412b291e}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_fec@{vqec\_\-cmd\_\-show\_\-fec}}
+\index{vqec_cmd_show_fec@{vqec\_\-cmd\_\-show\_\-fec}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-fec (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_109a3e63012d9e0dabb412e303e2698c}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_ipc@{vqec\_\-cmd\_\-show\_\-ipc}}
+\index{vqec_cmd_show_ipc@{vqec\_\-cmd\_\-show\_\-ipc}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int32\_\-t vqec\_\-cmd\_\-show\_\-ipc (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_7f81dff7b0cb501f2a938c0302ec759b}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_nat@{vqec\_\-cmd\_\-show\_\-nat}}
+\index{vqec_cmd_show_nat@{vqec\_\-cmd\_\-show\_\-nat}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int32\_\-t vqec\_\-cmd\_\-show\_\-nat (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_0b13e83a96355402808186b728c7522f}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_pak_pool@{vqec\_\-cmd\_\-show\_\-pak\_\-pool}}
+\index{vqec_cmd_show_pak_pool@{vqec\_\-cmd\_\-show\_\-pak\_\-pool}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-pak\_\-pool (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_24be27422496e35aefa2c7673cc558ef}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_proxy_igmp@{vqec\_\-cmd\_\-show\_\-proxy\_\-igmp}}
+\index{vqec_cmd_show_proxy_igmp@{vqec\_\-cmd\_\-show\_\-proxy\_\-igmp}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int32\_\-t vqec\_\-cmd\_\-show\_\-proxy\_\-igmp (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_d7bb13c1dc9b766ad5b118b0d7b1c028}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_stream_output@{vqec\_\-cmd\_\-show\_\-stream\_\-output}}
+\index{vqec_cmd_show_stream_output@{vqec\_\-cmd\_\-show\_\-stream\_\-output}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-stream\_\-output (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_892ea3e6e90428eb89fa22643aaf393f}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_system_config@{vqec\_\-cmd\_\-show\_\-system\_\-config}}
+\index{vqec_cmd_show_system_config@{vqec\_\-cmd\_\-show\_\-system\_\-config}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-system\_\-config (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_53bc78baf62b2f6b0f50992d76ead318}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_tech_support@{vqec\_\-cmd\_\-show\_\-tech\_\-support}}
+\index{vqec_cmd_show_tech_support@{vqec\_\-cmd\_\-show\_\-tech\_\-support}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-tech\_\-support (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_c3167d28aa0c88496811c0bdea997b28}
+
+
+Callback function to display show tech-support information.
+
+The information dumped is equivalent to what would be seen if a user were to log into the VQE-C CLI and issue the following commands: show system-config show tuner all detail show channel show counters show dp counters show update show drop show error-repair show fec show rcc show fast-fill show nat show pak-pool show stream-output show ipc show proxy-igmp
+
+param[in] cli struct cli\_\-def $\ast$ - the handle of the cli structure. param[in] command char $\ast$ - the entire command which was entered. This is after command expansion. param[in]argv char $\ast$$\ast$ - the list of arguments entered param[in]argc int - the number of arguments entered \begin{Desc}
+\item[Returns:]vqec\_\-error\_\-t Returns VQEC\_\-OK if the API was successfully executed. \end{Desc}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_tuner@{vqec\_\-cmd\_\-show\_\-tuner}}
+\index{vqec_cmd_show_tuner@{vqec\_\-cmd\_\-show\_\-tuner}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-tuner (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_c10705a0d5db25da20474614f02c161e}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_show_update@{vqec\_\-cmd\_\-show\_\-update}}
+\index{vqec_cmd_show_update@{vqec\_\-cmd\_\-show\_\-update}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-show\_\-update (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_d42af334fe2d9e93fad000268d9756cb}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_stream_output@{vqec\_\-cmd\_\-stream\_\-output}}
+\index{vqec_cmd_stream_output@{vqec\_\-cmd\_\-stream\_\-output}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-stream\_\-output (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_5a524fa68b85410f72e4ec4901230a86}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_test_dp_reader@{vqec\_\-cmd\_\-test\_\-dp\_\-reader}}
+\index{vqec_cmd_test_dp_reader@{vqec\_\-cmd\_\-test\_\-dp\_\-reader}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-test\_\-dp\_\-reader (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_f6861bd9b2c93af86a58df5c39c1a3fd}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_test_dp_reader_print_usage@{vqec\_\-cmd\_\-test\_\-dp\_\-reader\_\-print\_\-usage}}
+\index{vqec_cmd_test_dp_reader_print_usage@{vqec\_\-cmd\_\-test\_\-dp\_\-reader\_\-print\_\-usage}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-cmd\_\-test\_\-dp\_\-reader\_\-print\_\-usage (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__register_8c_afd6797e20ff2e8295f08a2ef3f79e0b}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_tuner_bind@{vqec\_\-cmd\_\-tuner\_\-bind}}
+\index{vqec_cmd_tuner_bind@{vqec\_\-cmd\_\-tuner\_\-bind}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-tuner\_\-bind (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_7bfc979175c5d8a05c20119588c2485d}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_tuner_bind_print_usage@{vqec\_\-cmd\_\-tuner\_\-bind\_\-print\_\-usage}}
+\index{vqec_cmd_tuner_bind_print_usage@{vqec\_\-cmd\_\-tuner\_\-bind\_\-print\_\-usage}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-cmd\_\-tuner\_\-bind\_\-print\_\-usage (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})\hspace{0.3cm}{\tt  [inline, static]}}\label{vqec__cli__register_8c_040680788700c33f7dc716c324d58e04}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_tuner_create@{vqec\_\-cmd\_\-tuner\_\-create}}
+\index{vqec_cmd_tuner_create@{vqec\_\-cmd\_\-tuner\_\-create}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-tuner\_\-create (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_d94bcf7fb1fb96bb6220a3de50dab7e7}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_tuner_destroy@{vqec\_\-cmd\_\-tuner\_\-destroy}}
+\index{vqec_cmd_tuner_destroy@{vqec\_\-cmd\_\-tuner\_\-destroy}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-tuner\_\-destroy (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_35c5a35e82953eac574afdd9773a3be4}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_tuner_unbind@{vqec\_\-cmd\_\-tuner\_\-unbind}}
+\index{vqec_cmd_tuner_unbind@{vqec\_\-cmd\_\-tuner\_\-unbind}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-tuner\_\-unbind (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_0b2ecbfb19cf3d96e3feffa704839222}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_cmd_update@{vqec\_\-cmd\_\-update}}
+\index{vqec_cmd_update@{vqec\_\-cmd\_\-update}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-cmd\_\-update (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_236661a8d56f39c181d0d3ba99191dd7}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_debug_en_module_flags@{vqec\_\-debug\_\-en\_\-module\_\-flags}}
+\index{vqec_debug_en_module_flags@{vqec\_\-debug\_\-en\_\-module\_\-flags}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-debug\_\-en\_\-module\_\-flags (\bf{vqec\_\-cli\_\-debug\_\-type\_\-t} {\em type}, boolean {\em enabled})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__register_8c_8e9be4b7b01aefc0d77459062f26de12}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_debug_func@{vqec\_\-debug\_\-func}}
+\index{vqec_debug_func@{vqec\_\-debug\_\-func}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-debug\_\-func (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em command}, char $\ast$ {\em argv}[$\,$], int {\em argc})}\label{vqec__cli__register_8c_c65edee00d5527b9945d51e527c6f57c}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_destroy_cli@{vqec\_\-destroy\_\-cli}}
+\index{vqec_destroy_cli@{vqec\_\-destroy\_\-cli}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-destroy\_\-cli (void)}\label{vqec__cli__register_8c_06fe000a0fdce8ad59626677a22d8ab1}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_enable_debugs_goto_cli@{vqec\_\-enable\_\-debugs\_\-goto\_\-cli}}
+\index{vqec_enable_debugs_goto_cli@{vqec\_\-enable\_\-debugs\_\-goto\_\-cli}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC void vqec\_\-enable\_\-debugs\_\-goto\_\-cli (boolean {\em ena})}\label{vqec__cli__register_8c_2531e9f58793296d28901bc4f212627e}
+
+
+function to set the above parameter to TRUE or FALSE. \index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_get_cli_fd@{vqec\_\-get\_\-cli\_\-fd}}
+\index{vqec_get_cli_fd@{vqec\_\-get\_\-cli\_\-fd}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-get\_\-cli\_\-fd (void $\ast$ {\em cli\_\-handle})}\label{vqec__cli__register_8c_32efc37e7ffb06b897e5ff60087fa796}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_print_callback@{vqec\_\-print\_\-callback}}
+\index{vqec_print_callback@{vqec\_\-print\_\-callback}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC void vqec\_\-print\_\-callback (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, char $\ast$ {\em string}, int {\em string\_\-len})}\label{vqec__cli__register_8c_ed7f7de375650d1b6429d24c064992a5}
+
+
+vqec\_\-print\_\-callback callback function for vqec\_\-cli\_\-print \char`\"{}$\backslash$n\char`\"{} is attached as the newline character over telnet sessions \index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_register_clear_cmds@{vqec\_\-register\_\-clear\_\-cmds}}
+\index{vqec_register_clear_cmds@{vqec\_\-register\_\-clear\_\-cmds}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-register\_\-clear\_\-cmds (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli__register_8c_6b0c6fa2eb2577c6423c6816a533cb94}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_register_debug_cmds@{vqec\_\-register\_\-debug\_\-cmds}}
+\index{vqec_register_debug_cmds@{vqec\_\-register\_\-debug\_\-cmds}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-register\_\-debug\_\-cmds (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli__register_8c_9ddcfc649a49252b6858b82153fa2386}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_register_drop_commands@{vqec\_\-register\_\-drop\_\-commands}}
+\index{vqec_register_drop_commands@{vqec\_\-register\_\-drop\_\-commands}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-register\_\-drop\_\-commands (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, struct \bf{vqec\_\-cli\_\-command} $\ast$ {\em cmd\_\-node}, boolean {\em deprecated})}\label{vqec__cli__register_8c_889f7f99bf9715f72060130482b2e903}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_register_global_cmds@{vqec\_\-register\_\-global\_\-cmds}}
+\index{vqec_register_global_cmds@{vqec\_\-register\_\-global\_\-cmds}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-register\_\-global\_\-cmds (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli__register_8c_3ff6f75b51cc0834c004d652d43876aa}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_register_hag_cmds@{vqec\_\-register\_\-hag\_\-cmds}}
+\index{vqec_register_hag_cmds@{vqec\_\-register\_\-hag\_\-cmds}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-register\_\-hag\_\-cmds (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli__register_8c_0b8146a9549db144a1e01f6a87a598cf}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_register_monitor_cmds@{vqec\_\-register\_\-monitor\_\-cmds}}
+\index{vqec_register_monitor_cmds@{vqec\_\-register\_\-monitor\_\-cmds}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-register\_\-monitor\_\-cmds (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli__register_8c_53befcd6bf793fe12ab6d15e00ad9057}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_register_parse_cmds@{vqec\_\-register\_\-parse\_\-cmds}}
+\index{vqec_register_parse_cmds@{vqec\_\-register\_\-parse\_\-cmds}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-register\_\-parse\_\-cmds (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli__register_8c_7c1cae4779b888a9977a9f73730ca93f}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_register_show_cmds@{vqec\_\-register\_\-show\_\-cmds}}
+\index{vqec_register_show_cmds@{vqec\_\-register\_\-show\_\-cmds}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-register\_\-show\_\-cmds (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli__register_8c_62dbbd77dc8ae135dd3b2dffdbb039fb}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_register_test_cmds@{vqec\_\-register\_\-test\_\-cmds}}
+\index{vqec_register_test_cmds@{vqec\_\-register\_\-test\_\-cmds}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-register\_\-test\_\-cmds (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli__register_8c_2187096f70d4ba1d614340dbc134d330}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_set_sc_options_flag@{vqec\_\-set\_\-sc\_\-options\_\-flag}}
+\index{vqec_set_sc_options_flag@{vqec\_\-set\_\-sc\_\-options\_\-flag}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC unsigned int vqec\_\-set\_\-sc\_\-options\_\-flag (char $\ast$ {\em argv}[$\,$], int {\em argc}, struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__cli__register_8c_301509d4c25f570972e49d5956383109}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_set_st_options_flag@{vqec\_\-set\_\-st\_\-options\_\-flag}}
+\index{vqec_set_st_options_flag@{vqec\_\-set\_\-st\_\-options\_\-flag}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC unsigned int vqec\_\-set\_\-st\_\-options\_\-flag (char $\ast$ {\em argv}[$\,$], int {\em argc}, struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, vqec\_\-tunerid\_\-t $\ast$ {\em ptr\_\-tuner\_\-id})}\label{vqec__cli__register_8c_15c872b26435e9503a7259068acbba22}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_show_tuner_output@{vqec\_\-show\_\-tuner\_\-output}}
+\index{vqec_show_tuner_output@{vqec\_\-show\_\-tuner\_\-output}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC int vqec\_\-show\_\-tuner\_\-output (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli}, unsigned int {\em options\_\-flag}, vqec\_\-tunerid\_\-t {\em vqec\_\-tuner\_\-id})}\label{vqec__cli__register_8c_8b94fd9625ffb8fb63a4609df611b05a}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_str_match@{vqec\_\-str\_\-match}}
+\index{vqec_str_match@{vqec\_\-str\_\-match}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int vqec\_\-str\_\-match (char $\ast$ {\em s}, char $\ast$ {\em params}[$\,$])}\label{vqec__cli__register_8c_954850eff989446f67b9281fa70e2b9a}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!vqec_str_to_lower@{vqec\_\-str\_\-to\_\-lower}}
+\index{vqec_str_to_lower@{vqec\_\-str\_\-to\_\-lower}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}UT\_\-STATIC void vqec\_\-str\_\-to\_\-lower (char $\ast$ {\em output\-String}, const char $\ast$ {\em in\-String})}\label{vqec__cli__register_8c_13d755008222d3466a37857fa5616754}
+
+
+
+
+\subsection{Variable Documentation}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!fastFillOps@{fastFillOps}}
+\index{fastFillOps@{fastFillOps}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t} \bf{fast\-Fill\-Ops}\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__register_8c_0be4a0ccdc3a69d879d2bf11f9933dc9}
+
+
+\textbf{Initial value:}
+
+\begin{Code}\begin{verbatim}
+{
+    fastFillStartHandler,
+    fastFillAbortHandler,
+    fastFillDoneHandler
+}
+\end{verbatim}\end{Code}
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!g_cli_client_count@{g\_\-cli\_\-client\_\-count}}
+\index{g_cli_client_count@{g\_\-cli\_\-client\_\-count}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{g\_\-cli\_\-client\_\-count} = 0\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__register_8c_81602035fd5cefb0659970e22d6eed5d}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!g_cli_handle@{g\_\-cli\_\-handle}}
+\index{g_cli_handle@{g\_\-cli\_\-handle}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \bf{g\_\-cli\_\-handle}\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__register_8c_7458d56812927a6359127815c867200f}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!g_vqec_cli_tcpsock@{g\_\-vqec\_\-cli\_\-tcpsock}}
+\index{g_vqec_cli_tcpsock@{g\_\-vqec\_\-cli\_\-tcpsock}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t \bf{g\_\-vqec\_\-cli\_\-tcpsock} = -1\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__register_8c_ea0d36c084633afd572d3bd976de2053}
+
+
+\index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!id_name_pair@{id\_\-name\_\-pair}}
+\index{id_name_pair@{id\_\-name\_\-pair}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}char \bf{id\_\-name\_\-pair}[32][VQEC\_\-MAX\_\-NAME\_\-LEN]}\label{vqec__cli__register_8c_cdf5e564a9dbd3025f5998222babb6cc}
+
+
+vod session id and CLI name map Use max tuner 32. \index{vqec_cli_register.c@{vqec\_\-cli\_\-register.c}!s_vqec_debugs_goto_cli_enabled@{s\_\-vqec\_\-debugs\_\-goto\_\-cli\_\-enabled}}
+\index{s_vqec_debugs_goto_cli_enabled@{s\_\-vqec\_\-debugs\_\-goto\_\-cli\_\-enabled}!vqec_cli_register.c@{vqec\_\-cli\_\-register.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean \bf{s\_\-vqec\_\-debugs\_\-goto\_\-cli\_\-enabled} = \bf{TRUE}\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__register_8c_50af08d78448166a235f9838d353c6ee}
+
+
+this parameter is used to determine whether or not the VQEC\_\-DEBUG() messages will be printed to the CLI or not. (they are always printed to syslog) 

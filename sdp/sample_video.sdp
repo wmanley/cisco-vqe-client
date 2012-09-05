@@ -1,0 +1,70 @@
+#
+# Sample SDP File
+#
+# Copyright (c) 2006-2009 by cisco Systems, Inc.
+#
+v=0
+o=- 1195580862307 1199996549427 IN IP4 uranus-iptv.cisco.com
+s=Channel 1
+i=Channel configuration for Channel 1 ( 2D FEC Hybrid )
+t=0 0
+a=rtcp-unicast:rsi
+a=group:FID 1 3
+a=group:FEC 1 4 5
+a=cat:sa_stream
+m=video 10000 RTP/AVPF 96
+i=Original Source Stream
+c=IN IP4 233.131.169.82/255
+b=AS:4000
+b=RS:53
+b=RR:530000
+a=fmtp:96 rtcp-per-rcvr-bw=53
+a=recvonly
+a=source-filter: incl IN IP4 233.131.169.82 5.1.38.2
+a=rtpmap:96 MP2T/90000
+a=rtcp:10001 IN IP4 8.166.1.1
+a=rtcp-xr:pkt-loss-rle=30 post-repair-loss-rle stat-summary=loss,dup,jitt multicast-acq
+a=rtcp-fb:96 nack
+a=rtcp-fb:96 nack pli
+a=mid:1
+m=video 10000 RTP/AVPF 98
+i=Re-sourced Stream
+c=IN IP4 233.131.169.82/255
+a=inactive
+a=source-filter: incl IN IP4 233.131.169.82 8.166.1.1
+a=rtpmap:98 MP2T/90000
+a=rtcp:10001 IN IP4 8.166.1.1
+a=mid:2
+m=video 50000 RTP/AVPF 99
+i=Unicast Retransmission Stream
+c=IN IP4 8.166.1.1
+b=RS:53
+b=RR:53
+a=recvonly
+a=rtpmap:99 rtx/90000
+a=rtcp:50001
+a=fmtp:99 apt=96; rtx-time=3000
+a=mid:3
+m=video 10100 RTP/AVP 100
+i=FEC1 Stream
+c=IN IP4 233.131.169.82/255
+b=RS:0
+b=RR:0
+a=recvonly
+a=source-filter: incl IN IP4 233.131.169.82 5.1.38.2
+a=rtpmap:100 2dparityfec/90000
+a=rtcp:10101
+a=label:fec1
+a=mid:4
+m=video 10200 RTP/AVP 101
+i=FEC2 Stream
+c=IN IP4 233.131.169.82/255
+b=RS:0
+b=RR:0
+a=recvonly
+a=source-filter: incl IN IP4 233.131.169.82 5.1.38.2
+a=rtpmap:101 2dparityfec/90000
+a=rtcp:10201
+a=label:fec2
+a=mid:5
+

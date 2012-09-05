@@ -1,0 +1,168 @@
+.TH resparse 3 ""
+.SH NAME
+
+res_parse, res_copy, res_print, res_free \- parse and manipulate DNS resolver responses
+
+.SH SYNOPSIS
+.B #include "rr.h"
+.br
+
+res_response *
+.B res_parse(msg)
+.ti +0.5in
+char *msg;
+
+res_response *
+.B res_copy(resp)
+.ti +0.5in
+res_response *resp;
+
+.B res_print(resp)
+.ti +0.5in
+res_response *resp;
+
+.B res_free(resp)
+.ti +0.5in
+res_response *resp;
+
+.SH DESCRIPTION
+These routines are used for parsing the response from a
+call to the DNS
+.I resolver
+routines into a C structure suitable for programmer use,
+and to manipulate such structures.
+.PP
+.B Res_parse
+takes the result of a call to res_query or res_search.
+This is then parsed into an appropriate structure,
+and domain names unpacked into standard null-terminated C strings.
+It then returns a pointer to this structure.
+.PP
+.B Res_copy
+takes a pointer to a
+.B res_response
+structure, makes a copy of it and returns a pointer to the copy.
+.PP
+.B Res_print
+prints out the specified
+.B res_response
+structure, using a similar style to \fInslookup\fP.
+.PP
+.B Res_free
+takes a pointer to a
+.B res_response
+structure, frees all memory allocated to it
+and clears the counts of the number of records of each type present.
+
+
+.SH DATA STRUCTURES
+The structures used are as follows:
+
+.in +0.5in
+.B res_response {
+.in +0.5in
+.B HEADER\theader;
+.in +0.5in
+The header as defined in <\fBarpa/nameser.h\fP>.
+.in -0.5in
+.B s_question\t**question;
+.in +0.5in
+Pointer to an array of question records.
+.in -0.5in
+.B s_rr\t**answer;
+.in +0.5in
+Pointer to an array of answer resource records.
+.in -0.5in
+.B s_rr\t**authority;
+.in +0.5in
+Pointer to an array of nameserver resource records.
+.in -0.5in
+.B s_rr\t**additional;
+.in +0.5in
+Pointer to an array of additional resource records
+(the addresses of the authoritative nameservers).
+.in -1in
+.B }
+
+.B s_question {
+.in +0.5in
+.B char\t*qname;
+.in +0.5in
+The name that the query was sent for.
+.in -0.5in
+.B u_short\tqtype
+.br
+.B u_short\tqclass
+.in +0.5in
+The type and class of query, as defined in <\fBarpa/nameser.h\fP>.
+.in -1in
+.B }
+
+.B s_rr {
+.in +0.5in
+.B char\t*name;
+.in +0.5in
+The name of the resource record.
+.in -0.5in
+.B u_short\ttype
+.br
+.B u_short\tclass
+.in +0.5in
+The type and class of the record, as defined in <\fBarpa/nameser.h\fP>.
+.in -0.5in
+.B u_long\tttl
+.in +0.5in
+How long (in seconds) this record may be cached.
+.in -0.5in
+.B u_long\tdlen;
+.in +0.5in
+The length of the type-specific data.
+.br
+This need not be the same as the size of the \fIunpacked\fP
+data - particularly for domain names.
+.in -0.5in
+.B union u_rdata\trdata;
+.in +0.5in
+The type-specific data (see \fBrr.h\fP for details).
+.in -1in
+.B }
+.in -0.5in
+
+.SH RETURN VALUES
+.B Res_parse
+and
+.B res_copy
+will return a pointer to the new structure, or a NULL
+pointer in case of errors.
+.br
+.B Res_print
+and
+.B res_free
+do not return anything.
+
+.SH WARNINGS
+.B Res_parse
+now returns a pointer to a dynamically assigned area,
+(previous releases used a static area which
+which would be overwritten by subsequent calls).
+.br
+The pointer returned by \fBres_parse\fP should be 
+freed using \fBres_free\fP (contrary to the instructions
+with earlier releases of this library).
+
+If \fBres_print\fP is called with a pointer that has been
+freed, it will (probably) print out an "empty" header.
+.br
+This is a Bad Thing to do anyway!
+
+.SH FILES
+.B /usr/local/lib/libresparse.a
+
+.SH SEE ALSO
+resolver(3), gethostbyname(3)
+.br
+.I
+DNS and BIND
+
+.SH AUTHOR
+Dave Shield	<D.T.Shield@csc.liv.ac.uk>

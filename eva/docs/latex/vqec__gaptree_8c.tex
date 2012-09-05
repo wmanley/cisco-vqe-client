@@ -1,0 +1,75 @@
+\section{vqec\_\-gaptree.c File Reference}
+\label{vqec__gaptree_8c}\index{vqec_gaptree.c@{vqec\_\-gaptree.c}}
+{\tt \#include $<$tree\_\-plus.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-gaptree.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-seq\_\-num.h\char`\"{}}\par
+{\tt \#include $<$string.h$>$}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+static \bf{vqec\_\-gaptree\_\-cmpres\_\-t} \bf{vqec\_\-gap\_\-compare} (\bf{vqec\_\-gap\_\-t} $\ast$a, \bf{vqec\_\-gap\_\-t} $\ast$b)
+\item 
+\bf{VQE\_\-RBP\_\-GENERATE} (vqec\_\-gap\_\-tree, \bf{vqec\_\-gap\_\-}, rb\_\-node, vqec\_\-gap\_\-compare)
+\item 
+\bf{vqec\_\-gaptree\_\-error\_\-t} \bf{vqec\_\-gaptree\_\-init} (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$tree)
+\item 
+\bf{vqec\_\-gaptree\_\-error\_\-t} \bf{vqec\_\-gaptree\_\-deinit} (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$tree)
+\item 
+\bf{vqec\_\-gaptree\_\-error\_\-t} \bf{vqec\_\-gaptree\_\-add\_\-gap} (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$tree, \bf{vqec\_\-gap\_\-t} gap, \bf{vqec\_\-gap\_\-pool\_\-t} $\ast$pool)
+\item 
+\bf{vqec\_\-gaptree\_\-error\_\-t} \bf{vqec\_\-gaptree\_\-remove\_\-seq\_\-num} (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$tree, vqec\_\-seq\_\-num\_\-t seq, \bf{vqec\_\-gap\_\-pool\_\-t} $\ast$pool)
+\item 
+\bf{vqec\_\-gaptree\_\-error\_\-t} \bf{vqec\_\-gaptree\_\-extract\_\-min} (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$tree, \bf{vqec\_\-gap\_\-t} $\ast$gap, \bf{vqec\_\-gap\_\-pool\_\-t} $\ast$pool)
+\item 
+\bf{vqec\_\-gaptree\_\-error\_\-t} \bf{vqec\_\-gaptree\_\-print} (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$tree, int32\_\-t($\ast$gprint)(const char $\ast$,...))
+\item 
+boolean \bf{vqec\_\-gaptree\_\-is\_\-empty} (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$tree)
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{vqec_gaptree.c@{vqec\_\-gaptree.c}!VQE_RBP_GENERATE@{VQE\_\-RBP\_\-GENERATE}}
+\index{VQE_RBP_GENERATE@{VQE\_\-RBP\_\-GENERATE}!vqec_gaptree.c@{vqec\_\-gaptree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}VQE\_\-RBP\_\-GENERATE (vqec\_\-gap\_\-tree, \bf{vqec\_\-gap\_\-}, rb\_\-node, vqec\_\-gap\_\-compare)}\label{vqec__gaptree_8c_c0daf22b3dbaa3f42302bc2ac4e653c6}
+
+
+\index{vqec_gaptree.c@{vqec\_\-gaptree.c}!vqec_gap_compare@{vqec\_\-gap\_\-compare}}
+\index{vqec_gap_compare@{vqec\_\-gap\_\-compare}!vqec_gaptree.c@{vqec\_\-gaptree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static \bf{vqec\_\-gaptree\_\-cmpres\_\-t} vqec\_\-gap\_\-compare (\bf{vqec\_\-gap\_\-t} $\ast$ {\em a}, \bf{vqec\_\-gap\_\-t} $\ast$ {\em b})\hspace{0.3cm}{\tt  [static]}}\label{vqec__gaptree_8c_0915252099f0279e23d9864f2506910f}
+
+
+\index{vqec_gaptree.c@{vqec\_\-gaptree.c}!vqec_gaptree_add_gap@{vqec\_\-gaptree\_\-add\_\-gap}}
+\index{vqec_gaptree_add_gap@{vqec\_\-gaptree\_\-add\_\-gap}!vqec_gaptree.c@{vqec\_\-gaptree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-gaptree\_\-error\_\-t} vqec\_\-gaptree\_\-add\_\-gap (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$ {\em tree}, \bf{vqec\_\-gap\_\-t} {\em gap}, \bf{vqec\_\-gap\_\-pool\_\-t} $\ast$ {\em pool})}\label{vqec__gaptree_8c_b5f233d313e8e89e44bd5e8df7d4ff35}
+
+
+\index{vqec_gaptree.c@{vqec\_\-gaptree.c}!vqec_gaptree_deinit@{vqec\_\-gaptree\_\-deinit}}
+\index{vqec_gaptree_deinit@{vqec\_\-gaptree\_\-deinit}!vqec_gaptree.c@{vqec\_\-gaptree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-gaptree\_\-error\_\-t} vqec\_\-gaptree\_\-deinit (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$ {\em tree})}\label{vqec__gaptree_8c_382d45b78a0b1617476fcedb0b28d076}
+
+
+\index{vqec_gaptree.c@{vqec\_\-gaptree.c}!vqec_gaptree_extract_min@{vqec\_\-gaptree\_\-extract\_\-min}}
+\index{vqec_gaptree_extract_min@{vqec\_\-gaptree\_\-extract\_\-min}!vqec_gaptree.c@{vqec\_\-gaptree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-gaptree\_\-error\_\-t} vqec\_\-gaptree\_\-extract\_\-min (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$ {\em tree}, \bf{vqec\_\-gap\_\-t} $\ast$ {\em gap}, \bf{vqec\_\-gap\_\-pool\_\-t} $\ast$ {\em pool})}\label{vqec__gaptree_8c_c5038d7227adcce77717aceb25d9b2fc}
+
+
+\index{vqec_gaptree.c@{vqec\_\-gaptree.c}!vqec_gaptree_init@{vqec\_\-gaptree\_\-init}}
+\index{vqec_gaptree_init@{vqec\_\-gaptree\_\-init}!vqec_gaptree.c@{vqec\_\-gaptree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-gaptree\_\-error\_\-t} vqec\_\-gaptree\_\-init (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$ {\em tree})}\label{vqec__gaptree_8c_a68fac31a2105c9619097617110d7fd3}
+
+
+\index{vqec_gaptree.c@{vqec\_\-gaptree.c}!vqec_gaptree_is_empty@{vqec\_\-gaptree\_\-is\_\-empty}}
+\index{vqec_gaptree_is_empty@{vqec\_\-gaptree\_\-is\_\-empty}!vqec_gaptree.c@{vqec\_\-gaptree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-gaptree\_\-is\_\-empty (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$ {\em tree})}\label{vqec__gaptree_8c_d51b0dbbb8f60672b7fc7443b52335d9}
+
+
+\index{vqec_gaptree.c@{vqec\_\-gaptree.c}!vqec_gaptree_print@{vqec\_\-gaptree\_\-print}}
+\index{vqec_gaptree_print@{vqec\_\-gaptree\_\-print}!vqec_gaptree.c@{vqec\_\-gaptree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-gaptree\_\-error\_\-t} vqec\_\-gaptree\_\-print (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$ {\em tree}, int32\_\-t($\ast$)(const char $\ast$,...) {\em gprint})}\label{vqec__gaptree_8c_c9d35a756c7733b463b1512993f105d4}
+
+
+\index{vqec_gaptree.c@{vqec\_\-gaptree.c}!vqec_gaptree_remove_seq_num@{vqec\_\-gaptree\_\-remove\_\-seq\_\-num}}
+\index{vqec_gaptree_remove_seq_num@{vqec\_\-gaptree\_\-remove\_\-seq\_\-num}!vqec_gaptree.c@{vqec\_\-gaptree.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\bf{vqec\_\-gaptree\_\-error\_\-t} vqec\_\-gaptree\_\-remove\_\-seq\_\-num (\bf{vqec\_\-gap\_\-tree\_\-t} $\ast$ {\em tree}, vqec\_\-seq\_\-num\_\-t {\em seq}, \bf{vqec\_\-gap\_\-pool\_\-t} $\ast$ {\em pool})}\label{vqec__gaptree_8c_3e8e4d677e5013d77ca2ae0cb3cdb787}
+
+

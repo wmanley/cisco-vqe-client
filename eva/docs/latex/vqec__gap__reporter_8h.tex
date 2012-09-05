@@ -1,0 +1,123 @@
+\section{vqec\_\-gap\_\-reporter.h File Reference}
+\label{vqec__gap__reporter_8h}\index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+{\tt \#include \char`\"{}vqec\_\-event.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-error.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqe\_\-port\_\-macros.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-cli.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-GAP\_\-REPORTER\_\-OUTPUT\_\-SCHED\_\-INTERVAL}~(20$\ast$1000)
+\item 
+\#define \bf{VQEC\_\-GAP\_\-REPORTER\_\-FCI\_\-MAX}~256
+\item 
+\#define \bf{VQEC\_\-GAP\_\-REPORTER\_\-MAX\_\-GAP\_\-SIZE}~1000
+\item 
+\#define \bf{VQEC\_\-GAP\_\-REPORTER\_\-GAP\_\-BUF\_\-SIZE}~32
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+boolean \bf{vqec\_\-get\_\-error\_\-repair} (boolean $\ast$demo\_\-set)
+\item 
+void \bf{vqec\_\-set\_\-error\_\-repair} (boolean enabled)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-set} (boolean set\_\-enabled, boolean enabled, boolean set\_\-rate, uint32\_\-t rate, boolean set\_\-burst, uint32\_\-t burst)
+\item 
+void \bf{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-get} (boolean $\ast$enabled, boolean $\ast$enabled\_\-set, uint32\_\-t $\ast$rate, boolean $\ast$rate\_\-set, uint32\_\-t $\ast$burst, boolean $\ast$burst\_\-set)
+\item 
+void \bf{vqec\_\-error\_\-repair\_\-show} (struct \bf{vqec\_\-cli\_\-def} $\ast$cli)
+\item 
+void \bf{vqec\_\-gap\_\-reporter\_\-report} (const vqec\_\-event\_\-t $\ast$const evptr, int unused\_\-fd, short event, void $\ast$arg)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+uint64\_\-t \bf{g\_\-vqec\_\-error\_\-repair\_\-policed\_\-requests}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}!VQEC_GAP_REPORTER_FCI_MAX@{VQEC\_\-GAP\_\-REPORTER\_\-FCI\_\-MAX}}
+\index{VQEC_GAP_REPORTER_FCI_MAX@{VQEC\_\-GAP\_\-REPORTER\_\-FCI\_\-MAX}!vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-GAP\_\-REPORTER\_\-FCI\_\-MAX~256}\label{vqec__gap__reporter_8h_480b3162708780c0c60681b664e9bc72}
+
+
+\index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}!VQEC_GAP_REPORTER_GAP_BUF_SIZE@{VQEC\_\-GAP\_\-REPORTER\_\-GAP\_\-BUF\_\-SIZE}}
+\index{VQEC_GAP_REPORTER_GAP_BUF_SIZE@{VQEC\_\-GAP\_\-REPORTER\_\-GAP\_\-BUF\_\-SIZE}!vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-GAP\_\-REPORTER\_\-GAP\_\-BUF\_\-SIZE~32}\label{vqec__gap__reporter_8h_e6398244d865cc27d4a624549317cdd4}
+
+
+\index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}!VQEC_GAP_REPORTER_MAX_GAP_SIZE@{VQEC\_\-GAP\_\-REPORTER\_\-MAX\_\-GAP\_\-SIZE}}
+\index{VQEC_GAP_REPORTER_MAX_GAP_SIZE@{VQEC\_\-GAP\_\-REPORTER\_\-MAX\_\-GAP\_\-SIZE}!vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-GAP\_\-REPORTER\_\-MAX\_\-GAP\_\-SIZE~1000}\label{vqec__gap__reporter_8h_ed79226e3219a7df389d342ac445bd01}
+
+
+\index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}!VQEC_GAP_REPORTER_OUTPUT_SCHED_INTERVAL@{VQEC\_\-GAP\_\-REPORTER\_\-OUTPUT\_\-SCHED\_\-INTERVAL}}
+\index{VQEC_GAP_REPORTER_OUTPUT_SCHED_INTERVAL@{VQEC\_\-GAP\_\-REPORTER\_\-OUTPUT\_\-SCHED\_\-INTERVAL}!vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-GAP\_\-REPORTER\_\-OUTPUT\_\-SCHED\_\-INTERVAL~(20$\ast$1000)}\label{vqec__gap__reporter_8h_cb1256e3d1d489b6e3f5b5df110f9ab8}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}!vqec_error_repair_policer_parameters_get@{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-get}}
+\index{vqec_error_repair_policer_parameters_get@{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-get}!vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-get (boolean $\ast$ {\em enabled}, boolean $\ast$ {\em enabled\_\-set}, uint32\_\-t $\ast$ {\em rate}, boolean $\ast$ {\em rate\_\-set}, uint32\_\-t $\ast$ {\em burst}, boolean $\ast$ {\em burst\_\-set})}\label{vqec__gap__reporter_8h_c0e2e069011ad7b3ab798021afb56310}
+
+
+\index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}!vqec_error_repair_policer_parameters_set@{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-set}}
+\index{vqec_error_repair_policer_parameters_set@{vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-set}!vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-error\_\-repair\_\-policer\_\-parameters\_\-set (boolean {\em set\_\-enabled}, boolean {\em enabled}, boolean {\em set\_\-rate}, uint32\_\-t {\em rate}, boolean {\em set\_\-burst}, uint32\_\-t {\em burst})}\label{vqec__gap__reporter_8h_778580f9fea32afe70ba8f0bf7267695}
+
+
+\index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}!vqec_error_repair_show@{vqec\_\-error\_\-repair\_\-show}}
+\index{vqec_error_repair_show@{vqec\_\-error\_\-repair\_\-show}!vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-error\_\-repair\_\-show (struct \bf{vqec\_\-cli\_\-def} $\ast$ {\em cli})}\label{vqec__gap__reporter_8h_b83b1ce321d896bcf90497941b7fe610}
+
+
+\index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}!vqec_gap_reporter_report@{vqec\_\-gap\_\-reporter\_\-report}}
+\index{vqec_gap_reporter_report@{vqec\_\-gap\_\-reporter\_\-report}!vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-gap\_\-reporter\_\-report (const vqec\_\-event\_\-t $\ast$const  {\em unused\_\-evptr}, int {\em unused\_\-fd}, short {\em unused\_\-event}, void $\ast$ {\em arg})}\label{vqec__gap__reporter_8h_4118b63bf5c15fbf724e5bbab6982c42}
+
+
+vqec\_\-gap\_\-reporter\_\-report
+
+Retrieve the gap list associated with the given channel, convert it into a generic nack, then send it. Don't need to check the lock, caller should get it.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em evptr}]Pointer to the event triggering the callback \item[\mbox{$\leftarrow$} {\em unused\_\-fd}]Not used \item[\mbox{$\leftarrow$} {\em event}]Not used \item[\mbox{$\leftarrow$} {\em arg}]Channel ID for the channel whose gaps are to be reported. \end{description}
+\end{Desc}
+\index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}!vqec_get_error_repair@{vqec\_\-get\_\-error\_\-repair}}
+\index{vqec_get_error_repair@{vqec\_\-get\_\-error\_\-repair}!vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-get\_\-error\_\-repair (boolean $\ast$ {\em demo\_\-set})}\label{vqec__gap__reporter_8h_911bd113de88cc1e99ae67e17ce3b3e2}
+
+
+Retrieves the global settting of RCC, which is based on system configuration but may be overriden by the demo CLI knob (if set).
+
+param[out] demo\_\-set - TRUE: the demo CLI knob is set FALSE: the demo CLI knob is unset param[out] boolean - TRUE: RCC is globally enabled FALSE: RCC is globally disabled \index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}!vqec_set_error_repair@{vqec\_\-set\_\-error\_\-repair}}
+\index{vqec_set_error_repair@{vqec\_\-set\_\-error\_\-repair}!vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-set\_\-error\_\-repair (boolean {\em enabled})}\label{vqec__gap__reporter_8h_e00fa4263506be5328566209134943cb}
+
+
+Enables/disables error repair globally (for all channels), for the purposes of demonstrating the effects of ER on picture quality.
+
+Called upon \char`\"{}error-repair \{enable$|$disable\}\char`\"{} CLI commands being entered.
+
+NOTE: Disabling error-repair for demo purposes causes error repair requests to be surpressed, and \char`\"{}disabled\char`\"{} appears in the \char`\"{}show error-repair\char`\"{} display. However, some channel state and debugs visible on the CLI may still give the appearance that error repair is enabled.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em enabled}]- TRUE to enable (ER will be performed for a channel if specified in its channel description (e.g. SDP file)) FALSE to disable (ER will not be performed regardless of channel description configuration (e.g. SDP file)) \end{description}
+\end{Desc}
+
+
+\subsection{Variable Documentation}
+\index{vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}!g_vqec_error_repair_policed_requests@{g\_\-vqec\_\-error\_\-repair\_\-policed\_\-requests}}
+\index{g_vqec_error_repair_policed_requests@{g\_\-vqec\_\-error\_\-repair\_\-policed\_\-requests}!vqec_gap_reporter.h@{vqec\_\-gap\_\-reporter.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{g\_\-vqec\_\-error\_\-repair\_\-policed\_\-requests}}\label{vqec__gap__reporter_8h_112f1305deac7db6409fbf819c32a0cb}
+
+

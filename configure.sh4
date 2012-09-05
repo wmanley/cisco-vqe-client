@@ -1,0 +1,98 @@
+#!/bin/bash
+
+# 
+# Copyright (c) 2006-2009 by Cisco Systems, Inc.
+# All Rights Reserved.
+#
+
+
+TARGET_GUESS="sh4-linux"
+TOOLCHAIN_GUESS="/opt/STM/STLinux-2.0/devkit/sh4/bin"
+
+NO_ARGS=0
+PREFIX=""
+
+TOOLCHAIN=$TOOLCHAIN_GUESS
+TARGET=$TARGET_GUESS
+
+if [ $# -ne "$NO_ARGS" ]
+ then
+	while getopts ":t:h:p:" Option
+	do
+		case $Option in
+			t ) 
+				echo "toolchain: \"$OPTARG\" "
+				TOOLCHAIN=$OPTARG;;
+			h ) 
+				echo "host: \"$OPTARG\" "
+				TARGET=$OPTARG;;
+			p )
+				echo "prefix: \"$OPTARG\" "
+				PREFIX=$OPTARG;;
+			* ) 
+				echo "Usage: ./configure.sh4" \
+				    "[-t toolchain_path] [-h host]" \
+				    "[-p install_prefix]"
+				exit 1;;
+		esac
+	done
+fi
+
+if [ ! -d $TOOLCHAIN ]; then 
+	echo "Toolchain directory does not exit"
+	exit 1
+else
+	CUR_PATH=$PWD
+	cd $TOOLCHAIN
+	TOOLCHAIN=$PWD
+	cd $CUR_PATH
+fi
+
+if [ ! -e $TOOLCHAIN/$TARGET-gcc ]; then
+	echo "GCC is missing"
+	exit 1;
+fi
+if [ ! -e $TOOLCHAIN/$TARGET-cpp ]; then
+	echo "CPP is missing"
+	exit 1;
+fi
+if [ ! -e $TOOLCHAIN/$TARGET-c++ ]; then
+	echo "C++ is missing"
+	exit 1;
+fi
+if [ ! -e $TOOLCHAIN/$TARGET-ar ]; then
+	echo "AR is missing"
+	exit 1;
+fi
+if [ ! -e $TOOLCHAIN/$TARGET-ld ]; then
+	echo "LD is missing"
+	exit 1;
+fi
+if [ ! -e $TOOLCHAIN/$TARGET-strip ]; then
+	echo "STRIP is missing"
+	exit 1;
+fi
+
+if [ "x$PREFIX" = "x" ]; then
+    ./configure	CC=$TOOLCHAIN/$TARGET-gcc CPP=$TOOLCHAIN/$TARGET-cpp \
+		CXX=$TOOLCHAIN/$TARGET-c++ AR=$TOOLCHAIN/$TARGET-ar  \
+		LD=$TOOLCHAIN/$TARGET-ld --host=$TARGET --disable-openssl \
+		STRIP=$TOOLCHAIN/$TARGET-strip --disable-syslog
+else
+
+    if [ ! -d $PREFIX ]; then 
+	echo "$PREFIX: directory does not exit"
+	exit 1
+    else
+	CUR_PATH=$PWD
+	cd $PREFIX
+	PREFIX=$PWD
+	cd $CUR_PATH
+    fi
+    ./configure	CC=$TOOLCHAIN/$TARGET-gcc CPP=$TOOLCHAIN/$TARGET-cpp \
+		CXX=$TOOLCHAIN/$TARGET-c++ AR=$TOOLCHAIN/$TARGET-ar  \
+		LD=$TOOLCHAIN/$TARGET-ld STRIP=$TOOLCHAIN/$TARGET-strip \
+		--host=$TARGET --disable-openssl \
+		--disable-syslog --prefix=$PREFIX
+fi
+

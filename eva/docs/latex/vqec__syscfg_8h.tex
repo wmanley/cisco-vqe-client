@@ -1,0 +1,272 @@
+\section{vqec\_\-syscfg.h File Reference}
+\label{vqec__syscfg_8h}\index{vqec_syscfg.h@{vqec\_\-syscfg.h}}
+{\tt \#include $<$stdint.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-error.h\char`\"{}}\par
+{\tt \#include \char`\"{}vam\_\-types.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-cfg\_\-limits.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}utils/vmd5.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-tunercfg\_\-}
+\item 
+struct \bf{vqec\_\-syscfg\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-RCC}~0
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-RCC}~1000000000
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MIN\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-ER}~0
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-MAX\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-ER}~1000000000
+\item 
+\#define \bf{VQEC\_\-SYSCFG\_\-CHECKSUM\_\-UNAVAILABLE}~\char`\"{}$<$file not available$>$\char`\"{}
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-} \bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-t}
+\item 
+typedef enum \bf{vqec\_\-syscfg\_\-vod\_\-mode\_\-} \bf{vqec\_\-syscfg\_\-vod\_\-mode\_\-t}
+\item 
+typedef \bf{vqec\_\-tunercfg\_\-} \bf{vqec\_\-tunercfg\_\-t}
+\item 
+typedef \bf{vqec\_\-syscfg\_\-} \bf{vqec\_\-syscfg\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-} \{ \bf{VQEC\_\-SM\_\-NAT}, 
+\bf{VQEC\_\-SM\_\-STD}
+ \}
+\item 
+enum \bf{vqec\_\-syscfg\_\-vod\_\-mode\_\-} \{ \bf{VQEC\_\-VOD\_\-MODE\_\-IPTV}, 
+\bf{VQEC\_\-VOD\_\-MODE\_\-CABLE}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \bf{vqec\_\-syscfg\_\-dump\_\-defaults} (void)
+\item 
+void \bf{vqec\_\-syscfg\_\-dump\_\-system} (void)
+\item 
+void \bf{vqec\_\-syscfg\_\-dump\_\-startup} (void)
+\item 
+void \bf{vqec\_\-syscfg\_\-dump\_\-attributes} (void)
+\item 
+void \bf{vqec\_\-syscfg\_\-dump\_\-overrides} (void)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-update\_\-network} (const char $\ast$buffer)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-update\_\-override\_\-tags} (const char $\ast$tags[$\,$], const char $\ast$values[$\,$])
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-register} (const \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t} $\ast$params)
+\item 
+boolean \bf{vqec\_\-syscfg\_\-checksum\_\-is\_\-valid} (\bf{vqec\_\-ifclient\_\-config\_\-t} config)
+\item 
+void \bf{vqec\_\-syscfg\_\-index\_\-read} (\bf{vqec\_\-ifclient\_\-config\_\-t} config, char checksum[MD5\_\-CHECKSUM\_\-STRLEN])
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-index\_\-write} (\bf{vqec\_\-ifclient\_\-config\_\-t} config, char checksum[MD5\_\-CHECKSUM\_\-STRLEN])
+\item 
+void \bf{vqec\_\-syscfg\_\-read} (\bf{vqec\_\-syscfg\_\-t} $\ast$cfg)
+\item 
+const \bf{vqec\_\-syscfg\_\-t} $\ast$ \bf{vqec\_\-syscfg\_\-get\_\-ptr} (void)
+\item 
+void \bf{vqec\_\-syscfg\_\-get} (\bf{vqec\_\-syscfg\_\-t} $\ast$cfg)
+\item 
+void \bf{vqec\_\-syscfg\_\-set} (\bf{vqec\_\-syscfg\_\-t} $\ast$cfg, boolean update)
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-syscfg\_\-init} (const char $\ast$\bf{filename})
+\item 
+boolean \bf{vqec\_\-syscfg\_\-register\_\-cname} (char $\ast$cname)
+\item 
+const char $\ast$ \bf{vqec\_\-get\_\-cname} (void)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!VQEC_SYSCFG_CHECKSUM_UNAVAILABLE@{VQEC\_\-SYSCFG\_\-CHECKSUM\_\-UNAVAILABLE}}
+\index{VQEC_SYSCFG_CHECKSUM_UNAVAILABLE@{VQEC\_\-SYSCFG\_\-CHECKSUM\_\-UNAVAILABLE}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-CHECKSUM\_\-UNAVAILABLE~\char`\"{}$<$file not available$>$\char`\"{}}\label{vqec__syscfg_8h_d1d75085ecd494640406d99cd5d49917}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!VQEC_SYSCFG_MAX_TUNER_MAX_RECEIVE_BANDWIDTH_ER@{VQEC\_\-SYSCFG\_\-MAX\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-ER}}
+\index{VQEC_SYSCFG_MAX_TUNER_MAX_RECEIVE_BANDWIDTH_ER@{VQEC\_\-SYSCFG\_\-MAX\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-ER}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-ER~1000000000}\label{vqec__syscfg_8h_906dbb41b56d10ad1be6a1e0536c2234}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!VQEC_SYSCFG_MAX_TUNER_MAX_RECEIVE_BANDWIDTH_RCC@{VQEC\_\-SYSCFG\_\-MAX\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-RCC}}
+\index{VQEC_SYSCFG_MAX_TUNER_MAX_RECEIVE_BANDWIDTH_RCC@{VQEC\_\-SYSCFG\_\-MAX\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-RCC}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MAX\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-RCC~1000000000}\label{vqec__syscfg_8h_9f6a41da55b193d787e623c125421d7b}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!VQEC_SYSCFG_MIN_TUNER_MAX_RECEIVE_BANDWIDTH_ER@{VQEC\_\-SYSCFG\_\-MIN\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-ER}}
+\index{VQEC_SYSCFG_MIN_TUNER_MAX_RECEIVE_BANDWIDTH_ER@{VQEC\_\-SYSCFG\_\-MIN\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-ER}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-ER~0}\label{vqec__syscfg_8h_beca084b9f5db0145d5f9e6139ab601b}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!VQEC_SYSCFG_MIN_TUNER_MAX_RECEIVE_BANDWIDTH_RCC@{VQEC\_\-SYSCFG\_\-MIN\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-RCC}}
+\index{VQEC_SYSCFG_MIN_TUNER_MAX_RECEIVE_BANDWIDTH_RCC@{VQEC\_\-SYSCFG\_\-MIN\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-RCC}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-SYSCFG\_\-MIN\_\-TUNER\_\-MAX\_\-RECEIVE\_\-BANDWIDTH\_\-RCC~0}\label{vqec__syscfg_8h_cdbab2bf8fdd093119048b7f1de56f14}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_sig_mode_t@{vqec\_\-syscfg\_\-sig\_\-mode\_\-t}}
+\index{vqec_syscfg_sig_mode_t@{vqec\_\-syscfg\_\-sig\_\-mode\_\-t}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-}  \bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-t}}\label{vqec__syscfg_8h_2453bdcecf833d8893d760746c00e6f3}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_t@{vqec\_\-syscfg\_\-t}}
+\index{vqec_syscfg_t@{vqec\_\-syscfg\_\-t}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-syscfg\_\-}  \bf{vqec\_\-syscfg\_\-t}}\label{vqec__syscfg_8h_f7f565f62a8afaafe2bc42c37983d28e}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_vod_mode_t@{vqec\_\-syscfg\_\-vod\_\-mode\_\-t}}
+\index{vqec_syscfg_vod_mode_t@{vqec\_\-syscfg\_\-vod\_\-mode\_\-t}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-syscfg\_\-vod\_\-mode\_\-}  \bf{vqec\_\-syscfg\_\-vod\_\-mode\_\-t}}\label{vqec__syscfg_8h_785b0c349276102689906413eed7f538}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_tunercfg_t@{vqec\_\-tunercfg\_\-t}}
+\index{vqec_tunercfg_t@{vqec\_\-tunercfg\_\-t}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-tunercfg\_\-}  \bf{vqec\_\-tunercfg\_\-t}}\label{vqec__syscfg_8h_d561db1a80bd5f97f2e536693bccb340}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_sig_mode_@{vqec\_\-syscfg\_\-sig\_\-mode\_\-}}
+\index{vqec_syscfg_sig_mode_@{vqec\_\-syscfg\_\-sig\_\-mode\_\-}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-syscfg\_\-sig\_\-mode\_\-}}\label{vqec__syscfg_8h_7a541c246d50cdf53d6e6c22500465ba}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_SM_NAT@{VQEC\_\-SM\_\-NAT}!vqec_syscfg.h@{vqec\_\-syscfg.h}}\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!VQEC_SM_NAT@{VQEC\_\-SM\_\-NAT}}\item[{\em 
+VQEC\_\-SM\_\-NAT\label{vqec__syscfg_8h_7a541c246d50cdf53d6e6c22500465ba3f636021200e2f63f0f7b51c22942d9c}
+}]\index{VQEC_SM_STD@{VQEC\_\-SM\_\-STD}!vqec_syscfg.h@{vqec\_\-syscfg.h}}\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!VQEC_SM_STD@{VQEC\_\-SM\_\-STD}}\item[{\em 
+VQEC\_\-SM\_\-STD\label{vqec__syscfg_8h_7a541c246d50cdf53d6e6c22500465ba92d9c86441066bf1defc6bc4329e638c}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_vod_mode_@{vqec\_\-syscfg\_\-vod\_\-mode\_\-}}
+\index{vqec_syscfg_vod_mode_@{vqec\_\-syscfg\_\-vod\_\-mode\_\-}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-syscfg\_\-vod\_\-mode\_\-}}\label{vqec__syscfg_8h_0c2e20e5d3edb466b955f514133c8c8c}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_VOD_MODE_IPTV@{VQEC\_\-VOD\_\-MODE\_\-IPTV}!vqec_syscfg.h@{vqec\_\-syscfg.h}}\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!VQEC_VOD_MODE_IPTV@{VQEC\_\-VOD\_\-MODE\_\-IPTV}}\item[{\em 
+VQEC\_\-VOD\_\-MODE\_\-IPTV\label{vqec__syscfg_8h_0c2e20e5d3edb466b955f514133c8c8cb14f740501e7a0ac83f3bc8524bd3c26}
+}]\index{VQEC_VOD_MODE_CABLE@{VQEC\_\-VOD\_\-MODE\_\-CABLE}!vqec_syscfg.h@{vqec\_\-syscfg.h}}\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!VQEC_VOD_MODE_CABLE@{VQEC\_\-VOD\_\-MODE\_\-CABLE}}\item[{\em 
+VQEC\_\-VOD\_\-MODE\_\-CABLE\label{vqec__syscfg_8h_0c2e20e5d3edb466b955f514133c8c8cb9858906ccdde43154b439edae6272ae}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_get_cname@{vqec\_\-get\_\-cname}}
+\index{vqec_get_cname@{vqec\_\-get\_\-cname}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vqec\_\-get\_\-cname (void)}\label{vqec__syscfg_8h_f3ac2a9365d0ab9bbae5ddb905dc6bb3}
+
+
+get the cname pointer \index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_checksum_is_valid@{vqec\_\-syscfg\_\-checksum\_\-is\_\-valid}}
+\index{vqec_syscfg_checksum_is_valid@{vqec\_\-syscfg\_\-checksum\_\-is\_\-valid}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-syscfg\_\-checksum\_\-is\_\-valid (\bf{vqec\_\-ifclient\_\-config\_\-t} {\em config})}\label{vqec__syscfg_8h_2075cfe8a79baad3ce22ad4cf739634b}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_dump_attributes@{vqec\_\-syscfg\_\-dump\_\-attributes}}
+\index{vqec_syscfg_dump_attributes@{vqec\_\-syscfg\_\-dump\_\-attributes}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-dump\_\-attributes (void)}\label{vqec__syscfg_8h_cd6fab0185414b5ef2374903189f562a}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_dump_defaults@{vqec\_\-syscfg\_\-dump\_\-defaults}}
+\index{vqec_syscfg_dump_defaults@{vqec\_\-syscfg\_\-dump\_\-defaults}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-dump\_\-defaults (void)}\label{vqec__syscfg_8h_81ed4de44a49d988d980ef9a0ffbeaeb}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_dump_overrides@{vqec\_\-syscfg\_\-dump\_\-overrides}}
+\index{vqec_syscfg_dump_overrides@{vqec\_\-syscfg\_\-dump\_\-overrides}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-dump\_\-overrides (void)}\label{vqec__syscfg_8h_5bf0143f170ca8f7adb00dbc85cf4d45}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_dump_startup@{vqec\_\-syscfg\_\-dump\_\-startup}}
+\index{vqec_syscfg_dump_startup@{vqec\_\-syscfg\_\-dump\_\-startup}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-dump\_\-startup (void)}\label{vqec__syscfg_8h_c850fe1fdd879cfcd71ad4fd769b2164}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_dump_system@{vqec\_\-syscfg\_\-dump\_\-system}}
+\index{vqec_syscfg_dump_system@{vqec\_\-syscfg\_\-dump\_\-system}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-dump\_\-system (void)}\label{vqec__syscfg_8h_ef6f720b28ba935d064fb91106dcd9e1}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_get@{vqec\_\-syscfg\_\-get}}
+\index{vqec_syscfg_get@{vqec\_\-syscfg\_\-get}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-get (\bf{vqec\_\-syscfg\_\-t} $\ast$ {\em cfg})}\label{vqec__syscfg_8h_13ebca19ae662a6449361df39512b572}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_get_ptr@{vqec\_\-syscfg\_\-get\_\-ptr}}
+\index{vqec_syscfg_get_ptr@{vqec\_\-syscfg\_\-get\_\-ptr}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}const \bf{vqec\_\-syscfg\_\-t}$\ast$ vqec\_\-syscfg\_\-get\_\-ptr (void)}\label{vqec__syscfg_8h_91c32699aaf9b6c5785c3a87d5d40d1f}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_index_read@{vqec\_\-syscfg\_\-index\_\-read}}
+\index{vqec_syscfg_index_read@{vqec\_\-syscfg\_\-index\_\-read}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-index\_\-read (\bf{vqec\_\-ifclient\_\-config\_\-t} {\em config}, char {\em checksum}[MD5\_\-CHECKSUM\_\-STRLEN])}\label{vqec__syscfg_8h_01c598dc7e2ab451e908ef0d9626716e}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_index_write@{vqec\_\-syscfg\_\-index\_\-write}}
+\index{vqec_syscfg_index_write@{vqec\_\-syscfg\_\-index\_\-write}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-index\_\-write (\bf{vqec\_\-ifclient\_\-config\_\-t} {\em config}, char {\em checksum}[MD5\_\-CHECKSUM\_\-STRLEN])}\label{vqec__syscfg_8h_f6881da3faf29edd82176249f51aad39}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_init@{vqec\_\-syscfg\_\-init}}
+\index{vqec_syscfg_init@{vqec\_\-syscfg\_\-init}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-init (const char $\ast$ {\em filename})}\label{vqec__syscfg_8h_2539a4d61d5c73b91c6c44e7d8822370}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_read@{vqec\_\-syscfg\_\-read}}
+\index{vqec_syscfg_read@{vqec\_\-syscfg\_\-read}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-read (\bf{vqec\_\-syscfg\_\-t} $\ast$ {\em cfg})}\label{vqec__syscfg_8h_86e3a197802023c1b414e89461ad40ba}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_register@{vqec\_\-syscfg\_\-register}}
+\index{vqec_syscfg_register@{vqec\_\-syscfg\_\-register}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-register (const \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t} $\ast$ {\em params})}\label{vqec__syscfg_8h_1043abb292cf43126e3cee673a4fcfe8}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_register_cname@{vqec\_\-syscfg\_\-register\_\-cname}}
+\index{vqec_syscfg_register_cname@{vqec\_\-syscfg\_\-register\_\-cname}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}boolean vqec\_\-syscfg\_\-register\_\-cname (char $\ast$ {\em cname})}\label{vqec__syscfg_8h_bd355227b8a9ec40fb4be0176a2388a3}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em Pointer}]to the cname character array. \end{description}
+\end{Desc}
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_set@{vqec\_\-syscfg\_\-set}}
+\index{vqec_syscfg_set@{vqec\_\-syscfg\_\-set}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-syscfg\_\-set (\bf{vqec\_\-syscfg\_\-t} $\ast$ {\em cfg}, boolean {\em update})}\label{vqec__syscfg_8h_fe5af2a8f5bc39326c2be2f16ff579e8}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_update_network@{vqec\_\-syscfg\_\-update\_\-network}}
+\index{vqec_syscfg_update_network@{vqec\_\-syscfg\_\-update\_\-network}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-update\_\-network (const char $\ast$ {\em buffer})}\label{vqec__syscfg_8h_9c35bc59498e0ce4d86ce0fcc4a3a7fa}
+
+
+\index{vqec_syscfg.h@{vqec\_\-syscfg.h}!vqec_syscfg_update_override_tags@{vqec\_\-syscfg\_\-update\_\-override\_\-tags}}
+\index{vqec_syscfg_update_override_tags@{vqec\_\-syscfg\_\-update\_\-override\_\-tags}!vqec_syscfg.h@{vqec\_\-syscfg.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-syscfg\_\-update\_\-override\_\-tags (const char $\ast$ {\em tags}[$\,$], const char $\ast$ {\em values}[$\,$])}\label{vqec__syscfg_8h_5570b99d51981a95efe1a9bf975f4e82}
+
+

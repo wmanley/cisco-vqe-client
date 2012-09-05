@@ -1,0 +1,409 @@
+\section{vqec\_\-cli\_\-interface.c File Reference}
+\label{vqec__cli__interface_8c}\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+{\tt \#include \char`\"{}vam\_\-util.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqe\_\-port\_\-macros.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-lock\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-lock.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-pak.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-dp\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-upcall\_\-event.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-recv\_\-socket.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-syslog\_\-def.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-tuner.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-channel\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-private.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-event.h\char`\"{}}\par
+{\tt \#include $<$utils/strl.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{PORT\_\-STR\_\-LENGTH}~6
+\item 
+\#define \bf{VQEC\_\-CLI\_\-LOGSEQ\_\-STRLEN}~512
+\item 
+\#define \bf{VQEC\_\-CLI\_\-LOGSEQ\_\-ULONG\_\-STRLEN}~16
+\item 
+\#define \bf{VQEC\_\-CLI\_\-LOGGAP\_\-STRLEN}~512
+\item 
+\#define \bf{VQEC\_\-CLI\_\-LOGGAP\_\-ENTRY\_\-STRLEN}~64
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \{ \bf{DP\_\-GLOBAL\_\-COUNTERS\_\-IPC} =  (1 $<$$<$ 0), 
+\bf{DP\_\-GLOBAL\_\-COUNTERS\_\-RTP} =  (1 $<$$<$ 1), 
+\bf{DP\_\-GLOBAL\_\-COUNTERS\_\-CHAN} =  (1 $<$$<$ 2), 
+\bf{DP\_\-GLOBAL\_\-COUNTERS\_\-ALL} =  (DP\_\-GLOBAL\_\-COUNTERS\_\-CHAN $<$$<$ 1) - 1
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \bf{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-status} (void)
+\item 
+void \bf{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-one\_\-filter} (vqec\_\-dp\_\-display\_\-ifilter\_\-t $\ast$filt)
+\item 
+void \bf{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-filters} (void)
+\item 
+void \bf{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-one\_\-stream} (const char $\ast$name, vqec\_\-dp\_\-display\_\-os\_\-t $\ast$os)
+\item 
+void \bf{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-streams} (void)
+\item 
+void \bf{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-streams\_\-tuner} (vqec\_\-tunerid\_\-t id)
+\item 
+void \bf{vqec\_\-cli\_\-pcm\_\-print\_\-stats} (vqec\_\-dp\_\-pcm\_\-status\_\-t $\ast$stats, boolean brief\_\-flag)
+\item 
+void \bf{vqec\_\-cli\_\-pcm\_\-dump} (vqec\_\-dp\_\-chanid\_\-t chanid, boolean brief\_\-flag)
+\item 
+void \bf{vqec\_\-cli\_\-nll\_\-print\_\-stats} (vqec\_\-dp\_\-nll\_\-status\_\-t $\ast$info)
+\item 
+void \bf{vqec\_\-cli\_\-nll\_\-dump} (vqec\_\-dp\_\-chanid\_\-t chanid, boolean brief\_\-flag)
+\item 
+void \bf{vqec\_\-cli\_\-fec\_\-show} (void)
+\item 
+void \bf{vqec\_\-cli\_\-fec\_\-print\_\-stats} (vqec\_\-dp\_\-fec\_\-status\_\-t $\ast$stats, boolean brief\_\-flag)
+\item 
+void \bf{vqec\_\-cli\_\-fec\_\-dump} (vqec\_\-dp\_\-chanid\_\-t chanid, boolean brief\_\-flag)
+\item 
+void \bf{vqec\_\-cli\_\-chan\_\-clear\_\-stats} (vqec\_\-dp\_\-chanid\_\-t chanid)
+\item 
+void \bf{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-status} (void)
+\item 
+void \bf{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-stream} (vqec\_\-dp\_\-isid\_\-t is)
+\item 
+void \bf{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-streams} (void)
+\item 
+void \bf{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-stream\_\-tuner} (vqec\_\-tunerid\_\-t id)
+\item 
+void \bf{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-tuner} (vqec\_\-dp\_\-tunerid\_\-t tid)
+\item 
+void \bf{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-tuners} (void)
+\item 
+static void \bf{vqec\_\-cli\_\-pak\_\-pool\_\-status\_\-print} (vqec\_\-pak\_\-pool\_\-status\_\-t $\ast$status)
+\item 
+void \bf{vqec\_\-cli\_\-pak\_\-pool\_\-dump} (void)
+\item 
+void \bf{vqec\_\-cli\_\-pak\_\-pool\_\-dump\_\-safe} (void)
+\item 
+static void \bf{vqec\_\-cli\_\-dp\_\-global\_\-counters\_\-print} (vqec\_\-dp\_\-global\_\-debug\_\-stats\_\-t $\ast$stats, uint32\_\-t mask)
+\item 
+void \bf{vqec\_\-cli\_\-show\_\-ipc\_\-status\_\-safe} (void)
+\item 
+void \bf{vqec\_\-cli\_\-show\_\-dp\_\-global\_\-counters\_\-safe} (void)
+\item 
+void \bf{vqec\_\-cli\_\-benchmark\_\-show} (void)
+\item 
+static void \bf{vqec\_\-cli\_\-log\_\-seq\_\-print} (vqec\_\-seq\_\-num\_\-t $\ast$seq, uint32\_\-t cnt)
+\item 
+void \bf{vqec\_\-cli\_\-log\_\-seq\_\-dump} (vqec\_\-dp\_\-seqlog\_\-t $\ast$log\_\-seq)
+\item 
+void \bf{vqec\_\-cli\_\-log\_\-gap\_\-dump} (vqec\_\-dp\_\-gaplog\_\-t $\ast$gaplog, uint32\_\-t options\_\-mask, const char $\ast$output\_\-name)
+\item 
+void \bf{vqec\_\-cli\_\-log\_\-dump} (vqec\_\-dp\_\-chanid\_\-t chanid, uint32\_\-t options\_\-mask)
+\item 
+void \bf{vqec\_\-cli\_\-dpchan\_\-stats\_\-dump} (vqec\_\-dp\_\-chanid\_\-t chanid)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!PORT_STR_LENGTH@{PORT\_\-STR\_\-LENGTH}}
+\index{PORT_STR_LENGTH@{PORT\_\-STR\_\-LENGTH}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define PORT\_\-STR\_\-LENGTH~6}\label{vqec__cli__interface_8c_c7d4f5c1b87933baf01e236f42059b66}
+
+
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!VQEC_CLI_LOGGAP_ENTRY_STRLEN@{VQEC\_\-CLI\_\-LOGGAP\_\-ENTRY\_\-STRLEN}}
+\index{VQEC_CLI_LOGGAP_ENTRY_STRLEN@{VQEC\_\-CLI\_\-LOGGAP\_\-ENTRY\_\-STRLEN}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CLI\_\-LOGGAP\_\-ENTRY\_\-STRLEN~64}\label{vqec__cli__interface_8c_c68fb447bcefc7adb72452db923e1c6c}
+
+
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!VQEC_CLI_LOGGAP_STRLEN@{VQEC\_\-CLI\_\-LOGGAP\_\-STRLEN}}
+\index{VQEC_CLI_LOGGAP_STRLEN@{VQEC\_\-CLI\_\-LOGGAP\_\-STRLEN}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CLI\_\-LOGGAP\_\-STRLEN~512}\label{vqec__cli__interface_8c_1878909322b8cd955d9d503fa023dd3a}
+
+
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!VQEC_CLI_LOGSEQ_STRLEN@{VQEC\_\-CLI\_\-LOGSEQ\_\-STRLEN}}
+\index{VQEC_CLI_LOGSEQ_STRLEN@{VQEC\_\-CLI\_\-LOGSEQ\_\-STRLEN}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CLI\_\-LOGSEQ\_\-STRLEN~512}\label{vqec__cli__interface_8c_4318251f979da438d8899801b01792bf}
+
+
+--------------------------------------------------------------------------- Print a single log sequence to the CLI. --------------------------------------------------------------------------- \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!VQEC_CLI_LOGSEQ_ULONG_STRLEN@{VQEC\_\-CLI\_\-LOGSEQ\_\-ULONG\_\-STRLEN}}
+\index{VQEC_CLI_LOGSEQ_ULONG_STRLEN@{VQEC\_\-CLI\_\-LOGSEQ\_\-ULONG\_\-STRLEN}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CLI\_\-LOGSEQ\_\-ULONG\_\-STRLEN~16}\label{vqec__cli__interface_8c_38b5961d352632bdd30cab74fc612931}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}\label{vqec__cli__interface_8c_d3ad298af5d072057b84f2f0e1bd8ea8}
+
+
+Display global dataplane IPC statistics. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{DP_GLOBAL_COUNTERS_IPC@{DP\_\-GLOBAL\_\-COUNTERS\_\-IPC}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!DP_GLOBAL_COUNTERS_IPC@{DP\_\-GLOBAL\_\-COUNTERS\_\-IPC}}\item[{\em 
+DP\_\-GLOBAL\_\-COUNTERS\_\-IPC\label{vqec__cli__interface_8c_d3ad298af5d072057b84f2f0e1bd8ea8c31d04ad118fbce8ce6063de2b4fed55}
+}]\index{DP_GLOBAL_COUNTERS_RTP@{DP\_\-GLOBAL\_\-COUNTERS\_\-RTP}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!DP_GLOBAL_COUNTERS_RTP@{DP\_\-GLOBAL\_\-COUNTERS\_\-RTP}}\item[{\em 
+DP\_\-GLOBAL\_\-COUNTERS\_\-RTP\label{vqec__cli__interface_8c_d3ad298af5d072057b84f2f0e1bd8ea8a7473a35173c76ae1742fbd893747559}
+}]\index{DP_GLOBAL_COUNTERS_CHAN@{DP\_\-GLOBAL\_\-COUNTERS\_\-CHAN}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!DP_GLOBAL_COUNTERS_CHAN@{DP\_\-GLOBAL\_\-COUNTERS\_\-CHAN}}\item[{\em 
+DP\_\-GLOBAL\_\-COUNTERS\_\-CHAN\label{vqec__cli__interface_8c_d3ad298af5d072057b84f2f0e1bd8ea8976d3d4ac625e1f30624e89c323986f1}
+}]\index{DP_GLOBAL_COUNTERS_ALL@{DP\_\-GLOBAL\_\-COUNTERS\_\-ALL}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!DP_GLOBAL_COUNTERS_ALL@{DP\_\-GLOBAL\_\-COUNTERS\_\-ALL}}\item[{\em 
+DP\_\-GLOBAL\_\-COUNTERS\_\-ALL\label{vqec__cli__interface_8c_d3ad298af5d072057b84f2f0e1bd8ea85d3b07618dad9bca01244381776bbbe1}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_benchmark_show@{vqec\_\-cli\_\-benchmark\_\-show}}
+\index{vqec_cli_benchmark_show@{vqec\_\-cli\_\-benchmark\_\-show}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-benchmark\_\-show (void)}\label{vqec__cli__interface_8c_a5723437f75714330380b3e54dbd8273}
+
+
+Print performance benchmark. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_chan_clear_stats@{vqec\_\-cli\_\-chan\_\-clear\_\-stats}}
+\index{vqec_cli_chan_clear_stats@{vqec\_\-cli\_\-chan\_\-clear\_\-stats}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-chan\_\-clear\_\-stats (vqec\_\-dp\_\-chanid\_\-t {\em chanid})}\label{vqec__cli__interface_8c_34bbe0724a2e6cf8f8eb824e478210c6}
+
+
+Clear statistics and counters in PCM, NLL, and FEC modules. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_dp_global_counters_print@{vqec\_\-cli\_\-dp\_\-global\_\-counters\_\-print}}
+\index{vqec_cli_dp_global_counters_print@{vqec\_\-cli\_\-dp\_\-global\_\-counters\_\-print}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-cli\_\-dp\_\-global\_\-counters\_\-print (vqec\_\-dp\_\-global\_\-debug\_\-stats\_\-t $\ast$ {\em stats}, uint32\_\-t {\em mask})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__interface_8c_f0804ede96e5dfe4bfa3f2ee7fbb94eb}
+
+
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_dpchan_stats_dump@{vqec\_\-cli\_\-dpchan\_\-stats\_\-dump}}
+\index{vqec_cli_dpchan_stats_dump@{vqec\_\-cli\_\-dpchan\_\-stats\_\-dump}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-dpchan\_\-stats\_\-dump (vqec\_\-dp\_\-chanid\_\-t {\em chanid})}\label{vqec__cli__interface_8c_b70d2621906c01cf3c5874319926fe68}
+
+
+--------------------------------------------------------------------------- Dump channel statistics from dataplane
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifier of the channel for which the log is collected. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_fec_dump@{vqec\_\-cli\_\-fec\_\-dump}}
+\index{vqec_cli_fec_dump@{vqec\_\-cli\_\-fec\_\-dump}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-fec\_\-dump (vqec\_\-dp\_\-chanid\_\-t {\em chanid}, boolean {\em brief\_\-flag})}\label{vqec__cli__interface_8c_440176cbfc55e70c9de15c9adfa1342b}
+
+
+Dump FEC information.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Channel ID of the channel associated with the FEC module \item[\mbox{$\leftarrow$} {\em brief\_\-flag}]Boolean brief flag specifying optional brief output \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_fec_print_stats@{vqec\_\-cli\_\-fec\_\-print\_\-stats}}
+\index{vqec_cli_fec_print_stats@{vqec\_\-cli\_\-fec\_\-print\_\-stats}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-fec\_\-print\_\-stats (vqec\_\-dp\_\-fec\_\-status\_\-t $\ast$ {\em stats}, boolean {\em brief\_\-flag})}\label{vqec__cli__interface_8c_8275b0a6e78d2e731d637b82b570b633}
+
+
+print out the statistics information
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em stats}]fec stats pointer \item[\mbox{$\leftarrow$} {\em brief\_\-flag}]Boolean brief flag specifying optional brief output \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_fec_show@{vqec\_\-cli\_\-fec\_\-show}}
+\index{vqec_cli_fec_show@{vqec\_\-cli\_\-fec\_\-show}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-fec\_\-show (void)}\label{vqec__cli__interface_8c_139987939156f0398e44fb225f59731a}
+
+
+Displays information about fec. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_input_shim_show_filters@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-filters}}
+\index{vqec_cli_input_shim_show_filters@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-filters}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-input\_\-shim\_\-show\_\-filters (void)}\label{vqec__cli__interface_8c_e7a3db75c5552b6657993c8fcb4a0e5c}
+
+
+Print the description of all filters that are currently bound to some OS to the file stream. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_input_shim_show_one_filter@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-one\_\-filter}}
+\index{vqec_cli_input_shim_show_one_filter@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-one\_\-filter}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-input\_\-shim\_\-show\_\-one\_\-filter (vqec\_\-dp\_\-display\_\-ifilter\_\-t $\ast$ {\em filt})}\label{vqec__cli__interface_8c_f1ce58195d7986ba3ebf9f67f40ebc6b}
+
+
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_input_shim_show_one_stream@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-one\_\-stream}}
+\index{vqec_cli_input_shim_show_one_stream@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-one\_\-stream}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-input\_\-shim\_\-show\_\-one\_\-stream (const char $\ast$ {\em name}, vqec\_\-dp\_\-display\_\-os\_\-t $\ast$ {\em os})}\label{vqec__cli__interface_8c_581535a58eecb89fe9a9b7147e185aae}
+
+
+Displays information about one input shim stream
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em name}]- (Optional) short description of stream (e.g. \char`\"{}Primary\char`\"{}) \item[\mbox{$\leftarrow$} {\em os}]- stream information to be displayed \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_input_shim_show_status@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-status}}
+\index{vqec_cli_input_shim_show_status@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-status}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-input\_\-shim\_\-show\_\-status (void)}\label{vqec__cli__interface_8c_30291de144abc17e0822738d88952189}
+
+
+Print status information for the input shim to the file stream. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_input_shim_show_streams@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-streams}}
+\index{vqec_cli_input_shim_show_streams@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-streams}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-input\_\-shim\_\-show\_\-streams (void)}\label{vqec__cli__interface_8c_e92db135eedd5c4c3ead536eda9dcd38}
+
+
+Print a description of all OS's created on the input shim. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_input_shim_show_streams_tuner@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-streams\_\-tuner}}
+\index{vqec_cli_input_shim_show_streams_tuner@{vqec\_\-cli\_\-input\_\-shim\_\-show\_\-streams\_\-tuner}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-input\_\-shim\_\-show\_\-streams\_\-tuner (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__cli__interface_8c_6f462431463e1152c1eb8f9e14225199}
+
+
+Print a description of all OS's created on the input shim for a given tuner.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]tuner ID whose output shim ISes are to be displayed \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_log_dump@{vqec\_\-cli\_\-log\_\-dump}}
+\index{vqec_cli_log_dump@{vqec\_\-cli\_\-log\_\-dump}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-log\_\-dump (vqec\_\-dp\_\-chanid\_\-t {\em chanid}, uint32\_\-t {\em options\_\-mask})}\label{vqec__cli__interface_8c_395e4ac2acb88e5a62e18a071ee05066}
+
+
+--------------------------------------------------------------------------- Gather log data from dataplane, and display it on the console.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Identifier of the channel for which the log is collected. \item[\mbox{$\leftarrow$} {\em options\_\-mask}]Options mask. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_log_gap_dump@{vqec\_\-cli\_\-log\_\-gap\_\-dump}}
+\index{vqec_cli_log_gap_dump@{vqec\_\-cli\_\-log\_\-gap\_\-dump}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-log\_\-gap\_\-dump (vqec\_\-dp\_\-gaplog\_\-t $\ast$ {\em gaplog}, uint32\_\-t {\em options\_\-mask}, const char $\ast$ {\em output\_\-name})}\label{vqec__cli__interface_8c_5fbac07086a654a724f5dbdbca171a8f}
+
+
+--------------------------------------------------------------------------- Display gap lop data from dataplane to the CLI.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em gaplog}]The gap log to dump. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_log_seq_dump@{vqec\_\-cli\_\-log\_\-seq\_\-dump}}
+\index{vqec_cli_log_seq_dump@{vqec\_\-cli\_\-log\_\-seq\_\-dump}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-log\_\-seq\_\-dump (vqec\_\-dp\_\-seqlog\_\-t $\ast$ {\em log\_\-seq})}\label{vqec__cli__interface_8c_27e4d3047112f08fbd51658f2b53cd55}
+
+
+--------------------------------------------------------------------------- Display log sequence data from dataplane to the CLI.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em log\_\-seq}]The sequence log to dump. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_log_seq_print@{vqec\_\-cli\_\-log\_\-seq\_\-print}}
+\index{vqec_cli_log_seq_print@{vqec\_\-cli\_\-log\_\-seq\_\-print}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-cli\_\-log\_\-seq\_\-print (vqec\_\-seq\_\-num\_\-t $\ast$ {\em seq}, uint32\_\-t {\em cnt})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__interface_8c_fdf3590e313b3793ea9caf4f3efff190}
+
+
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_nll_dump@{vqec\_\-cli\_\-nll\_\-dump}}
+\index{vqec_cli_nll_dump@{vqec\_\-cli\_\-nll\_\-dump}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-nll\_\-dump (vqec\_\-dp\_\-chanid\_\-t {\em chanid}, boolean {\em brief\_\-flag})}\label{vqec__cli__interface_8c_01a294c164c64d538c527fcc67fe8e54}
+
+
+Dump NLL information.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Channel ID of the channel assocaited with the NLL module \item[\mbox{$\leftarrow$} {\em brief\_\-flag}]Boolean brief flag specifying optional brief output \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_nll_print_stats@{vqec\_\-cli\_\-nll\_\-print\_\-stats}}
+\index{vqec_cli_nll_print_stats@{vqec\_\-cli\_\-nll\_\-print\_\-stats}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-nll\_\-print\_\-stats (vqec\_\-dp\_\-nll\_\-status\_\-t $\ast$ {\em info})}\label{vqec__cli__interface_8c_07bffba071684f5d99949115f560a3b5}
+
+
+Print out statistics for the NLL.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em info}]statistics structure for the NLL \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_output_shim_show_status@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-status}}
+\index{vqec_cli_output_shim_show_status@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-status}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-output\_\-shim\_\-show\_\-status (void)}\label{vqec__cli__interface_8c_39a1e8fde22346b3845b09238e45cddf}
+
+
+Print status information for the output shim to the file stream. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_output_shim_show_stream@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-stream}}
+\index{vqec_cli_output_shim_show_stream@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-stream}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-output\_\-shim\_\-show\_\-stream (vqec\_\-dp\_\-isid\_\-t {\em is})}\label{vqec__cli__interface_8c_7b58c88db4f6392b5f3dea1832b42c9d}
+
+
+Print a description of a single IS on the output shim. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_output_shim_show_stream_tuner@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-stream\_\-tuner}}
+\index{vqec_cli_output_shim_show_stream_tuner@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-stream\_\-tuner}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-output\_\-shim\_\-show\_\-stream\_\-tuner (vqec\_\-tunerid\_\-t {\em id})}\label{vqec__cli__interface_8c_9c4eaa9e2abfdef7988652ae9b8d7d42}
+
+
+Print a description of all IS's created on the output shim for a given tuner.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em id}]Tuner ID whose output shim ISes are to be displayed \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_output_shim_show_streams@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-streams}}
+\index{vqec_cli_output_shim_show_streams@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-streams}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-output\_\-shim\_\-show\_\-streams (void)}\label{vqec__cli__interface_8c_909be92f9ba1eee7750bc2c8afbd4ec1}
+
+
+Print a description of all IS's created on the output shim. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_output_shim_show_tuner@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-tuner}}
+\index{vqec_cli_output_shim_show_tuner@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-tuner}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-output\_\-shim\_\-show\_\-tuner (vqec\_\-dp\_\-tunerid\_\-t {\em tid})}\label{vqec__cli__interface_8c_df2b822273f6a5c10ef1db4afade6488}
+
+
+Print a description of one tuner created on the output shim. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_output_shim_show_tuners@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-tuners}}
+\index{vqec_cli_output_shim_show_tuners@{vqec\_\-cli\_\-output\_\-shim\_\-show\_\-tuners}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-output\_\-shim\_\-show\_\-tuners (void)}\label{vqec__cli__interface_8c_54df4091fee6cafc45416514b5fb6925}
+
+
+Print a description of all tuners created on the output shim. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_pak_pool_dump@{vqec\_\-cli\_\-pak\_\-pool\_\-dump}}
+\index{vqec_cli_pak_pool_dump@{vqec\_\-cli\_\-pak\_\-pool\_\-dump}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-pak\_\-pool\_\-dump (void)}\label{vqec__cli__interface_8c_f9e86354a8bea5553c822dff2d03b1f9}
+
+
+Print status information for the dataplane pak pool. It is assumed that the global lock is already held. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_pak_pool_dump_safe@{vqec\_\-cli\_\-pak\_\-pool\_\-dump\_\-safe}}
+\index{vqec_cli_pak_pool_dump_safe@{vqec\_\-cli\_\-pak\_\-pool\_\-dump\_\-safe}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-pak\_\-pool\_\-dump\_\-safe (void)}\label{vqec__cli__interface_8c_aa61e72da7a4578f372774dd56b0cdd2}
+
+
+Print status information for the dataplane pak pool. It is assumed that the global lock is not held, and is acquired. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_pak_pool_status_print@{vqec\_\-cli\_\-pak\_\-pool\_\-status\_\-print}}
+\index{vqec_cli_pak_pool_status_print@{vqec\_\-cli\_\-pak\_\-pool\_\-status\_\-print}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}static void vqec\_\-cli\_\-pak\_\-pool\_\-status\_\-print (vqec\_\-pak\_\-pool\_\-status\_\-t $\ast$ {\em status})\hspace{0.3cm}{\tt  [static]}}\label{vqec__cli__interface_8c_10feec4f445662f1fd34bae60d4a52f0}
+
+
+Display a packet pool's status to the CLI. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_pcm_dump@{vqec\_\-cli\_\-pcm\_\-dump}}
+\index{vqec_cli_pcm_dump@{vqec\_\-cli\_\-pcm\_\-dump}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-pcm\_\-dump (vqec\_\-dp\_\-chanid\_\-t {\em chanid}, boolean {\em brief\_\-flag})}\label{vqec__cli__interface_8c_6748be0200a306c1b2083a795b6e7a91}
+
+
+Dump PCM information.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em chanid}]Channel ID of the channel assocaited with the PCM module \item[\mbox{$\leftarrow$} {\em brief\_\-flag}]Boolean brief flag specifying optional brief output \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_pcm_print_stats@{vqec\_\-cli\_\-pcm\_\-print\_\-stats}}
+\index{vqec_cli_pcm_print_stats@{vqec\_\-cli\_\-pcm\_\-print\_\-stats}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-pcm\_\-print\_\-stats (vqec\_\-dp\_\-pcm\_\-status\_\-t $\ast$ {\em stats}, boolean {\em brief\_\-flag})}\label{vqec__cli__interface_8c_00db3e3d93ee990978e268f395e901bb}
+
+
+Print out PCM statistics.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em stats}]pcm dp stats pointer \item[\mbox{$\leftarrow$} {\em brief\_\-flag}]Boolean brief flag specifying optional brief output \end{description}
+\end{Desc}
+\index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_show_dp_global_counters_safe@{vqec\_\-cli\_\-show\_\-dp\_\-global\_\-counters\_\-safe}}
+\index{vqec_cli_show_dp_global_counters_safe@{vqec\_\-cli\_\-show\_\-dp\_\-global\_\-counters\_\-safe}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-show\_\-dp\_\-global\_\-counters\_\-safe (void)}\label{vqec__cli__interface_8c_20623cdf496f43bdc2f7789160b6d963}
+
+
+Display dataplane global debug counters. Acquires and releases the global lock. \index{vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}!vqec_cli_show_ipc_status_safe@{vqec\_\-cli\_\-show\_\-ipc\_\-status\_\-safe}}
+\index{vqec_cli_show_ipc_status_safe@{vqec\_\-cli\_\-show\_\-ipc\_\-status\_\-safe}!vqec_cli_interface.c@{vqec\_\-cli\_\-interface.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-cli\_\-show\_\-ipc\_\-status\_\-safe (void)}\label{vqec__cli__interface_8c_184dc0b61298ff79166787102f525dd8}
+
+
+Display IPC counters and status. Acquires and releases the global lock. 

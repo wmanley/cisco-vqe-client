@@ -1,0 +1,71 @@
+\section{vqec\_\-upcall\_\-event.h File Reference}
+\label{vqec__upcall__event_8h}\index{vqec_upcall_event.h@{vqec\_\-upcall\_\-event.h}}
+{\tt \#include \char`\"{}vam\_\-types.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-dp\_\-api.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-error.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-upcall\_\-ev\_\-stats\_\-}
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef \bf{vqec\_\-upcall\_\-ev\_\-stats\_\-} \bf{vqec\_\-upcall\_\-ev\_\-stats\_\-t}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+vqec\_\-error\_\-t \bf{vqec\_\-upcall\_\-setup\_\-unsocks} (uint32\_\-t max\_\-paksize)
+\item 
+void \bf{vqec\_\-upcall\_\-close\_\-unsocks} (void)
+\item 
+void \bf{vqec\_\-upcall\_\-display\_\-state} (void)
+\item 
+void \bf{vqec\_\-upcall\_\-get\_\-irq\_\-stats} (\bf{vqec\_\-upcall\_\-ev\_\-stats\_\-t} $\ast$stats)
+\end{CompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{vqec_upcall_event.h@{vqec\_\-upcall\_\-event.h}!vqec_upcall_ev_stats_t@{vqec\_\-upcall\_\-ev\_\-stats\_\-t}}
+\index{vqec_upcall_ev_stats_t@{vqec\_\-upcall\_\-ev\_\-stats\_\-t}!vqec_upcall_event.h@{vqec\_\-upcall\_\-event.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-upcall\_\-ev\_\-stats\_\-}  \bf{vqec\_\-upcall\_\-ev\_\-stats\_\-t}}\label{vqec__upcall__event_8h_dc88a27ec661230eb95aba5bc99e53d4}
+
+
+
+
+\subsection{Function Documentation}
+\index{vqec_upcall_event.h@{vqec\_\-upcall\_\-event.h}!vqec_upcall_close_unsocks@{vqec\_\-upcall\_\-close\_\-unsocks}}
+\index{vqec_upcall_close_unsocks@{vqec\_\-upcall\_\-close\_\-unsocks}!vqec_upcall_event.h@{vqec\_\-upcall\_\-event.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-upcall\_\-close\_\-unsocks (void)}\label{vqec__upcall__event_8h_020466839798c4aa443c388dfe065188}
+
+
+--------------------------------------------------------------------------- Close existing unix sockets. The inodes created in the \char`\"{}/tmp\char`\"{} directory are destroyed via the \char`\"{}unlink\char`\"{} system call. --------------------------------------------------------------------------- \index{vqec_upcall_event.h@{vqec\_\-upcall\_\-event.h}!vqec_upcall_display_state@{vqec\_\-upcall\_\-display\_\-state}}
+\index{vqec_upcall_display_state@{vqec\_\-upcall\_\-display\_\-state}!vqec_upcall_event.h@{vqec\_\-upcall\_\-event.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-upcall\_\-display\_\-state (void)}\label{vqec__upcall__event_8h_d5111e800a4f6f9011aacefd7e9166d7}
+
+
+--------------------------------------------------------------------------- Display global upcall state. --------------------------------------------------------------------------- \index{vqec_upcall_event.h@{vqec\_\-upcall\_\-event.h}!vqec_upcall_get_irq_stats@{vqec\_\-upcall\_\-get\_\-irq\_\-stats}}
+\index{vqec_upcall_get_irq_stats@{vqec\_\-upcall\_\-get\_\-irq\_\-stats}!vqec_upcall_event.h@{vqec\_\-upcall\_\-event.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void vqec\_\-upcall\_\-get\_\-irq\_\-stats (\bf{vqec\_\-upcall\_\-ev\_\-stats\_\-t} $\ast$ {\em stats})}\label{vqec__upcall__event_8h_2f4a8fcca9020fae5255a967c2f54f14}
+
+
+--------------------------------------------------------------------------- Get IRQ event statistics - used for unit-tests.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em stats}]Pointer to the stats structure. --------------------------------------------------------------------------- \end{description}
+\end{Desc}
+\index{vqec_upcall_event.h@{vqec\_\-upcall\_\-event.h}!vqec_upcall_setup_unsocks@{vqec\_\-upcall\_\-setup\_\-unsocks}}
+\index{vqec_upcall_setup_unsocks@{vqec\_\-upcall\_\-setup\_\-unsocks}!vqec_upcall_event.h@{vqec\_\-upcall\_\-event.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}vqec\_\-error\_\-t vqec\_\-upcall\_\-setup\_\-unsocks (uint32\_\-t {\em max\_\-paksize})}\label{vqec__upcall__event_8h_d59208eecf5b3dafa404cf8438b25f66}
+
+
+--------------------------------------------------------------------------- Upcall socket setup.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em max\_\-paksize}]Maximum packet size bound for \char`\"{}punted\char`\"{} or \char`\"{}ejected\char`\"{} packets received from the dataplane. \item[\mbox{$\rightarrow$} {\em vqec\_\-error\_\-t}]Returns VQEC\_\-OK if the sockets are setup successfully, error code otherwise. --------------------------------------------------------------------------- \end{description}
+\end{Desc}

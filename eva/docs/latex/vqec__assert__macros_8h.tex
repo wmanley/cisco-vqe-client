@@ -1,0 +1,29 @@
+\section{vqec\_\-assert\_\-macros.h File Reference}
+\label{vqec__assert__macros_8h}\index{vqec_assert_macros.h@{vqec\_\-assert\_\-macros.h}}
+{\tt \#include $<$assert.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-ASSERT}(expr)~assert((expr))
+\item 
+\#define \bf{VQEC\_\-FATAL\_\-ERROR}(fmtstr, args...)
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_assert_macros.h@{vqec\_\-assert\_\-macros.h}!VQEC_ASSERT@{VQEC\_\-ASSERT}}
+\index{VQEC_ASSERT@{VQEC\_\-ASSERT}!vqec_assert_macros.h@{vqec\_\-assert\_\-macros.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-ASSERT(expr)~assert((expr))}\label{vqec__assert__macros_8h_b0a4ad404b585165b67fd08e0c8a2967}
+
+
+\index{vqec_assert_macros.h@{vqec\_\-assert\_\-macros.h}!VQEC_FATAL_ERROR@{VQEC\_\-FATAL\_\-ERROR}}
+\index{VQEC_FATAL_ERROR@{VQEC\_\-FATAL\_\-ERROR}!vqec_assert_macros.h@{vqec\_\-assert\_\-macros.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-FATAL\_\-ERROR(fmtstr, args...)}\label{vqec__assert__macros_8h_367695b146282f8fd2038d11790a11aa}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}fprintf(stderr, "FATAL @ %s:%d\n", __FUNCTION__, __LINE__); \
+    fprintf(stderr, fmtstr, ##args);                            \
+    abort();
+\end{verbatim}\end{Code}

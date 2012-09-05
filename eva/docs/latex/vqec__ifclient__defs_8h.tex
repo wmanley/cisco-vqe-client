@@ -1,0 +1,874 @@
+\section{vqec\_\-ifclient\_\-defs.h File Reference}
+\label{vqec__ifclient__defs_8h}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+{\tt \#include $<$stdint.h$>$}\par
+{\tt \#include $<$pthread.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include \char`\"{}vqec\_\-ifclient\_\-read.h\char`\"{}}\par
+{\tt \#include \char`\"{}vqec\_\-tr135\_\-defs.h\char`\"{}}\par
+{\tt \#include $<$netinet/ip.h$>$}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \bf{vqec\_\-tuner\_\-iter\_\-t\_\-}
+\begin{CompactList}\small\item\em Tuner iterator structure. \item\end{CompactList}\item 
+struct \bf{vqec\_\-rtphdr\_\-t\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-stats\_\-t\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-updater\_\-stats\_\-t\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-dcr\_\-stats\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-fastfill\_\-params\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-}
+\item 
+struct \bf{vqec\_\-chan\_\-cfg\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-config\_\-event\_\-params\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-config\_\-update\_\-params\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-config\_\-status\_\-params\_\-}
+\item 
+struct \bf{vqec\_\-ifclient\_\-config\_\-override\_\-params\_\-}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \bf{VQEC\_\-MSG\_\-MAX\_\-RECV\_\-TIMEOUT}~(100)
+\begin{CompactList}\small\item\em Max timeout for blocking reads (msec). \item\end{CompactList}\item 
+\#define \bf{VQEC\_\-MSG\_\-MAX\_\-IOBUF\_\-CNT}~(32)
+\begin{CompactList}\small\item\em Max limit on the msg iobuf array. \item\end{CompactList}\item 
+\#define \bf{VQEC\_\-MSG\_\-MAX\_\-DATAGRAM\_\-LEN}~(1512)
+\begin{CompactList}\small\item\em Maximum supported datagram size. \item\end{CompactList}\item 
+\#define \bf{VQEC\_\-MSG\_\-FLAGS\_\-APP}~(0x02)
+\begin{CompactList}\small\item\em Message contents is in APP packet. \item\end{CompactList}\item 
+\#define \bf{VQEC\_\-MAX\_\-TUNER\_\-NAMESTR\_\-LEN}~(16)
+\begin{CompactList}\small\item\em Max limit on tuner name. \item\end{CompactList}\item 
+\#define \bf{VQEC\_\-MAX\_\-CNAME\_\-LEN}~33
+\item 
+\#define \bf{VQEC\_\-RTP\_\-VERSION\_\-SHIFT}~14
+\item 
+\#define \bf{VQEC\_\-RTP\_\-PADDING\_\-SHIFT}~13
+\item 
+\#define \bf{VQEC\_\-RTP\_\-EXT\_\-SHIFT}~12
+\item 
+\#define \bf{VQEC\_\-RTP\_\-CSRCC\_\-SHIFT}~8
+\item 
+\#define \bf{VQEC\_\-RTP\_\-MARKER\_\-SHIFT}~7
+\item 
+\#define \bf{VQEC\_\-RTP\_\-PAYLOAD\_\-SHIFT}~0
+\item 
+\#define \bf{VQEC\_\-RTP\_\-VERSION}(a)
+\item 
+\#define \bf{VQEC\_\-RTP\_\-PADDING}(a)
+\item 
+\#define \bf{VQEC\_\-RTP\_\-EXT}(a)
+\item 
+\#define \bf{VQEC\_\-RTP\_\-CSRCC}(a)
+\item 
+\#define \bf{VQEC\_\-RTP\_\-MARKER}(a)
+\item 
+\#define \bf{VQEC\_\-RTP\_\-PAYLOAD}(a)
+\item 
+\#define \bf{VQE\_\-STAT\_\-COUNTERS}
+\item 
+\#define \bf{VQEC\_\-UPDATER\_\-VERSION\_\-STRLEN}~33
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-NAME}~\char`\"{}name\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-ALL}~\char`\"{}all\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-BRIEF}~\char`\"{}brief\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-PCM}~\char`\"{}pcm\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-CHANNEL}~\char`\"{}channel\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-COUNTERS}~\char`\"{}counters\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-LOG}~\char`\"{}log\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-FEC}~\char`\"{}fec\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-NAT}~\char`\"{}nat\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-RCC}~\char`\"{}rcc\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-IPC}~\char`\"{}ipc\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-DETAIL}~\char`\"{}detail\char`\"{}
+\item 
+\#define \bf{SHOW\_\-T\_\-CLI\_\-ARG\_\-JOINDELAY}~\char`\"{}join-delay\char`\"{}
+\item 
+\#define \bf{SHOW\_\-C\_\-CLI\_\-ARG\_\-LIST}~\char`\"{}list\char`\"{}
+\item 
+\#define \bf{SHOW\_\-C\_\-CLI\_\-ARG\_\-COUNTERS}~\char`\"{}counters\char`\"{}
+\item 
+\#define \bf{SHOW\_\-C\_\-CLI\_\-ARG\_\-CONFIG}~\char`\"{}config\char`\"{}
+\item 
+\#define \bf{SHOW\_\-C\_\-CLI\_\-ARG\_\-ALL}~\char`\"{}all\char`\"{}
+\item 
+\#define \bf{SHOW\_\-C\_\-CLI\_\-ARG\_\-URL}~\char`\"{}url\char`\"{}
+\item 
+\#define \bf{SHOW\_\-C\_\-CLI\_\-ARG\_\-CUMULATIVE}~\char`\"{}cumulative\char`\"{}
+\item 
+\#define \bf{VQEC\_\-CLIENT\_\-MODE\_\-USER}~0x0
+\item 
+\#define \bf{VQEC\_\-CLIENT\_\-MODE\_\-KERN}~0x1
+\item 
+\#define \bf{VQEC\_\-MAX\_\-CHANNEL\_\-NAME\_\-LENGTH}~80
+\item 
+\#define \bf{VQEC\_\-RTCP\_\-BW\_\-UNSPECIFIED}~0xffffffff
+\item 
+\#define \bf{VQEC\_\-RTCP\_\-XR\_\-RLE\_\-ENABLE}~0xfff2
+\item 
+\#define \bf{VQEC\_\-RTCP\_\-XR\_\-RLE\_\-UNSPECIFIED}~0xffff
+\item 
+\#define \bf{VQEC\_\-RTCP\_\-XR\_\-STAT\_\-LOSS}~0x00000001
+\item 
+\#define \bf{VQEC\_\-RTCP\_\-XR\_\-STAT\_\-DUP}~0x00000002
+\item 
+\#define \bf{VQEC\_\-RTCP\_\-XR\_\-STAT\_\-JITT}~0x00000004
+\item 
+\#define \bf{VQEC\_\-MAX\_\-ICE\_\-UFRAG\_\-LENGTH}~257
+\item 
+\#define \bf{VQEC\_\-MD5\_\-CHECKSUM\_\-STRLEN}~(32 + 1)
+\item 
+\#define \bf{VQEC\_\-TIMESTAMP\_\-STRLEN}~(28 + 1)
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum \bf{vqec\_\-hist\_\-t\_\-} \bf{vqec\_\-hist\_\-t}
+\item 
+typedef \bf{vqec\_\-tuner\_\-iter\_\-t\_\-} \bf{vqec\_\-tuner\_\-iter\_\-t}
+\begin{CompactList}\small\item\em Tuner iterator structure. \item\end{CompactList}\item 
+typedef \bf{vqec\_\-rtphdr\_\-t\_\-} \bf{vqec\_\-rtphdr\_\-t}
+\item 
+typedef enum \bf{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t\_\-} \bf{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-stats\_\-t\_\-} \bf{vqec\_\-ifclient\_\-stats\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-} \bf{vqec\_\-ifclient\_\-stats\_\-channel\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-updater\_\-stats\_\-t\_\-} \bf{vqec\_\-ifclient\_\-updater\_\-stats\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-dcr\_\-stats\_\-} \bf{vqec\_\-ifclient\_\-dcr\_\-stats\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-} \bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t}
+\item 
+typedef enum \bf{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t\_\-} \bf{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-} \bf{vqec\_\-ifclient\_\-fastfill\_\-status\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-fastfill\_\-params\_\-} \bf{vqec\_\-ifclient\_\-fastfill\_\-params\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-} \bf{vqec\_\-ifclient\_\-fastfill\_\-cb\_\-ops\_\-t}
+\item 
+typedef enum \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-} \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-} \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-args\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-} \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-cb\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-} \bf{vqec\_\-ifclient\_\-tmp\_\-chan\_\-params\_\-t}
+\item 
+typedef \bf{vqec\_\-bind\_\-params\_\-} \bf{vqec\_\-bind\_\-params\_\-t}
+\item 
+typedef vqec\_\-update\_\-params\_\- \bf{vqec\_\-update\_\-params\_\-t}
+\item 
+typedef char $\ast$ \bf{vqec\_\-sdp\_\-handle\_\-t}
+\item 
+typedef char \bf{sdp\_\-block\_\-t}
+\item 
+typedef in\_\-addr \bf{vqec\_\-in\_\-addr\_\-t}
+\item 
+typedef in\_\-port\_\-t \bf{vqec\_\-in\_\-port\_\-t}
+\item 
+typedef enum \bf{vqec\_\-chan\_\-type\_\-} \bf{vqec\_\-chan\_\-type\_\-t}
+\item 
+typedef enum \bf{vqec\_\-fec\_\-mode\_\-} \bf{vqec\_\-fec\_\-mode\_\-t}
+\item 
+typedef enum \bf{vqec\_\-fec\_\-order\_\-} \bf{vqec\_\-fec\_\-order\_\-t}
+\item 
+typedef \bf{vqec\_\-chan\_\-cfg\_\-} \bf{vqec\_\-chan\_\-cfg\_\-t}
+\item 
+typedef enum \bf{vqec\_\-ifclient\_\-config\_\-} \bf{vqec\_\-ifclient\_\-config\_\-t}
+\item 
+typedef enum \bf{vqec\_\-ifclient\_\-config\_\-event\_\-} \bf{vqec\_\-ifclient\_\-config\_\-event\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-config\_\-event\_\-params\_\-} \bf{vqec\_\-ifclient\_\-config\_\-event\_\-params\_\-t}
+\item 
+typedef void($\ast$) \bf{vqec\_\-ifclient\_\-config\_\-event\_\-cb\_\-t} (\bf{vqec\_\-ifclient\_\-config\_\-event\_\-params\_\-t} $\ast$params)
+\item 
+typedef \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-} \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-config\_\-update\_\-params\_\-} \bf{vqec\_\-ifclient\_\-config\_\-update\_\-params\_\-t}
+\item 
+typedef enum \bf{vqec\_\-ifclient\_\-config\_\-status\_\-} \bf{vqec\_\-ifclient\_\-config\_\-status\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-config\_\-status\_\-params\_\-} \bf{vqec\_\-ifclient\_\-config\_\-status\_\-params\_\-t}
+\item 
+typedef \bf{vqec\_\-ifclient\_\-config\_\-override\_\-params\_\-} \bf{vqec\_\-ifclient\_\-config\_\-override\_\-params\_\-t}
+\end{CompactItemize}
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \bf{vqec\_\-hist\_\-t\_\-} \{ \bf{VQEC\_\-HIST\_\-JOIN\_\-DELAY} =  0, 
+\bf{VQEC\_\-HIST\_\-OUTPUTSCHED}, 
+\bf{VQEC\_\-HIST\_\-MAX}
+ \}
+\item 
+enum \bf{vqec\_\-ifclient\_\-rcc\_\-abort\_\-t\_\-} \{ \par
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-SERVER\_\-REJECT}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-STUN\_\-TIMEOUT}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-RESPONSE\_\-TIMEOUT}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-RESPONSE\_\-INVALID}, 
+\par
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-BURST\_\-START}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-BURST\_\-ACTIVITY}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-OTHER}, 
+\bf{VQEC\_\-IFCLIENT\_\-RCC\_\-ABORT\_\-MAX}
+ \}
+\item 
+enum \bf{vqec\_\-ifclient\_\-fastfill\_\-abort\_\-t\_\-} \{ \bf{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-SERVER}, 
+\bf{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-CLIENT}, 
+\bf{VQEC\_\-IFCLIENT\_\-FASTFILL\_\-ABORT\_\-MAX}
+ \}
+\item 
+enum \bf{vqec\_\-ifclient\_\-chan\_\-event\_\-} \{ \bf{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-UNKNOWN}, 
+\bf{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-INACTIVE}, 
+\bf{VQEC\_\-IFCLIENT\_\-CHAN\_\-EVENT\_\-NEW\_\-SOURCE}
+ \}
+\item 
+enum \bf{vqec\_\-show\_\-tuner\_\-options\_\-mask} \{ \par
+\bf{ALL\_\-TUNERS\_\-MASK} =  0x00000001, 
+\bf{SPECIFIC\_\-TUNER\_\-MASK} =  0x00000002, 
+\bf{BRIEF\_\-MASK} =  0x00000004, 
+\bf{PCM\_\-MASK} =  0x00000008, 
+\par
+\bf{COUNTERS\_\-MASK} =  0x00000010, 
+\bf{CHANNEL\_\-MASK} =  0x00000020, 
+\bf{LOG\_\-MASK} =  0x00000040, 
+\bf{DETAIL\_\-MASK} =  0x00000080, 
+\par
+\bf{FEC\_\-MASK} =  0x00000100, 
+\bf{NAT\_\-MASK} =  0x00000200, 
+\bf{RCC\_\-MASK} =  0x00000400, 
+\bf{IPC\_\-MASK} =  0x00000800, 
+\par
+\bf{ALL\_\-OPTIONS\_\-MASK}, 
+\bf{JOINDELAY\_\-MASK} =  0x08000000, 
+\bf{ERROR\_\-MASK} =  0x10000000, 
+\bf{TUNER\_\-NAME\_\-ERROR\_\-MASK} =  0x30000000
+ \}
+\item 
+enum \bf{vqec\_\-show\_\-tuner\_\-cli\_\-name} \{ \bf{STCLIARG\_\-NAME} =  0, 
+\bf{STCLIARG\_\-ALL}, 
+\bf{STCLIARG\_\-JOINDELAY}
+ \}
+\item 
+enum \bf{vqec\_\-show\_\-tuner\_\-cli\_\-opts} \{ \par
+\bf{STCLIARG\_\-BRIEF} =  0, 
+\bf{STCLIARG\_\-PCM}, 
+\bf{STCLIARG\_\-CHANNEL}, 
+\bf{STCLIARG\_\-COUNTERS}, 
+\par
+\bf{STCLIARG\_\-LOG}, 
+\bf{STCLIARG\_\-FEC}, 
+\bf{STCLIARG\_\-NAT}, 
+\bf{STCLIARG\_\-RCC}, 
+\par
+\bf{STCLIARG\_\-IPC}, 
+\bf{STCLIARG\_\-DETAIL}
+ \}
+\item 
+enum \bf{vqec\_\-show\_\-channel\_\-options\_\-mask} \{ \par
+\bf{SC\_\-LIST\_\-MASK} =  0x00000001, 
+\bf{SC\_\-COUNTERS\_\-MASK} =  0x00000002, 
+\bf{SC\_\-COUNTERS\_\-ALL\_\-MASK} =  (0x00000004 $|$ SC\_\-COUNTERS\_\-MASK), 
+\bf{SC\_\-COUNTERS\_\-URL\_\-MASK} =  (0x00000008 $|$ SC\_\-COUNTERS\_\-MASK), 
+\par
+\bf{SC\_\-COUNTERS\_\-CUMULATIVE\_\-MASK} =  (0x00000010 $|$ SC\_\-COUNTERS\_\-MASK), 
+\bf{SC\_\-CONFIG\_\-MASK} =  0x00000020, 
+\bf{SC\_\-CONFIG\_\-ALL\_\-MASK} =  (0x00000040 $|$ SC\_\-CONFIG\_\-MASK), 
+\bf{SC\_\-CONFIG\_\-URL\_\-MASK} =  (0x00000080 $|$ SC\_\-CONFIG\_\-MASK), 
+\par
+\bf{SC\_\-ERROR\_\-MASK} =  0x00000100
+ \}
+\item 
+enum \bf{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params1} \{ \bf{SCCLIARG\_\-COUNTERS} =  0, 
+\bf{SCCLIARG\_\-CONFIG}
+ \}
+\item 
+enum \bf{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params2} \{ \bf{SCCLIARG\_\-ALL} =  0, 
+\bf{SCCLIARG\_\-URL}
+ \}
+\item 
+enum \bf{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params3} \{ \bf{SCCLIARG\_\-CUMULATIVE} =  0
+ \}
+\item 
+enum \bf{vqec\_\-chan\_\-type\_\-} \{ \bf{VQEC\_\-CHAN\_\-TYPE\_\-LINEAR} =  0, 
+\bf{VQEC\_\-CHAN\_\-TYPE\_\-VOD}
+ \}
+\item 
+enum \bf{vqec\_\-fec\_\-mode\_\-} \{ \bf{VQEC\_\-FEC\_\-1D\_\-MODE}, 
+\bf{VQEC\_\-FEC\_\-2D\_\-MODE}
+ \}
+\item 
+enum \bf{vqec\_\-fec\_\-order\_\-} \{ \bf{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-NOT\_\-DECIDED} =  0, 
+\bf{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-ANNEXA}, 
+\bf{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-ANNEXB}, 
+\bf{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-OTHER}
+ \}
+\item 
+enum \bf{vqec\_\-ifclient\_\-config\_\-} \{ \bf{VQEC\_\-IFCLIENT\_\-CONFIG\_\-NETWORK}, 
+\bf{VQEC\_\-IFCLIENT\_\-CONFIG\_\-OVERRIDE}, 
+\bf{VQEC\_\-IFCLIENT\_\-CONFIG\_\-CHANNEL}, 
+\bf{VQEC\_\-IFCLIENT\_\-CONFIG\_\-MAX}
+ \}
+\item 
+enum \bf{vqec\_\-ifclient\_\-config\_\-event\_\-} \{ \bf{VQEC\_\-IFCLIENT\_\-CONFIG\_\-EVENT\_\-CONFIG\_\-INVALID}
+ \}
+\item 
+enum \bf{vqec\_\-ifclient\_\-config\_\-status\_\-} \{ \bf{VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-VALID}, 
+\bf{VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-INVALID}, 
+\bf{VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-NA}
+ \}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\bf{vqec\_\-ifclient\_\-get\_\-dcr\_\-info\_\-ops\_\-t} $\ast$ \bf{get\_\-dcr\_\-ops} (void)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+int32\_\-t \bf{g\_\-vqec\_\-client\_\-mode}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_C_CLI_ARG_ALL@{SHOW\_\-C\_\-CLI\_\-ARG\_\-ALL}}
+\index{SHOW_C_CLI_ARG_ALL@{SHOW\_\-C\_\-CLI\_\-ARG\_\-ALL}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-C\_\-CLI\_\-ARG\_\-ALL~\char`\"{}all\char`\"{}}\label{vqec__ifclient__defs_8h_d5cc6fc6a816a9b3219f1c5df07898de}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_C_CLI_ARG_CONFIG@{SHOW\_\-C\_\-CLI\_\-ARG\_\-CONFIG}}
+\index{SHOW_C_CLI_ARG_CONFIG@{SHOW\_\-C\_\-CLI\_\-ARG\_\-CONFIG}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-C\_\-CLI\_\-ARG\_\-CONFIG~\char`\"{}config\char`\"{}}\label{vqec__ifclient__defs_8h_bb1598ba0845267bafd136b612c72f5f}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_C_CLI_ARG_COUNTERS@{SHOW\_\-C\_\-CLI\_\-ARG\_\-COUNTERS}}
+\index{SHOW_C_CLI_ARG_COUNTERS@{SHOW\_\-C\_\-CLI\_\-ARG\_\-COUNTERS}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-C\_\-CLI\_\-ARG\_\-COUNTERS~\char`\"{}counters\char`\"{}}\label{vqec__ifclient__defs_8h_b72220eee2f724aa99c2b1f5dea9ca75}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_C_CLI_ARG_CUMULATIVE@{SHOW\_\-C\_\-CLI\_\-ARG\_\-CUMULATIVE}}
+\index{SHOW_C_CLI_ARG_CUMULATIVE@{SHOW\_\-C\_\-CLI\_\-ARG\_\-CUMULATIVE}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-C\_\-CLI\_\-ARG\_\-CUMULATIVE~\char`\"{}cumulative\char`\"{}}\label{vqec__ifclient__defs_8h_26ebd8a86f808b66fe14c4408baa6170}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_C_CLI_ARG_LIST@{SHOW\_\-C\_\-CLI\_\-ARG\_\-LIST}}
+\index{SHOW_C_CLI_ARG_LIST@{SHOW\_\-C\_\-CLI\_\-ARG\_\-LIST}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-C\_\-CLI\_\-ARG\_\-LIST~\char`\"{}list\char`\"{}}\label{vqec__ifclient__defs_8h_9e2713c3c35c12613d21188c1a0d002c}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_C_CLI_ARG_URL@{SHOW\_\-C\_\-CLI\_\-ARG\_\-URL}}
+\index{SHOW_C_CLI_ARG_URL@{SHOW\_\-C\_\-CLI\_\-ARG\_\-URL}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-C\_\-CLI\_\-ARG\_\-URL~\char`\"{}url\char`\"{}}\label{vqec__ifclient__defs_8h_ed790032ec6c8daa23e59059d39e6cd2}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_ALL@{SHOW\_\-T\_\-CLI\_\-ARG\_\-ALL}}
+\index{SHOW_T_CLI_ARG_ALL@{SHOW\_\-T\_\-CLI\_\-ARG\_\-ALL}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-ALL~\char`\"{}all\char`\"{}}\label{vqec__ifclient__defs_8h_88f207048c00b4b285fe367faa9eb4a8}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_BRIEF@{SHOW\_\-T\_\-CLI\_\-ARG\_\-BRIEF}}
+\index{SHOW_T_CLI_ARG_BRIEF@{SHOW\_\-T\_\-CLI\_\-ARG\_\-BRIEF}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-BRIEF~\char`\"{}brief\char`\"{}}\label{vqec__ifclient__defs_8h_51bc601e339f10c55ee7832ed5dc1bc7}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_CHANNEL@{SHOW\_\-T\_\-CLI\_\-ARG\_\-CHANNEL}}
+\index{SHOW_T_CLI_ARG_CHANNEL@{SHOW\_\-T\_\-CLI\_\-ARG\_\-CHANNEL}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-CHANNEL~\char`\"{}channel\char`\"{}}\label{vqec__ifclient__defs_8h_ea4197e8e220bbdff4bcca890a735c11}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_COUNTERS@{SHOW\_\-T\_\-CLI\_\-ARG\_\-COUNTERS}}
+\index{SHOW_T_CLI_ARG_COUNTERS@{SHOW\_\-T\_\-CLI\_\-ARG\_\-COUNTERS}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-COUNTERS~\char`\"{}counters\char`\"{}}\label{vqec__ifclient__defs_8h_7cd0d9b1f60b95ce836f079adaebc21a}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_DETAIL@{SHOW\_\-T\_\-CLI\_\-ARG\_\-DETAIL}}
+\index{SHOW_T_CLI_ARG_DETAIL@{SHOW\_\-T\_\-CLI\_\-ARG\_\-DETAIL}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-DETAIL~\char`\"{}detail\char`\"{}}\label{vqec__ifclient__defs_8h_090e4bc061c58fe7439b7e501e2d38c9}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_FEC@{SHOW\_\-T\_\-CLI\_\-ARG\_\-FEC}}
+\index{SHOW_T_CLI_ARG_FEC@{SHOW\_\-T\_\-CLI\_\-ARG\_\-FEC}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-FEC~\char`\"{}fec\char`\"{}}\label{vqec__ifclient__defs_8h_be05863b1866b56825b9af125d2b6b8c}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_IPC@{SHOW\_\-T\_\-CLI\_\-ARG\_\-IPC}}
+\index{SHOW_T_CLI_ARG_IPC@{SHOW\_\-T\_\-CLI\_\-ARG\_\-IPC}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-IPC~\char`\"{}ipc\char`\"{}}\label{vqec__ifclient__defs_8h_f9670f05c96da26d9602bf2a6e8bf6a9}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_JOINDELAY@{SHOW\_\-T\_\-CLI\_\-ARG\_\-JOINDELAY}}
+\index{SHOW_T_CLI_ARG_JOINDELAY@{SHOW\_\-T\_\-CLI\_\-ARG\_\-JOINDELAY}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-JOINDELAY~\char`\"{}join-delay\char`\"{}}\label{vqec__ifclient__defs_8h_1cbe499beeb1ebc3f077af18a4454921}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_LOG@{SHOW\_\-T\_\-CLI\_\-ARG\_\-LOG}}
+\index{SHOW_T_CLI_ARG_LOG@{SHOW\_\-T\_\-CLI\_\-ARG\_\-LOG}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-LOG~\char`\"{}log\char`\"{}}\label{vqec__ifclient__defs_8h_1e49057e553b43a03e7d8989bb615121}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_NAME@{SHOW\_\-T\_\-CLI\_\-ARG\_\-NAME}}
+\index{SHOW_T_CLI_ARG_NAME@{SHOW\_\-T\_\-CLI\_\-ARG\_\-NAME}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-NAME~\char`\"{}name\char`\"{}}\label{vqec__ifclient__defs_8h_2196fbfa67b6b13c00ece3223d6cd89b}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_NAT@{SHOW\_\-T\_\-CLI\_\-ARG\_\-NAT}}
+\index{SHOW_T_CLI_ARG_NAT@{SHOW\_\-T\_\-CLI\_\-ARG\_\-NAT}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-NAT~\char`\"{}nat\char`\"{}}\label{vqec__ifclient__defs_8h_a5a36e7cedcdf5eeb3cf7ba24eb4131b}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_PCM@{SHOW\_\-T\_\-CLI\_\-ARG\_\-PCM}}
+\index{SHOW_T_CLI_ARG_PCM@{SHOW\_\-T\_\-CLI\_\-ARG\_\-PCM}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-PCM~\char`\"{}pcm\char`\"{}}\label{vqec__ifclient__defs_8h_1b992422e10d7488898e16433dbff0ca}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SHOW_T_CLI_ARG_RCC@{SHOW\_\-T\_\-CLI\_\-ARG\_\-RCC}}
+\index{SHOW_T_CLI_ARG_RCC@{SHOW\_\-T\_\-CLI\_\-ARG\_\-RCC}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define SHOW\_\-T\_\-CLI\_\-ARG\_\-RCC~\char`\"{}rcc\char`\"{}}\label{vqec__ifclient__defs_8h_595b8db6c310b45fe8d5cfca8f89495a}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_CLIENT_MODE_KERN@{VQEC\_\-CLIENT\_\-MODE\_\-KERN}}
+\index{VQEC_CLIENT_MODE_KERN@{VQEC\_\-CLIENT\_\-MODE\_\-KERN}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CLIENT\_\-MODE\_\-KERN~0x1}\label{vqec__ifclient__defs_8h_545338daf370de970047574de81fd172}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_CLIENT_MODE_USER@{VQEC\_\-CLIENT\_\-MODE\_\-USER}}
+\index{VQEC_CLIENT_MODE_USER@{VQEC\_\-CLIENT\_\-MODE\_\-USER}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-CLIENT\_\-MODE\_\-USER~0x0}\label{vqec__ifclient__defs_8h_7232fc68c593339134a0a5436c54c37d}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_MAX_CHANNEL_NAME_LENGTH@{VQEC\_\-MAX\_\-CHANNEL\_\-NAME\_\-LENGTH}}
+\index{VQEC_MAX_CHANNEL_NAME_LENGTH@{VQEC\_\-MAX\_\-CHANNEL\_\-NAME\_\-LENGTH}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MAX\_\-CHANNEL\_\-NAME\_\-LENGTH~80}\label{vqec__ifclient__defs_8h_95652d8d0b5ae65031cbed1650050922}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_MAX_ICE_UFRAG_LENGTH@{VQEC\_\-MAX\_\-ICE\_\-UFRAG\_\-LENGTH}}
+\index{VQEC_MAX_ICE_UFRAG_LENGTH@{VQEC\_\-MAX\_\-ICE\_\-UFRAG\_\-LENGTH}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MAX\_\-ICE\_\-UFRAG\_\-LENGTH~257}\label{vqec__ifclient__defs_8h_471254cdf01a6919bc55af23f2af29b5}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_MD5_CHECKSUM_STRLEN@{VQEC\_\-MD5\_\-CHECKSUM\_\-STRLEN}}
+\index{VQEC_MD5_CHECKSUM_STRLEN@{VQEC\_\-MD5\_\-CHECKSUM\_\-STRLEN}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-MD5\_\-CHECKSUM\_\-STRLEN~(32 + 1)}\label{vqec__ifclient__defs_8h_ed9f8dd5ff4a05932fa3037fd88e2cde}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_RTCP_BW_UNSPECIFIED@{VQEC\_\-RTCP\_\-BW\_\-UNSPECIFIED}}
+\index{VQEC_RTCP_BW_UNSPECIFIED@{VQEC\_\-RTCP\_\-BW\_\-UNSPECIFIED}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTCP\_\-BW\_\-UNSPECIFIED~0xffffffff}\label{vqec__ifclient__defs_8h_22661e72514e91bb8a7b298d7e3ac71a}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_RTCP_XR_RLE_ENABLE@{VQEC\_\-RTCP\_\-XR\_\-RLE\_\-ENABLE}}
+\index{VQEC_RTCP_XR_RLE_ENABLE@{VQEC\_\-RTCP\_\-XR\_\-RLE\_\-ENABLE}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTCP\_\-XR\_\-RLE\_\-ENABLE~0xfff2}\label{vqec__ifclient__defs_8h_ae48bf4b454f018cea3e0e3558278aee}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_RTCP_XR_RLE_UNSPECIFIED@{VQEC\_\-RTCP\_\-XR\_\-RLE\_\-UNSPECIFIED}}
+\index{VQEC_RTCP_XR_RLE_UNSPECIFIED@{VQEC\_\-RTCP\_\-XR\_\-RLE\_\-UNSPECIFIED}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTCP\_\-XR\_\-RLE\_\-UNSPECIFIED~0xffff}\label{vqec__ifclient__defs_8h_091bc837d16f7612b1a662c0e10da6b8}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_RTCP_XR_STAT_DUP@{VQEC\_\-RTCP\_\-XR\_\-STAT\_\-DUP}}
+\index{VQEC_RTCP_XR_STAT_DUP@{VQEC\_\-RTCP\_\-XR\_\-STAT\_\-DUP}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTCP\_\-XR\_\-STAT\_\-DUP~0x00000002}\label{vqec__ifclient__defs_8h_ac9bc2a1e7505a2503d45ecf522ad746}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_RTCP_XR_STAT_JITT@{VQEC\_\-RTCP\_\-XR\_\-STAT\_\-JITT}}
+\index{VQEC_RTCP_XR_STAT_JITT@{VQEC\_\-RTCP\_\-XR\_\-STAT\_\-JITT}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTCP\_\-XR\_\-STAT\_\-JITT~0x00000004}\label{vqec__ifclient__defs_8h_28e199bf993e989c6bf58709327200c5}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_RTCP_XR_STAT_LOSS@{VQEC\_\-RTCP\_\-XR\_\-STAT\_\-LOSS}}
+\index{VQEC_RTCP_XR_STAT_LOSS@{VQEC\_\-RTCP\_\-XR\_\-STAT\_\-LOSS}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-RTCP\_\-XR\_\-STAT\_\-LOSS~0x00000001}\label{vqec__ifclient__defs_8h_a9988ed8f71293566e56bebd9bb27b4d}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_TIMESTAMP_STRLEN@{VQEC\_\-TIMESTAMP\_\-STRLEN}}
+\index{VQEC_TIMESTAMP_STRLEN@{VQEC\_\-TIMESTAMP\_\-STRLEN}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define VQEC\_\-TIMESTAMP\_\-STRLEN~(28 + 1)}\label{vqec__ifclient__defs_8h_b2d53b819126aa38a30c2d42b5a8a417}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_chan_cfg_t@{vqec\_\-chan\_\-cfg\_\-t}}
+\index{vqec_chan_cfg_t@{vqec\_\-chan\_\-cfg\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-chan\_\-cfg\_\-}  \bf{vqec\_\-chan\_\-cfg\_\-t}}\label{vqec__ifclient__defs_8h_081c2132f52a54bab171c2f083a1a80c}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_chan_type_t@{vqec\_\-chan\_\-type\_\-t}}
+\index{vqec_chan_type_t@{vqec\_\-chan\_\-type\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-chan\_\-type\_\-}  \bf{vqec\_\-chan\_\-type\_\-t}}\label{vqec__ifclient__defs_8h_dd7ae9329ac391e9ef22d4aacc98942f}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_fec_mode_t@{vqec\_\-fec\_\-mode\_\-t}}
+\index{vqec_fec_mode_t@{vqec\_\-fec\_\-mode\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-fec\_\-mode\_\-}  \bf{vqec\_\-fec\_\-mode\_\-t}}\label{vqec__ifclient__defs_8h_97e3a306f075fa02b0643dcc3a920258}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_fec_order_t@{vqec\_\-fec\_\-order\_\-t}}
+\index{vqec_fec_order_t@{vqec\_\-fec\_\-order\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-fec\_\-order\_\-}  \bf{vqec\_\-fec\_\-order\_\-t}}\label{vqec__ifclient__defs_8h_93f151e3fe7e9bd167a11d7b99c34e01}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_event_cb_t@{vqec\_\-ifclient\_\-config\_\-event\_\-cb\_\-t}}
+\index{vqec_ifclient_config_event_cb_t@{vqec\_\-ifclient\_\-config\_\-event\_\-cb\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$) \bf{vqec\_\-ifclient\_\-config\_\-event\_\-cb\_\-t}(\bf{vqec\_\-ifclient\_\-config\_\-event\_\-params\_\-t} $\ast$params)}\label{vqec__ifclient__defs_8h_fd720315332a39f6ac897aec16eb6f7a}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_event_params_t@{vqec\_\-ifclient\_\-config\_\-event\_\-params\_\-t}}
+\index{vqec_ifclient_config_event_params_t@{vqec\_\-ifclient\_\-config\_\-event\_\-params\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-config\_\-event\_\-params\_\-}  \bf{vqec\_\-ifclient\_\-config\_\-event\_\-params\_\-t}}\label{vqec__ifclient__defs_8h_f87a260a1aca00fef37ea780d7b72a45}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_event_t@{vqec\_\-ifclient\_\-config\_\-event\_\-t}}
+\index{vqec_ifclient_config_event_t@{vqec\_\-ifclient\_\-config\_\-event\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-ifclient\_\-config\_\-event\_\-}  \bf{vqec\_\-ifclient\_\-config\_\-event\_\-t}}\label{vqec__ifclient__defs_8h_19012f9917fb0ba57f7a68b4cd4a4655}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_override_params_t@{vqec\_\-ifclient\_\-config\_\-override\_\-params\_\-t}}
+\index{vqec_ifclient_config_override_params_t@{vqec\_\-ifclient\_\-config\_\-override\_\-params\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-config\_\-override\_\-params\_\-}  \bf{vqec\_\-ifclient\_\-config\_\-override\_\-params\_\-t}}\label{vqec__ifclient__defs_8h_ad59fc51304ff9fbb01122710bc4ec0e}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_register_params_t@{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t}}
+\index{vqec_ifclient_config_register_params_t@{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-}  \bf{vqec\_\-ifclient\_\-config\_\-register\_\-params\_\-t}}\label{vqec__ifclient__defs_8h_ef855b511757aa72560c373a11a31115}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_status_params_t@{vqec\_\-ifclient\_\-config\_\-status\_\-params\_\-t}}
+\index{vqec_ifclient_config_status_params_t@{vqec\_\-ifclient\_\-config\_\-status\_\-params\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-config\_\-status\_\-params\_\-}  \bf{vqec\_\-ifclient\_\-config\_\-status\_\-params\_\-t}}\label{vqec__ifclient__defs_8h_740f1eb332f130ae9539a52ccc10d96d}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_status_t@{vqec\_\-ifclient\_\-config\_\-status\_\-t}}
+\index{vqec_ifclient_config_status_t@{vqec\_\-ifclient\_\-config\_\-status\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-ifclient\_\-config\_\-status\_\-}  \bf{vqec\_\-ifclient\_\-config\_\-status\_\-t}}\label{vqec__ifclient__defs_8h_aeee98108258b0629057101c967922a0}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_t@{vqec\_\-ifclient\_\-config\_\-t}}
+\index{vqec_ifclient_config_t@{vqec\_\-ifclient\_\-config\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef enum \bf{vqec\_\-ifclient\_\-config\_\-}  \bf{vqec\_\-ifclient\_\-config\_\-t}}\label{vqec__ifclient__defs_8h_670f7423ab5c2cd27955b526e16a7d44}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_update_params_t@{vqec\_\-ifclient\_\-config\_\-update\_\-params\_\-t}}
+\index{vqec_ifclient_config_update_params_t@{vqec\_\-ifclient\_\-config\_\-update\_\-params\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct \bf{vqec\_\-ifclient\_\-config\_\-update\_\-params\_\-}  \bf{vqec\_\-ifclient\_\-config\_\-update\_\-params\_\-t}}\label{vqec__ifclient__defs_8h_8c5bbd9e3b465d3f77f2e5289f259830}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_in_addr_t@{vqec\_\-in\_\-addr\_\-t}}
+\index{vqec_in_addr_t@{vqec\_\-in\_\-addr\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef struct in\_\-addr \bf{vqec\_\-in\_\-addr\_\-t}}\label{vqec__ifclient__defs_8h_ce1187921daffb6a6b1fe93719ab33f8}
+
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_in_port_t@{vqec\_\-in\_\-port\_\-t}}
+\index{vqec_in_port_t@{vqec\_\-in\_\-port\_\-t}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}typedef in\_\-port\_\-t \bf{vqec\_\-in\_\-port\_\-t}}\label{vqec__ifclient__defs_8h_efb1c27414c3a7066edd99ef56d21b87}
+
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_chan_type_@{vqec\_\-chan\_\-type\_\-}}
+\index{vqec_chan_type_@{vqec\_\-chan\_\-type\_\-}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-chan\_\-type\_\-}}\label{vqec__ifclient__defs_8h_2ac8f0cbba053691d77b5dd228b1dd54}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_CHAN_TYPE_LINEAR@{VQEC\_\-CHAN\_\-TYPE\_\-LINEAR}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_CHAN_TYPE_LINEAR@{VQEC\_\-CHAN\_\-TYPE\_\-LINEAR}}\item[{\em 
+VQEC\_\-CHAN\_\-TYPE\_\-LINEAR\label{vqec__ifclient__defs_8h_2ac8f0cbba053691d77b5dd228b1dd54f66d7526ef43452dc4eeb6ea0f9c2267}
+}]\index{VQEC_CHAN_TYPE_VOD@{VQEC\_\-CHAN\_\-TYPE\_\-VOD}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_CHAN_TYPE_VOD@{VQEC\_\-CHAN\_\-TYPE\_\-VOD}}\item[{\em 
+VQEC\_\-CHAN\_\-TYPE\_\-VOD\label{vqec__ifclient__defs_8h_2ac8f0cbba053691d77b5dd228b1dd545d23054e96e1a9ea002d35973c12d9e4}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_fec_mode_@{vqec\_\-fec\_\-mode\_\-}}
+\index{vqec_fec_mode_@{vqec\_\-fec\_\-mode\_\-}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-fec\_\-mode\_\-}}\label{vqec__ifclient__defs_8h_0c49ec91c9deba2025cfc359c269d1e6}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_FEC_1D_MODE@{VQEC\_\-FEC\_\-1D\_\-MODE}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_FEC_1D_MODE@{VQEC\_\-FEC\_\-1D\_\-MODE}}\item[{\em 
+VQEC\_\-FEC\_\-1D\_\-MODE\label{vqec__ifclient__defs_8h_0c49ec91c9deba2025cfc359c269d1e61d112bcbdb218b5f4e6538cd033bf05b}
+}]\index{VQEC_FEC_2D_MODE@{VQEC\_\-FEC\_\-2D\_\-MODE}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_FEC_2D_MODE@{VQEC\_\-FEC\_\-2D\_\-MODE}}\item[{\em 
+VQEC\_\-FEC\_\-2D\_\-MODE\label{vqec__ifclient__defs_8h_0c49ec91c9deba2025cfc359c269d1e696ff0ce9f485cd7963e4d13211edf5b6}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_fec_order_@{vqec\_\-fec\_\-order\_\-}}
+\index{vqec_fec_order_@{vqec\_\-fec\_\-order\_\-}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-fec\_\-order\_\-}}\label{vqec__ifclient__defs_8h_0e1c788e2a7f6bee5f359b989bc02437}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_FEC_SENDING_ORDER_NOT_DECIDED@{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-NOT\_\-DECIDED}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_FEC_SENDING_ORDER_NOT_DECIDED@{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-NOT\_\-DECIDED}}\item[{\em 
+VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-NOT\_\-DECIDED\label{vqec__ifclient__defs_8h_0e1c788e2a7f6bee5f359b989bc02437834ad5e8aa03b457d3cf3d907c4f5803}
+}]\index{VQEC_FEC_SENDING_ORDER_ANNEXA@{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-ANNEXA}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_FEC_SENDING_ORDER_ANNEXA@{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-ANNEXA}}\item[{\em 
+VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-ANNEXA\label{vqec__ifclient__defs_8h_0e1c788e2a7f6bee5f359b989bc024375c5c6afeff782830f2cd739edfe69a1e}
+}]\index{VQEC_FEC_SENDING_ORDER_ANNEXB@{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-ANNEXB}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_FEC_SENDING_ORDER_ANNEXB@{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-ANNEXB}}\item[{\em 
+VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-ANNEXB\label{vqec__ifclient__defs_8h_0e1c788e2a7f6bee5f359b989bc02437401bcb2e2641900f3d2f99ba73fa41d6}
+}]\index{VQEC_FEC_SENDING_ORDER_OTHER@{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-OTHER}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_FEC_SENDING_ORDER_OTHER@{VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-OTHER}}\item[{\em 
+VQEC\_\-FEC\_\-SENDING\_\-ORDER\_\-OTHER\label{vqec__ifclient__defs_8h_0e1c788e2a7f6bee5f359b989bc02437a119566d8442b0b9664c90db97d89773}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_@{vqec\_\-ifclient\_\-config\_\-}}
+\index{vqec_ifclient_config_@{vqec\_\-ifclient\_\-config\_\-}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-ifclient\_\-config\_\-}}\label{vqec__ifclient__defs_8h_7243712acc1a4e801768ac3a716c5eb3}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_IFCLIENT_CONFIG_NETWORK@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-NETWORK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_IFCLIENT_CONFIG_NETWORK@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-NETWORK}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-CONFIG\_\-NETWORK\label{vqec__ifclient__defs_8h_7243712acc1a4e801768ac3a716c5eb3d8d4e7cf65bd27e3955cba4ff861b1ce}
+}]\index{VQEC_IFCLIENT_CONFIG_OVERRIDE@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-OVERRIDE}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_IFCLIENT_CONFIG_OVERRIDE@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-OVERRIDE}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-CONFIG\_\-OVERRIDE\label{vqec__ifclient__defs_8h_7243712acc1a4e801768ac3a716c5eb3c33bb3d90ffa99b8bce27ca72657eac0}
+}]\index{VQEC_IFCLIENT_CONFIG_CHANNEL@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-CHANNEL}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_IFCLIENT_CONFIG_CHANNEL@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-CHANNEL}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-CONFIG\_\-CHANNEL\label{vqec__ifclient__defs_8h_7243712acc1a4e801768ac3a716c5eb3ba6ba60e055a5a5132f4d983fbbf5b9b}
+}]\index{VQEC_IFCLIENT_CONFIG_MAX@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-MAX}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_IFCLIENT_CONFIG_MAX@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-MAX}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-CONFIG\_\-MAX\label{vqec__ifclient__defs_8h_7243712acc1a4e801768ac3a716c5eb31b86e8388027c11eefd4ba09e5b6b2a8}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_event_@{vqec\_\-ifclient\_\-config\_\-event\_\-}}
+\index{vqec_ifclient_config_event_@{vqec\_\-ifclient\_\-config\_\-event\_\-}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-ifclient\_\-config\_\-event\_\-}}\label{vqec__ifclient__defs_8h_5feb7c302e2f2e24cca849ed0cef69d5}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_IFCLIENT_CONFIG_EVENT_CONFIG_INVALID@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-EVENT\_\-CONFIG\_\-INVALID}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_IFCLIENT_CONFIG_EVENT_CONFIG_INVALID@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-EVENT\_\-CONFIG\_\-INVALID}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-CONFIG\_\-EVENT\_\-CONFIG\_\-INVALID\label{vqec__ifclient__defs_8h_5feb7c302e2f2e24cca849ed0cef69d517790171e94fbf4eeef8da3975d6e24e}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_ifclient_config_status_@{vqec\_\-ifclient\_\-config\_\-status\_\-}}
+\index{vqec_ifclient_config_status_@{vqec\_\-ifclient\_\-config\_\-status\_\-}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-ifclient\_\-config\_\-status\_\-}}\label{vqec__ifclient__defs_8h_558dafc2d3b1e262c65e79741f0a84f8}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{VQEC_IFCLIENT_CONFIG_STATUS_VALID@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-VALID}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_IFCLIENT_CONFIG_STATUS_VALID@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-VALID}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-VALID\label{vqec__ifclient__defs_8h_558dafc2d3b1e262c65e79741f0a84f8b977ae9cb1e03ac05290222cb67d6aae}
+}]\index{VQEC_IFCLIENT_CONFIG_STATUS_INVALID@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-INVALID}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_IFCLIENT_CONFIG_STATUS_INVALID@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-INVALID}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-INVALID\label{vqec__ifclient__defs_8h_558dafc2d3b1e262c65e79741f0a84f8647a21dca04bc30e68e3a01fb6a32dc4}
+}]\index{VQEC_IFCLIENT_CONFIG_STATUS_NA@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-NA}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!VQEC_IFCLIENT_CONFIG_STATUS_NA@{VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-NA}}\item[{\em 
+VQEC\_\-IFCLIENT\_\-CONFIG\_\-STATUS\_\-NA\label{vqec__ifclient__defs_8h_558dafc2d3b1e262c65e79741f0a84f86974271a7feb20ac452134b0745c8c41}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_show_channel_cli_opts_params1@{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params1}}
+\index{vqec_show_channel_cli_opts_params1@{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params1}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params1}}\label{vqec__ifclient__defs_8h_18eb4f53a509c14493d8dff75c00bfef}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{SCCLIARG_COUNTERS@{SCCLIARG\_\-COUNTERS}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SCCLIARG_COUNTERS@{SCCLIARG\_\-COUNTERS}}\item[{\em 
+SCCLIARG\_\-COUNTERS\label{vqec__ifclient__defs_8h_18eb4f53a509c14493d8dff75c00bfefaa61759480cced7559b4fa40eb6d323d}
+}]\index{SCCLIARG_CONFIG@{SCCLIARG\_\-CONFIG}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SCCLIARG_CONFIG@{SCCLIARG\_\-CONFIG}}\item[{\em 
+SCCLIARG\_\-CONFIG\label{vqec__ifclient__defs_8h_18eb4f53a509c14493d8dff75c00bfef7fd92366b4dd35d918c36486f87e90fe}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_show_channel_cli_opts_params2@{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params2}}
+\index{vqec_show_channel_cli_opts_params2@{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params2}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params2}}\label{vqec__ifclient__defs_8h_0bd4f20f752e9fe6123361cbe494d36f}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{SCCLIARG_ALL@{SCCLIARG\_\-ALL}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SCCLIARG_ALL@{SCCLIARG\_\-ALL}}\item[{\em 
+SCCLIARG\_\-ALL\label{vqec__ifclient__defs_8h_0bd4f20f752e9fe6123361cbe494d36fa8909fcd04a77acf0bc5047c1fa00c74}
+}]\index{SCCLIARG_URL@{SCCLIARG\_\-URL}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SCCLIARG_URL@{SCCLIARG\_\-URL}}\item[{\em 
+SCCLIARG\_\-URL\label{vqec__ifclient__defs_8h_0bd4f20f752e9fe6123361cbe494d36f52ce59d204d2911677279dbf87f91c37}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_show_channel_cli_opts_params3@{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params3}}
+\index{vqec_show_channel_cli_opts_params3@{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params3}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-show\_\-channel\_\-cli\_\-opts\_\-params3}}\label{vqec__ifclient__defs_8h_ebe1456b001016f61aaecaa0987e8752}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{SCCLIARG_CUMULATIVE@{SCCLIARG\_\-CUMULATIVE}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SCCLIARG_CUMULATIVE@{SCCLIARG\_\-CUMULATIVE}}\item[{\em 
+SCCLIARG\_\-CUMULATIVE\label{vqec__ifclient__defs_8h_ebe1456b001016f61aaecaa0987e87520d0ea181db1db9ed61d041ff152cce87}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_show_channel_options_mask@{vqec\_\-show\_\-channel\_\-options\_\-mask}}
+\index{vqec_show_channel_options_mask@{vqec\_\-show\_\-channel\_\-options\_\-mask}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-show\_\-channel\_\-options\_\-mask}}\label{vqec__ifclient__defs_8h_8db5d56c1cd45454220263abe872e30f}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{SC_LIST_MASK@{SC\_\-LIST\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SC_LIST_MASK@{SC\_\-LIST\_\-MASK}}\item[{\em 
+SC\_\-LIST\_\-MASK\label{vqec__ifclient__defs_8h_8db5d56c1cd45454220263abe872e30f254c22714e132153b3c2228d5e5cffa4}
+}]\index{SC_COUNTERS_MASK@{SC\_\-COUNTERS\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SC_COUNTERS_MASK@{SC\_\-COUNTERS\_\-MASK}}\item[{\em 
+SC\_\-COUNTERS\_\-MASK\label{vqec__ifclient__defs_8h_8db5d56c1cd45454220263abe872e30fb9e7bd0a5408c2bcca53b3679df62aa1}
+}]\index{SC_COUNTERS_ALL_MASK@{SC\_\-COUNTERS\_\-ALL\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SC_COUNTERS_ALL_MASK@{SC\_\-COUNTERS\_\-ALL\_\-MASK}}\item[{\em 
+SC\_\-COUNTERS\_\-ALL\_\-MASK\label{vqec__ifclient__defs_8h_8db5d56c1cd45454220263abe872e30fc14ec46361f47bd3bd88b87c17af6005}
+}]\index{SC_COUNTERS_URL_MASK@{SC\_\-COUNTERS\_\-URL\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SC_COUNTERS_URL_MASK@{SC\_\-COUNTERS\_\-URL\_\-MASK}}\item[{\em 
+SC\_\-COUNTERS\_\-URL\_\-MASK\label{vqec__ifclient__defs_8h_8db5d56c1cd45454220263abe872e30f3edecad0b1a25b6ac4e16020f3eb9ad8}
+}]\index{SC_COUNTERS_CUMULATIVE_MASK@{SC\_\-COUNTERS\_\-CUMULATIVE\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SC_COUNTERS_CUMULATIVE_MASK@{SC\_\-COUNTERS\_\-CUMULATIVE\_\-MASK}}\item[{\em 
+SC\_\-COUNTERS\_\-CUMULATIVE\_\-MASK\label{vqec__ifclient__defs_8h_8db5d56c1cd45454220263abe872e30f3235ed3a9bf86e59b2e219c710bea769}
+}]\index{SC_CONFIG_MASK@{SC\_\-CONFIG\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SC_CONFIG_MASK@{SC\_\-CONFIG\_\-MASK}}\item[{\em 
+SC\_\-CONFIG\_\-MASK\label{vqec__ifclient__defs_8h_8db5d56c1cd45454220263abe872e30ff8f26c63d5ee1453ca5342fd6afff979}
+}]\index{SC_CONFIG_ALL_MASK@{SC\_\-CONFIG\_\-ALL\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SC_CONFIG_ALL_MASK@{SC\_\-CONFIG\_\-ALL\_\-MASK}}\item[{\em 
+SC\_\-CONFIG\_\-ALL\_\-MASK\label{vqec__ifclient__defs_8h_8db5d56c1cd45454220263abe872e30f5b26b47bc5182bb20b2d43dce3561c24}
+}]\index{SC_CONFIG_URL_MASK@{SC\_\-CONFIG\_\-URL\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SC_CONFIG_URL_MASK@{SC\_\-CONFIG\_\-URL\_\-MASK}}\item[{\em 
+SC\_\-CONFIG\_\-URL\_\-MASK\label{vqec__ifclient__defs_8h_8db5d56c1cd45454220263abe872e30f840fb8bf82bfd0fa1eb243accfbe0344}
+}]\index{SC_ERROR_MASK@{SC\_\-ERROR\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SC_ERROR_MASK@{SC\_\-ERROR\_\-MASK}}\item[{\em 
+SC\_\-ERROR\_\-MASK\label{vqec__ifclient__defs_8h_8db5d56c1cd45454220263abe872e30f663afbe62f1045ea641c8814d9dda38e}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_show_tuner_cli_name@{vqec\_\-show\_\-tuner\_\-cli\_\-name}}
+\index{vqec_show_tuner_cli_name@{vqec\_\-show\_\-tuner\_\-cli\_\-name}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-show\_\-tuner\_\-cli\_\-name}}\label{vqec__ifclient__defs_8h_c3573a003081e487a64715490f09a6e0}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{STCLIARG_NAME@{STCLIARG\_\-NAME}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_NAME@{STCLIARG\_\-NAME}}\item[{\em 
+STCLIARG\_\-NAME\label{vqec__ifclient__defs_8h_c3573a003081e487a64715490f09a6e0a4e33d96382f2be714342e524ea1e6da}
+}]\index{STCLIARG_ALL@{STCLIARG\_\-ALL}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_ALL@{STCLIARG\_\-ALL}}\item[{\em 
+STCLIARG\_\-ALL\label{vqec__ifclient__defs_8h_c3573a003081e487a64715490f09a6e0eb431da35f1a0976e943ce676af089e7}
+}]\index{STCLIARG_JOINDELAY@{STCLIARG\_\-JOINDELAY}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_JOINDELAY@{STCLIARG\_\-JOINDELAY}}\item[{\em 
+STCLIARG\_\-JOINDELAY\label{vqec__ifclient__defs_8h_c3573a003081e487a64715490f09a6e067929783c90b96c89c1d85b366587f2c}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_show_tuner_cli_opts@{vqec\_\-show\_\-tuner\_\-cli\_\-opts}}
+\index{vqec_show_tuner_cli_opts@{vqec\_\-show\_\-tuner\_\-cli\_\-opts}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-show\_\-tuner\_\-cli\_\-opts}}\label{vqec__ifclient__defs_8h_4c83191627920a9805545e419333f3b8}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{STCLIARG_BRIEF@{STCLIARG\_\-BRIEF}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_BRIEF@{STCLIARG\_\-BRIEF}}\item[{\em 
+STCLIARG\_\-BRIEF\label{vqec__ifclient__defs_8h_4c83191627920a9805545e419333f3b894e3b3ea438687dfe6757e94ae12790f}
+}]\index{STCLIARG_PCM@{STCLIARG\_\-PCM}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_PCM@{STCLIARG\_\-PCM}}\item[{\em 
+STCLIARG\_\-PCM\label{vqec__ifclient__defs_8h_4c83191627920a9805545e419333f3b85a8a150c69e5de7b3728e0242f6b68a4}
+}]\index{STCLIARG_CHANNEL@{STCLIARG\_\-CHANNEL}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_CHANNEL@{STCLIARG\_\-CHANNEL}}\item[{\em 
+STCLIARG\_\-CHANNEL\label{vqec__ifclient__defs_8h_4c83191627920a9805545e419333f3b8a5cf0998bcaf7815696d6e881d4ee600}
+}]\index{STCLIARG_COUNTERS@{STCLIARG\_\-COUNTERS}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_COUNTERS@{STCLIARG\_\-COUNTERS}}\item[{\em 
+STCLIARG\_\-COUNTERS\label{vqec__ifclient__defs_8h_4c83191627920a9805545e419333f3b8d83c85676f4e83e9a12efa22c26a32a9}
+}]\index{STCLIARG_LOG@{STCLIARG\_\-LOG}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_LOG@{STCLIARG\_\-LOG}}\item[{\em 
+STCLIARG\_\-LOG\label{vqec__ifclient__defs_8h_4c83191627920a9805545e419333f3b8c6e1ecf9d2f53bb1fa5891da3003d2a2}
+}]\index{STCLIARG_FEC@{STCLIARG\_\-FEC}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_FEC@{STCLIARG\_\-FEC}}\item[{\em 
+STCLIARG\_\-FEC\label{vqec__ifclient__defs_8h_4c83191627920a9805545e419333f3b8d3d55714085a9c081abbaa4551a538bd}
+}]\index{STCLIARG_NAT@{STCLIARG\_\-NAT}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_NAT@{STCLIARG\_\-NAT}}\item[{\em 
+STCLIARG\_\-NAT\label{vqec__ifclient__defs_8h_4c83191627920a9805545e419333f3b8289c64bef7f1ccd2e6fdf97e4fcdd166}
+}]\index{STCLIARG_RCC@{STCLIARG\_\-RCC}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_RCC@{STCLIARG\_\-RCC}}\item[{\em 
+STCLIARG\_\-RCC\label{vqec__ifclient__defs_8h_4c83191627920a9805545e419333f3b8f6b9925e8835741ad2facfe706676d77}
+}]\index{STCLIARG_IPC@{STCLIARG\_\-IPC}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_IPC@{STCLIARG\_\-IPC}}\item[{\em 
+STCLIARG\_\-IPC\label{vqec__ifclient__defs_8h_4c83191627920a9805545e419333f3b8f32e288f1e638d9b5387197ea8369136}
+}]\index{STCLIARG_DETAIL@{STCLIARG\_\-DETAIL}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!STCLIARG_DETAIL@{STCLIARG\_\-DETAIL}}\item[{\em 
+STCLIARG\_\-DETAIL\label{vqec__ifclient__defs_8h_4c83191627920a9805545e419333f3b8a35b7903ad31bcafbbb8c35c94855ed7}
+}]\end{description}
+\end{Desc}
+
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!vqec_show_tuner_options_mask@{vqec\_\-show\_\-tuner\_\-options\_\-mask}}
+\index{vqec_show_tuner_options_mask@{vqec\_\-show\_\-tuner\_\-options\_\-mask}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum \bf{vqec\_\-show\_\-tuner\_\-options\_\-mask}}\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e971}
+
+
+The enum values defined in vqec\_\-show\_\-tuner\_\-options\_\-mask and used by vqec\_\-set\_\-options\_\-flag() return info derived from the parsing of a \char`\"{}show tuner...\char`\"{} CLI command, including:
+
+1. the keyword that followed \char`\"{}show tuner\char`\"{}, which is one of: a.) \char`\"{}all\char`\"{} (ALL\_\-TUNERS\_\-MASK) b.) \char`\"{}name\char`\"{} (SPECIFIC\_\-TUNER\_\-MASK) c.) \char`\"{}join-delay\char`\"{} (JOINDELAY\_\-MASK) 2. in the case of a \char`\"{}all\char`\"{} or \char`\"{}name\char`\"{} keyword, the set of flags given to qualify the \char`\"{}show tuner\char`\"{} output. The ALL\_\-OPTIONS\_\-MASK defines the complete set of flags for this purpose. 3. whether an error was encountered in parsing the keywords, flags, or tuner names (ERROR\_\-MASK or TUNER\_\-NAME\_\-ERROR\_\-MASK) \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{ALL_TUNERS_MASK@{ALL\_\-TUNERS\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!ALL_TUNERS_MASK@{ALL\_\-TUNERS\_\-MASK}}\item[{\em 
+ALL\_\-TUNERS\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e971b8f020209b15d80dace4551b2a5fcdb2}
+}]\index{SPECIFIC_TUNER_MASK@{SPECIFIC\_\-TUNER\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!SPECIFIC_TUNER_MASK@{SPECIFIC\_\-TUNER\_\-MASK}}\item[{\em 
+SPECIFIC\_\-TUNER\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e9715d63aab982cf7c14f856cc3de9f356de}
+}]\index{BRIEF_MASK@{BRIEF\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!BRIEF_MASK@{BRIEF\_\-MASK}}\item[{\em 
+BRIEF\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e971b29c7ac4c5ccaac25104d87436ab645c}
+}]\index{PCM_MASK@{PCM\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!PCM_MASK@{PCM\_\-MASK}}\item[{\em 
+PCM\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e971b403bda66472b740420fb5e97da691e7}
+}]\index{COUNTERS_MASK@{COUNTERS\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!COUNTERS_MASK@{COUNTERS\_\-MASK}}\item[{\em 
+COUNTERS\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e97187724176f23dd529d08ed452b552cdce}
+}]\index{CHANNEL_MASK@{CHANNEL\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!CHANNEL_MASK@{CHANNEL\_\-MASK}}\item[{\em 
+CHANNEL\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e97136901aaf2fbc3169c5bf7293ae9f7627}
+}]\index{LOG_MASK@{LOG\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!LOG_MASK@{LOG\_\-MASK}}\item[{\em 
+LOG\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e971503484fb2e627032e59e64e44f5d646c}
+}]\index{DETAIL_MASK@{DETAIL\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!DETAIL_MASK@{DETAIL\_\-MASK}}\item[{\em 
+DETAIL\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e9716ef152854a3327fbee336cd5f220b506}
+}]\index{FEC_MASK@{FEC\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!FEC_MASK@{FEC\_\-MASK}}\item[{\em 
+FEC\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e971a55024c1fc765e53738485a1985b8d19}
+}]\index{NAT_MASK@{NAT\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!NAT_MASK@{NAT\_\-MASK}}\item[{\em 
+NAT\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e97199d073956fb9e913cad8e6c49afe5e3e}
+}]\index{RCC_MASK@{RCC\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!RCC_MASK@{RCC\_\-MASK}}\item[{\em 
+RCC\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e971caae01bc63f7392c00fa7fd7c76f2859}
+}]\index{IPC_MASK@{IPC\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!IPC_MASK@{IPC\_\-MASK}}\item[{\em 
+IPC\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e971c3bd8e7b9530847cbcaad826514108a3}
+}]\index{ALL_OPTIONS_MASK@{ALL\_\-OPTIONS\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!ALL_OPTIONS_MASK@{ALL\_\-OPTIONS\_\-MASK}}\item[{\em 
+ALL\_\-OPTIONS\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e97111209e42ef8431983ddcbad1caef42d9}
+}]\index{JOINDELAY_MASK@{JOINDELAY\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!JOINDELAY_MASK@{JOINDELAY\_\-MASK}}\item[{\em 
+JOINDELAY\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e971264c9c3a98dbf9d12769fd3eb521fde0}
+}]\index{ERROR_MASK@{ERROR\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!ERROR_MASK@{ERROR\_\-MASK}}\item[{\em 
+ERROR\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e97118333db493f08754086da67d4c61225d}
+}]\index{TUNER_NAME_ERROR_MASK@{TUNER\_\-NAME\_\-ERROR\_\-MASK}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!TUNER_NAME_ERROR_MASK@{TUNER\_\-NAME\_\-ERROR\_\-MASK}}\item[{\em 
+TUNER\_\-NAME\_\-ERROR\_\-MASK\label{vqec__ifclient__defs_8h_ce0edc1b7e7114dddf96e1e54692e971c269b1e2a7e95255cf6144027e98fd89}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Variable Documentation}
+\index{vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}!g_vqec_client_mode@{g\_\-vqec\_\-client\_\-mode}}
+\index{g_vqec_client_mode@{g\_\-vqec\_\-client\_\-mode}!vqec_ifclient_defs.h@{vqec\_\-ifclient\_\-defs.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t \bf{g\_\-vqec\_\-client\_\-mode}}\label{vqec__ifclient__defs_8h_17f78126f2c5b6203d34d549a726eeca}
+
+

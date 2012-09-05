@@ -1,0 +1,83 @@
+\section{vqec\_\-stream\_\-output\_\-sock\_\- Struct Reference}
+\label{structvqec__stream__output__sock__}\index{vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}}
+{\tt \#include $<$vqec\_\-stream\_\-output\_\-thread\_\-mgr.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+in\_\-addr \bf{output\_\-if\_\-address}
+\item 
+in\_\-port\_\-t \bf{port}
+\item 
+int \bf{blocking}
+\item 
+int \bf{caller\_\-provided\_\-mem}
+\item 
+in\_\-addr \bf{dest\_\-addr}
+\item 
+uint32\_\-t \bf{send\_\-buff\_\-bytes}
+\item 
+int \bf{fd}
+\item 
+uint64\_\-t \bf{outputs}
+\item 
+uint64\_\-t \bf{output\_\-drops}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+socket structure 
+
+
+
+\subsection{Field Documentation}
+\index{vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}!blocking@{blocking}}
+\index{blocking@{blocking}!vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int \bf{vqec\_\-stream\_\-output\_\-sock\_\-::blocking}}\label{structvqec__stream__output__sock___6ad8e19a78b54b69ede04c7aa678c631}
+
+
+blocking or not \index{vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}!caller_provided_mem@{caller\_\-provided\_\-mem}}
+\index{caller_provided_mem@{caller\_\-provided\_\-mem}!vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int \bf{vqec\_\-stream\_\-output\_\-sock\_\-::caller\_\-provided\_\-mem}}\label{structvqec__stream__output__sock___aac10c91d5b41b414b8d3192b4dad17c}
+
+
+caller allocated memory or not \index{vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}!dest_addr@{dest\_\-addr}}
+\index{dest_addr@{dest\_\-addr}!vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct in\_\-addr \bf{vqec\_\-stream\_\-output\_\-sock\_\-::dest\_\-addr}}\label{structvqec__stream__output__sock___c7e0cca894b6d7af408df8de42ec5811}
+
+
+dest addr to send to \index{vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}!fd@{fd}}
+\index{fd@{fd}!vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int \bf{vqec\_\-stream\_\-output\_\-sock\_\-::fd}}\label{structvqec__stream__output__sock___55d94e3d5298298d9c3c1ddd2db6b0d5}
+
+
+fd \index{vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}!output_drops@{output\_\-drops}}
+\index{output_drops@{output\_\-drops}!vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-stream\_\-output\_\-sock\_\-::output\_\-drops}}\label{structvqec__stream__output__sock___e29546123fa0f70e749045385a4863b3}
+
+
+output drops on socket \index{vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}!output_if_address@{output\_\-if\_\-address}}
+\index{output_if_address@{output\_\-if\_\-address}!vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct in\_\-addr \bf{vqec\_\-stream\_\-output\_\-sock\_\-::output\_\-if\_\-address}}\label{structvqec__stream__output__sock___3caf6ba09809dddcdf9c118a148b94b2}
+
+
+\index{vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}!outputs@{outputs}}
+\index{outputs@{outputs}!vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t \bf{vqec\_\-stream\_\-output\_\-sock\_\-::outputs}}\label{structvqec__stream__output__sock___a0fbb110e615519d587f7f7753193f6f}
+
+
+output packets \index{vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}!port@{port}}
+\index{port@{port}!vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}in\_\-port\_\-t \bf{vqec\_\-stream\_\-output\_\-sock\_\-::port}}\label{structvqec__stream__output__sock___748483f671a493ce51dffbf965b5ef79}
+
+
+\index{vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}!send_buff_bytes@{send\_\-buff\_\-bytes}}
+\index{send_buff_bytes@{send\_\-buff\_\-bytes}!vqec_stream_output_sock_@{vqec\_\-stream\_\-output\_\-sock\_\-}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t \bf{vqec\_\-stream\_\-output\_\-sock\_\-::send\_\-buff\_\-bytes}}\label{structvqec__stream__output__sock___5605d88c1107b73ff06980fba2612423}
+
+
+receive buff size for socket 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\bf{vqec\_\-stream\_\-output\_\-thread\_\-mgr.h}\end{CompactItemize}
