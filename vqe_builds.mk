@@ -45,7 +45,7 @@ RMDIR           = /bin/rm -rf
 MKID = /router/bin/mkid32
 
 LOCAL_CFLAGS	= -O
-CFLAGS+=        -g -Wall -Werror $(LOCAL_CFLAGS) $(INCLUDES)
+CFLAGS+=        -g -Wall $(LOCAL_CFLAGS) $(INCLUDES)
 CXXFLAGS+=      $(CFLAGS)
 
 INCLUDES=	-I$(ROOT)/include
