@@ -221,6 +221,8 @@ VQEC_LIBS_FOR_INSTALL = \
         $(patsubst %, $(ROOT)/vqec_lib/%, $(VQEC_REQUIRED_LIBMODS)) \
         $(patsubst %, $(ROOT)/add-ons/lib/$(ARCH)/%, $(VQEC_PRECOMPILED_LIBS))
 
+VQEC_UBER_LIB_FOR_INSTALL := $(ROOT)/vqec_lib/libvqecuber.a
+
 VQEC_SO_LIBS_FOR_INSTALL = \
         $(patsubst %.a, $(ROOT)/add-ons/lib/$(ARCH)/%, $(VQEC_PRECOMPILED_LIBS))
 
@@ -316,10 +318,19 @@ vqec_clean_packages:
 		cd $(LIBUPNP_SRC_DIR); \
 		$(MAKE) clean; \
 	fi
-	
 
-vqec_install:
-	@for file in $(VQEC_LIBS_FOR_INSTALL); do \
+
+vqec_uber_archive:
+	@mkdir -p uberTmp; \
+	cd uberTmp; \
+	for file in $(VQEC_LIBS_FOR_INSTALL); do \
+		ar x $$file; \
+	done; \
+	rm -f $(VQEC_UBER_LIB_FOR_INSTALL); \
+	ar rc $(VQEC_UBER_LIB_FOR_INSTALL) *.o
+
+vqec_install: vqec_uber_archive
+	@for file in $(VQEC_LIBS_FOR_INSTALL) $(VQEC_UBER_LIB_FOR_INSTALL); do \
 	if [ ! -e $$file ]; then \
 		echo "not copying $$file: file not found!"; \
 		else \
