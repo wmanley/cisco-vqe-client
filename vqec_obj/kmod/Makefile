@@ -128,14 +128,12 @@ _kbuild:
 $(GENOBJDIR)/$(ARCH)-dev/vqecutils/vqec_rpc_common.h_rpcgen: $(ROOT)/eva/vqec-dp/vqec_dp_api.h \
 		$(ROOT)/eva/vqec_rpcgen.pl $(ROOT)/eva/vqec-dp/vqec_dp_api_types.h
 	@test -d `pwd`/$(ARCH)-dev/vqecutils || mkdir `pwd`/$(ARCH)-dev/vqecutils
-	$(ROOT)/eva/vqec_rpcgen.pl -in $< -common $@ -module vqec;	\
-	indent $@
+	$(ROOT)/eva/vqec_rpcgen.pl -in $< -common $@ -module vqec;
 
 $(GENOBJDIR)/$(ARCH)-dev/eva/vqec-dp/vqec_dp_rpc_server.c_rpcgen: $(ROOT)/eva/vqec-dp/vqec_dp_api.h \
 		$(ROOT)/eva/vqec_rpcgen.pl $(ROOT)/eva/vqec-dp/vqec_dp_api_types.h
 	@test -d `pwd`/$(ARCH)-dev/eva/vqec-dp || mkdir `pwd`/$(ARCH)-dev/eva/vqec-dp
-	$(ROOT)/eva/vqec_rpcgen.pl -in $< -server $@ -module vqec;	\
-	indent $@
+	$(ROOT)/eva/vqec_rpcgen.pl -in $< -server $@ -module vqec;
 
 
 #
