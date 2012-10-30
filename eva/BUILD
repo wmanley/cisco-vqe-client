@@ -178,13 +178,11 @@ GENINCLUDES = $(SRCDIR)/vqec_rpc_common.h_rpcgen $(SRCDIR)/vqec_rpc_client.c_rpc
 
 $(SRCDIR)/vqec_rpc_common.h_rpcgen: $(SRCDIR)/vqec-dp/vqec_dp_api.h $(SRCDIR)/vqec_rpcgen.pl \
 		$(SRCDIR)/vqec-dp/vqec_dp_api_types.h
-	$(SRCDIR)/vqec_rpcgen.pl -in $< -common $@ -module vqec;	\
-	indent $@
+	$(SRCDIR)/vqec_rpcgen.pl -in $< -common $@ -module vqec;
 
 $(SRCDIR)/vqec_rpc_client.c_rpcgen: $(SRCDIR)/vqec-dp/vqec_dp_api.h $(SRCDIR)/vqec_rpcgen.pl \
 		$(SRCDIR)/vqec-dp/vqec_dp_api_types.h
-	$(SRCDIR)/vqec_rpcgen.pl -in $< -client $@ -module vqec;	\
-	indent $@
+	$(SRCDIR)/vqec_rpcgen.pl -in $< -client $@ -module vqec;
 
 clean::
 	$(RM) $(VQEC_LIB)
