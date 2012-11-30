@@ -46,10 +46,14 @@ libs:: $(LIB) $(LIB_WITH_STUBS)
 $(LIB): $(LIB_MEMBERS)
 $(LIB)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
+$(LIB)():
+	$(AR) crv $(LIB) $^
 
 $(LIB_WITH_STUBS): $(LIB_WITH_STUBS_MEMBERS)
 $(LIB_WITH_STUBS)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
+$(LIB_WITH_STUBS)():
+	$(AR) crv $(LIB_WITH_STUBS) $^
 
 ####
 # Build PIC library

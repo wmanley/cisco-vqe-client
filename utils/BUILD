@@ -44,6 +44,8 @@ LIB_OBJ = $(patsubst $(SRCDIR)/%, $(MODOBJ)/%, $(LIB_SRC:.c=.o))
 LIB_MEMBERS = $(LIB)($(LIB_OBJ))
 libs:: make_ver $(LIB) update_ver
 $(LIB): $(LIB_MEMBERS)
+$(LIB)():
+	$(AR) crv $(LIB) $^
 $(LIB)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
 

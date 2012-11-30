@@ -47,6 +47,8 @@ libs:: $(LIB)
 $(LIB): $(LIB_MEMBERS)
 $(LIB)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
+$(LIB)():
+	$(AR) crv $(LIB) $^
 
 ####
 # Build PIC library

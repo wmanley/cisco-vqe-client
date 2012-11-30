@@ -90,10 +90,15 @@ libs:: make_ver $(VQEC_LIB) $(VQEC_LIB_KMOD) update_ver
 $(VQEC_LIB): $(VQEC_LIB_MEMBERS)
 $(VQEC_LIB)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
+$(VQEC_LIB)():
+	$(AR) crv $(VQEC_LIB) $^
+
 
 $(VQEC_LIB_KMOD): $(VQEC_LIB_MEMBERS_KMOD)
 $(VQEC_LIB_KMOD)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
+$(VQEC_LIB_KMOD)():
+	$(AR) crv $(VQEC_LIB_KMOD) $^
 
 $(VQEC_PIC_LIB): $(VQEC_LIB_OBJ)
 	$(LD) -r -o $@ $^

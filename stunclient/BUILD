@@ -57,6 +57,8 @@ $(STUNCLIENT_LIB): $(STUNCLIENT_LIB_MEMBERS)
 
 $(STUNCLIENT_LIB)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
+$(STUNCLIENT_LIB)():
+	$(AR) crv $(STUNCLIENT_LIB) $^
 
 ####
 # Build PIC library

@@ -55,6 +55,9 @@ libs::	$(vqec-dp-common-lib) vqec-dp-nested-lib
 $(vqec-dp-common-lib): $(vqec-dp-common-members)
 $(vqec-dp-common-lib)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
+$(vqec-dp-common-lib)():
+	$(AR) crv $(vqec-dp-common-lib) $^
+
 
 ####
 # Build PIC libraries
