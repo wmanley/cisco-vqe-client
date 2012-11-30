@@ -8,8 +8,8 @@
 dnl configure.in for vqe
 
 AC_INIT(vqe, 1.0)
-
-AC_CONFIG_FILES(environ.mk)
+AM_INIT_AUTOMAKE
+AC_CONFIG_FILES(environ.mk pkgconfig/vqe-c.pc pkgconfig/Makefile)
 
 dnl Check for optional args
 AC_ARG_ENABLE(openssl,

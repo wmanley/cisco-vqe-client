@@ -70,4 +70,5 @@ install:
 		$(MAKE_K_CHECK) \
 	fi;
 
-	
+	@echo "installing .pc files"; \
+	$(MAKE) -wC pkgconfig install
