@@ -63,6 +63,8 @@ pic_libs:: $(pic-dp-channel-lib)
 $(vqec-dp-channel-lib): $(vqec-dp-channel-members)
 $(vqec-dp-channel-lib)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
+$(vqec-dp-channel-lib)():
+	$(AR) crv $(vqec-dp-channel-lib) $^
 
 
 #

@@ -47,6 +47,8 @@ libs:: $(VQECUTILS_LIB)
 $(VQECUTILS_LIB): $(VQECUTILS_LIB_MEMBERS)
 $(VQECUTILS_LIB)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
+$(VQECUTILS_LIB)():
+	$(AR) crv $(VQECUTILS_LIB) $^
 
 ####
 # Build PIC library

@@ -58,6 +58,8 @@ pic_libs:: $(pic-dp-outputshim-lib)
 $(vqec-dp-outputshim-lib): $(vqec-dp-outputshim-members)
 $(vqec-dp-outputshim-lib)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
+$(vqec-dp-outputshim-lib)():
+	$(AR) crv $(vqec-dp-outputshim-lib) $^
 
 
 #

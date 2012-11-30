@@ -44,6 +44,8 @@ libs::	$(vqec-dp-inputshim-lib)
 $(vqec-dp-inputshim-lib): $(vqec-dp-inputshim-members)
 $(vqec-dp-inputshim-lib)(%o): $(MODOBJ)/%.o
 	$(AR) crv $@ $^
+$(vqec-dp-inputshim-lib)():
+	$(AR) crv $(vqec-dp-inputshim-lib) $^
 
 ####
 # Build PIC libraries
