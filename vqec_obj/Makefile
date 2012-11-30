@@ -150,6 +150,13 @@ CONFTOOL                = ./configure
 LIBEVENT_SRC_DIR        = $(3RDPARTY_SRC_DIR)/libevent/libevent-1.1a
 LIBUPNP_SRC_DIR         = $(3RDPARTY_SRC_DIR)/libupnp/libupnp-1.6.6
 
+
+
+########## adding destdir support for install #####
+
+INSTALL_INCDIR := $(DESTDIR)$(INSTALL_INCDIR)
+INSTALL_LIBDIR := $(DESTDIR)$(INSTALL_LIBDIR)
+
 ########## pic target definitions #################
 
 # these libs must be recompiled from the vam/3rd-party-src
@@ -290,6 +297,7 @@ vqec_build_packages:
 		if ! $(MAKE); then exit 1; fi; \
 	fi
 	@for lib in $(VQEC_3RDPARTY_LIBS); do \
+		mkdir -p $(ROOT)/add-ons/lib/$(ARCH); \
 		if ! cp -f $$lib $(ROOT)/add-ons/lib/$(ARCH); \
 		then exit 1; \
 		else echo "copied $$lib to $(ROOT)/add-ons/lib/$(ARCH)"; \
@@ -330,11 +338,15 @@ vqec_uber_archive:
 	ar rc $(VQEC_UBER_LIB_FOR_INSTALL) *.o
 
 vqec_install: vqec_uber_archive
+	@echo DESTDIR=$(DESTDIR)
+	@echo INCDIR=$(INSTALL_INCDIR)
+	@echo LIBDIR=$(INSTALL_LIBDIR)
+
 	@for file in $(VQEC_LIBS_FOR_INSTALL) $(VQEC_UBER_LIB_FOR_INSTALL); do \
 	if [ ! -e $$file ]; then \
 		echo "not copying $$file: file not found!"; \
 		else \
-			if [ ! -d $(INSTALL_LIBDIR) ]; then mkdir $(INSTALL_LIBDIR); fi; \
+			if [ ! -d $(INSTALL_LIBDIR) ]; then mkdir -p $(INSTALL_LIBDIR); fi; \
 			cp $$file $(INSTALL_LIBDIR); \
 			echo "copied $$file to $(INSTALL_LIBDIR)"; \
 			$(STRIP) -g $(INSTALL_LIBDIR)/`basename $$file`; \
@@ -345,7 +357,7 @@ vqec_install: vqec_uber_archive
 	if [ ! -e $$file*.so ]; then \
 		echo "not copying $$file*.so: file not found!"; \
 		else \
-			if [ ! -d $(INSTALL_LIBDIR) ]; then mkdir $(INSTALL_LIBDIR); fi; \
+			if [ ! -d $(INSTALL_LIBDIR) ]; then mkdir -p $(INSTALL_LIBDIR); fi; \
 			cp -f -P $$file*.so.* $(INSTALL_LIBDIR); \
 			echo "copied $$file.so to $(INSTALL_LIBDIR)"; \
 			$(STRIP) -g $(INSTALL_LIBDIR)/`basename $$file*.so.*.*.*`; \
@@ -365,7 +377,7 @@ vqec_install: vqec_uber_archive
 		if [ ! -e $$file ]; then \
 		echo "not copying $$file: file not found!"; \
 		else \
-			if [ ! -d $(INSTALL_INCDIR) ]; then mkdir $(INSTALL_INCDIR); fi; \
+			if [ ! -d $(INSTALL_INCDIR) ]; then mkdir -p $(INSTALL_INCDIR); fi; \
 			cp $$file $(INSTALL_INCDIR); \
 			echo "copied $$file to $(INSTALL_INCDIR)"; \
 		fi \
