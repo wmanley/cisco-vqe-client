@@ -150,6 +150,13 @@ CONFTOOL                = ./configure
 LIBEVENT_SRC_DIR        = $(3RDPARTY_SRC_DIR)/libevent/libevent-1.1a
 LIBUPNP_SRC_DIR         = $(3RDPARTY_SRC_DIR)/libupnp/libupnp-1.6.6
 
+
+
+########## adding destdir support for install #####
+
+INSTALL_INCDIR := $(DESTDIR)$(INSTALL_INCDIR)
+INSTALL_LIBDIR := $(DESTDIR)$(INSTALL_LIBDIR)
+
 ########## pic target definitions #################
 
 # these libs must be recompiled from the vam/3rd-party-src
@@ -330,6 +337,10 @@ vqec_uber_archive:
 	ar rc $(VQEC_UBER_LIB_FOR_INSTALL) *.o
 
 vqec_install: vqec_uber_archive
+	@echo DESTDIR=$(DESTDIR)
+	@echo INCDIR=$(INSTALL_INCDIR)
+	@echo LIBDIR=$(INSTALL_LIBDIR)
+
 	@for file in $(VQEC_LIBS_FOR_INSTALL) $(VQEC_UBER_LIB_FOR_INSTALL); do \
 	if [ ! -e $$file ]; then \
 		echo "not copying $$file: file not found!"; \
