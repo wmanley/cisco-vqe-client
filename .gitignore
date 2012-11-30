@@ -34,4 +34,6 @@ environ.mk
 update_ver
 utils/version/vqes_version.h
 eva/vqec_version.h
-
+pkgconfig/vqe-c.pc
+pkgconfig/Makefile
+pkgconfig/Makefile.in

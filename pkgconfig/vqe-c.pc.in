@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: Cisco VQE
+Description: RTP client with retransmission and rapid channel change
+Requires: 
+Version: @VERSION@
+Libs: -L${libdir} -lvqecuber -pthread -lm -lresolv
+Cflags: -I${includedir} -pthread
+
