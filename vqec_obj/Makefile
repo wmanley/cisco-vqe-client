@@ -283,6 +283,7 @@ vqec_config_packages:
 	done
 
 vqec_build_packages:
+	@mkdir -p $(ROOT)/add-ons/lib/$(ARCH)
 	@for dir in $(VQEC_AC_LIBDIRS); do \
 		if ! cd $$dir; then exit 1; \
 		else \
@@ -345,7 +346,7 @@ vqec_install: vqec_uber_archive
 	if [ ! -e $$file ]; then \
 		echo "not copying $$file: file not found!"; \
 		else \
-			if [ ! -d $(INSTALL_LIBDIR) ]; then mkdir $(INSTALL_LIBDIR); fi; \
+			if [ ! -d $(INSTALL_LIBDIR) ]; then mkdir -p $(INSTALL_LIBDIR); fi; \
 			cp $$file $(INSTALL_LIBDIR); \
 			echo "copied $$file to $(INSTALL_LIBDIR)"; \
 			$(STRIP) -g $(INSTALL_LIBDIR)/`basename $$file`; \
@@ -356,7 +357,7 @@ vqec_install: vqec_uber_archive
 	if [ ! -e $$file*.so ]; then \
 		echo "not copying $$file*.so: file not found!"; \
 		else \
-			if [ ! -d $(INSTALL_LIBDIR) ]; then mkdir $(INSTALL_LIBDIR); fi; \
+			if [ ! -d $(INSTALL_LIBDIR) ]; then mkdir -p $(INSTALL_LIBDIR); fi; \
 			cp -f -P $$file*.so.* $(INSTALL_LIBDIR); \
 			echo "copied $$file.so to $(INSTALL_LIBDIR)"; \
 			$(STRIP) -g $(INSTALL_LIBDIR)/`basename $$file*.so.*.*.*`; \
@@ -376,7 +377,7 @@ vqec_install: vqec_uber_archive
 		if [ ! -e $$file ]; then \
 		echo "not copying $$file: file not found!"; \
 		else \
-			if [ ! -d $(INSTALL_INCDIR) ]; then mkdir $(INSTALL_INCDIR); fi; \
+			if [ ! -d $(INSTALL_INCDIR) ]; then mkdir -p $(INSTALL_INCDIR); fi; \
 			cp $$file $(INSTALL_INCDIR); \
 			echo "copied $$file to $(INSTALL_INCDIR)"; \
 		fi \

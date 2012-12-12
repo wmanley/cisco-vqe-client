@@ -18,26 +18,26 @@ depend:
 	@$(MAKE) NO_DEPEND=true $(DEP_FILES)
 
 $(MODOBJ)/%.dep : $(SRCDIR)/%.c
-	@test -d $(MODOBJ) || mkdir $(MODOBJ)
+	@mkdir -p $(MODOBJ)
 	$(CC) -M $(CFLAGS) $(INCLUDES) $< > $@.$$$$;\
 		sed 's,\($*\)\.o[ :]*,$(MODOBJ)/\1.o $@ : ,g' < $@.$$$$ > $@; \
 		rm -f $@.$$$$
 
 $(MODOBJ)/%.dep : $(SRCDIR)/%.S
-	@test -d $(MODOBJ) || mkdir $(MODOBJ)
+	@mkdir -p $(MODOBJ)
 	$(CC) -M $(CFLAGS) $< > $@.$$$$;\
 		sed 's,\($*\)\.o[ :]*,$(MODOBJ)/\1.o $@ : ,g' < $@.$$$$ > $@; \
 		rm -f $@.$$$$
 
 
 $(MODOBJ)/%.dep : $(SRCDIR)/%.s
-	@test -d $(MODOBJ) || mkdir $(MODOBJ)
+	@mkdir -p $(MODOBJ)
 	$(CC) -M $(CFLAGS) $< > $@.$$$$;\
 		sed 's,\($*\)\.o[ :]*,$(MODOBJ)/\1.o $@ : ,g' < $@.$$$$ > $@; \
 		rm -f $@.$$$$
 
 $(MODOBJ)/%.dep : $(SRCDIR)/%.cpp
-	@test -d $(MODOBJ) || mkdir $(MODOBJ)
+	@mkdir -p $(MODOBJ)
 	$(CXX) -M $(CXXFLAGS) -o $(*F).opp $< > $@.$$$$;\
 		sed 's,\($*\)\.o[ :]*,$(MODOBJ)/\1.o $@ : ,g' < $@.$$$$ > $@; \
 		rm -f $@.$$$$

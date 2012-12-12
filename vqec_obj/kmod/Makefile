@@ -83,8 +83,7 @@ _cpsources:
 		echo "$(VERSION_FILE) does not exist";			\
 		exit 1;								\
 	else									\
-		test -d `pwd`/$(ARCH)-dev/$(VERSION_DIR) || 		\
-			mkdir -p `pwd`/$(ARCH)-dev/$(VERSION_DIR);	\
+		mkdir -p `pwd`/$(ARCH)-dev/$(VERSION_DIR);	\
 		cp -f -u $(ROOT)/$(VERSION_DIR)/$(VERSION_FILE) 	\
 			`pwd`/$(ARCH)-dev/$(VERSION_DIR);		\
 	fi;									\
@@ -104,8 +103,7 @@ _cpsources:
 # Kbuild specific-file which describes objects to be built for the module.
 #
 _kbuild:
-	@test -d `pwd`/$(ARCH)-dev || 						\
-		mkdir -p `pwd`/$(ARCH)-dev;			 		\
+	@mkdir -p `pwd`/$(ARCH)-dev;			 		\
 	$(RM) `pwd`/$(ARCH)-dev/Kbuild.obj;					\
 	echo "obj-m += $(KMODNAME).o" > `pwd`/$(ARCH)-dev/Kbuild.obj;		\
 	for dir in $(KMOD_SOURCE_DIRS); do					\
@@ -127,12 +125,12 @@ _kbuild:
 #
 $(GENOBJDIR)/$(ARCH)-dev/vqecutils/vqec_rpc_common.h_rpcgen: $(ROOT)/eva/vqec-dp/vqec_dp_api.h \
 		$(ROOT)/eva/vqec_rpcgen.pl $(ROOT)/eva/vqec-dp/vqec_dp_api_types.h
-	@test -d `pwd`/$(ARCH)-dev/vqecutils || mkdir `pwd`/$(ARCH)-dev/vqecutils
+	@mkdir -p `pwd`/$(ARCH)-dev/vqecutils
 	$(ROOT)/eva/vqec_rpcgen.pl -in $< -common $@ -module vqec;
 
 $(GENOBJDIR)/$(ARCH)-dev/eva/vqec-dp/vqec_dp_rpc_server.c_rpcgen: $(ROOT)/eva/vqec-dp/vqec_dp_api.h \
 		$(ROOT)/eva/vqec_rpcgen.pl $(ROOT)/eva/vqec-dp/vqec_dp_api_types.h
-	@test -d `pwd`/$(ARCH)-dev/eva/vqec-dp || mkdir `pwd`/$(ARCH)-dev/eva/vqec-dp
+	@mkdir -p `pwd`/$(ARCH)-dev/eva/vqec-dp
 	$(ROOT)/eva/vqec_rpcgen.pl -in $< -server $@ -module vqec;
 
 

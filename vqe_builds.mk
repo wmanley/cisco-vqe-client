@@ -76,7 +76,7 @@ INCLUDES += -I$(SRCDIR) -I$(MODOBJ)
 all:: $(MODOBJ) libs build
 
 libs:: $(MODOBJ)
-	@test -d $(LIBDIR) || mkdir -p $(LIBDIR)
+	@mkdir -p $(LIBDIR)
 
 build:: $(MODOBJ)
 
@@ -89,14 +89,14 @@ pic:: 		$(MODOBJ) pic_libs pic_build
 clean-pic:: 	pic_clean
 pic_libs:: 	CFLAGS += -fPIC
 pic_libs::		$(MODOBJ)
-		@test -d $(LIBDIR) || mkdir -p $(LIBDIR)
+		@mkdir -p $(LIBDIR)
 pic_build::
 pic_clean::	clean
 
 .PHONY: $(MODOBJ)
 
 $(MODOBJ):
-	@test -d $(MODOBJ) || mkdir $(MODOBJ)
+	@mkdir -p $(MODOBJ)
 
 $(MODOBJ)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<

@@ -19,8 +19,7 @@ _kbuild::
 
 
 _cpsources::
-	@test -d $(KMODOBJBASE)/$(ARCH)-dev$(SRCMODULE) || 			\
-		mkdir -p $(KMODOBJBASE)/$(ARCH)-dev$(SRCMODULE); 		\
+	@mkdir -p $(KMODOBJBASE)/$(ARCH)-dev$(SRCMODULE); 		\
 	for cfile in $(COMMON_SOURCES); do						\
 		echo "[cp] =====> $(KMODOBJBASE)/$(ARCH)-dev$(SRCMODULE)/$$cfile"; \
 		cp -f -u $$cfile $(KMODOBJBASE)/$(ARCH)-dev$(SRCMODULE)  >& /dev/null;	\
