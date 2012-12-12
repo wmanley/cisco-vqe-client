@@ -73,7 +73,7 @@ dnl CROSS_COMPILE is set for non-native builds (we assume the build
 dnl machine is an i?86) based on the $CC prefix
 machine=`($CC -dumpmachine)`
 case $machine in
- i?86-*-*) 	AC_SUBST(OBJECT_X86, 1)
+ i?86-*-*|*86_64-*-*) 	AC_SUBST(OBJECT_X86, 1)
 		AC_SUBST(DOBJ_TARGET, "-DOBJECT_X86=1")
 		AC_SUBST(ARCH, x86)
 		if test -e "/lib/modules/`uname -r`/source"; then
