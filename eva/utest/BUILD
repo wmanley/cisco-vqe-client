@@ -69,7 +69,7 @@ utrun:: $(UTRUN_TARGETS)
 #  Note zeroing the counters doesn't really work for us as we have .gcda files not .da files, see $(LCOV_DIR)/lcov
 #  Do a make clean prior to make utrun to get clean unit testing results.
 #       $(LCOV_DIR)/lcov --zerocounters --directory $(MODOBJ) -base-directory .
-	pushd $(ARCH)-utrun; mkdir -p data; cp -f ../$(SRCDIR)/data/* data; ./test_vqec_utest; popd
+	cd $(ARCH)-utrun; mkdir -p data; cp -f ../$(SRCDIR)/data/* data; ./test_vqec_utest
 	$(RM) $(MODOBJ)/*.gc*
 	$(RM) $(MODOBJ)/../../sample/$(ARCH)-utrun/*.gc*
 	$(LCOV_DIR)/lcov --capture --directory $(MODOBJ)/../../$(ARCH)-utrun -base-directory ..  --output-file $(MODOBJ)/utest.info --test-name utest --no-checksum
@@ -83,7 +83,7 @@ $(MODOBJ)/test_vqec_utest: $(VQEC_UTRUN_OBJS) $(VQEC_LIB) $(VQEC_DEP_VQE)
 
 utrun-kmod:: $(UTRUN_KMOD_TARGETS)
 	echo "compiling kmod vqec unit tests\n"
-	pushd $(ARCH)-utrun; mkdir -p data; cp -f ../$(SRCDIR)/data/* data; popd
+	cd $(ARCH)-utrun; mkdir -p data; cp -f ../$(SRCDIR)/data/* data
 	$(RM) $(MODOBJ)/*.gc*
 	$(RM) $(MODOBJ)/../../sample/$(ARCH)-utrun/*.gc*
 

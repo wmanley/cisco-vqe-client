@@ -128,9 +128,9 @@ pic_build::
 # Applications built here
 #
 build::
-	@if [[ $(BUILDING_UTESTS) = 0 ]]; then \
+	@if [ $(BUILDING_UTESTS) = 0 ]; then \
 	  echo "Building VQE-C sample apps"; \
-	  if [[ "$(MAKECMDGOALS)" = "" ]]; then \
+	  if [ "$(MAKECMDGOALS)" = "" ]; then \
 	   if ! $(MAKE) -wC sample build; then \
 	     $(MAKE_K_CHECK) \
 	   fi \
@@ -158,26 +158,23 @@ utrun_build::
 
 
 update_ver: $(VQEC_LIB) $(ELOG_OBJ)
-	@pushd $(SRCDIR); \
+	@cd $(SRCDIR); \
 	./update_version.sh $(VER_BUILD_TYPE); \
 	echo "updated vqec_version.h"; \
-	touch update_ver; \
-	popd
+	touch update_ver;
 
 update_ver_pic: $(VQEC_PIC_LIB) $(ELOG_OBJ)
-	@pushd $(SRCDIR); \
+	@cd $(SRCDIR); \
 	./update_version.sh $(VER_BUILD_TYPE); \
 	echo "updated vqec_version.h"; \
-	touch update_ver; \
-	popd
+	touch update_ver;
 
 make_ver:
-	@pushd $(SRCDIR); \
+	@cd $(SRCDIR); \
 	if [ ! -e vqec_version.h ]; then \
 		./update_version.sh $(VER_BUILD_TYPE); \
 		echo "created vqec_version.h"; \
-	fi; \
-	popd
+	fi;
 
 GENINCLUDES = $(SRCDIR)/vqec_rpc_common.h_rpcgen $(SRCDIR)/vqec_rpc_client.c_rpcgen
 

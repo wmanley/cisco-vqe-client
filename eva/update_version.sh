@@ -18,7 +18,7 @@ if [ -e .ACME/component.info ]; then
  build_refpoint=$(sed 's/vam\/eva:source:.*:.*://g' .ACME/component.info)
 fi
 
-function print_help() {
+print_help() {
    echo "Usage: update_version.sh [<build-type>]"
    echo "  where <build-type> is one of:"
    echo "    development: used for development build"
@@ -28,20 +28,20 @@ function print_help() {
    exit 1
 }
 
-if [[ $# -gt 1 ]];then
+if [ $# -gt 1 ];then
    print_help
 fi
 
-if [[ "$1" == "production" ]] || [[ `expr index "$1" "rc-"` -eq 1 ]];then
+if [ "$1" = "production" ] || [ `expr index "$1" "rc-"` -eq 1 ];then
    build_type=$1
-elif [[ $# -eq 0 ]];then
+elif [ $# -eq 0 ];then
    build_type='development'
 else
    print_help
 fi
 
 # just use the build-number from the template file
-if [[ -e $TEMPLATE_FILE ]];then
+if [ -e "$TEMPLATE_FILE" ];then
    awk '/VQEC_VAR_BUILD_NUMBER/ ' $TEMPLATE_FILE > ver.$$
    version=$(sed '/#define VQEC_VAR_BUILD_NUMBER /s///g' ver.$$)
 fi
@@ -62,7 +62,7 @@ sed '/^.*VQEC_VAR.*$/d' $TEMPLATE_FILE >> $TEMP_FILE
 # to not create confusion regarding build numbers in separate workspaces
 #
 echo "#define VQEC_VAR_BUILD_NUMBER ${version}" >> $TEMP_FILE
-if [[ $build_type == "development" ]];then
+if [ $build_type = "development" ];then
     echo "#define VQEC_VAR_BUILD_TYPE \"${build_type}\"" >> $TEMP_FILE
     echo "#define VQEC_VAR_WS_PATH \"${build_path}\"" >> $TEMP_FILE
     echo "#define VQEC_VAR_BUILT_BY \"${build_user}\"" >> $TEMP_FILE
@@ -71,7 +71,7 @@ fi
 
 #create the new/updated version file if necessary
 diff -q $TEMP_FILE $VERSION_FILE
-if [[ $? -ne 0 ]];then
+if [ "$?" -ne 0 ];then
     echo writing new vqec_version.h...
     cp $TEMP_FILE $VERSION_FILE
 fi

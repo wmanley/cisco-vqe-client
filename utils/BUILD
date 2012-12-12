@@ -202,19 +202,17 @@ SRC = $(LIB_SRC) \
 
 
 update_ver: $(LIB)
-	@pushd $(SRCDIR); \
+	@cd $(SRCDIR); \
 	./update_version.sh $(VER_BUILD_TYPE); \
 	echo "updated vqes_version.h"; \
-	touch update_ver; \
-	popd
+	touch update_ver;
 
 make_ver:
-	@pushd $(SRCDIR); \
+	@cd $(SRCDIR); \
 	if [ ! -e vqes_version.h ]; then \
 		./update_version.sh $(VER_BUILD_TYPE); \
 		echo "created vqes_version.h"; \
-	fi; \
-	popd
+	fi;
  
 # always include depend.mk except if target does not need it included
 # targets that do not need depend.mk are defined in vam.mk. Copy lines
