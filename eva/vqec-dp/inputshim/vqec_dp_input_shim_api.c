@@ -370,6 +370,25 @@ vqec_dp_input_shim_os_id_to_os (const vqec_dp_osid_t os_id)
     return (id_to_ptr(os_id, &ret_code, vqec_dp_input_shim_os_id_table_key));
 }
 
+// YouView changes
+
+int vqec_dp_input_shim_filter_fd(vqec_dp_osid_t os_id)
+{
+    vqec_dp_input_shim_os_t *p_os;
+
+    p_os = vqec_dp_input_shim_os_id_to_os(os_id);
+    if (!p_os) {
+        return -1;
+    }
+
+    if (!p_os->filter_entry ||
+        !p_os->filter_entry->socket) {
+        return -1;
+    }
+
+    return (p_os->filter_entry->socket->fd);
+}
+
 /*
  * vqec_dp_input_shim_os_capa()
  *

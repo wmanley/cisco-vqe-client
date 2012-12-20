@@ -21,6 +21,10 @@
 #include <vqec_dp_io_stream.h>
 #include <vqec_dp_tlm.h>
 
+// YouView changes
+
+int vqec_dp_input_shim_filter_fd(vqec_dp_osid_t osid);
+
 /**
  * @defgroup ishim Input Shim.
  * @{

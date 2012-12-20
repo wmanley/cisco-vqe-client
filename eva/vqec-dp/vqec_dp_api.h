@@ -706,6 +706,10 @@ vqec_dp_graph_repair_inject(INV vqec_dp_graphid_t id,
                             INV in_port_t remote_port,
                             INARRAY(char, VQEC_DP_IPC_MAX_PAKSIZE)); 
 
+// YouView changes
+RPC int
+vqec_dp_graph_filter_fd(INV vqec_dp_graphid_t id);
+
 /**
  * Inject a packet corresponding to the transmit direction for the 
  * primary stream of the specified graph. A non-logical hack used for NAT.

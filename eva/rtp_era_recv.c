@@ -20,6 +20,10 @@
 #include <utils/vam_util.h>
 #include <rtp/rtp_util.h>
 
+// YouView changes
+#include "vqec_dp_api.h"
+
+
 #ifdef _VQEC_UTEST_INTERPOSERS
 #include "test_vqec_utest_interposers.h"
 #endif
@@ -194,6 +198,7 @@ rtp_era_recv_t *rtp_create_session_era_recv (vqec_dp_streamid_t dp_id,
 {
     boolean f_init_successful = FALSE;
     rtp_era_recv_t *p_era_recv = NULL;
+    rtp_session_t * p_sess = NULL;
     struct timeval tv;
     rtp_config_t config;
     rtp_member_id_t member_id;
@@ -399,6 +404,20 @@ rtp_era_recv_t *rtp_create_session_era_recv (vqec_dp_streamid_t dp_id,
     p_era_recv->dp_is_id = dp_id;
     p_era_recv->chan = parent_chan;
 
+// YouView changes BEGIN
+// TODO: the data below may change at runtime, so the rtp_session should be updated when the input shim changes.
+
+    syslog_print(VQEC_INFO, "YouView Mod !!!!!!!!!!!!!!!!\n");
+
+    p_sess = (rtp_session_t *)p_era_recv;
+
+    p_sess->rtcp_socket = vqec_dp_graph_filter_fd(parent_chan->graph_id);
+
+    p_sess->send_addrs.dst_addr = parent_chan->cfg.rtx_source_addr.s_addr;
+    p_sess->send_addrs.dst_port = parent_chan->cfg.rtx_source_port;
+
+// YouView changes END
+
     return (p_era_recv);
     
 fail:
@@ -436,6 +455,14 @@ rtp_update_session_era_recv (rtp_era_recv_t *p_era_recv,
     }
     p_era_recv->send_addrs.dst_addr = fbt_ip_addr;
     p_era_recv->send_addrs.dst_port = send_rtcp_port;
+
+// YouView changes BEGIN
+    rtp_session_t * p_sess = (rtp_session_t *)p_era_recv;
+
+    p_sess->send_addrs.dst_addr = p_era_recv->chan->cfg.rtx_source_addr.s_addr;
+    p_sess->send_addrs.dst_port = p_era_recv->chan->cfg.rtx_source_port;
+// YouView changes END
+
 done:
     return (success);
 }
