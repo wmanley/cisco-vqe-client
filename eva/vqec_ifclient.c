@@ -2852,6 +2852,8 @@ vqec_error_t vqec_ifclient_init_ul (const char *filename)
                               __FUNCTION__);
         goto bail;
     }
+
+    s_vqec_ifclient_state = VQEC_IFCLIENT_INITED;
  
     /* create tuners listed in config file, if any */
     for (cur_idx = 0; cur_idx < v_cfg.max_tuners; cur_idx++) {
@@ -2899,8 +2901,6 @@ vqec_error_t vqec_ifclient_init_ul (const char *filename)
                                   "Updater thread failed to start");
         }
     }
-
-    s_vqec_ifclient_state = VQEC_IFCLIENT_INITED;
 
     if (vqec_info_logging()) {
         init_duration = TIME_SUB_A_A(get_sys_time(), init_start_time);

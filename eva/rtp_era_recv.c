@@ -20,6 +20,8 @@
 #include <utils/vam_util.h>
 #include <rtp/rtp_util.h>
 
+#include "vqec_dp_api.h"
+
 #ifdef _VQEC_UTEST_INTERPOSERS
 #include "test_vqec_utest_interposers.h"
 #endif
@@ -398,6 +400,14 @@ rtp_era_recv_t *rtp_create_session_era_recv (vqec_dp_streamid_t dp_id,
     
     p_era_recv->dp_is_id = dp_id;
     p_era_recv->chan = parent_chan;
+
+    if(parent_chan->cfg.primary_source_rtcp_port ==
+       parent_chan->cfg.rtx_source_port)
+    {
+        rtp_session_t * p_sess = (rtp_session_t *)p_era_recv;
+
+        p_sess->rtcp_socket = vqec_dp_graph_filter_fd(parent_chan->graph_id);
+    }
 
     return (p_era_recv);
     
