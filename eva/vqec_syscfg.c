@@ -342,6 +342,11 @@ vqec_syscfg_set_defaults (vqec_syscfg_t *cfg,
             if (!strcmp(VQEC_SYSCFG_DEFAULT_SIG_MODE, 
                         VQEC_SYSCFG_SIG_MODE_NAT)) {
                 cfg->sig_mode = VQEC_SM_NAT;
+// YouView2 BEGIN
+            } else if (!strcmp(VQEC_SYSCFG_DEFAULT_SIG_MODE, 
+                               VQEC_SYSCFG_SIG_MODE_MUX)) {
+                cfg->sig_mode = VQEC_SM_MUX;
+// YouView2 END
             } else {
                 cfg->sig_mode = VQEC_SM_STD;
             }
@@ -661,8 +666,11 @@ vqec_syscfg_dump (const vqec_syscfg_t *v_cfg,
                                v_cfg->input_ifname);
                 break;
             case VQEC_CFG_SIG_MODE:
-                CONSOLE_PRINTF("sig_mode = \"%s\";\n", 
-                           (v_cfg->sig_mode == VQEC_SM_STD) ? "std" : "nat");
+                CONSOLE_PRINTF("sig_mode = \"%s\";\n",
+// YouView2 BEGIN 
+                           (v_cfg->sig_mode == VQEC_SM_STD) ? "std" :
+                            ((v_cfg->sig_mode == VQEC_SM_MUX) ? "mux" : "nat"));
+// YouView2 END
                 break;
             case VQEC_CFG_NAT_BINDING_REFRESH_INTERVAL:
                 CONSOLE_PRINTF("nat_binding_refresh_interval = %d;\n",
@@ -1379,6 +1387,10 @@ vqec_syscfg_load (vqec_syscfg_t *cfg,
                 cfg->sig_mode = VQEC_SM_STD;
             } else if (temp_str && !strcmp(t_str,VQEC_SYSCFG_SIG_MODE_NAT)) {
                 cfg->sig_mode = VQEC_SM_NAT;
+// YouView2 BEGIN
+            } else if (temp_str && !strcmp(t_str,VQEC_SYSCFG_SIG_MODE_MUX)) {
+                cfg->sig_mode = VQEC_SM_MUX;
+// YouView2 END
             } else {
                 if (log_nonfatal_messages) {
                     snprintf(debug_str, DEBUG_STR_LEN,

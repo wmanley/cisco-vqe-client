@@ -2682,6 +2682,8 @@ vqec_error_t vqec_ifclient_init_ul (const char *filename)
             chan_db_name = NULL;
         }
     }
+// YouView2
+    cfg_set_mux(v_cfg.sig_mode == VQEC_SM_MUX);
     cfg_err = cfg_init(chan_db_name);
     switch (cfg_err) {
     case CFG_SUCCESS:
@@ -2852,6 +2854,8 @@ vqec_error_t vqec_ifclient_init_ul (const char *filename)
                               __FUNCTION__);
         goto bail;
     }
+
+    s_vqec_ifclient_state = VQEC_IFCLIENT_INITED;
  
     /* create tuners listed in config file, if any */
     for (cur_idx = 0; cur_idx < v_cfg.max_tuners; cur_idx++) {

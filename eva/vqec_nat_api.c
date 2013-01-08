@@ -319,16 +319,18 @@ vqec_nat_module_init (vqec_syscfg_sig_mode_t mode,
         !params->max_bindings || 
         !params->max_paksize ||
         (proto < VQEC_NAT_MIN_PROTO) ||        
-        (proto > VQEC_NAT_MAX_PROTO) ||        
-        ((mode != VQEC_SM_STD) && (mode != VQEC_SM_NAT))) {
+        (proto > VQEC_NAT_MAX_PROTO) || 
+// YouView2       
+        ((mode != VQEC_SM_STD) && (mode != VQEC_SM_NAT) && (mode != VQEC_SM_MUX))) {
         
         err = VQEC_ERR_INVALIDARGS;
         syslog_print(VQEC_INVALIDARGS, __FUNCTION__);
         goto done;
     }
 
-    m_natmodule.proto = proto;    
-    if (mode == VQEC_SM_STD) {
+    m_natmodule.proto = proto;
+// YouView2    
+    if ((mode == VQEC_SM_STD) || (mode == VQEC_SM_MUX)) {
         m_natmodule.proto_if = NAT_GET_PROTO_INTF(natproto);
     } else {
         m_natmodule.nat_mode = TRUE;

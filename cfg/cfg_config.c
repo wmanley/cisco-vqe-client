@@ -42,6 +42,9 @@ typedef struct configuration_mgr_ {
     boolean             initialized;
 } configuration_mgr_t;
 
+// YouView2
+static boolean g_mux = 0;
+ 
 static configuration_mgr_t system_cfg;
 static channel_mgr_t new_channel_mgr;
 
@@ -2304,3 +2307,27 @@ cfg_get_update_stats_values (cfg_stats_t *stats)
     }
     stats->num_syntax_errors = new_channel_mgr.num_syntax_errors;
 }
+
+// YouView2 BEGIN
+/* Function:    cfg_set_mux
+ * Description: Set the multiplexing parameter
+ * Parameters:  boolean  Multiplexing parameter
+ * Returns:     N/A
+ */
+void
+cfg_set_mux(boolean mux)
+{
+    g_mux = mux;
+}
+
+/* Function:    cfg_get_mux
+ * Description: Get the multiplexing parameter
+ * Parameters:  N/A
+ * Returns:     boolean  Multiplexing parameter
+ */
+
+boolean cfg_get_mux(void)
+{
+    return g_mux;
+}
+// YouView2 END

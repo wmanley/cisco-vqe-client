@@ -347,7 +347,9 @@ cfg_channel_ret_e cfg_channel_add_map (channel_mgr_t *channel_mgr_p,
             }
 
             /* Add the unicast rtx address and rtp port */
-            if (channel_add_map(&channel_mgr_p->fbt_map,
+// YouView2
+            if(!cfg_get_mux() &&
+                channel_add_map(&channel_mgr_p->fbt_map,
                                 channel_p->fbt_address,
                                 channel_p->rtx_rtp_port,
                                 channel_p->handle) == FALSE) {
@@ -3162,6 +3164,7 @@ static boolean linear_validation_and_extraction (void *sdp_p,
     if (channel_p->mode == SOURCE_MODE ||
         channel_p->mode == LOOKASIDE_MODE) {
         /* RTP port cannot be the same as RTCP port in rtx session */
+
         if (channel_p->rtx_rtp_port == channel_p->rtx_rtcp_port) {
             snprintf(message_buffer, MAX_MSG_LENGTH,
                      "RTP port being the same as RTCP port for "
@@ -3180,8 +3183,10 @@ static boolean linear_validation_and_extraction (void *sdp_p,
 
         /* RTCP port for original stream cannot be the same as the ports */
         /* in rtx session. */
-        if (channel_p->rtx_rtp_port == channel_p->original_source_rtcp_port ||
-            channel_p->rtx_rtcp_port == channel_p->original_source_rtcp_port) {
+// YouView2
+        if (!cfg_get_mux() &&
+            (channel_p->rtx_rtp_port == channel_p->original_source_rtcp_port ||
+            channel_p->rtx_rtcp_port == channel_p->original_source_rtcp_port)) {
             snprintf(message_buffer, MAX_MSG_LENGTH,
                      "RTCP port of original stream being the same as either "
                      "RTP or RTCP port for unicast retransmission stream.");

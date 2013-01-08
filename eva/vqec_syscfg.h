@@ -24,7 +24,10 @@ extern "C" {
 
 typedef enum vqec_syscfg_sig_mode_{
     VQEC_SM_NAT,
-    VQEC_SM_STD
+// YouView2 BEGIN
+    VQEC_SM_STD,
+    VQEC_SM_MUX
+// YouView2 END
 } vqec_syscfg_sig_mode_t;
 
 typedef enum vqec_syscfg_vod_mode_{
