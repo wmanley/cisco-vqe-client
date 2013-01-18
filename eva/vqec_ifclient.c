@@ -2682,8 +2682,6 @@ vqec_error_t vqec_ifclient_init_ul (const char *filename)
             chan_db_name = NULL;
         }
     }
-// YouView2
-    cfg_set_mux(v_cfg.sig_mode == VQEC_SM_MUX);
     cfg_err = cfg_init(chan_db_name);
     switch (cfg_err) {
     case CFG_SUCCESS:
@@ -2903,8 +2901,6 @@ vqec_error_t vqec_ifclient_init_ul (const char *filename)
                                   "Updater thread failed to start");
         }
     }
-
-    s_vqec_ifclient_state = VQEC_IFCLIENT_INITED;
 
     if (vqec_info_logging()) {
         init_duration = TIME_SUB_A_A(get_sys_time(), init_start_time);

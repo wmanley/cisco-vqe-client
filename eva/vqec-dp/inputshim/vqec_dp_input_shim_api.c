@@ -370,8 +370,17 @@ vqec_dp_input_shim_os_id_to_os (const vqec_dp_osid_t os_id)
     return (id_to_ptr(os_id, &ret_code, vqec_dp_input_shim_os_id_table_key));
 }
 
-// YouView changes
 
+/**
+ * vqec_dp_input_shim_filter_fd()
+ *
+ * Return the socket file descriptor of the filter
+ * for the specified inputshim output stream.
+ *
+ * @param[in]  os_id   OS ID value.
+ * @return     int     file descriptor
+ *                     -1 if not found.
+ */
 int vqec_dp_input_shim_filter_fd(vqec_dp_osid_t os_id)
 {
     vqec_dp_input_shim_os_t *p_os;

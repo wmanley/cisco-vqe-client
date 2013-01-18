@@ -706,7 +706,14 @@ vqec_dp_graph_repair_inject(INV vqec_dp_graphid_t id,
                             INV in_port_t remote_port,
                             INARRAY(char, VQEC_DP_IPC_MAX_PAKSIZE)); 
 
-// YouView changes
+/**
+ * Return the socket file descriptor of the filter that is bound 
+ * to the inputshim output stream for the repair session
+ * of the specified dataplane graph.
+ *
+ * @param[in] id Dataplane tuner identifier.
+ * @param[out] int Returns a file descriptor, or -1 if not found.
+ */
 RPC int
 vqec_dp_graph_filter_fd(INV vqec_dp_graphid_t id);
 

@@ -533,20 +533,6 @@ extern void cfg_get_update_stats(char *string, int length);
 */
 extern void cfg_get_update_stats_values(cfg_stats_t *stats);
 
-// YouView2 BEGIN
-
-/*! \fn void cfg_set_mux
-    \brief Set the multiplexing parameter
-*/
-extern void cfg_set_mux(boolean mux);
-
-/*! \fn boolean cfg_get_mux
-    \brief Get the multiplexing parameter
-*/
-extern boolean cfg_get_mux(void);
-
-// YouView2 END
-
 /* Function:    read_line
  * Description: Return a line from the input buffer
  * Parameters:  line_buffer     Returned line buffer

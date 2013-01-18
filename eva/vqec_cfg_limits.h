@@ -12,8 +12,6 @@
 
 #define VQEC_SYSCFG_SIG_MODE_STD "std"
 #define VQEC_SYSCFG_SIG_MODE_NAT "nat"
-// YouView2
-#define VQEC_SYSCFG_SIG_MODE_MUX "mux"
 #define VQEC_SYSCFG_VOD_MODE_IPTV "iptv"
 #define VQEC_SYSCFG_VOD_MODE_CABLE "cable"
 #define VQEC_MAX_NAME_LEN        (255)
@@ -137,10 +135,7 @@ static inline boolean is_vqec_cfg_so_rcvbuf_valid (uint32_t val) {
 #define VQEC_SYSCFG_DEFAULT_SIG_MODE                        "nat"
 static inline boolean is_vqec_cfg_sig_mode_valid (char *str) {
     if ((strcmp("nat", str) != 0) ||
-// YouView2 BEGIN
-       (strcmp("std", str) != 0) ||
-       (strcmp("mux", str) != 0)) {
-// YouView2 END
+       (strcmp("std", str) != 0)) {
         return (FALSE);
     }
     return (TRUE);
@@ -663,4 +658,3 @@ static inline boolean is_vqec_cfg_log_level_valid (uint32_t val) {
  * stun optimization
  ******/
 #define VQEC_SYSCFG_DEFAULT_STUN_OPTIMIZATION            (TRUE)
-

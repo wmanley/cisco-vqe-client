@@ -274,24 +274,20 @@ ARR_ELEM("input_ifname",         VQEC_CFG_INPUT_IFNAME,
          VQEC_UPDATE_INVALID,
          VQEC_V0_ATTRIBUTES_NAMESPACE_ID,
          VQEC_PARAM_STATUS_CURRENT)
-// YouView2 BEGIN
 ARR_ELEM("sig_mode",             VQEC_CFG_SIG_MODE,
-         VQEC_TYPE_STRING,   "Signalling mode [nat/std/mux]. It is recommended "
+         VQEC_TYPE_STRING,   "Signalling mode [nat/std]. It is recommended "
          "that one uses NAT signalling even when not behind a NAT. Always "
          "using NAT mode is preferred as it removes the channel configuration "
          "restrictions imposed by STD mode signalling that require that all RTP "
          "and RTCP ports in the configuration must be unused on the STB.  Note "
          "that NAT signalling does not increase network load as keepalives "
-         "are disabled when the box is not behind a NAT. "
-         "MUX mode corresponds to STD but rtcp feedback messages and "
-         "unicast rtp retransmission are multiplexed on the same connection",
+         "are disabled when the box is not behind a NAT.",
          TRUE,
          FALSE, 
-         VQEC_STRING_LIST_CONSTRUCTOR(__DEFAULT "nat", "std", "mux"),
+         VQEC_STRING_LIST_CONSTRUCTOR(__DEFAULT "nat", "std"),
          VQEC_UPDATE_STARTUP,
          VQEC_V0_ATTRIBUTES_NAMESPACE_ID,
          VQEC_PARAM_STATUS_CURRENT)
-// YouView2 END
 ARR_ELEM("nat_binding_refresh_interval",
          VQEC_CFG_NAT_BINDING_REFRESH_INTERVAL,VQEC_TYPE_UINT32_T,
          "NAT binding refresh interval in secs",

@@ -289,11 +289,9 @@ my $cisco_copyright =
   ******************************************************************************/\n\n";
 my $warn = 
   "/* THIS IS GENERATED CODE.  DO NOT EDIT. */\n\n";
-#YouView2
 my $static_defines = "
 #define VQEC_SYSCFG_SIG_MODE_STD \"std\"
 #define VQEC_SYSCFG_SIG_MODE_NAT \"nat\"
-#define VQEC_SYSCFG_SIG_MODE_MUX \"mux\"
 #define VQEC_SYSCFG_VOD_MODE_IPTV \"iptv\"
 #define VQEC_SYSCFG_VOD_MODE_CABLE \"cable\"
 #define VQEC_MAX_NAME_LEN        (255)\n\n";

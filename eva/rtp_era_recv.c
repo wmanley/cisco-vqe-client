@@ -20,9 +20,7 @@
 #include <utils/vam_util.h>
 #include <rtp/rtp_util.h>
 
-// YouView changes
 #include "vqec_dp_api.h"
-
 
 #ifdef _VQEC_UTEST_INTERPOSERS
 #include "test_vqec_utest_interposers.h"
@@ -403,13 +401,13 @@ rtp_era_recv_t *rtp_create_session_era_recv (vqec_dp_streamid_t dp_id,
     p_era_recv->dp_is_id = dp_id;
     p_era_recv->chan = parent_chan;
 
-// YouView changes BEGIN
-    if(vqec_syscfg_get_ptr()->sig_mode == VQEC_SM_MUX)
+    if(parent_chan->cfg.primary_source_rtcp_port ==
+       parent_chan->cfg.rtx_source_port)
     {
         rtp_session_t * p_sess = (rtp_session_t *)p_era_recv;
+
         p_sess->rtcp_socket = vqec_dp_graph_filter_fd(parent_chan->graph_id);
     }
-// YouView changes END
 
     return (p_era_recv);
     
@@ -448,7 +446,6 @@ rtp_update_session_era_recv (rtp_era_recv_t *p_era_recv,
     }
     p_era_recv->send_addrs.dst_addr = fbt_ip_addr;
     p_era_recv->send_addrs.dst_port = send_rtcp_port;
-
 done:
     return (success);
 }

@@ -52,8 +52,16 @@ vqec_dp_graph_id_to_graph (const vqec_dp_graphid_t id)
     return (id_to_ptr(id, &ret_code, vqec_dp_graph_id_table_key));
 }
 
-// YouView Changes
-
+/**
+ * vqec_dp_graph_filter_fd()
+ *
+ * Return the socket file descriptor of the filter that is bound 
+ * to the inputshim output stream for the repair session
+ * of the specified dataplane graph.
+ *
+ * @param[in] id Identifier of a dataplane graph.
+ * @param[out] int Returns a file descriptor, or -1 if not found.
+ */
 int vqec_dp_graph_filter_fd(vqec_dp_graphid_t id)
 {
     vqec_dp_graph_t *graph;
