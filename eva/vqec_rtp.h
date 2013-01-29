@@ -140,6 +140,23 @@ rtp_show_drop_stats(rtp_session_t *p_sess);
  * @param[in] pak_buff_len Length of the RTCP packet.
  * @param[in] recv_time Time at which packet is received.
  */
+void
+rtcp_event_handler_internal_process_pak (rtp_session_t *rtp_session,
+                                         struct in_addr pak_src_addr,
+                                         uint16_t pak_src_port,
+                                         char *pak_buff,
+                                         int32_t pak_buff_len,
+                                         struct timeval *recv_time);
+
+/**
+ * Front-end RTCP event handler.
+ *
+ * @param[in] rtp_session Pointer to a repair or primary session.
+ * @param[in] rtcp_sock Input socket to be read.
+ * @param[in] iobuf An IO buffer to receive RTCP packet data.
+ * @param[in] iobuf_len Length of the IO buffer.
+ * @param[in] is_primary_session True if the session is the primary session.
+ */
 void rtcp_event_handler_internal(rtp_session_t *rtp_session,
                                  vqec_recv_sock_t *rtp_sock,
                                  char *iobuf,
