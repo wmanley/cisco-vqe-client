@@ -22,6 +22,15 @@
 #include <vqec_dp_tlm.h>
 
 /**
+ * Return the socket file descriptor of the filter
+ * for the specified inputshim output stream.
+ *
+ * @param[in] osid Identifier of an output stream.
+ * @param[out] int Returns a file descriptor, or -1 if not found.
+ */
+int vqec_dp_input_shim_filter_fd(vqec_dp_osid_t osid);
+
+/**
  * @defgroup ishim Input Shim.
  * @{
  */

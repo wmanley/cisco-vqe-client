@@ -707,6 +707,17 @@ vqec_dp_graph_repair_inject(INV vqec_dp_graphid_t id,
                             INARRAY(char, VQEC_DP_IPC_MAX_PAKSIZE)); 
 
 /**
+ * Return the socket file descriptor of the filter that is bound 
+ * to the inputshim output stream for the repair session
+ * of the specified dataplane graph.
+ *
+ * @param[in] id Dataplane tuner identifier.
+ * @param[out] int Returns a file descriptor, or -1 if not found.
+ */
+RPC int
+vqec_dp_graph_filter_fd(INV vqec_dp_graphid_t id);
+
+/**
  * Inject a packet corresponding to the transmit direction for the 
  * primary stream of the specified graph. A non-logical hack used for NAT.
  * This is the method where the "buf" input argument's length is not

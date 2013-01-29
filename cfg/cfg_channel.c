@@ -347,10 +347,11 @@ cfg_channel_ret_e cfg_channel_add_map (channel_mgr_t *channel_mgr_p,
             }
 
             /* Add the unicast rtx address and rtp port */
-            if (channel_add_map(&channel_mgr_p->fbt_map,
-                                channel_p->fbt_address,
-                                channel_p->rtx_rtp_port,
-                                channel_p->handle) == FALSE) {
+            if(channel_p->rtx_rtp_port != channel_p->original_source_rtcp_port &&
+               channel_add_map(&channel_mgr_p->fbt_map,
+                               channel_p->fbt_address,
+                               channel_p->rtx_rtp_port,
+                               channel_p->handle) == FALSE) {
                 VQE_CFG_DEBUG(CFG_DEBUG_CHANNEL, NULL,
                               "combination unicast address %s and rtp port %d "
                               "has been used for another channel", 
@@ -3178,13 +3179,12 @@ static boolean linear_validation_and_extraction (void *sdp_p,
             return FALSE;
         }
 
-        /* RTCP port for original stream cannot be the same as the ports */
+        /* RTCP port for original stream cannot be the same as the RTPC port */
         /* in rtx session. */
-        if (channel_p->rtx_rtp_port == channel_p->original_source_rtcp_port ||
-            channel_p->rtx_rtcp_port == channel_p->original_source_rtcp_port) {
+        if (channel_p->rtx_rtcp_port == channel_p->original_source_rtcp_port) {
             snprintf(message_buffer, MAX_MSG_LENGTH,
-                     "RTCP port of original stream being the same as either "
-                     "RTP or RTCP port for unicast retransmission stream.");
+                     "RTCP port of original stream being the same as "
+                     "RTCP port for unicast retransmission stream.");
             syslog_print(CFG_VALIDATION_ERR, channel_p->session_key,
                          message_buffer);
             return FALSE;
