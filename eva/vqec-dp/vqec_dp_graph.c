@@ -52,6 +52,38 @@ vqec_dp_graph_id_to_graph (const vqec_dp_graphid_t id)
     return (id_to_ptr(id, &ret_code, vqec_dp_graph_id_table_key));
 }
 
+/**
+ * vqec_dp_graph_filter_fd()
+ *
+ * Return the socket file descriptor of the filter that is bound
+ * to the inputshim output stream for the repair session
+ * of the specified dataplane graph.
+ *
+ * @param[in] id Identifier of a dataplane graph.
+ * @param[out] int Returns a file descriptor, or -1 if not found.
+ */
+int vqec_dp_graph_filter_fd(vqec_dp_graphid_t id)
+{
+    vqec_dp_graph_t *graph;
+    vqec_dp_osid_t osid;
+
+    if (id == VQEC_DP_GRAPHID_INVALID) {
+        return -1;
+    }
+
+    graph = vqec_dp_graph_id_to_graph(id);
+    if (!graph) {
+        return -1;
+    }
+
+    osid = graph->inputshim_output.os[VQEC_DP_IO_STREAM_TYPE_REPAIR].id;
+    if (osid == VQEC_DP_INVALID_OSID) {
+        return -1;
+    }
+
+    return (vqec_dp_input_shim_filter_fd(osid));
+}
+
 #define VQEC_GRAPH_IDTABLE_BUCKETS 1
 #define VQEC_GRAPH_MIN_GRAPHS 2  /* Id manager limitation */
 UT_STATIC vqec_dp_error_t vqec_dp_graph_init_id_table (uint32_t channels)
