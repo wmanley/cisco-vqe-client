@@ -290,7 +290,17 @@ rtp_era_recv_t *rtp_create_session_era_recv (vqec_dp_streamid_t dp_id,
     config.session_id = 
         rtp_taddr_to_session_id(orig_source_addr, orig_source_port);
 
-    config.rtcp_sock = p_era_recv->era_rtcp_xmit_sock;
+    if(parent_chan->cfg.primary_source_rtcp_port ==
+       parent_chan->cfg.rtx_source_port)
+    {
+
+    	config.rtcp_sock = vqec_dp_graph_filter_fd(parent_chan->graph_id);
+    }
+    else
+    {
+    	config.rtcp_sock = p_era_recv->era_rtcp_xmit_sock;
+    }
+
     config.rtcp_dst_addr = fbt_ip_addr;
     config.rtcp_dst_port = send_rtcp_port;
     config.rtcp_bw_cfg = *rtcp_bw_cfg;
@@ -400,14 +410,6 @@ rtp_era_recv_t *rtp_create_session_era_recv (vqec_dp_streamid_t dp_id,
     
     p_era_recv->dp_is_id = dp_id;
     p_era_recv->chan = parent_chan;
-
-    if(parent_chan->cfg.primary_source_rtcp_port ==
-       parent_chan->cfg.rtx_source_port)
-    {
-        rtp_session_t * p_sess = (rtp_session_t *)p_era_recv;
-
-        p_sess->rtcp_socket = vqec_dp_graph_filter_fd(parent_chan->graph_id);
-    }
 
     return (p_era_recv);
     

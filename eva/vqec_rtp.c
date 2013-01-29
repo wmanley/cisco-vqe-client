@@ -388,7 +388,7 @@ vqec_rtp_session_show (vqec_dp_streamid_t id,
  * @param[in] pak_buff_len Length of the RTCP packet.
  * @param[in] recv_time Time at which packet is received.
  *---------------------------------------------------------------------------*/ 
-static void 
+void 
 rtcp_event_handler_internal_process_pak (rtp_session_t *rtp_session,
                                          struct in_addr pak_src_addr,
                                          uint16_t pak_src_port,

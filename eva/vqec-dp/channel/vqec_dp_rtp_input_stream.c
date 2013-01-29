@@ -26,6 +26,9 @@
 #include "utils/mp_mpeg.h"
 #include <utils/mp_tlv_decode.h>
 
+#include <eva/vqec_channel_private.h>
+#include <eva/vqec_rtp.h>
+
 #define VQEC_DP_RTP_IS_IDTABLE_ID_BASE (0xA0000000)
 #define VQEC_DP_RTP_IS_IDTABLE_NUM_IDS (s_id_table.total_ids)
 #define VQEC_DP_RTP_IS_IDTABLE_IDS_PER_BLOCK \
@@ -985,7 +988,38 @@ vqec_dp_chan_rtp_repair_input_stream_rcv_one (
     pak->rtp = (rtpfasttype_t *)pak->buff;
     rtp_is = (vqec_dp_chan_rtp_input_stream_t *)in;
     repair_is = (vqec_dp_chan_rtp_repair_input_stream_t *)in;
-    
+
+    vqec_chan_t *chan = vqec_chanid_to_chan(parent_chan->cp_handle);
+
+    if (chan &&
+        chan->cfg.primary_source_rtcp_port == chan->cfg.rtx_source_port)
+    {
+        /* "When RTP and RTCP packets are multiplexed onto a single port,
+         * the RTCP packet type field [...] can be used to distinguish
+         * RTP and RTCP packets." (RFC 5761)
+         */
+        rtcptype      *p_rtcp = (rtcptype *)pak->buff;
+        rtcp_type_t    msg_type = (pak->buff_len >= 2) ? 
+            rtcp_get_type(ntohs(p_rtcp->params)) : NOT_AN_RTCP_MSGTYPE;
+
+        if (RTCP_MSGTYPE_OK(msg_type))
+        {                
+            struct timeval recv_time = abs_time_to_timeval(pak->rcv_ts);
+
+            wr++;
+      
+            rtcp_event_handler_internal_process_pak (
+                (rtp_session_t *)chan->prim_session,
+                pak->src_addr,
+                pak->src_port,
+                pak->buff,
+                pak->buff_len,
+                &recv_time);
+
+            return (wr);
+        }
+    }
+
     /* validate header. */
     rtp_status = rtp_validate_hdr(&rtp_is->rtp_recv.session.sess_stats,
                                   vqec_pak_get_head_ptr(pak),
@@ -1003,6 +1037,7 @@ vqec_dp_chan_rtp_repair_input_stream_rcv_one (
             }
             return (wr);
         }
+
         rtp_is->rtp_in_stats.rtp_parse_drops++;
         return (wr);
     }
