@@ -34,7 +34,6 @@
 static pthread_key_t s_vqec_clientkey;
 static pthread_once_t s_once_ctl = PTHREAD_ONCE_INIT;
 static boolean s_key_init_done;
-static struct vqe_zone *s_waiter_pool = NULL;
 
 #define TIMEVAL_TO_TIMESPEC(tv, ts) {                                   \
         (ts)->tv_sec = (tv)->tv_sec;                                    \
@@ -65,7 +64,7 @@ vqec_dp_outputshim_get_pthread_waiter (void)
     if (!(waiter = 
           (vqec_sink_waiter_t *)pthread_getspecific(s_vqec_clientkey))) {
 
-        waiter = (vqec_sink_waiter_t *) zone_acquire(s_waiter_pool);
+        waiter = (vqec_sink_waiter_t *) malloc(sizeof(vqec_sink_waiter_t));
 
         if (!waiter) {
             err = VQEC_DP_ERR_NOMEM;
@@ -96,7 +95,7 @@ vqec_dp_outputshim_get_pthread_waiter (void)
     if (waiter) {
         /* sa_ignore {ignore recursive failure} IGNORE_RETURN (1) */
         pthread_setspecific(s_vqec_clientkey, NULL);
-        zone_release(s_waiter_pool, waiter);
+        free(waiter);
     }
 
     return (NULL);
@@ -382,9 +381,7 @@ vqec_dp_oshim_read_tuner_read (vqec_dp_tunerid_t id,
 
 void vqec_dp_oshim_read_key_deallocate (void *arg)
 {
-    if (arg && s_waiter_pool) {
-        zone_release(s_waiter_pool, arg);
-    }
+    free(arg);
 }
 
 void vqec_dp_oshim_read_key_init (void) 
@@ -421,28 +418,11 @@ boolean vqec_dp_oshim_read_init (uint32_t max_tuners)
         return FALSE;
     }
 
-    if (s_waiter_pool) {
-        return FALSE;
-    }
-    s_waiter_pool = zone_instance_get_loc("sink_waiter",
-                                          O_CREAT,
-                                          sizeof(vqec_sink_waiter_t),
-                                          max_tuners,
-                                          NULL, NULL);
-    if (!s_waiter_pool) {
-        return FALSE;
-    }
-
     return TRUE;
 }
 
 void vqec_dp_oshim_read_deinit (void)
 {
-    if (s_waiter_pool) {
-        (void) zone_instance_put(s_waiter_pool);
-        s_waiter_pool = NULL;
-    }
-
     /* destroy the ifclient pthread key if it exists */
     if (pthread_getspecific(s_vqec_clientkey)) {
         pthread_key_delete(s_vqec_clientkey);
