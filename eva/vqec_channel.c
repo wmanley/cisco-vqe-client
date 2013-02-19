@@ -1532,10 +1532,7 @@ vqec_chan_load_dp_chan_desc (vqec_chan_t *chan,
          */
         chan_desc->repair.filter.proto = INPUT_FILTER_PROTO_UDP;
         chan_desc->repair.filter.u.ipv4.dst_ip = chan->input_if_addr;
-        chan_desc->repair.filter.u.ipv4.dst_port = 
-            !vqec_nat_is_natmode_en() && 
-            IN_MULTICAST(ntohl(chan->cfg.primary_dest_addr.s_addr)) ? 
-            cfg->rtx_source_port : cfg->rtx_dest_port;
+        chan_desc->repair.filter.u.ipv4.dst_port = cfg->rtx_dest_port;
         vqec_chan_assign_source_filter(
             &chan_desc->repair.filter,
             cfg->rtx_source_addr.s_addr,
@@ -1759,7 +1756,6 @@ vqec_chan_add_repair_session (vqec_chan_t *chan,
     rtcp_bw_cfg_t rtcp_bw_cfg;
     rtcp_xr_cfg_t rtcp_xr_cfg;
     uint32_t local_ssrc;
-    uint16_t nat_port;
 
     /* Verify channel supplied with no repair session */
     VQEC_ASSERT(chan && !chan->repair_session);
@@ -1793,26 +1789,16 @@ vqec_chan_add_repair_session (vqec_chan_t *chan,
                                    &local_ssrc)) {
         return (FALSE);
     }
-    
-    /*
-     * For a non-NAT mode multicast channel, the local repair dest port 
-     * is assigned to be the repair stream's source port.  The dest
-     * port supplied in the channel configuration is NOT used in this case.
-     */
-    if (!attrib->nat_mode &&
-        IN_MULTICAST(ntohl(cfg->primary_dest_addr.s_addr))) {
-        nat_port = cfg->rtx_source_rtcp_port;
-    } else {
-        nat_port = cfg->rtx_dest_rtcp_port;
-    }
-    
+
+    chan->rtcp_rtx_port = cfg->rtx_dest_rtcp_port;
+
     chan->repair_session =
         rtp_create_session_repair_recv(
             id,
             attrib->src_addr,
             attrib->p_cname,
             cfg->rtx_source_addr.s_addr,
-            &nat_port,
+            &chan->rtcp_rtx_port,
             cfg->rtx_source_rtcp_port,
             local_ssrc,
             &rtcp_bw_cfg,
@@ -1823,8 +1809,6 @@ vqec_chan_add_repair_session (vqec_chan_t *chan,
             attrib->rtcp_dscp_value,
             cfg->primary_rtcp_rsize,
             chan);
-    
-    chan->rtcp_rtx_port = nat_port;
 
     return (chan->repair_session != NULL);
 }
