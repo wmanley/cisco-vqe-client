@@ -262,7 +262,7 @@ vqec_sink_read_internal (struct vqec_sink_ *sink,
 #ifdef HAVE_FCC
     if(pak->type == VQEC_PAK_TYPE_APP) {
         VQEC_DP_ASSERT_FATAL(iobuf->buf_wrlen == 0,
-                             "buffer write length is 0");
+                             "buffer write length is not 0");
         iobuf->buf_flags |= VQEC_DP_BUF_FLAGS_APP;
     }
 #endif /* HAVE_FCC */
