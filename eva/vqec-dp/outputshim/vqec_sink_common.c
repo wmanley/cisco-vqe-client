@@ -234,6 +234,11 @@ int32_t vqec_sink_read (struct vqec_sink_ *sink,
             break;
         }
 
+        if (iobuf->buf_wrlen != 0 && pak_hdr->pak->type == VQEC_PAK_TYPE_APP) {
+            /* Never deQ an APP packet if the iobuf is not empty */
+	    break;
+	}
+	
         /* only deQ when enough room to copy packet */
         if ((iobuf->buf_len - iobuf->buf_wrlen) >= 
             vqec_pak_get_content_len(pak_hdr->pak)) {
